@@ -104,89 +104,8 @@ input[type="password"] {
     height: 25px;
 }
 
-/* 헤더 시작 */
-/* 레이아웃 */
-#header {
-    width: 1200px;
-    height: 130px;
-    background-color: #FFFFFF;
-    border-bottom: 1px solid #A6A6A6;
-    margin: 0 auto;
-}
 
-/* header */
-#header h1>a {
-    float: left;
-    margin: 10px 0px 0px 0px;
-    font-size: 35px;
-}
 
-#header ul {
-    float: right;
-    margin-right: 20px;
-}
-
-#header ul>li {
-    float: left;
-    margin: 30px 0px 0px 20px;
-    font-size: 15px;
-}
-
-/*헤더 밑에 메뉴(모당이당?, 당구장 찾기, 게시판)*/
-#header>#header-menu {
-    float: left;
-    width: 900px;
-    height: 65px;
-}
-
-/*헤더 밑에 메뉴별 테두리*/
-#header>#header-menu li {
-    /* background-color: rgb(255, 255, 255);
-    border: 2px solid rgb(12, 12, 12);
-    border-radius: 10px; */
-    width: 100px;
-    height: 20px;
-}
-
-/*헤더 밑에 메뉴별 a링크 글씨색깔*/
-#header>#header-menu li a {
-    font-weight: bold;
-    font-size: large;
-    color: rgb(68, 68, 188);
-}
-
-/* 헤더 밑에 메뉴 끝 */
-
-/*헤더 위에 메뉴(로그인,회원가입)*/
-#header>#header-user {
-    float: left;
-    width: 900px;
-    height: 65px;
-
-}
-
-/*헤더 위에 메뉴별 테두리*/
-/* #header>#header-user li{
-    border: 2px solid black;
-    border-radius: 10px;
-    width:100px;
-    height:20px;
-} */
-
-/*헤더 위에 메뉴별 a링크 글씨색깔*/
-#header>#header-user li a {
-    font-weight: bold;
-    color: rgb(68, 68, 188);
-}
-
-/* 로고 사이즈 밑 높이 */
-#logo-img {
-    width: 300px;
-    /* 원하는 가로 크기로 변경하세요 */
-    height: auto;
-    /* 세로 크기를 가로 크기에 맞추기 위해 'auto'로 설정합니다 */
-}
-/* 헤더 끝 */
 /*----------------------------------------------------------------------------------------------------------*/
 
 #board table {

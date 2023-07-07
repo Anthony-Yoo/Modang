@@ -9,6 +9,6 @@ public class BoardController {
 
 	@RequestMapping(value="/list")
 	public String list() {
-		return "/board/board";
+		return "/board/list";
 	}
 }
