@@ -150,7 +150,7 @@ input[type="password"] {
     margin-top: 25px;
     height: 70px;
     border-radius: 10px;
-    background: linear-gradient(to bottom right, rgb(9, 32, 80), rgb(81, 117, 164));
+    background: linear-gradient(to bottom right, rgb(9, 32, 80), rgb(81, 117, 164)); /* 그라데이션 컬러 */
     width: 1200px;
 }
 

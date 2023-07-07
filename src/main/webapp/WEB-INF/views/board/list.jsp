@@ -44,18 +44,18 @@
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>3구</td>
+                        <td>포켓볼</td>
                         <td>강동구</td>
-                        <td class="text-left"><a href="">안녕하세요</a></td>
+                        <td class="text-left"><a href="">포켓볼 다 발라쥼</a></td>
                         <td>1/2</td>
-                        <td>박유준</td>
+                        <td>이도단</td>
                         <td>23.07.07</td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>3구</td>
-                        <td>강동구</td>
-                        <td class="text-left"><a href="">안녕하세요</a></td>
+                        <td>송파구</td>
+                        <td class="text-left"><a href="">다마 400으로 발라줌</a></td>
                         <td>1/2</td>
                         <td>박유준</td>
                         <td>23.07.07</td>
@@ -63,16 +63,16 @@
                     <tr>
                         <td>3</td>
                         <td>3구</td>
-                        <td>강동구</td>
-                        <td class="text-left"><a href="">안녕하세요</a></td>
+                        <td>관악구</td>
+                        <td class="text-left"><a href="">3구 맛세이 대전</a></td>
                         <td>1/2</td>
-                        <td>박유준</td>
+                        <td>유상우</td>
                         <td>23.07.07</td>
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td>3구</td>
-                        <td>강동구</td>
+                        <td>4구</td>
+                        <td>구로구</td>
                         <td class="text-left"><a href="">안녕하세요</a></td>
                         <td>1/2</td>
                         <td>박유준</td>
@@ -82,6 +82,51 @@
                         <td>5</td>
                         <td>3구</td>
                         <td>강동구</td>
+                        <td class="text-left"><a href="">안녕못합니다.</a></td>
+                        <td>1/2</td>
+                        <td>김혜선</td>
+                        <td>23.07.07</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>3구</td>
+                        <td>강동구</td>
+                        <td class="text-left"><a href="">안녕하세요</a></td>
+                        <td>1/2</td>
+                        <td>박유준</td>
+                        <td>23.07.07</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>3구</td>
+                        <td>강동구</td>
+                        <td class="text-left"><a href="">안녕하세요</a></td>
+                        <td>1/2</td>
+                        <td>박유준</td>
+                        <td>23.07.07</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>3구</td>
+                        <td>강동구</td>
+                        <td class="text-left"><a href="">안녕하세요</a></td>
+                        <td>1/2</td>
+                        <td>박유준</td>
+                        <td>23.07.07</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>3구</td>
+                        <td>강동구</td>
+                        <td class="text-left"><a href="">안녕하세요</a></td>
+                        <td>1/2</td>
+                        <td>박유준</td>
+                        <td>23.07.07</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>3구</td>
+                        <td>강동구</td>
                         <td class="text-left"><a href="">안녕하세요</a></td>
                         <td>1/2</td>
                         <td>박유준</td>
@@ -89,9 +134,9 @@
                     </tr>
                 </tbody>
             </table>
-            <div id="write">
+            <!-- <div id="write">
                 <a class="btn" href="">글쓰기</a>
-            </div>
+            </div> -->
             <div id="paging">
                 <ul>
                     <li><a href="">◀</a></li>
