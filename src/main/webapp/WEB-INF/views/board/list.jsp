@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="${pageContext.request.contextPath}/assets/css/board.css" rel="stylesheet" type="text/css">
+    <link href="../../css/board.css" rel="stylesheet" type="text/css">
     <style>
     </style>
 </head>
@@ -17,7 +17,7 @@
     <!-- 헤더 시작 -->
     <div id="header">
         <div id="logo">
-            <h1><a href=""><img id="logo-img" src="${pageContext.request.contextPath}/assets/image/modang.png"></a></h1> <!-- 헤더 로고 이미지 -->
+            <h1><a href=""><img id="logo-img" src="../../image/modang.png"></a></h1> <!-- 헤더 로고 이미지 -->
         </div>
         <div id="header-user">
             <!-- 로그인실패시, 로그인전 -->
@@ -58,7 +58,7 @@
                 <thead>
                     <tr>
                         <th>번호</th>
-                        <th>종류</th>
+                        <th>게임종류</th>
                         <th>지역</th>
                         <th>제목</th>
                         <th>구인 현황</th>
@@ -77,7 +77,7 @@
                         <td>23.07.07</td>
                     </tr>
                     <tr>
-                        <td>1</td>
+                        <td>2</td>
                         <td>3구</td>
                         <td>강동구</td>
                         <td class="text-left"><a href="">안녕하세요</a></td>
@@ -86,7 +86,7 @@
                         <td>23.07.07</td>
                     </tr>
                     <tr>
-                        <td>1</td>
+                        <td>3</td>
                         <td>3구</td>
                         <td>강동구</td>
                         <td class="text-left"><a href="">안녕하세요</a></td>
@@ -95,7 +95,7 @@
                         <td>23.07.07</td>
                     </tr>
                     <tr>
-                        <td>1</td>
+                        <td>4</td>
                         <td>3구</td>
                         <td>강동구</td>
                         <td class="text-left"><a href="">안녕하세요</a></td>
@@ -104,7 +104,7 @@
                         <td>23.07.07</td>
                     </tr>
                     <tr>
-                        <td>1</td>
+                        <td>5</td>
                         <td>3구</td>
                         <td>강동구</td>
                         <td class="text-left"><a href="">안녕하세요</a></td>
@@ -136,6 +136,14 @@
             </div>
             <form action="" method="">
                 <div class="form-group text-center">
+                    <select>
+                        <option>선택</option>
+                        <option>제목</option>
+                        <option>지역</option>
+                        <option>작성자</option>
+                        <option>게임종류</option>
+                        <option>내용</option>
+                    </select>
                     <input type="text" name="keyword" value="">
                     <button type="submit" id=btn_search>검색</button>
                 </div>
