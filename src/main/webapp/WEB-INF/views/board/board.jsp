@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 
@@ -5,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="../../css/board.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/assets/css/board.css" rel="stylesheet" type="text/css">
     <style>
     </style>
 </head>
@@ -15,7 +17,7 @@
     <!-- 헤더 시작 -->
     <div id="header">
         <div id="logo">
-            <h1><a href=""><img id="logo-img" src="../../image/modang.png"></a></h1> <!-- 헤더 로고 이미지 -->
+            <h1><a href=""><img id="logo-img" src="${pageContext.request.contextPath}/assets/image/modang.png"></a></h1> <!-- 헤더 로고 이미지 -->
         </div>
         <div id="header-user">
             <!-- 로그인실패시, 로그인전 -->
