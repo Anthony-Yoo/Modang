@@ -8,21 +8,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>글 쓰기</title>
+<!-- 게시판 css -->
 <link href="${pageContext.request.contextPath}/assets/css/board.css"
 	rel="stylesheet" type="text/css">
+<!-- 사이트 전체 css -->
 <link href="${pageContext.request.contextPath}/assets/css/modang.css"
 	rel="stylesheet" type="text/css">
-<!-- 카카오 지도 api 인증 코드 -->
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=043f21ecd3eda29d22f3eafff557eb9e"></script>
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script>
-<!-- services 라이브러리 불러오기 -->
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
-<!-- services와 clusterer, drawing 라이브러리 불러오기 -->
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
 
 <style>
 </style>
@@ -87,9 +78,9 @@
 						placeholder="제목을 입력해 주세요">
 				</div>
 
-				<!-- 내용 -->
+				<!-- content -->
 				<div class="form-group">
-					<textarea id="txt-content">
+					<textarea id="txt-content" contenteditable="true">
   1. 모임 장소: 
 
   2. 플레이할 당구장 장소 협의 가능여부 (O/X) : 
@@ -99,7 +90,7 @@
   4. 그 외 참고사항: </textarea>
 				</div>
 
-				<button id="btn_add" type="submit">작성 완료</button>
+				<button id="btn_add" type="submit" >작성 완료</button>
 
 			</form>
 			<!-- /form -->
