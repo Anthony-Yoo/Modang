@@ -257,8 +257,72 @@ input[type="password"] {
 	font-size: 14px;
 	font-weight: bold;
 }
-/*----------------------------------------------------------------------------------------------------------*/
 /* 검색 */
 #board #list #btn_search {
 	padding: 2.5px 10px 5px 10px;
 }
+
+/*----------------------------------------------------------------------------------------------------------*/
+
+/* 게시판 글쓰기 폼 */
+label{
+    font-weight: bold;
+}
+textarea{
+    font-size: 15px;
+    resize: none;
+}
+
+#board{
+    font: 15px "맑은 고딕", 돋움, 굴림;
+}
+
+#board #writeForm {
+	text-align: center;
+}
+
+
+/* 폼태그 라벨(제목) */
+#board #writeForm .form-group .form-text {
+    display: inline-block;  /* 인라인 요소 가로폭을 주려고 */
+    width: 30px;
+    text-align: left;
+    margin-right: 20px;
+}
+
+/* 폼태그(제목) */
+#board #writeForm .form-group #txt-title {
+    width: 761px;
+    font-weight: bold;
+}
+
+/* 폼태그(내용) */
+#board #writeForm .form-group #txt-content {
+    overflow : auto;
+    width:816px; 
+    height:400px;
+}
+
+/* 등록 버튼 */
+#board #writeForm #btn_add {
+    border-radius: 10px;
+    border: 1px solid #808080;
+    background-color: #242424;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+	padding: 5px 20px 5px 20px;
+	margin: 0px 225px 0px 10px;
+	float: right;
+	cursor: pointer;
+}
+
+/* 글쓰기 카테고리 라인 */
+#category {
+    clear: both;
+    text-align: center;
+    margin-right: 85px;
+}
+
+/* 게시판 글쓰기 폼 끝*/
+/*----------------------------------------------------------------------------------------------------------*/
