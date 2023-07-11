@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="tablet">
+	
+	<!-- 로그인 쿼리 -->
+	<select id="selectUser" parameterType="com.modang.vo.TabletUserVo" resultType="com.modang.vo.TabletUserVo">
+		<![CDATA[
+			select UserNo,Nick,Average,KeyNum,CreateDate
+			from users
+			where Id = #{id} 
+			AND Passwd = #{passwd}					
+		]]>	
+	</select>
+	<!-- 키넘버 생성 -->
+	<update id="updateKeyNum" parameterType="com.modang.vo.TabletUserVo">
+		<![CDATA[
+			update users
+			set 
+			KeyCount = KeyCount+1,
+			KeyNum = #{keyNum},
+			CreateDate = sysdate,
+			RecentLogonTime = sysdate
+			where UserNo = #{userNo}		
+		]]>
+	</update>
+	
+</mapper>

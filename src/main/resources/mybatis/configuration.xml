@@ -7,5 +7,6 @@
 
     <mappers>
         <mapper resource="mybatis/mappers/main.xml" />
+        <mapper resource="mybatis/mappers/tablet.xml" />
     </mappers>
 </configuration>

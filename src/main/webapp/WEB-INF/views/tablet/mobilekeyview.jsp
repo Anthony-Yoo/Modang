@@ -49,13 +49,7 @@
 				display : inline-block;
 				width : 300px;
 				height : 131px;				
-			}			
-			#idbox {
-				border : 0px; 
-				outline : 1px solid #404040; 
-				width : 300px;
-				height : 80px;	
-			}	
+			}				
 			#messagebox {
 				width : 300px;
 				height : 50px;
@@ -88,25 +82,15 @@
 			<h2 id="logtitle"><br>Modang</h2>
 			<div id="content">	
 				<div id="logbox">
-					<img src="${pageContext.request.contextPath}/assets/images/logo.png"/>					
-					<div id="idbox">				
-						<form action="${pageContext.request.contextPath}/mobile/login" method="get">
-							<label for="id">아이디 :&nbsp;&nbsp;&nbsp;</label>
-							<input type="text" name="id" placeholder="아이디 입력" style="width:100px"><br>
-							<label for="passwd">비밀번호 : </label>
-							<input type="password" name="passwd" placeholder="패스워드 입력" style="width:100px"><br>
-							<button type="submit" id="loginBtn">Login</button>
-						</form>
-					</div>	
-					<div id="messagebox">	
-						<c:if test="${param.result eq 'fail'}">						
-		      			<span>아이디 또는 비번을 확인해 주세요.</span>
-		      			</c:if>					
+					<img src="${pageContext.request.contextPath}/assets/images/logo.png"/>						
+					<div id="messagebox">
+					${keyUser.nick}님 환영합니다.<br>
+					${keyUser.createDate} 키를 생성하셨습니다.	      					      	
 					</div>			
 					<div id="keybox">
 						<dl>
 							<dt>※Check Your KeyNumber</dt><br><br>
-							<dd>431</dd>
+							<dd>${keyUser.keyNum}</dd>
 						</dl>
 					</div>
 				</div>			 
