@@ -20,4 +20,18 @@ public class ManagerController {
 		System.out.println("ManagerController.loginForm");
 		return "/manager/managerLoginForm";
 	}
+	
+	/* 요금테이블 */
+	@RequestMapping(value="/pricePolicy")
+	public String PricePolicy() {
+		
+		return "/manager/pricePolicy";
+	}
+	
+	/* 테이블 매출 */
+	@RequestMapping(value="/tableSales")
+	public String Tablesales() {
+		
+		return "/manager/tableSales";
+	}
 }
