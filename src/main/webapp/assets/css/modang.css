@@ -49,6 +49,12 @@
     font-size: large;
     color: rgb(68, 68, 188);
 }
+/*헤더 밑에 메뉴별 a링크 호버 글씨색깔*/
+#header>#header-menu li:hover a {
+    font-weight: bold;
+    font-size: large;
+    color: rgb(65, 113, 31);
+}
 
 /* 헤더 밑에 메뉴 끝 */
 
@@ -72,6 +78,11 @@
 #header>#header-user li a {
     font-weight: bold;
     color: rgb(68, 68, 188);
+}
+/*헤더 위에 메뉴별 a링크 호버 글씨색깔 */
+#header>#header-user li:hover a {
+    font-weight: bold;
+    color: rgb(65, 113, 31);
 }
 
 /* 로고 사이즈 밑 높이 */
