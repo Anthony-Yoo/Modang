@@ -17,7 +17,7 @@ public class MainController {
 	public String main() {
 		System.out.println("MainController.main()");
 		
-		return "/index";
+		return "main/main";
 	}
 	
 	@RequestMapping("/insert")

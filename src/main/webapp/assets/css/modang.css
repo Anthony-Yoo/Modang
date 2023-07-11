@@ -1,4 +1,25 @@
 @charset "UTF-8";
+/*초기화*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, 
+big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, 
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, 
+canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output,
+ ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; vertical-align: baseline; }
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+body { line-height: 1; }
+ol,ul,li{list-style-type: none;}
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+table { border-collapse: collapse; border-spacing: 0; }
+body { -webkit-text-size-adjust: none; }
+mark { background-color: transparent; color: inherit; }
+input::-moz-focus-inner { border: 0; padding: 0; }
+input, select, qktextarea { -moz-appearance: none; -webkit-appearance: none; -ms-appearance: none; appearance: none; }
+small {font-size:.75em;}
+fieldset{border: 0;}
+a{text-decoration: none; color: #000;}
+button{border: 0; padding: 0;}
+img {vertical-align: top;}/*reset*/
 /* 헤더 시작 */
 /* 레이아웃 */
 #header {
@@ -49,6 +70,12 @@
     font-size: large;
     color: rgb(68, 68, 188);
 }
+/*헤더 밑에 메뉴별 a링크 호버 글씨색깔*/
+#header>#header-menu li:hover a {
+    font-weight: bold;
+    font-size: large;
+    color: rgb(65, 113, 31);
+}
 
 /* 헤더 밑에 메뉴 끝 */
 
@@ -73,6 +100,11 @@
     font-weight: bold;
     color: rgb(68, 68, 188);
 }
+/*헤더 위에 메뉴별 a링크 호버 글씨색깔 */
+#header>#header-user li:hover a {
+    font-weight: bold;
+    color: rgb(65, 113, 31);
+}
 
 /* 로고 사이즈 밑 높이 */
 #logo-img {
@@ -82,3 +114,21 @@
     /* 세로 크기를 가로 크기에 맞추기 위해 'auto'로 설정합니다 */
 }
 /* 헤더 끝 */
+
+/*푸터*/
+#footer{width: 100%; padding: 20px 0;height: 260px; color: #000; margin: -100px 0 50px;}/*☆이게모지★*/
+#footer .f_left{width: 60%;font-size: 14px;float: left;}
+#footer .f_left .f_logo{margin-bottom: 10px;}
+#footer .f_left ul{padding: 0 0 20px;}
+#footer .f_left ul li{float: left;padding: 0 8px;border-right: 1px solid #c7c7c7;margin-bottom: 10px;}
+#footer .f_left ul li.no_bar{border-right: 0;}
+#footer .f_left p{clear: both;margin-left: 8px;}
+#footer .f_right{width: 20%;float: right;font-size: 12px;}
+#footer .f_right ul.f_menu{width: 270px; height: 30px;}
+#footer .f_right ul.f_menu li{float: left;margin-left: 20px;}
+#footer .f_right ul.sns{float: right;margin-top: 120px;}
+#footer .f_right ul.sns li{float: left;margin-left: 15px; width: 30px; height: 30px;}
+#footer .f_right ul.sns li:nth-child(3){margin-right: 10px;}
+#footer .f_right ul.sns li img{width: 100%; height: 100%;}
+
+
