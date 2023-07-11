@@ -1,0 +1,332 @@
+@charset "UTF-8";
+/****************************************************************/
+/* 초기화 관련 ***************************************************/
+/****************************************************************/
+
+/* 여백 초기화 */
+body,div,ul,li,dl,dt,ol,h1,h2,h3,h4,h5,h6,input,fieldset,
+legend,p,select,table,th,td,tr,textarea,button,form {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font: 12px "맑은 고딕", 돋움, 굴림;
+    text-align: center;
+}
+
+ul,
+ol {
+    list-style-type: none;
+}
+
+a:link {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:visited {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:active {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #000000;
+}
+
+/* font *(기본값 12px) */
+.bold {
+    font-weight: bold;
+}
+
+.text-xlarge {
+    font-size: 18px;
+}
+
+.text-large {
+    font-size: 15px;
+}
+
+.text-small {
+    font-size: 10px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+/* 위치 */
+.float-r {
+    float: right;
+}
+
+.float-l {
+    float: left;
+}
+
+.clear {
+    clear: both;
+}
+
+/* 버튼 공통*/
+.btn {
+    border-radius: 10px;
+    border: 1px solid #808080;
+    background-color: rgb(192, 192, 192);
+    padding: 5px 15px 5px 15px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/* 폼 관련 */	
+input[type="text"] {
+    width: 175px;
+    height: 25px;
+}
+
+input[type="password"] {
+    height: 25px;
+}
+
+/*----------------------------------------------------------------------------------------------------------*/
+
+#board table {
+    width: 820px;
+    border-collapse: collapse; 
+}
+
+/* 폼요소 그룹 */
+#board .form-group {
+    padding: 18px 70px 5px 0px;
+}
+#board form>div>select {
+    padding: 5px;
+}
+
+#content {
+    width: 1200px;
+    height: 120px;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #A6A6A6;
+    margin: 0 auto;
+    position: relative;
+}
+
+#content h2>a {
+    /* 테두리 스타일과 색깔 지정 */
+    top: 5px;
+    left: 0px;
+    position: absolute;
+    float: left;
+    margin: 13px 0px 0px 25px;
+    font-size: 25px;
+    border-radius: 10px;
+    text-align: left;
+    /* 글씨를 왼쪽 정렬 */
+    height: 50px;
+    color: #FFFFFF;
+}
+
+/* 게시판 헤더 테두리와 색깔 */
+#content h2 {
+    margin-top: 25px;
+    height: 70px;
+    border-radius: 10px;
+    background: linear-gradient(to bottom right, rgb(9, 32, 80), rgb(81, 117, 164)); /* 그라데이션 컬러 */
+    width: 1200px;
+}
+
+/* 게시판 글쓰기 버튼 */
+#content #write .btn {
+    border: 1px solid #808080;
+	border-radius: 10px;
+    background-color: #0c0a04 !important;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px 15px 5px 15px;
+    margin: 10px 0px 0px 520px;
+    position: absolute;
+    
+}
+/*----------------------------------------------------------------------------------------------------------*/
+/* 게시판 관련 */
+#board {
+    width: 1200px;
+    height: 140px;
+    background-color: #FFFFFF;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+}
+#board #list table {
+    width: 100%;
+    margin: auto;
+}
+/* 게시판 리스트 카테고리 목록 테두리 */
+#board #list table>thead>tr {
+    font-size: 15px;
+    border-top: 2px solid #d3d3e9; 
+    border-bottom: 2px solid #d3d3e9;
+    background-color: #ecdfdf; 
+    padding: 0px;
+}
+#board #list table>thead>tr>th {
+    padding: 10px 10px 10px 10px;
+    font-weight: bold;
+    white-space: nowrap; /* 줄바꿈 방지 */
+    text-align: center; /* 중앙 정렬 */
+}
+
+#board #list table>thead>tr>th:nth-child(1){
+    width: 5%;    
+}
+#board #list table>thead>tr>th:nth-child(2){
+    width: 8%;    
+}
+#board #list table>thead>tr>th:nth-child(3){
+    width: 8%;    
+}
+#board #list table>thead>tr>th:nth-child(4){
+    width: 48%;    
+}
+#board #list table>thead>tr>th:nth-child(5){
+    width: 8%;    
+}
+#board #list table>thead>tr>th:nth-child(6){
+    width: 8%;    
+}
+#board #list table>thead>tr>th:nth-child(7){
+    width: 15%;    
+}
+
+/* 게시판 메뉴 목록 테두리 끝*/
+
+/* 게시판 글 리스트 */
+#board #list table>tbody>tr { 
+    font-size: 15px;
+    border-bottom: 1px solid #808080;
+    
+}
+#board #list table>tbody>tr>td { 
+    padding: 10px 10px 10px 10px;
+    white-space: nowrap; /* 줄바꿈 방지 */
+}
+/* 게시판 글 마우스 올렸을 때 */
+#board #list table>tbody>tr:hover { 
+	background-color: #cbcbcb; 
+}
+/* 리스트 아래 글쓰기 버튼 */
+#board #list #write .btn {
+    position: absolute;
+    font-size: 15px;
+    margin: 12px 0px 0px 520px;
+    color: rgb(200, 200, 200);
+}
+
+/* 게시판 페이징 */
+#board #list #paging {
+    white-space: nowrap; /* 줄바꿈 방지 */
+    font-size: 15px;
+	margin: 0px auto;
+	width: 400px;
+}
+#board #list #paging {
+	margin: 0px auto;
+	width: 400px;
+}
+#board #list #paging ul {margin: 10px 5px 10px 5px;}
+#board #list #paging ul>li{
+	float: left;
+	margin: 0px 8px 0px 8px;
+}
+
+#board #list #paging ul>li.active{
+	font-size: 14px;
+	font-weight: bold;
+}
+/* 검색 */
+#board #list #btn_search {
+	padding: 2.5px 10px 5px 10px;
+}
+
+/*----------------------------------------------------------------------------------------------------------*/
+
+/* 게시판 글쓰기 폼 */
+label{
+    font-weight: bold;
+}
+textarea{
+    font-size: 15px;
+    resize: none;
+}
+
+#board{
+    font: 15px "맑은 고딕", 돋움, 굴림;
+}
+
+#board #writeForm {
+	text-align: center;
+}
+
+
+/* 폼태그 라벨(제목) */
+#board #writeForm .form-group .form-text {
+    display: inline-block;  /* 인라인 요소 가로폭을 주려고 */
+    width: 30px;
+    text-align: left;
+    margin-right: 20px;
+}
+
+/* 폼태그(제목) */
+#board #writeForm .form-group #txt-title {
+    width: 761px;
+    font-weight: bold;
+}
+
+/* 폼태그(내용) */
+#board #writeForm .form-group #txt-content {
+    overflow : auto;
+    width:816px; 
+    height:400px;
+}
+
+/* 등록 버튼 */
+#board #writeForm #btn_add {
+    border-radius: 10px;
+    border: 1px solid #808080;
+    background-color: #242424;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+	padding: 5px 20px 5px 20px;
+	margin: 0px 225px 0px 10px;
+	float: right;
+	cursor: pointer;
+}
+
+/* 글쓰기 카테고리 라인 */
+#category {
+    clear: both;
+    text-align: center;
+    margin-right: 85px;
+}
+
+/* 게시판 글쓰기 폼 끝*/
+/*----------------------------------------------------------------------------------------------------------*/
