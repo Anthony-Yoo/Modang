@@ -87,14 +87,14 @@ a:hover {
 .btn {
     border-radius: 10px;
     border: 1px solid #808080;
-    background-color: #c0c0c0;
+    background-color: rgb(192, 192, 192);
     padding: 5px 15px 5px 15px;
     color: white;
     font-size: 15px;
     font-weight: bold;
 }
 
-/* 폼 관련 */
+/* 폼 관련 */	
 input[type="text"] {
     width: 175px;
     height: 25px;
@@ -103,8 +103,6 @@ input[type="text"] {
 input[type="password"] {
     height: 25px;
 }
-
-
 
 /*----------------------------------------------------------------------------------------------------------*/
 
@@ -145,7 +143,7 @@ input[type="password"] {
     color: #FFFFFF;
 }
 
-/* 매칭 게시판 테두리와 색깔 */
+/* 게시판 헤더 테두리와 색깔 */
 #content h2 {
     margin-top: 25px;
     height: 70px;
@@ -156,13 +154,19 @@ input[type="password"] {
 
 /* 게시판 글쓰기 버튼 */
 #content #write .btn {
-    position: absolute;
+    border: 1px solid #808080;
+	border-radius: 10px;
+    background-color: #0c0a04 !important;
+    color: white;
     font-size: 15px;
+    font-weight: bold;
+    padding: 5px 15px 5px 15px;
     margin: 10px 0px 0px 520px;
-    color: rgb(200, 200, 200);
+    position: absolute;
+    
 }
 /*----------------------------------------------------------------------------------------------------------*/
-/* 게시판 기본 베이스 */
+/* 게시판 관련 */
 #board {
     width: 1200px;
     height: 140px;

@@ -17,6 +17,9 @@
 
 <style>
 </style>
+<script>
+  document.getElementById('matchDate').value= new Date().toISOString().slice(0, 16);
+</script>
 </head>
 
 <body>
@@ -26,15 +29,16 @@
 	<!-- 게시판 바디-->
 	<div id="board">
 		<div id="writeForm">
-			<form action="" method="">
+			<form action="write" method="post">
 				<!-- 제목 -->
 				<div id="category">
-					<label for="lang">게임 종류</label> <select name="languages" id="lang">
-						<option value="3구">3구</option>
-						<option value="4구">4구</option>
-						<option value="포켓볼">포켓볼</option>
-					</select> &nbsp;&nbsp; <label for="lang">지역</label> <select name="languages"
-						id="lang">
+					<label for="type">게임 종류</label> <select name=matchGameType
+						id="type">
+						<option value="0">3구</option>
+						<option value="1">4구</option>
+						<option value="2">포켓볼</option>
+					</select> &nbsp;&nbsp; <label for="matchRegion">지역</label> <select
+						name="matchRegion" id="matchRegion">
 						<option value="강남구">강남구</option>
 						<option value="강동구">강동구</option>
 						<option value="강북구">강북구</option>
@@ -61,15 +65,15 @@
 						<option value="종로구">종로구</option>
 						<option value="중구">중구</option>
 						<option value="중랑구">중랑구</option>
-					</select> &nbsp;&nbsp; <label for="lang">게임 인원(본인 포함)</label> <select
-						name="languages" id="lang">
+					</select> &nbsp;&nbsp; <label for="membernum">게임 인원(본인 포함)</label> <select
+						name="membernum" id="membernum">
 						<option value="2">2명</option>
 						<option value="3">3명</option>
 						<option value="4">4명</option>
 						<option value="5">5명</option>
 						<option value="6">6명</option>
-					</select> &nbsp;&nbsp; <label for="lang">모임 날짜</label> <input
-						type="datetime-local" /><br>
+					</select> &nbsp;&nbsp; <label for="matchDate">모임 날짜</label> <input
+						type="datetime-local" id="matchDate" name="matchDate" /><br>
 				</div>
 				<!-- 글 제목 작성 칸 -->
 				<div class="form-group">
@@ -80,7 +84,7 @@
 
 				<!-- content -->
 				<div class="form-group">
-					<textarea id="txt-content" contenteditable="true">
+					<textarea id="txt-content" name="content" contenteditable="true">
   1. 모임 장소: 
 
   2. 플레이할 당구장 장소 협의 가능여부 (O/X) : 
@@ -90,7 +94,7 @@
   4. 그 외 참고사항: </textarea>
 				</div>
 
-				<button id="btn_add" type="submit" >작성 완료</button>
+				<button id="btn_add" type="submit">작성 완료</button>
 
 			</form>
 			<!-- /form -->
