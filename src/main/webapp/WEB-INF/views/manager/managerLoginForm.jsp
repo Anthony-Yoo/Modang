@@ -50,8 +50,8 @@
             <a href="" class="button">로그인할거당</a>
         </div>
     </div>
-    <footer>
-
-    </footer>
+    <!-- 푸터 시작 -->
+    <c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
+    <!-- 푸터 끝 -->
 </body>
 </html>

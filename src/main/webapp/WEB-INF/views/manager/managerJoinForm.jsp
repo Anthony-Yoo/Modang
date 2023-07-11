@@ -128,8 +128,8 @@
             <a href="" class="button">회원가입할거당</a>
         </div>
     </div>
-    <footer>
-
-    </footer>
+    <!-- 푸터 시작 -->
+    <c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
+    <!-- 푸터 끝 -->
 </body>
 </html>
