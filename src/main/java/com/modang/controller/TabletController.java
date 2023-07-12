@@ -33,7 +33,7 @@ public class TabletController {
 		System.out.println("TabletController.keyLogin()");		
 		System.out.println(keyNum);
 		
-		TabletUserVo resultVo = tabletService.keyTimeLogin(keyNum);
+		TabletUserVo resultVo = tabletService.keyLogin(keyNum);
 		System.out.println(resultVo);
 		
 		TabletUserVo authUser = new TabletUserVo();	

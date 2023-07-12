@@ -2,7 +2,15 @@ package com.modang.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.modang.service.ManagerService;
+import com.modang.vo.TariffVo;
 
 import com.modang.service.ManagerService;
 
@@ -34,17 +42,46 @@ public class ManagerController {
 		return "/manager/managerLoginForm";
 	}
 	
-	/* 요금테이블 */
-	@RequestMapping(value="/pricePolicy")
-	public String PricePolicy() {
+	/* 요금테이블폼(요금가져오기) */
+	@RequestMapping(value="/pricePolicyForm", method = {RequestMethod.GET,RequestMethod.POST})
+	public String pricePolicyForm(Model model) {
+		System.out.println("ManagerController.pricePolicyForm()");
+        int no = 1;
+        TariffVo tariffVo = managerService.getPrice(no);
+        model.addAttribute(tariffVo);
 		
 		return "/manager/pricePolicy";
 	}
 	
-	/* 테이블 매출 */
-	@RequestMapping(value="/tableSales")
-	public String Tablesales() {
+	/* 요금테이블 수정 */
+	@RequestMapping(value="/pricePolicy", method = {RequestMethod.GET,RequestMethod.POST})
+	public String pricePolicy(@ModelAttribute TariffVo tariffVo) {
+		System.out.println("ManagerController.pricePolicy()");
+		int no = 1;
+
+		int count = managerService.updatePrice(tariffVo);
+		
+		return "/manager/pricePolicy";
+	}
+	
+	/* 테이블 매출폼 */
+	@RequestMapping(value="/tableSalesForm", method = {RequestMethod.GET,RequestMethod.POST})
+	public String tableSalesForm() {
+		System.out.println("ManagerController.tableSalesForm()");
+
 		
 		return "/manager/tableSales";
 	}
+	
+	/* 테이블 매출검색 */
+	@RequestMapping(value="/tableSales", method = {RequestMethod.GET,RequestMethod.POST})
+	public String tableSales(@RequestParam int tableno,@RequestParam String mindate,
+							 @RequestParam String maxdate) {
+		System.out.println("ManagerController.tableSales()");
+		System.out.println(tableno);
+		System.out.println(mindate);
+		System.out.println(maxdate);
+		return "/manager/tableSales";
+	}
+	
 }

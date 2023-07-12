@@ -2,6 +2,18 @@ package com.modang.vo;
 
 public class UserVo {
 	
+<<<<<<< HEAD
+	private int userno;
+	private String id;
+	private String passwd;
+	private String nick;
+	private String cellphone;
+	private int average;
+	private int recommaverage;
+	private String recentlogontime;
+	private long profileimage;
+	private int keynum;
+=======
 	private int userno;					/*유저엔티티번호*/
 	private String id;					/*아이디*/
 	private String passwd;				/*비밀번호*/
@@ -17,9 +29,9 @@ public class UserVo {
 	public UserVo() {
 		super();
 	}
+>>>>>>> branch 'master' of https://github.com/Anthony-Yoo/Modang.git
 	public UserVo(int userno, String id, String passwd, String nick, String cellphone, int average, int recommaverage,
-			String recentlogontime, long profileimage, int keynum, String createdate, int keycount) {
-		super();
+			String recentlogontime, long profileimage, int keynum) {
 		this.userno = userno;
 		this.id = id;
 		this.passwd = passwd;
@@ -30,8 +42,8 @@ public class UserVo {
 		this.recentlogontime = recentlogontime;
 		this.profileimage = profileimage;
 		this.keynum = keynum;
-		this.createdate = createdate;
-		this.keycount = keycount;
+	}
+	public UserVo() {
 	}
 	public int getUserno() {
 		return userno;
@@ -93,24 +105,12 @@ public class UserVo {
 	public void setKeynum(int keynum) {
 		this.keynum = keynum;
 	}
-	public String getCreatedate() {
-		return createdate;
-	}
-	public void setCreatedate(String createdate) {
-		this.createdate = createdate;
-	}
-	public int getKeycount() {
-		return keycount;
-	}
-	public void setKeycount(int keycount) {
-		this.keycount = keycount;
-	}
 	@Override
 	public String toString() {
 		return "UserVo [userno=" + userno + ", id=" + id + ", passwd=" + passwd + ", nick=" + nick + ", cellphone="
 				+ cellphone + ", average=" + average + ", recommaverage=" + recommaverage + ", recentlogontime="
-				+ recentlogontime + ", profileimage=" + profileimage + ", keynum=" + keynum + ", createdate="
-				+ createdate + ", keycount=" + keycount + "]";
+				+ recentlogontime + ", profileimage=" + profileimage + ", keynum=" + keynum + "]";
 	}
+	
 	
 }

@@ -33,9 +33,9 @@
 						<!-- Nav -->
 						<nav id="nav">
 							<a href="${pageContext.request.contextPath}/manager/index">테이블 현황</a>
-							<a href="${pageContext.request.contextPath}/manager/tableSales">테이블 매출</a>
+							<a href="${pageContext.request.contextPath}/manager/tableSalesForm">테이블 매출</a>
 							<a href="${pageContext.request.contextPath}/manager/daySales">일별 매출</a>
-							<a href="${pageContext.request.contextPath}/manager/pricePolicy" class="active">요금 테이블</a>
+							<a href="${pageContext.request.contextPath}/manager/pricePolicyForm" class="active">요금 테이블</a>
 							<a href="${pageContext.request.contextPath}/manager/settings">관리자 설정</a>
 						</nav>
 					</div>
@@ -54,66 +54,67 @@
 							<header>
 								<h2>시간제 요금 설정 <small class="font-weight-normal text-blue">10분당 테이블 요금을 설정하세요</small></h2>
 							</header>
-							
-							<form>
-								<div class="row">
-									<div class="col-4">
-										<label class="form-label">중대요금</label>
-										<div class="col input-group">
-											<input type="text" name="" class="form-control text-big text-right" maxlength="8" />
-											<span class="input-group-append"><span class="input-group-text">원</span></span>
+							<div id="priccePolicyForm">
+								<form action="${pageContext.request.contextPath}/manager/pricePolicy" method="get">
+									<div class="row">
+										<div class="col-4">
+											<label class="form-label">대대요금</label>
+											<div class="col input-group">
+											    <input type="hidden" id="" name="biliardno" value="${requestScope.tariffVo.biliardno}">
+												<input type="text" name="btablefee" class="form-control text-big text-right" maxlength="8" value="${requestScope.tariffVo.btablefee}"/>
+												<span class="input-group-append"><span class="input-group-text">원</span></span>
+											</div>
+										</div>
+										
+										<div class="col-4">
+											<label class="form-label">중대요금</label>
+											<div class="col input-group">
+												<input type="text" name="mtablefee" class="form-control text-big text-right" maxlength="8" value="${requestScope.tariffVo.mtablefee}"/>
+												<span class="input-group-append"><span class="input-group-text">원</span></span>
+											</div>
+										</div>
+										
+										<div class="col-4">
+											<label class="form-label">포켓요금</label>
+											<div class="col input-group">
+												<input type="text" name="ptablefee" class="form-control text-big text-right" maxlength="8" value="${requestScope.tariffVo.ptablefee}"/>
+												<span class="input-group-append"><span class="input-group-text">원</span></span>
+											</div>
 										</div>
 									</div>
 									
-									<div class="col-4">
-										<label class="form-label">대대요금</label>
-										<div class="col input-group">
-											<input type="text" name="" class="form-control text-big text-right" maxlength="8" />
-											<span class="input-group-append"><span class="input-group-text">원</span></span>
+									<div class="row mt-0">
+										<div class="col-4">
+											<label class="form-label">대대 최소 게임비</label>
+											<div class="col input-group">
+												<input type="text" name="bminfee" class="form-control text-big text-right" maxlength="8" value="${requestScope.tariffVo.bminfee}"/>
+												<span class="input-group-append"><span class="input-group-text">원</span></span>
+											</div>
+										</div>
+										
+										<div class="col-4">
+											<label class="form-label">중대 최소 게임비</label>
+											<div class="col input-group">
+												<input type="text" name="mminfee" class="form-control text-big text-right" maxlength="8" value="${requestScope.tariffVo.mminfee}"/>
+												<span class="input-group-append"><span class="input-group-text">원</span></span>
+											</div>
+										</div>
+										
+										<div class="col-4">
+											<label class="form-label">포켓 최소 게임비</label>
+											<div class="col input-group">
+												<input type="text" name="pminfee" class="form-control text-big text-right" maxlength="8" value="${requestScope.tariffVo.pminfee}"/>
+												<span class="input-group-append"><span class="input-group-text">원</span></span>
+											</div>
 										</div>
 									</div>
 									
-									<div class="col-4">
-										<label class="form-label">포켓요금</label>
-										<div class="col input-group">
-											<input type="text" name="" class="form-control text-big text-right" maxlength="8" />
-											<span class="input-group-append"><span class="input-group-text">원</span></span>
-										</div>
+									<div class="mt-4 text-right" style="position: absolute; bottom: 32px; right: 32px;">
+										<button type="submit" class="btn btn-lg btn-blue">저장</button>
 									</div>
-								</div>
-								
-								<div class="row mt-0">
-									<div class="col-4">
-										<label class="form-label">중대 최소 게임비</label>
-										<div class="col input-group">
-											<input type="text" name="" class="form-control text-big text-right" maxlength="8" />
-											<span class="input-group-append"><span class="input-group-text">원</span></span>
-										</div>
-									</div>
-									
-									<div class="col-4">
-										<label class="form-label">대대 최소 게임비</label>
-										<div class="col input-group">
-											<input type="text" name="" class="form-control text-big text-right" maxlength="8" />
-											<span class="input-group-append"><span class="input-group-text">원</span></span>
-										</div>
-									</div>
-									
-									<div class="col-4">
-										<label class="form-label">포켓 최소 게임비</label>
-										<div class="col input-group">
-											<input type="text" name="" class="form-control text-big text-right" maxlength="8" />
-											<span class="input-group-append"><span class="input-group-text">원</span></span>
-										</div>
-									</div>
-								</div>
-								
-								<div class="mt-4 text-right" style="position: absolute; bottom: 32px; right: 32px;">
-									<button type="submit" class="btn btn-lg btn-blue">저장</button>
-								</div>
-							</form>
+								</form>
+							</div> <!--priccePolicyForm end -->
 						</section>
-
 					</div>
 				</div>
 			</div>

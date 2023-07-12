@@ -17,12 +17,19 @@ public class TabletDao {
 		System.out.println("TabletDao.selectUser()");
 		
 		return session.selectOne("tablet.selectUser", userVo);
+	}
+	
+	public LoginKeyVo selectUserKey(TabletUserVo userVo) {
+		System.out.println("TabletDao.selectUserKey()");
+		
+		return session.selectOne("tablet.selectUserKey", userVo);
 		
 	}
-	public int updateKeyNum(TabletUserVo userVo) {
-		System.out.println("TabletDao.updateKeyNum()");
+	public int insertKeyNum(TabletUserVo userVo) {
+		System.out.println("TabletDao.insertKeyNum()");
 		
-		return session.update("tablet.updateKeyNum", userVo);		
+		return session.insert("tablet.insertKeyNum", userVo);
+		
 	}
 	public LoginKeyVo selectKeyNum(int keyNum) {
 		System.out.println("TabletDao.selectKeyNum()");
