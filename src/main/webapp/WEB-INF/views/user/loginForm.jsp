@@ -84,13 +84,13 @@
           </div>
           
           <br>
+          <br>          
+          <br>
+          <br>
+          <hr>
           <br>
           <br>
           <br>
-          <br>
-          <br>
-          <br>
-          
           
     <!-- 푸터 시작 -->
     <c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>

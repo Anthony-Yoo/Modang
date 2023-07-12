@@ -106,7 +106,7 @@
                 
                  -->
             		<br>
-                	<br>
+                	
                 <div class="button-area">
             		<button type="submit" id="btn-submit" class="btn btn-primary">회원가입 할거당</button>
             	</div>
@@ -115,7 +115,9 @@
             </div>
                 </div>
             </div>
-          
+            <br>
+            <hr>
+            
             <br>
             <br>
             <br>
