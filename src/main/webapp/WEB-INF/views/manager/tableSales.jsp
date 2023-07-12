@@ -8,8 +8,8 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/image/favicon.ico" />
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/managerdefault.css" />
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/managerdefault.css" />
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 </head>
@@ -36,9 +36,9 @@
 						<!-- Nav -->
 						<nav id="nav">
 							<a href="${pageContext.request.contextPath}/manager/index">테이블 현황</a>
-							<a href="${pageContext.request.contextPath}/manager/tableSales" class="active">테이블 매출</a>
+							<a href="${pageContext.request.contextPath}/manager/tableSalesForm" class="active">테이블 매출</a>
 							<a href="${pageContext.request.contextPath}/manager/daySales">일별 매출</a>
-							<a href="${pageContext.request.contextPath}/manager/pricePolicy">요금 테이블</a>
+							<a href="${pageContext.request.contextPath}/manager/pricePolicyForm">요금 테이블</a>
 							<a href="${pageContext.request.contextPath}/manager/settings">관리자 설정</a>
 						</nav>
 					</div>
@@ -57,15 +57,15 @@
 							<header>
 								<h2 class="float-left">테이블 매출</h2>
 								
-								<form name="" action="" class="form-inline float-right mb-4">
+								<form name="" class="form-inline float-right mb-4" action="${pageContext.request.contextPath}/manager/tableSales" method="get" >
 									<label class="mr-2">테이블 번호</label>
 									<div class="col-4">
-										<input type="text" name="" class="form-control form-control-sm" maxlength="10" placeholder="" />
+										<input type="text" name="tableno" class="form-control form-control-sm" maxlength="10" />
 									</div>
 									<label class="mr-2">날짜</label>
-										<input type="text" name="" class="form-control form-control-sm" maxlength="20" placeholder="" />
+										<input type="date" name="mindate" class="form-control form-control-sm" maxlength="20" />
 									<label class="mr-1">~</label>
-										<input type="text" name="" class="form-control form-control-sm" maxlength="20" placeholder="" />
+										<input type="date" name="maxdate" class="form-control form-control-sm" maxlength="20" />
 									<button type="submit" class="btn btn-sm btn-dark">검색</button>
 								</form>
 							</header>
