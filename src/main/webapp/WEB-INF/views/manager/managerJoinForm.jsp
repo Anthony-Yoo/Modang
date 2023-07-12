@@ -5,8 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>b-join</title>
+	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/image/favicon.ico" />
+	<link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
     <link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
-    <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <!-- 헤더 시작 -->
@@ -125,7 +126,7 @@
                         </div>
                 </form>
             </div>
-            <a href="" class="button">회원가입할거당</a>
+            <a href="${pageContext.request.contextPath}/" class="button">회원가입할거당</a>
         </div>
     </div>
     <!-- 푸터 시작 -->

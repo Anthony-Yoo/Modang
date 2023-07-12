@@ -1,5 +1,7 @@
 package com.modang.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -43,13 +45,22 @@ public class UserController {
 
 	// 로그인
 	@RequestMapping(value = "/user/login", method = { RequestMethod.GET, RequestMethod.POST })
-	public String login() {
+	public String login(@ModelAttribute  UserVo userVo, HttpSession session) {
 		System.out.println("UserController.login()");
-		System.out.println();
+		System.out.println(userVo);
 
-		userService.login();
+		UserVo authUser=userService.login(userVo);
+		
+		if(authUser !=null) {
+			System.out.println("로그인 성공");
+			session.setAttribute("authUser", authUser);
+			return "redirect:/main";
+		}
+		else {
+			System.out.println("로그인 실패");
+			return "redirect:/user/loginForm?result=fail";
+		}
 
-		return "";
 	}
 	/*
 	 * //id check

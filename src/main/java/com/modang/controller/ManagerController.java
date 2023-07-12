@@ -1,17 +1,30 @@
 package com.modang.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.modang.service.ManagerService;
 
 @Controller
 @RequestMapping(value="/manager")
 public class ManagerController {
+	
+	@Autowired
+	private ManagerService managerService;
 
 	/*회원가입폼 출력*/
 	@RequestMapping(value ="/joinForm")
 	public String joinForm() {
 		System.out.println("ManagerController.joinForm");
 		return "/manager/managerJoinForm";
+	}
+	/*회원가입*/
+	@RequestMapping(value ="/join")
+	public String join() {
+		System.out.println("ManagerController.join");
+		
+		return "";
 	}
 	
 	/*로그인폼 출력*/

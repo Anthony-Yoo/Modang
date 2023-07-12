@@ -10,5 +10,6 @@
         <mapper resource="mybatis/mappers/tablet.xml"/>
         <mapper resource="mybatis/mappers/board.xml" />
         <mapper resource="mybatis/mappers/user.xml" />
+        <mapper resource="mybatis/mappers/manager.xml" />
     </mappers>
 </configuration>

@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>modang</title>
+	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/image/favicon.ico" />
 	<link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
     <link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
 </head>
@@ -22,7 +23,7 @@
                 <div class="modang_tip">
                     <ul class="user_tip">
                         <li class="tip">
-                            <a href="">
+                            <a href="${pageContext.request.contextPath}/">
                                 <em>모당 서비스란?</em>
                                 <p>
                                     본인 전적 저장가능<br>
@@ -33,7 +34,7 @@
                             </a>
                         </li>
                         <li class="tip">
-                            <a href="">
+                            <a href="${pageContext.request.contextPath}/">
                                 <em>모당 서비스란 이용방법</em>
                                 <p>
                                 회원가입-<br>
@@ -43,7 +44,7 @@
                             </a>
                         </li>
                         <li class="tip">
-                            <a href="">
+                            <a href="${pageContext.request.contextPath}/board/list">
                                 <em>매칭 서비스</em>
                                 <p>
                                     게시글에 글 올리거나 댓글<br>
@@ -53,8 +54,9 @@
                         </li>
                     </ul>
                     <ul class="manager_tip">
+                     <!-- 로그인실패시, 로그인전 -->
                         <li class="tip">
-                            <a href="">
+                            <a href="${pageContext.request.contextPath}/manager/loginForm">
                                 <em>당구장 관리 서비스</em>
                                 <p>
                                     기본 당구장 관리시스템과 비슷해<br>
@@ -64,8 +66,24 @@
                             </a>
                         </li>
                         <li class="tip">
-                            <a href="">당구장 관리하러 가기</a>
+                            <a href="${pageContext.request.contextPath}/manager/loginForm">당구장 관리하러 가기</a>
                         </li>
+                        <!-- 로그인성공시, 로그인후 -->
+                        <!-- 
+                        <li class="tip">
+                            <a href="${pageContext.request.contextPath}/manager/settings">
+                                <em>당구장 관리 서비스</em>
+                                <p>
+                                    기본 당구장 관리시스템과 비슷해<br>
+                                    처음 사용시 어려움이 없지 않을까?<br>
+                                    본인 매장 어필 가능?어캐?
+                                </p>
+                            </a>
+                        </li>
+                        <li class="tip">
+                            <a href="${pageContext.request.contextPath}/manager/index">당구장 관리하러 가기</a>
+                        </li>
+                         -->
                     </ul>
                 </div>
             </div>
