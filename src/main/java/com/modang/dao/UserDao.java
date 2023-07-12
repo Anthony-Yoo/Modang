@@ -27,9 +27,9 @@ public class UserDao {
 		System.out.println("UserDao.selectUser()");
 		System.out.println(userVo);
 		
-	UserVo authUser=session.selectOne("user.selectUser", userVo);
+		UserVo authUser=session.selectOne("user.selectUser", userVo);
 	
-	return authUser;
+		return authUser;
 	}
 	/*
 	//id check <--ajax

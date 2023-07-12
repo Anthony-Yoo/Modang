@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입 완료!</title>
     <link href="${pageContext.request.contextPath}/assets/css/board.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -38,6 +39,14 @@
     	</div>
            
     </div>
+    <br>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <br>
+    <br>
+    <br>
 	<!-- 푸터 시작 -->
     <c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
     <!-- 푸터 끝 -->

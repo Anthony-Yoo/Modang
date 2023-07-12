@@ -12,8 +12,7 @@ values( SEQ_USERS_NO.nextval,
         #{nick},
         #{cellphone},
         #{average},
-        #{recentlogontime}
-
+        sysdate
         )
     ]]>
 </insert>

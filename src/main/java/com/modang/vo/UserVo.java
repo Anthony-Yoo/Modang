@@ -2,6 +2,7 @@ package com.modang.vo;
 
 public class UserVo {
 	
+<<<<<<< HEAD
 	private int userno;
 	private String id;
 	private String passwd;
@@ -12,6 +13,23 @@ public class UserVo {
 	private String recentlogontime;
 	private long profileimage;
 	private int keynum;
+=======
+	private int userno;					/*유저엔티티번호*/
+	private String id;					/*아이디*/
+	private String passwd;				/*비밀번호*/
+	private String nick;				/*닉네임*/
+	private String cellphone;			/*핸드폰번호*/
+	private int average;				/*평타*/
+	private int recommaverage;			/*권장평타*/
+	private String recentlogontime;		/*최근로그인시간*/
+	private long profileimage;			/*프로필이미지*/
+	private int keynum;					/*키넘버*/
+	private String createdate;			/*생성시간*/
+	private int keycount;				/*생성횟수*/
+	public UserVo() {
+		super();
+	}
+>>>>>>> branch 'master' of https://github.com/Anthony-Yoo/Modang.git
 	public UserVo(int userno, String id, String passwd, String nick, String cellphone, int average, int recommaverage,
 			String recentlogontime, long profileimage, int keynum) {
 		this.userno = userno;
