@@ -51,7 +51,6 @@ public class UserController {
 
 		UserVo authUser=userService.login(userVo);
 		
-		
 		if(authUser !=null) {
 			System.out.println("로그인 성공");
 			session.setAttribute("authUser", authUser);
@@ -62,7 +61,6 @@ public class UserController {
 			return "redirect:/user/loginForm?result=fail";
 		}
 
-		
 	}
 	/*
 	 * //id check

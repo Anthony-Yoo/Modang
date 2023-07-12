@@ -10,7 +10,7 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
-    <link href="${pageContext.request.contextPath}/assets/css/board.css" rel="stylesheet" type="text/css">
+    <link href="/modang/assets/css/board.css" rel="stylesheet" type="text/css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -31,7 +31,7 @@
     <!-- 헤더 시작 -->
     <div id="header">
         <div id ="logo">
-            <h1><a href=""><img id="logo-img" src="${pageContext.request.contextPath}/assets/image/modang.png"></a></h1> <!-- 헤더 로고 이미지 -->
+            <h1><a href=""><img id="logo-img" src="/modang/assets/image/modang.png"></a></h1> <!-- 헤더 로고 이미지 -->
         </div>
         <div id="header-user">
             <!-- 로그인실패시, 로그인전 -->
@@ -67,7 +67,7 @@
 				
 	<div id="joinForm">
 					
-         <form id="joinSubmitForm" action="${pageContext.request.contextPath }/user/join" method="get" enctype="multipart/form-data">
+         <form id="joinSubmitForm" action="/modang/user/join" method="get" enctype="multipart/form-data">
               		
             <div class="form-group">
 
