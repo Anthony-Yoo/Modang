@@ -5,7 +5,7 @@ pageEncoding="UTF-8"%>
 <body>
     <div id="header">
         <div id="logo">
-            <h1><a href="${pageContext.request.contextPath}/board/list"><img id="logo-img" src="${pageContext.request.contextPath}/assets/image/modang.png"></a></h1> <!-- 헤더 로고 이미지 -->
+            <h1><a href="${pageContext.request.contextPath}/"><img id="logo-img" src="${pageContext.request.contextPath}/assets/image/modang.png"></a></h1> <!-- 헤더 로고 이미지 -->
         </div>
         <div id="header-user">
             <!-- 로그인실패시, 로그인전 -->
@@ -23,9 +23,9 @@ pageEncoding="UTF-8"%>
         <!-- 사이트 메뉴 카테고리(?) -->
         <div id="header-menu">
             <ul>
-                <li><a href="">모당이란?</a></li>
+                <li><a href="${pageContext.request.contextPath}/">모당이란?</a></li>
                 <li><a href="">당구장 찾기</a></li>
-                <li><a href="">매칭 게시판</a></li>
+                <li><a href="${pageContext.request.contextPath}/board/list">매칭 게시판</a></li>
             </ul>
         </div>
         <!-- 사이트 메뉴 카테고리(?) 끝 -->
