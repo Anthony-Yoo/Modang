@@ -38,33 +38,32 @@
 			}	
 			#logbox {
 				margin-left : 30px;
-				border: 1px solid #404040; 
+				border: 0px; 
 				background-color: #DDDDDD; 
 				border-radius: 5px;
 				width : 300px;
 				height : 500px;		
 			}
 			#logbox img {	
-				border : 1px solid #404040;
+				border : 0px;
 				display : inline-block;
 				width : 300px;
 				height : 131px;				
 			}			
 			#idbox {
-				border : 0px; 
-				outline : 1px solid #404040; 
+				border : 0px;				
 				width : 300px;
 				height : 80px;	
 			}	
 			#messagebox {
 				width : 300px;
 				height : 50px;
-				border : 1px;
-				outline : 1px solid #404040;			
+				border : 0px;
+/* 				outline : 1px solid #404040;	 */		
 			}		
 			#keybox {
-				border : 1px;
-				outline: dashed 1px black;
+				border : 0px;
+/* 				outline: dashed 1px black; */
 				width : 300px;
 				height : 200px;
 			}
@@ -106,7 +105,7 @@
 					<div id="keybox">
 						<dl>
 							<dt>※Check Your KeyNumber</dt><br><br>
-							<dd>431</dd>
+							<dd></dd>
 						</dl>
 					</div>
 				</div>			 

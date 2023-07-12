@@ -20,7 +20,7 @@
 			input, select, qktextarea { -moz-appearance: none; -webkit-appearance: none; -ms-appearance: none; appearance: none; }
 			small {font-size:.75em;}
 			#container {
-				border : 1px;
+				border : 0px;
 				outline: dashed 1px black;
 				width : 360px;
 				height : 640px;
@@ -38,27 +38,27 @@
 			}	
 			#logbox {
 				margin-left : 30px;
-				border: 1px solid #404040; 
+				/* border: 1px solid #404040; */ 
 				background-color: #DDDDDD; 
 				border-radius: 5px;
 				width : 300px;
 				height : 500px;		
 			}
 			#logbox img {	
-				border : 1px solid #404040;
+				/* border : 1px solid #404040; */
 				display : inline-block;
 				width : 300px;
 				height : 131px;				
 			}				
 			#messagebox {
 				width : 300px;
-				height : 50px;
-				border : 1px;
-				outline : 1px solid #404040;			
+				height : 70px;
+				/* border : 1px;
+				outline : 1px solid #404040; */			
 			}		
 			#keybox {
-				border : 1px;
-				outline: dashed 1px black;
+				/* border : 1px;
+				outline: dashed 1px black; */
 				width : 300px;
 				height : 200px;
 			}
@@ -85,11 +85,12 @@
 					<img src="${pageContext.request.contextPath}/assets/images/logo.png"/>						
 					<div id="messagebox">
 					${keyUser.nick}님 환영합니다.<br>
-					${keyUser.createDate} 키를 생성하셨습니다.	      					      	
+					${keyUser.createDate} <br>
+					키를 생성하셨습니다.	      					      	
 					</div>			
 					<div id="keybox">
 						<dl>
-							<dt>※Check Your KeyNumber</dt><br><br>
+							<dt><br>※Check Your KeyNumber</dt><br><br>
 							<dd>${keyUser.keyNum}</dd>
 						</dl>
 					</div>

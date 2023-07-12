@@ -24,6 +24,11 @@
 				text-align: center;
 				
 			}
+			#logtitle {
+				color : #404040;
+				text-align: center;
+				
+			}
 			#container {
 				border : 1px;
 				outline: dashed 1px black;
@@ -34,64 +39,36 @@
 				top : 50%;
 				transform : translate(-50%,-50%);						  	
 			}
-			#imagebox {
-				display : inline-block;
+			#blankbox {		
 				border : 0px;
+				width : 100%;		
+  				height: 200px;
+
+			}	
+			.imagebox {	
+				margin-left : 105px;
+				margin-top : 150px;			
+				display : inline-block;
+				outline : solid 2px black;
 				width : 350px;
-				height :350px;
-				
-			}		
-			#idbox {
-				border : 0px;		
-				margin-left : 50px;	
-			}
-			.box {
-				margin-top : 150px;
-				margin-left : 74px;
-				border: 1px solid #404040; 
-				background-color: #DDDDDD; 
-				border-radius: 5px;
-				width : 400px;
-				height : 400px;		
-			}
-			#qrbox img {
-				border : 0px;
-				display : inline-block;
-				width : 400px;
-				height : 400px;				
+				height :350px;				
 			}			
-			#logbox img {
-				margin-left : 50px;
-				margin-top : 30px;
-				border : 0px;
-				display : inline-block;
-				width : 300px;
-				height : 300px;				
-			}
+			
 			.float-r {float: right; }
 			.float-l {float: left; }
 			.clear{clear: both; }
 		</style>
 	</head>
 	<body>
-		<div id="container">
+		<div id="container">				
 			<h2 id="logtitle">Modang</h2>
-			<div class="content">	
-				<div class="box float-l" id="qrbox">
-					<img src="${pageContext.request.contextPath}/assets/images/photo.jpg"/>
-				</div>
-				<div class="box float-l" id="logbox">
-					<img src="${pageContext.request.contextPath}/assets/images/photo.jpg"/>
-					<div id="idbox">
-						<form action="${pageContext.request.contextPath}/tablet/keyLogin" method="get">
-							<input type="text" name="keyNum">
-							<button type="submit" id="keyin">키입력</button>
-						</form>
-						<c:if test="${param.result eq 'fail'}">
-							<span>아이디 또는 비번을 확인해 주세요.</span>
-						</c:if>
-					</div>
-				</div>			 
+			<div class="content">				
+				<a href="${pageContext.request.contextPath}/tablet/selectBall?ball=3">
+					<img src="${pageContext.request.contextPath}/assets/images/3ball.jpg" class="imagebox"/>
+				</a>
+				<a href="${pageContext.request.contextPath}/tablet/selectBall?ball=4">			
+					<img src="${pageContext.request.contextPath}/assets/images/4ball.jpg" class="imagebox"/>
+				</a>			
 			</div>
 		</div>
 	</body>
