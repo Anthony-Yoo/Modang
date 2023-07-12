@@ -4,14 +4,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-        <meta charset="utf-8">
-        <title>로그인</title>
-
+    
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>로그인</title>
         <link href="${pageContext.request.contextPath}/assets/css/board.css" rel="stylesheet" type="text/css">
-       
+        <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
+        
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -29,17 +28,20 @@
     <!-- 헤더 시작 -->
 	<c:import url="/WEB-INF/views/include/modangSiteHeader.jsp"></c:import>
 	<!-- 헤더 끝 -->
+        <br>
+        <br>
+        <br>
         
-
           <div class="container mt-5 text-center">
-            <p><strong>아이디 패스워드를 입력하세요 ^^</strong></p>
+            <h1><strong>로그인 할꺼냥? ^^</strong></h1>
               <br>
-              
+              <br>
+              <br>
+                 
               <div id="user">
 				
 				<div id="loginForm">
 					
-              		
                 <form id="loginForm" action="${pageContext.request.contextPath }/user/login" method="get" enctype="multipart/form-data">
             	
             	<div class="form-group">
@@ -80,6 +82,16 @@
               	</div>
               </div>
           </div>
+          
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          
+          
     <!-- 푸터 시작 -->
     <c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
     <!-- 푸터 끝 -->

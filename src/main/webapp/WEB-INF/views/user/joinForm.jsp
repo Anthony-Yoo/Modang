@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 
@@ -9,11 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
     <link href="${pageContext.request.contextPath}/assets/css/board.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
     
     <style>
 
@@ -29,26 +29,24 @@
 	<c:import url="/WEB-INF/views/include/modangSiteHeader.jsp"></c:import>
 	<!-- 헤더 끝 -->
     
-        <div class="container mt-5 text-center">
+    <div class="container mt-5 text-center">
          
-              <h1><strong>이것은 모당</strong></h1>
+              <h1><strong>이것은 모당 ^^</strong></h1>
               <br>
               <br>
-    <div id="user">
+    	<div id="user">
 				
-	<div id="joinForm">
+		<div id="joinForm">
 					
-         <form id="joinSubmitForm" action="${pageContext.request.contextPath}/user/join" method="get" enctype="multipart/form-data">
+         	<form id="joinSubmitForm" action="${pageContext.request.contextPath}/user/join" method="get" enctype="multipart/form-data">
               		
             <div class="form-group">
-
             	<div class="shadow-none p-1 mb-2 bg-light rounded input-group w-25">
                   	<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                   	<input id="id" type="text" value="" maxlength="10" class="form-control" name="id" placeholder="ID">
                   	<button type="button" class="btn btn-Dark" >&nbsp;&nbsp;확인&nbsp;&nbsp;</button>
-                  
-				</div>
-            </div>
+            	</div>
+       	    </div>
                 
             <div class="form-group">    
                 <div class="shadow-none p-1 mb-2 bg-light rounded input-group w-25">
@@ -89,35 +87,39 @@
                   <button type="button" class="btn btn-Dark">  &nbsp;&nbsp;입력&nbsp;&nbsp;  </button>
                 </div>
             </div>
-          
-            		<br>
-                <br>
-                <div class="button-area">
-            		<button type="submit" id="btn-submit" class="btn btn-primary">회원가입 할거당</button>
-            	</div>
-            </form>
             <!-- 
 			<div class="form-group">
                 <div class="shadow-none p-1 mb-2 bg-light rounded input-group w-25">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                   <input id="profileimage" type="image" class="form-control" name="profileimage" placeholder="upload image" value="">
                   <button type="button" class="btn btn-Dark">  &nbsp;&nbsp;등록&nbsp;&nbsp;  </button>
-                  
-                  <br>
-                  <br>
-                  
-                  <div class="form-group">
-                <div class="button">
-                  <label for="chooseFile">
-                    <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onclick="loadFile(this)">
-                  </label>
                 </div>
+                
+                  <br>
+                  <br>
+                  
+                <div class="form-group">
+                	<div class="button">
+                <label for="chooseFile">
+                    <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onclick="loadFile(this)">
+                </label>
+                
                  -->
+            		<br>
+                	<br>
+                <div class="button-area">
+            		<button type="submit" id="btn-submit" class="btn btn-primary">회원가입 할거당</button>
+            	</div>
+            </form>
+            
             </div>
                 </div>
             </div>
           
             <br>
+            <br>
+            <br>
+            
     <!-- 푸터 시작 -->
     <c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
     <!-- 푸터 끝 -->

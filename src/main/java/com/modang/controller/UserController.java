@@ -12,13 +12,14 @@ import com.modang.service.UserService;
 import com.modang.vo.UserVo;
 
 @Controller
+@RequestMapping(value = "/user")
 public class UserController {
 
 	@Autowired
 	private UserService userService;
 
 	// 회원가입 폼
-	@RequestMapping(value = "/user/joinForm", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/joinForm", method = { RequestMethod.GET, RequestMethod.POST })
 	public String joinForm() {
 		System.out.println("UserController.joinForm()");
 
@@ -26,7 +27,7 @@ public class UserController {
 	}
 
 	// 회원가입
-	@RequestMapping(value = "/user/join", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/join", method = { RequestMethod.GET, RequestMethod.POST })
 	public String join(@ModelAttribute UserVo userVo) {
 		System.out.println("UserController.join()");
 		System.out.println(userVo);
@@ -36,7 +37,7 @@ public class UserController {
 	}
 
 	// 로그인 폼
-	@RequestMapping(value = "/user/loginForm", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/loginForm", method = { RequestMethod.GET, RequestMethod.POST })
 	public String loginForm() {
 		System.out.println("UserController.loginForm()");
 
@@ -44,7 +45,7 @@ public class UserController {
 	}
 
 	// 로그인
-	@RequestMapping(value = "/user/login", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })
 	public String login(@ModelAttribute  UserVo userVo, HttpSession session) {
 		System.out.println("UserController.login()");
 		System.out.println(userVo);
