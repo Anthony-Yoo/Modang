@@ -31,6 +31,15 @@ public class UserDao {
 	
 		return authUser;
 	}
+	//회원정보 수정
+	public UserVo selectUser(int userno) {
+		System.out.println("UserDao.selectUser()");
+		System.out.println(userno);
+		
+		UserVo userVo=session.selectOne("user.selectUserByNo", userno);
+		
+		return userVo;
+	}
 	/*
 	//id check <--ajax
 	public void selectUser(String id) {

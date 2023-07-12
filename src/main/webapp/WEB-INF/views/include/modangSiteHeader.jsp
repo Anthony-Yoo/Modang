@@ -21,7 +21,7 @@ pageEncoding="UTF-8"%>
             <!----> <ul>
                 <li><strong>${sessionScope.authUser.id}님 안녕하세요 ^^</strong></li>
                 <li><a href="${pageContext.request.contextPath}/user/logout">로그아웃</a></li>
-                <li><a href="">회원정보수정</a></li>
+                <li><a href="${pageContext.request.contextPath}/user/modifyForm">회원정보수정</a></li>
             </ul> 
             </c:otherwise>
         </c:choose>
