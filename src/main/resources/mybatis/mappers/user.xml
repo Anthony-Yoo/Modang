@@ -18,5 +18,20 @@ values( SEQ_USERS_NO.nextval,
     ]]>
 </insert>
 
+<select id="selectUser" parameterType="com.modang.vo.UserVo" resultType="com.modang.vo.UserVo">
+	<![CDATA[
+		select  id, 
+				passwd
+		
+		from users
+		where id=#{id} and 
+			  passwd=#{passwd}
+	
+	]]>
+
+
+
+</select>
+
 
 </mapper>

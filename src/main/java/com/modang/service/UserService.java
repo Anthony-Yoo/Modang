@@ -22,11 +22,13 @@ public class UserService {
 		
 	}
 	/*로그인*/
-	public void login() {
+	public UserVo login(UserVo userVo) {
 		System.out.println("UserService.login()");
-		System.out.println();
+		System.out.println(userVo);
 		
-		userDao.selectUser();
+		UserVo authUser=userDao.selectUser(userVo);
+		
+		return authUser;
 	}
 	/*id check
 	public void idCheck(String id) {

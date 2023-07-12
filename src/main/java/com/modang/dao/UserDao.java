@@ -23,9 +23,13 @@ public class UserDao {
 	}
 	
 	//회원 로그인 데이터 선택
-	public void selectUser() {
+	public UserVo selectUser(UserVo userVo) {
 		System.out.println("UserDao.selectUser()");
-		System.out.println();
+		System.out.println(userVo);
+		
+	UserVo authUser=session.selectOne("user.selectUser", userVo);
+	
+	return authUser;
 	}
 	/*
 	//id check <--ajax

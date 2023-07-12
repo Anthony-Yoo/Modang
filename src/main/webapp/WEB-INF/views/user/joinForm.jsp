@@ -110,18 +110,19 @@
                   <button type="button" class="btn btn-Dark">  &nbsp;&nbsp;입력&nbsp;&nbsp;  </button>
                 </div>
             </div>
-            
+               
             <div class="form-group">
                 <div class="shadow-none p-1 mb-2 bg-light rounded input-group w-25">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                  <input id="recentlogontime" type="text" value="" maxlength="15" class="form-control" name="recentlogontime" placeholder="최근 로그인 시간">
+                  <input id="recentlogontime" type="text" value="" maxlength="15" class="form-control" name="recentlogontime" placeholder="sysdate">
                   <button type="button" class="btn btn-Dark">  &nbsp;&nbsp;입력&nbsp;&nbsp;  </button>
                 </div>
             </div>
+          
             		<br>
                 <br>
                 <div class="button-area">
-            		<button type="submit" id="btn-submit" class="btn btn-primary" >회원가입 할거당</button>
+            		<button type="submit" id="btn-submit" class="btn btn-primary">회원가입 할거당</button>
             	</div>
             </form>
             <!-- 
@@ -145,19 +146,8 @@
                 </div>
             </div>
           
-                   
-            
-            
-                
-            	
-            	
-              
-              
             <br>
-            
          
-        	
-  
 </body>
 <!-- 
 	<script type="text/javascript">

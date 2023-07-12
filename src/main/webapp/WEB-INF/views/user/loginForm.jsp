@@ -28,31 +28,31 @@
   <body>
       <!-- 헤더 시작 -->
     <div id="header">
-      <div id ="logo">
-          <h1><a href=""><img id="logo-img" src="${pageContext.request.contextPath}/assets/image/modang.png"></a></h1> <!-- 헤더 로고 이미지 -->
-      </div>
-      <div id="header-user">
-          <!-- 로그인실패시, 로그인전 -->
-          <ul>
-              <li class="user"><a href="">로그인</a></li>
-              <li class="user"><a href="">회원가입</a></li>
-          </ul>
-          <!-- 로그인성공시, 로그인후 -->
-          <!-- <ul>
-              <li>000님 안녕하세요</li>
-              <li><a href="">로그아웃</a></li>
-              <li><a href="">회원정보수정</a></li>
-          </ul> -->
-      </div>
-      <!-- 사이트 메뉴 카테고리(?) -->
-      <div id="header-menu">
-          <ul>
-              <li><a href="">모당이란?</a></li>
-              <li><a href="">당구장 찾기</a></li>
-              <li><a href="">매칭 게시판</a></li>
-          </ul>
-      </div>
-      <!-- 사이트 메뉴 카테고리(?) 끝 -->
+        <div id ="logo">
+            <h1><a href=""><img id="logo-img" src="${pageContext.request.contextPath}/assets/image/modang.png"></a></h1> <!-- 헤더 로고 이미지 -->
+        </div>
+        <div id="header-user">
+            <!-- 로그인실패시, 로그인전 -->
+            <ul>
+                <li class="user"><a href="">로그인</a></li>
+                <li class="user"><a href="">회원가입</a></li>
+            </ul>
+            <!-- 로그인성공시, 로그인후 -->
+            <!-- <ul>
+                <li>000님 안녕하세요</li>
+                <li><a href="">로그아웃</a></li>
+                <li><a href="">회원정보수정</a></li>
+            </ul> -->
+        </div>
+        <!-- 사이트 메뉴 카테고리(?) -->
+        <div id="header-menu">
+            <ul>
+                <li><a href="">모당이란?</a></li>
+                <li><a href="">당구장 찾기</a></li>
+                <li><a href="">매칭 게시판</a></li>
+            </ul>
+        </div>
+        <!-- 사이트 메뉴 카테고리(?) 끝 -->
     </div>
     <!-- 헤더 끝 -->
         
@@ -67,24 +67,37 @@
 					
               		
                 <form id="loginForm" action="${pageContext.request.contextPath }/user/login" method="get" enctype="multipart/form-data">
-            
+            	
+            	<div class="form-group">
+            	
                   <div class="input-group shadow-none p-1 mb-2 bg-light rounded w-25">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                     <input id="id" type="text" maxlength="10" class="form-control" name="id" placeholder="ID">
-                    <button type="button" class="btn btn-Dark" id="idcheckMsg" onclick="upload(event)">찾기</button>
+                    <button type="button" class="btn btn-Dark">찾기</button>
                   </div>
+                  
+                </div>
+                
+                <div class="form-group">
+                
                   <div class="input-group shadow-none p-1 mb-2 bg-light rounded w-25">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                    <input id="password" type="password" maxlength="16" class="form-control" name="password" placeholder="PASSWORD">
-                    <button type="button" class="btn btn-Dark" id="idcheckMsg" onclick="upload(event)">찾기</button>
+                    <input id="passwd" type="text" maxlength="16" class="form-control" name="passwd" placeholder="PASSWORD">
+                    <button type="button" class="btn btn-Dark">찾기</button>
+                  </div>
+                
+                </div>
+                  
+                  <br>
+                  <br>
+                  
+                  <div class="find-btn">
+                    	<button type="submit" id="btn-submit" class="btn btn-success rounded w-25">login</button>
                   </div>
               </form>
                 
                 <br>
-                	<div class="find-btn">
-                    	<button type="button" class="btn btn-success rounded w-25">login</button>
-                  
-                	</div>
+                	
                 	<!-- 
                 	<div class="links">
             			<a href="memberId">아이디 찾기</a> | <a href="memberPw">비밀번호 찾기</a>
@@ -94,6 +107,7 @@
               </div>
           </div>
   </body>
+  <!--
   		<script>
 	
 		function upload(event){
@@ -104,7 +118,7 @@
 
     
     
-<!--
+
     <button type="button" class="btn">Basic</button>
   <button type="button" class="btn btn-primary">Primary</button>
   <button type="button" class="btn btn-secondary">Secondary</button>
