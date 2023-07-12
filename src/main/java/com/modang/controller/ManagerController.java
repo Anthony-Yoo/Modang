@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.modang.service.ManagerService;
 import com.modang.vo.TariffVo;
 
+import com.modang.service.ManagerService;
+
 @Controller
 @RequestMapping(value="/manager")
 public class ManagerController {
@@ -24,6 +26,13 @@ public class ManagerController {
 	public String joinForm() {
 		System.out.println("ManagerController.joinForm");
 		return "/manager/managerJoinForm";
+	}
+	/*회원가입*/
+	@RequestMapping(value ="/join")
+	public String join() {
+		System.out.println("ManagerController.join");
+		
+		return "";
 	}
 	
 	/*로그인폼 출력*/

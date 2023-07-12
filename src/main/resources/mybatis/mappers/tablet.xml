@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="tablet">
+	
+	<!-- 유져검색 -->
+	<select id="selectUser" parameterType="com.modang.vo.TabletUserVo" resultType="com.modang.vo.TabletUserVo">
+		<![CDATA[
+			select  userNo
+					,id
+					,passwd
+					,nick
+					,cellphone
+					,average
+					,recommAverage
+					,recentLogonTime
+					,profileImage			
+			from USERS
+			where ID = #{id} 
+			AND PASSWD = #{passwd}		
+		]]>	
+	</select>
+	
+	<!-- 유저키 검색 쿼리 -->
+	<select id="selectUserKey" parameterType="com.modang.vo.TabletUserVo" resultType="com.modang.vo.LoginKeyVo">
+		<![CDATA[
+			select  loginKeyNo
+					,keyOwner
+					,keyNum
+					,createDate
+			from LOGINKEY l
+				,USERS u
+			where u.ID = #{id} 
+			AND u.PASSWD = #{passwd}	
+			AND u.USERNO = l.keyOwner				
+		]]>	
+	</select>
+	<!-- 키넘버 생성 -->
+	<insert id="insertKeyNum" parameterType="com.modang.vo.TabletUserVo">
+		<![CDATA[
+			insert  into LOGINKEY
+			(
+					loginKeyNo
+					,keyOwner
+					,keyNum
+					,createDate
+			)
+			Values
+			(
+					seq_loginKey_no.nextval,
+					#{userNo},
+					#{keyNum},
+					sysdate,
+			)	
+		]]>	
+	</insert>
+	
+	<!-- 키넘버 로그인 -->
+	<select id="selectKeyNum" parameterType="int" resultType="com.modang.vo.LoginKeyVo">
+		<![CDATA[
+			select  loginKeyNo
+					,keyOwner
+					,keyNum
+					,createDate
+			from LOGINKEY
+			where KeyNum = #{keyNum} 		
+		]]>	
+	</select>
+	<!-- 키삭제 -->
+	<delete id="deleteTime" parameterType="int">
+		<![CDATA[
+			delete from LOGINKEY
+			where createdate < (sysdate - #{normalTime}/24/60);	
+		]]>
+	</delete>
+	
+</mapper>

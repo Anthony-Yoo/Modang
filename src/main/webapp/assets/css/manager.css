@@ -9,7 +9,7 @@ h2,h3{color: #2E419A; text-align: center; margin: 20px 0 20px 0;}
     color: #fff; line-height: 40px; border-radius: 10px; font-size: 14px;}
 .chck:hover{display: inline-block; width: 100px; height: 40px; background-color: rgb(65, 113, 31); 
     color: #fff; line-height: 40px; border-radius: 10px; font-size: 14px;}
-.button{display: block; width: 400px; height: 40px; text-align: center;
+.button{display: block; width: 480px; height: 40px; text-align: center;
         background-color: rgb(65, 113, 31); color: #fff; border-radius:10px; line-height: 40px;
         margin: 10px auto 30px;}
 input{ width: 300px; height: 40px;padding : 8px 20px 9px 20px; background: #F5F5F5;
@@ -38,7 +38,8 @@ input::placeholder{color: #B8B8B8;}
 .intro .modang_tip .tip a p{ font-size: 14px; color: #666;font-weight: 300;margin-bottom: 10px; padding: 10px 0 0 10px;}
 .intro .modang_tip .user_tip .tip:nth-child(1){margin-left: 30px;}
 .intro .modang_tip .manager_tip .tip:nth-child(1){margin-left: 30px;}
-.intro .modang_tip ul.manager_tip .tip:nth-child(2){width: 250px; height: 100px; margin: 20px 0 0 50px; border: 2px solid #2E419A;}
+.intro .modang_tip ul.manager_tip .tip:nth-child(2){width: 250px; height: 100px; margin: 20px 0 0 50px; 
+	border: 2px solid #2E419A; background-color: #fafafa;}
 .intro .modang_tip ul.manager_tip .tip:nth-child(2) a{display: block; text-align: center;line-height: 6;}
 .intro .modang_tip ul.manager_tip .tip:nth-child(2):hover a{background-color: #2E419A; color: #fff;}
 

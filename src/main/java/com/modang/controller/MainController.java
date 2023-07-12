@@ -13,7 +13,7 @@ public class MainController {
 	@Autowired
 	private MainService mainService;
 	
-	@RequestMapping("/")
+	@RequestMapping("/main")
 	public String main() {
 		System.out.println("MainController.main()");
 		
