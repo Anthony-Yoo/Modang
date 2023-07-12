@@ -3,33 +3,65 @@
 
 <mapper namespace="tablet">
 	
-	<!-- 로그인 쿼리 -->
+	<!-- 유져검색 -->
 	<select id="selectUser" parameterType="com.modang.vo.TabletUserVo" resultType="com.modang.vo.TabletUserVo">
 		<![CDATA[
-			select l.LoginKeyNo,l.KEYOWNER,l.KeyNum,l.CreateDate,l.KeyCount
+			select  userNo
+					,id
+					,passwd
+					,nick
+					,cellphone
+					,average
+					,recommAverage
+					,recentLogonTime
+					,profileImage			
+			from USERS
+			where ID = #{id} 
+			AND PASSWD = #{passwd}		
+		]]>	
+	</select>
+	
+	<!-- 유저키 검색 쿼리 -->
+	<select id="selectUserKey" parameterType="com.modang.vo.TabletUserVo" resultType="com.modang.vo.LoginKeyVo">
+		<![CDATA[
+			select  loginKeyNo
+					,keyOwner
+					,keyNum
+					,createDate
 			from LOGINKEY l
 				,USERS u
 			where u.ID = #{id} 
 			AND u.PASSWD = #{passwd}	
-			AND u.USERNO = l.KEYOWNER				
+			AND u.USERNO = l.keyOwner				
 		]]>	
 	</select>
 	<!-- 키넘버 생성 -->
-	<update id="updateKeyNum" parameterType="com.modang.vo.LoginKeyVo">
+	<insert id="insertKeyNum" parameterType="com.modang.vo.TabletUserVo">
 		<![CDATA[
-			update users
-			set 
-			KeyCount = KeyCount+1,
-			KeyNum = #{keyNum},
-			CreateDate = sysdate,
-			RecentLogonTime = sysdate
-			where UserNo = #{userNo}		
-		]]>
-	</update>
+			insert  into LOGINKEY
+			(
+					loginKeyNo
+					,keyOwner
+					,keyNum
+					,createDate
+			)
+			Values
+			(
+					seq_loginKey_no.nextval,
+					#{userNo},
+					#{keyNum},
+					sysdate,
+			)	
+		]]>	
+	</insert>
+	
 	<!-- 키넘버 로그인 -->
-	<select id="selectKeyNum" parameterType="int" resultType="com.modang.vo.TabletUserVo">
+	<select id="selectKeyNum" parameterType="int" resultType="com.modang.vo.LoginKeyVo">
 		<![CDATA[
-			select LoginKeyNo,KEYOWNER,KeyNum,CreateDate,KeyCount
+			select  loginKeyNo
+					,keyOwner
+					,keyNum
+					,createDate
 			from LOGINKEY
 			where KeyNum = #{keyNum} 		
 		]]>	
