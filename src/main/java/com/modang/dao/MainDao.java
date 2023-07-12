@@ -15,6 +15,5 @@ public class MainDao {
 		
 		sqlSession.insert("main.insert", no);		
 	}
-	
 
 }

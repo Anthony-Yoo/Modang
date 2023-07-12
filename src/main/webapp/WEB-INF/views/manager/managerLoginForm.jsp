@@ -5,8 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>b-login</title>
-    <link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
+	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/image/favicon.ico" />
     <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <!-- 헤더 시작 -->
@@ -40,6 +41,7 @@
                                     <div class="addition">
                                         <a href="">아이디 찾기</a>
                                         <a href="">비밀번호 찾기</a>
+                                        <a href="${pageContext.request.contextPath}/manager/joinForm">회원가입 하기</a>
                                     </div>
                                 </span>
                             </div>
@@ -47,7 +49,7 @@
                     </fieldset>
                 </form>
             </div>
-            <a href="" class="button">로그인할거당</a>
+            <a href="${pageContext.request.contextPath}/" class="button">로그인할거당</a>
         </div>
     </div>
     <!-- 푸터 시작 -->
