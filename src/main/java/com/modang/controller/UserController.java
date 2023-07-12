@@ -73,18 +73,18 @@ public class UserController {
 	 * userService.idCheck(id); System.out.println(id);
 	 * 
 	 * return ""; }
-	 * 
-	 * //logout
-	 * 
-	 * @RequestMapping(value="logout", method= {RequestMethod.GET,
-	 * RequestMethod.POST}) public String logout(HttpSession session) {
-	 * System.out.println("UserController.logout()");
-	 * 
-	 * session.removeAttribute("authUser"); session.invalidate();
-	 * 
-	 * return "";
-	 * 
-	 * 
-	 * }
-	 */
+	  */
+	
+	
+	//logout 
+	@RequestMapping(value="logout", method= {RequestMethod.GET,
+	RequestMethod.POST}) public String logout(HttpSession session) {
+		System.out.println("UserController.logout()");
+	 
+		session.removeAttribute("authUser"); session.invalidate();
+	 
+		return "redirect:/main";
+ 
+	 }
+	
 }

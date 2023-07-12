@@ -30,7 +30,7 @@
 	<!-- 헤더 끝 -->
         <br>
         <br>
-        <br>
+       
         
           <div class="container mt-5 text-center">
             <h1><strong>로그인 할꺼냥? ^^</strong></h1>
@@ -73,7 +73,7 @@
               </form>
                 
                 <br>
-                	
+               
                 	<!-- 
                 	<div class="links">
             			<a href="memberId">아이디 찾기</a> | <a href="memberPw">비밀번호 찾기</a>
@@ -82,9 +82,7 @@
               	</div>
               </div>
           </div>
-          
-          <br>
-          <br>          
+          <br> 
           <br>
           <br>
           <hr>
@@ -92,6 +90,7 @@
           <br>
           <br>
           
+         
     <!-- 푸터 시작 -->
     <c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
     <!-- 푸터 끝 -->
