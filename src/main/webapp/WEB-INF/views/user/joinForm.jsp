@@ -6,17 +6,14 @@
 
 <head>
     <meta charset="UTF-8">
-    
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
-    <link href="/modang/assets/css/board.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/assets/css/board.css" rel="stylesheet" type="text/css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
     
     <style>
 
@@ -29,34 +26,8 @@
 
 <body>
     <!-- 헤더 시작 -->
-    <div id="header">
-        <div id ="logo">
-            <h1><a href=""><img id="logo-img" src="/modang/assets/image/modang.png"></a></h1> <!-- 헤더 로고 이미지 -->
-        </div>
-        <div id="header-user">
-            <!-- 로그인실패시, 로그인전 -->
-            <ul>
-                <li class="user"><a href="">로그인</a></li>
-                <li class="user"><a href="">회원가입</a></li>
-            </ul>
-            <!-- 로그인성공시, 로그인후 -->
-            <!-- <ul>
-                <li>000님 안녕하세요</li>
-                <li><a href="">로그아웃</a></li>
-                <li><a href="">회원정보수정</a></li>
-            </ul> -->
-        </div>
-        <!-- 사이트 메뉴 카테고리(?) -->
-        <div id="header-menu">
-            <ul>
-                <li><a href="">모당이란?</a></li>
-                <li><a href="">당구장 찾기</a></li>
-                <li><a href="">매칭 게시판</a></li>
-            </ul>
-        </div>
-        <!-- 사이트 메뉴 카테고리(?) 끝 -->
-    </div>
-    <!-- 헤더 끝 -->
+	<c:import url="/WEB-INF/views/include/modangSiteHeader.jsp"></c:import>
+	<!-- 헤더 끝 -->
     
         <div class="container mt-5 text-center">
          
@@ -67,7 +38,7 @@
 				
 	<div id="joinForm">
 					
-         <form id="joinSubmitForm" action="/modang/user/join" method="get" enctype="multipart/form-data">
+         <form id="joinSubmitForm" action="${pageContext.request.contextPath}/user/join" method="get" enctype="multipart/form-data">
               		
             <div class="form-group">
 
@@ -147,7 +118,9 @@
             </div>
           
             <br>
-         
+    <!-- 푸터 시작 -->
+    <c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
+    <!-- 푸터 끝 -->
 </body>
 <!-- 
 	<script type="text/javascript">
