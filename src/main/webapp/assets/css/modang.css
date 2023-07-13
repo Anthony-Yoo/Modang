@@ -8,10 +8,10 @@ canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, o
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
 body { line-height: 1; }
 ol,ul,li{list-style-type: none;}
-blockquote, q { quotes: none; }
+blockquote, q { quotes: none;}
 blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
 table { border-collapse: collapse; border-spacing: 0; }
-body { -webkit-text-size-adjust: none; }
+body { -webkit-text-size-adjust: none;}
 mark { background-color: transparent; color: inherit; }
 input::-moz-focus-inner { border: 0; padding: 0; }
 input, select, qktextarea { -moz-appearance: none; -webkit-appearance: none; -ms-appearance: none; appearance: none; }

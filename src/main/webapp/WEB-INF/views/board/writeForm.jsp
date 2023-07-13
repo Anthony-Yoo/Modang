@@ -8,11 +8,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>글 쓰기</title>
-<!-- 게시판 css -->
-<link href="${pageContext.request.contextPath}/assets/css/board.css"
-	rel="stylesheet" type="text/css">
 <!-- 사이트 전체 css -->
 <link href="${pageContext.request.contextPath}/assets/css/modang.css"
+	rel="stylesheet" type="text/css">
+<!-- 게시판 css -->
+<link href="${pageContext.request.contextPath}/assets/css/board.css"
 	rel="stylesheet" type="text/css">
 
 <style>
@@ -26,6 +26,13 @@
 	<!-- 메인 헤더 시작 -->
 	<c:import url="/WEB-INF/views/include/modangSiteHeader.jsp"></c:import>
 	<!-- 메인 헤더 끝-->
+	<!-- 게시판 헤더-->
+    <div id="content">
+        <div id="content-header">
+            <h2><a>게시판 글쓰기</a></h2>
+        </div>
+    </div>
+    <!-- 게시판 헤더 끝-->
 	<!-- 게시판 바디-->
 	<div id="board">
 		<div id="writeForm">
