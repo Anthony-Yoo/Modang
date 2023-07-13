@@ -63,10 +63,10 @@
 		<div id="container">				
 			<h2 id="logtitle">Modang</h2>
 			<div class="content">				
-				<a href="${pageContext.request.contextPath}/tablet/selectBall?ball=3">
+				<a href="${pageContext.request.contextPath}/tablet/memberForm?ball=3">
 					<img src="${pageContext.request.contextPath}/assets/images/3ball.jpg" class="imagebox"/>
 				</a>
-				<a href="${pageContext.request.contextPath}/tablet/selectBall?ball=4">			
+				<a href="${pageContext.request.contextPath}/tablet/memberForm?ball=4">			
 					<img src="${pageContext.request.contextPath}/assets/images/4ball.jpg" class="imagebox"/>
 				</a>			
 			</div>

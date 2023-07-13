@@ -4,6 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0, minimum-scale=1.0">
 		<title>Insert title here</title>
 		<style>
 			/*reset*/
@@ -19,11 +20,12 @@
 			input::-moz-focus-inner { border: 0; padding: 0; }
 			input, select, qktextarea { -moz-appearance: none; -webkit-appearance: none; -ms-appearance: none; appearance: none; }
 			small {font-size:.75em;}
+			
 			#container {
 				border : 1px;
 				outline: dashed 1px black;
-				width : 360px;
-				height : 640px;
+				width : 410px;
+				height : 730px;
 				position : absolute;
 				left : 50%;
 				top : 50%;
@@ -100,7 +102,7 @@
 					<div id="messagebox">	
 						<c:if test="${param.result eq 'fail'}">						
 		      			<span>아이디 또는 비번을 확인해 주세요.</span>
-		      			</c:if>					
+		      			</c:if>			      							
 					</div>			
 					<div id="keybox">
 						<dl>

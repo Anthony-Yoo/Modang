@@ -7,16 +7,14 @@ public class TabletUserVo {
 	private String passwd;			
 	private String nick;			
 	private String cellphone;			
-	private byte average;			
-	private byte recommAverage;			
+	private int average;			
+	private int recommAverage;			
 	private String recentLogonTime;		
 	private String profileImage;			
 	private int keyNum;		
-	private String createDate;			
-	private int keyCount;
-	public TabletUserVo(int userNo, String id, String passwd, String nick, String cellphone, byte average,
-			byte recommAverage, String recentLogonTime, String profileImage, int keyNum, String createDate,
-			int keyCount) {
+	private String createDate;
+	public TabletUserVo(int userNo, String id, String passwd, String nick, String cellphone, int average,
+			int recommAverage, String recentLogonTime, String profileImage, int keyNum, String createDate) {
 		this.userNo = userNo;
 		this.id = id;
 		this.passwd = passwd;
@@ -28,7 +26,6 @@ public class TabletUserVo {
 		this.profileImage = profileImage;
 		this.keyNum = keyNum;
 		this.createDate = createDate;
-		this.keyCount = keyCount;
 	}
 	public TabletUserVo() {
 	}
@@ -62,16 +59,16 @@ public class TabletUserVo {
 	public void setCellphone(String cellphone) {
 		this.cellphone = cellphone;
 	}
-	public byte getAverage() {
+	public int getAverage() {
 		return average;
 	}
-	public void setAverage(byte average) {
+	public void setAverage(int average) {
 		this.average = average;
 	}
-	public byte getRecommAverage() {
+	public int getRecommAverage() {
 		return recommAverage;
 	}
-	public void setRecommAverage(byte recommAverage) {
+	public void setRecommAverage(int recommAverage) {
 		this.recommAverage = recommAverage;
 	}
 	public String getRecentLogonTime() {
@@ -98,20 +95,12 @@ public class TabletUserVo {
 	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
-	public int getKeyCount() {
-		return keyCount;
-	}
-	public void setKeyCount(int keyCount) {
-		this.keyCount = keyCount;
-	}
 	@Override
 	public String toString() {
 		return "TabletUserVo [userNo=" + userNo + ", id=" + id + ", passwd=" + passwd + ", nick=" + nick
 				+ ", cellphone=" + cellphone + ", average=" + average + ", recommAverage=" + recommAverage
 				+ ", recentLogonTime=" + recentLogonTime + ", profileImage=" + profileImage + ", keyNum=" + keyNum
-				+ ", createDate=" + createDate + ", keyCount=" + keyCount + "]";
+				+ ", createDate=" + createDate + "]";
 	}
-	
-	
-
+		
 }
