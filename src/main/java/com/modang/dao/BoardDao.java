@@ -17,7 +17,6 @@ public class BoardDao {
 		System.out.println("BoardDao.insert()");
 		vo.setUserNo(1); // 테스트용 임시 계정번호
 		sqlsession.insert("board.insert", vo);
-		
 	}
 	
 }
