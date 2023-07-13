@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.modang.dao.TabletDao;
-import com.modang.vo.LoginKeyVo;
 import com.modang.vo.StaticVo;
 import com.modang.vo.TabletUserVo;
 
@@ -17,8 +16,8 @@ public class TabletService {
 	public TabletUserVo loginGetKey(TabletUserVo userVo) {
 		System.out.println("TabletService.loginGetKey()");
 		
-		//유져 로그인
-		TabletUserVo logOnVo = tabletDao.selectUser(userVo);
+		//유져 로그인 & Key확인
+		TabletUserVo logOnVo = tabletDao.selectUser(userVo);		
 		
 		//로그인 완료
 		if (logOnVo != null) {
@@ -26,52 +25,41 @@ public class TabletService {
 			
 			// 30분 넘는 번호 삭제
 			tabletDao.deleteTime(StaticVo.NORMAL_TIME);
+			//난수 생성(2자리)
+			int keyNum = (int)(Math.random() * 89) + 10;
+			System.out.println(keyNum);
 			
-			//본인키 검색(있다/없다 분개)
-			LoginKeyVo myKeyVo = tabletDao.selectUserKey(logOnVo);
+			//생성난수 검색(있다/없다 분개)
+			TabletUserVo searchKeyVo = tabletDao.selectKeyNum(keyNum);
 			
-			//본인키 없으면..
-			if (myKeyVo == null ) {
-				//난수 생성(2자리)
-				int keyNum = (int)(Math.random() * 89) + 10;
-				System.out.println(keyNum);
-				
-				//해당키 검색
-				LoginKeyVo keyOwnerVo = tabletDao.selectKeyNum(keyNum);				
-				
-				//해당키 있으면..
-				while(keyOwnerVo != null) {
-					//난수재생성(2자리)
-					keyNum = (int)(Math.random() * 89) + 10;
-					System.out.println(keyNum);
-					
-					myKeyVo = tabletDao.selectKeyNum(keyNum);					
-				}				
-				//생성된 신규 키 선언
-				int newKey = myKeyVo.getKeyNum();
-				System.out.println(newKey);
-				//로그온VO에 신규키 셋
-				logOnVo.setKeyNum(newKey);
+			//해당 난수없다
+			if (searchKeyVo == null ) {
+				//키테이블 입력
+				logOnVo.setKeyNum(keyNum);
 				System.out.println(logOnVo);
-				//키테이블에 인서트
-				tabletDao.insertKeyNum(logOnVo);			
+				tabletDao.insertKeyNum(logOnVo);				
+				System.out.println(logOnVo);
 			}
-			//본인키 있으면..
+			//해당 난수있다
 			else {
-				System.out.println("키있음");
-				//있던 키 선언
-				int oldKey =  myKeyVo.getKeyNum();
-				System.out.println(oldKey);
-				//로그온Vo에 있던키 셋
-				logOnVo.setKeyNum(oldKey);
-				System.out.println(logOnVo);			
+				//난수 중복체크 후 없는 난수 생성
+				while(searchKeyVo == null) {
+					//난수재생성(2자리)
+					keyNum = (int)(Math.random() * 89) + 10;									
+					searchKeyVo = tabletDao.selectKeyNum(keyNum);
+					System.out.println(keyNum);
+					}
+				//키테이블 입력
+				logOnVo.setKeyNum(keyNum);
+				tabletDao.insertKeyNum(logOnVo);				
+				System.out.println(logOnVo);
+				}		
 			}
-		}
-		//로그인 실패
-		else {
-			System.out.println("로그인 실패");			
-		}		
-		return logOnVo; 	
+			//로그인 실패
+			else {
+				System.out.println("로그인 실패");			
+			}		
+			return logOnVo; 	
 	}	
 	
 	
