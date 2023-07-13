@@ -10,7 +10,7 @@
 <h1>안녕하세요!</h1>
 <form method="get" action="${pageContext.request.contextPath}/insert">
 	<input type="submit" >
-	<input type="text" value="7" name="no">
+	<input type="text" value="7"	 name="no">
 </form> 
 </body>
 </html>
