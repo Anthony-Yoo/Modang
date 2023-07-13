@@ -6,23 +6,26 @@
 	<!-- 유져검색 -->
 	<select id="selectUser" parameterType="com.modang.vo.TabletUserVo" resultType="com.modang.vo.TabletUserVo">
 		<![CDATA[
-			select  userNo
-					,id
-					,passwd
-					,nick
-					,cellphone
-					,average
-					,recommAverage
-					,recentLogonTime
-					,profileImage			
-			from USERS
-			where ID = #{id} 
-			AND PASSWD = #{passwd}		
+			select  u.userNo
+					,u.id
+					,u.passwd
+					,u.nick
+					,u.cellphone
+					,u.average
+					,u.recommAverage
+					,u.recentLogonTime
+					,u.profileImage
+					,l.loginKeyNo
+					,l.keyNum	
+			from USERS u full join LOGINKEY l
+			on l.KEYOWNER = u.USERNO
+			where u.ID = #{id} 
+			AND u.PASSWD = #{passwd}
 		]]>	
 	</select>
 	
 	<!-- 유저키 검색 쿼리 -->
-	<select id="selectUserKey" parameterType="com.modang.vo.TabletUserVo" resultType="com.modang.vo.LoginKeyVo">
+	<select id="selectUserKey" parameterType="com.modang.vo.TabletUserVo" resultType="com.modang.vo.TabletUserVo">
 		<![CDATA[
 			select  loginKeyNo
 					,keyOwner
@@ -50,13 +53,13 @@
 					seq_loginKey_no.nextval,
 					#{userNo},
 					#{keyNum},
-					sysdate,
+					sysdate
 			)	
 		]]>	
 	</insert>
 	
 	<!-- 키넘버 로그인 -->
-	<select id="selectKeyNum" parameterType="int" resultType="com.modang.vo.LoginKeyVo">
+	<select id="selectKeyNum" parameterType="int" resultType="com.modang.vo.TabletUserVo">
 		<![CDATA[
 			select  loginKeyNo
 					,keyOwner
@@ -70,7 +73,7 @@
 	<delete id="deleteTime" parameterType="int">
 		<![CDATA[
 			delete from LOGINKEY
-			where createdate < (sysdate - #{normalTime}/24/60);	
+			where createdate < (sysdate - #{normalTime}/24/60)	
 		]]>
 	</delete>
 	
