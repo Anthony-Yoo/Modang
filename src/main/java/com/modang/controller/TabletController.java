@@ -28,32 +28,32 @@ public class TabletController {
 		return "/tablet/login";
 	}
 	
-	@RequestMapping(value = "/tablet/keyLogin",method = {RequestMethod.GET,RequestMethod.POST})
-	public String keyLogin(@RequestParam("keyNum") int keyNum,HttpSession session) {
-		System.out.println("TabletController.keyLogin()");		
-		System.out.println(keyNum);
-		
-		TabletUserVo resultVo = tabletService.keyLogin(keyNum);
-		System.out.println(resultVo);
-		
-		TabletUserVo authUser = new TabletUserVo();	
-		  
-		if (resultVo != null) {		
-		System.out.println("로그인성공");
-		authUser.setUserNo(resultVo.getUserNo());
-		authUser.setNick(resultVo.getNick());
-		authUser.setAverage(resultVo.getAverage());
-		session.setAttribute("authUser", authUser);
-		  
-		return "/tablet/selectball";
-		
-		} else { 
-		System.out.println("로그인실패");
-		
-		return "redirect:/tablet?result=fail";		
-		}	
-
-	}	
+//	@RequestMapping(value = "/tablet/keyLogin",method = {RequestMethod.GET,RequestMethod.POST})
+//	public String keyLogin(@RequestParam("keyNum") int keyNum,HttpSession session) {
+//		System.out.println("TabletController.keyLogin()");		
+//		System.out.println(keyNum);
+//		
+//		TabletUserVo resultVo = tabletService.keyLogin(keyNum);
+//		System.out.println(resultVo);
+//		
+//		TabletUserVo authUser = new TabletUserVo();	
+//		  
+//		if (resultVo != null) {		
+//		System.out.println("로그인성공");
+//		authUser.setUserNo(resultVo.getUserNo());
+//		authUser.setNick(resultVo.getNick());
+//		authUser.setAverage(resultVo.getAverage());
+//		session.setAttribute("authUser", authUser);
+//		  
+//		return "/tablet/selectball";
+//		
+//		} else { 
+//		System.out.println("로그인실패");
+//		
+//		return "redirect:/tablet?result=fail";		
+//		}	
+//
+//	}	
 	
 	
 	@RequestMapping(value = "/tablet/selectBall",method = {RequestMethod.GET,RequestMethod.POST})
