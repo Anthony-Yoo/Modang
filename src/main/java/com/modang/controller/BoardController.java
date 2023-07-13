@@ -51,9 +51,17 @@ public class BoardController {
 		return "/board/list";
 	}
 	
+	@RequestMapping(value="/read")
+	public String read() {
+		System.out.println("BoardController.read()");
+		
+		return "/board/read";
+	}
+	
 	@RequestMapping(value="/test")
 	public String test() {
 		
 		return "/board/mapApi";	
 	}
+	
 }

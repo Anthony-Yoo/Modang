@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>b-join</title>
-	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/image/favicon.ico" />
+	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
 	<link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
     <link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
 </head>
@@ -23,7 +23,7 @@
                         <div class="join-wrap">
                             <div class="con">
                                 <span class="inp-txt">
-                                    <img src="${pageContext.request.contextPath}/assets/image/id.png" alt="">
+                                    <img src="${pageContext.request.contextPath}/assets/images/id.png" alt="">
                                     <input type="text" id="bID" name="bID" placeholder="아이디">
                                     <a href="" class="chck">중복체크</a>
                                 </span>
@@ -31,46 +31,46 @@
                             </div>
                             <div class="con">
                                 <span class="inp-txt">
-                                    <img src="${pageContext.request.contextPath}/assets/image/user.png" alt="">
+                                    <img src="${pageContext.request.contextPath}/assets/images/user.png" alt="">
                                     <input type="text" id="bName" name="bName" placeholder="이름">
                                 </span>
                             </div>
                             <div class="con">
                                 <span class="inp-txt">
-                                    <img src="${pageContext.request.contextPath}/assets/image/settings.png" alt="">
+                                    <img src="${pageContext.request.contextPath}/assets/images/settings.png" alt="">
                                     <input type="password" id="bPW" name="bPW" placeholder="비밀번호">
                                 </span>
                                 <p></p>
                             </div>
                             <div class="con">
                                 <span class="inp-txt">
-                                    <img src="${pageContext.request.contextPath}/assets/image/settings.png" alt="">
+                                    <img src="${pageContext.request.contextPath}/assets/images/settings.png" alt="">
                                     <input type="password" id="bPW-ch" name="bPW-ch" placeholder="비밀번호 확인">
                                 </span>
                                 <p class="error-msg">비밀번호를 다시 한번 입력해 주세요</p>
                             </div>
                             <div class="con">
                                 <span class="inp-txt">
-                                    <img src="${pageContext.request.contextPath}/assets/image/home.png" alt="">
+                                    <img src="${pageContext.request.contextPath}/assets/images/home.png" alt="">
                                     <input type="text" id="bStore" name="bStore" placeholder="매장 이름">
                                 </span>
                             </div>
                             <div class="con">
                                 <span class="inp-txt">
-                                    <img src="${pageContext.request.contextPath}/assets/image/file.png" alt="">
+                                    <img src="${pageContext.request.contextPath}/assets/images/file.png" alt="">
                                     <input type="text" id="bCRN" name="bCRN" placeholder="사업자 등록번호">
                                 </span>
                             </div>
                             <div class="con">
                                 <span class="inp-txt">
-                                    <img src="${pageContext.request.contextPath}/assets/image/phone.png" alt="">
+                                    <img src="${pageContext.request.contextPath}/assets/images/phone.png" alt="">
                                     <input type="text" id="bNum" name="bNum" placeholder="매장 번호">
                                 </span>
                             </div>
                             <div class="con">
                                 <div class="inp-txt">
                                     <span class="sel-box">
-                                        <img src="${pageContext.request.contextPath}/assets/image/map.png" alt="">
+                                        <img src="${pageContext.request.contextPath}/assets/images/map.png" alt="">
                                         <select name="" id="" >
                                             <option value="">시/도</option>
                                             <option value="">서울시</option>
@@ -102,16 +102,16 @@
                         <div class="join-wrap">
                             <div class="con">
                                 <ul>
-                                    <li class="image"><img src="${pageContext.request.contextPath}/assets/image/poketball.jpg" alt="포켓볼"></li>
-                                    <li class="image"><img src="${pageContext.request.contextPath}/assets/image/4gu.jpg" alt="4구"></li>
-                                    <li class="image"><img src="${pageContext.request.contextPath}/assets/image/smoking.jpg" alt="흡연구역"></li>
-                                    <li class="image"><img src="${pageContext.request.contextPath}/assets/image/price.jpg" alt="가격표"></li>
-                                    <li class="image"><img src="${pageContext.request.contextPath}/assets/image/room.jpg" alt="룸"></li>
+                                    <li class="image"><img src="${pageContext.request.contextPath}/assets/images/poketball.jpg" alt="포켓볼"></li>
+                                    <li class="image"><img src="${pageContext.request.contextPath}/assets/images/4gu.jpg" alt="4구"></li>
+                                    <li class="image"><img src="${pageContext.request.contextPath}/assets/images/smoking.jpg" alt="흡연구역"></li>
+                                    <li class="image"><img src="${pageContext.request.contextPath}/assets/images/price.jpg" alt="가격표"></li>
+                                    <li class="image"><img src="${pageContext.request.contextPath}/assets/images/room.jpg" alt="룸"></li>
                                 </ul>
                             </div>
                             <div class="con">
                                 <span class="inp-txt">
-                                    <img src="${pageContext.request.contextPath}/assets/image/clock.png" alt="">
+                                    <img src="${pageContext.request.contextPath}/assets/images/clock.png" alt="">
                                     <input type="text" class="input" placeholder="이용시간 입력">
                                     ~
                                     <input type="text" class="input" placeholder="이용시간 입력">
@@ -119,7 +119,7 @@
                             </div>
                             <div class="con">
                                 <span class="inp-txt">
-                                    <img src="${pageContext.request.contextPath}/assets/image/parking.png" alt="">
+                                    <img src="${pageContext.request.contextPath}/assets/images/parking.png" alt="">
                                     <input type="text" id="bNum" name="bNum" placeholder="주차 여부">
                                 </span>
                             </div>

@@ -7,7 +7,7 @@ pageEncoding="UTF-8"%>
         <div class="container">
             <div class="f_left">
                 <div class="f_logo">
-                    <img src="${pageContext.request.contextPath}/assets/image/modang_logo1.jpg" alt="하단로고">
+                    <img src="${pageContext.request.contextPath}/assets/images/modang_logo1.jpg" alt="하단로고">
                 </div><!-- //.f_logo -->
                 <ul class="">
                     <li>회사명 : 이도단짱</li>

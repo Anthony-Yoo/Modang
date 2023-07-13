@@ -30,7 +30,8 @@
 			</h2>
 		</div>
 		<div id="write">
-			<a class="btn" href="${pageContext.request.contextPath}/board/writeForm">글쓰기</a>
+			<a class="btn"
+				href="${pageContext.request.contextPath}/board/writeForm">글쓰기</a>
 		</div>
 	</div>
 	<div id="board">
