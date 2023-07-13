@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>b-login</title>
-	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/image/favicon.ico" />
+	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
     <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
     <link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
 </head>
@@ -22,14 +22,14 @@
                         <div class="login-wrap">
                             <div class="con">
                                 <span class="inp-txt">
-                                    <img src="${pageContext.request.contextPath}/assets/image/user.png" alt="">
+                                    <img src="${pageContext.request.contextPath}/assets/images/user.png" alt="">
                                     <input type="text" id="bID" name="bID" placeholder="아이디">
                                 </span>
                                 <p class="error-msg">아이디가 틀렸습니다</p>
                             </div>
                             <div class="con">
                                 <span class="inp-txt">
-                                    <img src="${pageContext.request.contextPath}/assets/image/settings.png" alt="">
+                                    <img src="${pageContext.request.contextPath}/assets/images/settings.png" alt="">
                                     <input type="password" id="bPW" name="bPW" placeholder="비밀번호">
                                 </span>
                                 <p class="error-msg">비밀번호가 틀렸습니다.</p>

@@ -19,12 +19,12 @@ input::placeholder{color: #B8B8B8;}
 /*메인컨텐츠 - 모당메인*/
 .main{}
 .main{width: 1200px; height: 600px; position: relative; border-bottom: 2px solid #2E419A;}
-.main::before{content: "";background: url(../image/dang0.jpg) no-repeat center center;
+.main::before{content: "";background: url(../images/dang0.jpg) no-repeat center center;
     background-size: 760px 420px; opacity: 0.5; position: absolute;top: 0px;left: 0px; right: 0px;bottom: 0px;}
 .main img{display: block; width: 500px; height: 220px; position: relative; top: 33%; left: 5%;}
 /*모당소개*/
 .intro{height: 500px; position: relative; width: 1200px;}
-.intro::before{content: "";background: url(../image/dang1.jpg) no-repeat center center;
+.intro::before{content: "";background: url(../images/dang1.jpg) no-repeat center center;
     background-size: 700px 350px; opacity: 0.1; position: absolute;top: 0px;left: 10px; right: 0px;bottom: 0px; z-index: -1;}
 .intro>h2{text-align: left; margin :50px 0;}
 .intro .modang_tip {z-index: 1;}

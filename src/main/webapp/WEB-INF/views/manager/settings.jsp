@@ -7,7 +7,7 @@
 	<title>modang 관리자페이지</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/image/favicon.ico" />
+	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/managerdefault.css" />
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
@@ -54,7 +54,7 @@
 					<div class="col-12">
 
 						<!-- Logo -->
-						<h1><a href="index.html"><img src="${pageContext.request.contextPath}/assets/image/logo.png" /></a></h1>
+						<h1><a href="index.html"><img src="${pageContext.request.contextPath}/assets/images/logo.png" /></a></h1>
 
 						<!-- User menu -->
 						<ul>
