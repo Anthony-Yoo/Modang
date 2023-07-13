@@ -80,6 +80,7 @@ section > :last-child, section:last-child, .last-child { margin-bottom: 0 !impor
 .btn{display:inline-block;font-weight:400;color:#fff;text-align:center;vertical-align:middle;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background:#26B4FF;border:none;padding:.5rem 1.25rem;font-size:.875rem;line-height:1.5rem;border-radius:.25rem;cursor:pointer;}
 .btn:hover{text-decoration:none}
 .btn-sm{font-size:.75rem;line-height:1rem;}
+.btn-lg{font-size:1rem;}
 .btn btn-primary {float:right;}
 .btn-dark {color:#fff; background: rgba(47,51,55,0.8);}
 
@@ -87,7 +88,9 @@ section > :last-child, section:last-child, .last-child { margin-bottom: 0 !impor
 
 .font-weight-normal {font-weight:normal !important}
 
+.pt-0, .py-0 {padding-top:0 !important}
 .m-2 {margin:.5rem !important}
+.mr-2, .mx-2 {margin-right:.5rem !important}
 .mb-4, .my-4 {margin-bottom:1rem !important}
 
 /* 입력폼 */
@@ -105,6 +108,7 @@ section > :last-child, section:last-child, .last-child { margin-bottom: 0 !impor
 .form-inline .form-check-input{position:relative;-ms-flex-negative:0;flex-shrink:0;margin-top:0;margin-right:.25rem;margin-left:0}
 .form-inline .custom-control{-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center}
 .form-inline .custom-control-label{margin-bottom:0}
+.form-group{margin-bottom:1rem}
 .input-group{position:relative;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-ms-flex-align:stretch;align-items:stretch;width:100%}
 .input-group>.form-control,.input-group>.form-control-plaintext,.input-group>.custom-select,.input-group>.custom-file{position:relative;-ms-flex:1 1 auto;flex:1 1 auto;width:1%;margin-bottom:0}
 .input-group-append{margin-left:-1px}
@@ -114,6 +118,7 @@ section > :last-child, section:last-child, .last-child { margin-bottom: 0 !impor
 .text-big {font-size:1rem !important}
 .text-blue {color:#26B4FF !important}
 .text-right {text-align:right !important}
+.font-weight-normal {font-weight:normal !important}
 
 /* 리스트  */
 .table{width:100%;margin-bottom:1rem;color:#4E5155;border-bottom:1px solid #e8e8e9;}
@@ -150,6 +155,10 @@ section > :last-child, section:last-child, .last-child { margin-bottom: 0 !impor
 .hide {display:none}
 .visible {visibility:visible !important}
 .invisible {visibility:hidden !important}
+
+.w-33 {width:33.333% !important}
+.mt-1, .my-1 {margin-top:.25rem !important}
+.mt-4, .my-4 {margin-top:1rem !important}
 
 /* Copyright */
 #copyright { text-align: center; padding: 20px 0 40px 0; color: #b5bec3; font-size:.75rem; }

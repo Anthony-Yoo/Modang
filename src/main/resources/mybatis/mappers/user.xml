@@ -30,5 +30,18 @@ values( SEQ_USERS_NO.nextval,
 
 </select>
 
+<select id="selectUserByNo" parameterType="int" resultType="com.modang.vo.UserVo">
+	<![CDATA[
+		select id, 
+			   cellphone, 
+			   nick, 
+			   average
+		from users
+		where userno=#{userno} 	
+	]]>
+
+</select>
+
+
 
 </mapper>

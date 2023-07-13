@@ -30,6 +30,15 @@ public class UserService {
 		
 		return authUser;
 	}
+	/*수정폼*/
+	public UserVo modifyForm(int userno) {
+		System.out.println("UserService.modifyForm()");
+		System.out.println(userno);
+		
+		UserVo userVo=userDao.selectUser(userno);
+		
+		return userVo;
+	}
 	/*id check
 	public void idCheck(String id) {
 		System.out.println("UserService.idCheck()");
