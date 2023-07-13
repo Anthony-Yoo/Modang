@@ -93,4 +93,13 @@ public class ManagerController {
 		return "/manager/settings";
 	}
 	
+	/* 관리자 설정폼 */
+	@RequestMapping(value="/settings", method = {RequestMethod.GET,RequestMethod.POST})
+	public String settings() {
+		System.out.println("ManagerController.settings()");
+
+		
+		return "/manager/settings";
+	}
+	
 }

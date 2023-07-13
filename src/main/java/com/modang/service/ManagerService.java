@@ -20,6 +20,7 @@ public class ManagerService {
 		return tariffVo;
 	}
 	
+	/* 요금테이블-요금수정 */
 	public int updatePrice(TariffVo tariffVo) {
 		System.out.println("ManagerService.updatePrice()");
 		
