@@ -42,6 +42,14 @@ public class ManagerController {
 		return "/manager/managerLoginForm";
 	}
 	
+	/* 테이블 현황 */
+	@RequestMapping(value="/index", method = {RequestMethod.GET,RequestMethod.POST})
+	public String main() {
+		System.out.println("ManagerController.main()");
+		
+		return "/manager/index";
+	}
+	
 	/* 요금테이블폼(요금가져오기) */
 	@RequestMapping(value="/pricePolicyForm", method = {RequestMethod.GET,RequestMethod.POST})
 	public String pricePolicyForm(Model model) {
