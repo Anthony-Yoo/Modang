@@ -4,25 +4,12 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0, minimum-scale=1.0">
-		<title>Insert title here</title>
+		 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0, minimum-scale=1.0">
+		<title>※모두의 당구※</title>
+		<link href="${pageContext.request.contextPath}/assets/css/mobile.css" rel="stylesheet" type="text/css">	
 		<style>
-			/*reset*/
-			html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; vertical-align: baseline; }
-			article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
-			body { line-height: 1; }
-			ol, ul { list-style: none; }
-			blockquote, q { quotes: none; }
-			blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
-			table { border-collapse: collapse; border-spacing: 0; }
-			body { -webkit-text-size-adjust: none; }
-			mark { background-color: transparent; color: inherit; }
-			input::-moz-focus-inner { border: 0; padding: 0; }
-			input, select, qktextarea { -moz-appearance: none; -webkit-appearance: none; -ms-appearance: none; appearance: none; }
-			small {font-size:.75em;}
-			
-			#container {
-				border : 1px;
+		.container {
+				border : solid 1px black;
 				outline: dashed 1px black;
 				width : 410px;
 				height : 730px;
@@ -30,88 +17,46 @@
 				left : 50%;
 				top : 50%;
 				transform : translate(-50%,-50%);						  	
-			}
-			#logtitle {
-				color : #404040;
-				text-align: center;				
-			}		
-			#content {
-				margin-top: 30px;
-			}	
-			#logbox {
-				margin-left : 30px;
-				border: 0px; 
-				background-color: #DDDDDD; 
-				border-radius: 5px;
-				width : 300px;
-				height : 500px;		
-			}
-			#logbox img {	
-				border : 0px;
-				display : inline-block;
-				width : 300px;
-				height : 131px;				
-			}			
-			#idbox {
-				border : 0px;				
-				width : 300px;
-				height : 80px;	
-			}	
-			#messagebox {
-				width : 300px;
-				height : 50px;
-				border : 0px;
-/* 				outline : 1px solid #404040;	 */		
-			}		
-			#keybox {
-				border : 0px;
-/* 				outline: dashed 1px black; */
-				width : 300px;
-				height : 200px;
-			}
-			#keybox dt {
-				font-size: 14px;
-				font-weight: bold;
-			}
-			#keybox dd {
-				margin-left : 0px;
-				text-align : center;
-				font-size: 100px;
-				font-weight: bold;
-			}				
-			.float-r {float: right; }
-			.float-l {float: left; }
-			.clear{clear: both; }
+		}
 		</style>
 	</head>
 	<body>	
-		<div id="container">			
-			<h2 id="logtitle"><br>Modang</h2>
-			<div id="content">	
-				<div id="logbox">
-					<img src="${pageContext.request.contextPath}/assets/images/logo.png"/>					
-					<div id="idbox">				
-						<form action="${pageContext.request.contextPath}/mobile/login" method="get">
-							<label for="id">아이디 :&nbsp;&nbsp;&nbsp;</label>
-							<input type="text" name="id" placeholder="아이디 입력" style="width:100px"><br>
-							<label for="passwd">비밀번호 : </label>
-							<input type="password" name="passwd" placeholder="패스워드 입력" style="width:100px"><br>
-							<button type="submit" id="loginBtn">Login</button>
-						</form>
-					</div>	
-					<div id="messagebox">	
-						<c:if test="${param.result eq 'fail'}">						
-		      			<span>아이디 또는 비번을 확인해 주세요.</span>
-		      			</c:if>			      							
-					</div>			
-					<div id="keybox">
-						<dl>
-							<dt>※Check Your KeyNumber</dt><br><br>
-							<dd></dd>
-						</dl>
-					</div>
-				</div>			 
-			</div>
-		</div>
-	</body>
+		<div class="container">			
+			<h1 class="logo"><img src="${pageContext.request.contextPath}/assets/images/logo.png"/></h1>
+			<div class="content">
+				<form method="get" id="loginProcess" action="${pageContext.request.contextPath}/mobile/login">
+					<fieldset class="login-form3">
+						<legend class="blind">로그인</legend>
+						<div class="login-ipt-box">
+							<label for="Id" class="blind">아이디</label>
+							<input type="text" placeholder="아이디" id="code" name="id" class="ipt">
+						<!-- <button class="btn-ico-del"></button> -->
+						</div>
+						<div class="login-ipt-box">
+							<label for="Pwd" class="blind">비밀번호</label>
+							<input type="password" placeholder="비밀번호" id="password" name="passwd" class="ipt">
+						<!-- <button class="btn-ico-del"></button> -->
+						</div>						
+						<button class="btn login" type="submit" id="loginAction">로그인</button><br>
+						<button class="btn signup" type="button" onclick="location.href='${pageContext.request.contextPath}/user/joinForm'" id="signupAction">회원가입</button>								
+					</fieldset>					
+				</form>
+			</div>				
+			<div class="login-message-box">	
+				모당서비스 당구장에 오신것을 환영합니다...로그인하여 Key생성하십시오.
+				<c:if test="${param.result eq 'fail'}">						
+      			<span>아이디 또는 비번을 확인해 주세요.</span>
+      			</c:if>			      							
+			</div>			
+			<div class="footer">
+				<div class="ft-bts">
+					<a href="${pageContext.request.contextPath}/">modang &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; </a>
+					<a href="${pageContext.request.contextPath}/mobile">로그인</a>
+				</div>
+				<div class="ft-util">
+					<p class="cpt">Copyright ⓒ 2023 modang. All rights reserved.</p>			
+				</div>
+			</div>			
+		</div>					
+	</body>	
 </html>
