@@ -1,5 +1,7 @@
 package com.modang.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.modang.service.ManagerService;
+
 import com.modang.vo.ManagerVo;
+
+import com.modang.vo.CueTableVo;
+
 import com.modang.vo.TariffVo;
 
 @Controller
@@ -50,14 +56,16 @@ public class ManagerController {
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	/* 테이블현황 */
-	@RequestMapping(value="/index")
-	public String main() {
+	/* 테이블 현황-테이블 전체리스트 */
+	@RequestMapping(value="/index", method = {RequestMethod.GET,RequestMethod.POST})
+	public String tableList(Model model) {
+		System.out.println("ManagerController.tableList()");
+		int no =1;
+		List<CueTableVo> cueTableList = managerService.tableList(no);
+		model.addAttribute("cueTableList", cueTableList);
 		
 		return "/manager/index";
 	}
-	
-	
 	
 	/* 요금테이블폼(요금가져오기) */
 	@RequestMapping(value="/pricePolicyForm", method = {RequestMethod.GET,RequestMethod.POST})
@@ -109,5 +117,7 @@ public class ManagerController {
 		
 		return "/manager/settings";
 	}
+	
+
 	
 }
