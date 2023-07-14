@@ -61,11 +61,19 @@
 	<!-- 키넘버 로그인 -->
 	<select id="selectKeyNum" parameterType="int" resultType="com.modang.vo.TabletUserVo">
 		<![CDATA[
-			select  loginKeyNo
-					,keyOwner
-					,keyNum
-					,createDate
-			from LOGINKEY
+			select  u.userNo
+					,u.id
+					,u.passwd
+					,u.nick
+					,u.cellphone
+					,u.average
+					,u.recommAverage
+					,u.recentLogonTime
+					,u.profileImage
+					,l.loginKeyNo
+					,l.keyNum	
+			from USERS u full join LOGINKEY l
+			on l.KEYOWNER = u.USERNO
 			where KeyNum = #{keyNum} 		
 		]]>	
 	</select>
