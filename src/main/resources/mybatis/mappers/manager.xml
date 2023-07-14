@@ -3,9 +3,6 @@
 
 <mapper namespace="manager">
 	
-	<!-- 쿼리문 작성 -->
-<<<<<<< HEAD
-	
 	<!-- 회원가입 -->
 	<insert id="insertManager" parameterType="com.javaex.vo.ManagerVo">
 		<![CDATA[
@@ -47,7 +44,6 @@
 	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 		
 	
-=======
 		<select id="selectTableList" parameterType="int" resultType="com.modang.vo.CueTableVo">
 		<![CDATA[
 		select tableno,
@@ -61,7 +57,7 @@
 	</select>
 	
 	<!-- 요금 테이블 정보 가져오기 -->
->>>>>>> branch 'master' of https://github.com/Anthony-Yoo/Modang.git
+
 	<select id="selectPrice" parameterType="int" resultType="com.modang.vo.TariffVo">
 		<![CDATA[
 			select biliardno,
