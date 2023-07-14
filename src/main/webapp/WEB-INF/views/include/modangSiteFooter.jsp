@@ -21,11 +21,11 @@ pageEncoding="UTF-8"%>
                     <li>고객센터 : 18-8282-9999 </li>
                     <li class="no_bar">
                         이메일 : 
-                        <a href="">abcd@efg.com</a> 
+                        <a href="">Hyesun@zzang.love</a> 
                     </li>
                 </ul>
                 <p class="copy">
-                    Copyright ⓒ Hyesun. All Rights Reserved.
+                    Copyright ⓒ jinwoo. All Rights Reserved.
                 </p>
             </div><!-- //.f_left -->
             <div class="f_right">
@@ -35,9 +35,9 @@ pageEncoding="UTF-8"%>
                     <li><a href="#">이용약관</a></li>
                 </ul><!-- //.f_menu -->
                 <ul class="sns">
-                    <li><a href="#"><img src="${pageContext.request.contextPath}/assets/image/kakao32.png" alt="카카오톡"></a></li>
-                    <li><a href="#"><img src="${pageContext.request.contextPath}/assets/image/facebook32.png" alt="페이스북"></a></li>
-                    <li><a href="#"><img src="${pageContext.request.contextPath}/assets/image/insta32.png" alt="인스타"></a></li>
+                    <li><a href="#"><img src="${pageContext.request.contextPath}/assets/images/kakao32.png" alt="카카오톡"></a></li>
+                    <li><a href="#"><img src="${pageContext.request.contextPath}/assets/images/facebook32.png" alt="페이스북"></a></li>
+                    <li><a href="#"><img src="${pageContext.request.contextPath}/assets/images/insta32.png" alt="인스타"></a></li>
                 </ul>
             </div><!-- //.f_right -->
         </div><!-- //.container -->
