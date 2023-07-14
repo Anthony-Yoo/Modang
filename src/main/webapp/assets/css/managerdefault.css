@@ -11,6 +11,7 @@ mark { background-color: transparent; color: inherit; }
 input::-moz-focus-inner { border: 0; padding: 0; }
 input, select, qktextarea { -moz-appearance: none; -webkit-appearance: none; -ms-appearance: none; appearance: none; }
 small {font-size:.75em;}
+large {font-size:1.75em;}
 
 /* Basic */
 html { box-sizing: border-box; }
@@ -130,8 +131,11 @@ section > :last-child, section:last-child, .last-child { margin-bottom: 0 !impor
 .font-weight-normal {font-weight:normal !important}
 
 .pt-0, .py-0 {padding-top:0 !important}
+.pt-8 {padding-top:4rem !important}
 .pl-2, .px-2 {padding-left:.5rem !important}
+.pl-2, .px-2 {padding-left:1.5rem !important}
 .pr-2, .px-2 {padding-right:.5rem !important}
+.pb-0, .py-0 {padding-bottom: 0 !important;}
 .m-2 {margin:.5rem !important}
 .mr-2, .mx-2 {margin-right:.5rem !important}
 .mb-1, .my-1 {margin-bottom:.25rem !important}
@@ -221,6 +225,10 @@ textarea.form-control {height:auto; resize: none !important;}
 .mt-1, .my-1 {margin-top:.25rem !important}
 .mt-4, .my-4 {margin-top:1rem !important}
 
+.tableArea {float:left; width:23.6%; height:170px; background-color: #e8e8e9;margin:5px;border-radius:.25rem;padding:5px;}
+.tableTime {width:100%; color:#d9534f; font-size:3rem;}
+.tablePay {float:right;font-size:1rem;}
+
 /* Copyright */
-#copyright { text-align: center; padding: 20px 0 40px 0; color: #b5bec3; font-size:.75rem; }
+#copyright {text-align: center; padding: 20px 0 40px 0; color: #b5bec3; font-size:.75rem; }
 

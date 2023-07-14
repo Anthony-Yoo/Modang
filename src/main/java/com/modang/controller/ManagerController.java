@@ -1,5 +1,7 @@
 package com.modang.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.modang.service.ManagerService;
+import com.modang.vo.CueTableVo;
 import com.modang.vo.TariffVo;
 
 import com.modang.service.ManagerService;
@@ -43,10 +46,13 @@ public class ManagerController {
 	}
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	/* 테이블 현황 */
+	/* 테이블 현황-테이블 전체리스트 */
 	@RequestMapping(value="/index", method = {RequestMethod.GET,RequestMethod.POST})
-	public String main() {
-		System.out.println("ManagerController.main()");
+	public String tableList(Model model) {
+		System.out.println("ManagerController.tableList()");
+		int no =1;
+		List<CueTableVo> cueTableList = managerService.tableList(no);
+		model.addAttribute("cueTableList", cueTableList);
 		
 		return "/manager/index";
 	}

@@ -1,12 +1,13 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <title>modang 관리자페이지</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/managerdefault.css" />
 </head>
 <body>
@@ -34,10 +35,10 @@
 						<!-- Nav -->
 						<nav id="nav">
 							<a href="${pageContext.request.contextPath}/manager/index" class="active">테이블 현황</a> 
-							<a href="${pageContext.request.contextPath}/manager/tablesales">테이블 매출</a> 
+							<a href="${pageContext.request.contextPath}/manager/tableSalesForm">테이블 매출</a> 
 							<a href="${pageContext.request.contextPath}/manager/daysales">일별 매출</a> 
-							<a href="${pageContext.request.contextPath}/manager/pricePolicy">요금 테이블</a> 
-							<a href="${pageContext.request.contextPath}/manager/settings">관리자 설정</a>
+							<a href="${pageContext.request.contextPath}/manager/pricePolicyForm">요금 테이블</a> 
+							<a href="${pageContext.request.contextPath}/manager/settingsForm">관리자 설정</a>
 						</nav>
 					</div>
 				</div>
@@ -55,7 +56,33 @@
 							<header>
 								<h2>테이블 현황</h2>
 							</header>
-
+							<div id="tablelist">
+								
+								<c:forEach items="${cueTableList}" var="cueTableVo">
+									<div class="tableArea" onclick="tableinfo()">
+										<large class="font-weight-normal text-blue float-left"><strong>No. ${cueTableVo.tableName}</strong></large>
+											<div class="small float-right">
+												<c:if test="${cueTableVo.tableType==0}" >
+													<strong>대대</strong>
+												</c:if>
+												<c:if test="${cueTableVo.tableType==1}" >
+													<strong>중대</strong>
+												</c:if>
+												<c:if test="${cueTableVo.tableType==2}" >
+													<strong>포켓</strong>
+												</c:if>
+											</div>
+											<div class="tableTime pt-8 pl-2">
+											    43:00
+											</div>
+											<br><br>
+											<div class="tablePay">
+												<strong>9,000원</strong>
+											</div>
+									</div>
+								</c:forEach>
+								
+							</div>							
 						</section>
 					</div>
 
@@ -66,7 +93,7 @@
 								<h2>No.8</h2>
 							</header>
 
-							<form>
+							<form action="${pageContext.request.contextPath}/manager/tableInfo" method="get">
 								<div class="form-group row mb-1">
 									<label class="col-form-label col-4">테이블 종류</label>
 									<div class="col">
@@ -105,14 +132,10 @@
 								<div class="form-group row mb-1">
 									<label class="col-form-label col-4">요금제</label>
 									<div class="col input-group">
-										<select name="" class="custom-select input-group-prepend">
-											<option value="">후불</option>
-											<option value="">선불</option>
-										</select> 
 										<span class="input-group-prepend">
 											<span class="input-group-text px-2 text-tiny" style="height: 2rem;">10분당</span>
 										</span>
-										<input type="text" name="" class="form-control form-control-sm px-2" maxlength="4" placeholder="" /> 
+										<input type="text" name="" class="form-control form-control-sm px-2" maxlength="4" disabled /> 
 											<span class="input-group-append">
 												<span class="input-group-text px-2 text-tiny" style="height: 2rem;">원</span>
 											</span>
@@ -144,7 +167,7 @@
 								</div>
 
 								<div class="mt-4" style="position: absolute; bottom: 32px;">
-									<button type="button" class="btn btn-red btn-lg btn-block">정 산</button>
+									<button type="submit" class="btn btn-red btn-lg btn-block">정 산</button>
 								</div>
 							</form>
 						</section>
@@ -158,4 +181,13 @@
 
 	</div>
 </body>
+
+<script type="text/javascript">
+function tableinfo()  {
+	  console.log('테이블 클릭');
+	}
+
+</script>
+
+
 </html>
