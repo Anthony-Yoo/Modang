@@ -86,52 +86,52 @@
 					<div class="col-6">
 						<section>
 							<header>
-								<h2>사업장 정보 <small class="font-weight-normal text-blue">변경할 정보를 입력하세요</small></h2>
+								<h2>사업자 정보 <small class="font-weight-normal text-blue">변경할 정보를 입력하세요</small></h2>
 							</header>
 							
 							<form>
 								<div class="form-group row">
 									<label class="col-form-label col-3">아이디</label>
 									<div class="col">
-										<input type="text" name="" class="form-control" maxlength="20" placeholder="" readonly disabled/>
+										<input type="text" name="id" class="form-control" maxlength="20" disabled/>
 									</div>
 								</div>
 								<div class="form-group row">
 									<label class="col-form-label col-3">대표자명</label>
 									<div class="col">
-										<input type="text" name="" class="form-control" maxlength="10" placeholder="" />
+										<input type="text" name="repname" class="form-control" maxlength="10" placeholder="" />
 									</div>
 								</div>
 								<div class="form-group row">
 									<label class="col-form-label col-3">비밀번호</label>
 									<div class="col">
-										<input type="text" name="" class="form-control" maxlength="20" placeholder="" />
+										<input type="text" name="passwd" class="form-control" maxlength="20" placeholder="" />
 									</div>
 								</div>
 								<div class="form-group row">
 									<label class="col-form-label col-3">상호명</label>
 									<div class="col">
-										<input type="text" name="" class="form-control" maxlength="50" placeholder="" />
+										<input type="text" name="bilardname" class="form-control" maxlength="50" placeholder="" />
 									</div>
 								</div>
 								<div class="form-group row">
 									<label class="col-form-label col-3">사업자등록번호</label>
 									<div class="col">
-										<input type="text" name="" class="form-control" maxlength="20" placeholder="" />
+										<input type="text" name="companyno" class="form-control" maxlength="20" placeholder="" />
 									</div>
 								</div>
 								<div class="form-group row">
 									<label class="col-form-label col-3">전화번호</label>
 									<div class="col">
-										<input type="text" name="" class="form-control" maxlength="20" placeholder="" />
+										<input type="text" name="biliardphone" class="form-control" maxlength="20" placeholder="" />
 									</div>
 								</div>
 								<div class="form-group row">
 									<label class="col-form-label col-3">주소</label>
 									<div class="col">
-										<input type="text" id="zonecode" name="" class="form-control w-33" placeholder="우편번호" onclick="daumPostcode();" readonly />
-										<input type="text" id="address" name="" class="form-control mt-1" placeholder="주소" onclick="daumPostcode();" readonly />
-										<input type="text" id="address_detail" name="" class="form-control mt-1" maxlength="50" placeholder="상세주소" />
+										<input type="text" id="zonecode" name="zonecode" class="form-control w-33" placeholder="우편번호" onclick="daumPostcode();" readonly />
+										<input type="text" id="address" name="address" class="form-control mt-1" placeholder="주소" onclick="daumPostcode();" readonly />
+										<input type="text" id="address_detail" name="address_detail" class="form-control mt-1" maxlength="50" placeholder="상세주소" />
 									</div>
 								</div>
 								
