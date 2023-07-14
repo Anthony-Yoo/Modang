@@ -41,6 +41,7 @@ public class ManagerController {
 		System.out.println("ManagerController.loginForm");
 		return "/manager/managerLoginForm";
 	}
+	/////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	/* 테이블 현황 */
 	@RequestMapping(value="/index", method = {RequestMethod.GET,RequestMethod.POST})
