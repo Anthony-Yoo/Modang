@@ -4,7 +4,7 @@
 <mapper namespace="manager">
 	
 	<!-- 회원가입 -->
-	<insert id="insertManager" parameterType="com.javaex.vo.ManagerVo">
+	<insert id="insertManager" parameterType="com.modang.vo.ManagerVo">
 		<![CDATA[
 			insert into biliards
 				values(
@@ -29,7 +29,7 @@
 	</insert>
 	
 	<!-- 로그인 -->
-	<select id="selectManager" parameterType="com.javaex.vo.ManagerVo" resultType="com.javaex.vo.ManagerVo">
+	<select id="selectManager" parameterType="com.modang.vo.ManagerVo" resultType="com.modang.vo.ManagerVo">
 		<![CDATA[
 			select biliardNo,
 					id,
@@ -44,7 +44,7 @@
 	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 		
 	
-		<select id="selectTableList" parameterType="int" resultType="com.modang.vo.CueTableVo">
+		<select id="selectTableList" parameterType="int" resultType="com.modang.vo.ManagerVo">
 		<![CDATA[
 		select tableno,
 		       biliardno,
@@ -54,7 +54,7 @@
 		from cuetable where biliardno = #{no}
 		]]>	
 		
-	</select>
+	</select> 
 	
 	<!-- 요금 테이블 정보 가져오기 -->
 
