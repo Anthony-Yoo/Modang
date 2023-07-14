@@ -11,7 +11,7 @@ h2,h3{color: #2E419A; text-align: center; margin: 20px 0 20px 0;}
     color: #fff; line-height: 40px; border-radius: 10px; font-size: 14px;}
 .button{display: block; width: 480px; height: 40px; text-align: center;
         background-color: rgb(65, 113, 31); color: #fff; border-radius:10px; line-height: 40px;
-        margin: 10px auto 30px;}
+        margin: 10px auto 30px; cursor: pointer;}
 input{ width: 300px; height: 40px;padding : 8px 20px 9px 20px; background: #F5F5F5;
     border: 1px solid #B8B8B8; box-sizing: border-box; border-radius: 8px;  color: #111;}
 input::placeholder{color: #B8B8B8;}
