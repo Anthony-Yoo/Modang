@@ -16,7 +16,8 @@
 					,u.recentLogonTime
 					,u.profileImage
 					,l.loginKeyNo
-					,l.keyNum	
+					,l.keyNum
+					,l.createDate		
 			from USERS u full join LOGINKEY l
 			on l.KEYOWNER = u.USERNO
 			where u.ID = #{id} 
@@ -71,7 +72,8 @@
 					,u.recentLogonTime
 					,u.profileImage
 					,l.loginKeyNo
-					,l.keyNum	
+					,l.keyNum
+					,l.createDate	
 			from USERS u full join LOGINKEY l
 			on l.KEYOWNER = u.USERNO
 			where KeyNum = #{keyNum} 		

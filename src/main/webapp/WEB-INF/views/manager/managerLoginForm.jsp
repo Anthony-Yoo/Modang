@@ -17,8 +17,7 @@
         <div class="container">
             <h2>로그인</h2>
             <div class="">
-                <form action="" id="" name="" method="">
-                    <fieldset>
+                <form action="${pageContext.request.contextPath}/manager/login" id="" name="" method="post">
                         <div class="login-wrap">
                             <div class="con">
                                 <span class="inp-txt">
@@ -46,10 +45,9 @@
                                 </span>
                             </div>
                         </div>
-                    </fieldset>
+					<button class="button" type="submit" >로그인할거당</button>
                 </form>
             </div>
-            <a href="${pageContext.request.contextPath}/" class="button">로그인할거당</a>
         </div>
     </div>
     <!-- 푸터 시작 -->

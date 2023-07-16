@@ -1,5 +1,7 @@
 package com.modang.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,12 +9,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.modang.service.ManagerService;
+
+import com.modang.vo.ManagerVo;
+
+import com.modang.vo.CueTableVo;
+
 import com.modang.vo.TariffVo;
-
-import com.modang.service.ManagerService;
 
 @Controller
 @RequestMapping(value="/manager")
@@ -22,35 +26,46 @@ public class ManagerController {
 	private ManagerService managerService;
 
 	/*회원가입폼 출력*/
-	@RequestMapping(value ="/joinForm")
+	@RequestMapping(value ="/joinForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String joinForm() {
 		System.out.println("ManagerController.joinForm");
 		return "/manager/managerJoinForm";
 	}
 	/*회원가입*/
-	@RequestMapping(value ="/join")
-	public String join() {
+	@RequestMapping(value ="/join", method = {RequestMethod.GET, RequestMethod.POST})
+	public String join(@ModelAttribute ManagerVo managerVO) {
 		System.out.println("ManagerController.join");
 		
 		return "";
 	}
 	
 	/*로그인폼 출력*/
-	@RequestMapping(value ="/loginForm")
+	@RequestMapping(value ="/loginForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String loginForm() {
 		System.out.println("ManagerController.loginForm");
 		return "/manager/managerLoginForm";
 	}
+	
+	/*로그인*/
+	@RequestMapping(value ="/login", method = {RequestMethod.GET, RequestMethod.POST})
+	public String login(@ModelAttribute ManagerVo managerVO) {
+		System.out.println("ManagerController.login");
+		managerService.login(managerVO);
+		return "";
+	}
+	
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	/* 테이블현황 */
-	@RequestMapping(value="/index")
-	public String main() {
+	/* 테이블 현황-테이블 전체리스트 */
+	@RequestMapping(value="/index", method = {RequestMethod.GET,RequestMethod.POST})
+	public String tableList(Model model) {
+		System.out.println("ManagerController.tableList()");
+		int no =1;
+		List<CueTableVo> cueTableList = managerService.tableList(no);
+		model.addAttribute("cueTableList", cueTableList);
 		
 		return "/manager/index";
 	}
-	
-	
 	
 	/* 요금테이블폼(요금가져오기) */
 	@RequestMapping(value="/pricePolicyForm", method = {RequestMethod.GET,RequestMethod.POST})
@@ -102,5 +117,7 @@ public class ManagerController {
 		
 		return "/manager/settings";
 	}
+	
+
 	
 }
