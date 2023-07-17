@@ -5,14 +5,15 @@
 	<!-- 쿼리문 작성 -->
 <insert id="insert" parameterType="com.modang.vo.UserVo">  
     <![CDATA[
-       insert into users(userno, id, passwd, nick, cellphone, average, recentlogontime) 
+       insert into users(userno, id, passwd, nick, cellphone, average, recentlogontime, profileimage) 
 values( SEQ_USERS_NO.nextval,
         #{id},
         #{passwd}, 
         #{nick},
         #{cellphone},
         #{average},
-        sysdate
+        sysdate,
+        #{profileimage}
         )
     ]]>
 </insert>
@@ -41,7 +42,6 @@ values( SEQ_USERS_NO.nextval,
 	]]>
 
 </select>
-
 
 
 </mapper>

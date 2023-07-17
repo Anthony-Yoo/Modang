@@ -75,14 +75,14 @@ public class TabletService {
 	}	
 	
 	
-	public TabletUserVo keyLogin(int keyNum) {
-		System.out.println("TabletService.keyLogin()");
-		
-		tabletDao.deleteTime(StaticVo.NORMAL_TIME);
-		TabletUserVo keyTimeVo = 
-		/* TabletUserVo keyTimeVo = tabletDao.selectKeyNum(keyNum); */
-		
-		return null;
-	}
+//	public TabletUserVo keyLogin(int keyNum) {
+//		System.out.println("TabletService.keyLogin()");
+//		
+//		tabletDao.deleteTime(StaticVo.NORMAL_TIME);
+//		TabletUserVo keyTimeVo = 
+//		/* TabletUserVo keyTimeVo = tabletDao.selectKeyNum(keyNum); */
+//		
+//		return null;
+//	}
 	
 }

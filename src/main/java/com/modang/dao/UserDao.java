@@ -40,6 +40,7 @@ public class UserDao {
 		
 		return userVo;
 	}
+	
 	/*
 	//id check <--ajax
 	public void selectUser(String id) {

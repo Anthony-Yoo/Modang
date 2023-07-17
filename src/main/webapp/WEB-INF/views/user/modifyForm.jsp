@@ -4,94 +4,95 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="${pageContext.request.contextPath }/assets/css/board.css" rel="stylesheet" type="text/css">
-    <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
+<meta charset="UTF-8">
+<title>회원정보 수정</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- icon -->
+<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/image/favicon.ico" />
+
+<!-- css -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">    
+<link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/user.css" rel="stylesheet" type="text/css">
+
+<!-- js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
 
 </head>
-<style>
 
-    .shadow-none{
-      margin: 0 auto;
-    }
-
-  </style>
 <body>
     <!-- 헤더 시작 -->
 	<c:import url="/WEB-INF/views/include/modangSiteHeader.jsp"></c:import>
 	<!-- 헤더 끝 -->
-        <br>
-        <br>
+    
+    <div id="main-content">
 
-         <div class="container mt-5 text-center">
+         <div class="container text-center">
          
-                    <h1><strong>고칠꺼당!!!</strong></h1>
-                    <br>
-                    <br>
-                    
                 <div id="user">
 				
 					<div id="modifyForm">
 					
-                	<form id="modifyForm" action="${pageContext.request.contextPath }/user/modify" method="get" enctype="multipart/form-data">
+						<div id="main">
+						
+							<h3>수정할꺼당 ^^</h3>
+					
+                			<form id="modifyForm" action="${pageContext.request.contextPath }/user/modify" method="get" enctype="multipart/form-data">
                     
-                    <div class="form-group">
-                      <div class="shadow-none p-1 mb-2 bg-light rounded input-group w-25">
-                        <span class="input-group-addon" class="text-large bold"><i class="glyphicon glyphicon-user"></i></span>
-                        <input id="id" type="text" maxlength="10" class="form-control" name="id" placeholder="ID">
-                        <button type="button" class="btn btn-Dark">  &nbsp;&nbsp;수정&nbsp;&nbsp;  </button>
-                      </div>
-                    </div>
+                   			<!-- 아이디 -->
+                   			<div class="form-group">
+                     			<div class="shadow-none p-1 mb-2 bg-light rounded input-group">
+                       				<span class="input-group-addon" class="text-large bold">${requestScope.userVo.id}<i class="glyphicon glyphicon-user"></i></span>
+                       				<input id="id" type="text" maxlength="10" class="form-control" name="id" placeholder="ID">
+                       				<button type="button" class="btn btn-Dark">  &nbsp;&nbsp;수정&nbsp;&nbsp;  </button>
+                     			</div>
+                   			</div>
+                   
+                   			<!-- 휴대폰 -->
+                   			<div class="form-group">
+                     			<div class="shadow-none p-1 mb-2 bg-light rounded input-group">
+                       				<span class="input-group-addon" class="text-large bold">${requestScope.userVo.cellphone}<i class="glyphicon glyphicon-lock"></i></span>
+                       				<input id="cellphone" type="text" maxlength="11" class="form-control" name="cellphone" placeholder="HP">
+                       				<button type="button" class="btn btn-Dark">  &nbsp;&nbsp;수정&nbsp;&nbsp;  </button>
+                     			</div>
+                   			</div>
+                   
+                   			<!-- 별명 -->
+                   			<div class="form-group">
+                     			<div class="shadow-none p-1 mb-2 bg-light rounded input-group">
+                       				<span class="input-group-addon" class="text-large bold">${requestScope.userVo.nick}<i class="glyphicon glyphicon-user"></i></span>
+                       				<input id="nick" type="text" maxlength="7" class="form-control" name="nick" placeholder="NICK">
+                       				<button type="button" class="btn btn-Dark">  &nbsp;&nbsp;수정&nbsp;&nbsp;  </button>
+                     			</div>
+                   			</div>
+                   
+                   			<!-- 평균 -->
+                   			<div class="form-group">
+                     			<div class="shadow-none p-1 mb-2 bg-light rounded input-group">
+                       				<span class="input-group-addon" class="text-large bold">${requestScope.userVo.average}<i class="glyphicon glyphicon-lock"></i></span>
+                       				<input id="average" type="text" maxlength="3" class="form-control" name="average" placeholder="AVER">
+                       				<button type="button" class="btn btn-Dark">  &nbsp;&nbsp;수정&nbsp;&nbsp;  </button>
+                     			</div>
+                   			</div>
                     
-                    <div class="form-group">
-                      <div class="shadow-none p-1 mb-2 bg-light rounded input-group w-25">
-                        <span class="input-group-addon" class="text-large bold"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input id="cellphone" type="text" maxlength="11" class="form-control" name="cellphone" placeholder="HP">
-                        <button type="button" class="btn btn-Dark">  &nbsp;&nbsp;수정&nbsp;&nbsp;  </button>
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <div class="shadow-none p-1 mb-2 bg-light rounded input-group w-25">
-                        <span class="input-group-addon" class="text-large bold"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input id="passwd" type="password" maxlength="16" class="form-control" name="passwd" placeholder="PW">
-                        <button type="button" class="btn btn-Dark">  &nbsp;&nbsp;수정&nbsp;&nbsp;  </button>
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <div class="shadow-none p-1 mb-2 bg-light rounded input-group w-25">
-                        <span class="input-group-addon" class="text-large bold"><i class="glyphicon glyphicon-user"></i></span>
-                        <input id="nick" type="text" maxlength="7" class="form-control" name="nick" placeholder="NICK">
-                        <button type="button" class="btn btn-Dark">  &nbsp;&nbsp;수정&nbsp;&nbsp;  </button>
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <div class="shadow-none p-1 mb-2 bg-light rounded input-group w-25">
-                        <span class="input-group-addon" class="text-large bold"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input id="average" type="text" maxlength="3" class="form-control" name="average" placeholder="AVER">
-                        <button type="button" class="btn btn-Dark">  &nbsp;&nbsp;수정&nbsp;&nbsp;  </button>
-                      </div>
-                    </div>
+                    		<div class="button-area">
+								<button type="submit" id="btn-submit" class="btn btn-primary">수정 할거당 ^^</button>
+							</div>
                     
-                    </form>
+                    		</form>
+                    	</div>
+                    	<!-- //main -->
                     </div>
+                    <!-- //modifyForm -->
                 </div>
+                <!-- //user -->
          </div>
-            
-          	<br>
-          	<br>
-          	<hr>
-          	<br>
-          	<br>
-          	<br>
+         <!-- //container -->
+      </div>
+      <!-- //main-content -->
+           
     <!-- 푸터 시작 -->
     <c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
     <!-- 푸터 끝 -->   

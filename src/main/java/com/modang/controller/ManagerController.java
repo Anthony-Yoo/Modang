@@ -84,4 +84,13 @@ public class ManagerController {
 		return "/manager/tableSales";
 	}
 	
+	/* 관리자 설정폼 */
+	@RequestMapping(value="/settingsForm", method = {RequestMethod.GET,RequestMethod.POST})
+	public String settingsForm() {
+		System.out.println("ManagerController.settingsForm()");
+
+		
+		return "/manager/settings";
+	}
+	
 }
