@@ -41,49 +41,4 @@
 		]]>
 	</select>
 	
-	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-		
-	
-		<select id="selectTableList" parameterType="int" resultType="com.modang.vo.ManagerVo">
-		<![CDATA[
-		select tableno,
-		       biliardno,
-		       tablename,
-		       tabletype,
-		       status as tableStatus      
-		from cuetable where biliardno = #{no}
-		]]>	
-		
-	</select> 
-	
-	<!-- 요금 테이블 정보 가져오기 -->
-
-	<select id="selectPrice" parameterType="int" resultType="com.modang.vo.TariffVo">
-		<![CDATA[
-			select biliardno,
-			       btablefee,
-			       mtablefee,
-			       ptablefee,
-			       bminfee,
-			       mminfee,
-			       pminfee
-			from tariff
-			where biliardno =#{no}
-		]]>	
-		
-	</select>
-	
-	<!-- 요금 테이블 수정 -->
-	<update id="updatePrice" parameterType="com.modang.vo.TariffVo">
-	<![CDATA[
-			update tariff set btablefee = #{btablefee},
-			                  mtablefee = #{mtablefee},
-			                  ptablefee = #{ptablefee},
-			                  bminfee = #{bminfee},
-			                  mminfee = #{mminfee},
-			                  pminfee = #{pminfee}
-			where biliardno=#{biliardno}
-	  ]]>
-	</update>
-
 </mapper>

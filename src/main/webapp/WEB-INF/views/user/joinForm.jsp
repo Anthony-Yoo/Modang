@@ -6,26 +6,21 @@
 
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>회원가입</title>
-<link href="${pageContext.request.contextPath}/assets/css/board.css"
-	rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/assets/css/modang.css"
-	rel="stylesheet" type="text/css">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- icon -->
+<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/image/favicon.ico" />
 
-	<style>
-		.shadow-none {
-			margin: 0 auto;
-		}
-	</style>
+<!-- css -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/user.css" rel="stylesheet" type="text/css">
 
+<!-- js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+	
 </head>
 
 <body>
@@ -33,124 +28,172 @@
 	<c:import url="/WEB-INF/views/include/modangSiteHeader.jsp"></c:import>
 	<!-- 헤더 끝 -->
 
-	<div class="container mt-5 text-center">
-
-		<h1>
-			<strong>이것은 모당 ^^</strong>
-		</h1>
-		<br> <br>
-		<div id="user">
-
-			<div id="joinForm">
-
-				<form id="joinSubmitForm" action="${pageContext.request.contextPath}/user/join" method="get"
-					enctype="multipart/form-data">
-
-					<div class="form-group">
-						<div
-							class="shadow-none p-1 mb-2 bg-light rounded input-group w-25">
-							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-user"></i></span> <input id="id" type="text"
-								value="" maxlength="10" class="form-control" name="id"
-								placeholder="ID">
-							<button type="button" class="btn btn-Dark">&nbsp;&nbsp;확인&nbsp;&nbsp;</button>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div
-							class="shadow-none p-1 mb-2 bg-light rounded input-group w-25">
-							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-lock"></i></span> <input id="passwd"
-								type="password" value="" maxlength="16" class="form-control"
-								name="passwd" placeholder="PASSWORD">
-							<button type="button" class="btn btn-Dark">
-								&nbsp;&nbsp;입력&nbsp;&nbsp;</button>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div
-							class="shadow-none p-1 mb-2 bg-light rounded input-group w-25">
-							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-user"></i></span> <input id="nick"
-								type="text" value="" maxlength="7" class="form-control"
-								name="nick" placeholder="NICK">
-							<button type="button" class="btn btn-Dark">&nbsp;&nbsp;확인&nbsp;&nbsp;</button>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div
-							class="shadow-none p-1 mb-2 bg-light rounded input-group w-25">
-							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-lock"></i></span> <input id="cellphone"
-								type="text" value="" maxlength="11" class="form-control"
-								name="cellphone" placeholder="HP">
-							<button type="button" class="btn btn-Dark">
-								&nbsp;&nbsp;인증&nbsp;&nbsp;</button>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div
-							class="shadow-none p-1 mb-2 bg-light rounded input-group w-25">
-							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-lock"></i></span> <input id="average"
-								type="text" value="" maxlength="3" class="form-control"
-								name="average" placeholder="타수[VALUE]">
-							<button type="button" class="btn btn-Dark">
-								&nbsp;&nbsp;입력&nbsp;&nbsp;</button>
-						</div>
-					</div>
-
-					<!-- <div class="form-group">
-                <div class="shadow-none p-1 mb-2 bg-light rounded input-group w-25">
-                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                  <input id="recentlogontime" type="text" value="" maxlength="15" class="form-control" name="recentlogontime" placeholder="sysdate">
-                  <button type="button" class="btn btn-Dark">  &nbsp;&nbsp;입력&nbsp;&nbsp;  </button>
-                </div>
-            </div> -->
-					<!-- 
-			<div class="form-group">
-                <div class="shadow-none p-1 mb-2 bg-light rounded input-group w-25">
-                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                  <input id="profileimage" type="image" class="form-control" name="profileimage" placeholder="upload image" value="">
-                  <button type="button" class="btn btn-Dark">  &nbsp;&nbsp;등록&nbsp;&nbsp;  </button>
-                </div>
-                
-                  <br>
-                  <br>
-                  
-                <div class="form-group">
-                	<div class="button">
-                <label for="chooseFile">
-                    <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onclick="loadFile(this)">
-                </label>
-                
-                 -->
-					<br>
-
-					<div class="button-area">
-						<button type="submit" id="btn-submit" class="btn btn-primary">회원가입
-							할거당</button>
-					</div>
-				</form>
-
+    <div id="main-content">
+    
+		<div class="container text-center">
+		
+			<div id="user">
+		
+				<div id="joinForm">
+				
+					<div id="main">
+		
+						<h3>이것은 모당 ^^</h3>
+		
+						<form id="joinSubmitForm" action="${pageContext.request.contextPath}/user/join" method="post"
+							enctype="multipart/form-data">
+		
+							<div class="form-group">
+								<div
+									class="shadow-none p-1 mb-2 bg-light rounded input-group">
+									
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-user"></i></span> <input id="id" type="text"
+										value="" maxlength="10" class="form-control" name="id"
+										placeholder="ID">
+									<button type="button" class="btn btn-Dark">&nbsp;&nbsp;확인&nbsp;&nbsp;</button>
+								</div>
+							</div>
+		
+							<div class="form-group">
+								<div
+									class="shadow-none p-1 mb-2 bg-light rounded input-group">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-lock"></i></span> <input id="passwd"
+										type="password" value="" maxlength="16" class="form-control"
+										name="passwd" placeholder="PASSWORD">
+									<button type="button" class="btn btn-Dark">
+										&nbsp;&nbsp;확인&nbsp;&nbsp;</button>
+								</div>
+							</div>
+		
+							<div class="form-group">
+								<div
+									class="shadow-none p-1 mb-2 bg-light rounded input-group">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-user"></i></span> <input id="nick"
+										type="text" value="" maxlength="7" class="form-control"
+										name="nick" placeholder="NICK">
+									<button type="button" class="btn btn-Dark">&nbsp;&nbsp;확인&nbsp;&nbsp;</button>
+								</div>
+							</div>
+		
+							<div class="form-group">
+								<div
+									class="shadow-none p-1 mb-2 bg-light rounded input-group">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-lock"></i></span> <input id="cellphone"
+										type="text" value="" maxlength="11" class="form-control"
+										name="cellphone" placeholder="HP">
+									<button type="button" class="btn btn-Dark">
+										&nbsp;&nbsp;인증&nbsp;&nbsp;</button>
+								</div>
+							</div>
+		
+							<div class="form-group">
+								<div
+									class="shadow-none p-1 mb-2 bg-light rounded input-group">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-lock"></i></span> <input id="average"
+										type="text" value="" maxlength="3" class="form-control"
+										name="average" placeholder="타수[VALUE]">
+									<button type="button" class="btn btn-Dark">
+										&nbsp;&nbsp;입력&nbsp;&nbsp;</button>
+								</div>
+							</div>
+		
+							<!-- <div class="form-group">
+		                			<div class="shadow-none p-1 mb-2 bg-light rounded input-group">
+		                  				<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+		                  				<input id="recentlogontime" type="text" value="" maxlength="15" class="form-control" name="recentlogontime" placeholder="sysdate">
+		                  				<button type="button" class="btn btn-Dark">  &nbsp;&nbsp;입력&nbsp;&nbsp;  </button>
+		                			</div>
+		            			</div> -->
+							
+							<div class="form-group">
+								<div class="fileContainer">
+			                		<div class="fileInput">
+				                		<div class="shadow-none p-1 mb-2 bg-light rounded input-group">
+				                  			<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+				                  			<input id="profileimage" type="file" name="file" class="form-control" placeholder="upload image" value="">
+				                		</div>
+			            			</div>
+		        				</div>
+		        
+		        				<div class="image-show" id="image-show"></div>
+		    				</div>
+		  					<div class="button-area">
+								<button type="submit" id="btn-submit" class="btn btn-primary">회원가입 할거당 ^^</button>
+							</div>
+							
+			    		</form>
+			    		<!-- //joinSubmitForm -->
+		    		</div>
+		    		<!-- //main -->
+		    
+		           </div>
+		                 
+		                 <!-- 
+		               <div class="form-group">
+		               	<div class="button">
+		               <label for="chooseFile">
+		                   <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onclick="loadFile(this)">
+		               </label>
+		               
+		                -->
+						
 			</div>
+			<!-- //user -->
 		</div>
-	</div>
-	<br>
-	<hr>
-
-	<br>
-	<br>
-	<br>
-
+		<!-- //container -->
+    
+    
+    </div>
+    <!-- //main-content -->
+	
 	<!-- 푸터 시작 -->
 	<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
 	<!-- 푸터 끝 -->
 </body>
+
+	<script type="text/javascript">
+	var submit = document.getElementById('submitButton');
+	submit.onclick = showImage;     //Submit 버튼 클릭시 이미지 보여주기
+
+	function showImage() {
+	    var newImage = document.getElementById('image-show').lastElementChild;
+	    newImage.style.visibility = "visible";
+	    
+	    document.getElementById('image-upload').style.visibility = 'hidden';
+
+	    document.getElementById('fileName').textContent = null;     //기존 파일 이름 지우기
+	}
+
+
+	function loadFile(input) {
+	    var file = input.files[0];
+
+	    var name = document.getElementById('fileName');
+	    name.textContent = file.name;
+
+	    var newImage = document.createElement("img");
+	    newImage.setAttribute("class", 'img');
+
+	    newImage.src = URL.createObjectURL(file);   
+
+	    newImage.style.width = "50%";
+	    newImage.style.height = "50%";
+	    newImage.style.visibility = "hidden";   //버튼을 누르기 전까지는 이미지 숨기기
+	    newImage.style.objectFit = "contain";
+
+	    var container = document.getElementById('image-show');
+	    container.appendChild(newImage);
+	};
+	
+	
+	</script>
+
+	  
 <!-- 
 	<script type="text/javascript">
 		//예제 

@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+
 
 import com.modang.service.UserService;
 import com.modang.vo.UserVo;
@@ -18,7 +20,8 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-
+	
+	
 	// 회원가입 폼
 	@RequestMapping(value = "/joinForm", method = { RequestMethod.GET, RequestMethod.POST })
 	public String joinForm() {
@@ -29,11 +32,13 @@ public class UserController {
 
 	// 회원가입
 	@RequestMapping(value = "/join", method = { RequestMethod.GET, RequestMethod.POST })
-	public String join(@ModelAttribute UserVo userVo) {
+	public String join(@ModelAttribute UserVo userVo, MultipartFile file) {
 		System.out.println("UserController.join()");
 		System.out.println(userVo);
-		userService.join(userVo);
-
+		System.out.println(file.getOriginalFilename());
+		
+		userService.join(userVo, file);
+		
 		return "user/joinOk";
 	}
 
@@ -56,7 +61,7 @@ public class UserController {
 		if(authUser !=null) {
 			System.out.println("로그인 성공");
 			session.setAttribute("authUser", authUser);
-			return "redirect:/main";
+			return "redirect:/";
 		}
 		else {
 			System.out.println("로그인 실패");
@@ -84,11 +89,11 @@ public class UserController {
 	 
 		session.removeAttribute("authUser"); session.invalidate();
 	 
-		return "redirect:/main";
+		return "redirect:/";
  
 	 }
 	
-	//수정폼 : 유저 넘버로 유저정보 가져오기
+	//회원정보 수정폼 : 유저 넘버로 유저정보 가져오기
 	@RequestMapping(value="/modifyForm", method= {RequestMethod.GET, RequestMethod.POST})
 	public String modifyForm(HttpSession session, Model model) {
 		System.out.println("UserController.modifyForm()");
@@ -107,7 +112,9 @@ public class UserController {
 		return "user/modifyForm";
 	}
 	
-	/*수정
+	
+	
+	/*회원정보 수정
 	@RequestMapping(value="/modify", method= {RequestMethod.GET, RequestMethod.POST})
 	public String modify(@ModelAttribute UserVo userVo, HttpSession session) {
 		System.out.println("UserController.modify()");
