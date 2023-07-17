@@ -102,11 +102,20 @@ public class UserService {
 	}
 	
 	
-	/*id check
-	public void idCheck(String id) {
+	//id check
+	public boolean idCheck(String id) {
 		System.out.println("UserService.idCheck()");
+		System.out.println(id);
+		UserVo userVo=userDao.selectUser(id);
 		
-		userDao.selectUser(id);
+		boolean result;
+		if(userVo==null) {
+			result=true;
+		}else {
+			result=false;
+		}
+		
+		return result;
 	}
-*/
+
 }

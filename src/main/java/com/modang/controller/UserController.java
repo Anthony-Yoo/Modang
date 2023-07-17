@@ -8,10 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-
 import com.modang.service.UserService;
+import com.modang.vo.JsonResult;
 import com.modang.vo.UserVo;
 
 @Controller
@@ -69,19 +71,27 @@ public class UserController {
 		}
 
 	}
-	/*
-	 * //id check
-	 * 
-	 * @RequestMapping(value="idCheck", method= {RequestMethod.GET,
-	 * RequestMethod.POST}) public String idCheck(@RequestParam ("id") String id) {
-	 * System.out.println("UserController.idCheck()");
-	 * 
-	 * userService.idCheck(id); System.out.println(id);
-	 * 
-	 * return ""; }
-	  */
 	
-	
+	  //id check
+	 @ResponseBody 
+	 @RequestMapping(value="/idcheck", method= {RequestMethod.GET, RequestMethod.POST}) 
+	 public JsonResult idCheck(@RequestParam ("id") String id) {
+		 System.out.println("UserController.idcheck()");
+		 System.out.println(id); 
+	  
+		 boolean data=userService.idCheck(id);
+	 
+		 JsonResult jsonResult=new JsonResult();
+		 jsonResult.success(data);
+		 
+		 System.out.println(jsonResult);
+	 
+	 
+	  return jsonResult; 
+	  
+	 }
+	  
+	 
 	//logout 
 	@RequestMapping(value="/logout", method= {RequestMethod.GET,
 	RequestMethod.POST}) public String logout(HttpSession session) {

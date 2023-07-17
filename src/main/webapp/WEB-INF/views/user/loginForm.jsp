@@ -40,7 +40,7 @@
 					
 						<h3>로그인 할꺼냥? ^^</h3>
 					
-						<form id="loginSubmitForm" action="${pageContext.request.contextPath }/user/login" method="get" enctype="multipart/form-data">
+						<form id="loginSubmitForm" action="${pageContext.request.contextPath }/user/login" method="post" enctype="multipart/form-data">
             	
 			            	<div class="form-group">
 								<div class="input-group shadow-none p-1 mb-2 bg-light rounded">
