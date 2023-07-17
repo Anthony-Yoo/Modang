@@ -7,7 +7,7 @@
 	<title>modang 관리자페이지</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/image/favicon.ico" />
+	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/managerdefault.css" />
 </head>
 <body>
@@ -20,7 +20,7 @@
 					<div class="col-12">
 
 						<!-- Logo -->
-						<h1><a href="${pageContext.request.contextPath}/manager/index"><img src="${pageContext.request.contextPath}/assets/image/logo.png" /></a></h1>
+						<h1><a href="${pageContext.request.contextPath}/manager/index"><img src="${pageContext.request.contextPath}/assets/images/logo.png" /></a></h1>
 
 						<!-- User menu -->
 						<ul>

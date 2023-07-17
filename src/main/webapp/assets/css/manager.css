@@ -11,7 +11,7 @@ h2,h3{color: #2E419A; text-align: center; margin: 20px 0 20px 0;}
     color: #fff; line-height: 40px; border-radius: 10px; font-size: 14px;}
 .button{display: block; width: 480px; height: 40px; text-align: center;
         background-color: rgb(65, 113, 31); color: #fff; border-radius:10px; line-height: 40px;
-        margin: 10px auto 30px;}
+        margin: 10px auto 30px; cursor: pointer;}
 input{ width: 300px; height: 40px;padding : 8px 20px 9px 20px; background: #F5F5F5;
     border: 1px solid #B8B8B8; box-sizing: border-box; border-radius: 8px;  color: #111;}
 input::placeholder{color: #B8B8B8;}
@@ -19,12 +19,12 @@ input::placeholder{color: #B8B8B8;}
 /*메인컨텐츠 - 모당메인*/
 .main{}
 .main{width: 1200px; height: 600px; position: relative; border-bottom: 2px solid #2E419A;}
-.main::before{content: "";background: url(../image/dang0.jpg) no-repeat center center;
+.main::before{content: "";background: url(../images/dang0.jpg) no-repeat center center;
     background-size: 760px 420px; opacity: 0.5; position: absolute;top: 0px;left: 0px; right: 0px;bottom: 0px;}
 .main img{display: block; width: 500px; height: 220px; position: relative; top: 33%; left: 5%;}
 /*모당소개*/
 .intro{height: 500px; position: relative; width: 1200px;}
-.intro::before{content: "";background: url(../image/dang1.jpg) no-repeat center center;
+.intro::before{content: "";background: url(../images/dang1.jpg) no-repeat center center;
     background-size: 700px 350px; opacity: 0.1; position: absolute;top: 0px;left: 10px; right: 0px;bottom: 0px; z-index: -1;}
 .intro>h2{text-align: left; margin :50px 0;}
 .intro .modang_tip {z-index: 1;}
@@ -62,9 +62,8 @@ div.join-wrap div.con input[type="image"]{display: inline-block; margin: 0 auto;
 .join-wrap .con div.inp-txt>input{width: 180px;}
 .join-wrap .con span.inp-txt>input.input{width: 190px;}
 .join-wrap .con ul{display: block;}
-.join-wrap .con li.image{display: inline-block; width: 210px; height: 180px; margin-right: 20px; border: 2px solid #2E419A;}
-.join-wrap .con li:nth-child(1).image{margin-left: 10px;}
-.join-wrap .con li:nth-child(5).image{margin-right: 0;}
+.join-wrap .con li.image{display: inline-block; width: 210px; height: 180px; margin-right:20px; border: 2px solid #2E419A;}
+.join-wrap .con li:nth-child(1).image{margin-left: 250px;}
 .join-wrap .con li.image img{display: block; width: 100%; height: 100%;}
 
 /*매니저-메인컨텐츠-로그인*/

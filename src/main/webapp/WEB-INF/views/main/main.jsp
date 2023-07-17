@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>modang</title>
-	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/image/favicon.ico" />
+	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
 	<link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
     <link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
 </head>
@@ -16,7 +16,7 @@
     <div  id="main-content">
         <div class="container">
             <div class="main">
-                <img src="${pageContext.request.contextPath}/assets/image/modang_logo.png" alt="">
+                <img src="${pageContext.request.contextPath}/assets/images/modang_logo.png" alt="">
             </div>
             <div class="intro">
                 <h2>&nbsp&nbsp모당이란?</h2>

@@ -3,33 +3,42 @@
 
 <mapper namespace="manager">
 	
-	<!-- 쿼리문 작성 -->
-	<select id="selectPrice" parameterType="int" resultType="com.modang.vo.TariffVo">
+	<!-- 회원가입 -->
+	<insert id="insertManager" parameterType="com.modang.vo.ManagerVo">
 		<![CDATA[
-			select biliardno,
-			       btablefee,
-			       mtablefee,
-			       ptablefee,
-			       bminfee,
-			       mminfee,
-			       pminfee
-			from tariff
-			where biliardno =#{no}
-		]]>	
-		
+			insert into biliards
+				values(
+				    seq_biliards_no.nextval,
+				    #{id},
+				    #{passwd},
+				    #{companyNo},
+				    #{repName},
+				    #{biliardName},
+				    #{biliardAddress1},
+				    null,
+				    null,
+				    #{biliardPhone},
+				    #{parking},
+				    #{bdComment},
+				    #{time1},
+				    #{time2},
+				    #{biliardAddress2},
+				    #{postcode}
+				)
+		]]>
+	</insert>
+	
+	<!-- 로그인 -->
+	<select id="selectManager" parameterType="com.modang.vo.ManagerVo" resultType="com.modang.vo.ManagerVo">
+		<![CDATA[
+			select biliardNo,
+					id,
+					passwd,
+					repName,
+					biliardName
+					from biliards
+					where id=#{id} and passwd=#{passwd}
+		]]>
 	</select>
 	
-	<!-- 요금 테이블 수정 -->
-	<update id="updatePrice" parameterType="com.modang.vo.TariffVo">
-	<![CDATA[
-			update tariff set btablefee = #{btablefee},
-			                  mtablefee = #{mtablefee},
-			                  ptablefee = #{ptablefee},
-			                  bminfee = #{bminfee},
-			                  mminfee = #{mminfee},
-			                  pminfee = #{pminfee}
-			where biliardno=#{biliardno}
-	  ]]>
-	</update>
-
 </mapper>

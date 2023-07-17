@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.modang.dao.BiliardDao;
 import com.modang.dao.ManagerDao;
 
 import com.modang.vo.ManagerVo;
@@ -14,28 +15,16 @@ import com.modang.vo.CueTableVo;
 import com.modang.vo.TariffVo;
 
 @Service
-public class ManagerService {
+public class BiliardService {
 	
 	@Autowired
-	private ManagerDao managerDao;
-	
-	/*회원가입*/
-	public void join(ManagerVo managerVO) {
-		System.out.println("managerService.join");
-		managerDao.insertManager(managerVO);
-	}
-	/*로그인*/
-	public void login(ManagerVo managerVO) {
-		System.out.println("managerService.login");
-		managerDao.selectManager(managerVO);
-	}
-	
+	private BiliardDao biliardDao;
 	
 	/*테이블현황-테이블 전체리스트 가져오기*/
 	public List<CueTableVo> tableList(int no) {
-		System.out.println("ManagerService.tableList()");
+		System.out.println("BiliardService.tableList()");
 		
-		List<CueTableVo> cueTableList = managerDao.selectList(no);
+		List<CueTableVo> cueTableList = biliardDao.selectList(no);
 		
 		System.out.println(cueTableList);
 		
@@ -44,17 +33,17 @@ public class ManagerService {
 	
 	/* 요금테이블-요금정보 가져오기 */
 	public TariffVo getPrice(int no) {
-		System.out.println("ManagerService.getPrice()");
+		System.out.println("BiliardService.getPrice()");
 		
-		TariffVo tariffVo = managerDao.selectPrice(no);
+		TariffVo tariffVo = biliardDao.selectPrice(no);
 		return tariffVo;
 	}
 	
 	/* 요금테이블-요금수정 */
 	public int updatePrice(TariffVo tariffVo) {
-		System.out.println("ManagerService.updatePrice()");
+		System.out.println("BiliardService.updatePrice()");
 		
-		int count = managerDao.updatePrice(tariffVo);
+		int count = biliardDao.updatePrice(tariffVo);
 		return count;
 	}
 
