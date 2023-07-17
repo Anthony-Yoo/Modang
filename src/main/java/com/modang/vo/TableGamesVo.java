@@ -28,21 +28,6 @@ public class TableGamesVo {
 	public TableGamesVo() {
 		
 	}
-	
-	
-	
-	/* 테이블 현황-테이블리스트 */ 
-	public TableGamesVo(int tableNo, int biliardNo, int tableName, int tableType, int tableStatus
-			) {
-		this.tableNo = tableNo;
-		this.biliardNo = biliardNo;
-		this.tableName = tableName;
-		this.tableType = tableType;
-		this.tableStatus = tableStatus;
-	}
-
-
-
 
 	public TableGamesVo(int tableNo, int biliardNo, int tableName, int tableType, int tableStatus, int gameNo,
 			int gameType, int memberNum, String gameDate, int gameTime, String startTime, String endTime, int payStatus,

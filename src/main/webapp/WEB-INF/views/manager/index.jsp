@@ -9,6 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/managerdefault.css" />
+<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
 </head>
 <body>
 	<div id="page-wrapper">
@@ -59,7 +60,7 @@
 							<div id="tablelist">
 								
 								<c:forEach items="${cueTableList}" var="cueTableVo">
-									<div class="tableArea" onclick="tableinfo()">
+									<div class="tableArea" data-biliardno="${cueTableVo.biliardNo}" data-tableno="${cueTableVo.tableNo}" data-tablename="${cueTableVo.tableName}" data-tabletype="${cueTableVo.tableType}" >
 										<large class="font-weight-normal text-blue float-left"><strong>No. ${cueTableVo.tableName}</strong></large>
 											<div class="small float-right">
 												<c:if test="${cueTableVo.tableType==0}" >
@@ -73,7 +74,7 @@
 												</c:if>
 											</div>
 											<div class="tableTime pt-8 pl-2">
-											    43:00
+											    00:43
 											</div>
 											<br><br>
 											<div class="tablePay">
@@ -183,9 +184,49 @@
 </body>
 
 <script type="text/javascript">
-function tableinfo()  {
-	  console.log('테이블 클릭');
-	}
+	
+$(".tableArea").on("click",function(){
+	console.log('테이블 클릭');
+	var biliardno = $(this).data("biliardno");
+	var tableno = $(this).data("tableno");
+	var tablename = $(this).data("tablename");
+	var tabletype = $(this).data("tabletype");
+	console.log("당구장번호: "+biliardno);
+	console.log("테이블번호: "+tableno);
+	console.log("테이블이름: "+tablename);
+	console.log("테이블종류: "+tabletype);
+	
+	var cuetableVo={
+		biliardNo: biliardno,
+		tableNo: tableno,
+		tableName: tablename,
+		tableType: tabletype
+	};
+	
+	$.ajax({
+		
+		url : "${pageContext.request.contextPath }/manager/info",		
+		type : "post",
+		data : cuetableVo,
+
+		dataType : "json",
+		success : function(jsonResult){
+			console.log(jsonResult);
+			/*성공시 처리해야될 코드 작성*/
+/* 			if(jsonResult.data > 0){
+				//화면에서 지우기
+			    $("#t-"+guestbookVo.no).remove();
+				$('#myModal').modal('hide');
+			}else{
+				alert("비밀번호가 틀렸습니다.");
+			} */
+		},
+		error : function(XHR, status, error) { 
+			console.error(status + " : " + error);
+		}
+    }); //ajax end
+	
+});
 
 </script>
 

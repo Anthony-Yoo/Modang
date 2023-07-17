@@ -9,7 +9,7 @@ import com.modang.dao.BiliardDao;
 import com.modang.dao.ManagerDao;
 
 import com.modang.vo.ManagerVo;
-
+import com.modang.vo.TableGamesVo;
 import com.modang.vo.CueTableVo;
 
 import com.modang.vo.TariffVo;
@@ -19,6 +19,14 @@ public class BiliardService {
 	
 	@Autowired
 	private BiliardDao biliardDao;
+	
+	/* 테이블 현황 - 상세정보 가져오기 */
+	public TableGamesVo tableInfo(CueTableVo cuetableVo) {
+		System.out.println("BiliardService.tableInfo()");
+		
+		TableGamesVo gamesVo =biliardDao.selectTable(cuetableVo);
+		return gamesVo;
+	}
 	
 	/*테이블현황-테이블 전체리스트 가져오기*/
 	public List<CueTableVo> tableList(int no) {
