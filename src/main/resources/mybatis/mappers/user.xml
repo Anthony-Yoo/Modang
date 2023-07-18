@@ -34,15 +34,15 @@ values( SEQ_USERS_NO.nextval,
 </select>
 
 <!-- 회원수정폼 -->
-<select id="selectUserByNo" parameterType="int" resultType="com.modang.vo.UserVo">
+<select id="selectUserByNo" parameterType="String" resultType="com.modang.vo.UserVo">
 	<![CDATA[
-		select id,
-			   passwd,  
+		select id,  
 			   nick,
 			   cellphone, 
 			   average
 		from users
-		where userno=#{userno} 	
+		where id=#{id}
+				
 	]]>
 
 </select>
@@ -50,13 +50,10 @@ values( SEQ_USERS_NO.nextval,
 <!-- 회원수정 -->
 <update id="update" parameterType="com.modang.vo.UserVo">
 	<![CDATA[
-		select id,
-			   passwd,  
-			   nick,
-			   cellphone, 
-			   average
-		from users
-		where userno=#{userno} 	
+		update users
+			set passwd = #{passwd}
+                
+			where id = #{id}    
 	]]>
 
 </update>

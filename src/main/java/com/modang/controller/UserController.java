@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.modang.service.UserService;
 import com.modang.vo.JsonResult;
 import com.modang.vo.UserVo;
@@ -109,32 +110,36 @@ public class UserController {
 		System.out.println("UserController.modifyForm()");
 		
 		//새로 저장된 UserVo의 session코드를 받아 변수 no에 저장
-		int userno=((UserVo)session.getAttribute("authUser")).getUserno();
-		System.out.println(userno);
+		String id=((UserVo)session.getAttribute("authUser")).getId();
+		System.out.println(id);
 		
 		//userService를 통해 로그인한 유저의 모든정보 가져오기
-		UserVo authUser=userService.modifyForm(userno);
-		System.out.println(authUser);
+		UserVo userVo=userService.modifyForm(id);
+		System.out.println(userVo);
 		
 		//Dispacher servlet에 유저정보 전달
-		model.addAttribute("authUser", authUser);
-		System.out.println(authUser);
+		model.addAttribute("userVo", userVo);
+		System.out.println(userVo);
 		return "user/modifyForm";
 	}
 	
-	/*회원정보 수정*/
+	/*회원정보 수정
 	@RequestMapping(value="/modify", method= {RequestMethod.GET, RequestMethod.POST})
-	public String modify(@ModelAttribute UserVo userVo, HttpSession session) {
+	public String modify(@ModelAttribute String id, HttpSession session) {
 		System.out.println("UserController.modify()");
-		System.out.println(userVo);
+		System.out.println(id);
 		
-		userService.modifry(userVo);
+	 세션에서 로그인한 사용자 정보 가져오기
+		String id=(String)session.getAttribute("id");
 		
-		//UserVo authUser=(UserVo)session.getAttribute("authUser");
+		id.
 		
-		//int no=authUser.getUserno();
+		int userno=userService.modify(id);
+		
+		userVo.setPasswd(userVo.getPasswd());
 	
-		return "";
+		return "redirect:/";
+		
 	}
-	
+	*/
 }

@@ -92,20 +92,22 @@ public class UserService {
 		return authUser;
 	}
 	/*수정폼*/
-	public UserVo modifyForm(int userno) {
+	public UserVo modifyForm(String id) {
 		System.out.println("UserService.modifyForm()");
-		System.out.println(userno);
+		System.out.println(id);
 		
-		UserVo authUser=userDao.selectUser(userno);
-		System.out.println(authUser);
-		return authUser;
+		UserVo userno=userDao.updateSelect(id);
+		System.out.println(userno);
+		return userno;
 	}
 	/*수정*/
-	public void modifry(UserVo userVo) {
+	public int modify(String id) {
 		System.out.println("UserService.modifry()");
-		System.out.println(userVo);
+		System.out.println(id);
 		
-		userDao.updateUser(userVo);
+		int userno=userDao.updateUser(id);
+		
+		return userno;
 	}
 	
 	
