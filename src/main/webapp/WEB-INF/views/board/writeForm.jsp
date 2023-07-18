@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="contextPath" value="<%=request.getContextPath()%>"></c:set>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -8,6 +9,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>글 쓰기</title>
+<!-- 에디터 플러그인 -->
+<script type="text/javascript"
+	src='<c:out value="${contextPath}"/>/res/smarteditor/js/HuskyEZCreator.js'></script>
 <!-- 사이트 전체 css -->
 <link href="${pageContext.request.contextPath}/assets/css/modang.css"
 	rel="stylesheet" type="text/css">
@@ -16,9 +20,15 @@
 	rel="stylesheet" type="text/css">
 
 <style>
+body {
+	font-family: "Trebuchet MS", "Helvetica", "Arial", "Verdana",
+		"sans-serif";
+	font-size: 80%;
+}
 </style>
 <script>
-  document.getElementById('matchDate').value= new Date().toISOString().slice(0, 16);
+	document.getElementById('matchDate').value = new Date().toISOString()
+			.slice(0, 16);
 </script>
 </head>
 
@@ -27,13 +37,15 @@
 	<c:import url="/WEB-INF/views/include/modangSiteHeader.jsp"></c:import>
 	<!-- 메인 헤더 끝-->
 	<!-- 게시판 헤더-->
-    <div id="content">
-        <div id="content-header">
-            <h2><a>게시판 글쓰기</a></h2>
-        </div>
-    </div>
-    <!-- 게시판 헤더 끝-->
-	<!-- 게시판 바디-->
+	<div id="content">
+		<div id="content-header">
+			<h2>
+				<a>게시판 글쓰기</a>
+			</h2>
+		</div>
+	</div>
+	<!-- 게시판 글쓰기 헤더 끝-->
+	<!-- 글쓰기 바디-->
 	<div id="board">
 		<div id="writeForm">
 			<form action="write" method="post">
@@ -90,6 +102,7 @@
 				</div>
 
 				<!-- content -->
+				<input type="button" onclick="submitContents();" value="전송" />
 				<div class="form-group">
 					<textarea id="txt-content" name="content" contenteditable="true">
   1. 모임 장소: 
@@ -123,5 +136,27 @@
 	<!-- /board -->
 
 </body>
+<script type="text/javascript">
+	var oEditors = [];
 
+	nhn.husky.EZCreator.createInIFrame({
+
+		oAppRef : oEditors,
+
+		elPlaceHolder : document.getElementById('txt-content'), // html editor가 들어갈 textarea id
+
+		sSkinURI : "${contextPath}/res/smarteditor/SmartEditor2Skin.html", // html editor가 skin url
+
+		fCreator : "createSEditor2"
+
+	});
+
+	function submitContents() {
+
+		oEditors.getById["txt-content"].exec("UPDATE_CONTENTS_FIELD", []); // 에디터의 내용이 textarea에 적용됨
+
+		alert(document.getElementById("txt-content").value);
+
+	}
+</script>
 </html>

@@ -61,7 +61,7 @@ public class BoardController {
 	@RequestMapping(value="/test")
 	public String test() {
 		
-		return "/board/mapApi";	
+		return "/board/test";	
 	}
 	
 }
