@@ -5,10 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>회원정보 수정</title>
 
 <!-- icon -->
-<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/image/favicon.ico" />
+<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
 
 <!-- css -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">    
@@ -17,8 +18,6 @@
 
 <!-- js -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-
 
 </head>
 
@@ -39,41 +38,50 @@
 						
 							<h3>수정할꺼당 ^^</h3>
 					
-                			<form id="modifyForm" action="${pageContext.request.contextPath }/user/modify" method="get" enctype="multipart/form-data">
+                   			<form id="modifysubmitForm" action="${pageContext.request.contextPath }/user/modify" method="get" enctype="multipart/form-data">
                     
                    			<!-- 아이디 -->
                    			<div class="form-group">
                      			<div class="shadow-none p-1 mb-2 bg-light rounded input-group">
-                       				<span class="input-group-addon" class="text-large bold">${requestScope.userVo.id}<i class="glyphicon glyphicon-user"></i></span>
-                       				<input id="id" type="text" maxlength="10" class="form-control" name="id" placeholder="ID">
-                       				<button type="button" class="btn btn-Dark">  &nbsp;&nbsp;수정&nbsp;&nbsp;  </button>
+                     				<span class="input-group-addon" class="text-large bold"></span>
+                       				<input id="id" type="text" maxlength="16" class="form-control" name="id" value="${requestScope.authUser.id}" placeholder="ID">
+                       				
                      			</div>
                    			</div>
-                   
+                   			
+                   			<!-- 비밀번호 -->
+							<div class="form-group">
+                     			<div class="shadow-none p-1 mb-2 bg-light rounded input-group">
+                       				<span class="input-group-addon" class="text-large bold"></span>
+                       				<input id="passwd" type="password" maxlength="16" class="form-control" name="passwd" value="${requestScope.authUser.passwd}" placeholder="PW">
+                       			
+                     			</div>
+                   			</div>
+
                    			<!-- 휴대폰 -->
                    			<div class="form-group">
                      			<div class="shadow-none p-1 mb-2 bg-light rounded input-group">
-                       				<span class="input-group-addon" class="text-large bold">${requestScope.userVo.cellphone}<i class="glyphicon glyphicon-lock"></i></span>
-                       				<input id="cellphone" type="text" maxlength="11" class="form-control" name="cellphone" placeholder="HP">
-                       				<button type="button" class="btn btn-Dark">  &nbsp;&nbsp;수정&nbsp;&nbsp;  </button>
+                       				<span class="input-group-addon" class="text-large bold"></span>
+                       				<input id="cellphone" type="text" maxlength="11" class="form-control" name="cellphone" value="${requestScope.authUser.cellphone}" placeholder="PH">
+                       				
                      			</div>
                    			</div>
                    
                    			<!-- 별명 -->
                    			<div class="form-group">
                      			<div class="shadow-none p-1 mb-2 bg-light rounded input-group">
-                       				<span class="input-group-addon" class="text-large bold">${requestScope.userVo.nick}<i class="glyphicon glyphicon-user"></i></span>
-                       				<input id="nick" type="text" maxlength="7" class="form-control" name="nick" placeholder="NICK">
-                       				<button type="button" class="btn btn-Dark">  &nbsp;&nbsp;수정&nbsp;&nbsp;  </button>
+                       				<span class="input-group-addon" class="text-large bold"></span>
+                       				<input id="nick" type="text" maxlength="7" class="form-control" name="nick" value="${requestScope.authUser.nick}" placeholder="NICK NAME">
+                       				
                      			</div>
                    			</div>
                    
                    			<!-- 평균 -->
                    			<div class="form-group">
                      			<div class="shadow-none p-1 mb-2 bg-light rounded input-group">
-                       				<span class="input-group-addon" class="text-large bold">${requestScope.userVo.average}<i class="glyphicon glyphicon-lock"></i></span>
-                       				<input id="average" type="text" maxlength="3" class="form-control" name="average" placeholder="AVER">
-                       				<button type="button" class="btn btn-Dark">  &nbsp;&nbsp;수정&nbsp;&nbsp;  </button>
+                       				<span class="input-group-addon" class="text-large bold"></span>
+                       				<input id="average" type="text" maxlength="3" class="form-control" name="average" value="${requestScope.authUser.average}" placeholder="AVERAGE">
+                       				
                      			</div>
                    			</div>
                     

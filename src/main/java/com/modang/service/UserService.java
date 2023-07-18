@@ -96,17 +96,33 @@ public class UserService {
 		System.out.println("UserService.modifyForm()");
 		System.out.println(userno);
 		
-		UserVo userVo=userDao.selectUser(userno);
+		UserVo authUser=userDao.selectUser(userno);
+		System.out.println(authUser);
+		return authUser;
+	}
+	/*수정*/
+	public void modifry(UserVo userVo) {
+		System.out.println("UserService.modifry()");
+		System.out.println(userVo);
 		
-		return userVo;
+		userDao.updateUser(userVo);
 	}
 	
 	
-	/*id check
-	public void idCheck(String id) {
+	//id check
+	public boolean idCheck(String id) {
 		System.out.println("UserService.idCheck()");
+		System.out.println(id);
+		UserVo userVo=userDao.selectUser(id);
 		
-		userDao.selectUser(id);
+		boolean result;
+		if(userVo==null) {
+			result=true;
+		}else {
+			result=false;
+		}
+		
+		return result;
 	}
-*/
+
 }

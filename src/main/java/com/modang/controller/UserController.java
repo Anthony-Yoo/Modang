@@ -8,10 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-
 import com.modang.service.UserService;
+import com.modang.vo.JsonResult;
 import com.modang.vo.UserVo;
 
 @Controller
@@ -69,19 +71,27 @@ public class UserController {
 		}
 
 	}
-	/*
-	 * //id check
-	 * 
-	 * @RequestMapping(value="idCheck", method= {RequestMethod.GET,
-	 * RequestMethod.POST}) public String idCheck(@RequestParam ("id") String id) {
-	 * System.out.println("UserController.idCheck()");
-	 * 
-	 * userService.idCheck(id); System.out.println(id);
-	 * 
-	 * return ""; }
-	  */
 	
-	
+	  //id check
+	 @ResponseBody 
+	 @RequestMapping(value="/idcheck", method= {RequestMethod.GET, RequestMethod.POST}) 
+	 public JsonResult idCheck(@RequestParam ("id") String id) {
+		 System.out.println("UserController.idcheck()");
+		 System.out.println(id); 
+	  
+		 boolean data=userService.idCheck(id);
+	 
+		 JsonResult jsonResult=new JsonResult();
+		 jsonResult.success(data);
+		 
+		 System.out.println(jsonResult);
+	 
+	 
+	  return jsonResult; 
+	  
+	 }
+	  
+	 
 	//logout 
 	@RequestMapping(value="/logout", method= {RequestMethod.GET,
 	RequestMethod.POST}) public String logout(HttpSession session) {
@@ -103,28 +113,28 @@ public class UserController {
 		System.out.println(userno);
 		
 		//userService를 통해 로그인한 유저의 모든정보 가져오기
-		UserVo userVo=userService.modifyForm(userno);
-		System.out.println(userVo);
+		UserVo authUser=userService.modifyForm(userno);
+		System.out.println(authUser);
 		
 		//Dispacher servlet에 유저정보 전달
-		model.addAttribute("userVo", userVo);
-		
+		model.addAttribute("authUser", authUser);
+		System.out.println(authUser);
 		return "user/modifyForm";
 	}
 	
-	
-	
-	/*회원정보 수정
+	/*회원정보 수정*/
 	@RequestMapping(value="/modify", method= {RequestMethod.GET, RequestMethod.POST})
 	public String modify(@ModelAttribute UserVo userVo, HttpSession session) {
 		System.out.println("UserController.modify()");
 		System.out.println(userVo);
 		
-		UserVo authUser=(UserVo)session.getAttribute("authUser");
+		userService.modifry(userVo);
 		
-		int no=authUser.getUserno();
+		//UserVo authUser=(UserVo)session.getAttribute("authUser");
 		
+		//int no=authUser.getUserno();
+	
 		return "";
 	}
-	*/
+	
 }

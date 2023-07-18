@@ -5,10 +5,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>회원가입 완료!</title>
 
 <!-- icon -->
-<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/image/favicon.ico" />
+<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
 
 <!-- css -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -37,6 +38,8 @@
 				<div id="joinOK">
 		
 					<div id="main">
+						<br>
+						<p>
 
         					<div class="jumbotron">
             					<br>

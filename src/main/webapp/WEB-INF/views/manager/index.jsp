@@ -91,21 +91,23 @@
 					<div class="col-4">
 						<section>
 							<header>
-								<h2>No.8</h2>
+								<h2 id="info-01">테이블</h2>
 							</header>
 
 							<form action="${pageContext.request.contextPath}/manager/tableInfo" method="get">
 								<div class="form-group row mb-1">
 									<label class="col-form-label col-4">테이블 종류</label>
-									<div class="col">
+									<div id="" class="col">
 										<label class="custom-control custom-radio d-inline-block">
-											<input type="radio" name="tabletype" class="custom-control-input" />
+											<input type="radio" name="tabletype0" class="custom-control-input" />
 											<span class="custom-control-label">대대</span>
-										</label> <label class="custom-control custom-radio d-inline-block">
-											<input type="radio" name="tabletype" class="custom-control-input" /> 
+										</label> 
+										<label class="custom-control custom-radio d-inline-block">
+											<input type="radio" name="tabletype1" class="custom-control-input" /> 
 											<span class="custom-control-label">중대</span>
-										</label> <label class="custom-control custom-radio d-inline-block">
-											<input type="radio" name="tabletype" class="custom-control-input" /> 
+										</label> 
+										<label class="custom-control custom-radio d-inline-block">
+											<input type="radio" name="tabletype2" class="custom-control-input" /> 
 											<span class="custom-control-label">포켓</span>
 										</label>
 										     <a href="${pageContext.request.contextPath}/manager/settings"><img src="${pageContext.request.contextPath}/assets/images/settings.png" width="15px"/></a>
@@ -114,14 +116,26 @@
 								<div class="form-group row mb-1">
 									<label class="col-form-label col-4">게임 종류</label>
 									<div class="col">
-										<label class="custom-control custom-radio d-inline-block">
-											<input type="radio" name="gametype" class="custom-control-input" /> 
-											<span class="custom-control-label">8볼</span>
-										</label> 
-										<label class="custom-control custom-radio d-inline-block">
-											<input type="radio" name="gametype" class="custom-control-input" /> 
-											<span class="custom-control-label">10볼</span>
-										</label>
+										<div class="gametype-1">
+											<label class="custom-control custom-radio d-inline-block">
+												<input type="radio" name="gametype0" class="custom-control-input" /> 
+												<span id="gametype" class="custom-control-label">3구</span>
+											</label> 
+											<label class="custom-control custom-radio d-inline-block">
+												<input type="radio" name="gametype1" class="custom-control-input" /> 
+												<span id="gametype" class="custom-control-label">4구</span>
+											</label>
+										</div>
+										<div class="gametype-2" style="display: none">
+											<label class="custom-control custom-radio d-inline-block">
+												<input type="radio" name="gametype2" class="custom-control-input" /> 
+												<span id="gametype" class="custom-control-label">8볼</span>
+											</label> 
+											<label class="custom-control custom-radio d-inline-block">
+												<input type="radio" name="gametype3" class="custom-control-input" /> 
+												<span id="gametype" class="custom-control-label">10볼</span>
+											</label>
+										</div>
 									</div>
 								</div>
 								<div class="form-group row mb-1">
@@ -202,24 +216,35 @@ $(".tableArea").on("click",function(){
 		tableName: tablename,
 		tableType: tabletype
 	};
-	
 	$.ajax({
-		
 		url : "${pageContext.request.contextPath }/manager/info",		
-		type : "post",
+		type : "get",
 		data : cuetableVo,
 
 		dataType : "json",
 		success : function(jsonResult){
 			console.log(jsonResult);
 			/*성공시 처리해야될 코드 작성*/
-/* 			if(jsonResult.data > 0){
-				//화면에서 지우기
-			    $("#t-"+guestbookVo.no).remove();
-				$('#myModal').modal('hide');
+ 			if(jsonResult.data !=null){
+ 			
+	 			$("#info-01").empty(); 									// 당구대 번호 초기화
+	 			$(".col input[type='radio']").prop("checked", false);	//라디오버튼 당구장종류 초기화
+					
+				   console.log("성공");
+				$("#info-01").append("No."+jsonResult.data.tableName);
+				$('[name=tabletype'+jsonResult.data.tableType+']').prop("checked",true);
+				if(jsonResult.data.tableType < 2 ){
+					$( ".gametype-2" ).hide();
+					$( ".gametype-1" ).show();
+				}else{
+					$( ".gametype-1" ).hide();
+					$( ".gametype-2" ).show();
+				}
+				$('[name=gametype'+jsonResult.data.gameType+']').prop("checked",true);
+				
 			}else{
-				alert("비밀번호가 틀렸습니다.");
-			} */
+				
+			} 
 		},
 		error : function(XHR, status, error) { 
 			console.error(status + " : " + error);
