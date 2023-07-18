@@ -31,14 +31,22 @@ public class UserDao {
 	
 		return authUser;
 	}
-	//회원정보 수정
+	//회원정보 수정폼 유저
 	public UserVo selectUser(int userno) {
 		System.out.println("UserDao.selectUser()");
 		System.out.println(userno);
 		
-		UserVo userVo=session.selectOne("user.selectUserByNo", userno);
+		UserVo authUser=session.selectOne("user.selectUserByNo", userno);
+		System.out.println(authUser);
+		return authUser;
+	}
+	//회원정보 수정
+	public void updateUser(UserVo userVo) {
+		System.out.println("UserDao.selectUser()");
+		System.out.println(userVo);
 		
-		return userVo;
+		session.update("user.update", userVo);
+		
 	}
 	
 	

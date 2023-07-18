@@ -6,11 +6,11 @@
 <head>
     
 <meta charset="UTF-8">
-        
+<meta name="viewport" content="width=device-width, initial-scale=1">      
 <title>로그인</title>
 
 <!-- icon -->
-<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/image/favicon.ico" />
+<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
 
 <!-- css -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -46,7 +46,7 @@
 								<div class="input-group shadow-none p-1 mb-2 bg-light rounded">
 									<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 									<input id="id" type="text" maxlength="10" class="form-control" name="id" placeholder="ID">
-									<button type="button" class="btn btn-Dark">&nbsp;&nbsp;찾기&nbsp;&nbsp;</button>
+									<!-- <button type="button" class="btn btn-Dark">&nbsp;&nbsp;찾기&nbsp;&nbsp;</button> -->
 								</div>
 			                </div>
 	               
@@ -54,7 +54,7 @@
 								<div class="input-group shadow-none p-1 mb-2 bg-light rounded">
 									<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 									<input id="passwd" type="password" maxlength="16" class="form-control" name="passwd" placeholder="PASSWORD">
-									<button type="button" class="btn btn-Dark">&nbsp;&nbsp;찾기&nbsp;&nbsp;</button>
+									<!-- <button type="button" class="btn btn-Dark">&nbsp;&nbsp;찾기&nbsp;&nbsp;</button> -->
 								</div>
 							</div>
 	             

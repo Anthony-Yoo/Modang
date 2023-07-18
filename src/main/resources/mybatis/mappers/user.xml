@@ -36,15 +36,30 @@ values( SEQ_USERS_NO.nextval,
 <!-- 회원수정폼 -->
 <select id="selectUserByNo" parameterType="int" resultType="com.modang.vo.UserVo">
 	<![CDATA[
-		select id, 
+		select id,
+			   passwd,  
+			   nick,
 			   cellphone, 
-			   nick, 
 			   average
 		from users
 		where userno=#{userno} 	
 	]]>
 
 </select>
+
+<!-- 회원수정 -->
+<update id="update" parameterType="com.modang.vo.UserVo">
+	<![CDATA[
+		select id,
+			   passwd,  
+			   nick,
+			   cellphone, 
+			   average
+		from users
+		where userno=#{userno} 	
+	]]>
+
+</update>
 
 <!-- 회원정보 id확인 -->
 <select id="selectUserById" parameterType="String" resultType="com.modang.vo.UserVo">

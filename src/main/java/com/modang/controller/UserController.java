@@ -113,28 +113,28 @@ public class UserController {
 		System.out.println(userno);
 		
 		//userService를 통해 로그인한 유저의 모든정보 가져오기
-		UserVo userVo=userService.modifyForm(userno);
-		System.out.println(userVo);
+		UserVo authUser=userService.modifyForm(userno);
+		System.out.println(authUser);
 		
 		//Dispacher servlet에 유저정보 전달
-		model.addAttribute("userVo", userVo);
-		
+		model.addAttribute("authUser", authUser);
+		System.out.println(authUser);
 		return "user/modifyForm";
 	}
 	
-	
-	
-	/*회원정보 수정
+	/*회원정보 수정*/
 	@RequestMapping(value="/modify", method= {RequestMethod.GET, RequestMethod.POST})
 	public String modify(@ModelAttribute UserVo userVo, HttpSession session) {
 		System.out.println("UserController.modify()");
 		System.out.println(userVo);
 		
-		UserVo authUser=(UserVo)session.getAttribute("authUser");
+		userService.modifry(userVo);
 		
-		int no=authUser.getUserno();
+		//UserVo authUser=(UserVo)session.getAttribute("authUser");
 		
+		//int no=authUser.getUserno();
+	
 		return "";
 	}
-	*/
+	
 }
