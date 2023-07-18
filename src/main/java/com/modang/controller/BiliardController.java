@@ -9,14 +9,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.modang.service.BiliardService;
 import com.modang.service.ManagerService;
 
 import com.modang.vo.ManagerVo;
-
+import com.modang.vo.TableGamesVo;
 import com.modang.vo.CueTableVo;
-
+import com.modang.vo.JsonResult;
 import com.modang.vo.TariffVo;
 
 @Controller
@@ -27,13 +28,17 @@ public class BiliardController {
 	private BiliardService biliardService;
 	
 	/* 테이블 현황 - 상세정보 가져오기 */
+	@ResponseBody
 	@RequestMapping(value="/info", method = {RequestMethod.GET,RequestMethod.POST})
-	public String tableInfo(@ModelAttribute CueTableVo cuetableVo) {
+	public JsonResult tableInfo(@ModelAttribute CueTableVo cuetableVo) {
 		System.out.println("BiliardController.tableInfo()");
 		
-		biliardService.tableInfo(cuetableVo);
+		TableGamesVo gamesVo = biliardService.tableInfo(cuetableVo);
+		
+		JsonResult jsonResult = new JsonResult();
+		jsonResult.success(gamesVo);
 
-		return "";
+		return jsonResult;
 	}
 	
 

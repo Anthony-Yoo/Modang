@@ -24,7 +24,7 @@ public class BiliardService {
 	public TableGamesVo tableInfo(CueTableVo cuetableVo) {
 		System.out.println("BiliardService.tableInfo()");
 		
-		TableGamesVo gamesVo =biliardDao.selectTable(cuetableVo);
+		TableGamesVo gamesVo = biliardDao.selectTable(cuetableVo);
 		return gamesVo;
 	}
 	
