@@ -9,7 +9,7 @@
 <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=86c03dc169e845e1ac8650bdaa97ae6a&libraries=services"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e22dfae5a7af2f9805a3f47c324a0694"></script>
 </head>
 <body>
 	<!-- 헤더 시작 -->
@@ -23,7 +23,7 @@
 				<div class="join-wrap">
 					<div class="con">
 						<span class="inp-txt">
-							<img src="${pageContext.request.contextPath}/assets/images/id.png" alt="아이디ㄲ"> 
+							<img src="${pageContext.request.contextPath}/assets/images/id.png" alt="아이디"> 
 							<input type="text" id="id" name="id" placeholder="아이디">
 							<a href="" class="chck">중복체크</a>
 						</span>
@@ -56,10 +56,10 @@
 					<div class="con">
 						<span class="inp-txt"> 
 							<img src="${pageContext.request.contextPath}/assets/images/map.png" alt="매장 주소">
-							<input type="text" id="postcode" name="postcode" placeholder="우편번호">
-							<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
-							<input type="text" id="biliardAddress1" name="biliardAddress1" placeholder="주소">
-							<input type="text" id="biliardAddress2" name="biliardAddress2" placeholder="상세 주소">
+							<input type="text" class="post" id="postcode" name="postcode" placeholder="우편번호">
+							<input type="button" class="postBt" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
+							<input type="text" class="addr" id="biliardAddress1" name="biliardAddress1" placeholder="주소"><br>
+							<input type="text" class="addr" id="biliardAddress2" name="biliardAddress2" placeholder="상세 주소">
 							<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
 						</span>
 					</div>							
@@ -88,21 +88,26 @@
 					<div class="con">
 						<span class="inp-txt"> 
 							<img src="${pageContext.request.contextPath}/assets/images/clock.png" alt="이용시간"> 
-							<input type="time" class="input" name="time1">
+							<input type="time" class="time" name="time1">
 							 ~ 
-							<input type="time" class="input" name="time2">
+							<input type="time" class="time" name="time2">
 						</span>
 					</div>
 					<div class="con">
 						<span class="inp-txt">
 							<img src="${pageContext.request.contextPath}/assets/images/parking.png" alt="주차 여부">
-							<input type="radio" id="parking" name="parking">
+							<div class="parking">
+								<input type="radio" id="parking1" name="parking">
+								<label for="parking1">주차 가능하당</label>
+								<input type="radio" id="parking2" name="parking">
+								<label for="parking2">주차 불가능하당</label>
+							</div>
 						</span>
 					</div>
 					<div class="con">
 						<span class="inp-txt">
 							<img src="${pageContext.request.contextPath}/assets/images/file.png" alt="추가 내용">
-							<input type="text" id="bdComment" name="bdComment" placeholder="추기 정보">
+							<input type="text" id="bdComment" name="bdComment" placeholder="추가 정보">
 						</span>
 					</div>					
 				</div><!-- join-wrap -->

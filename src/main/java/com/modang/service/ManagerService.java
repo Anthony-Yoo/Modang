@@ -17,8 +17,9 @@ public class ManagerService {
 		System.out.println("managerService.join");
 		//매니저 정보 삽입
 		managerDao.insertManager(managerVO);
-		//요금테이블 정보 삽입
-		//tariff
+		//요금테이블(tariff) 정보 삽입
+
+		//매장이미지 정보 삽입
 		
 	}
 	/*로그인*/
