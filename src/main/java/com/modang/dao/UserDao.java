@@ -41,13 +41,13 @@ public class UserDao {
 		return userno;
 	}
 	//회원정보 수정
-	public int updateUser(String id) {
+	public int updateUser(UserVo userVo) {
 		System.out.println("UserDao.selectUser()");
-		System.out.println(id);
+		System.out.println(userVo);
 		
-		int userno=session.update("user.update", id);
+		int count=session.update("user.update", userVo);
 		
-		return userno;
+		return count;
 		
 	}
 	

@@ -101,13 +101,13 @@ public class UserService {
 		return userno;
 	}
 	/*수정*/
-	public int modify(String id) {
+	public int modify(UserVo userVo) {
 		System.out.println("UserService.modifry()");
-		System.out.println(id);
+		System.out.println(userVo);
 		
-		int userno=userDao.updateUser(id);
+		int count=userDao.updateUser(userVo);
 		
-		return userno;
+		return count;
 	}
 	
 	

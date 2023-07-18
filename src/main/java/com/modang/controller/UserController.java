@@ -123,23 +123,24 @@ public class UserController {
 		return "user/modifyForm";
 	}
 	
-	/*회원정보 수정
+	/*회원정보 수정*/
 	@RequestMapping(value="/modify", method= {RequestMethod.GET, RequestMethod.POST})
-	public String modify(@ModelAttribute String id, HttpSession session) {
+	public String modify(@ModelAttribute UserVo userVo, HttpSession session) {
 		System.out.println("UserController.modify()");
-		System.out.println(id);
+		System.out.println(userVo);
+		//세션에서 로그인한 사용자 정보 가져오기(UserVo)
+		UserVo authUser=(UserVo)session.getAttribute("authUser");
+		//가져온 세션 정보에서 로그인한 사용자 no값 가져오기
+		int userno=authUser.getUserno();
+		//파라미터로 넘어온 사용자 정보 : UserVo 정보로 로그인 한 사용자 no값 추가
+		userVo.setUserno(userno);
+		//userService 를 통해 로그인한 사용자 정보 수정 (service에서 UserVo로 받은 정보 전체)
+		userService.modify(userVo);
+		//받은 정보 전체 중에 id값을 통한 이름 변경
+		authUser.setId(userVo.getId());
 		
-	 세션에서 로그인한 사용자 정보 가져오기
-		String id=(String)session.getAttribute("id");
-		
-		id.
-		
-		int userno=userService.modify(id);
-		
-		userVo.setPasswd(userVo.getPasswd());
-	
 		return "redirect:/";
 		
 	}
-	*/
+	
 }
