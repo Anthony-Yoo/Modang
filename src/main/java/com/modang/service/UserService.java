@@ -96,9 +96,16 @@ public class UserService {
 		System.out.println("UserService.modifyForm()");
 		System.out.println(userno);
 		
-		UserVo userVo=userDao.selectUser(userno);
+		UserVo authUser=userDao.selectUser(userno);
+		System.out.println(authUser);
+		return authUser;
+	}
+	/*수정*/
+	public void modifry(UserVo userVo) {
+		System.out.println("UserService.modifry()");
+		System.out.println(userVo);
 		
-		return userVo;
+		userDao.updateUser(userVo);
 	}
 	
 	
