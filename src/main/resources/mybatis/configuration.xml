@@ -10,6 +10,7 @@
         <mapper resource="mybatis/mappers/tablet.xml"/>
         <mapper resource="mybatis/mappers/board.xml" />
         <mapper resource="mybatis/mappers/user.xml" />
-        <mapper resource="mybatis/mappers/manager.xml" />
+        <mapper resource="mybatis/mappers/manager.xml" /> <!-- 당구장매니져용 -->
+        <mapper resource="mybatis/mappers/biliard.xml" /> <!-- 당구장관리용 -->
     </mappers>
 </configuration>
