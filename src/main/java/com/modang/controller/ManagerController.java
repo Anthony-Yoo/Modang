@@ -1,22 +1,15 @@
 package com.modang.controller;
 
-import java.util.List;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.modang.service.ManagerService;
-
 import com.modang.vo.ManagerVo;
-
-import com.modang.vo.CueTableVo;
-
-import com.modang.vo.TariffVo;
 
 @Controller
 @RequestMapping(value="/manager")
@@ -35,7 +28,7 @@ public class ManagerController {
 	@RequestMapping(value ="/join", method = {RequestMethod.GET, RequestMethod.POST})
 	public String join(@ModelAttribute ManagerVo managerVO) {
 		System.out.println("ManagerController.join");
-		
+		managerService.join(managerVO);
 		return "";
 	}
 	
@@ -48,10 +41,30 @@ public class ManagerController {
 	
 	/*로그인*/
 	@RequestMapping(value ="/login", method = {RequestMethod.GET, RequestMethod.POST})
-	public String login(@ModelAttribute ManagerVo managerVO) {
+	public String login(@ModelAttribute ManagerVo managerVO, HttpSession sessoin) {
 		System.out.println("ManagerController.login");
-		managerService.login(managerVO);
-		return "";
+		ManagerVo loginManager = managerService.login(managerVO);
+		System.out.println(loginManager);
+		if(loginManager!= null) {
+			System.out.println("로그인 성공");
+			sessoin.setAttribute("loginManager", loginManager);
+			return "redirect:/manager/index";
+		}else {
+			System.out.println("로그인 실패");
+			return "redirect:/manager/loginForm?result=fail";
+		}
 	}
 	
+	/*로그아웃*//*billiard 헤더 로그아웃버튼*/
+	@RequestMapping(value ="/logout", method = {RequestMethod.GET, RequestMethod.POST})
+	public String logout(HttpSession sessoin) {
+		System.out.println("ManagerController.logout");
+		sessoin.removeAttribute("loginManager");
+		sessoin.invalidate();
+		return "redirect:/";
+	}
 }
+
+
+
+

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>b-login</title>
+<title>modang 관리자 로그인</title>
 	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
     <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
     <link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
@@ -22,17 +22,18 @@
                             <div class="con">
                                 <span class="inp-txt">
                                     <img src="${pageContext.request.contextPath}/assets/images/user.png" alt="">
-                                    <input type="text" id="bID" name="bID" placeholder="아이디">
+                                    <input type="text" id="id" name="id" placeholder="아이디">
                                 </span>
-                                <p class="error-msg">아이디가 틀렸습니다</p>
                             </div>
                             <div class="con">
                                 <span class="inp-txt">
                                     <img src="${pageContext.request.contextPath}/assets/images/settings.png" alt="">
-                                    <input type="password" id="bPW" name="bPW" placeholder="비밀번호">
+                                    <input type="password" id="passwd" name="passwd" placeholder="비밀번호">
                                 </span>
-                                <p class="error-msg">비밀번호가 틀렸습니다.</p>
                             </div>
+                            <c:if test="${param.result=='fail'}">
+                            	<p class="error-msg">아이디 또는 비밀번호가 틀렸습니다.</p>
+                            </c:if>                            
                             <div class="con">
                                 <span class="inp-txt">
                                     <input type="checkbox" id="cb1">
@@ -44,8 +45,8 @@
                                     </div>
                                 </span>
                             </div>
-                        </div>
-					<button class="button" type="submit" >로그인할거당</button>
+                         <button class="button" type="submit" >로그인할거당</button>
+                     </div>
                 </form>
             </div>
         </div>

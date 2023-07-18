@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>b-join</title>
+<title>modang 관리자 회원가입</title>
 <link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
 <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=86c03dc169e845e1ac8650bdaa97ae6a&libraries=services"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e22dfae5a7af2f9805a3f47c324a0694"></script>
 </head>
 <body>
 	<!-- 헤더 시작 -->
@@ -20,65 +20,57 @@
 			<h2>환영합니당</h2>
 			<h3>관리자 정보</h3>
 			<form action="${pageContext.request.contextPath}/manager/join" id="" method="post">
-				<div class="">
-						<div class="join-wrap">
-							<div class="con">
-								<span class="inp-txt">
-									<img src="${pageContext.request.contextPath}/assets/images/id.png" alt="아이디ㄲ"> 
-									<input type="text" id="id" name="id" placeholder="아이디">
-									<a href="" class="chck">중복체크</a>
-								</span>
-								<p class="error-msg">이미 사용중인 아이디 입니당</p>
-							</div>
-							<div class="con">
-								<span class="inp-txt"> 
-									<img src="${pageContext.request.contextPath}/assets/images/settings.png" alt="비밀번호">
-									<input type="password" id="passwd" name="passwd" placeholder="비밀번호">
-								</span>
-							</div>
-							<div class="con">
-								<span class="inp-txt">
-									<img src="${pageContext.request.contextPath}/assets/images/file.png" alt="사업자 등록번호"> 
-									<input type="text" id="companyNo" name="companyNo" placeholder="사업자 등록번호">
-								</span>
-							</div>														
-							<div class="con">
-								<span class="inp-txt">
-									<img src="${pageContext.request.contextPath}/assets/images/user.png" alt="이름">
-									<input type="text" id="repName" name="repName" placeholder="이름">
-								</span>
-							</div>
-							<div class="con">
-								<span class="inp-txt"> 
-									<img src="${pageContext.request.contextPath}/assets/images/home.png" alt="매장 이름"> 
-									<input type="text" id="biliardName" name="biliardName" placeholder="매장 이름">
-								</span>
-							</div>
-							<div class="con">
-								<span class="inp-txt"> 
-									<img src="${pageContext.request.contextPath}/assets/images/map.png" alt="매장 주소">
-									<input type="text" id="postcode" name="postcode" placeholder="우편번호">
-									<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
-									<input type="text" id="biliardAddress1" name="biliardAddress1" placeholder="주소">
-									<input type="text" id="biliardAddress2" name="biliardAddress2" placeholder="상세 주소">
-									<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
-								</span>
-							</div>							
-							<div class="con">
-								<span class="inp-txt">
-									<img src="${pageContext.request.contextPath}/assets/images/phone.png" alt="매장 번호"> 
-									<input type="text" id="biliardPhone" name="biliardPhone" placeholder="매장 번호">
-								</span>
-							</div>
-							<div class="con">
-								<div class="inp-txt">
-	
-								</div>
-							</div>
-						</div><!-- join-wrap -->
-			</div>
+				<div class="join-wrap">
+					<div class="con">
+						<span class="inp-txt">
+							<img src="${pageContext.request.contextPath}/assets/images/id.png" alt="아이디"> 
+							<input type="text" id="id" name="id" placeholder="아이디">
+							<a href="" class="chck">중복체크</a>
+						</span>
+						<p class="error-msg">이미 사용중인 아이디 입니당</p>
+					</div>
+					<div class="con">
+						<span class="inp-txt"> 
+							<img src="${pageContext.request.contextPath}/assets/images/settings.png" alt="비밀번호">
+							<input type="password" id="passwd" name="passwd" placeholder="비밀번호">
+						</span>
+					</div>
+					<div class="con">
+						<span class="inp-txt">
+							<img src="${pageContext.request.contextPath}/assets/images/file.png" alt="사업자 등록번호"> 
+							<input type="text" id="companyNo" name="companyNo" placeholder="사업자 등록번호">
+						</span>
+					</div>														
+					<div class="con">
+						<span class="inp-txt">
+							<img src="${pageContext.request.contextPath}/assets/images/user.png" alt="이름">
+							<input type="text" id="repName" name="repName" placeholder="이름">
+						</span>
+					</div>
+					<div class="con">
+						<span class="inp-txt"> 
+							<img src="${pageContext.request.contextPath}/assets/images/home.png" alt="매장 이름"> 
+							<input type="text" id="biliardName" name="biliardName" placeholder="매장 이름">
+						</span>
+					</div>
+					<div class="con">
+						<span class="inp-txt"> 
+							<img src="${pageContext.request.contextPath}/assets/images/map.png" alt="매장 주소">
+							<input type="text" class="post" id="postcode" name="postcode" placeholder="우편번호">
+							<input type="button" class="postBt" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
+							<input type="text" class="addr" id="biliardAddress1" name="biliardAddress1" placeholder="주소"><br>
+							<input type="text" class="addr" id="biliardAddress2" name="biliardAddress2" placeholder="상세 주소">
+							<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
+						</span>
+					</div>							
+					<div class="con">
+						<span class="inp-txt">
+							<img src="${pageContext.request.contextPath}/assets/images/phone.png" alt="매장 번호"> 
+							<input type="text" id="biliardPhone" name="biliardPhone" placeholder="매장 번호">
+						</span>
+					</div>
+				</div><!-- join-wrap -->
 			<h3>매장 정보</h3>
-			<div>
 				<div class="join-wrap">
 					<div class="con">
 						<ul>
@@ -96,25 +88,29 @@
 					<div class="con">
 						<span class="inp-txt"> 
 							<img src="${pageContext.request.contextPath}/assets/images/clock.png" alt="이용시간"> 
-							<input type="time" class="input" name="time1">
+							<input type="time" class="time" name="time1">
 							 ~ 
-							<input type="time" class="input" name="time2">
+							<input type="time" class="time" name="time2">
 						</span>
 					</div>
 					<div class="con">
 						<span class="inp-txt">
 							<img src="${pageContext.request.contextPath}/assets/images/parking.png" alt="주차 여부">
-							<input type="radio" id="parking" name="parking">
+							<div class="parking">
+								<input type="radio" id="parking1" name="parking">
+								<label for="parking1">주차 가능하당</label>
+								<input type="radio" id="parking2" name="parking">
+								<label for="parking2">주차 불가능하당</label>
+							</div>
 						</span>
 					</div>
 					<div class="con">
 						<span class="inp-txt">
 							<img src="${pageContext.request.contextPath}/assets/images/file.png" alt="추가 내용">
-							<input type="text" id="bdComment" name="bdComment" placeholder="추기 정보">
+							<input type="text" id="bdComment" name="bdComment" placeholder="추가 정보">
 						</span>
 					</div>					
 				</div><!-- join-wrap -->
-			</div>
 				<button id="btnJoin" class="button" type="submit" >회원가입할거당</button>
 			</form>
 		</div><!-- container -->
@@ -178,43 +174,39 @@
                 } else {
                     document.getElementById("sample6_extraAddress").value = '';
                 }
-
+				////////
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('ostcode').value = data.zonecode;
+                document.getElementById('postcode').value = data.zonecode;
                 document.getElementById("billardAddress1").value = addr;
                 // 커서를 상세주소 필드로 이동한다.
                 document.getElementById("billardAddress2").focus();
-            }
-        }).open();
-    }
 
-    function sample5_execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
                 var addr = data.address; // 최종 주소 변수
 
-                // 주소 정보를 해당 필드에 넣는다.
-                document.getElementById("sample5_address").value = addr;
-                // 주소로 상세 정보를 검색
-                geocoder.addressSearch(data.address, function(results, status) {
-                    // 정상적으로 검색이 완료됐으면
-                    if (status === daum.maps.services.Status.OK) {
+                 // 주소 정보를 해당 필드에 넣는다.
+                 document.getElementById("sample5_address").value = addr;
+                 // 주소로 상세 정보를 검색
+                 geocoder.addressSearch(data.address, function(results, status) {
+                     // 정상적으로 검색이 완료됐으면
+                     if (status === daum.maps.services.Status.OK) {
 
-                        var result = results[0]; //첫번째 결과의 값을 활용
+                         var result = results[0]; //첫번째 결과의 값을 활용
 
-                        // 해당 주소에 대한 좌표를 받아서
-                        var coords = new daum.maps.LatLng(result.y, result.x);
-                        // 지도를 보여준다.
-                        mapContainer.style.display = "block";
-                        map.relayout();
-                        // 지도 중심을 변경한다.
-                        map.setCenter(coords);
-                        // 마커를 결과값으로 받은 위치로 옮긴다.
-                        marker.setPosition(coords)
-                    }
-                });
+                         // 해당 주소에 대한 좌표를 받아서
+                         var coords = new daum.maps.LatLng(result.y, result.x);
+                         // 지도를 보여준다.
+                         mapContainer.style.display = "block";
+                         map.relayout();
+                         // 지도 중심을 변경한다.
+                         map.setCenter(coords);
+                         // 마커를 결과값으로 받은 위치로 옮긴다.
+                         marker.setPosition(coords)
+                     }
+                 });
+
             }
         }).open();
     }
+
 </script>
 </html>
