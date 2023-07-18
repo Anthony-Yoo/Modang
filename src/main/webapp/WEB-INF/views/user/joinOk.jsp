@@ -37,6 +37,8 @@
 				<div id="joinOK">
 		
 					<div id="main">
+						<br>
+						<p>
 
         					<div class="jumbotron">
             					<br>

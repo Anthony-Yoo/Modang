@@ -20,6 +20,16 @@ public class BiliardDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	/* 테이블 현황 - 상세정보 가져오기 */
+	public TableGamesVo selectTable(CueTableVo cuetableVo) {
+		System.out.println("BiliardDao.selectTable()");
+		System.out.println(cuetableVo);
+		
+		TableGamesVo gamesVo = sqlSession.selectOne("biliard.selectTableInfo", cuetableVo);
+		System.out.println(gamesVo);
+		return gamesVo;
+	}
+	
 	/*테이블현황-테이블 전체리스트 가져오기*/
 	public List<CueTableVo> selectList(int no) {
 		System.out.println("BiliardDao.selectList()");

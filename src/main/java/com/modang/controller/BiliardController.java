@@ -25,6 +25,17 @@ public class BiliardController {
 	
 	@Autowired
 	private BiliardService biliardService;
+	
+	/* 테이블 현황 - 상세정보 가져오기 */
+	@RequestMapping(value="/info", method = {RequestMethod.GET,RequestMethod.POST})
+	public String tableInfo(@ModelAttribute CueTableVo cuetableVo) {
+		System.out.println("BiliardController.tableInfo()");
+		
+		biliardService.tableInfo(cuetableVo);
+
+		return "";
+	}
+	
 
 	/* 테이블 현황-테이블 전체리스트 */
 	@RequestMapping(value="/index", method = {RequestMethod.GET,RequestMethod.POST})

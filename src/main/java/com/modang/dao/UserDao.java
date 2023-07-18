@@ -41,10 +41,16 @@ public class UserDao {
 		return userVo;
 	}
 	
-	/*
+	
 	//id check <--ajax
-	public void selectUser(String id) {
-		System.out.println("UserDao.");
+	public UserVo selectUser(String id) {
+		System.out.println("UserDao.selectUser()");
+		System.out.println(id);
+		
+		UserVo userVo=session.selectOne("user.selectUserById", id);
+		
+		return userVo;
+		
 	}
-*/
+
 }
