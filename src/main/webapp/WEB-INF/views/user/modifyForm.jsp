@@ -15,6 +15,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">    
 <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/user.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
 
 <!-- js -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -36,7 +37,7 @@
 					
 						<div id="main">
 						
-							<h3>수정할꺼당 ^^</h3>
+							<h3>이것은 수정 ^^</h3>
 					
                    			<form id="modifysubmitForm" action="${pageContext.request.contextPath }/user/modify" method="get" enctype="multipart/form-data">
                     
@@ -62,7 +63,7 @@
                    			<div class="form-group">
                      			<div class="shadow-none p-1 mb-2 bg-light rounded input-group">
                        				<span class="input-group-addon" class="text-large bold"></span>
-                       				<input id="cellphone" type="text" maxlength="11" class="form-control" name="cellphone" value="${requestScope.userVo.cellphone}" placeholder="PH">
+                       				<input id="cellphone" type="text" maxlength="11" class="form-control" name="cellphone" value="" placeholder="${requestScope.userVo.cellphone}">
                        				
                      			</div>
                    			</div>
@@ -71,7 +72,7 @@
                    			<div class="form-group">
                      			<div class="shadow-none p-1 mb-2 bg-light rounded input-group">
                        				<span class="input-group-addon" class="text-large bold"></span>
-                       				<input id="nick" type="text" maxlength="7" class="form-control" name="nick" value="${requestScope.userVo.nick}" placeholder="NICK NAME">
+                       				<input id="nick" type="text" maxlength="7" class="form-control" name="nick" value="" placeholder="${requestScope.userVo.nick}">
                        				
                      			</div>
                    			</div>
@@ -80,7 +81,7 @@
                    			<div class="form-group">
                      			<div class="shadow-none p-1 mb-2 bg-light rounded input-group">
                        				<span class="input-group-addon" class="text-large bold"></span>
-                       				<input id="average" type="text" maxlength="3" class="form-control" name="average" value="${requestScope.userVo.average}" placeholder="AVERAGE">
+                       				<input id="average" type="text" maxlength="3" class="form-control" name="average" value="" placeholder="${requestScope.userVo.average}">
                        				
                      			</div>
                    			</div>

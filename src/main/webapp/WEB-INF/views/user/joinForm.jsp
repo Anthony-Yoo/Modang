@@ -19,11 +19,10 @@
 
 <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/user.css" rel="stylesheet" type="text/css">
-
+<link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
 
 
 <!-- js -->
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
@@ -47,73 +46,63 @@
 				
 					<div id="main">
 		
-						<h3>이것은 모당 ^^</h3>
+						<h3>이것은 모당 가입 ^^</h3>
 		
 						<form id="joinSubmitForm" action="${pageContext.request.contextPath}/user/join" method="post"
 							enctype="multipart/form-data">
 							
 							<div class="form-group">
-								
+							
 								<div
-									class="shadow-none p-1 mb-2 bg-light rounded input-group-addon">
+									class="input-group">
 									
-									<span class="input-group">
+									<span class="input-group-addon">
 										<input id="input-uid" type="text" value="" maxlength="10" class="form-control" name="id" placeholder="ID">
+									</span>
+									<span class="input-group-addon">
 										<button id="btnIdCheck" type="button" class="btn btn-primary rounded" data-toggle="modal" data-target="#myModal">확인</button>
-									 </span>
+									</span>
 								</div>
 								
 							</div>
 							<!--  -->
-							<!-- 아이디 
-						<div class="form-group">
-							<label class="form-text" for="input-uid">아이디</label> 
-							<input type="text" id="input-uid" name="id" value="" placeholder="아이디를 입력하세요" autofocus required onKeypress="javascript:if(event.keyCode==13) {search_onclick_submit}">
-							<button type="button" id="btnIdCheck">중복체크</button>
-							<p id="idcheckMsg">ㅁㅁㅁ</p>
-						</div>
-						-->
 		
 							<div class="form-group">
-								<div
-									class="shadow-none p-1 mb-2 bg-light rounded input-group-addon">
+								
 									<span class="input-group"> <input id="passwd"
 										type="password" value="" maxlength="16" class="form-control"
 										name="passwd" placeholder="PASSWORD">
 									</span>
-								</div>
+								
 							</div>
 		
 							<div class="form-group">
-								<div
-									class="shadow-none p-1 mb-2 bg-light rounded input-group-addon">
+								
 									<span class="input-group"> <input id="nick"
 										type="text" value="" maxlength="7" class="form-control"
 										name="nick" placeholder="NICK NAME">
 										
 									</span>
-								</div>
+								
 							</div>
 		
 							<div class="form-group">
-								<div
-									class="shadow-none p-1 mb-2 bg-light rounded input-group-addon">
+								
 									<span class="input-group"> <input id="cellphone"
 										type="text" value="" maxlength="11" class="form-control"
 										name="cellphone" placeholder="HP">
 									</span>
-								</div>
+								
 							</div>
 		
 							<div class="form-group">
-								<div
-									class="shadow-none p-1 mb-2 bg-light rounded input-group-addon">
+								
 									<span class="input-group"> <input id="average"
 										type="text" value="" maxlength="3" class="form-control"
 										name="average" placeholder="VALUE [타수]">
 									</span>
 									
-								</div>
+								
 							</div>
 		
 							<!-- <div class="form-group">
@@ -127,11 +116,11 @@
 							<div class="form-group">
 								<div class="fileContainer">
 			                		<div class="fileInput">
-				                		<div class="shadow-none p-1 mb-2 bg-light rounded input-group-addon">
+				                		
 				                  			<span class="input-group">
 				                  			<input id="profileimage" type="file" name="file" class="form-control" placeholder="upload image" value="">
 				                  			</span>
-				                		</div>
+				                		
 			            			</div>
 		        				</div>
 		        

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+
 import com.modang.service.UserService;
 import com.modang.vo.JsonResult;
 import com.modang.vo.UserVo;
@@ -140,7 +140,6 @@ public class UserController {
 		authUser.setId(userVo.getId());
 		
 		return "redirect:/";
-		
 	}
 	
 }
