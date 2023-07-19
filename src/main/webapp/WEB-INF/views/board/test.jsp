@@ -11,8 +11,115 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>지도 검색 구현</title>
 <style>
-.map_wrap, .map_wrap * {
+.wrap {
+	position: absolute;
+	left: 0;
+	bottom: 40px;
+	width: 288px;
+	height: 132px;
+	margin-left: -144px;
+	text-align: left;
+	overflow: hidden;
+	font-size: 12px;
+	font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+	line-height: 1.5;
+}
+
+.wrap * {
+	padding: 0;
 	margin: 0;
+}
+
+.wrap .info {
+	width: 286px;
+	height: 120px;
+	border-radius: 5px;
+	border-bottom: 2px solid #ccc;
+	border-right: 1px solid #ccc;
+	overflow: hidden;
+	background: #fff;
+}
+
+.wrap .info:nth-child(1) {
+	border: 0;
+	box-shadow: 0px 1px 2px #888;
+}
+
+.info .title {
+	padding: 5px 0 0 10px;
+	height: 30px;
+	background: #eee;
+	border-bottom: 1px solid #ddd;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.info .close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: #888;
+	width: 17px;
+	height: 17px;
+	background:
+		url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');
+}
+
+.info .close:hover {
+	cursor: pointer;
+}
+
+.info .body {
+	position: relative;
+	overflow: hidden;
+}
+
+.info .desc {
+	position: relative;
+	margin: 13px 0 0 90px;
+	height: 75px;
+}
+
+.desc .ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.desc .jibun {
+	font-size: 11px;
+	color: #888;
+	margin-top: -2px;
+}
+
+.info .img {
+	position: absolute;
+	top: 6px;
+	left: 5px;
+	width: 73px;
+	height: 71px;
+	border: 1px solid #ddd;
+	color: #888;
+	overflow: hidden;
+}
+
+.info:after {
+	content: '';
+	position: absolute;
+	margin-left: -12px;
+	left: 50%;
+	bottom: 0;
+	width: 22px;
+	height: 12px;
+	background:
+		url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
+}
+
+.info .link {
+	color: #5085BB;
+}
+
+.map_wrap, .map_wrap * {
 	padding: 0;
 	font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
 	font-size: 12px;
@@ -200,13 +307,7 @@
 </head>
 
 <body>
-	<h1>지도 검색 구현 테스트</h1>
-	<p style="margin-top: -12px">
-		<em class="link"> <a href="javascript:void(0);"
-			onclick="window.open('http:/fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
-				혹시 주소 결과가 잘못 나오는 경우에는 여기에 제보해주세요. </a>
-		</em>
-	</p>
+	<h1>당구장 검색</h1>
 	<div class="map_wrap">
 		<div id="map" style="width: 1200px; height: 650px;"></div>
 		<div id="menu_wrap" class="bg_white">
@@ -259,7 +360,6 @@
 		function searchPlaces() {
 
 			var keyword = document.getElementById('keyword').value;
-			console.log(keyword);
 			if (!keyword.replace(/^\s+|\s+$/g, '')) {
 				alert('키워드를 입력해주세요!');
 				return false;
@@ -272,6 +372,9 @@
 		// 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
 		function placesSearchCB(data, status, pagination) {
 			if (status === kakao.maps.services.Status.OK) {
+				console.log(data);
+				console.log(status);
+				console.log(pagination);
 
 				// 정상적으로 검색이 완료됐으면
 				// 검색 목록과 마커를 표출합니다
@@ -291,33 +394,10 @@
 		}
 		// 검색 결과 목록과 마커를 표출하는 함수입니다
 		function displayPlaces(places) {
-
 			var listEl = document.getElementById('placesList'), menuEl = document
 					.getElementById('menu_wrap'), fragment = document
 					.createDocumentFragment(), bounds = new kakao.maps.LatLngBounds(), listStr = '';
 
-			
-			// 커스텀 오버레이에 표시할 컨텐츠 입니다
-			// 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
-			// 별도의 이벤트 메소드를 제공하지 않습니다 
-			var content = '<div class="wrap">'
-					+ '    <div class="info">'
-					+ '        <div class="title">'
-					+ '            '+ places.place_name
-					+ '            <div class="close" onclick="closeOverlay()" title="닫기"></div>'
-					+ '        </div>'
-					+ '        <div class="body">'
-					+ '            <div class="img">'
-					+ '                <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/thumnail.png" width="73" height="70">'
-					+ '           </div>'
-					+ '            <div class="desc">'
-					+ '                <div class="ellipsis">'+ places.road_address_name
-					+ '</div>'
-					+ '                <span class="jibun gray">'+ places.address_name
-					+ '</span>'
-					+ '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>'
-					+ '            </div>' + '        </div>' + '    </div>'
-					+ '</div>';
 			// 검색 결과 목록에 추가된 항목들을 제거합니다
 			removeAllChildNods(listEl);
 
@@ -338,10 +418,11 @@
 				// 마커와 검색결과 항목에 mouseover 했을때
 				// 해당 장소에 인포윈도우에 장소명을 표시합니다
 				// mouseout 했을 때는 인포윈도우를 닫습니다
-				(function(marker, content) {
+				(function(marker) {
+					data = places[i]
 					kakao.maps.event.addListener(marker, 'mouseover',
 							function() {
-								displayInfowindow(marker, content);
+								displayInfowindow(marker, data);
 							});
 
 					kakao.maps.event.addListener(marker, 'mouseout',
@@ -350,7 +431,7 @@
 							});
 
 					itemEl.onmouseover = function() {
-						displayInfowindow(marker, content);
+						displayInfowindow(marker, data);
 					};
 
 					itemEl.onmouseout = function() {
@@ -359,6 +440,7 @@
 				})(marker, places[i].place_name);
 
 				fragment.appendChild(itemEl);
+				console.log(itemEl);
 			}
 
 			// 검색결과 항목들을 검색결과 목록 Element에 추가합니다
@@ -371,9 +453,6 @@
 
 		// 검색결과 항목을 Element로 반환하는 함수입니다
 		function getListItem(index, places) {
-			console.log(places);
-			
-					
 			var el = document.createElement('li'), itemStr = '<span class="markerbg marker_'
 					+ (index + 1)
 					+ '"></span>'
@@ -418,10 +497,6 @@
 			return marker;
 		}
 
-		
-
-		
-
 		// 지도 위에 표시되고 있는 마커를 모두 제거합니다
 		function removeMarker() {
 			for (var i = 0; i < markers.length; i++) {
@@ -462,12 +537,34 @@
 
 		// 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
 		// 인포윈도우에 장소명을 표시합니다
-		function displayInfowindow(marker, title) {
-			var content = '<div style="padding:5px;z-index:1;">' + title
-					+ '</div>';
 
-			infowindow.setContent(content);
-			infowindow.open(map, marker);
+		// 커스텀 오버레이에 표시할 컨텐츠 입니다
+		// 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
+		// 별도의 이벤트 메소드를 제공하지 않습니다 
+		function displayInfowindow(marker, places) {
+			var content = '<div class="wrap" style="padding:5px;z-index:1;">'
+					+ '    <div class="info">'
+					+ '        <div class="title">'
+					+ '            '
+					+ places.place_name
+					+ '            <div class="close" onclick="closeOverlay()" title="닫기"></div>'
+					+ '        </div>'
+					+ '        <div class="body">'
+					+ '            <div class="img">'
+					+ '                <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/thumnail.png" width="73" height="70">'
+					+ '           </div>'
+					+ '            <div class="desc">'
+					+ '                <div class="ellipsis">'
+					+ places.road_address_name
+					+ '</div>'
+					+ '                <span class="jibun gray">'
+					+ places.address_name
+					+ '</span>'
+					+ '                <div><a href="+'+places.place_url+'" target="_blank" class="link">카카오 맵</a></div>'
+					+ '            </div>' + '        </div>' + '    </div>'
+					+ '</div>';
+		    infowindow.setContent(content);
+		    infowindow.open(map, marker);
 		}
 
 		// 검색결과 목록의 자식 Element를 제거하는 함수입니다
@@ -507,7 +604,9 @@
 			var jibunGrayValue = $(this).find(".jibun.gray").text();
 			console.log(jibunGrayValue);
 		});
+		
 	</script>
 </body>
+
 
 </html>
