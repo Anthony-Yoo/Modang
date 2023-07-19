@@ -47,11 +47,14 @@ values( SEQ_USERS_NO.nextval,
 
 </select>
 
-<!-- 회원수정 -->
+<!-- 회원수정 비밀번호 -->
 <update id="update" parameterType="com.modang.vo.UserVo">
 	<![CDATA[
 		update users
-			set passwd = #{passwd}
+			set passwd = #{passwd},
+                nick = #{nick},
+                cellphone = #{cellphone},
+                average = #{average}
                 
 			where id = #{id}    
 	]]>
