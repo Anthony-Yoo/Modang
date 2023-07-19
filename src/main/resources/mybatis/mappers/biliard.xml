@@ -2,6 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="biliard">
+	<!-- 게임정보리스트가져오기 -->
+		<select id="selectGamesList" parameterType="int" resultType="com.modang.vo.TableGamesVo">
+		<![CDATA[
+			select g.gameNo,
+			         g.tableNo,
+			         g.gameType,
+			         g.memberNum,
+			         g.gameDate,
+			         g.gameTime,
+			         g.startTime,
+			         g.endTime,
+			         g.payStatus,
+			         g.payType,
+			         g.payDate,
+			         g.income,
+			         g.payMoney,
+			         g.pauseStart,
+			         g.pauseStop,
+			         g.pauseTime,
+			         g.setNo
+			from games g, cuetable c
+			where g.tableNo=c.tableNo
+			and c.biliardNo=#{biliardNo}
+			and g.payStatus=0
+		]]>	
+		
+	</select>
+
 	<!-- 테이블상세정보 -->
 		<select id="selectTableInfo" parameterType="com.modang.vo.CueTableVo" resultType="com.modang.vo.TableGamesVo">
 		<![CDATA[
@@ -29,7 +57,7 @@
 			from games g
 			full join cuetable c
 			on g.tableno=c.tableno
-			where g.tableno=#{tableNo} and g.paystatus='0'
+			where g.tableno=#{tableNo} 
 
 		]]>	
 		
@@ -43,7 +71,7 @@
 		       tablename,
 		       tabletype,
 		       status as tableStatus      
-		from cuetable where biliardno = #{no}
+		from cuetable where biliardno = #{biliardNo}
 		]]>	
 		
 	</select> 
@@ -59,7 +87,7 @@
 			       mminfee,
 			       pminfee
 			from tariff
-			where biliardno =#{no}
+			where biliardno =#{[biliardNo}
 		]]>	
 		
 	</select>

@@ -1,6 +1,9 @@
 package com.modang.controller;
 
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,13 +33,13 @@ public class BiliardController {
 	/* 테이블 현황 - 상세정보 가져오기 */
 	@ResponseBody
 	@RequestMapping(value="/info", method = {RequestMethod.GET,RequestMethod.POST})
-	public JsonResult tableInfo(@ModelAttribute CueTableVo cuetableVo) {
+	public JsonResult tableInfo(HttpSession session, @ModelAttribute CueTableVo cuetableVo) {
 		System.out.println("BiliardController.tableInfo()");
 		
-		TableGamesVo gamesVo = biliardService.tableInfo(cuetableVo);
+		Map<String, Object> tMap = biliardService.tableInfo(cuetableVo);
 		
 		JsonResult jsonResult = new JsonResult();
-		jsonResult.success(gamesVo);
+		jsonResult.success(tMap);
 
 		return jsonResult;
 	}
@@ -44,10 +47,15 @@ public class BiliardController {
 
 	/* 테이블 현황-테이블 전체리스트 */
 	@RequestMapping(value="/index", method = {RequestMethod.GET,RequestMethod.POST})
-	public String tableList(Model model) {
+	public String tableList(HttpSession session, Model model) {
 		System.out.println("BiliardController.tableList()");
-		int no =1;
-		List<CueTableVo> cueTableList = biliardService.tableList(no);
+
+		ManagerVo loginManager =(ManagerVo)session.getAttribute("loginManager");
+		int biliardNo = loginManager.getbiliardNo();
+		
+		List<CueTableVo> cueTableList = biliardService.tableList(biliardNo);
+		List<TableGamesVo> gamesList =biliardService.getGames(biliardNo);
+		
 		model.addAttribute("cueTableList", cueTableList);
 		
 		return "/manager/index";
@@ -55,10 +63,13 @@ public class BiliardController {
 	
 	/* 요금테이블폼(요금가져오기) */
 	@RequestMapping(value="/pricePolicyForm", method = {RequestMethod.GET,RequestMethod.POST})
-	public String pricePolicyForm(Model model) {
+	public String pricePolicyForm(HttpSession session, Model model) {
 		System.out.println("BiliardController.pricePolicyForm()");
-        int no = 1;
-        TariffVo tariffVo = biliardService.getPrice(no);
+		
+		ManagerVo loginManager =(ManagerVo)session.getAttribute("loginManager");
+		int biliardNo = loginManager.getbiliardNo();
+       
+		TariffVo tariffVo = biliardService.getPrice(biliardNo);
         model.addAttribute(tariffVo);
 		
 		return "/manager/pricePolicy";
@@ -66,11 +77,13 @@ public class BiliardController {
 	
 	/* 요금테이블 수정 */
 	@RequestMapping(value="/pricePolicy", method = {RequestMethod.GET,RequestMethod.POST})
-	public String pricePolicy(@ModelAttribute TariffVo tariffVo) {
+	public String pricePolicy(HttpSession session, @ModelAttribute TariffVo tariffVo) {
 		System.out.println("BiliardController.pricePolicy()");
-		int no = 1;
+		
+		ManagerVo loginManager =(ManagerVo)session.getAttribute("loginManager");
+		int biliardNo = loginManager.getbiliardNo();
 
-		int count = biliardService.updatePrice(tariffVo);
+		biliardService.updatePrice(tariffVo);
 		
 		return "/manager/pricePolicy";
 	}
