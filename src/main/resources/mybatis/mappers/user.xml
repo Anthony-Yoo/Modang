@@ -7,14 +7,14 @@
 <insert id="insert" parameterType="com.modang.vo.UserVo">  
     <![CDATA[
        insert into users(userno, id, passwd, nick, cellphone, average, recentlogontime, profileimage) 
-values( SEQ_USERS_NO.nextval,
-        #{id},
-        #{passwd}, 
-        #{nick},
-        #{cellphone},
-        #{average},
-        sysdate,
-        #{profileimage}
+		values( SEQ_USERS_NO.nextval,
+		        #{id},
+		        #{passwd}, 
+		        #{nick},
+		        #{cellphone},
+		        #{average},
+		        sysdate,
+		        #{profileimage}
         )
     ]]>
 </insert>
@@ -24,7 +24,6 @@ values( SEQ_USERS_NO.nextval,
 	<![CDATA[
 		select  id, 
 				passwd
-		
 		from users
 		where id=#{id} and 
 			  passwd=#{passwd}

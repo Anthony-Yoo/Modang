@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="board">
-	
+
 	<!-- 쿼리문 작성 -->
 	<insert id="insert" parameterType="com.modang.vo.BoardVo">
 		<![CDATA[
@@ -27,8 +27,71 @@
 				, #{content}
 				, sysdate
 			)
-		]]>	
-		
+		]]>
 	</insert>
+
+	<select id="selectList" parameterType="map"
+		resultType="com.modang.vo.BoardVo">
+		<![CDATA[
+			select ort.rn
+			     , ort.boardno
+			     , ort.title
+			     , ort.matchgametype
+			     , ort.matchregion
+			     , ort.membernum
+			     , ort.matchdate
+			     , ort.content
+			     , ort.boarddate
+			     , ort.count
+			     , ort.status
+			     , ort.nick
+			from (select rownum rn
+			                  , ot.boardno
+			                  , ot.title
+			                  , ot.matchgametype
+			                  , ot.matchregion
+			                  , ot.membernum
+			                  , ot.matchdate
+			                  , ot.content
+			                  , ot.boarddate
+			                  , ot.count
+			                  , ot.status
+			                  , ot.nick
+			     from (select mb.boardno
+			                , mb.title
+			                , mb.matchgametype
+			                , mb.matchregion
+			                , mb.membernum
+			                , mb.matchdate
+			                , mb.content
+			                , mb.boarddate
+			                , mb.count
+			                , mb.status
+			                , u.nick
+			          from matchboard mb, users u
+			          where mb.userNo = u.userNo 
+           	]]>
+				<if test='keyword != "" and keyword != null'>
+					and mb.title like '%'|| #{keyword} ||'%'
+				</if>
+			<![CDATA[	
+            		 order by mb.matchdate asc
+			          ) ot
+			    ) ort
+			where rn >= #{startRnum}
+			and rn <= #{endRnum}
+		]]>
+	</select>
+	<select id="totalCount" parameterType="String" resultType="int">
+		<![CDATA[
+			select count(*)
+			from matchboard
+		]]>	
+			<if test='value != "" and value != null' >
+				where title like '%'|| #{keyword} ||'%'
+			</if>
+		<![CDATA[
+		]]>
+	</select>
 
 </mapper>
