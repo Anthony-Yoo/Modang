@@ -107,8 +107,6 @@ public class UserService {
 		System.out.println("UserService.modify()");
 		System.out.println(userVo);
 		
-		
-		
 		if(!file.isEmpty()) {//수정할 파일이 있으면
 			//파일저장경로
 			String saveDir = "C:\\javastudy\\upload";
