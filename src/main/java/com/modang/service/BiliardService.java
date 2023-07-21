@@ -1,6 +1,8 @@
 package com.modang.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,19 +22,45 @@ public class BiliardService {
 	@Autowired
 	private BiliardDao biliardDao;
 	
-	/* 테이블 현황 - 상세정보 가져오기 */
-	public TableGamesVo tableInfo(CueTableVo cuetableVo) {
-		System.out.println("BiliardService.tableInfo()");
+	/* 테이블 현황-테이블 종류 변경 */
+	public void tableTypeModify(CueTableVo cuetableVo) {
+		System.out.println("BiliardService.tableTypeModify()");
 		
-		TableGamesVo gamesVo =biliardDao.selectTable(cuetableVo);
-		return gamesVo;
+		biliardDao.updatetableType(cuetableVo);
+	}
+	
+	
+	/* 게임정보 가져오기 */
+	public List<TableGamesVo> getGames(int biliardNo) {
+		System.out.println("BiliardService.getGames()");
+		List<TableGamesVo> gamesList = biliardDao.selectGames(biliardNo);
+		System.out.println(gamesList);
+		
+		return gamesList;
+		
+	}
+	
+	/* 테이블 현황 - 상세정보 가져오기 */
+	public Map<String, Object> tableInfo(CueTableVo cuetableVo) {
+		System.out.println("BiliardService.tableInfo()");
+		int biliardNo = cuetableVo.getBiliardNo();
+				
+		TableGamesVo gamesVo = biliardDao.selectTable(cuetableVo);
+		TariffVo tariffVo = biliardDao.selectPrice(biliardNo);
+		
+		Map<String, Object> tMap = new HashMap<String, Object>();
+		tMap.put("gamesVo", gamesVo);
+		tMap.put("tariffVo", tariffVo);
+		System.out.println(tMap);
+		
+		return tMap;
 	}
 	
 	/*테이블현황-테이블 전체리스트 가져오기*/
-	public List<CueTableVo> tableList(int no) {
+	public List<CueTableVo> tableList(int biliardNo) {
 		System.out.println("BiliardService.tableList()");
 		
-		List<CueTableVo> cueTableList = biliardDao.selectList(no);
+		List<CueTableVo> cueTableList = biliardDao.selectList(biliardNo);
 		
 		System.out.println(cueTableList);
 		
@@ -40,10 +68,10 @@ public class BiliardService {
 	}
 	
 	/* 요금테이블-요금정보 가져오기 */
-	public TariffVo getPrice(int no) {
+	public TariffVo getPrice(int biliardNo) {
 		System.out.println("BiliardService.getPrice()");
 		
-		TariffVo tariffVo = biliardDao.selectPrice(no);
+		TariffVo tariffVo = biliardDao.selectPrice(biliardNo);
 		return tariffVo;
 	}
 	
