@@ -64,7 +64,3 @@ public class ManagerController {
 		return "redirect:/";
 	}
 }
-
-
-
-

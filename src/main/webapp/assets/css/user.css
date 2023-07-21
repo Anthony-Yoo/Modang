@@ -20,6 +20,7 @@
 #main-content .container #modifyForm #main {
 	width: 324px;
 	margin: 0 auto;
+	
 }
 
 
@@ -39,5 +40,7 @@
 	width: 100%;
 }
 
-
-
+#main form .form-group #image-show img{
+	width: 317px;
+	margin: 0px 0px 3px 0px;
+}
