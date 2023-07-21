@@ -67,10 +67,13 @@ input::placeholder{color: #B8B8B8;}
 .join-wrap .con span.inp-txt>div.parking input[type="radio"]:checked + label{background-color: #2E419A; color: #fff;}
 .join-wrap .con span.inp-txt>div.parking label{display: inline-block; margin-right: 10px; padding: 8px 20px; background-color:#F5F5F5;
 	border: 1px solid #B8B8B8; border-radius: 8px; cursor: pointer;}
-.join-wrap .con input .image{display: inline-block; width: 210px; height: 180px; margin-right:20px; border: 2px solid #2E419A;
-	background-color: gray;}
-.join-wrap .con input:nth-child(1).image{margin-left: 250px;}
 .join-wrap .con input .image img{display: block; width: 100%; height: 100%;}
+#imageContainer {display: flex;flex-wrap: wrap;align-items: center;gap: 10px; background-color: gray;}
+.imageBox {position: relative;width: 300px;height: 240px;border: 1px solid #ddd; background-color: olive;}
+.imageBox>.image{width: 100%; height: 100%; }
+.remove-btn {position: absolute;top: 5px;right: 5px;background-color: red;color: white;
+	border: none;cursor: pointer;padding: 2px 5px;border-radius: 5px;font-size: 12px; }
+button#addImageBtn{width: 100px;}
 
 /*매니저-메인컨텐츠-로그인*/
 .login-wrap{}
