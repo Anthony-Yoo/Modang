@@ -8,10 +8,7 @@
 #main-content .container{
 	width: 1200px;
 	height: 100%;
-<<<<<<< HEAD
-	
-=======
->>>>>>> branch 'master' of https://github.com/Anthony-Yoo/Modang.git
+
 	margin: 0px auto 100px auto;
 }
 
@@ -36,6 +33,7 @@
 
 #main form .button-area {
 	margin: 30px 0px 30px 0px;
+	bottom: 2px solid #2E419A;
 }
 
 #main form .button-area #btn-submit{

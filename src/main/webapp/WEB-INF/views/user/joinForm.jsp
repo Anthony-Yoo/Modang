@@ -48,7 +48,7 @@
 		
 						<form id="joinSubmitForm" action="${pageContext.request.contextPath}/user/join" method="post"
 							enctype="multipart/form-data">
-							
+							<!-- 아이디 -->
 							<div class="form-group">
 							
 								<div
@@ -64,7 +64,7 @@
 								
 							</div>
 							
-		
+							<!-- 비밀번호 -->
 							<div class="form-group">
 								
 									<span class="input-group"> <input id="passwd"
@@ -73,7 +73,8 @@
 									</span>
 								
 							</div>
-		
+							
+							<!-- 닉네임 -->
 							<div class="form-group">
 								
 									<span class="input-group"> <input id="nick"
@@ -83,7 +84,8 @@
 									</span>
 								
 							</div>
-		
+							
+							<!-- 폰번호 -->
 							<div class="form-group">
 								
 									<span class="input-group"> <input id="cellphone"
@@ -92,7 +94,8 @@
 									</span>
 								
 							</div>
-		
+							
+							<!-- 평균 -->
 							<div class="form-group">
 								
 									<span class="input-group"> <input id="average"
@@ -111,6 +114,8 @@
 		                			</div>
 		            			</div> 
 							-->
+							
+							<!-- 이미지 업로드 -->
 							<div class="form-group">
 								<div class="fileContainer">
 			                		<div class="fileInput">
@@ -125,6 +130,7 @@
 		        				<div class="image-show" id="image-show"></div>
 		    				</div>
 		    				
+		    				<!-- 서버전송 -->
 		  					<div class="button-area">
 								<button type="submit" id="btn-submit" class="btn btn-primary">회원가입 할거당</button>
 							</div>

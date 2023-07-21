@@ -44,16 +44,16 @@
 						<form id="loginSubmitForm" action="${pageContext.request.contextPath }/user/login" method="post" enctype="multipart/form-data">
             	
 			            	<div class="form-group">
-								<div class="input-group shadow-none p-1 mb-2 bg-light rounded">
-									<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+								<div class="input-group">
+									<span class="input-group-addon"></span>
 									<input id="id" type="text" maxlength="10" class="form-control" name="id" placeholder="ID">
 									<!-- <button type="button" class="btn btn-Dark">&nbsp;&nbsp;찾기&nbsp;&nbsp;</button> -->
 								</div>
 			                </div>
 	               
 							<div class="form-group">
-								<div class="input-group shadow-none p-1 mb-2 bg-light rounded">
-									<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+								<div class="input-group">
+									<span class="input-group-addon"></span>
 									<input id="passwd" type="password" maxlength="16" class="form-control" name="passwd" placeholder="PASSWORD">
 									<!-- <button type="button" class="btn btn-Dark">&nbsp;&nbsp;찾기&nbsp;&nbsp;</button> -->
 								</div>
