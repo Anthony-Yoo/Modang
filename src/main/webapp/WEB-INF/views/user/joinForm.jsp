@@ -13,13 +13,11 @@
 <link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
 
 <!-- css -->
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/user.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
 
 
 <!-- js -->
@@ -65,7 +63,7 @@
 								</div>
 								
 							</div>
-							<!--  -->
+							
 		
 							<div class="form-group">
 								
@@ -111,8 +109,8 @@
 		                  				<input id="recentlogontime" type="text" value="" maxlength="15" class="form-control" name="recentlogontime" placeholder="sysdate">
 		                  				<button type="button" class="btn btn-Dark">  &nbsp;&nbsp;입력&nbsp;&nbsp;  </button>
 		                			</div>
-		            			</div> -->
-							
+		            			</div> 
+							-->
 							<div class="form-group">
 								<div class="fileContainer">
 			                		<div class="fileInput">
@@ -126,6 +124,7 @@
 		        
 		        				<div class="image-show" id="image-show"></div>
 		    				</div>
+		    				
 		  					<div class="button-area">
 								<button type="submit" id="btn-submit" class="btn btn-primary">회원가입 할거당</button>
 							</div>

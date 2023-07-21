@@ -8,8 +8,10 @@
 #main-content .container{
 	width: 1200px;
 	height: 100%;
-	border-top: 2PX solid #2E419A; 
-	border-bottom: 2px solid #2E419A;
+<<<<<<< HEAD
+	
+=======
+>>>>>>> branch 'master' of https://github.com/Anthony-Yoo/Modang.git
 	margin: 0px auto 100px auto;
 }
 
@@ -20,6 +22,7 @@
 #main-content .container #modifyForm #main {
 	width: 324px;
 	margin: 0 auto;
+	
 }
 
 
@@ -39,5 +42,7 @@
 	width: 100%;
 }
 
-
-
+#main form .form-group #image-show img{
+	width: 317px;
+	margin: 0px 0px 3px 0px;
+}
