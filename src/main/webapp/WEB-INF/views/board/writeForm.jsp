@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>글 쓰기</title>
+<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
 <!-- 에디터 플러그인 -->
 <script type="text/javascript"
 	src='<c:out value="${contextPath}"/>/res/smarteditor/js/HuskyEZCreator.js'></script>
@@ -56,7 +57,7 @@ body {
 						<option value="0">3구</option>
 						<option value="1">4구</option>
 						<option value="2">포켓볼</option>
-					</select> &nbsp;&nbsp; <label for="matchRegion">지역</label> <select
+					</select> &nbsp;&nbsp;&nbsp;&nbsp; <label for="matchRegion">지역</label> <select
 						name="matchRegion" id="matchRegion">
 						<option value="강남구">강남구</option>
 						<option value="강동구">강동구</option>
@@ -84,14 +85,14 @@ body {
 						<option value="종로구">종로구</option>
 						<option value="중구">중구</option>
 						<option value="중랑구">중랑구</option>
-					</select> &nbsp;&nbsp; <label for="membernum">게임 인원(본인 포함)</label> <select
-						name="membernum" id="membernum">
+					</select> &nbsp;&nbsp;&nbsp;&nbsp; <label for="membernum">게임 인원(본인
+						포함)</label> <select name="membernum" id="membernum">
 						<option value="2">2명</option>
 						<option value="3">3명</option>
 						<option value="4">4명</option>
 						<option value="5">5명</option>
 						<option value="6">6명</option>
-					</select> &nbsp;&nbsp; <label for="matchDate">모임 날짜</label> <input
+					</select> &nbsp;&nbsp;&nbsp;&nbsp; <label for="matchDate">모임 날짜</label> <input
 						type="datetime-local" id="matchDate" name="matchDate" /><br>
 				</div>
 				<!-- 글 제목 작성 칸 -->
@@ -102,9 +103,9 @@ body {
 				</div>
 
 				<!-- content -->
-				<input type="button" onclick="submitContents();" value="전송" />
 				<div class="form-group">
-					<textarea id="txt-content" name="content" contenteditable="true">
+					<div id ="text-area">
+						<textarea id="txt-content" name="content" contenteditable="true">
   1. 모임 장소: 
 
   2. 플레이할 당구장 장소 협의 가능여부 (O/X) : 
@@ -112,6 +113,7 @@ body {
   3. 다마수 제한 (ex> 200이하 or 무관):  
                    
   4. 그 외 참고사항: </textarea>
+					</div>
 				</div>
 
 				<button id="btn_add" type="submit">작성 완료</button>
@@ -120,43 +122,11 @@ body {
 			<!-- /form -->
 		</div>
 		<!-- /writeForm -->
-
-		<!-- 카카오 지도 API 코드  -->
-		<!-- <div id="map" style="width: 500px; height: 400px;"></div>
-		<script>
-			const container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-			let options = { //지도를 생성할 때 필요한 기본 옵션
-				center : new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-				level : 3
-			//지도의 레벨(확대, 축소 정도)
-			};
-			let map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-		</script> -->
 	</div>
 	<!-- /board -->
 
+	<%-- <c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import> --%>
 </body>
 <script type="text/javascript">
-	var oEditors = [];
-
-	nhn.husky.EZCreator.createInIFrame({
-
-		oAppRef : oEditors,
-
-		elPlaceHolder : document.getElementById('txt-content'), // html editor가 들어갈 textarea id
-
-		sSkinURI : "${contextPath}/res/smarteditor/SmartEditor2Skin.html", // html editor가 skin url
-
-		fCreator : "createSEditor2"
-
-	});
-
-	function submitContents() {
-
-		oEditors.getById["txt-content"].exec("UPDATE_CONTENTS_FIELD", []); // 에디터의 내용이 textarea에 적용됨
-
-		alert(document.getElementById("txt-content").value);
-
-	}
 </script>
 </html>

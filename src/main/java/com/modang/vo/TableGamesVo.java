@@ -29,6 +29,28 @@ public class TableGamesVo {
 		
 	}
 
+	public TableGamesVo(int tableNo, int gameNo, int gameType, int memberNum, String gameDate, int gameTime,
+			String startTime, String endTime, int payStatus, int payType, String payDate, int income, int payMoney,
+			String pauseStart, String pauseEnd, int pauseTime, int setNo) {
+		this.tableNo = tableNo;
+		this.gameNo = gameNo;
+		this.gameType = gameType;
+		this.memberNum = memberNum;
+		this.gameDate = gameDate;
+		this.gameTime = gameTime;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.payStatus = payStatus;
+		this.payType = payType;
+		this.payDate = payDate;
+		this.income = income;
+		this.payMoney = payMoney;
+		this.pauseStart = pauseStart;
+		this.pauseEnd = pauseEnd;
+		this.pauseTime = pauseTime;
+		this.setNo = setNo;
+	}
+
 	public TableGamesVo(int tableNo, int biliardNo, int tableName, int tableType, int tableStatus, int gameNo,
 			int gameType, int memberNum, String gameDate, int gameTime, String startTime, String endTime, int payStatus,
 			int payType, String payDate, int income, int payMoney, String pauseStart, String pauseEnd, int pauseTime,

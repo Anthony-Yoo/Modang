@@ -23,15 +23,25 @@
 					<div class="col-12">
 
 						<!-- Logo -->
-						<h1><a href="${pageContext.request.contextPath}/manager/index"><img src="${pageContext.request.contextPath}/assets/images/logo.png" /></a></h1>
+						<h1>
+							<a href="index.html"><img src="${pageContext.request.contextPath}/assets/images/logo.png" /></a>
+						</h1>
 
-						<!-- User menu -->
-						<ul>
-							<!-- <li><a href="#" class="btn btn-sm">로그인</a></li> -->
-							<!-- <li><a href="#" class="btn btn-sm">모두의 당구장</a></li> -->
-							<li><a href="#" class="btn btn-sm">로그아웃</a></li>
-							<li><a href="#" class="btn btn-sm">모두의 당구장</a></li>
-						</ul>
+						<!-- User login -->
+						<c:choose>
+							<c:when test="${sessionScope.loginManager==null}">
+								<ul>
+									<li><a href="${pageContext.request.contextPath}/manager/loginForm" class="btn btn-sm">로그인</a></li>
+								</ul>
+							</c:when>
+							<c:otherwise>
+								<ul>	
+									<li class="mr-2"><strong>${sessionScope.loginManager.repName}</strong>님</li>
+									<li><a href="${pageContext.request.contextPath}/manager/logout" class="btn btn-sm">로그아웃</a></li>
+									<li><a href="${pageContext.request.contextPath}/" class="btn btn-sm">모두의 당구장</a></li>
+								</ul>
+							</c:otherwise>
+						</c:choose>
 
 						<!-- Nav -->
 						<nav id="nav">
