@@ -1,5 +1,7 @@
 package com.modang.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +11,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.modang.service.TabletService;
+import com.modang.vo.CardUsersVo;
+import com.modang.vo.JsonResult;
 import com.modang.vo.TabletUserVo;
 
 
@@ -39,18 +44,18 @@ public class TabletController {
 		TabletUserVo authUser = new TabletUserVo();	
 		  
 		if (resultVo != null) {		
-		System.out.println("로그인성공");
-		authUser.setUserNo(resultVo.getUserNo());
-		authUser.setNick(resultVo.getNick());
-		authUser.setAverage(resultVo.getAverage());
-		session.setAttribute("authUser", authUser);
-		  
-		return "/tablet/selectball";
+			System.out.println("로그인성공");
+			authUser.setUserNo(resultVo.getUserNo());
+			authUser.setNick(resultVo.getNick());
+			authUser.setAverage(resultVo.getAverage());
+			session.setAttribute("authUser", authUser);
+			  
+			return "/tablet/selectball";
 		
 		} else { 
-		System.out.println("로그인실패");
-		
-		return "redirect:/tablet?result=fail";		
+			System.out.println("로그인실패");
+			
+			return "redirect:/tablet?result=fail";		
 		}	
 
 	}	
@@ -61,14 +66,40 @@ public class TabletController {
 		System.out.println("TabletController.selectBall()");		
 		
 		
-		
 		return "/tablet/selectball";
 	}
+	
 	@RequestMapping(value="/tablet/memberForm", method = {RequestMethod.GET,RequestMethod.POST})
-	public String memberForm() {
+	public String memberForm(Model model,HttpSession session) {
 		System.out.println("TabletController.memberForm()");
 		
+		TabletUserVo authUser = (TabletUserVo)session.getAttribute("authUser");
+		int userNo = authUser.getUserNo();	
+		
+		List<CardUsersVo> cardList = tabletService.myMember(userNo);
+		System.out.println(cardList);
+		model.addAttribute("cardList", cardList);
+		
 		return "/tablet/memberForm";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/tablet/idfind", method = {RequestMethod.GET,RequestMethod.POST})
+	public JsonResult userFind(@RequestParam(value="id") String id) {
+		System.out.println("TabletController.userFind()");
+		System.out.println(id);
+		
+		List<TabletUserVo> playerList = tabletService.userFind(id);
+		System.out.println(playerList);
+		JsonResult jsonResult = new JsonResult();
+		
+		if (playerList != null) {			
+			jsonResult.success(playerList);
+		}else {
+			jsonResult.fail("해당id를 가진 유져가 없습니다.");	
+		}	
+		
+		return jsonResult;
 	}
 	
 	
@@ -99,7 +130,7 @@ public class TabletController {
 		
 		return "redirect:/mobile?result=fail";		
 		}
-	}
+	}	
 	
 
 }
