@@ -34,7 +34,7 @@
 
     		<div id="user">
 		
-				<div id="joinOK">
+				<div id="joinFail">
 		
 					<div id="main">
 						<br>
@@ -43,9 +43,9 @@
         					<div class="jumbotron">
             					<br>
             					<br>
-            					<h1>회원가입을 축하합니다.</h1>
+            					<h1>정보가 부족합니다.ㅜㅜ</h1>
             					<br>      
-            					<p><strong>modang! modang! 즐거운 modang!</strong></p>
+            					<p><strong>modang! modang! 부족한 modang!</strong></p>
         					</div>
     
     				</div>

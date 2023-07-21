@@ -40,9 +40,15 @@ public class UserController {
 		System.out.println(userVo);
 		System.out.println(file.getOriginalFilename());
 		
-		userService.join(userVo, file);
-		
-		return "user/joinOk";
+		int count=userService.join(userVo, file);
+		if(count>0) {
+			System.out.println("조인성공");
+			return "user/joinOk";
+		}
+		else {
+			System.out.println("조인실패");
+			return "redirect:/user/joinForm?result=fail";
+		}
 	}
 
 	// 로그인 폼
@@ -87,8 +93,7 @@ public class UserController {
 		 
 		 System.out.println(jsonResult);
 	 
-	 
-	  return jsonResult; 
+		 return jsonResult; 
 	  
 	 }
 	  
@@ -125,21 +130,32 @@ public class UserController {
 	
 	/*회원정보 수정*/
 	@RequestMapping(value="/modify", method= {RequestMethod.GET, RequestMethod.POST})
-	public String modify(@ModelAttribute UserVo userVo, HttpSession session) {
+	public String modify(@ModelAttribute UserVo userVo, MultipartFile file, HttpSession session) {
+	
 		System.out.println("UserController.modify()");
 		System.out.println(userVo);
+		System.out.println(file.getOriginalFilename());
+		
 		//세션에서 로그인한 사용자 정보 가져오기(UserVo)
 		UserVo authUser=(UserVo)session.getAttribute("authUser");
+		
 		//가져온 세션 정보에서 로그인한 사용자 no값 가져오기
 		int userno=authUser.getUserno();
+		
 		//파라미터로 넘어온 사용자 정보 : UserVo 정보로 로그인 한 사용자 no값 추가
 		userVo.setUserno(userno);
-		//userService 를 통해 로그인한 사용자 정보 수정 (service에서 UserVo로 받은 정보 전체)
-		userService.modify(userVo);
-		//받은 정보 전체 중에 id값을 통한 이름 변경
-		authUser.setId(userVo.getId());
 		
-		return "redirect:/";
+		//userService 를 통해 로그인한 사용자 정보 수정 (service에서 UserVo로 받은 정보 전체)
+		userService.modify(userVo, file);
+		
+		//세션의 닉네임 변경
+		authUser.setNick(userVo.getNick());
+		
+		/*
+		 * //세션의 이미지 표기 및 변경 authUser.setProfileimage(userVo.getProfileimage());
+		 */
+		 
+		return "redirect:/user/modifyForm";
 	}
 	
 }

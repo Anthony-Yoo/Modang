@@ -68,4 +68,7 @@ public class ManagerController {
 		sessoin.invalidate();
 		return "redirect:/";
 	}
+
 }
+
+

@@ -7,23 +7,25 @@
 <insert id="insert" parameterType="com.modang.vo.UserVo">  
     <![CDATA[
        insert into users(userno, id, passwd, nick, cellphone, average, recentlogontime, profileimage) 
-		values( SEQ_USERS_NO.nextval,
-		        #{id},
-		        #{passwd}, 
-		        #{nick},
-		        #{cellphone},
-		        #{average},
-		        sysdate,
-		        #{profileimage}
+values( SEQ_USERS_NO.nextval,
+        #{id},
+        #{passwd},
+        #{nick},
+        #{cellphone},
+        #{average},
+        sysdate,
+        #{profileimage}
         )
+       
     ]]>
 </insert>
 
 <!-- 로그인 -->
 <select id="selectUser" parameterType="com.modang.vo.UserVo" resultType="com.modang.vo.UserVo">
 	<![CDATA[
-		select  id, 
-				passwd
+		select  userno,
+				id, 
+				nick
 		from users
 		where id=#{id} and 
 			  passwd=#{passwd}
@@ -37,8 +39,10 @@
 	<![CDATA[
 		select id,  
 			   nick,
+			   passwd,
 			   cellphone, 
-			   average
+			   average,
+			   profileimage
 		from users
 		where id=#{id}
 				
@@ -46,16 +50,20 @@
 
 </select>
 
-<!-- 회원수정 비밀번호 -->
+<!-- 회원정보 수정  -->
 <update id="update" parameterType="com.modang.vo.UserVo">
 	<![CDATA[
 		update users
-			set passwd = #{passwd},
-                nick = #{nick},
-                cellphone = #{cellphone},
-                average = #{average}
-                
-			where id = #{id}    
+		set passwd = #{passwd},
+            nick = #{nick},
+            cellphone = #{cellphone},
+    ]]>      
+      	<if test="profileimage != null">
+           	profileimage = #{profileimage},
+        </if>
+	<![CDATA[
+			average = #{average}	
+		where id = #{id}
 	]]>
 
 </update>
@@ -64,7 +72,7 @@
 <select id="selectUserById" parameterType="String" resultType="com.modang.vo.UserVo">
 	<![CDATA[
 		select userno, id 
-		from users
+			from users
 		where id=#{id} 	
 	]]>
 
