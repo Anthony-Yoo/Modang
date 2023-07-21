@@ -44,7 +44,7 @@
 				
 					<div id="main">
 		
-						<h3>이것은 모당 가입 ^^</h3>
+						<h3>이것은 가입 ^^</h3>
 		
 						<form id="joinSubmitForm" action="${pageContext.request.contextPath}/user/join" method="post"
 							enctype="multipart/form-data">
@@ -58,7 +58,7 @@
 										<input id="input-uid" type="text" value="" maxlength="10" class="form-control" name="id" placeholder="ID">
 									</span>
 									<span class="input-group-addon">
-										<button id="btnIdCheck" type="button" class="btn btn-primary rounded" data-toggle="modal" data-target="#myModal">확인</button>
+										<button id="btnIdCheck" type="button" data-toggle="modal" data-target="#myModal">확인</button>
 									</span>
 								</div>
 								
@@ -132,7 +132,7 @@
 		    				
 		    				<!-- 서버전송 -->
 		  					<div class="button-area">
-								<button type="submit" id="btn-submit" class="btn btn-primary">회원가입 할거당</button>
+								<button type="submit" id="btn-submit" class="btn btn-primary">회원가입 할거당 ^^</button>
 							</div>
 							
 			    		</form>
@@ -153,14 +153,13 @@
 					
 			</div>
 			<!-- //user -->
-				
-				<!-- 푸터 시작 -->
-					<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
-				<!-- 푸터 끝 -->	
 			
 		</div>
 		<!-- //container -->
-    
+    <!-- 푸터 시작 -->
+	<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
+	<!-- 푸터 끝 -->
+		
     </div>
     <!-- //main-content -->
 	
