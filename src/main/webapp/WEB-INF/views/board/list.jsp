@@ -8,6 +8,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
+<link rel="icon" sizes="any"
+	href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
 <!-- 게시판 css -->
 <link href="${pageContext.request.contextPath}/assets/css/board.css"
 	rel="stylesheet" type="text/css">
@@ -48,122 +50,50 @@
 						<th>게임 희망일자</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr>
-						<td>1</td>
-						<td>포켓볼</td>
-						<td>강동구</td>
-						<td class="text-left"><a href="">포켓볼 다 발라쥼</a></td>
-						<td>1/2</td>
-						<td>이도단</td>
-						<td>23.07.07</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>3구</td>
-						<td>송파구</td>
-						<td class="text-left"><a href="">다마 400으로 발라줌</a></td>
-						<td>1/2</td>
-						<td>박유준</td>
-						<td>23.07.07</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>3구</td>
-						<td>관악구</td>
-						<td class="text-left"><a href="">3구 맛세이 대전</a></td>
-						<td>1/2</td>
-						<td>유상우</td>
-						<td>23.07.07</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>4구</td>
-						<td>구로구</td>
-						<td class="text-left"><a href="">안녕하세요</a></td>
-						<td>1/2</td>
-						<td>박유준</td>
-						<td>23.07.07</td>
-					</tr>
-					<tr>
-						<td>5</td>
-						<td>3구</td>
-						<td>강동구</td>
-						<td class="text-left"><a href="">안녕못합니다.</a></td>
-						<td>1/2</td>
-						<td>김혜선</td>
-						<td>23.07.07</td>
-					</tr>
-					<tr>
-						<td>6</td>
-						<td>3구</td>
-						<td>강동구</td>
-						<td class="text-left"><a href="">안녕하세요</a></td>
-						<td>1/2</td>
-						<td>박유준</td>
-						<td>23.07.07</td>
-					</tr>
-					<tr>
-						<td>7</td>
-						<td>3구</td>
-						<td>강동구</td>
-						<td class="text-left"><a href="">안녕하세요</a></td>
-						<td>1/2</td>
-						<td>박유준</td>
-						<td>23.07.07</td>
-					</tr>
-					<tr>
-						<td>8</td>
-						<td>3구</td>
-						<td>강동구</td>
-						<td class="text-left"><a href="">안녕하세요</a></td>
-						<td>1/2</td>
-						<td>박유준</td>
-						<td>23.07.07</td>
-					</tr>
-					<tr>
-						<td>9</td>
-						<td>3구</td>
-						<td>강동구</td>
-						<td class="text-left"><a href="">안녕하세요</a></td>
-						<td>1/2</td>
-						<td>박유준</td>
-						<td>23.07.07</td>
-					</tr>
-					<tr>
-						<td>10</td>
-						<td>3구</td>
-						<td>강동구</td>
-						<td class="text-left"><a href="">안녕하세요</a></td>
-						<td>1/2</td>
-						<td>박유준</td>
-						<td>23.07.07</td>
-					</tr>
-				</tbody>
+				<!-- 게시판 리스트 출력 반복문 -->
+				<c:forEach items="${pMap.bList}" var="boardVo">
+					<tbody>
+						<tr>
+							<td>${boardVo.boardNo}</td>	<!-- 게시판 번호 -->
+							<!-- 게임타입 번호에 따른 게임 종류 출력 -->
+							<c:choose>
+								<c:when test="${boardVo.matchGameType == 0}">
+									<td>3구</td>
+								</c:when>
+								<c:when test="${boardVo.matchGameType == 1}">
+									<td>4구</td>
+								</c:when>
+								<c:when test="${boardVo.matchGameType == 2}">
+									<td>포켓볼</td>
+								</c:when>
+							</c:choose>
+							<td>${boardVo.matchRegion}</td>		<!-- 경기 지역 -->
+							<td class="text-left"><a href="">${boardVo.title}</a></td> <!-- 제목 -->
+							<td>1/${boardVo.membernum}</td>		<!-- 멤버 구인현황 현재 인원/ 총 모집인원 -->
+							<td>${boardVo.nick}</td>			<!-- 글쓴이 닉네임 -->
+							<td>${boardVo.matchDate}</td>		<!-- 개임 날짜 -->
+						</tr>
+					</tbody>
+				</c:forEach>
+				<!-- 게시판 리스트 출력문 끝 -->
 			</table>
-			<!-- <div id="write">
-                <a class="btn" href="">글쓰기</a>
-            </div> -->
 			<div id="paging">
 				<ul>
-					<li><a href="">◀</a></li>
-					<li><a href="">1</a></li>
-					<li><a href="">2</a></li>
-					<li><a href="">3</a></li>
-					<li><a href="">4</a></li>
-					<li class="active"><a href="">5</a></li>
-					<li><a href="">6</a></li>
-					<li><a href="">7</a></li>
-					<li><a href="">8</a></li>
-					<li><a href="">9</a></li>
-					<li><a href="">10</a></li>
-					<li><a href="">▶</a></li>
+					<c:if test="${pMap.prev == true}">
+						<li><a href="${pageContext.request.contextPath}/board/list?crtPage=${pMap.startPageBtnNo-1}&keyword=${pMap.keyword}">◀</a></li>
+					</c:if>
+					<c:forEach begin="${pMap.startPageBtnNo}" end="${pMap.endPageBtnNo}" step="1" var="page">
+						<li class="active"><a href="${pageContext.request.contextPath}/board/list?crtPage=${page}&keyword=${pMap.keyword}">${page}</a></li>
+					</c:forEach>
+					<c:if test="${pMap.next == true}">
+						<li><a href="${pageContext.request.contextPath}/board/list?crtPage=${pMap.endPageBtnNo+1}&keyword=${pMap.keyword}">▶</a></li>
+					</c:if>
 				</ul>
 				<div class="clear"></div>
 			</div>
-			<form action="" method="">
+			<form action="${pageContext.request.contextPath}/board/list" method="get">
 				<div class="form-group text-center">
-					<select>
+					<select name="category">
 						<option>선택</option>
 						<option>제목</option>
 						<option>지역</option>
