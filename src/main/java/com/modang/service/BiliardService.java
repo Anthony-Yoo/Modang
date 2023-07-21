@@ -22,6 +22,14 @@ public class BiliardService {
 	@Autowired
 	private BiliardDao biliardDao;
 	
+	/* 테이블 현황-테이블 종류 변경 */
+	public void tableTypeModify(CueTableVo cuetableVo) {
+		System.out.println("BiliardService.tableTypeModify()");
+		
+		biliardDao.updatetableType(cuetableVo);
+	}
+	
+	
 	/* 게임정보 가져오기 */
 	public List<TableGamesVo> getGames(int biliardNo) {
 		System.out.println("BiliardService.getGames()");
