@@ -150,19 +150,19 @@
 		               </label>
 		               
 		                -->
-						
+					
 			</div>
 			<!-- //user -->
+				
+				<!-- 푸터 시작 -->
+					<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
+				<!-- 푸터 끝 -->	
+			
 		</div>
 		<!-- //container -->
     
-    
     </div>
     <!-- //main-content -->
-	
-	<!-- 푸터 시작 -->
-	<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
-	<!-- 푸터 끝 -->
 	
 	  <!-- Modal -->
   	<div class="modal fade" id="myModal" role="dialog">

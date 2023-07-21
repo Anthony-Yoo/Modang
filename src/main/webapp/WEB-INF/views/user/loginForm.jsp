@@ -17,10 +17,8 @@
 <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/user.css" rel="stylesheet" type="text/css">
 
-
 <!-- js -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 
 </head>
       
@@ -47,7 +45,7 @@
 								<div class="input-group">
 									<span class="input-group-addon"></span>
 									<input id="id" type="text" maxlength="10" class="form-control" name="id" placeholder="ID">
-									<!-- <button type="button" class="btn btn-Dark">&nbsp;&nbsp;찾기&nbsp;&nbsp;</button> -->
+									
 								</div>
 			                </div>
 	               
@@ -55,12 +53,12 @@
 								<div class="input-group">
 									<span class="input-group-addon"></span>
 									<input id="passwd" type="password" maxlength="16" class="form-control" name="passwd" placeholder="PASSWORD">
-									<!-- <button type="button" class="btn btn-Dark">&nbsp;&nbsp;찾기&nbsp;&nbsp;</button> -->
+									
 								</div>
 							</div>
 	             
 							<div class="button-area">
-							  	<button type="submit" id="btn-submit" class="btn btn-primary rounded">로그인 할거당^^</button>
+							  	<button type="submit" id="btn-submit">로그인 할거당^^</button>
 							</div>
               			</form>
               			<!-- //loginSubmitForm -->
@@ -90,18 +88,5 @@
     <!-- 푸터 끝 -->
     
 </body>
-  <!--
-  
-  <button type="button" class="btn">Basic</button>
-  <button type="button" class="btn btn-primary">Primary</button>
-  <button type="button" class="btn btn-secondary">Secondary</button>
-  <button type="button" class="btn btn-success">Success</button>
-  <button type="button" class="btn btn-info">Info</button>
-  <button type="button" class="btn btn-warning">Warning</button>
-  <button type="button" class="btn btn-danger">Danger</button>
-  <button type="button" class="btn btn-dark">Dark</button>
-  <button type="button" class="btn btn-light">Light</button>
-  <button type="button" class="btn btn-link">Link</button>   
--->
-  
+
 </html>
