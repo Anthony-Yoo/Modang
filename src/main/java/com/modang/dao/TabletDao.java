@@ -1,9 +1,14 @@
 package com.modang.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.modang.vo.CardMemberVo;
+import com.modang.vo.CardUsersVo;
+import com.modang.vo.FavoriteUsersVo;
 import com.modang.vo.TabletUserVo;
 
 @Repository
@@ -43,5 +48,29 @@ public class TabletDao {
 				
 		return session.delete("tablet.deleteTime", normalTime);
 	}
+	
+	public List<TabletUserVo> selectId(String id) {
+		System.out.println("TabletDao.selectId()");
+		System.out.println(id);
+		
+		return session.selectList("tablet.selectId", id);		
+	}
+	
+	public List<CardUsersVo> selectCardUsers(int userNo) {
+		System.out.println("TabletDao.selectCardUsers()");		
+		
+		return session.selectList("tablet.selectCardUsers", userNo);
+	}
 
+	public List<CardMemberVo> selectCardMember(int cardNo) {
+		System.out.println("TabletDao.selectCardMember()");
+		
+		return session.selectList("tablet.selectCardMember", cardNo);	
+	}
+	
+	public List<FavoriteUsersVo> selectFavorite(int userNo) {
+		System.out.println("TabletDao.selectFavorite()");
+		
+		return session.selectList("tablet.selectFavorite", userNo);
+	}
 }
