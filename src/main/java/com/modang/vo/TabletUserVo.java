@@ -102,5 +102,6 @@ public class TabletUserVo {
 				+ ", recentLogonTime=" + recentLogonTime + ", profileImage=" + profileImage + ", keyNum=" + keyNum
 				+ ", createDate=" + createDate + "]";
 	}
+	
 		
 }

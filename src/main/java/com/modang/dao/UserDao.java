@@ -32,23 +32,24 @@ public class UserDao {
 		return authUser;
 	}
 	//회원정보 수정폼 유저
-	public UserVo selectUser(int userno) {
+	public UserVo updateSelect(String id) {
 		System.out.println("UserDao.selectUser()");
-		System.out.println(userno);
+		System.out.println(id);
 		
-		UserVo authUser=session.selectOne("user.selectUserByNo", userno);
-		System.out.println(authUser);
-		return authUser;
+		UserVo userno=session.selectOne("user.selectUserByNo", id);
+		System.out.println(userno);
+		return userno;
 	}
 	//회원정보 수정
-	public void updateUser(UserVo userVo) {
+	public int updateUser(UserVo userVo) {
 		System.out.println("UserDao.selectUser()");
 		System.out.println(userVo);
 		
-		session.update("user.update", userVo);
+		int count=session.update("user.update", userVo);
+		
+		return count;
 		
 	}
-	
 	
 	//id check <--ajax
 	public UserVo selectUser(String id) {

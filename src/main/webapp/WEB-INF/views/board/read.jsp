@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>글 읽기</title>
+<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
 <!-- 게시판 css -->
 <link href="${pageContext.request.contextPath}/assets/css/board.css"
 	rel="stylesheet" type="text/css">

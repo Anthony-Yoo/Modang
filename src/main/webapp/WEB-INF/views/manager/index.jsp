@@ -9,7 +9,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/managerdefault.css" />
+
+<!-- jquery -->
 <script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
+
+<!-- 부트스트랩 js -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
+
+
 </head>
 <body>
 	<div id="page-wrapper">
@@ -25,13 +32,21 @@
 							<a href="index.html"><img src="${pageContext.request.contextPath}/assets/images/logo.png" /></a>
 						</h1>
 
-						<!-- User menu -->
-						<ul>
-							<!-- <li><a href="#" class="btn btn-sm">로그인</a></li> -->
-							<li class="mr-2"><strong>홍길동</strong>님</li>
-							<li><a href="#" class="btn btn-sm">로그아웃</a></li>
-							<li><a href="#" class="btn btn-sm">모두의 당구장</a></li>
-						</ul>
+						<!-- User login -->
+						<c:choose>
+							<c:when test="${sessionScope.loginManager==null}">
+								<ul>
+									<li><a href="${pageContext.request.contextPath}/manager/loginForm" class="btn btn-sm">로그인</a></li>
+								</ul>
+							</c:when>
+							<c:otherwise>
+								<ul>	
+									<li class="mr-2"><strong>${sessionScope.loginManager.repName}</strong>님</li>
+									<li><a href="${pageContext.request.contextPath}/manager/logout" class="btn btn-sm">로그아웃</a></li>
+									<li><a href="${pageContext.request.contextPath}/" class="btn btn-sm">모두의 당구장</a></li>
+								</ul>
+							</c:otherwise>
+						</c:choose>
 
 						<!-- Nav -->
 						<nav id="nav">
@@ -51,14 +66,13 @@
 			<div class="container">
 				<div class="row aln-center">
 
-					<!-- Table -->
+					<!-- 테이블 목록 -->
 					<div class="col-8">
 						<section>
 							<header>
 								<h2>테이블 현황</h2>
 							</header>
 							<div id="tablelist">
-								
 								<c:forEach items="${cueTableList}" var="cueTableVo">
 									<div class="tableArea" data-biliardno="${cueTableVo.biliardNo}" data-tableno="${cueTableVo.tableNo}" data-tablename="${cueTableVo.tableName}" data-tabletype="${cueTableVo.tableType}" >
 										<large class="font-weight-normal text-blue float-left"><strong>No. ${cueTableVo.tableName}</strong></large>
@@ -82,37 +96,44 @@
 											</div>
 									</div>
 								</c:forEach>
-								
+								<!-- 테이블 추가버튼 -->
+								<div class="tableAdd">
+									<img src="${pageContext.request.contextPath}/assets/images/addbt.png"/>
+								</div>
 							</div>							
 						</section>
 					</div>
 
-					<!-- Form -->
+					<!-- 테이블 상세정보-------------------------------------------------->
 					<div class="col-4">
 						<section>
 							<header>
-								<h2 id="info-01">테이블</h2>
+								<h2 id="info-01">테이블 정보</h2>
 							</header>
-
+<!-- 테이블종류 -->
 							<form action="${pageContext.request.contextPath}/manager/tableInfo" method="get">
 								<div class="form-group row mb-1">
 									<label class="col-form-label col-4">테이블 종류</label>
 									<div id="" class="col">
 										<label class="custom-control custom-radio d-inline-block">
-											<input type="radio" name="tabletype0" class="custom-control-input" />
+											<input type="radio" name="tabletype" value="0" class="custom-control-input"  />
 											<span class="custom-control-label">대대</span>
 										</label> 
 										<label class="custom-control custom-radio d-inline-block">
-											<input type="radio" name="tabletype1" class="custom-control-input" /> 
+											<input type="radio" name="tabletype" value="1" class="custom-control-input"  /> 
 											<span class="custom-control-label">중대</span>
 										</label> 
 										<label class="custom-control custom-radio d-inline-block">
-											<input type="radio" name="tabletype2" class="custom-control-input" /> 
+											<input type="radio" name="tabletype" value="2" class="custom-control-input"  /> 
 											<span class="custom-control-label">포켓</span>
 										</label>
-										     <a href="${pageContext.request.contextPath}/manager/settings"><img src="${pageContext.request.contextPath}/assets/images/settings.png" width="15px"/></a>
+											<button id="tableSetting" type="button">
+										     	<img src="${pageContext.request.contextPath}/assets/images/settings.png" width="15px"/>
+										    </button>
 									</div>
 								</div>
+
+<!-- 게임종류	 -->							
 								<div class="form-group row mb-1">
 									<label class="col-form-label col-4">게임 종류</label>
 									<div class="col">
@@ -138,6 +159,7 @@
 										</div>
 									</div>
 								</div>
+<!-- 고객정보	 -->								
 								<div class="form-group row mb-1">
 									<label class="col-form-label col-4">고객정보</label>
 									<div class="col">
@@ -150,34 +172,38 @@
 										<span class="input-group-prepend">
 											<span class="input-group-text px-2 text-tiny" style="height: 2rem;">10분당</span>
 										</span>
-										<input type="text" name="" class="form-control form-control-sm px-2" maxlength="4" disabled /> 
+										<input type="text" id="tableFee" class="form-control form-control-sm px-2" maxlength="4" readonly/> 
 											<span class="input-group-append">
 												<span class="input-group-text px-2 text-tiny" style="height: 2rem;">원</span>
 											</span>
 									</div>
 								</div>
+<!-- 시작시간	 -->								
 								<div class="form-group row mb-1">
 									<label class="col-form-label col-4">시작 시간</label>
 									<div class="col-4">
-										<input type="text" name="" class="form-control form-control-sm mb-1" maxlength="20" disabled />
+										<input type="text" id="startTime" class="form-control form-control-sm mb-1" maxlength="20" readonly />
 									</div>
 								</div>
+<!-- 이용시간	 -->								
 								<div class="form-group row mb-1">
 									<label class="col-form-label col-4">이용 시간</label>
 									<div class="col">
-										<textarea name="" class="form-control mb-1" rows="5" maxlength="1000" disabled></textarea>
+										<textarea name="" class="form-control mb-1" rows="5" maxlength="1000" readonly></textarea>
 									</div> 
 								</div>
+<!-- 종료시간	 -->								
 								<div class="form-group row mb-1">
 									<label class="col-form-label col-4">종료 시간</label>
 									<div class="col-4">
-										<input type="text" name="" class="form-control form-control-sm mb-1" maxlength="20"	disabled />
+										<input type="text" id="endTime" class="form-control form-control-sm mb-1" maxlength="20"	readonly />
 									</div>
 								</div>
+<!-- 결제금액	 -->								
 								<div class="form-group row mb-1">
 									<label class="col-form-label col-4">총 결제금액</label>
 									<div class="col input-group">
-										<input type="text" name="" class="form-control" maxlength="20" disabled />
+										<input type="text" name="" class="form-control" maxlength="20" readonly />
 									</div>
 								</div>
 
@@ -195,11 +221,63 @@
 		<div id="copyright">&copy; modang. All rights reserved.</div>
 
 	</div>
+	
+<!--테이블 변경 모달창 ------------------------------------------------------- -->	
+
+<div class="modal fade modal-center" id="tableMngModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-center">
+    <div class="modal-content">
+		<div class="modal-header">
+		    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+		    <h4 class="modal-title" id="mySmallModalLabel"><strong>테이블 변경</strong></h4>
+		</div>
+      <div class="modal-body">
+        <label for="inputEmail3" class="label01">테이블 종류</label>
+		<div id="" class="col">
+			<label class="custom-control custom-radio d-inline-block">
+				<input type="radio" name="tabletype" value="0" class="custom-control-input"  />
+				<span class="custom-control-label">대대</span>
+			</label> 
+			<label class="custom-control custom-radio d-inline-block">
+				<input type="radio" name="tabletype" value="1" class="custom-control-input"  /> 
+				<span class="custom-control-label">중대</span>
+			</label> 
+			<label class="custom-control custom-radio d-inline-block">
+				<input type="radio" name="tabletype" value="2" class="custom-control-input"  /> 
+				<span class="custom-control-label">포켓</span>
+			</label>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button id="btnAdd" type="button" class="btn btn-primary">변경</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">닫기</button>
+      </div>
+    </div>
+  </div>
+</div> 	
+<!--테이블 변경 모달창 끝------------------------------------------------------- -->	
+	
+	
 </body>
 
 <script type="text/javascript">
-	
+let crtbiliardNo=0;//현재 선택된 당구장넘버
+let crtTableNo=0; //현재 선택된 테이블넘버
+let crtTableName=0; //현재 선택된 테이블네임
+
+<!--테이블 추가클릭------------------------------------------------------- -->
+$(".tableAdd").on("click",function(){
+	console.log('테이블 추가버튼');
+});
+
+
+<!--테이블 상세정보 가져오기------------------------------------------------------- -->	
 $(".tableArea").on("click",function(){
+	
+	crtTableNo = $(this).data("tableno");
+	crtTableName = $(this).data("tablename");
+	crtbiliardNo = $(this).data("biliardno");
+	
 	console.log('테이블 클릭');
 	var biliardno = $(this).data("biliardno");
 	var tableno = $(this).data("tableno");
@@ -230,17 +308,50 @@ $(".tableArea").on("click",function(){
 	 			$("#info-01").empty(); 									// 당구대 번호 초기화
 	 			$(".col input[type='radio']").prop("checked", false);	//라디오버튼 당구장종류 초기화
 					
-				   console.log("성공");
-				$("#info-01").append("No."+jsonResult.data.tableName);
-				$('[name=tabletype'+jsonResult.data.tableType+']').prop("checked",true);
-				if(jsonResult.data.tableType < 2 ){
+				$("#info-01").append("No."+jsonResult.data.gamesVo.tableName); //테이블이름 출력
+				
+				$('[value='+jsonResult.data.gamesVo.tableType+']').prop("checked",true); //테이블타입 라디오버튼 선택
+				
+				if(jsonResult.data.gamesVo.tableType < 2 ){ //게임타입정보 대대/중대일때 3구/4구 show 포켓일때 8볼/10볼 show
 					$( ".gametype-2" ).hide();
 					$( ".gametype-1" ).show();
 				}else{
 					$( ".gametype-1" ).hide();
 					$( ".gametype-2" ).show();
 				}
-				$('[name=gametype'+jsonResult.data.gameType+']').prop("checked",true);
+				
+				$('[name=gametype'+jsonResult.data.gamesVo.gameType+']').prop("checked",true); //게임타입정보 라디오버튼 선택
+
+				var tableFee = 0;
+				switch (jsonResult.data.gamesVo.tableType) {
+					case 0:
+						tableFee = jsonResult.data.tariffVo.btablefee;
+						break;
+					case 1:
+						tableFee = jsonResult.data.tariffVo.mtablefee;
+						break;
+					case 2:
+						tableFee = jsonResult.data.tariffVo.ptablefee;
+						break;
+					default:
+						tableFee = 0;
+						break;
+				}
+				var formattedTableFee = tableFee.toLocaleString(); // 천단위 구분기호
+				$('#tableFee').val(formattedTableFee); //기본요금 표기
+				
+				var startTime = jsonResult.data.gamesVo.startTime; 
+				var date = new Date(startTime);
+				var hours = date.getHours();
+				var minutes = date.getMinutes();
+
+				// 시간 형식 변환
+				var formattedHours = hours % 12 === 0 ? 12 : hours % 12; // 12시간 형식으로 변환
+				var amPm = hours < 12 ? '오전' : '오후'; // 오전/오후 구분
+
+				var formattedStartTime = amPm + ' ' + formattedHours + ':' + (minutes < 10 ? '0' : '') + minutes; // 시간과 분을 조합하여 형식화된 시작 시간 생성
+
+				$('#startTime').val(formattedStartTime); //시작시간 표기(오전/오후 시간:분)
 				
 			}else{
 				
@@ -253,7 +364,63 @@ $(".tableArea").on("click",function(){
 	
 });
 
+<!--테이블 변경모달창 호출------------------------------------------------------- -->
+ $(".form-group").on("click","#tableSetting", function(){
+	console.log("설정클릭");
+	console.log("선택된 테이블넘버:"+crtTableNo);
+	
+
+	$('#tableMngModal').modal('show');
+
+});  
+
+
+/* table종류변경 팝업 수정버튼 클릭했을때 */
+  $("#btnAdd").on("click", function(){
+	console.log("수정클릭");
+		
+	let tabletype = $('#tableMngModal [name="tabletype"]:checked').val();
+	console.log("당구장넘버:"+crtbiliardNo);
+	console.log("선택된 테이블넘버:"+crtTableNo);
+	console.log("변경된 테이블종류:"+tabletype);
+	
+	var cuttableVo ={
+			biliardNo: crtbiliardNo,
+			tableNo: crtTableNo,
+			tableType: tabletype
+	}; 
+	
+ 	$.ajax({
+		
+		url : "${pageContext.request.contextPath }/manager/tabletype",		
+		type : "post",
+		data : cuttableVo,
+
+		dataType : "json",
+		success : function(jsonResult){
+			/*성공시 처리해야될 코드 작성*/
+  			console.log(jsonResult);
+			
+			if(jsonResult.result == "success"){
+				//정상처리
+				
+
+			}else{
+				//오류처리
+			}
+
+		},
+		error : function(XHR, status, error) { 
+			console.error(status + " : " + error);
+		}
+    }); //ajax end */ 
+
+
+	
+  }); 
+	
+
+   
+
 </script>
-
-
 </html>

@@ -19,7 +19,9 @@ pageEncoding="UTF-8"%>
             <c:otherwise>
             <!-- 로그인성공시, 로그인후 -->
             <!----> <ul>
-                <li><strong>${sessionScope.authUser.id}님 안녕하세요 ^^</strong></li>
+            		
+                <li><strong><a href="${pageContext.request.contextPath}">${sessionScope.authUser.nick}님 안녕하세요 ^^</a></strong></li>
+                
                 <li><a href="${pageContext.request.contextPath}/user/logout">로그아웃</a></li>
                 <li><a href="${pageContext.request.contextPath}/user/modifyForm">회원정보수정</a></li>
             </ul> 

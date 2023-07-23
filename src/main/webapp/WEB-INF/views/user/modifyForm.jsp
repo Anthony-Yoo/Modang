@@ -19,6 +19,7 @@
 <!-- js -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+
 </head>
 
 <body>
@@ -36,58 +37,74 @@
 					
 						<div id="main">
 						
-							<h3>수정할꺼당 ^^</h3>
+							<h3>이것은 수정 ^^</h3>
 					
-                   			<form id="modifysubmitForm" action="${pageContext.request.contextPath }/user/modify" method="get" enctype="multipart/form-data">
+                   			<form id="modifysubmitForm" action="${pageContext.request.contextPath }/user/modify" method="post" enctype="multipart/form-data">
                     
-                   			<!-- 아이디 -->
-                   			<div class="form-group">
-                     			<div class="shadow-none p-1 mb-2 bg-light rounded input-group">
-                     				<span class="input-group-addon" class="text-large bold"></span>
-                       				<input id="id" type="text" maxlength="16" class="form-control" name="id" value="${requestScope.authUser.id}" placeholder="ID">
-                       				
-                     			</div>
-                   			</div>
+	                   			<!-- 아이디 -->
+	                   			<div class="form-group">
+	                     			<div class="input-group">
+	                     				<span class="input-group-addon" class="text-large bold"></span>
+	                       				<input id="id" type="text" maxlength="16" class="form-control" name="id" value="${requestScope.userVo.id}" placeholder="" readonly="readonly">
+	                       				
+	                     			</div>
+	                   			</div>
                    			
-                   			<!-- 비밀번호 -->
-							<div class="form-group">
-                     			<div class="shadow-none p-1 mb-2 bg-light rounded input-group">
-                       				<span class="input-group-addon" class="text-large bold"></span>
-                       				<input id="passwd" type="password" maxlength="16" class="form-control" name="passwd" value="${requestScope.authUser.passwd}" placeholder="PW">
-                       			
-                     			</div>
-                   			</div>
+	                   			<!-- 비밀번호 -->
+								<div class="form-group">
+	                     			<div class="input-group">
+	                       				<span class="input-group-addon" class="text-large bold"></span>
+	                       				<input id="passwd" type="password" maxlength="16" class="form-control" name="passwd" value="${requestScope.userVo.passwd}" placeholder="PW">
+	                       			
+	                     			</div>
+	                   			</div>
 
-                   			<!-- 휴대폰 -->
-                   			<div class="form-group">
-                     			<div class="shadow-none p-1 mb-2 bg-light rounded input-group">
-                       				<span class="input-group-addon" class="text-large bold"></span>
-                       				<input id="cellphone" type="text" maxlength="11" class="form-control" name="cellphone" value="${requestScope.authUser.cellphone}" placeholder="PH">
-                       				
-                     			</div>
-                   			</div>
+	                   			<!-- 휴대폰 -->
+	                   			<div class="form-group">
+	                     			<div class="input-group">
+	                       				<span class="input-group-addon" class="text-large bold"></span>
+	                       				<input id="cellphone" type="text" maxlength="11" class="form-control" name="cellphone" value="${requestScope.userVo.cellphone}" placeholder="">
+	                       				
+	                     			</div>
+	                   			</div>
                    
-                   			<!-- 별명 -->
-                   			<div class="form-group">
-                     			<div class="shadow-none p-1 mb-2 bg-light rounded input-group">
-                       				<span class="input-group-addon" class="text-large bold"></span>
-                       				<input id="nick" type="text" maxlength="7" class="form-control" name="nick" value="${requestScope.authUser.nick}" placeholder="NICK NAME">
-                       				
-                     			</div>
-                   			</div>
-                   
-                   			<!-- 평균 -->
-                   			<div class="form-group">
-                     			<div class="shadow-none p-1 mb-2 bg-light rounded input-group">
-                       				<span class="input-group-addon" class="text-large bold"></span>
-                       				<input id="average" type="text" maxlength="3" class="form-control" name="average" value="${requestScope.authUser.average}" placeholder="AVERAGE">
-                       				
-                     			</div>
-                   			</div>
+	                   			<!-- 별명 -->
+	                   			<div class="form-group">
+	                     			<div class="input-group">
+	                       				<span class="input-group-addon" class="text-large bold"></span>
+	                       				<input id="nick" type="text" maxlength="7" class="form-control" name="nick" value="${requestScope.userVo.nick}" placeholder="">
+	                       				
+	                     			</div>
+	                   			</div>
+	                   
+	                   			<!-- 평균 -->
+	                   			<div class="form-group">
+	                     			<div class="input-group">
+	                       				<span class="input-group-addon" class="text-large bold"></span>
+	                       				<input id="average" type="text" maxlength="3" class="form-control" name="average" value="${requestScope.userVo.average}" placeholder="">
+	                       				
+	                     			</div>
+	                   			</div>
+                   			
+                   			 	<!-- 이미지 -->
+                   				<div class="form-group">
+                   					<div class="image-show" id="image-show" >
+		        						<img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileimage}" >
+		        					</div>
+									<div class="fileContainer">
+										
+			                			<div class="fileInput">
+				                  			<span class="input-group">
+				                  			
+				                  				<input id="profileimage" class="form-control" type="file" name="file"  value="" placeholder="">
+				                  			</span>
+			            				</div>
+		        					</div>
+		    					</div> <%----%>
                     
-                    		<div class="button-area">
-								<button type="submit" id="btn-submit" class="btn btn-primary">수정 할거당 ^^</button>
-							</div>
+	                    		<div class="button-area">
+									<button type="submit" id="btn-submit" class="btn btn-primary">수정 할거당^^</button>
+								</div>
                     
                     		</form>
                     	</div>
@@ -96,6 +113,7 @@
                     <!-- //modifyForm -->
                 </div>
                 <!-- //user -->
+                
          </div>
          <!-- //container -->
       </div>

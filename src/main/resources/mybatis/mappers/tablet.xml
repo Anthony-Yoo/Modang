@@ -25,7 +25,7 @@
 		]]>	
 	</select>
 	
-	<!-- 유저키 검색 쿼리 -->
+	<!-- 유저키 검색(id/pass) 쿼리 -->
 	<select id="selectUserKey" parameterType="com.modang.vo.TabletUserVo" resultType="com.modang.vo.TabletUserVo">
 		<![CDATA[
 			select  loginKeyNo
@@ -39,6 +39,19 @@
 			AND u.USERNO = l.keyOwner				
 		]]>	
 	</select>
+	
+	<!-- 유져키 검색(id) 쿼리 -->
+	<select id="selectId" parameterType="String" resultType="com.modang.vo.TabletUserVo">
+		<![CDATA[
+			select  userNo
+					,nick
+					,average
+					,recentLogonTime
+			from users
+			where id Like '%'|| #{id} || '%'
+		]]>
+	</select>
+	
 	<!-- 키넘버 생성 -->
 	<insert id="insertKeyNum" parameterType="com.modang.vo.TabletUserVo">
 		<![CDATA[
@@ -86,5 +99,47 @@
 			where createdate < (sysdate - #{normalTime}/24/60)	
 		]]>
 	</delete>
+	<!-- 카드목록 검색 -->
+	<select id="selectCardUsers" parameterType="int" resultType="com.modang.vo.CardUsersVo">
+		<![CDATA[
+			select  CARDNO
+					,SETUSERNO
+					,TITLE
+					,CARDUSERDATE
+					,GAMETYPE
+			from cardusers
+			where SETUSERNO = #{userNo}		
+		]]>
+	
+	</select>
+	<!-- 카드멤버 검색 -->
+	<select id="selectCardMember" parameterType="int" resultType="com.modang.vo.CardMemberVo">
+		<![CDATA[
+			select  c.MEMBERNO
+					,c.GETUSERNO
+					,c.CARDNO
+					,u.NICK guestNick
+					,u.AVERAGE average
+			from 	cardMember c
+					,users u
+			where CARDNO = #{cardNo}
+			AND u.USERNO = c.GETUSERNO
+		]]>	
+	</select>
+	<!-- 즐겨찾기멤버 검색 -->
+	<select id="selectFavorite" parameterType="int" resultType="com.modang.vo.FavoriteUsersVo">
+		<![CDATA[
+			select  f.FAVORITENO
+					,f.SETUSERNO
+					,f.GETUSERNO
+					,f.FAVORITEUSERDATE
+					,u.NICK 
+					,u.AVERAGE average
+			from favoriteUsers f
+				 ,users u
+			where SETUSERNO = #{userNo}	
+			AND u.USERNO = f.GETUSERNO
+		]]>	
+	</select>
 	
 </mapper>
