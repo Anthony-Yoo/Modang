@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bDComment">
+
+	<!-- <insert id="insert" parameterType="com.modang.vo.BDCommentVo">
+		
+	</insert> -->
+
+
+	<select id="list" resultType="com.modang.vo.BDCommentVo">
+		<![CDATA[
+			select a.commentNo
+				 , a.boardNo
+				 , a.userNo
+				 , writeDate
+				 , content
+				 , groupNo
+				 , groupOrder
+				 , depth
+				 , b.nick
+				 , b.id
+			from bdcomment a, users b
+			where a.userNo = b.userNo
+			order by groupNo DESC
+				   , groupOrder ASC
+		]]>
+	</select>
+
+</mapper>

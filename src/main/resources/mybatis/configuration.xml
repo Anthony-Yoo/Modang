@@ -8,9 +8,10 @@
     <mappers>
         <mapper resource="mybatis/mappers/main.xml" />
         <mapper resource="mybatis/mappers/tablet.xml"/>
-        <mapper resource="mybatis/mappers/board.xml" />
+        <mapper resource="mybatis/mappers/board.xml" />	  <!-- 게시판 -->
         <mapper resource="mybatis/mappers/user.xml" />
         <mapper resource="mybatis/mappers/manager.xml" /> <!-- 당구장매니져용 -->
         <mapper resource="mybatis/mappers/biliard.xml" /> <!-- 당구장관리용 -->
+        <mapper resource="mybatis/mappers/bDComment.xml" /> <!-- 대댓글 -->
     </mappers>
 </configuration>
