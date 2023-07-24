@@ -71,9 +71,25 @@
 			          from matchboard mb, users u
 			          where mb.userNo = u.userNo 
            	]]>
-				<if test='keyword != "" and keyword != null'>
+				<if test='category == "title" and keyword != "" and keyword != null'>
 					and mb.title like '%'|| #{keyword} ||'%'
 				</if>
+				<if test='category == "matchregion" and keyword != null and keyword != ""'>
+		            and mb.matchregion like '%'|| #{keyword} ||'%'
+		        </if>
+		        <if test='category == "nick" and keyword != null and keyword != ""'>
+		            and u.nick like '%'|| #{keyword} ||'%'
+		        </if>
+		         <!-- matchgametype에 대한 조건을 추가 -->
+		        <if test='category == "matchgametype" and matchgametypeValue != null and matchgametypeValue != -1'>
+		            and mb.matchgametype in (#{matchgametypeValue})
+		        </if>
+		        <if test='category == "matchgametype" and matchgametypeValue == -1'>
+		            and mb.matchgametype in (0,1)
+		        </if>
+		        <if test='category == "content" and keyword != null and keyword != ""'>
+		            and mb.content like '%'|| #{keyword} ||'%'
+		        </if>
 			<![CDATA[	
             		 order by mb.matchdate asc
 			          ) ot
@@ -82,16 +98,50 @@
 			and rn <= #{endRnum}
 		]]>
 	</select>
-	<select id="totalCount" parameterType="String" resultType="int">
-		<![CDATA[
-			select count(*)
-			from matchboard
-		]]>	
-			<if test='value != "" and value != null' >
-				where title like '%'|| #{keyword} ||'%'
-			</if>
+	<select id="totalCount" parameterType="map" resultType="int">
+        <![CDATA[
+            select count(*)
+            from matchboard mb, users u
+            where mb.userno = u.userno
+        ]]>
+        <if test='category == "title" and keyword != "" and keyword != null'>
+			and mb.title like '%'|| #{keyword} ||'%'
+		</if>
+		<if test='category == "matchregion" and keyword != null and keyword != ""'>
+            and mb.matchregion like '%'|| #{keyword} ||'%'
+        </if>
+        <if test='category == "nick" and keyword != null and keyword != ""'>
+            and u.nick like '%'|| #{keyword} ||'%'
+        </if>
+       	<if test='category == "matchgametype" and matchgametypeValue != null and matchgametypeValue != -1'>
+            and mb.matchgametype in (#{matchgametypeValue})
+        </if> 
+        <if test='category == "matchgametype" and matchgametypeValue == -1'>
+            and mb.matchgametype in (0,1)
+        </if> 
+        <if test='category == "content" and keyword != null and keyword != ""'>
+            and mb.content like '%'|| #{keyword} ||'%'
+        </if>
 		<![CDATA[
 		]]>
 	</select>
-
+	
+	<select id="selectOne" parameterType="int" resultType="com.modang.vo.BoardVo">
+		<![CDATA[
+			select mb.boardNo,
+			       mb.title,
+			       mb.matchgametype,
+			       mb.matchregion,
+			       mb.memberNum,
+			       mb.matchdate,
+			       mb.content,
+			       mb.boardDate,
+			       mb.count,
+			       mb.status,
+			       u.nick,
+			       u.userNo
+			from Matchboard mb, users u
+			where mb.boardNo = #{boardNo} and u.userNo = mb.userNo
+		]]>
+	</select>
 </mapper>

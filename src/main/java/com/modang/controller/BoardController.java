@@ -28,10 +28,12 @@ public class BoardController {
 	/* 게시판 리스트 페이지 이동 */
 	@RequestMapping(value = "/list")
 	public String list(@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword,
-			@RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage, Model model) {
+					   @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage,
+					   @RequestParam(value = "category", required = false, defaultValue = "") String category,
+					   Model model) {
 		System.out.println("BoardController.list");
-		Map<String, Object> pMap = boardService.getList(crtPage, keyword);
-		System.out.println(pMap);
+		Map<String, Object> pMap = boardService.getList(crtPage, keyword, category);
+//		System.out.println(pMap);
 		model.addAttribute("pMap", pMap );
 		return "/board/list";
 	}
@@ -50,8 +52,12 @@ public class BoardController {
 
 	/* 글쓰기 서브밋 데이터 */
 	@RequestMapping(value = "/write", method = { RequestMethod.POST })
-	public String write(@ModelAttribute BoardVo boardVo) {
+	public String write(@ModelAttribute BoardVo boardVo, HttpSession session) {
 		System.out.println("BoardController.write()");
+		UserVo vo = (UserVo) session.getAttribute("authUser");
+		System.err.println(vo);
+		boardVo.setUserNo(vo.getUserNo());
+		System.err.println(boardVo);
 		/* matchDate의 T를 공백을 변환 */
 		DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
 		DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -66,9 +72,11 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/read")
-	public String read() {
+	public String read(@RequestParam("boardNo") int boardNo, Model model) {
 		System.out.println("BoardController.read()");
-
+		BoardVo vo = boardService.read(boardNo);
+		System.out.println(vo);
+		model.addAttribute("rList", vo);
 		return "/board/read";
 	}
 
@@ -78,4 +86,5 @@ public class BoardController {
 		return "/board/test2";
 	}
 
+	
 }

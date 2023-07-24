@@ -57,18 +57,18 @@
 							<td>${boardVo.boardNo}</td>	<!-- 게시판 번호 -->
 							<!-- 게임타입 번호에 따른 게임 종류 출력 -->
 							<c:choose>
-								<c:when test="${boardVo.matchGameType == 0}">
+								<c:when test="${boardVo.matchGameType == '0'}">
 									<td>3구</td>
 								</c:when>
-								<c:when test="${boardVo.matchGameType == 1}">
+								<c:when test="${boardVo.matchGameType == '1'}">
 									<td>4구</td>
 								</c:when>
-								<c:when test="${boardVo.matchGameType == 2}">
+								<c:when test="${boardVo.matchGameType == '2'}">
 									<td>포켓볼</td>
 								</c:when>
 							</c:choose>
 							<td>${boardVo.matchRegion}</td>		<!-- 경기 지역 -->
-							<td class="text-left"><a href="">${boardVo.title}</a></td> <!-- 제목 -->
+							<td class="text-left"><a href="${pageContext.request.contextPath}/board/read?boardNo=${boardVo.boardNo}">${boardVo.title}</a></td> <!-- 제목 -->
 							<td>1/${boardVo.membernum}</td>		<!-- 멤버 구인현황 현재 인원/ 총 모집인원 -->
 							<td>${boardVo.nick}</td>			<!-- 글쓴이 닉네임 -->
 							<td>${boardVo.matchDate}</td>		<!-- 개임 날짜 -->
@@ -95,11 +95,11 @@
 				<div class="form-group text-center">
 					<select name="category">
 						<option>선택</option>
-						<option>제목</option>
-						<option>지역</option>
-						<option>작성자</option>
-						<option>게임종류</option>
-						<option>내용</option>
+						<option value="title">제목</option>
+						<option value="matchregion">지역</option>
+						<option value="nick">작성자</option>
+						<option value="matchgametype">게임종류</option>
+						<option value="content">내용</option>
 					</select> <input type="text" name="keyword" value="">
 					<button type="submit" id=btn_search>검색</button>
 				</div>
@@ -107,7 +107,8 @@
 		</div>
 		<!-- //list -->
 	</div>
-
+	<!-- footer -->
+<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
 </body>
 
 </html>

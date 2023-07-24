@@ -36,9 +36,9 @@ public class UserDao {
 		System.out.println("UserDao.selectUser()");
 		System.out.println(id);
 		
-		UserVo userno=session.selectOne("user.selectUserByNo", id);
-		System.out.println(userno);
-		return userno;
+		UserVo userNo=session.selectOne("user.selectUserByNo", id);
+		System.out.println(userNo);
+		return userNo;
 	}
 	//회원정보 수정
 	public int updateUser(UserVo userVo) {
