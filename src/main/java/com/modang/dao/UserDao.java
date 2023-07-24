@@ -61,5 +61,15 @@ public class UserDao {
 		return userVo;
 		
 	}
+	
+	//nick check
+	public UserVo selectNick(String nick) {
+		System.out.println("UserDao.selectNick()");
+		System.out.println(nick);
+		
+		UserVo userVo=session.selectOne("user.selectUserByNick", nick);
+		
+		return userVo;
+	}
 
 }

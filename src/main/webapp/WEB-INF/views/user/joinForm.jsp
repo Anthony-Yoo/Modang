@@ -22,9 +22,9 @@
 
 <!-- js -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript"src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 </head>
@@ -54,12 +54,14 @@
 								<div
 									class="input-group">
 									
-									<span class="input-group-addon">
+									<span class="input-group">
+										
 										<input id="input-uid" type="text" value="" maxlength="10" class="form-control" name="id" placeholder="ID">
-									</span>
-									<span class="input-group-addon">
+									
 										<button id="btnIdCheck" type="button" data-toggle="modal" data-target="#myModal">확인</button>
+										<img src="${pageContext.request.contextPath}/assets/images/account.png" alt="">
 									</span>
+									
 								</div>
 								
 							</div>
@@ -67,7 +69,10 @@
 							<!-- 비밀번호 -->
 							<div class="form-group">
 								
-									<span class="input-group"> <input id="passwd"
+									<span class="input-group">
+										<img src="${pageContext.request.contextPath}/assets/images/unlock.png" alt="">
+									
+										<input id="passwd"
 										type="password" value="" maxlength="16" class="form-control"
 										name="passwd" placeholder="PASSWORD">
 									</span>
@@ -76,19 +81,23 @@
 							
 							<!-- 닉네임 -->
 							<div class="form-group">
-								
-									<span class="input-group"> <input id="nick"
-										type="text" value="" maxlength="7" class="form-control"
-										name="nick" placeholder="NICK NAME">
+								<div
+									class="input-group">
+									<span class="input-group">
 										
+										<input id="nick" type="text" value="" maxlength="7" class="form-control" name="nick" placeholder="NICK NAME">
+										<button id="btnNickCheck" type="button" data-toggle="modal" data-target="#myModal2">확인</button>
+										<img src="${pageContext.request.contextPath}/assets/images/business-card.png" alt="">
 									</span>
-								
+								</div>
 							</div>
 							
 							<!-- 폰번호 -->
 							<div class="form-group">
 								
-									<span class="input-group"> <input id="cellphone"
+									<span class="input-group">
+										<img src="${pageContext.request.contextPath}/assets/images/smartphone.png" alt="">
+										<input id="cellphone"
 										type="text" value="" maxlength="11" class="form-control"
 										name="cellphone" placeholder="HP">
 									</span>
@@ -98,7 +107,9 @@
 							<!-- 평균 -->
 							<div class="form-group">
 								
-									<span class="input-group"> <input id="average"
+									<span class="input-group">
+										<img src="${pageContext.request.contextPath}/assets/images/line-graph.png" alt="">
+										<input id="average"
 										type="text" value="" maxlength="3" class="form-control"
 										name="average" placeholder="VALUE [타수]">
 									</span>
@@ -120,9 +131,10 @@
 								<div class="fileContainer">
 			                		<div class="fileInput">
 				                		
-				                  			<span class="input-group">
+				                  		<span class="input-group">
+				                  			
 				                  			<input id="profileImage" type="file" name="file" class="form-control" placeholder="upload image" value="">
-				                  			</span>
+				                  		</span>
 				                		
 			            			</div>
 		        				</div>
@@ -172,6 +184,23 @@
         		</div>
         		<div class="modal-body">
           			<p id="idcheckMsg"></p>
+        		</div>
+        		<div class="modal-footer">
+          			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        		</div>
+      		</div>
+    	</div>
+  	</div>
+  	
+  	  <!-- Modal -->
+  	<div class="modal fade" id="myModal2" role="dialog">
+    	<div class="modal-dialog modal-sm">
+      		<div class="modal-content">
+        		<div class="modal-header">
+          			<h4 class="modal-title">닉네임 확인!</h4>
+        		</div>
+        		<div class="modal-body">
+          			<p id="nickcheckMsg"></p>
         		</div>
         		<div class="modal-footer">
           			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -264,6 +293,7 @@
 		//아이디 추출
 		var id = $("[name=id]").val();
 		console.log(id);
+		
 		//통신 id
 		$.ajax({
 
@@ -283,6 +313,50 @@
 						
 					}else{//불가
 						$("#idcheckMsg").html(id + "사용중");
+					}
+					
+				}else{//실패면
+					var msg = jsonResult.failMsg;
+					alert(msg);
+				}
+			},
+			
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+			
+		});
+		
+		
+	});
+	
+	//nick check 버튼을 클릭했을 떄
+	$("#btnNickCheck").on("click",function(){
+		console.log("클릭");
+		
+		//nick 추출
+		var nick = $("[name=nick]").val();
+		console.log(nick);
+		
+		//통신 id
+		$.ajax({
+
+			url : "${pageContext.request.contextPath }/user/nickchek",//주소 요청
+			type : "post",
+			//contentType : "application/json",
+			data : {nick : nick},
+
+			dataType : "json",
+			success : function(jsonResult) {
+				console.log(jsonResult);
+					
+				if(jsonResult.result == "success"){//성공이면
+					//사용가능한지 표현함
+					if(jsonResult.data == true){//사용가능
+						$("#nickcheckMsg").html(nick + "사용가능");
+						
+					}else{//불가
+						$("#nickcheckMsg").html(nick + "사용중");
 					}
 					
 				}else{//실패면

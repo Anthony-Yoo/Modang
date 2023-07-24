@@ -9,7 +9,9 @@ import com.modang.dao.TabletDao;
 import com.modang.vo.CardMemberVo;
 import com.modang.vo.CardUsersVo;
 import com.modang.vo.FavoriteUsersVo;
+import com.modang.vo.PlayUserVo;
 import com.modang.vo.StaticVo;
+import com.modang.vo.TableGamesVo;
 import com.modang.vo.TabletUserVo;
 
 @Service
@@ -104,6 +106,29 @@ public class TabletService {
 		}	
 		
 		return cardList;		
+	}
+	
+	public int createGame(TableGamesVo tableGame) {
+		System.out.println("TabletService.createGame()");
+		
+		
+		//게임넘버 인서트 및 찾기
+		tabletDao.insertGame(tableGame);
+		tableGame.setSetNo(tableGame.getGameNo()); 
+		System.out.println(tableGame);
+		//플레이넘버 인서트 및 찾기		
+		int gameNo = tableGame.getGameNo();
+		List<PlayUserVo> playUserList = new ArrayList<PlayUserVo>();
+		playUserList = tableGame.getPlayUserList();
+		for (PlayUserVo vo : playUserList) {
+			vo.setGameNo(gameNo);
+			tabletDao.insertPlay(vo);
+		}
+		System.out.println(playUserList);
+		tableGame.setPlayUserList(playUserList);		
+		System.out.println(tableGame);		
+		
+		return gameNo;
 	}
 	
 }

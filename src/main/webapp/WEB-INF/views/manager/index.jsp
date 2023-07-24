@@ -235,7 +235,7 @@
         <label for="inputEmail3" class="label01">테이블 종류</label>
 		<div id="" class="col">
 			<label class="custom-control custom-radio d-inline-block">
-				<input type="radio" name="tabletype" value="0" class="custom-control-input"  />
+				<input type="radio" name="tabletype" value="0" class="custom-control-input"  /> 
 				<span class="custom-control-label">대대</span>
 			</label> 
 			<label class="custom-control custom-radio d-inline-block">
@@ -249,13 +249,50 @@
 		</div>
       </div>
       <div class="modal-footer">
-        <button id="btnAdd" type="button" class="btn btn-primary">변경</button>
+        <button id="btnSave" type="button" class="btn btn-primary">변경</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">닫기</button>
+      </div>
+    </div>
+  </div>
+</div> 	 	
+<!--테이블 변경 모달창 끝------------------------------------------------------- -->	
+<!--테이블 추가 모달창 ------------------------------------------------------- -->	
+
+<div class="modal fade modal-center" id="tableAddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-center">
+    <div class="modal-content">
+		<div class="modal-header">
+		    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+		    <h4 class="modal-title" id="mySmallModalLabel"><strong>테이블 추가</strong></h4>
+		</div>
+      <div class="modal-body">
+      	<label for="inputEmail3" class="label01">테이블 번호</label>
+      	<input class="form-control-2 " id="tableName" type="text" name="" >
+      	<br>
+        <label for="inputEmail3" class="label01">테이블 종류</label>
+		<div id="" class="col">
+			<label class="custom-control custom-radio d-inline-block">
+				<input type="radio" name="tabletype1" value="0" class="custom-control-input"  />
+				<span class="custom-control-label">대대</span>
+			</label> 
+			<label class="custom-control custom-radio d-inline-block">
+				<input type="radio" name="tabletype1" value="1" class="custom-control-input"  /> 
+				<span class="custom-control-label">중대</span>
+			</label> 
+			<label class="custom-control custom-radio d-inline-block">
+				<input type="radio" name="tabletype1" value="2" class="custom-control-input"  /> 
+				<span class="custom-control-label">포켓</span>
+			</label>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button id="btnAdd" type="button" class="btn btn-primary">추가</button>
         <button type="button" class="btn btn-dark" data-dismiss="modal">닫기</button>
       </div>
     </div>
   </div>
 </div> 	
-<!--테이블 변경 모달창 끝------------------------------------------------------- -->	
+<!--테이블 추가 모달창 끝------------------------------------------------------- -->	
 	
 	
 </body>
@@ -268,8 +305,50 @@ let crtTableName=0; //현재 선택된 테이블네임
 <!--테이블 추가클릭------------------------------------------------------- -->
 $(".tableAdd").on("click",function(){
 	console.log('테이블 추가버튼');
+	
+	$('#tableAddModal').modal('show');
 });
 
+<!--테이블 추가하기------------------------------------------------------ --->
+$("#btnAdd").on("click", function(){
+	console.log("테이블 추가하기");
+	
+	var addtableName = $("#tableName").val(); //테이블이름 초기화
+	console.log(addtableName);
+	var addtableType = $('#tableAddModal [name="tabletype1"]:checked').val(); //테이블타입 초기화
+	console.log(addtableType);
+	
+	var cuetableVo={ //입력한 정보 vo에 담기
+			tableName: addtableName,
+			tableType: addtableType
+		};
+	
+	$.ajax({
+		url : "${pageContext.request.contextPath }/manager/addTable",		
+		type : "post",
+		data : cuetableVo,
+
+		dataType : "json",
+		success : function(jsonResult){
+			console.log(jsonResult);
+			/*성공시 처리해야될 코드 작성*/
+ 			if(jsonResult.data !=null){
+ 			
+				$('#tableAddModal').modal('hide');
+				alert("테이블이 추가되었습니다.");
+				location.reload(); //새로고침
+	 					
+			}else{
+				
+			} 
+		},
+		error : function(XHR, status, error) { 
+			console.error(status + " : " + error);
+		}
+    }); //ajax end	
+	
+	
+});
 
 <!--테이블 상세정보 가져오기------------------------------------------------------- -->	
 $(".tableArea").on("click",function(){
@@ -306,13 +385,14 @@ $(".tableArea").on("click",function(){
  			if(jsonResult.data !=null){
  			
 	 			$("#info-01").empty(); 									// 당구대 번호 초기화
+	 			$('#startTime').empty();                                // 요금 초기화
 	 			$(".col input[type='radio']").prop("checked", false);	//라디오버튼 당구장종류 초기화
 					
-				$("#info-01").append("No."+jsonResult.data.gamesVo.tableName); //테이블이름 출력
+				$("#info-01").append("No."+jsonResult.data.oneTable.tableName); //테이블이름 출력
 				
-				$('[value='+jsonResult.data.gamesVo.tableType+']').prop("checked",true); //테이블타입 라디오버튼 선택
+				$('[value='+jsonResult.data.oneTable.tableType+']').prop("checked",true); //테이블타입 라디오버튼 선택
 				
-				if(jsonResult.data.gamesVo.tableType < 2 ){ //게임타입정보 대대/중대일때 3구/4구 show 포켓일때 8볼/10볼 show
+				if(jsonResult.data.oneTable.tableType < 2 ){ //게임타입정보 대대/중대일때 3구/4구 show 포켓일때 8볼/10볼 show
 					$( ".gametype-2" ).hide();
 					$( ".gametype-1" ).show();
 				}else{
@@ -320,10 +400,8 @@ $(".tableArea").on("click",function(){
 					$( ".gametype-2" ).show();
 				}
 				
-				$('[name=gametype'+jsonResult.data.gamesVo.gameType+']').prop("checked",true); //게임타입정보 라디오버튼 선택
-
 				var tableFee = 0;
-				switch (jsonResult.data.gamesVo.tableType) {
+				switch (jsonResult.data.oneTable.tableType) {
 					case 0:
 						tableFee = jsonResult.data.tariffVo.btablefee;
 						break;
@@ -337,21 +415,29 @@ $(".tableArea").on("click",function(){
 						tableFee = 0;
 						break;
 				}
+				
 				var formattedTableFee = tableFee.toLocaleString(); // 천단위 구분기호
 				$('#tableFee').val(formattedTableFee); //기본요금 표기
 				
-				var startTime = jsonResult.data.gamesVo.startTime; 
-				var date = new Date(startTime);
-				var hours = date.getHours();
-				var minutes = date.getMinutes();
-
-				// 시간 형식 변환
-				var formattedHours = hours % 12 === 0 ? 12 : hours % 12; // 12시간 형식으로 변환
-				var amPm = hours < 12 ? '오전' : '오후'; // 오전/오후 구분
-
-				var formattedStartTime = amPm + ' ' + formattedHours + ':' + (minutes < 10 ? '0' : '') + minutes; // 시간과 분을 조합하여 형식화된 시작 시간 생성
-
-				$('#startTime').val(formattedStartTime); //시작시간 표기(오전/오후 시간:분)
+				$('#startTime').val(""); //시작시간 초기화
+				
+				if(jsonResult.data.gamesVo!=null){ //게임정보 있는 경우 보여주기
+					$('[name=gametype'+jsonResult.data.gamesVo.gameType+']').prop("checked",true); //게임타입정보 라디오버튼 선택
+	
+					var startTime = jsonResult.data.gamesVo.startTime; 
+					var date = new Date(startTime);
+					var hours = date.getHours();
+					var minutes = date.getMinutes();
+	
+					// 시간 형식 변환
+					var formattedHours = hours % 12 === 0 ? 12 : hours % 12; // 12시간 형식으로 변환
+					var amPm = hours < 12 ? '오전' : '오후'; // 오전/오후 구분
+	
+					var formattedStartTime = amPm + ' ' + formattedHours + ':' + (minutes < 10 ? '0' : '') + minutes; // 시간과 분을 조합하여 형식화된 시작 시간 생성
+	
+					$('#startTime').val(formattedStartTime); //시작시간 표기(오전/오후 시간:분)
+				}
+				
 				
 			}else{
 				
@@ -367,17 +453,16 @@ $(".tableArea").on("click",function(){
 <!--테이블 변경모달창 호출------------------------------------------------------- -->
  $(".form-group").on("click","#tableSetting", function(){
 	console.log("설정클릭");
-	console.log("선택된 테이블넘버:"+crtTableNo);
 	
+	console.log("선택된 테이블넘버:"+crtTableNo);
 
 	$('#tableMngModal').modal('show');
 
 });  
 
-
-/* table종류변경 팝업 수정버튼 클릭했을때 */
-  $("#btnAdd").on("click", function(){
-	console.log("수정클릭");
+ <!--table종류변경 팝업 수정버튼 클릭했을때--------------------------------------------->
+  $("#btnSave").on("click", function(){
+	console.log("테이블종류 변경클릭");
 		
 	let tabletype = $('#tableMngModal [name="tabletype"]:checked').val();
 	console.log("당구장넘버:"+crtbiliardNo);
@@ -399,15 +484,19 @@ $(".tableArea").on("click",function(){
 		dataType : "json",
 		success : function(jsonResult){
 			/*성공시 처리해야될 코드 작성*/
-  			console.log(jsonResult);
+  			console.log(jsonResult.data);
 			
-			if(jsonResult.result == "success"){
+			if(jsonResult.data > 0 ){ //테이블종류 수정 성공시
 				//정상처리
-				
+				$('#tableMngModal').modal('hide');
+				alert("테이블종류가 변경되었습니다.");
+				location.reload(); //새로고침
+				 
 
-			}else{
+			}else{ //테이블종류 수정 실패시
 				//오류처리
-			}
+				alert("테이블을 다시 확인해주세요");
+			} 
 
 		},
 		error : function(XHR, status, error) { 
