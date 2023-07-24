@@ -81,15 +81,15 @@
 							
 							<!-- 닉네임 -->
 							<div class="form-group">
-								
+								<div
+									class="input-group">
 									<span class="input-group">
-										<img src="${pageContext.request.contextPath}/assets/images/business-card.png" alt="">
-										<input id="nick"
-										type="text" value="" maxlength="7" class="form-control"
-										name="nick" placeholder="NICK NAME">
 										
+										<input id="nick" type="text" value="" maxlength="7" class="form-control" name="nick" placeholder="NICK NAME">
+										<button id="btnNickCheck" type="button" data-toggle="modal" data-target="#myModal2">확인</button>
+										<img src="${pageContext.request.contextPath}/assets/images/business-card.png" alt="">
 									</span>
-								
+								</div>
 							</div>
 							
 							<!-- 폰번호 -->
@@ -191,6 +191,23 @@
       		</div>
     	</div>
   	</div>
+  	
+  	  <!-- Modal -->
+  	<div class="modal fade" id="myModal2" role="dialog">
+    	<div class="modal-dialog modal-sm">
+      		<div class="modal-content">
+        		<div class="modal-header">
+          			<h4 class="modal-title">닉네임 확인!</h4>
+        		</div>
+        		<div class="modal-body">
+          			<p id="nickcheckMsg"></p>
+        		</div>
+        		<div class="modal-footer">
+          			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        		</div>
+      		</div>
+    	</div>
+  	</div>
 
 	
 </body>
@@ -276,6 +293,7 @@
 		//아이디 추출
 		var id = $("[name=id]").val();
 		console.log(id);
+		
 		//통신 id
 		$.ajax({
 
@@ -295,6 +313,50 @@
 						
 					}else{//불가
 						$("#idcheckMsg").html(id + "사용중");
+					}
+					
+				}else{//실패면
+					var msg = jsonResult.failMsg;
+					alert(msg);
+				}
+			},
+			
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+			
+		});
+		
+		
+	});
+	
+	//nick check 버튼을 클릭했을 떄
+	$("#btnNickCheck").on("click",function(){
+		console.log("클릭");
+		
+		//nick 추출
+		var nick = $("[name=nick]").val();
+		console.log(nick);
+		
+		//통신 id
+		$.ajax({
+
+			url : "${pageContext.request.contextPath }/user/nickchek",//주소 요청
+			type : "post",
+			//contentType : "application/json",
+			data : {nick : nick},
+
+			dataType : "json",
+			success : function(jsonResult) {
+				console.log(jsonResult);
+					
+				if(jsonResult.result == "success"){//성공이면
+					//사용가능한지 표현함
+					if(jsonResult.data == true){//사용가능
+						$("#nickcheckMsg").html(nick + "사용가능");
+						
+					}else{//불가
+						$("#nickcheckMsg").html(nick + "사용중");
 					}
 					
 				}else{//실패면

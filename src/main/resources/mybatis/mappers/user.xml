@@ -73,10 +73,18 @@ values( SEQ_USERS_NO.nextval,
 	<![CDATA[
 		select userNo, id 
 			from users
-		where id=#{id} 	
+		where id=#{id}
 	]]>
 
 </select>
 
+<!-- 회원정보 nick확인 -->
+<select id="selectUserByNick" parameterType="String" resultType="com.modang.vo.UserVo">
+	<![CDATA[
+		select userNo, nick 
+			from users
+		where nick=#{nick}
+	]]>
 
+</select>
 </mapper>
