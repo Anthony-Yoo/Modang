@@ -140,10 +140,10 @@ public class UserController {
 		UserVo authUser=(UserVo)session.getAttribute("authUser");
 		
 		//가져온 세션 정보에서 로그인한 사용자 no값 가져오기
-		int userno=authUser.getUserno();
+		int userno=authUser.getUserNo();
 		
 		//파라미터로 넘어온 사용자 정보 : UserVo 정보로 로그인 한 사용자 no값 추가
-		userVo.setUserno(userno);
+		userVo.setUserNo(userno);
 		
 		//userService 를 통해 로그인한 사용자 정보 수정 (service에서 UserVo로 받은 정보 전체)
 		userService.modify(userVo, file);

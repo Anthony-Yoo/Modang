@@ -2,7 +2,7 @@ package com.modang.vo;
 
 public class UserVo {
 
-	private int userno;					/*유저엔티티번호*/
+	private int userNo;					/*유저엔티티번호*/
 	private String id;					/*아이디*/
 	private String passwd;				/*비밀번호*/
 	private String nick;				/*닉네임*/
@@ -17,10 +17,10 @@ public class UserVo {
 		super();
 	}
 
-	public UserVo(int userno, String id, String passwd, String nick, String cellphone, int average, int recommaverage,
+	public UserVo(int userNo, String id, String passwd, String nick, String cellphone, int average, int recommaverage,
 			String recentlogontime, String profileimage, int keynum, String createdate, int keycount) {
 		super();
-		this.userno = userno;
+		this.userNo = userNo;
 		this.id = id;
 		this.passwd = passwd;
 		this.nick = nick;
@@ -32,12 +32,12 @@ public class UserVo {
 		
 	}
 
-	public int getUserno() {
-		return userno;
+	public int getUserNo() {
+		return userNo;
 	}
 
-	public void setUserno(int userno) {
-		this.userno = userno;
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
 	}
 
 	public String getId() {
@@ -106,7 +106,7 @@ public class UserVo {
 
 	@Override
 	public String toString() {
-		return "UserVo [userno=" + userno + ", id=" + id + ", passwd=" + passwd + ", nick=" + nick + ", cellphone="
+		return "UserVo [userNo=" + userNo + ", id=" + id + ", passwd=" + passwd + ", nick=" + nick + ", cellphone="
 				+ cellphone + ", average=" + average + ", recommaverage=" + recommaverage + ", recentlogontime="
 				+ recentlogontime + ", profileimage=" + profileimage + ", keynum=" + ", createdate="
 				+ ", keycount=" + "]";
