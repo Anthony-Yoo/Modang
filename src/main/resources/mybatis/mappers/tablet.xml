@@ -141,5 +141,40 @@
 			AND u.USERNO = f.GETUSERNO
 		]]>	
 	</select>
-	
+	<!-- 게임 생성 -->
+	<insert id="insertGame" parameterType="com.modang.vo.TableGamesVo">
+		<selectKey keyProperty="gameNo" resultType="int" order="BEFORE">
+			select seq_games_no.nextval from dual		
+		</selectKey>		
+		insert into 
+		games(		gameNo,
+					tableNo,
+					gameType,
+					memberNum,
+					GAMEDATE,					
+					setNo	)
+		values (	#{gameNo},
+					#{tableNo},
+					#{gameType},
+					#{memberNum},
+					sysdate,
+					#{gameNo} )	
+	</insert>
+	<!-- 플레이 생성 -->
+	<insert id="insertPlay" parameterType="com.modang.vo.PlayUserVo">
+		<selectKey keyProperty="playNo" resultType="int" order="BEFORE">
+			select seq_plays_no.nextval from dual		
+		</selectKey>	
+		insert into 
+		plays(		playNo,
+					userNo,
+					gameNo,
+					currentAverage,
+					orderNo )
+		values (	#{playNo},
+					#{userNo},
+					#{gameNo},
+					#{currentAverage},
+					#{orderNo} )	
+	</insert>
 </mapper>
