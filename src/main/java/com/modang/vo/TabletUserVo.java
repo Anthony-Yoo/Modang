@@ -1,7 +1,9 @@
 package com.modang.vo;
 
+import java.util.List;
+
 public class TabletUserVo {
-	
+
 	private int userNo;		
 	private String id;		
 	private String passwd;			
@@ -13,6 +15,7 @@ public class TabletUserVo {
 	private String profileImage;			
 	private int keyNum;		
 	private String createDate;
+	
 	public TabletUserVo(int userNo, String id, String passwd, String nick, String cellphone, int average,
 			int recommAverage, String recentLogonTime, String profileImage, int keyNum, String createDate) {
 		this.userNo = userNo;
@@ -102,6 +105,8 @@ public class TabletUserVo {
 				+ ", recentLogonTime=" + recentLogonTime + ", profileImage=" + profileImage + ", keyNum=" + keyNum
 				+ ", createDate=" + createDate + "]";
 	}
+	
+	
 	
 		
 }

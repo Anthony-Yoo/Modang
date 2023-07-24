@@ -106,19 +106,10 @@
 		</style>
 	</head>
 	<body>
-		<div id="container">				
-			<h2 id="logtitle">Modang</h2>
-			<c:choose>
-				<c:when test="${param.ball eq 0}">
-					<h4>게임형식 : 3구</h4>
-				</c:when>
-				<c:when test="${param.ball eq 1}">
-					<h4>게임형식 : 4구</h4>
-				</c:when>
-			</c:choose>
-			<!-- 카드리스트 -->
-			<div class="left float-l" id="cardlist">
-				<div id="tab"><p>카드리스트</p></div>
+		<div id="container">			
+			<!-- Top Info -->
+			<div class="top" id="top-container">
+				<div id="top-button"><input type="button"></div>
 				<c:forEach var="card" items="${cardList}">			
 				<div>				
 					<dl>
@@ -353,7 +344,6 @@
 	$('#confirm').on("click",function() {
 		console.log("확정 버튼 클릭");			
 		
-		var tableNo = 1;
 		var gameType = ${param.ball};
 		var userNo = new Array();
 		var nick = new Array();
@@ -380,7 +370,7 @@
 		var tableGameVo = {
 				/* biliardNo : 1,
 				tableName : 1,		 */
-				tableNo : tableNo,
+				tableNo : 1,
 				memberNum : btnTags.length,
 				gameType : gameType,
 				playUserList : playUserList
@@ -398,11 +388,9 @@
 				console.log(action);
 				
 				if(action.result == 'success') {//처리성공	
-					console.log("성공");
-					console.log(action.data);
-					/* 리다이렉트 */					
-					let url = '/modang/tablet/scoreboard?gameNo='+action.data+'&tableNo='+tableNo;
-					window.location.replace(url); 	 						
+					console.log("성공");		
+					/* 리다이렉트 */		
+					window.location.replace("/modang/tablet/scoreboard");								
 					
 				}else {//오류처리
 					var msg = action.failMsg;

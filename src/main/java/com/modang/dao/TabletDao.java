@@ -2,6 +2,8 @@ package com.modang.dao;
 
 import java.util.List;
 
+import javax.websocket.Session;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -9,6 +11,8 @@ import org.springframework.stereotype.Repository;
 import com.modang.vo.CardMemberVo;
 import com.modang.vo.CardUsersVo;
 import com.modang.vo.FavoriteUsersVo;
+import com.modang.vo.PlayUserVo;
+import com.modang.vo.TableGamesVo;
 import com.modang.vo.TabletUserVo;
 
 @Repository
@@ -73,4 +77,17 @@ public class TabletDao {
 		
 		return session.selectList("tablet.selectFavorite", userNo);
 	}
+	
+	public int insertGame(TableGamesVo tableGame) {
+		System.out.println("TabletDao.insertGame()");
+		
+		return session.insert("tablet.insertGame", tableGame);		
+	}
+	
+	public int insertPlay(PlayUserVo playUser) {
+		System.out.println("TabletDao.insertPlay()");
+		
+		return session.insert("tablet.insertPlay", playUser);
+	}
+	
 }
