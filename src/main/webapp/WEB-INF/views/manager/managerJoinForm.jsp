@@ -19,7 +19,7 @@
 		<div class="container">
 			<h2>환영합니당</h2>
 			<h3>관리자 정보</h3>
-			<form action="${pageContext.request.contextPath}/manager/join" id="" method="post">
+			<form action="${pageContext.request.contextPath}/manager/join" id="" method="post" enctype="multipart/form-data">
 				<div class="join-wrap">
 					<div class="con">
 						<span class="inp-txt">

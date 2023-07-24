@@ -23,7 +23,10 @@
 				    #{time1},
 				    #{time2},
 				    #{biliardAddress2},
-				    #{postcode}
+				    #{postcode},
+				    #{imageFile1},
+				    null,
+				    null
 				)
 		]]>
 	</insert>

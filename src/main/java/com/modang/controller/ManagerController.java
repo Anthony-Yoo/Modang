@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.modang.service.ManagerService;
 import com.modang.vo.ManagerVo;
@@ -27,13 +29,14 @@ public class ManagerController {
 
 	/* 회원가입 */
 	@RequestMapping(value ="/join", method = {RequestMethod.GET, RequestMethod.POST})
-	public String join(@ModelAttribute ManagerVo managerVO) {
+	public String join(@ModelAttribute ManagerVo managerVo,@RequestParam("file") MultipartFile file) {
 		System.out.println("ManagerController.join");
-		managerService.join(managerVO);
+		System.out.println(file);
+		managerService.join(file,managerVo);
 		return "/manager/managerLoginForm";
 	}
-	
 
+	
 	/*로그인폼 출력*/
 	@RequestMapping(value ="/loginForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String loginForm() {
@@ -43,9 +46,9 @@ public class ManagerController {
 
 	/* 로그인 */
 	@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })
-	public String login(@ModelAttribute ManagerVo managerVO, HttpSession sessoin) {
+	public String login(@ModelAttribute ManagerVo managerVo, HttpSession sessoin) {
 		System.out.println("ManagerController.login");
-		ManagerVo loginManager = managerService.login(managerVO);
+		ManagerVo loginManager = managerService.login(managerVo);
 		System.out.println(loginManager);
 		if (loginManager != null) {
 			System.out.println("로그인 성공");
