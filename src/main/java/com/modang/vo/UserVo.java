@@ -32,14 +32,12 @@ public class UserVo {
 		this.profileImage = profileImage;
 	}
 
-
 	/**
 	 * @return the userNo
 	 */
 	public int getUserNo() {
 		return userNo;
 	}
-
 
 	/**
 	 * @param userNo the userNo to set
