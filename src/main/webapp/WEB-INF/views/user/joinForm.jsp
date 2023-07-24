@@ -205,7 +205,44 @@
 			return false;
 			
 		}
-		//패스원드 체크...
+		// 패스워드 체크
+		var passwd = $("#passwd").val();
+		console.log(passwd)
+		if(passwd.length<1){
+			alert("Password가 입력되지 않았습니다.");			
+			return false;
+		}else if(passwd.length < 6 || passwd.length > 30){
+			alert("Password가 길이가 맞지 않습니다.(6~30자)");			
+			return false;
+		}
+		
+		// 닉네임 체크
+		var nick = $("#nick").val();
+		if(nick.length<1){
+			alert("닉네임을 입력해 주세요.");			
+			return false;
+		}
+		
+		// 휴대폰번호 체크
+		var cellphone = $("#cellphone").val();
+		if(cellphone.length<1){
+			alert("휴대폰 번호를 입력해 주세요.");			
+			return false;
+		}
+		
+		// 타수 체크
+		var average = $("#average").val();
+		if(average.length<1){
+			alert("타수를 입력해 주세요.");			
+			return false;
+		}
+		
+		// 이미지 체크
+		var profileimage = $("#profileimage").val();
+		if(profileimage.length<1){
+			alert("이미지를 선택해 주세요.");			
+			return false;
+		}
 		
 		
 		/*약관 동의 유무
