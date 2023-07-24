@@ -21,7 +21,9 @@ public class TableGamesVo {
     private int pauseTime;      //정지누적시각
     private int setNo;          //고객그룹번호
     private List<PlayUserVo> playUserList; //플레이 유져리스트
-	
+	    
+	public TableGamesVo() {		
+	}	
 	public TableGamesVo(int gameNo, int tableNo, int gameType, int memberNum, String gameDate, int gameTime,
 			String startTime, String endTime, int payStatus, int payType, String payDate, int income, int payMoney,
 			String pauseStart, String pauseEnd, int pauseTime, int setNo, List<PlayUserVo> playUserList) {
@@ -44,8 +46,7 @@ public class TableGamesVo {
 		this.setNo = setNo;
 		this.playUserList = playUserList;
 	}
-	public TableGamesVo() {
-	}
+
 	public int getGameNo() {
 		return gameNo;
 	}
@@ -164,5 +165,4 @@ public class TableGamesVo {
 				+ pauseEnd + ", pauseTime=" + pauseTime + ", setNo=" + setNo + ", playUserList=" + playUserList + "]";
 	}
 	
-
 }

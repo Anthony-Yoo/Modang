@@ -20,12 +20,32 @@ public class BiliardDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	/* 테이블 추가 */
+	public int insertTable(CueTableVo cuetableVo) {
+		System.out.println("BiliardDao.insertTable()");
+		System.out.println(cuetableVo);
+		int count = sqlSession.insert("biliard.insertTable",cuetableVo);
+		System.out.println("테이블추가:"+count);
+		return count;
+	}
+	
+	/* 하나의 테이블기본정보 가져오기(클릭한) */
+	public CueTableVo selectCuetable(int tableNo) {
+		System.out.println("BiliardDao.selectCuetable()");
+		CueTableVo oneTable= sqlSession.selectOne("biliard.selectOnetable", tableNo);
+		System.out.println("dao결과:"+ oneTable);
+		
+		return oneTable;
+	}
+	
 	/* 테이블 현황-테이블 종류 변경 */
-    public void updatetableType(CueTableVo cuetableVo) {
+    public int updatetableType(CueTableVo cuetableVo) {
     	System.out.println("BiliardDao.updatetableType()");
     	System.out.println(cuetableVo);
     	int count = sqlSession.update("biliard.updatetableType", cuetableVo);
     	System.out.println(count);
+    	
+    	return count;
     }
 	
 	/* 게임정보 가져오기 */

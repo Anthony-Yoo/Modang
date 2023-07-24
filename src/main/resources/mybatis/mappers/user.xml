@@ -6,7 +6,7 @@
 <!-- 회원가입 -->
 <insert id="insert" parameterType="com.modang.vo.UserVo">  
     <![CDATA[
-       insert into users(userno, id, passwd, nick, cellphone, average, recentlogontime, profileimage) 
+       insert into users(userNo, id, passwd, nick, cellphone, average, recentLogonTime, profileImage) 
 values( SEQ_USERS_NO.nextval,
         #{id},
         #{passwd},
@@ -14,7 +14,7 @@ values( SEQ_USERS_NO.nextval,
         #{cellphone},
         #{average},
         sysdate,
-        #{profileimage}
+        #{profileImage}
         )
        
     ]]>
@@ -23,7 +23,7 @@ values( SEQ_USERS_NO.nextval,
 <!-- 로그인 -->
 <select id="selectUser" parameterType="com.modang.vo.UserVo" resultType="com.modang.vo.UserVo">
 	<![CDATA[
-		select  userno,
+		select  userNo,
 				id, 
 				nick
 		from users
@@ -42,7 +42,7 @@ values( SEQ_USERS_NO.nextval,
 			   passwd,
 			   cellphone, 
 			   average,
-			   profileimage
+			   profileImage
 		from users
 		where id=#{id}
 				
@@ -58,8 +58,8 @@ values( SEQ_USERS_NO.nextval,
             nick = #{nick},
             cellphone = #{cellphone},
     ]]>      
-      	<if test="profileimage != null">
-           	profileimage = #{profileimage},
+      	<if test="profileImage != null">
+           	profileImage = #{profileImage},
         </if>
 	<![CDATA[
 			average = #{average}	
@@ -71,7 +71,7 @@ values( SEQ_USERS_NO.nextval,
 <!-- 회원정보 id확인 -->
 <select id="selectUserById" parameterType="String" resultType="com.modang.vo.UserVo">
 	<![CDATA[
-		select userno, id 
+		select userNo, id 
 			from users
 		where id=#{id} 	
 	]]>
