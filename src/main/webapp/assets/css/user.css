@@ -23,7 +23,7 @@
 #main-content .container #loginForm #main,
 #main-content .container #joinOk #main,
 #main-content .container #modifyForm #main {
-	width: 324px;
+	width: 350px;
 	margin: 0 auto;
 	
 }
@@ -129,8 +129,12 @@
 }
 
 #main form .form-group #image-show img{
-	width: 317px;
+	width: 345px;
 	margin: 0px 0px 3px 0px;
 }
 
-
+#main form .form-group .input-group img{
+	width: 40px; 
+	height: 40px;
+	margin: 0px 10px 20px 0px;
+}

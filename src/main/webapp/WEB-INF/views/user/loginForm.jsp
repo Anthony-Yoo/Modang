@@ -11,7 +11,7 @@
 
 <!-- icon -->
 <link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
-<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/user.png" />
+
 
 <!-- css -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -42,27 +42,27 @@
 					
 						<form id="loginSubmitForm" action="${pageContext.request.contextPath }/user/login" method="post" enctype="multipart/form-data">
             				
-		            			<div class="form-group">
-									<div class="input-group">
-								
-										<span class="input-group-addon">
-											<img src="${pageContext.request.contextPath}/assets/images/user.png" style="max-width: 40px; height: auto;" alt="">
-										</span>
-										
-										<span class="input-group-addon">
-											<input id="id" type="text" maxlength="10" class="form-control" name="id" placeholder="ID">
-										</span>
-										
-									</div>
-							    </div>
+	            			<div class="form-group">
+								<div class="input-group">
+							
+									<span class="input-group-addon">
+										<img src="${pageContext.request.contextPath}/assets/images/user.png" alt="">
+									</span>
+									<span class="input-group-addon">
+										<input id="id" type="text" maxlength="10" class="form-control" name="id" placeholder="ID">
+									</span>
+									
+								</div>
+						    </div>
 			                
-			                <br>
-
-	               
 							<div class="form-group">
 								<div class="input-group">
 									<span class="input-group-addon">
-									<input id="passwd" type="password" maxlength="16" class="form-control" name="passwd" placeholder="PASSWORD">
+										<img src="${pageContext.request.contextPath}/assets/images/settings.png" alt="">
+									</span>
+									
+									<span class="input-group-addon">
+										<input id="passwd" type="password" maxlength="16" class="form-control" name="passwd" placeholder="PASSWORD">
 									</span>
 								</div>
 							</div>
