@@ -20,6 +20,14 @@ public class BiliardDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	/* 테이블 현황-테이블 종류 변경 */
+    public void updatetableType(CueTableVo cuetableVo) {
+    	System.out.println("BiliardDao.updatetableType()");
+    	System.out.println(cuetableVo);
+    	int count = sqlSession.update("biliard.updatetableType", cuetableVo);
+    	System.out.println(count);
+    }
+	
 	/* 게임정보 가져오기 */
 	public List<TableGamesVo> selectGames(int biliardNo) {
 		System.out.println("BiliardDao.selectGames()");

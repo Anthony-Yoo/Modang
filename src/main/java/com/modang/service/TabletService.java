@@ -1,9 +1,14 @@
 package com.modang.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.modang.dao.TabletDao;
+import com.modang.vo.CardMemberVo;
+import com.modang.vo.CardUsersVo;
+import com.modang.vo.FavoriteUsersVo;
 import com.modang.vo.StaticVo;
 import com.modang.vo.TabletUserVo;
 
@@ -75,6 +80,30 @@ public class TabletService {
 		tabletDao.deleteTime(StaticVo.NORMAL_TIME);		
 		
 		return tabletDao.selectKeyNum(keyNum); 
+	}
+	
+	public List<TabletUserVo> userFind(String id) {
+		System.out.println("TabletService.userFind()");	
+		
+		return tabletDao.selectId(id);
+	}
+	
+	public List<CardUsersVo> myMember(int userNo) {
+		System.out.println("TabletService.myMember()");
+		 
+		List<CardUsersVo> cardList = tabletDao.selectCardUsers(userNo);
+		System.out.println(cardList);
+		List<CardMemberVo> memberList = new ArrayList<CardMemberVo>();
+		List<FavoriteUsersVo> favoriteList = new ArrayList<FavoriteUsersVo>();
+		for(int i=0;i<cardList.size();i++) {
+			int cardNo = cardList.get(i).getCardNo();
+			memberList = tabletDao.selectCardMember(cardNo);
+			favoriteList = tabletDao.selectFavorite(userNo);
+			cardList.get(i).setMemberList(memberList);
+			cardList.get(i).setFavoriteList(favoriteList);
+		}	
+		
+		return cardList;		
 	}
 	
 }

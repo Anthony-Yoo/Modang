@@ -14,11 +14,11 @@
 <!-- css -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">    
 <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/user.css" rel="stylesheet" type="text/css">
 
 <!-- js -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 
 </head>
 
@@ -43,7 +43,7 @@
                     
 	                   			<!-- 아이디 -->
 	                   			<div class="form-group">
-	                     			<div class="shadow-none p-1 mb-2 bg-light rounded input-group">
+	                     			<div class="input-group">
 	                     				<span class="input-group-addon" class="text-large bold"></span>
 	                       				<input id="id" type="text" maxlength="16" class="form-control" name="id" value="${requestScope.userVo.id}" placeholder="" readonly="readonly">
 	                       				
@@ -52,7 +52,7 @@
                    			
 	                   			<!-- 비밀번호 -->
 								<div class="form-group">
-	                     			<div class="shadow-none p-1 mb-2 bg-light rounded input-group">
+	                     			<div class="input-group">
 	                       				<span class="input-group-addon" class="text-large bold"></span>
 	                       				<input id="passwd" type="password" maxlength="16" class="form-control" name="passwd" value="${requestScope.userVo.passwd}" placeholder="PW">
 	                       			
@@ -61,7 +61,7 @@
 
 	                   			<!-- 휴대폰 -->
 	                   			<div class="form-group">
-	                     			<div class="shadow-none p-1 mb-2 bg-light rounded input-group">
+	                     			<div class="input-group">
 	                       				<span class="input-group-addon" class="text-large bold"></span>
 	                       				<input id="cellphone" type="text" maxlength="11" class="form-control" name="cellphone" value="${requestScope.userVo.cellphone}" placeholder="">
 	                       				
@@ -70,7 +70,7 @@
                    
 	                   			<!-- 별명 -->
 	                   			<div class="form-group">
-	                     			<div class="shadow-none p-1 mb-2 bg-light rounded input-group">
+	                     			<div class="input-group">
 	                       				<span class="input-group-addon" class="text-large bold"></span>
 	                       				<input id="nick" type="text" maxlength="7" class="form-control" name="nick" value="${requestScope.userVo.nick}" placeholder="">
 	                       				
@@ -79,7 +79,7 @@
 	                   
 	                   			<!-- 평균 -->
 	                   			<div class="form-group">
-	                     			<div class="shadow-none p-1 mb-2 bg-light rounded input-group">
+	                     			<div class="input-group">
 	                       				<span class="input-group-addon" class="text-large bold"></span>
 	                       				<input id="average" type="text" maxlength="3" class="form-control" name="average" value="${requestScope.userVo.average}" placeholder="">
 	                       				
@@ -113,6 +113,7 @@
                     <!-- //modifyForm -->
                 </div>
                 <!-- //user -->
+                
          </div>
          <!-- //container -->
       </div>
