@@ -28,6 +28,14 @@ public class TableGamesVo {
 	public TableGamesVo() {
 		
 	}
+	
+	public TableGamesVo(int tableNo, int biliardNo, int tableName, int tableType, int tableStatus) {
+		this.tableNo = tableNo;
+		this.biliardNo = biliardNo;
+		this.tableName = tableName;
+		this.tableType = tableType;
+		this.tableStatus = tableStatus;
+	}
 
 	public TableGamesVo(int tableNo, int gameNo, int gameType, int memberNum, String gameDate, int gameTime,
 			String startTime, String endTime, int payStatus, int payType, String payDate, int income, int payMoney,
