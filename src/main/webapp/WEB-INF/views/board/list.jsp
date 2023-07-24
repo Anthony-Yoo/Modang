@@ -107,7 +107,8 @@
 		</div>
 		<!-- //list -->
 	</div>
-
+	<!-- footer -->
+<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
 </body>
 
 </html>

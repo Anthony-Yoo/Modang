@@ -12,7 +12,6 @@ body, div, ul, li, dl, dt, ol, h1, h2, h3, h4, h5, h6, input, fieldset,
 
 body {
 	font: 12px "맑은 고딕", 돋움, 굴림;
-	text-align: center;
 }
 
 ul, ol {
@@ -123,6 +122,7 @@ input[type="password"] {
 	background-color: #FFFFFF;
 	margin: 0 auto;
 	position: relative;
+	text-align: center;
 }
 
 #content h2>a {
@@ -161,23 +161,25 @@ input[type="password"] {
 	padding: 5px 15px 5px 15px;
 	margin: 10px 0px 0px 520px;
 	position: absolute;
-	z-index:1;
+	z-index: 1;
 }
 /*----------------------------------------------------------------------------------------------------------*/
 /* 게시판 관련 */
 #board {
 	width: 1200px;
-	height: 140px;
+	height: 600px;
 	background-color: #FFFFFF;
 	margin: 0 auto;
 	padding: 10px;
 	position: relative;
+	text-align: center;
 }
 
-#board #list{
+#board #list {
 	padding-top: 10px;
 	margin-top: 10px;
 }
+
 #board #list table {
 	width: 100%;
 	margin: auto;
@@ -371,7 +373,7 @@ textarea {
 
 #board #read .title {
 	font-size: 30px;
-	font-weight: 400;
+	font-weight: 500;
 }
 
 #board #read #writer_btn {
@@ -418,6 +420,7 @@ textarea {
 #board #read #title_state {
 	left: 100px;
 	font-weight: bold;
+	float:right;
 }
 
 /***** 작성자 정보 끝 *****/
@@ -458,7 +461,8 @@ textarea {
 }
 
 /* read 삭제 수정 목록 신청리스트 버튼 */
-#board #read #btn_modify, #btn_applyList, #btn_boardList, #btn_delete, #btn_apply {
+#board #read #btn_modify, #btn_applyList, #btn_boardList, #btn_delete,
+	#btn_apply {
 	border: 1px solid #808080;
 	border-radius: 10px;
 	background-color: #0c0a04;
