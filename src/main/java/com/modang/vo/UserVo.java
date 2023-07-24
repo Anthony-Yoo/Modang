@@ -94,14 +94,12 @@ public class UserVo {
 		this.nick = nick;
 	}
 
-
 	/**
 	 * @return the cellphone
 	 */
 	public String getCellphone() {
 		return cellphone;
 	}
-
 
 	/**
 	 * @param cellphone the cellphone to set
@@ -110,14 +108,12 @@ public class UserVo {
 		this.cellphone = cellphone;
 	}
 
-
 	/**
 	 * @return the average
 	 */
 	public int getAverage() {
 		return average;
 	}
-
 
 	/**
 	 * @param average the average to set
@@ -126,14 +122,12 @@ public class UserVo {
 		this.average = average;
 	}
 
-
 	/**
 	 * @return the recommAverage
 	 */
 	public int getRecommAverage() {
 		return recommAverage;
 	}
-
 
 	/**
 	 * @param recommAverage the recommAverage to set
