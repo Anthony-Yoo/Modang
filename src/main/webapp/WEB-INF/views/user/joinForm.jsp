@@ -121,7 +121,7 @@
 			                		<div class="fileInput">
 				                		
 				                  			<span class="input-group">
-				                  			<input id="profileimage" type="file" name="file" class="form-control" placeholder="upload image" value="">
+				                  			<input id="profileImage" type="file" name="file" class="form-control" placeholder="upload image" value="">
 				                  			</span>
 				                		
 			            			</div>
@@ -238,8 +238,8 @@
 		}
 		
 		// 이미지 체크
-		var profileimage = $("#profileimage").val();
-		if(profileimage.length<1){
+		var profileImage = $("#profileImage").val();
+		if(profileImage.length<1){
 			alert("이미지를 선택해 주세요.");			
 			return false;
 		}

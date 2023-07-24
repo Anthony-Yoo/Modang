@@ -72,7 +72,7 @@
 	                   			<div class="form-group">
 	                     			<div class="input-group">
 	                       				<span class="input-group-addon" class="text-large bold"></span>
-	                       				<input id="nick" type="text" maxlength="7" class="form-control" name="nick" value="${requestScope.userVo.nick}" placeholder="">
+	                       				<input id="nick" type="text" maxlength="10" class="form-control" name="nick" value="${requestScope.userVo.nick}" placeholder="">
 	                       				
 	                     			</div>
 	                   			</div>
@@ -89,14 +89,14 @@
                    			 	<!-- 이미지 -->
                    				<div class="form-group">
                    					<div class="image-show" id="image-show" >
-		        						<img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileimage}" >
+		        						<img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileImage}" >
 		        					</div>
 									<div class="fileContainer">
 										
 			                			<div class="fileInput">
 				                  			<span class="input-group">
 				                  			
-				                  				<input id="profileimage" class="form-control" type="file" name="file"  value="" placeholder="">
+				                  				<input id="profileImage" class="form-control" type="file" name="file"  value="" placeholder="">
 				                  			</span>
 			            				</div>
 		        					</div>
