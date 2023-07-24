@@ -1,7 +1,5 @@
 package com.modang.vo;
 
-import java.util.List;
-
 public class TabletUserVo {
 
 	private int userNo;		
