@@ -18,7 +18,6 @@
 
 <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/user.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
 
 
 <!-- js -->
@@ -45,11 +44,11 @@
 				
 					<div id="main">
 		
-						<h3>이것은 모당 가입 ^^</h3>
+						<h3>이것은 가입 ^^</h3>
 		
 						<form id="joinSubmitForm" action="${pageContext.request.contextPath}/user/join" method="post"
 							enctype="multipart/form-data">
-							
+							<!-- 아이디 -->
 							<div class="form-group">
 							
 								<div
@@ -59,13 +58,13 @@
 										<input id="input-uid" type="text" value="" maxlength="10" class="form-control" name="id" placeholder="ID">
 									</span>
 									<span class="input-group-addon">
-										<button id="btnIdCheck" type="button" class="btn btn-primary rounded" data-toggle="modal" data-target="#myModal">확인</button>
+										<button id="btnIdCheck" type="button" data-toggle="modal" data-target="#myModal">확인</button>
 									</span>
 								</div>
 								
 							</div>
 							
-		
+							<!-- 비밀번호 -->
 							<div class="form-group">
 								
 									<span class="input-group"> <input id="passwd"
@@ -74,7 +73,8 @@
 									</span>
 								
 							</div>
-		
+							
+							<!-- 닉네임 -->
 							<div class="form-group">
 								
 									<span class="input-group"> <input id="nick"
@@ -84,7 +84,8 @@
 									</span>
 								
 							</div>
-		
+							
+							<!-- 폰번호 -->
 							<div class="form-group">
 								
 									<span class="input-group"> <input id="cellphone"
@@ -93,7 +94,8 @@
 									</span>
 								
 							</div>
-		
+							
+							<!-- 평균 -->
 							<div class="form-group">
 								
 									<span class="input-group"> <input id="average"
@@ -112,12 +114,14 @@
 		                			</div>
 		            			</div> 
 							-->
+							
+							<!-- 이미지 업로드 -->
 							<div class="form-group">
 								<div class="fileContainer">
 			                		<div class="fileInput">
 				                		
 				                  			<span class="input-group">
-				                  			<input id="profileimage" type="file" name="file" class="form-control" placeholder="upload image" value="">
+				                  			<input id="profileImage" type="file" name="file" class="form-control" placeholder="upload image" value="">
 				                  			</span>
 				                		
 			            			</div>
@@ -126,8 +130,9 @@
 		        				<div class="image-show" id="image-show"></div>
 		    				</div>
 		    				
+		    				<!-- 서버전송 -->
 		  					<div class="button-area">
-								<button type="submit" id="btn-submit" class="btn btn-primary">회원가입 할거당</button>
+								<button type="submit" id="btn-submit" class="btn btn-primary">회원가입 할거당 ^^</button>
 							</div>
 							
 			    		</form>
@@ -145,19 +150,18 @@
 		               </label>
 		               
 		                -->
-						
+					
 			</div>
 			<!-- //user -->
+			
 		</div>
 		<!-- //container -->
-    
-    
-    </div>
-    <!-- //main-content -->
-	
-	<!-- 푸터 시작 -->
+    <!-- 푸터 시작 -->
 	<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
 	<!-- 푸터 끝 -->
+		
+    </div>
+    <!-- //main-content -->
 	
 	  <!-- Modal -->
   	<div class="modal fade" id="myModal" role="dialog">
@@ -201,7 +205,44 @@
 			return false;
 			
 		}
-		//패스원드 체크...
+		// 패스워드 체크
+		var passwd = $("#passwd").val();
+		console.log(passwd)
+		if(passwd.length<1){
+			alert("Password가 입력되지 않았습니다.");			
+			return false;
+		}else if(passwd.length < 6 || passwd.length > 30){
+			alert("Password가 길이가 맞지 않습니다.(6~30자)");			
+			return false;
+		}
+		
+		// 닉네임 체크
+		var nick = $("#nick").val();
+		if(nick.length<1){
+			alert("닉네임을 입력해 주세요.");			
+			return false;
+		}
+		
+		// 휴대폰번호 체크
+		var cellphone = $("#cellphone").val();
+		if(cellphone.length<1){
+			alert("휴대폰 번호를 입력해 주세요.");			
+			return false;
+		}
+		
+		// 타수 체크
+		var average = $("#average").val();
+		if(average.length<1){
+			alert("타수를 입력해 주세요.");			
+			return false;
+		}
+		
+		// 이미지 체크
+		var profileImage = $("#profileImage").val();
+		if(profileImage.length<1){
+			alert("이미지를 선택해 주세요.");			
+			return false;
+		}
 		
 		
 		/*약관 동의 유무

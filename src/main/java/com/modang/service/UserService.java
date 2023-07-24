@@ -77,7 +77,7 @@ public class UserService {
 			
 		}
 		
-		userVo.setProfileimage(savename);
+		userVo.setProfileImage(savename);
 		int count=userDao.insertUser(userVo);
 		
 		return count;
@@ -97,17 +97,15 @@ public class UserService {
 		System.out.println("UserService.modifyForm()");
 		System.out.println(id);
 		
-		UserVo userno=userDao.updateSelect(id);
-		System.out.println(userno);
-		return userno;
+		UserVo userNo=userDao.updateSelect(id);
+		System.out.println(userNo);
+		return userNo;
 	}
 	/*수정*/
 	public int modify(UserVo userVo, MultipartFile file) {
 		
 		System.out.println("UserService.modify()");
 		System.out.println(userVo);
-		
-		
 		
 		if(!file.isEmpty()) {//수정할 파일이 있으면
 			//파일저장경로
@@ -147,7 +145,7 @@ public class UserService {
 				
 			}
 		
-			userVo.setProfileimage(savename);
+			userVo.setProfileImage(savename);
 		}
 		
 		int count=userDao.updateUser(userVo);

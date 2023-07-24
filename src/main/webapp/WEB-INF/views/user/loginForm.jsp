@@ -11,16 +11,15 @@
 
 <!-- icon -->
 <link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
+<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/user.png" />
 
 <!-- css -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/user.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
 
 <!-- js -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 
 </head>
       
@@ -42,25 +41,34 @@
 						<h3>이것은 로그인 ^^</h3>
 					
 						<form id="loginSubmitForm" action="${pageContext.request.contextPath }/user/login" method="post" enctype="multipart/form-data">
-            	
-			            	<div class="form-group">
-								<div class="input-group shadow-none p-1 mb-2 bg-light rounded">
-									<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-									<input id="id" type="text" maxlength="10" class="form-control" name="id" placeholder="ID">
-									<!-- <button type="button" class="btn btn-Dark">&nbsp;&nbsp;찾기&nbsp;&nbsp;</button> -->
-								</div>
-			                </div>
+            				
+		            			<div class="form-group">
+									<div class="input-group">
+								
+										<span class="input-group-addon">
+											<img src="${pageContext.request.contextPath}/assets/images/user.png" style="max-width: 40px; height: auto;" alt="">
+										</span>
+										
+										<span class="input-group-addon">
+											<input id="id" type="text" maxlength="10" class="form-control" name="id" placeholder="ID">
+										</span>
+										
+									</div>
+							    </div>
+			                
+			                <br>
+
 	               
 							<div class="form-group">
-								<div class="input-group shadow-none p-1 mb-2 bg-light rounded">
-									<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+								<div class="input-group">
+									<span class="input-group-addon">
 									<input id="passwd" type="password" maxlength="16" class="form-control" name="passwd" placeholder="PASSWORD">
-									<!-- <button type="button" class="btn btn-Dark">&nbsp;&nbsp;찾기&nbsp;&nbsp;</button> -->
+									</span>
 								</div>
 							</div>
 	             
 							<div class="button-area">
-							  	<button type="submit" id="btn-submit" class="btn btn-primary rounded">로그인 할거당^^</button>
+							  	<button type="submit" id="btn-submit">로그인 할거당^^</button>
 							</div>
               			</form>
               			<!-- //loginSubmitForm -->
@@ -90,18 +98,5 @@
     <!-- 푸터 끝 -->
     
 </body>
-  <!--
-  
-  <button type="button" class="btn">Basic</button>
-  <button type="button" class="btn btn-primary">Primary</button>
-  <button type="button" class="btn btn-secondary">Secondary</button>
-  <button type="button" class="btn btn-success">Success</button>
-  <button type="button" class="btn btn-info">Info</button>
-  <button type="button" class="btn btn-warning">Warning</button>
-  <button type="button" class="btn btn-danger">Danger</button>
-  <button type="button" class="btn btn-dark">Dark</button>
-  <button type="button" class="btn btn-light">Light</button>
-  <button type="button" class="btn btn-link">Link</button>   
--->
-  
+
 </html>
