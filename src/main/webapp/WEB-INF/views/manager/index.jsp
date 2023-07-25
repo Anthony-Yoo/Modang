@@ -29,7 +29,7 @@
 
 						<!-- Logo -->
 						<h1>
-							<a href="index.html"><img src="${pageContext.request.contextPath}/assets/images/logo.png" /></a>
+							<a href="${pageContext.request.contextPath}/manager/index"><img src="${pageContext.request.contextPath}/assets/images/logo.png" /></a>
 						</h1>
 
 						<!-- User login -->
@@ -74,26 +74,78 @@
 							</header>
 							<div id="tablelist">
 								<c:forEach items="${cueTableList}" var="cueTableVo">
-									<div class="tableArea" data-biliardno="${cueTableVo.biliardNo}" data-tableno="${cueTableVo.tableNo}" data-tablename="${cueTableVo.tableName}" data-tabletype="${cueTableVo.tableType}" >
+								
+									<div class="tableArea" data-biliardno="${cueTableVo.biliardNo}" data-tableno="${cueTableVo.tableNo}" data-tablename="${cueTableVo.tableName}" data-tabletype="${cueTableVo.tableType}">
 										<large class="font-weight-normal text-blue float-left"><strong>No. ${cueTableVo.tableName}</strong></large>
-											<div class="small float-right">
-												<c:if test="${cueTableVo.tableType==0}" >
-													<strong>대대</strong>
-												</c:if>
-												<c:if test="${cueTableVo.tableType==1}" >
-													<strong>중대</strong>
-												</c:if>
-												<c:if test="${cueTableVo.tableType==2}" >
-													<strong>포켓</strong>
-												</c:if>
-											</div>
-											<div class="tableTime pt-8 pl-2">
-											    00:43
-											</div>
-											<br><br>
-											<div class="tablePay">
-												<strong>9,000원</strong>
-											</div>
+										    <c:choose>
+										      <c:when test="${cueTableVo.tableStatus==0}"> <!--테이블 상태별 배경색 변경(대기)  -->
+												     <div class="status-available" style="background-color: #d2e4fb;">
+													     <div class="small float-right">
+														 	<c:if test="${cueTableVo.tableType==0}" >
+																<strong>대대</strong>
+															</c:if>
+															<c:if test="${cueTableVo.tableType==1}" >
+																<strong>중대</strong>
+															</c:if>
+															<c:if test="${cueTableVo.tableType==2}" >
+																<strong>포켓</strong>
+															</c:if>
+														</div>
+														<div class="tableTime1 pt-8 pl-3">
+														    <strong>대 기</strong>
+														</div>
+														<br><br>
+														<div class="tablePay">
+															
+														</div>
+										        	</div>
+										      </c:when>
+										      <c:when test="${cueTableVo.tableStatus==1}"> <!--테이블 상태별 배경색 변경(사용)  -->
+										        <div class="status-occupied" style="background-color:#fdeba2;">
+													     <div class="small float-right">
+														 	<c:if test="${cueTableVo.tableType==0}" >
+																<strong>대대</strong>
+															</c:if>
+															<c:if test="${cueTableVo.tableType==1}" >
+																<strong>중대</strong>
+															</c:if>
+															<c:if test="${cueTableVo.tableType==2}" >
+																<strong>포켓</strong>
+															</c:if>
+														</div>
+														<div class="tableTime pt-8 pl-2">
+														    00:43
+														</div>
+														<br><br>
+														<div class="tablePay">
+															<strong>9,000원</strong>
+														</div>
+										        </div>
+										      </c:when>
+										      <c:otherwise> <!--테이블 상태별 배경색 변경(정지)  -->
+										        <div class="status-default" style="background-color: #ffeded;">
+													     <div class="small float-right">
+														 	<c:if test="${cueTableVo.tableType==0}" >
+																<strong>대대</strong>
+															</c:if>
+															<c:if test="${cueTableVo.tableType==1}" >
+																<strong>중대</strong>
+															</c:if>
+															<c:if test="${cueTableVo.tableType==2}" >
+																<strong>포켓</strong>
+															</c:if>
+														</div>
+														<div class="tableTime pt-8 pl-2">
+														    00:43
+														</div>
+														<br><br>
+														<div class="tablePay">
+															<strong>9,000원</strong>
+														</div>
+										        </div>
+										      </c:otherwise>
+										    </c:choose>
+
 									</div>
 								</c:forEach>
 								<!-- 테이블 추가버튼 -->
@@ -114,17 +166,17 @@
 							<form action="${pageContext.request.contextPath}/manager/tableInfo" method="get">
 								<div class="form-group row mb-1">
 									<label class="col-form-label col-4">테이블 종류</label>
-									<div id="" class="col">
+									<div id="" class="col tableRadio01">
 										<label class="custom-control custom-radio d-inline-block">
-											<input type="radio" name="tabletype" value="0" class="custom-control-input"  />
+											<input type="radio" name="tabletype" value="0" class="custom-control-input table-radio" />
 											<span class="custom-control-label">대대</span>
 										</label> 
 										<label class="custom-control custom-radio d-inline-block">
-											<input type="radio" name="tabletype" value="1" class="custom-control-input"  /> 
+											<input type="radio" name="tabletype" value="1" class="custom-control-input table-radio" /> 
 											<span class="custom-control-label">중대</span>
 										</label> 
 										<label class="custom-control custom-radio d-inline-block">
-											<input type="radio" name="tabletype" value="2" class="custom-control-input"  /> 
+											<input type="radio" name="tabletype" value="2" class="custom-control-input table-radio" /> 
 											<span class="custom-control-label">포켓</span>
 										</label>
 											<button id="tableSetting" type="button">
@@ -136,7 +188,7 @@
 <!-- 게임종류	 -->							
 								<div class="form-group row mb-1">
 									<label class="col-form-label col-4">게임 종류</label>
-									<div class="col">
+									<div class="col tableRadio02">
 										<div class="gametype-1">
 											<label class="custom-control custom-radio d-inline-block">
 												<input type="radio" name="gametype0" class="custom-control-input" /> 
@@ -235,15 +287,15 @@
         <label for="inputEmail3" class="label01">테이블 종류</label>
 		<div id="" class="col">
 			<label class="custom-control custom-radio d-inline-block">
-				<input type="radio" name="tabletype" value="0" class="custom-control-input"  /> 
+				<input type="radio" name="tabletypeModify" value="0" class="custom-control-input"  /> 
 				<span class="custom-control-label">대대</span>
 			</label> 
 			<label class="custom-control custom-radio d-inline-block">
-				<input type="radio" name="tabletype" value="1" class="custom-control-input"  /> 
+				<input type="radio" name="tabletypeModify" value="1" class="custom-control-input"  /> 
 				<span class="custom-control-label">중대</span>
 			</label> 
 			<label class="custom-control custom-radio d-inline-block">
-				<input type="radio" name="tabletype" value="2" class="custom-control-input"  /> 
+				<input type="radio" name="tabletypeModify" value="2" class="custom-control-input"  /> 
 				<span class="custom-control-label">포켓</span>
 			</label>
 		</div>
@@ -298,6 +350,7 @@
 </body>
 
 <script type="text/javascript">
+
 let crtbiliardNo=0;//현재 선택된 당구장넘버
 let crtTableNo=0; //현재 선택된 테이블넘버
 let crtTableName=0; //현재 선택된 테이블네임
@@ -306,16 +359,24 @@ let crtTableName=0; //현재 선택된 테이블네임
 $(".tableAdd").on("click",function(){
 	console.log('테이블 추가버튼');
 	
-	$('#tableAddModal').modal('show');
+	var tables = $(".tableArea") //테이블기본정도 div 클래스
+	console.log(tables.length);
+	
+	if(tables.length<11){ //테이블갯수 15개까지만 등록 가능
+		$('#tableAddModal').modal('show');
+	}else{
+		alert("추가할수 없습니다.");
+	}
+	
 });
 
 <!--테이블 추가하기------------------------------------------------------ --->
 $("#btnAdd").on("click", function(){
 	console.log("테이블 추가하기");
 	
-	var addtableName = $("#tableName").val(); //테이블이름 초기화
+	var addtableName = $("#tableName").val(); 
 	console.log(addtableName);
-	var addtableType = $('#tableAddModal [name="tabletype1"]:checked').val(); //테이블타입 초기화
+	var addtableType = $('#tableAddModal [name="tabletype1"]:checked').val(); 
 	console.log(addtableType);
 	
 	var cuetableVo={ //입력한 정보 vo에 담기
@@ -386,12 +447,28 @@ $(".tableArea").on("click",function(){
  			
 	 			$("#info-01").empty(); 									// 당구대 번호 초기화
 	 			$('#startTime').empty();                                // 요금 초기화
-	 			$(".col input[type='radio']").prop("checked", false);	//라디오버튼 당구장종류 초기화
+	 			$(".tableRadio02 input[type='radio']").prop("checked", false);	//라디오버튼 게임종류 초기화
 					
 				$("#info-01").append("No."+jsonResult.data.oneTable.tableName); //테이블이름 출력
 				
-				$('[value='+jsonResult.data.oneTable.tableType+']').prop("checked",true); //테이블타입 라디오버튼 선택
+				var tableType = jsonResult.data.oneTable.tableType;
+				//$('[value='+jsonResult.data.oneTable.tableType+']').prop("checked",true); //테이블타입 라디오버튼 선택
 				
+				$('[value='+tableType+']').prop("checked", true);
+				if(tableType==0){
+					$('[value=0]').prop("disabled", false);
+					$('[value=1]').prop("disabled",true);
+					$('[value=2]').prop("disabled",true);
+				}else if(tableType==1){
+					$('[value=0]').prop("disabled",true);
+					$('[value=1]').prop("disabled", false);
+					$('[value=2]').prop("disabled",true);
+				}else if(tableType==2){
+					$('[value=0]').prop("disabled",true);
+					$('[value=1]').prop("disabled",true);
+					$('[value=2]').prop("disabled", false);
+				}
+					
 				if(jsonResult.data.oneTable.tableType < 2 ){ //게임타입정보 대대/중대일때 3구/4구 show 포켓일때 8볼/10볼 show
 					$( ".gametype-2" ).hide();
 					$( ".gametype-1" ).show();
@@ -400,7 +477,7 @@ $(".tableArea").on("click",function(){
 					$( ".gametype-2" ).show();
 				}
 				
-				var tableFee = 0;
+				var tableFee = 0; //요금정보 매칭
 				switch (jsonResult.data.oneTable.tableType) {
 					case 0:
 						tableFee = jsonResult.data.tariffVo.btablefee;
@@ -422,6 +499,7 @@ $(".tableArea").on("click",function(){
 				$('#startTime').val(""); //시작시간 초기화
 				
 				if(jsonResult.data.gamesVo!=null){ //게임정보 있는 경우 보여주기
+					
 					$('[name=gametype'+jsonResult.data.gamesVo.gameType+']').prop("checked",true); //게임타입정보 라디오버튼 선택
 	
 					var startTime = jsonResult.data.gamesVo.startTime; 
@@ -451,61 +529,56 @@ $(".tableArea").on("click",function(){
 });
 
 <!--테이블 변경모달창 호출------------------------------------------------------- -->
- $(".form-group").on("click","#tableSetting", function(){
-	console.log("설정클릭");
-	
-	console.log("선택된 테이블넘버:"+crtTableNo);
-
-	$('#tableMngModal').modal('show');
-
-});  
+	$(".form-group").on("click","#tableSetting", function(){
+			console.log("설정클릭");
+			console.log("선택된 테이블넘버:"+crtTableNo);
+		
+			$('#tableMngModal').modal('show');
+	});  
 
  <!--table종류변경 팝업 수정버튼 클릭했을때--------------------------------------------->
   $("#btnSave").on("click", function(){
-	console.log("테이블종류 변경클릭");
+		console.log("테이블종류 변경클릭");
 		
-	let tabletype = $('#tableMngModal [name="tabletype"]:checked').val();
-	console.log("당구장넘버:"+crtbiliardNo);
-	console.log("선택된 테이블넘버:"+crtTableNo);
-	console.log("변경된 테이블종류:"+tabletype);
-	
-	var cuttableVo ={
-			biliardNo: crtbiliardNo,
-			tableNo: crtTableNo,
-			tableType: tabletype
-	}; 
-	
- 	$.ajax({
+		$('[value='+tabletype+']').prop("checked", true);
+				
+		console.log("당구장넘버:"+crtbiliardNo);
+		console.log("선택된 테이블넘버:"+crtTableNo);
+		console.log("변경된 테이블종류:"+tabletype);
 		
-		url : "${pageContext.request.contextPath }/manager/tabletype",		
-		type : "post",
-		data : cuttableVo,
-
-		dataType : "json",
-		success : function(jsonResult){
-			/*성공시 처리해야될 코드 작성*/
-  			console.log(jsonResult.data);
+		var cuttableVo ={
+				biliardNo: crtbiliardNo,
+				tableNo: crtTableNo,
+				tableType: tabletype
+		}; 
+		
+	 	$.ajax({
 			
-			if(jsonResult.data > 0 ){ //테이블종류 수정 성공시
-				//정상처리
-				$('#tableMngModal').modal('hide');
-				alert("테이블종류가 변경되었습니다.");
-				location.reload(); //새로고침
-				 
-
-			}else{ //테이블종류 수정 실패시
-				//오류처리
-				alert("테이블을 다시 확인해주세요");
-			} 
-
-		},
-		error : function(XHR, status, error) { 
-			console.error(status + " : " + error);
-		}
-    }); //ajax end */ 
-
-
-	
+				url : "${pageContext.request.contextPath }/manager/tabletype",		
+				type : "post",
+				data : cuttableVo,
+		
+				dataType : "json",
+				success : function(jsonResult){
+					/*성공시 처리해야될 코드 작성*/
+		  			console.log(jsonResult.data);
+					
+					if(jsonResult.data > 0 ){ //테이블종류 수정 성공시
+						//정상처리
+						$('#tableMngModal').modal('hide');
+						alert("테이블종류가 변경되었습니다.");
+						location.reload(); //새로고침
+						 
+		
+					}else{ //테이블종류 수정 실패시
+						//오류처리
+						alert("테이블을 다시 확인해주세요");
+					} 
+			},
+			error : function(XHR, status, error) { 
+				  console.error(status + " : " + error);
+			}
+	    }); //ajax end */ 
   }); 
 	
 

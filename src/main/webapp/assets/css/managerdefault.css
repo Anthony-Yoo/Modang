@@ -132,8 +132,8 @@ a {background-color: transparent;}
 
 .pt-0, .py-0 {padding-top:0 !important}
 .pt-8 {padding-top:4rem !important}
-.pl-2, .px-2 {padding-left:.5rem !important}
 .pl-2, .px-2 {padding-left:1.5rem !important}
+.pl-3, .px-3 {padding-left:2.5rem !important}
 .pr-2, .px-2 {padding-right:.5rem !important}
 .pb-0, .py-0 {padding-bottom: 0 !important;}
 .m-2 {margin:.5rem !important}
@@ -229,6 +229,7 @@ textarea.form-control {height:auto; resize: none !important;}
 .tableArea {float:left; width:23.6%; height:170px; background-color: #e8e8e9;margin:5px;border-radius:.25rem;padding:5px;}
 .tableAdd {float:left; width:23.6%; height:170px; background-color: #e8e8e9;margin:5px;border-radius:.25rem;padding:5px;}
 .tableTime {width:100%; color:#d9534f; font-size:3rem;}
+.tableTime1 {width:100%; color:#2E419A; font-size:2rem;}
 .tablePay {float:right;font-size:1rem;}
 
 /* Copyright */
