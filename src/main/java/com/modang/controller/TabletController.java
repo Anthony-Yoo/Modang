@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.modang.service.TabletService;
 import com.modang.vo.CardUsersVo;
 import com.modang.vo.JsonResult;
+import com.modang.vo.TableGamesVo;
 import com.modang.vo.TabletUserVo;
 
 
@@ -82,6 +84,36 @@ public class TabletController {
 		
 		return "/tablet/memberForm";
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/tablet/confirm", method = {RequestMethod.GET,RequestMethod.POST})
+	public JsonResult confirm(@RequestBody TableGamesVo tableGame) {
+		System.out.println("TabletController.confirm()");
+		System.out.println(tableGame);
+		
+		 int gameNo = tabletService.createGame(tableGame);
+		
+		JsonResult jsonResult = new JsonResult();
+				
+		if (gameNo > 0) { 
+			jsonResult.success(gameNo); 
+			
+			}else {				
+				jsonResult.fail("해당id를 가진 유져가 없습니다."); 
+			}
+		 
+		
+		return jsonResult;
+	}
+	
+	@RequestMapping(value="tablet/scoreboard", method = {RequestMethod.GET,RequestMethod.POST})
+	public String scoreboard() {
+		System.out.println("TabletController.scoreboard()");
+		
+		return "/tablet/scoreboard";
+	}
+	
+	
 	
 	@ResponseBody
 	@RequestMapping(value="/tablet/idfind", method = {RequestMethod.GET,RequestMethod.POST})

@@ -18,12 +18,12 @@ public class BoardService {
 
 	/* 게시판 글 작성 등록 */
 	public void write(BoardVo boardVo) {
-		System.out.println("BoardService.write");
+//		System.out.println("BoardService.write");
 		boardDao.insert(boardVo);
 	}
 
 	/* 게시판 리스트 검색기능, 페이지기능 포함 */
-	public Map<String, Object> getList(int crtPage, String keyword) {
+	public Map<String, Object> getList(int crtPage, String keyword, String category) {
 
 		// 페이지가 1페이지 이상인경우 해당 페이지번호로.
 		crtPage = (crtPage >= 1) ? crtPage : (crtPage = 1);
@@ -41,14 +41,14 @@ public class BoardService {
 
 		// 끝글번호
 		int endRum = (startRnum + listCnt) - 1;
-		List<BoardVo> bList = boardDao.selectList(startRnum, endRum, keyword);
+		List<BoardVo> bList = boardDao.selectList(startRnum, endRum, keyword, category);
 
 		/////////////////////////////////////////////////////////
 		// 페이징 계산
 		/////////////////////////////////////////////////////////
 
 		// 전체 글 갯수
-		int totalCount = boardDao.totalCount(keyword);
+		int totalCount = boardDao.totalCount(keyword, category);
 
 		// 페이지당 버튼 갯수
 		int pageBtnCount = 5;
@@ -95,5 +95,10 @@ public class BoardService {
 		pMap.put("bList", bList);
 
 		return pMap;
+	}
+	
+	public BoardVo read(int boardNo) {
+		System.out.println("BoardService.read()");
+		return boardDao.selectOne(boardNo);
 	}
 }

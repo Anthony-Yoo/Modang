@@ -77,7 +77,7 @@ public class UserService {
 			
 		}
 		
-		userVo.setProfileimage(savename);
+		userVo.setProfileImage(savename);
 		int count=userDao.insertUser(userVo);
 		
 		return count;
@@ -97,9 +97,9 @@ public class UserService {
 		System.out.println("UserService.modifyForm()");
 		System.out.println(id);
 		
-		UserVo userno=userDao.updateSelect(id);
-		System.out.println(userno);
-		return userno;
+		UserVo userNo=userDao.updateSelect(id);
+		System.out.println(userNo);
+		return userNo;
 	}
 	/*수정*/
 	public int modify(UserVo userVo, MultipartFile file) {
@@ -145,7 +145,7 @@ public class UserService {
 				
 			}
 		
-			userVo.setProfileimage(savename);
+			userVo.setProfileImage(savename);
 		}
 		
 		int count=userDao.updateUser(userVo);
@@ -159,6 +159,23 @@ public class UserService {
 		System.out.println("UserService.idCheck()");
 		System.out.println(id);
 		UserVo userVo=userDao.selectUser(id);
+		
+		boolean result;
+		if(userVo==null) {
+			result=true;
+		}else {
+			result=false;
+		}
+		
+		return result;
+	}
+	
+	//nick check
+	public boolean nickCheck(String nick) {
+		System.out.println("UserService.nickCheck()");
+		System.out.println(nick);
+		
+		UserVo userVo=userDao.selectNick(nick);
 		
 		boolean result;
 		if(userVo==null) {

@@ -30,15 +30,37 @@ public class BiliardController {
 	@Autowired
 	private BiliardService biliardService;
 	
+	/* 테이블 추가 */
+	@ResponseBody
+	@RequestMapping(value="/addTable", method= {RequestMethod.GET, RequestMethod.POST})
+	public JsonResult addTable(HttpSession session,@ModelAttribute CueTableVo cuetableVo) {
+		System.out.println("BiliardController.addTable()");
+		System.out.println(cuetableVo);
+		
+		ManagerVo loginManager =(ManagerVo)session.getAttribute("loginManager");
+		cuetableVo.setBiliardNo(loginManager.getbiliardNo());
+		
+		int count = biliardService.addTable(cuetableVo);
+		
+		JsonResult jsonResult = new JsonResult();
+		jsonResult.success(count);
+		
+		return jsonResult;
+	}
+	
+	
 	/* 테이블 현황 - 테이블 종류 변경 */
 	@ResponseBody
 	@RequestMapping(value="/tabletype", method= {RequestMethod.GET, RequestMethod.POST})
-	public String tableTypeModify(HttpSession session, @ModelAttribute CueTableVo cuetableVo) {
+	public JsonResult tableTypeModify(HttpSession session, @ModelAttribute CueTableVo cuetableVo) {
 		System.out.println("BiliardController.tableTypeModify()");
 		
-		biliardService.tableTypeModify(cuetableVo);
+		int count = biliardService.tableTypeModify(cuetableVo);
 		
-		return "";
+		JsonResult jsonResult = new JsonResult();
+		jsonResult.success(count);
+		
+		return jsonResult;
 	}
 	
 	
@@ -48,7 +70,7 @@ public class BiliardController {
 	@RequestMapping(value ="/info", method = { RequestMethod.GET, RequestMethod.POST })
 	public JsonResult tableInfo(HttpSession session, @ModelAttribute CueTableVo cuetableVo) {
 		System.out.println("BiliardController.tableInfo()");
-
+		
 		Map<String, Object> tMap = biliardService.tableInfo(cuetableVo);
 
 		JsonResult jsonResult = new JsonResult();

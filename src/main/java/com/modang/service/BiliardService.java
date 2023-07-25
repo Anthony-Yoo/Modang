@@ -22,11 +22,20 @@ public class BiliardService {
 	@Autowired
 	private BiliardDao biliardDao;
 	
+	/* 테이블 추가 */
+	public int addTable(CueTableVo cuetableVo) {
+		System.out.println("BiliardService.addTable()");
+		
+		int count = biliardDao.insertTable(cuetableVo);
+		return count;
+	}
+	
 	/* 테이블 현황-테이블 종류 변경 */
-	public void tableTypeModify(CueTableVo cuetableVo) {
+	public int tableTypeModify(CueTableVo cuetableVo) {
 		System.out.println("BiliardService.tableTypeModify()");
 		
-		biliardDao.updatetableType(cuetableVo);
+		int count = biliardDao.updatetableType(cuetableVo);
+		return count;
 	}
 	
 	
@@ -44,13 +53,20 @@ public class BiliardService {
 	public Map<String, Object> tableInfo(CueTableVo cuetableVo) {
 		System.out.println("BiliardService.tableInfo()");
 		int biliardNo = cuetableVo.getBiliardNo();
+		int tableNo = cuetableVo.getTableNo();
 				
 		TableGamesVo gamesVo = biliardDao.selectTable(cuetableVo);
 		TariffVo tariffVo = biliardDao.selectPrice(biliardNo);
+		CueTableVo oneTable = biliardDao.selectCuetable(tableNo);
+		
+				
+		List<CueTableVo> cueTableList = biliardDao.selectList(biliardNo);
 		
 		Map<String, Object> tMap = new HashMap<String, Object>();
+		
 		tMap.put("gamesVo", gamesVo);
 		tMap.put("tariffVo", tariffVo);
+		tMap.put("oneTable", oneTable);
 		System.out.println(tMap);
 		
 		return tMap;

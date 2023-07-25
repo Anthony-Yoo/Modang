@@ -14,13 +14,27 @@
 	<mvc:default-servlet-handler />
 	<mvc:annotation-driven />
 
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean
+				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>application/json; charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+
 	<!-- annotation 설정을 하겠다. -->
 	<context:annotation-config />
 
 	<!-- com.modang.controller 패키지 밑에 있는 클래스 중에 @Controller를 달고 있는 클래스의 객체를 
 		생성 하겠다. (new 하겠다) -->
-	<context:component-scan
-		base-package="com.modang.controller" />
+	<context:component-scan base-package="com.modang.controller" />
+	<context:component-scan base-package="com.modang.api.controller" />
 
 	<!-- 기본 뷰 리졸버 -->
 	<bean id="viewResolver"
@@ -52,18 +66,6 @@
 		location="file:C:/javaStudy/upload/" />
 
 
-	<mvc:annotation-driven>
-		<mvc:message-converters>
-			<bean
-				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-				<property name="supportedMediaTypes">
-					<list>
-						<value>application/json; charset=UTF-8</value>
-					</list>
-				</property>
-			</bean>
-		</mvc:message-converters>
-	</mvc:annotation-driven>
 
 
 
