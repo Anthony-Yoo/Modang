@@ -167,7 +167,7 @@ input[type="password"] {
 /* 게시판 관련 */
 #board {
 	width: 1200px;
-	height: 600px;
+	/* height: 600px; */
 	background-color: #FFFFFF;
 	margin: 0 auto;
 	padding: 10px;
@@ -301,7 +301,6 @@ textarea {
 
 #board #writeForm {
 	text-align: center;
-	border-top: 2px solid #2E419A;
 	padding-top: 60px
 }
 
@@ -327,7 +326,6 @@ textarea {
 }
 
 #board #writeForm .form-group #text-area {
-	border-bottom: 2px solid #2E419A;
 	padding-bottom: 90px;
 }
 
@@ -697,7 +695,7 @@ address, em {
 	cursor: pointer;
 }
 
-#readFooter {
-  /* 아래로 이동시키고 싶은 거리만큼 값을 조절하세요. 예: 20px */
+/* #readFooter {
+  아래로 이동시키고 싶은 거리만큼 값을 조절하세요. 예: 20px
   margin-top: 260px;
-}
+} */

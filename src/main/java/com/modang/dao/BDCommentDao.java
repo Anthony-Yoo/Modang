@@ -21,8 +21,8 @@ public class BDCommentDao {
 		System.out.println(vo);
 	}
 	
-	public List<BDCommentVo> list(){
-		List<BDCommentVo> list = sqlSession.selectList("bDComment.list"); 
+	public List<BDCommentVo> list(int boardNo){
+		List<BDCommentVo> list = sqlSession.selectList("bDComment.list", boardNo); 
 		System.out.println(list);
 		return list;
 	}

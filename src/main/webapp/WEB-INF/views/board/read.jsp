@@ -106,45 +106,20 @@
 					<pre class="form-value">${rList.content}
 						</pre>
 				</div>
-
 				<!-- 댓글 리스트 -->
 				<div id="comment_list">
-					<c:forEach items="${cList}" var="BDCommentVo">
-						<div id="line"></div>
-						<div class="comment_area"
-							style="position: relative; left: ${BDCommentVo.depth * 50}px;">
-							<a href="" class="comment_thumb"> <img
-								src="${pageContext.request.contextPath}/assets/images/modang.png"
-								alt="프로필 사진" width="36" height="36">
-							</a>
-							<div class="comment_box">
-								<div class="comment_nick_box">
-									<div class="comment_nick_info">
-										<a id="" href="#" role="button" aria-haspopup="true"
-											aria-expanded="false" class="comment_nickname">${BDCommentVo.nick}</a>
-									</div>
-								</div>
-								<div class="comment_text_box">
-									<p class="comment_text_view">
-										<span class="text_comment">${BDCommentVo.content}</span>
-									</p>
-								</div>
-								<div class="comment_info_box">
-									<span class="comment_info_date">${BDCommentVo.writeDate}</span>
-									<a href="#" role="button" class="comment_info_button">답글쓰기</a>
-								</div>
-							</div>
-						</div>
-					</c:forEach>
-
+					<div id="cList">
+						
+					</div><!-- cList end -->
 					<!-- comment_add -->
 					<c:if test="${sessionScope.authUser != null}">
 						<div id="comment_add">
 							<div id="comment_inbox">
 								<strong class="blind">댓글을 입력하세요</strong> <input type="hidden"
-									value="${sessionScope.authUser.userNo}" name="userNo"><input
-									type="hidden" value="${rList.boardNo}" name="boardNo">
-								<em id="comment_inbox_name">${sessionScope.authUser.nick}</em>
+									value="${sessionScope.authUser.userNo}" name="userNo">
+								<input type="hidden" value="${rList.boardNo}" name="boardNo">
+								<input type="hidden" id="depth" value=1> <em
+									id="comment_inbox_name">${sessionScope.authUser.nick}</em>
 								<div class="comment_inbox_wrapper">
 									<div class="comment_textarea_wrapper">
 										<textarea placeholder="댓글을 남겨보세요" rows="1"
@@ -213,13 +188,16 @@
 		var userNo = $("[name='userNo']").val();
 		var boardNo = $("[name='boardNo']").val();
 		var content = $("#comment_inbox_text").val();
+		var depth = $("#depth").val();
 
 		var BDCommentVo = {
 			id : id,
 			userNo : userNo,
 			content : content,
-			boardNo : boardNo
+			boardNo : boardNo,
+			depth : depth
 		}
+
 		console.log(BDCommentVo);
 		var str = JSON.stringify(BDCommentVo);
 
@@ -256,5 +234,95 @@
 
 		});
 	});
+
+	/* <div id="comment_add">
+	<div id="comment_inbox">
+		<strong class="blind">댓글을 입력하세요</strong> <input type="hidden"
+			value="${sessionScope.authUser.userNo}" name="userNo">
+		<input type="hidden" value="${rList.boardNo}" name="boardNo">
+		<input type="hidden" id="depth" value=1>
+		<em id="comment_inbox_name">${sessionScope.authUser.nick}</em>
+		<div class="comment_inbox_wrapper">
+			<div class="comment_textarea_wrapper">
+				<textarea placeholder="댓글을 남겨보세요" rows="1" id="comment_inbox_text" style="overflow: hidden; overflow-wrap: break-word;"></textarea>
+			</div>
+			<div id="register_box">
+				<a href="" role="button" id="btn_register">등록</a>
+			</div>
+		</div>
+	</div>
+	</div> */
+
+	
+	// 대댓글 입력 창
+	function commentRender(BDCommentVo, dir) {
+		var str = "";
+		str += ' <div id="comment_add">';
+		str += ' 	<div id="comment_inbox_second">';
+		str += ' 		<strong class="blind">댓글을 입력하세요</strong>';
+		str += ' 		<input type="hidden" value="${sessionScope.authUser.userNo}" name="userNo">';
+		str += ' 		<input type="hidden" value='+BDCommentVo.boardNo+' name="boardNo">';
+		str += ' 		<input type="hidden" value='+BDCommentVo.depth+' name="depth" >';
+		str += ' 		<input type="hidden" value='+BDCommentVo.groupNo+' name="groupNo">';
+		str += ' 		<em id="comment_inbox_name">${sessionScope.authUser.nick}</em>;
+		str += ' 		<div class="comment_inbox_wrapper">';
+		str += ' 			<div class="comment_textarea_wrapper">';
+		str += ' 				<textarea placeholder="댓글을 남겨보세요" rows="1" id="comment_inbox_text" style="overflow: hidden; overflow-wrap: break-word;"></textarea>';
+		str += ' 			</div>';
+		str += ' 			<div id="register_box">';
+		str += ' 	 			<a href="" role="button" id="btn_register">등록</a>';
+		str += ' 			</div>';
+		str += ' 		</div>';
+		str += ' 	</div>';
+		str += ' </div>';
+
+		if (dir == 'up') {
+			$("#cList").append(str);
+		} else {
+			console.log("에러요");
+		}
+	}
+	
+	// 대댓글 리스트 그리기
+	function listRender(BDCommentVo, dir) {
+		var str = "";
+		str += ' <div id="line"></div>';
+		str += ' <input type="hidden" name="groupNo" value="'+BDCommentVo.groupNo+'">';
+		str += ' 	<div class="comment_area" style="position: relative; left: '+BDCommentVo.depth+' * 50}px;">';
+		str += ' 	<a href="" class="comment_thumb">';
+		str += ' 		<img src="${pageContext.request.contextPath}/assets/images/modang.png" alt="프로필 사진" width="36" height="36">';
+		str += ' 	</a>';
+		str += ' 	<div class="comment_box">';
+		str += ' 		<div class="comment_nick_box">';
+		str += ' 			<div class="comment_nick_info">';
+		str += ' 				<a id="" href="#" role="button" aria-haspopup="true" aria-expanded="false" class="comment_nickname">';
+		str += ' 					' + BDCommentVo.nick + '';
+		str += ' 				</a>';
+		str += ' 	 		</div>';
+		str += ' 		</div>';
+		str += ' 		<div class="comment_text_box">';
+		str += ' 			<p class="comment_text_view">';
+		str += ' 				<span class="text_comment">' + BDCommentVo.content
+				+ '</span>';
+		str += ' 			</p>';
+		str += ' 		</div>';
+		str += ' 		<div class="comment_info_box">';
+		str += ' 			<span class="comment_info_date">' + BDCommentVo.writeDate
+				+ '</span>';
+		if ("${sessionScope.authUser.id}" != null && BDCommentVo.depth < 2 ) {
+			str += ' 			<a href="#" role="button" class="comment_info_button">답글쓰기</a>';
+		}
+		str += ' 		</div>';
+		str += ' 	</div>';
+		str += ' </div>';
+
+		if (dir == 'up') {
+			$("#cList").prepend(str);
+		} else if (dir == 'down') {
+			$("#cList").append(str);
+		} else {
+			console.log("에러요");
+		}
+	}
 </script>
 </html>
