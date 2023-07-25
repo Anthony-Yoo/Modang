@@ -177,4 +177,47 @@
 					#{currentAverage},
 					#{orderNo} )	
 	</insert>
+	<!-- 당구장찾기 -->
+	<select id="selectCueTable" parameterType="int" resultType="com.modang.vo.CueTableVo">
+		<![CDATA[
+			select  BILIARDNO,
+					tableType
+			from CUETABLE
+			where TABLENO = #{tableNo}		
+		]]>
+	</select>
+	<!-- 나의 플레이 찾기 -->
+	<select id="selectPlayUser" parameterType="com.modang.vo.TableGamesVo" resultType="com.modang.vo.PlayUserVo">
+		<![CDATA[
+			select      p.PLAYNO,
+						p.USERNO,
+			            u.nick,
+			            p.CURRENTAVERAGE,
+			            p.ORDERNO            
+			from 		PLAYS p,
+                 		users u
+			where GAMENO = #{gameNo}
+            AND p.USERNO = u.USERNO
+			order by ORDERNO ASC		
+		]]>	
+	</select>
+	
+	
+	<!-- 요금표 찾기 -->
+	<select id="selectTariff" parameterType="com.modang.vo.CueTableVo" resultType="com.modang.vo.TariffVo">
+		<![CDATA[
+			select  TARIFFNO,
+					BILIARDNO,
+					BTABLEFEE,
+					MTABLEFEE,
+					PTABLEFEE,
+					BMINFEE,
+					MMINFEE,
+					PMINFEE
+			from TARIFF
+			where  TARIFFNO =  (select max(TARIFFNO) from TARIFF 			
+								where BILIARDNO = #{biliardNo})			
+		]]>
+	
+	</select>
 </mapper>

@@ -8,10 +8,12 @@ import org.springframework.stereotype.Repository;
 
 import com.modang.vo.CardMemberVo;
 import com.modang.vo.CardUsersVo;
+import com.modang.vo.CueTableVo;
 import com.modang.vo.FavoriteUsersVo;
 import com.modang.vo.PlayUserVo;
 import com.modang.vo.TableGamesVo;
 import com.modang.vo.TabletUserVo;
+import com.modang.vo.TariffVo;
 
 @Repository
 public class TabletDao {
@@ -87,5 +89,25 @@ public class TabletDao {
 		
 		return session.insert("tablet.insertPlay", playUser);
 	}
+	
+	public CueTableVo selectCueTable(int tableNo) {
+		System.out.println("TabletDao.selectbiliard()");
+		
+		return session.selectOne("tablet.selectCueTable", tableNo);			
+	}
+	
+	public List<PlayUserVo> selectPlayUser(TableGamesVo myGameInfo) {
+		System.out.println("TabletDao.selectPlayUser()");
+		
+		return session.selectList("tablet.selectPlayUser",myGameInfo);
+	}
+	
+	public TariffVo selectTariff(CueTableVo tableInfo) {
+		System.out.println("TabletDao.selectTariff()");
+		
+		return session.selectOne("tablet.selectTariff", tableInfo);
+	}
+	
+	
 	
 }
