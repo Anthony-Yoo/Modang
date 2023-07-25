@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service;
 import com.modang.dao.TabletDao;
 import com.modang.vo.CardMemberVo;
 import com.modang.vo.CardUsersVo;
+import com.modang.vo.CueTableVo;
 import com.modang.vo.FavoriteUsersVo;
 import com.modang.vo.PlayUserVo;
 import com.modang.vo.StaticVo;
 import com.modang.vo.TableGamesVo;
 import com.modang.vo.TabletUserVo;
+import com.modang.vo.TariffVo;
 
 @Service
 public class TabletService {
@@ -131,4 +133,49 @@ public class TabletService {
 		return gameNo;
 	}
 	
+	public TableGamesVo playFind(TableGamesVo myGameInfo) {
+		System.out.println("TabletService.gameFind()");		
+		
+		int tableNo = myGameInfo.getTableNo();
+		//당구장번호찾기 & 테이블 종류찾기
+		CueTableVo tableInfo = tabletDao.selectCueTable(tableNo);		
+		//요금표 찾기
+		TariffVo tariffInfo = tabletDao.selectTariff(tableInfo);
+		//테이블에 맞는 요금찾기
+		int tableFee = 0;
+		int minFee = 0;
+		int tableType = tableInfo.getTableType();
+		switch(tableType) {
+			case 0 :  	tableFee = tariffInfo.getBtablefee();
+						minFee = tariffInfo.getBminfee();
+						break;
+			case 1 :	tableFee = tariffInfo.getMtablefee();
+						minFee = tariffInfo.getMminfee();
+						break;
+			case 2 :	tableFee = tariffInfo.getPtablefee();
+						minFee = tariffInfo.getPminfee();
+						break;
+			default : 	tableFee = 0;
+						minFee = 0;
+						break;
+		}
+		// 요금을 플레이유져에 넣기			
+		myGameInfo.setTableFee(tableFee);
+		myGameInfo.setMinFee(minFee);
+		myGameInfo.setPlayUserList(tabletDao.selectPlayUser(myGameInfo)); 			
+		
+		return myGameInfo;
+	}
+	
+	public int biliardFind(int tableNo) {
+		System.out.println("TabletService.biliardFind()");
+		
+		//당구장번호찾기 & 테이블 종류찾기
+		CueTableVo tableInfo = tabletDao.selectCueTable(tableNo);		
+		//요금표 요금찾기
+		tabletDao.selectTariff(tableInfo);
+		
+		
+		return 0;
+	}
 }

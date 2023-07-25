@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.modang.service.TabletService;
 import com.modang.vo.CardUsersVo;
 import com.modang.vo.JsonResult;
+import com.modang.vo.PlayUserVo;
 import com.modang.vo.TableGamesVo;
 import com.modang.vo.TabletUserVo;
 
@@ -107,12 +108,29 @@ public class TabletController {
 	}
 	
 	@RequestMapping(value="tablet/scoreboard", method = {RequestMethod.GET,RequestMethod.POST})
-	public String scoreboard() {
+	public String scoreboard(@ModelAttribute TableGamesVo myGameInfo,Model model) {  //테이블No 게임No
 		System.out.println("TabletController.scoreboard()");
+		System.out.println(myGameInfo);	
+		
+		
+		TableGamesVo tableGameVo = tabletService.playFind(myGameInfo);
+		System.out.println(tableGameVo);
+		model.addAttribute("tableGameVo", tableGameVo);		
 		
 		return "/tablet/scoreboard";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="tablet/feefind", method = {RequestMethod.GET,RequestMethod.POST})
+	public JsonResult feeFind(@RequestParam(value="tableNo") int tableNo) {
+		System.out.println("TabletController.feeFind()");
+		System.out.println(tableNo);
+		
+		tabletService.biliardFind(tableNo);		
+		JsonResult jsonResult = new JsonResult();
+		
+		return jsonResult;
+	}
 	
 	
 	@ResponseBody
