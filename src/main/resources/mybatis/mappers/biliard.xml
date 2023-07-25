@@ -86,11 +86,11 @@
 				       c.biliardno,
 				       c.tablename,
 				       c.tabletype,
-				       c.status
+				       c.status as tableStatus
 				from cuetable c
 				full join games g
 				on g.tableno=c.tableno
-				where g.tableno=#{tableNo} 
+				where g.gameno = (select Max(gameno) from games where tableno= #{tableNo})
 	
 			]]>	
 			
@@ -105,6 +105,7 @@
 				       tabletype,
 				       status as tableStatus      
 				from cuetable where biliardno = #{biliardNo}
+				order by tablename
 			]]>	
 		</select> 
 	

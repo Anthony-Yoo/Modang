@@ -1,12 +1,11 @@
 @charset "UTF-8";
 
 
-
+/* 전체 폭 */
  .container{
 	width: 1200px;
  }
-
-
+/* container 중앙 맞춤 */
 #main-content .container{
 	width: 1200px;
 	height: 100%;
@@ -21,7 +20,6 @@
 	
 }
 
-
 /* the width for center position */
 #main-content .container #loginForm #main,
 #main-content .container #joinOk #main,
@@ -31,7 +29,7 @@
 	
 }
 
-
+/* title 위치및 굵기 */
 #main h3 {
 	margin: 50px 0px 35px 0px;
 	font-size: 35px;
@@ -39,7 +37,7 @@
 	text-align: center;
 }
 
-
+/* idcheck modal */
 #main form .input-group #btnIdCheck {
 	width: 70px;
 	height: 40px;
@@ -49,9 +47,10 @@
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #fff;
+	margin: 0px 0px 30px 0px;
 }
 
-
+/* input id 체크용 */
 #main form .input-group #input-uid {
 	width: 230px;
 	height: 40px;
@@ -61,6 +60,7 @@
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
+	margin: 0px 0px 30px 0px;
 }
 
 #main form .input-group #id {
@@ -72,6 +72,7 @@
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
+	margin: 0px 0px 30px 0px;
 
 }
 
@@ -84,6 +85,7 @@
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
+	margin: 0px 0px 30px 0px;
 
 }
 
@@ -96,9 +98,9 @@
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
+	margin: 0px 0px 30px 0px;
 
 }
-
 
 #main form .input-group #nick {
 	width: 230px;
@@ -109,8 +111,10 @@
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
+	margin: 0px 0px 30px 0px;
 
 }
+
 /* nick modal */
 #main form .input-group #btnNickCheck {
 	width: 70px;
@@ -121,6 +125,7 @@
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #fff;
+	margin: 0px 0px 30px 0px;
 }
 
 #main form .input-group #average {
@@ -132,6 +137,20 @@
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
+	margin: 0px 0px 30px 0px;
+
+}
+
+#main form .input-group #profileImage {
+	width: 300px;
+	height: 40px;
+	padding : 9px 20px 9px 15px;
+	background: #F5F5F5;
+	border: 1px solid #B8B8B8;
+	box-sizing: border-box;
+	border-radius: 8px;
+	color: #111;
+	margin: 0px 0px 20px 0px;
 
 }
 
@@ -140,6 +159,7 @@
 	margin: 30px 0px 30px 0px;
 	
 }
+
 /* submit button */
 #main form .button-area #btn-submit{
 	width: 100%;
@@ -148,14 +168,18 @@
 	border-radius:10px;
 	line-height: 40px;
 }
+
 /* modify image size */
 #main form .form-group #image-show img{
 	width: 345px;
 	margin: 0px 0px 3px 0px;
 }
+
 /* icon */
 #main form .form-group .input-group img{
 	width: 40px; 
 	height: 40px;
 	margin: 0px 10px 20px 0px;
+	
 }
+
