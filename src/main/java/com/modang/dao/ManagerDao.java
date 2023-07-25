@@ -18,9 +18,16 @@ public class ManagerDao {
 		System.out.println("ManagerDao.insertManager");
 		sqlSession.insert("manager.insertManager",managerVo);
 	}
+	/*추가 이미지*/
 	public void insertManager(ManagerVo managerVo,MultipartFile file){
 		System.out.println("ManagerDao.insertManager");
 		sqlSession.insert("manager.insertManager",managerVo);
+	}
+	/*회원가입 id 중복체크*/
+	public ManagerVo selectManager(String id) {
+		System.out.println("ManagerDao.selectManager"+id);
+		ManagerVo managerVo = sqlSession.selectOne("manager.selectManagerById",id);
+		return managerVo;
 	}
 	
 	/*로그인*/

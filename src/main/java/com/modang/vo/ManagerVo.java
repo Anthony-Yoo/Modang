@@ -57,12 +57,15 @@ public class ManagerVo {
 		this.parking = parking;
 		this.bdComment = bdComment;
 	}
-	public int getBiliardNo() {
-		return biliardNo;
-	}
-	public void setBiliardNo(int biliardNo) {
-		this.biliardNo = biliardNo;
-	}
+    // biliardNo 필드의 getter 메서드 정의
+    public int getbiliardNo() {
+        return biliardNo;
+    }
+
+    // biliardNo 필드의 setter 메서드 정의
+    public void setbiliardNo(int biliardNo) {
+        this.biliardNo = biliardNo;
+    }
 	public String getId() {
 		return id;
 	}

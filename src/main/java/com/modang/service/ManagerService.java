@@ -70,6 +70,17 @@ public class ManagerService {
 		
 		managerDao.insertManager(managerVo);
 	}
+	/*회원가입 id 중복체크*/
+	public boolean idcheck(String id) {
+		System.out.println("ManagerService.idcheck");
+		ManagerVo managerVo = managerDao.selectManager(id);
+		boolean result;
+		if(managerVo==null) {//사용가능
+			return true;
+		}else {				//사용 불가능
+			return false;
+		}
+	}
 	
 	/*로그인*/
 	public ManagerVo login(ManagerVo managerVo) {

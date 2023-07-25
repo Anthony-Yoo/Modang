@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.modang.service.ManagerService;
+import com.modang.vo.JsonResult;
 import com.modang.vo.ManagerVo;
 
 @Controller
@@ -35,7 +37,18 @@ public class ManagerController {
 		managerService.join(file,managerVo);
 		return "/manager/managerLoginForm";
 	}
-
+	 
+	/*회원가입 id 중복체크*/
+	@ResponseBody
+	@RequestMapping(value ="/join/idcheck", method = {RequestMethod.GET, RequestMethod.POST})
+	public JsonResult idcheck(@RequestParam("id") String id) {
+		System.out.println("ManagerController.idcheck");
+		boolean data =managerService.idcheck(id);
+		JsonResult jsonResult = new JsonResult();
+		jsonResult.success(data);
+		System.out.println(jsonResult);
+		return jsonResult;
+	}
 	
 	/*로그인폼 출력*/
 	@RequestMapping(value ="/loginForm", method = {RequestMethod.GET, RequestMethod.POST})

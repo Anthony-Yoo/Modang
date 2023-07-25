@@ -10,6 +10,7 @@
 <link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e22dfae5a7af2f9805a3f47c324a0694"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 </head>
 <body>
 	<!-- 헤더 시작 -->
@@ -25,13 +26,13 @@
 						<span class="inp-txt">
 							<img src="${pageContext.request.contextPath}/assets/images/id.png" alt="아이디"> 
 							<input type="text" id="id" name="id" placeholder="아이디">
-							<a href="" class="chck">중복체크</a>
+							<a href="" class="chck" id="btnIdCheck">중복체크</a>
+							<p class="error-msg"></p>
 						</span>
-						<p class="error-msg">이미 사용중인 아이디 입니당</p>
-					</div>
+					</div>	
 					<div class="con">
 						<span class="inp-txt"> 
-							<img src="${pageContext.request.contextPath}/assets/images/settings.png" alt="비밀번호">
+							<img src="${pageContext.request.contextPath}/assets/images/passwd.png" alt="비밀번호">
 							<input type="password" id="passwd" name="passwd" placeholder="비밀번호">
 						</span>
 					</div>
@@ -71,12 +72,13 @@
 				</div><!-- join-wrap -->
 			<h3>매장 정보</h3>
 				<div class="join-wrap">
-					<div class="con" id="imageContainer">
-						<div class="imageBox">
-							<input type="file" id="image" name="imageFile1" class="image" accept="images/*" required/>
-						</div>
+					<div class="con" id="imageContainer"><!-- 모든 이미지 포함하는 박스 -->
+					    <div class="imageBox" onclick="showImageUploader(this)">
+					        <button type="button" class="add-btn">+</button>
+					        <input type="file" name="imageFile1" class="image" accept="image/*"required/>
+					    </div>
 					</div>
-					<button type="button" class="button" id="addImageBtn">이미지 추가</button>
+					<input type="file" id="imageUploader" class="image" accept="image/*"  required/>
 					<div class="con">
 						<span class="inp-txt"> 
 							<img src="${pageContext.request.contextPath}/assets/images/clock.png" alt="이용시간"> 
@@ -111,7 +113,7 @@
 	<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
 	<!-- 푸터 끝 -->
 </body>
-<script>
+<script>/*우편변호/주소*/
 function execDaumPostcode() {
     new daum.Postcode({
         oncomplete: function(data) {
@@ -160,28 +162,86 @@ function execDaumPostcode() {
     }).open();
 }
 </script>
-    <script>
-        document.getElementById('addImageBtn').addEventListener('click', function () {
-            const imageContainer = document.getElementById('imageContainer');
-            const imageBoxes = imageContainer.querySelectorAll('.imageBox');
-
-            if (imageBoxes.length < 3) {
-                const newImageBox = document.createElement('div');
-                newImageBox.classList.add('imageBox');
-                newImageBox.innerHTML = `
-                    <input type="file" name="imageFile${imageBoxes.length + 1}" class="image" accept="image/*"/>
-                    <button type="button" class="remove-btn" onclick="removeImageBox(this)">삭제</button>
-                `;
-                imageContainer.appendChild(newImageBox);
-            } else {
-                alert('이미지는 최대 3장까지만 추가할 수 있습니다.');
-            }
-        });
-
-        function removeImageBox(button) {
-            const imageContainer = document.getElementById('imageContainer');
-            const imageBox = button.parentNode;
-            imageContainer.removeChild(imageBox);
-        }
-    </script>
+<script>/*매장 이미지 추가 */
+	function showImageUploader(box) {
+	    const imageContainer = document.getElementById('imageContainer');
+	    const imageBoxes = imageContainer.querySelectorAll('.imageBox');
+	
+	    if (imageBoxes.length < 3) {
+	        const imageUploader = document.getElementById('imageUploader');
+	        imageUploader.setAttribute('onchange', 'addImageBox(this)');
+	        imageUploader.click();
+	    } else {
+	        alert('이미지는 최대 3장까지만 추가할 수 있습니다.');
+	    }
+	}
+	
+	function addImageBox(input) {
+	    const imageContainer = document.getElementById('imageContainer');
+	    const imageBoxes = imageContainer.querySelectorAll('.imageBox');
+	
+	    if (imageBoxes.length < 3) {
+	        const newImageBox = document.createElement('div');
+	        newImageBox.classList.add('imageBox');
+	        newImageBox.innerHTML = `
+	            <button type="button" class="remove-btn" onclick="removeImageBox(this)">삭제</button>
+	            <button type="button" class="add-btn" onclick="showImageUploader(this)">+</button>
+	        `;
+	        const newImageInput = document.createElement('input');
+	        newImageInput.setAttribute('type', 'file');
+	        newImageInput.setAttribute('name', `imageFile${imageBoxes.length + 1}`);
+	        newImageInput.setAttribute('class', 'image');
+	        newImageInput.setAttribute('accept', 'image/*');
+	        newImageInput.style.display = 'none';
+	        newImageBox.appendChild(newImageInput);
+	
+	        imageContainer.appendChild(newImageBox);
+	    } else {
+	        alert('이미지는 최대 3장까지만 추가할 수 있습니다.');
+	    }
+	}
+	
+	function removeImageBox(button) {
+	    const imageContainer = document.getElementById('imageContainer');
+	    const imageBox = button.parentNode;
+	    imageContainer.removeChild(imageBox);
+	}
+</script>
+<script>/*id중복체크*/
+	$("#btnIdCheck").on("click", function(event){
+		console.log("버튼 클릭");
+		event.preventDefault();
+		//id 추출
+		var id= $("[name=id]").val();	//항상 입력한 id→보냈을때 이 id
+		console.log(id);
+		//통신 ===================================id 뽑아내서 보내서
+		$.ajax({
+			url : "${pageContext.request.contextPath}/manager/join/idcheck",//주소 요청해야할 곳
+			type : "post",
+			data : {id:id},
+			dataType : "json",	//돌아올때 방식
+			success : function(jsonResult){
+				console.log(jsonResult);
+				 	if(jsonResult.result=='success'){//처리 성공
+					//사용가능한지 불가능한지 표현
+					if(jsonResult.data == true){
+						//사용가능
+						$(".error-msg").html("사용가능한 아이디입니당");
+					}else{
+						//사용불가능
+						$(".error-msg").html("이미 사용중인 아이디입니당");
+					}
+				}else{
+					//메세지 출력
+					var msg = jsonResult.failMsg;
+					alert(msg);
+				}  
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+				//alert("서버요청실패");
+			}
+		});
+	});
+</script>
 </html>
