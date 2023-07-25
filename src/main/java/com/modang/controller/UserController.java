@@ -96,6 +96,23 @@ public class UserController {
 		 return jsonResult; 
 	  
 	 }
+	 
+	 //닉네임 체크
+	 @ResponseBody 
+	 @RequestMapping(value="/nickchek", method= {RequestMethod.GET, RequestMethod.POST})
+	 public JsonResult nickCheck(String nick) {
+		 System.out.println("UserController.nickCheck()");
+		 System.out.println(nick);
+		 
+		 boolean data=userService.nickCheck(nick);
+		 
+		 JsonResult jsonResult=new JsonResult();
+		 jsonResult.success(data);
+		 
+		 System.out.println(jsonResult);
+	 
+		 return jsonResult;
+	 }
 	  
 	 
 	//logout 

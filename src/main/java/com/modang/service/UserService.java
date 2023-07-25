@@ -169,5 +169,22 @@ public class UserService {
 		
 		return result;
 	}
+	
+	//nick check
+	public boolean nickCheck(String nick) {
+		System.out.println("UserService.nickCheck()");
+		System.out.println(nick);
+		
+		UserVo userVo=userDao.selectNick(nick);
+		
+		boolean result;
+		if(userVo==null) {
+			result=true;
+		}else {
+			result=false;
+		}
+		
+		return result;
+	}
 
 }

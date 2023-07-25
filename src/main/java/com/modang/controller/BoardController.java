@@ -2,6 +2,7 @@ package com.modang.controller;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.modang.service.BDCommentService;
 import com.modang.service.BoardService;
+import com.modang.vo.BDCommentVo;
 import com.modang.vo.BoardVo;
 import com.modang.vo.UserVo;
 
@@ -24,6 +27,9 @@ public class BoardController {
 
 	@Autowired
 	private BoardService boardService;
+	
+	@Autowired
+	private BDCommentService bDCommentService;
 
 	/* 게시판 리스트 페이지 이동 */
 	@RequestMapping(value = "/list")
@@ -35,6 +41,7 @@ public class BoardController {
 		Map<String, Object> pMap = boardService.getList(crtPage, keyword, category);
 //		System.out.println(pMap);
 		model.addAttribute("pMap", pMap );
+		
 		return "/board/list";
 	}
 
@@ -77,6 +84,9 @@ public class BoardController {
 		BoardVo vo = boardService.read(boardNo);
 		System.out.println(vo);
 		model.addAttribute("rList", vo);
+		List<BDCommentVo> list = bDCommentService.list(boardNo);
+		System.out.println(list);
+		model.addAttribute("cList", list);
 		return "/board/read";
 	}
 

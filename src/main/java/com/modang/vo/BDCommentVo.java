@@ -33,6 +33,7 @@ public class BDCommentVo {
 		this.id = id;
 	}
 
+
 	public int getCommentNo() {
 		return commentNo;
 	}
