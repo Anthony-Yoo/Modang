@@ -15,9 +15,15 @@
 
 /* the width for center position */
 #main-content .container #joinForm #main {
-	width: 350px;
+	width: 360px;
 	margin: 0 auto;
 	
+}
+#joinForm .input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    margin: 0px 0px -10px 0px;
 }
 
 /* the width for center position */
@@ -28,6 +34,7 @@
 	margin: 0 auto;
 	
 }
+
 
 /* title 위치및 굵기 */
 #main h3 {
@@ -181,5 +188,15 @@
 	height: 40px;
 	margin: 0px 10px 20px 0px;
 	
+}
+.row {
+    margin-right: -0px;
+    margin-left: -5px;
+}
+
+.input-group[class*=col-] {
+    float: none;
+    padding-right: 0;
+    padding-left: 0;
 }
 
