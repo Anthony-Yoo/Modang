@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -86,200 +87,53 @@
 						플레이 예정 정보 : [
 						<c:choose>
 							<c:when test="${rList.matchGameType == '0'}">
-								<td>3구</td>
-							</c:when>
+									3구
+								</c:when>
 							<c:when test="${rList.matchGameType == '1'}">
-								<td>4구</td>
-							</c:when>
+									4구
+								</c:when>
 							<c:when test="${rList.matchGameType == '2'}">
-								<td>포켓볼</td>
-							</c:when>
+									포켓볼
+								</c:when>
 						</c:choose>
 						${rList.matchRegion} ${rList.matchDate}]
 					</div>
-					<div id="title_state">구인현황 1/${rList.membernum}</div>
-
+					<span id="title_state">구인현황 1/${rList.membernum}</span>
 				</div>
-
-
 
 				<!-- 내용 -->
 				<div id="txt-content">
 					<pre class="form-value">${rList.content}
-					</pre>
+						</pre>
 				</div>
-
 				<!-- 댓글 리스트 -->
 				<div id="comment_list">
-					<div id="line"></div>
-					<div class="comment_area">
-						<a href="" class="comment_thumb"> <img
-							src="${pageContext.request.contextPath}/assets/images/modang.png"
-							alt="프로필 사진" width="36" height="36">
-						</a>
-						<div class="comment_box">
-							<div class="comment_nick_box">
-								<div class="comment_nick_info">
-									<a id="" href="#" role="button" aria-haspopup="true"
-										aria-expanded="false" class="comment_nickname">유고수</a>
-								</div>
-							</div>
-							<div class="comment_text_box">
-								<p class="comment_text_view">
-									<span class="text_comment">안녕하십니까</span>
-								</p>
-							</div>
-							<div class="comment_info_box">
-								<span class="comment_info_date">2023.07.11 14:49</span> <a
-									href="#" role="button" class="comment_info_button">답글쓰기</a>
-							</div>
-						</div>
-					</div>
-					<div id="comment_second_list">
-						<div id="line"></div>
-						<div class="comment_area">
-							<a href="" class="comment_thumb"> <img
-								src="${pageContext.request.contextPath}/assets/images/modang.png"
-								alt="프로필 사진" width="36" height="36">
-							</a>
-							<div class="comment_box">
-								<div class="comment_nick_box">
-									<div class="comment_nick_info">
-										<a id="" href="#" role="button" aria-haspopup="true"
-											aria-expanded="false" class="comment_nickname">유고수</a>
+					<div id="cList">
+						
+					</div><!-- cList end -->
+					<!-- comment_add -->
+					<c:if test="${sessionScope.authUser != null}">
+						<div id="comment_add">
+							<div id="comment_inbox">
+								<strong class="blind">댓글을 입력하세요</strong> <input type="hidden"
+									value="${sessionScope.authUser.userNo}" name="userNo">
+								<input type="hidden" value="${rList.boardNo}" name="boardNo">
+								<input type="hidden" id="depth" value=1> <em
+									id="comment_inbox_name">${sessionScope.authUser.nick}</em>
+								<div class="comment_inbox_wrapper">
+									<div class="comment_textarea_wrapper">
+										<textarea placeholder="댓글을 남겨보세요" rows="1"
+											id="comment_inbox_text"
+											style="overflow: hidden; overflow-wrap: break-word;"></textarea>
+									</div>
+									<div id="register_box">
+										<a href="" role="button" id="btn_register">등록</a>
 									</div>
 								</div>
-								<div class="comment_text_box">
-									<p class="comment_text_view">
-										<span class="text_comment">안녕하십니까</span>
-									</p>
-								</div>
-								<div class="comment_info_box">
-									<span class="comment_info_date">2023.07.11 14:49</span> <a
-										href="#" role="button" class="comment_info_button">답글쓰기</a>
-								</div>
 							</div>
 						</div>
-					</div>
-
-					<div id="line"></div>
-					<div class="comment_area">
-						<a href="" class="comment_thumb"> <img
-							src="${pageContext.request.contextPath}/assets/images/modang.png"
-							alt="프로필 사진" width="36" height="36">
-						</a>
-						<div class="comment_box">
-							<div class="comment_nick_box">
-								<div class="comment_nick_info">
-									<a id="" href="#" role="button" aria-haspopup="true"
-										aria-expanded="false" class="comment_nickname">유고수</a>
-								</div>
-							</div>
-							<div class="comment_text_box">
-								<p class="comment_text_view">
-									<span class="text_comment">안녕하십니까</span>
-								</p>
-							</div>
-							<div class="comment_info_box">
-								<span class="comment_info_date">2023.07.11 14:49</span> <a
-									href="#" role="button" class="comment_info_button">답글쓰기</a>
-							</div>
-						</div>
-					</div>
-
-					<div id="line"></div>
-					<div class="comment_area">
-						<a href="" class="comment_thumb"> <img
-							src="${pageContext.request.contextPath}/assets/images/modang.png"
-							alt="프로필 사진" width="36" height="36">
-						</a>
-						<div class="comment_box">
-							<div class="comment_nick_box">
-								<div class="comment_nick_info">
-									<a id="" href="#" role="button" aria-haspopup="true"
-										aria-expanded="false" class="comment_nickname">유고수</a>
-								</div>
-							</div>
-							<div class="comment_text_box">
-								<p class="comment_text_view">
-									<span class="text_comment">안녕하십니까</span>
-								</p>
-							</div>
-							<div class="comment_info_box">
-								<span class="comment_info_date">2023.07.11 14:49</span> <a
-									href="#" role="button" class="comment_info_button">답글쓰기</a>
-							</div>
-						</div>
-					</div>
-
-					<div id="line"></div>
-					<div class="comment_area">
-						<a href="" class="comment_thumb"> <img
-							src="${pageContext.request.contextPath}/assets/images/modang.png"
-							alt="프로필 사진" width="36" height="36">
-						</a>
-						<div class="comment_box">
-							<div class="comment_nick_box">
-								<div class="comment_nick_info">
-									<a id="" href="#" role="button" aria-haspopup="true"
-										aria-expanded="false" class="comment_nickname">유고수</a>
-								</div>
-							</div>
-							<div class="comment_text_box">
-								<p class="comment_text_view">
-									<span class="text_comment">안녕하십니까</span>
-								</p>
-							</div>
-							<div class="comment_info_box">
-								<span class="comment_info_date">2023.07.11 14:49</span> <a
-									href="#" role="button" class="comment_info_button">답글쓰기</a>
-							</div>
-						</div>
-					</div>
-
-					<div id="line"></div>
-					<div class="comment_area">
-						<a href="" class="comment_thumb"> <img
-							src="${pageContext.request.contextPath}/assets/images/modang.png"
-							alt="프로필 사진" width="36" height="36">
-						</a>
-						<div class="comment_box">
-							<div class="comment_nick_box">
-								<div class="comment_nick_info">
-									<a id="" href="#" role="button" aria-haspopup="true"
-										aria-expanded="false" class="comment_nickname">유고수</a>
-								</div>
-							</div>
-							<div class="comment_text_box">
-								<p class="comment_text_view">
-									<span class="text_comment">안녕하십니까</span>
-								</p>
-							</div>
-							<div class="comment_info_box">
-								<span class="comment_info_date">2023.07.11 14:49</span> <a
-									href="#" role="button" class="comment_info_button">답글쓰기</a>
-							</div>
-						</div>
-					</div>
-					<div id="comment_add">
-						<div id="comment_inbox">
-							<strong class="blind">댓글을 입력하세요</strong> <input type="hidden"
-								value="${sessionScope.authUser.userNo}" name="userNo"> <em
-								id="comment_inbox_name">유고수</em>
-							<div class="comment_inbox_wrapper">
-								<div class="comment_textarea_wrapper">
-									<textarea placeholder="댓글을 남겨보세요" rows="1"
-										id="comment_inbox_text"
-										style="overflow: hidden; overflow-wrap: break-word;"></textarea>
-								</div>
-								<div id="register_box">
-									<a href="" role="button" id="btn_register">등록</a>
-								</div>
-							</div>
-						</div>
-					</div>
+					</c:if>
 					<!-- //comment_add -->
-					<input type="hidden" name="action" value="add">
 				</div>
 				<!-- //댓글 리스트 -->
 			</form>
@@ -288,7 +142,9 @@
 		<!-- //read -->
 	</div>
 	<!-- //board -->
-
+	<div id="readFooter">
+		<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
+	</div>
 </body>
 <script>
 	// 댓글 입력란 관련 코드 start
@@ -330,22 +186,28 @@
 		console.log("버튼 클릭");
 		var id = "${sessionScope.authUser.id}";
 		var userNo = $("[name='userNo']").val();
+		var boardNo = $("[name='boardNo']").val();
 		var content = $("#comment_inbox_text").val();
+		var depth = $("#depth").val();
 
 		var BDCommentVo = {
 			id : id,
 			userNo : userNo,
-			content : content
+			content : content,
+			boardNo : boardNo,
+			depth : depth
 		}
+
 		console.log(BDCommentVo);
+		var str = JSON.stringify(BDCommentVo);
 
 		// ajax통신 -> 요청은 같은 기술 데이터 응답에만 온다
 
 		$.ajax({
-			url : "${pageContext.request.contextPath}/api/board/addComment",
-			type : "get",
-			// contentType : "application/json",
-			data : BDCommentVo,
+			url : "${pageContext.request.contextPath}/api/comment/addComment",
+			type : "post",
+			contentType : "application/json",
+			data : str,
 
 			// 데이터 받은 후 
 			dataType : "json",
@@ -353,19 +215,17 @@
 				console.log(jsonResult);
 				// 성공시 ㅊㅓㄹㅣㅎㅐㅇㅑ할 코드
 
-				if (jsonResult.result == "success") {
+				/* if (jsonResult.result == "success") {
 					// 정상 처리
 					render(jsonResult.data); // 리스트에 추가
-
+				
 					//등록폼 비우기
-					$("[name='name']").val("");
-					$("[name='password']").val("");
-					$("[name='content']").val("");
-
+					$("#comment_inbox_text").val("");
+				
 				} else {
 					// 오류 처리
-
-				}
+				
+				} */
 			},
 			error : function(XHR, status, error) {
 				// 실패
@@ -374,5 +234,95 @@
 
 		});
 	});
+
+	/* <div id="comment_add">
+	<div id="comment_inbox">
+		<strong class="blind">댓글을 입력하세요</strong> <input type="hidden"
+			value="${sessionScope.authUser.userNo}" name="userNo">
+		<input type="hidden" value="${rList.boardNo}" name="boardNo">
+		<input type="hidden" id="depth" value=1>
+		<em id="comment_inbox_name">${sessionScope.authUser.nick}</em>
+		<div class="comment_inbox_wrapper">
+			<div class="comment_textarea_wrapper">
+				<textarea placeholder="댓글을 남겨보세요" rows="1" id="comment_inbox_text" style="overflow: hidden; overflow-wrap: break-word;"></textarea>
+			</div>
+			<div id="register_box">
+				<a href="" role="button" id="btn_register">등록</a>
+			</div>
+		</div>
+	</div>
+	</div> */
+
+	
+	// 대댓글 입력 창
+	function commentRender(BDCommentVo, dir) {
+		var str = "";
+		str += ' <div id="comment_add">';
+		str += ' 	<div id="comment_inbox_second">';
+		str += ' 		<strong class="blind">댓글을 입력하세요</strong>';
+		str += ' 		<input type="hidden" value="${sessionScope.authUser.userNo}" name="userNo">';
+		str += ' 		<input type="hidden" value='+BDCommentVo.boardNo+' name="boardNo">';
+		str += ' 		<input type="hidden" value='+BDCommentVo.depth+' name="depth" >';
+		str += ' 		<input type="hidden" value='+BDCommentVo.groupNo+' name="groupNo">';
+		str += ' 		<em id="comment_inbox_name">${sessionScope.authUser.nick}</em>;
+		str += ' 		<div class="comment_inbox_wrapper">';
+		str += ' 			<div class="comment_textarea_wrapper">';
+		str += ' 				<textarea placeholder="댓글을 남겨보세요" rows="1" id="comment_inbox_text" style="overflow: hidden; overflow-wrap: break-word;"></textarea>';
+		str += ' 			</div>';
+		str += ' 			<div id="register_box">';
+		str += ' 	 			<a href="" role="button" id="btn_register">등록</a>';
+		str += ' 			</div>';
+		str += ' 		</div>';
+		str += ' 	</div>';
+		str += ' </div>';
+
+		if (dir == 'up') {
+			$("#cList").append(str);
+		} else {
+			console.log("에러요");
+		}
+	}
+	
+	// 대댓글 리스트 그리기
+	function listRender(BDCommentVo, dir) {
+		var str = "";
+		str += ' <div id="line"></div>';
+		str += ' <input type="hidden" name="groupNo" value="'+BDCommentVo.groupNo+'">';
+		str += ' 	<div class="comment_area" style="position: relative; left: '+BDCommentVo.depth+' * 50}px;">';
+		str += ' 	<a href="" class="comment_thumb">';
+		str += ' 		<img src="${pageContext.request.contextPath}/assets/images/modang.png" alt="프로필 사진" width="36" height="36">';
+		str += ' 	</a>';
+		str += ' 	<div class="comment_box">';
+		str += ' 		<div class="comment_nick_box">';
+		str += ' 			<div class="comment_nick_info">';
+		str += ' 				<a id="" href="#" role="button" aria-haspopup="true" aria-expanded="false" class="comment_nickname">';
+		str += ' 					' + BDCommentVo.nick + '';
+		str += ' 				</a>';
+		str += ' 	 		</div>';
+		str += ' 		</div>';
+		str += ' 		<div class="comment_text_box">';
+		str += ' 			<p class="comment_text_view">';
+		str += ' 				<span class="text_comment">' + BDCommentVo.content
+				+ '</span>';
+		str += ' 			</p>';
+		str += ' 		</div>';
+		str += ' 		<div class="comment_info_box">';
+		str += ' 			<span class="comment_info_date">' + BDCommentVo.writeDate
+				+ '</span>';
+		if ("${sessionScope.authUser.id}" != null && BDCommentVo.depth < 2 ) {
+			str += ' 			<a href="#" role="button" class="comment_info_button">답글쓰기</a>';
+		}
+		str += ' 		</div>';
+		str += ' 	</div>';
+		str += ' </div>';
+
+		if (dir == 'up') {
+			$("#cList").prepend(str);
+		} else if (dir == 'down') {
+			$("#cList").append(str);
+		} else {
+			console.log("에러요");
+		}
+	}
 </script>
 </html>

@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.modang.service.TabletService;
 import com.modang.vo.CardUsersVo;
 import com.modang.vo.JsonResult;
-import com.modang.vo.PlayUserVo;
 import com.modang.vo.TableGamesVo;
 import com.modang.vo.TabletUserVo;
 
@@ -111,7 +110,7 @@ public class TabletController {
 	public String scoreboard() {
 		System.out.println("TabletController.scoreboard()");
 		
-		return "";
+		return "/tablet/scoreboard";
 	}
 	
 	

@@ -2,8 +2,6 @@ package com.modang.dao;
 
 import java.util.List;
 
-import javax.websocket.Session;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

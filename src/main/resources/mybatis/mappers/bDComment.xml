@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bDComment">
+
+	<!-- <insert id="insert" parameterType="com.modang.vo.BDCommentVo">
+	<![CDATA[
+		insert into bdcomment(
+            commentNo, 
+            boardNo, 
+            userNo, 
+            writeDate, 
+            content, 
+            groupNo, 
+            groupOrder, 
+            depth) 
+        values(
+            seq_bdcomment_no.nextval, 
+            #{boardNo}, 
+            #{userNo}, 
+            sysdate, 
+            #{content}, ]]>
+            
+            2, 
+            2,
+             <![CDATA[ 
+            #{depth})
+            ]]>
+	</insert> -->
+
+
+	<select id="list" resultType="com.modang.vo.BDCommentVo" parameterType="int">
+		<![CDATA[
+			select a.commentNo
+				 , a.boardNo
+				 , a.userNo
+				 , writeDate
+				 , content
+				 , groupNo
+				 , groupOrder
+				 , depth
+				 , b.nick
+				 , b.id
+			from bdcomment a, users b
+			where a.userNo = b.userNo and a.boardNo = #{boardNo}
+			order by groupNo DESC
+				   , groupOrder ASC
+		]]>
+	</select>
+
+</mapper>
