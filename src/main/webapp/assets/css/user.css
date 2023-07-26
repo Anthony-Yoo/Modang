@@ -35,6 +35,20 @@
 	
 }
 
+/* 수정폼 세로버튼 */
+.btn-group-vertical {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+	background-color:  #2E419A;
+	color: #fff;
+	border: 1px solid #2E419A;
+	border-radius:10px;
+	line-height: 40px;
+    margin: 0px 0px -455px -1055px;
+    padding: 2px 2px 2px 2px;
+}
+
 
 /* title 위치및 굵기 */
 #main h3 {
