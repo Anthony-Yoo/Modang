@@ -30,13 +30,21 @@
     <div id="main-content">
 
          <div class="container text-center">
-         
+        	
+				<div class="btn-group-vertical">
+							<button type="button" class="btn btn-light">회원정보</button>
+							<button type="button" class="btn btn-light">친구목록</button>
+							<button type="button" class="btn btn-light" onclick="">그룹친구</button>
+							<button type="button" class="btn btn-light" onclick="document.location='${pageContext.request.contextPath}/board/list'">매칭목록</button>
+							<button type="button" class="btn btn-light">전적보기</button>
+				</div>
+								
                 <div id="user">
 				
 					<div id="modifyForm">
-					
-						<div id="main">
 						
+						<div id="main">
+							
 							<h3>이것은 수정 ^^</h3>
 					
                    			<form id="modifysubmitForm" action="${pageContext.request.contextPath }/user/modify" method="post" enctype="multipart/form-data">

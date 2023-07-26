@@ -12,9 +12,9 @@ public class PlayUserVo {
 	private int activeAverage;
 	private String endTime;
 	private int orderNo;
-	
+	private TariffVo tariff;
 	public PlayUserVo(int playNo, int userNo, String nick, int gameNo, String playTime, int number, int currentAverage,
-			int activeAverage, String endTime, int orderNo) {
+			int activeAverage, String endTime, int orderNo, TariffVo tariff) {
 		this.playNo = playNo;
 		this.userNo = userNo;
 		this.nick = nick;
@@ -25,6 +25,7 @@ public class PlayUserVo {
 		this.activeAverage = activeAverage;
 		this.endTime = endTime;
 		this.orderNo = orderNo;
+		this.tariff = tariff;
 	}
 	public PlayUserVo() {
 	}
@@ -82,19 +83,27 @@ public class PlayUserVo {
 	public void setEndTime(String endTime) {
 		this.endTime = endTime;
 	}
-	
 	public int getOrderNo() {
 		return orderNo;
 	}
 	public void setOrderNo(int orderNo) {
 		this.orderNo = orderNo;
 	}
+	public TariffVo getTariff() {
+		return tariff;
+	}
+	public void setTariff(TariffVo tariff) {
+		this.tariff = tariff;
+	}
 	@Override
 	public String toString() {
 		return "PlayUserVo [playNo=" + playNo + ", userNo=" + userNo + ", nick=" + nick + ", gameNo=" + gameNo
 				+ ", playTime=" + playTime + ", number=" + number + ", currentAverage=" + currentAverage
-				+ ", activeAverage=" + activeAverage + ", endTime=" + endTime + ", orderNo=" + orderNo + "]";
-	}
+				+ ", activeAverage=" + activeAverage + ", endTime=" + endTime + ", orderNo=" + orderNo + ", tariff="
+				+ tariff + "]";
+	}	
+	
+	
 	
 	
 

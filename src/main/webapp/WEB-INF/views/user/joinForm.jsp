@@ -14,7 +14,7 @@
 
 <!-- css -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
 
 <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/user.css" rel="stylesheet" type="text/css">
@@ -24,8 +24,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript"src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 
 </head>
 
@@ -53,95 +53,118 @@
 							
 								<div
 									class="input-group">
+									<div class="row">
+										<div class="input-group col-sm-2">
+											<img src="${pageContext.request.contextPath}/assets/images/account.png" alt="id">
+										</div>
 									
-									<span class="input-group">
-										
-										<input id="input-uid" type="text" value="" maxlength="10" class="form-control" name="id" placeholder="ID">
-									
-										<button id="btnIdCheck" type="button" data-toggle="modal" data-target="#myModal">확인</button>
-										<img src="${pageContext.request.contextPath}/assets/images/account.png" alt="">
-									</span>
-									
+										<div class="input-group col-sm-1">
+											<input id="input-uid" type="text" value="" maxlength="10" class="form-control " name="id"  placeholder="ID">
+										</div>
+										<div class="input-group col-sm-1">
+											<button id="btnIdCheck" type="button" data-toggle="modal" data-target="#myModal">확인</button>
+										</div>
+									</div>
 								</div>
 								
 							</div>
 							
 							<!-- 비밀번호 -->
 							<div class="form-group">
-								
-									<span class="input-group">
-										<img src="${pageContext.request.contextPath}/assets/images/unlock.png" alt="">
-									
-										<input id="passwd"
-										type="password" value="" maxlength="16" class="form-control"
-										name="passwd" placeholder="PASSWORD">
-									</span>
-								
+								<div class="input-group ">
+									<div class="row">
+										<div class="input-group col-sm-2">	
+											<img src="${pageContext.request.contextPath}/assets/images/unlock.png" alt="password">
+										</div>
+										<div class="input-group col-sm-1">
+											<input id="passwd" type="password" value="" maxlength="16" class="form-control" name="passwd" placeholder="PASSWORD">
+										</div>
+									</div>
+								</div>
 							</div>
 							
 							<!-- 닉네임 -->
+							
 							<div class="form-group">
-								<div
-									class="input-group">
-									<span class="input-group">
-										
-										<input id="nick" type="text" value="" maxlength="7" class="form-control" name="nick" placeholder="NICK NAME">
-										<button id="btnNickCheck" type="button" data-toggle="modal" data-target="#myModal2">확인</button>
-										<img src="${pageContext.request.contextPath}/assets/images/business-card.png" alt="">
-									</span>
+								<div class="input-group ">
+									<div class="row">
+										<div class="input-group col-sm-2">
+											<img src="${pageContext.request.contextPath}/assets/images/business-card.png" alt="nick name">
+										</div>
+										<div class="input-group col-sm-1">
+											<input id="nick" type="text" value="" maxlength="7" class="form-control" name="nick" placeholder="NICK NAME">
+										</div>
+										<div class="input-group col-sm-1">	
+											<button id="btnNickCheck" type="button" data-toggle="modal" data-target="#myModal2">확인</button>						
+										</div>
+									</div>
 								</div>
 							</div>
 							
 							<!-- 폰번호 -->
 							<div class="form-group">
-								
-									<span class="input-group">
-										<img src="${pageContext.request.contextPath}/assets/images/smartphone.png" alt="">
-										<input id="cellphone"
+								<div class="input-group">
+									<div class="row">
+										<div class="input-group col-sm-2" class="text-large bold">
+											<img src="${pageContext.request.contextPath}/assets/images/smartphone.png" alt="cellphone number">
+										</div>
+									
+										<div class="input-group col-sm-1" class="text-large bold">
+											<input id="cellphone"
 										type="text" value="" maxlength="11" class="form-control"
 										name="cellphone" placeholder="HP">
-									</span>
-								
+										</div>
+									</div>	
+								</div>
 							</div>
 							
 							<!-- 평균 -->
-							<div class="form-group">
-								
-									<span class="input-group">
-										<img src="${pageContext.request.contextPath}/assets/images/line-graph.png" alt="">
-										<input id="average"
-										type="text" value="" maxlength="3" class="form-control"
-										name="average" placeholder="VALUE [타수]">
-									</span>
+							<div class="form-group ">
+								<div class="input-group">
+									<div class="row">
+										<div class="input-group col-sm-2">
+											<img src="${pageContext.request.contextPath}/assets/images/line-graph.png" alt="average">
+										</div>
 									
-								
+										<div class="input-group col-sm-1">
+											<input id="average"
+											type="text" value="" maxlength="3" class="form-control"
+											name="average" placeholder="VALUE [타수]">
+										</div>
+									</div>	
+								</div>
 							</div>
-		
-							<!-- <div class="form-group">
+								<!--
+						 		<div class="form-group">
 		                			<div class="shadow-none p-1 mb-2 bg-light rounded input-group">
 		                  				<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 		                  				<input id="recentlogontime" type="text" value="" maxlength="15" class="form-control" name="recentlogontime" placeholder="sysdate">
 		                  				<button type="button" class="btn btn-Dark">  &nbsp;&nbsp;입력&nbsp;&nbsp;  </button>
 		                			</div>
 		            			</div> 
-							-->
+								-->
 							
 							<!-- 이미지 업로드 -->
 							<div class="form-group">
 								<div class="fileContainer">
 			                		<div class="fileInput">
-				                		
-				                  		<span class="input-group">
-				                  			
-				                  			<input id="profileImage" type="file" name="file" class="form-control" placeholder="upload image" value="">
-				                  		</span>
-				                		
+			                			<div class="input-group ">
+			                				<div class="row">
+			                					<div class="input-group col-sm-2">
+													<img src="${pageContext.request.contextPath}/assets/images/image-.png" alt="average">
+												</div>
+												
+				                  				<div class="input-group col-sm-1">
+				                  					<input id="profileImage" type="file" name="file" class="form-control" placeholder="upload image" value="">
+				                  				</div>
+				                			</div>
+				                		</div>
 			            			</div>
 		        				</div>
 		        
 		        				<div class="image-show" id="image-show"></div>
 		    				</div>
-		    				
+		    				 
 		    				<!-- 서버전송 -->
 		  					<div class="button-area">
 								<button type="submit" id="btn-submit" class="btn btn-primary">회원가입 할거당 ^^</button>
@@ -153,16 +176,7 @@
 		    		<!-- //main -->
 		    
 		           </div>
-		                 
-		                 <!-- 
-		               <div class="form-group">
-		               	<div class="button">
-		               <label for="chooseFile">
-		                   <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onclick="loadFile(this)">
-		               </label>
-		               
-		                -->
-					
+		 
 			</div>
 			<!-- //user -->
 			
@@ -176,7 +190,7 @@
     <!-- //main-content -->
 	
 	  <!-- Modal -->
-  	<div class="modal fade" id="myModal" role="dialog">
+   <div class="modal fade" id="myModal" role="dialog">
     	<div class="modal-dialog modal-sm">
       		<div class="modal-content">
         		<div class="modal-header">
@@ -192,7 +206,7 @@
     	</div>
   	</div>
   	
-  	  <!-- Modal -->
+  	 
   	<div class="modal fade" id="myModal2" role="dialog">
     	<div class="modal-dialog modal-sm">
       		<div class="modal-content">
@@ -207,10 +221,9 @@
         		</div>
       		</div>
     	</div>
-  	</div>
+  	</div><!-- -->
 
-	
-</body>
+
 
 <script type="text/javascript">
 
@@ -221,7 +234,7 @@
 		event.preventDefault();//preventDefault
 		
 	});
-
+	
 	//회원가입버튼 눌렀을 때: 전송submit 은 form
 	$("#joinSubmitForm").on("submit", function(){
 		console.log("전송버튼 클릭");
@@ -234,6 +247,7 @@
 			return false;
 			
 		}
+	
 		// 패스워드 체크
 		var passwd = $("#passwd").val();
 		console.log(passwd)
@@ -282,10 +296,11 @@
 		}
 		*/
 		
-		
 		return true;
 		
 	});
+	
+
 	//id check 버튼을 클릭했을 떄
 	$("#btnIdCheck").on("click",function(){
 		console.log("클릭");

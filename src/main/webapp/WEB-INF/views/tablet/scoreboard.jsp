@@ -21,18 +21,54 @@
 			input::-moz-focus-inner { border: 0; padding: 0; }
 			input, select, qktextarea { -moz-appearance: none; -webkit-appearance: none; -ms-appearance: none; appearance: none; }
 			small {font-size:.75em;}			
-			#logtitle {
-				color : #404040;
-				text-align: center;
-				
+			#container {
+				border : 1px;
+				outline: dashed 1px black;
+				width : 1024px;
+				height : 768px;
+				position : absolute;
+				left : 50%;
+				top : 50%;
+				transform : translate(-50%,-50%);						  	
+			}
+			.top {
+				height: 150px;
+			}
+			.mid {
+				height: 615px;
+			}
+			.board {
+				width: 500px;
+				height: 300px;
+				outline: 2px solid black;
+			}
+			.bdtop {
+				width : 500px;
+				height: 50px;
+				outline: 1px solid black;
+			}
+			.panel {
+				width : 160px;
+				height: 250px;
+				outline: 1px solid black;
+				font: 20px bold;
+			}
+			
+			img {
+				display: inline-block;
+			}
+			p {
+				display: inline-block;
 			}
 			.box{
 				width: 200px;
-				height: 200px;
+				height: 150px;
 			}
 			.timerBox{
 				width: 200px;
+				height : 100px;
 				outline: 2px solid black;
+				margin-left: 200px;
 			}
 			.timerBox .time{
 				font-size: 30pt;
@@ -46,10 +82,13 @@
 			}
 			.btnBox .fa{
 				margin: 0px 5px;
-				font-size: 30pt;
-				color: #FAED7D;
+				font-size: 10pt;
+				color: #000000;
 				cursor: pointer;
 			}		
+			.btnBox input {
+				width: 50px;			
+			}
 			
 			.float-r {float: right; }
 			.float-l {float: left; }
@@ -61,22 +100,56 @@
 		<div id="container">			
 			<!-- Top Info -->
 			<div class="top" id="top-container">
-				<div class="btnBox">
-					<i id="startbtn" class="fa fa-play" aria-hidden="true"></i>
-					<i id="pausebtn" class="fa fa-pause" aria-hidden="true"></i>
-					<i id="stopbtn" class="fa fa-stop" aria-hidden="true"></i>
+				<div class="btnBox float-l">
+					<input id="startbtn" class="fa fa-play" aria-hidden="true" value="시작">
+					<input id="pausebtn" class="fa fa-pause" aria-hidden="true" value="일시정지">
+					<input id="stopbtn" class="fa fa-stop" aria-hidden="true" value="종료">
 				</div>			    
-				<div id='timerBox' class="timerBox">
+				<div class="timerBox float-l" id='timerBox'>
 					<div id="time" class="time">00:00:00</div>
 				</div>
-				<div class="float-l" id="top-fee">
+				<div class="timerBox float-l" id="top-fee">
 					<label for="btn-fee">결제요금</label>
 					<input type="button" id="btn-fee">
 				</div>       
+			</div>	
+			<!-- Mid Info -->		
+			<div class="mid" id="mid-scores">
+				<c:forEach var="playUser" items="${tableGameVo.playUserList}">
+					<div class="board float-l" id="boardno${playUser.orderNo}">
+						<div class="bdtop">
+							<div class="userinfo">
+								<img class="float-l" src="${pageContext.request.contextPath}/assets/images/modang.png" width="36" height="36">
+								<div class="float-l">
+									다마수 : <p id="orgscore">${playUser.currentAverage}</p> <br>
+									 ${playUser.nick}
+								</div>							                        
+							</div>
+							<div class="act-average float-r">총갯수 : <p id="endscore">${playUser.currentAverage}</p>
+							</div>
+						</div>
+						<div class="bdmid">
+							<div class="panel panalty float-l">
+							 마이너스
+							</div>
+							<div class="panel marks float-l">
+							 점수판<p id="crtscore">${playUser.currentAverage}</p>
+							</div>
+							<div class="panel score float-l">
+							 플러스
+							</div>
+						</div>		
+					</div> 
+				</c:forEach>				
 			</div>
 		</div>
 	</body>
 <script>
+var tableNo = ${param.tableNo};
+var gameNo = ${param.gameNo};
+var tableFee = ${tableGameVo.tableFee};
+var minFee = ${tableGameVo.minFee};	
+
 /* 타이머 기술 */
 var time = 0;
 var starFlag = true;
@@ -95,11 +168,9 @@ function buttonEvt(){
   var timer;
 
   // start btn
-  $("#startbtn").click(function(){
+  $("#startbtn").on("click", function(){
 
-    if(starFlag){
-      $(".fa").css("color","#FAED7D")
-      this.style.color = "#4C4C4C";
+    if(starFlag){    
       starFlag = false;
 
       if(time == 0){
@@ -135,23 +206,40 @@ function buttonEvt(){
   // pause btn
   $("#pausebtn").click(function(){
     if(time != 0){
-      $(".fa").css("color","#FAED7D")
-      this.style.color = "#4C4C4C";
       clearInterval(timer);
       starFlag = true;
     }
-  });
-
+  });  
+	
   // stop btn
   $("#stopbtn").click(function(){
     if(time != 0){
-      $(".fa").css("color","#FAED7D")
-      this.style.color = "#4C4C4C";
       clearInterval(timer);
       starFlag = true;
       time = 0;
-      init();
+      init();      
     }
+  });
+  
+
+  /* 요금 산출 */
+  $('#time').txt().on("propertychange change keyup paste input", function(){ 
+	  console.log("시간변화감지");
+	  var $time = $(this).html();
+	  console.log($time);
+	  var splitTime = $time.split(":");	  
+	  var sumMin =  splitTime.eq(0)*60+splitTime.eq(1);
+	  var ceilMin10 =  Math.ceil(sumMin/10);
+	  var useMin10 = ceilMin-3;
+	  if (useMin10<=3) {
+		  useMin10 = 0;
+	  }else {
+		  useMin10 = useMin10;
+	  }
+	  console.log(useMin10);
+	  var useFee = tableFee + (minFee*useMin10);
+	  
+	  $('#btn-fee').val(useFee);	  
   });
 }
 
