@@ -52,7 +52,7 @@
 						<nav id="nav">
 							<a href="${pageContext.request.contextPath}/manager/index" class="active">테이블 현황</a> 
 							<a href="${pageContext.request.contextPath}/manager/tableSalesForm">테이블 매출</a> 
-							<a href="${pageContext.request.contextPath}/manager/daysales">일별 매출</a> 
+							<a href="${pageContext.request.contextPath}/manager/daySalesForm">일별 매출</a> 
 							<a href="${pageContext.request.contextPath}/manager/pricePolicyForm">요금 테이블</a> 
 							<a href="${pageContext.request.contextPath}/manager/settingsForm">관리자 설정</a>
 						</nav>
@@ -167,18 +167,9 @@
 								<div class="form-group row mb-1">
 									<label class="col-form-label col-4">테이블 종류</label>
 									<div id="" class="col tableRadio01">
-										<label class="custom-control custom-radio d-inline-block">
-											<input type="radio" name="tabletype" value="0" class="custom-control-input table-radio" />
-											<span class="custom-control-label">대대</span>
+ 										<label id="" class="custom-control d-inline-block">
+											<span id="tabletypename" class="custom-control pt-1">대 대</span>
 										</label> 
-										<label class="custom-control custom-radio d-inline-block">
-											<input type="radio" name="tabletype" value="1" class="custom-control-input table-radio" /> 
-											<span class="custom-control-label">중대</span>
-										</label> 
-										<label class="custom-control custom-radio d-inline-block">
-											<input type="radio" name="tabletype" value="2" class="custom-control-input table-radio" /> 
-											<span class="custom-control-label">포켓</span>
-										</label>
 											<button id="tableSetting" type="button">
 										     	<img src="${pageContext.request.contextPath}/assets/images/settings.png" width="15px"/>
 										    </button>
@@ -188,8 +179,8 @@
 <!-- 게임종류	 -->							
 								<div class="form-group row mb-1">
 									<label class="col-form-label col-4">게임 종류</label>
-									<div class="col tableRadio02">
-										<div class="gametype-1">
+									<div class="col tableRadio02 ">
+										<div class="gametype-1 ">
 											<label class="custom-control custom-radio d-inline-block">
 												<input type="radio" name="gametype0" class="custom-control-input" /> 
 												<span id="gametype" class="custom-control-label">3구</span>
@@ -215,7 +206,7 @@
 								<div class="form-group row mb-1">
 									<label class="col-form-label col-4">고객정보</label>
 									<div class="col">
-										<textarea name="" class="form-control mb-1" rows="5" maxlength="1000" disabled></textarea>
+										<textarea name="" class="form-control mb-1" rows="4" maxlength="1000" disabled></textarea>
 									</div> 
 								</div>
 								<div class="form-group row mb-1">
@@ -237,31 +228,62 @@
 										<input type="text" id="startTime" class="form-control form-control-sm mb-1" maxlength="20" readonly />
 									</div>
 								</div>
-<!-- 이용시간	 -->								
-								<div class="form-group row mb-1">
-									<label class="col-form-label col-4">이용 시간</label>
-									<div class="col">
-										<textarea name="" class="form-control mb-1" rows="5" maxlength="1000" readonly></textarea>
-									</div> 
-								</div>
 <!-- 종료시간	 -->								
 								<div class="form-group row mb-1">
 									<label class="col-form-label col-4">종료 시간</label>
 									<div class="col-4">
-										<input type="text" id="endTime" class="form-control form-control-sm mb-1" maxlength="20"	readonly />
+										<input type="text" id="endTime" class="form-control form-control-sm mb-0" maxlength="20"	readonly />
 									</div>
 								</div>
 <!-- 결제금액	 -->								
 								<div class="form-group row mb-1">
-									<label class="col-form-label col-4">총 결제금액</label>
+									<label class="col-form-label col-4">결제 금액</label>
 									<div class="col input-group">
-										<input type="text" name="" class="form-control" maxlength="20" readonly />
+										<input type="text" name="" class="form-control form-control-sm mb-0" maxlength="20" readonly />
 									</div>
 								</div>
-
 								<div class="mt-4" style="position: absolute; bottom: 32px;">
 									<button type="submit" class="btn btn-red btn-lg btn-block">정 산</button>
 								</div>
+<!-- 미정산리스트	 -->								
+								<div class=" ">
+									<div class="table-sm table-striped inCaluList">
+									    <table class="table inCaluList">
+									      <tbody>
+									        <tr class="custom-height">
+									          <td>1</td>
+									          <td>11:45</td>
+									          <td>12:51</td>
+									          <td>8,000</td>
+									          <td>미정산</td>
+									        </tr>
+									        <tr class="custom-height">
+									          <td>1</td>
+									          <td>11:45</td>
+									          <td>12:51</td>
+									          <td>8,000</td>
+									          <td>미정산</td>
+									        </tr>
+									        <tr class="custom-height">
+									          <td>1</td>
+									          <td>11:45</td>
+									          <td>12:51</td>
+									          <td>8,000</td>
+									          <td>미정산</td>
+									        </tr>
+									        <tr class="custom-height">
+									          <td>1</td>
+									          <td>11:45</td>
+									          <td>12:51</td>
+									          <td>8,000</td>
+									          <td>미정산</td>
+									        </tr>
+									      </tbody>
+									    </table>
+									</div> 
+								</div>
+
+
 							</form>
 						</section>
 					</div>
@@ -287,15 +309,15 @@
         <label for="inputEmail3" class="label01">테이블 종류</label>
 		<div id="" class="col">
 			<label class="custom-control custom-radio d-inline-block">
-				<input type="radio" name="tabletypeModify" value="0" class="custom-control-input"  /> 
+				<input type="radio" name="tabletypeModify" value="0" class="custom-control-input tabletypeModify"  /> 
 				<span class="custom-control-label">대대</span>
 			</label> 
 			<label class="custom-control custom-radio d-inline-block">
-				<input type="radio" name="tabletypeModify" value="1" class="custom-control-input"  /> 
+				<input type="radio" name="tabletypeModify" value="1" class="custom-control-input tabletypeModify"  /> 
 				<span class="custom-control-label">중대</span>
 			</label> 
 			<label class="custom-control custom-radio d-inline-block">
-				<input type="radio" name="tabletypeModify" value="2" class="custom-control-input"  /> 
+				<input type="radio" name="tabletypeModify" value="2" class="custom-control-input tabletypeModify"  /> 
 				<span class="custom-control-label">포켓</span>
 			</label>
 		</div>
@@ -324,15 +346,15 @@
         <label for="inputEmail3" class="label01">테이블 종류</label>
 		<div id="" class="col">
 			<label class="custom-control custom-radio d-inline-block">
-				<input type="radio" name="tabletype1" value="0" class="custom-control-input"  />
+				<input type="radio" name="tabletype1" value="add0" class="custom-control-input"  />
 				<span class="custom-control-label">대대</span>
 			</label> 
 			<label class="custom-control custom-radio d-inline-block">
-				<input type="radio" name="tabletype1" value="1" class="custom-control-input"  /> 
+				<input type="radio" name="tabletype1" value="add1" class="custom-control-input"  /> 
 				<span class="custom-control-label">중대</span>
 			</label> 
 			<label class="custom-control custom-radio d-inline-block">
-				<input type="radio" name="tabletype1" value="2" class="custom-control-input"  /> 
+				<input type="radio" name="tabletype1" value="add2" class="custom-control-input"  /> 
 				<span class="custom-control-label">포켓</span>
 			</label>
 		</div>
@@ -376,7 +398,8 @@ $("#btnAdd").on("click", function(){
 	
 	var addtableName = $("#tableName").val(); 
 	console.log(addtableName);
-	var addtableType = $('#tableAddModal [name="tabletype1"]:checked').val(); 
+	var rawVal = $('#tableAddModal [name="tabletype1"]:checked').val();
+	var addtableType = rawVal.substring(3);
 	console.log(addtableType);
 	
 	var cuetableVo={ //입력한 정보 vo에 담기
@@ -448,26 +471,22 @@ $(".tableArea").on("click",function(){
 	 			$("#info-01").empty(); 									// 당구대 번호 초기화
 	 			$('#startTime').empty();                                // 요금 초기화
 	 			$(".tableRadio02 input[type='radio']").prop("checked", false);	//라디오버튼 게임종류 초기화
+	 			
+	 			$('#tabletypename').empty();
+	 			var tableType = jsonResult.data.oneTable.tableType;
+	 			if(tableType==0){
+	 				$("#tabletypename").append("대 대");
+	 			}else if(tableType==1){
+		 				$("#tabletypename").append("중 대");	
+	 			}else{
+	 				$("#tabletypename").append("포 켓");
+	 			}
+	 			
+	 			
 					
 				$("#info-01").append("No."+jsonResult.data.oneTable.tableName); //테이블이름 출력
 				
-				var tableType = jsonResult.data.oneTable.tableType;
-				//$('[value='+jsonResult.data.oneTable.tableType+']').prop("checked",true); //테이블타입 라디오버튼 선택
-				
-				$('[value='+tableType+']').prop("checked", true);
-				if(tableType==0){
-					$('[value=0]').prop("disabled", false);
-					$('[value=1]').prop("disabled",true);
-					$('[value=2]').prop("disabled",true);
-				}else if(tableType==1){
-					$('[value=0]').prop("disabled",true);
-					$('[value=1]').prop("disabled", false);
-					$('[value=2]').prop("disabled",true);
-				}else if(tableType==2){
-					$('[value=0]').prop("disabled",true);
-					$('[value=1]').prop("disabled",true);
-					$('[value=2]').prop("disabled", false);
-				}
+				$('[value='+jsonResult.data.oneTable.tableType+']').prop("checked",true); //테이블타입 라디오버튼 선택
 					
 				if(jsonResult.data.oneTable.tableType < 2 ){ //게임타입정보 대대/중대일때 3구/4구 show 포켓일때 8볼/10볼 show
 					$( ".gametype-2" ).hide();
@@ -540,7 +559,8 @@ $(".tableArea").on("click",function(){
   $("#btnSave").on("click", function(){
 		console.log("테이블종류 변경클릭");
 		
-		$('[value='+tabletype+']').prop("checked", true);
+		var tabletype = $("input[name='tabletypeModify']:checked").val();
+		//$('[value='+tableType+']').prop("checked", true);
 				
 		console.log("당구장넘버:"+crtbiliardNo);
 		console.log("선택된 테이블넘버:"+crtTableNo);
@@ -568,7 +588,6 @@ $(".tableArea").on("click",function(){
 						$('#tableMngModal').modal('hide');
 						alert("테이블종류가 변경되었습니다.");
 						location.reload(); //새로고침
-						 
 		
 					}else{ //테이블종류 수정 실패시
 						//오류처리
