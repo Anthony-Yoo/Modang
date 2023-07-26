@@ -4,16 +4,15 @@ public class CueTableVo {
 	
 	private int tableNo;		//테이블넘버
 	private int biliardNo;      //당구장넘버
-	private int tableName;      //테이블이름(번호)
+	private String tableName;      //테이블이름(번호)
 	private int tableType;      //테이블타입(0:대대/1:중대/2:포켓)
 	private int tableStatus;    //테이블상태(0:대기/1:사용/2:일시정지)
 	private TariffVo myTariff; // 테이블별 요금표
 	
-	public CueTableVo() {
-		
+	public CueTableVo() {	
 	}
-	
-	public CueTableVo(int tableNo, int biliardNo, int tableName, int tableType, int tableStatus, TariffVo myTariff) {
+
+	public CueTableVo(int tableNo, int biliardNo, String tableName, int tableType, int tableStatus, TariffVo myTariff) {
 		this.tableNo = tableNo;
 		this.biliardNo = biliardNo;
 		this.tableName = tableName;
@@ -38,11 +37,11 @@ public class CueTableVo {
 		this.biliardNo = biliardNo;
 	}
 
-	public int getTableName() {
+	public String getTableName() {
 		return tableName;
 	}
 
-	public void setTableName(int tableName) {
+	public void setTableName(String tableName) {
 		this.tableName = tableName;
 	}
 
@@ -61,8 +60,7 @@ public class CueTableVo {
 	public void setTableStatus(int tableStatus) {
 		this.tableStatus = tableStatus;
 	}
-	
-	
+
 	public TariffVo getMyTariff() {
 		return myTariff;
 	}
@@ -77,5 +75,4 @@ public class CueTableVo {
 				+ ", tableType=" + tableType + ", tableStatus=" + tableStatus + ", myTariff=" + myTariff + "]";
 	}
 	
-
 }

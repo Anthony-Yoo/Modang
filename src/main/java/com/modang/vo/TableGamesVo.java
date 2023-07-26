@@ -21,7 +21,6 @@ public class TableGamesVo {
 	private int pauseTime; // 정지누적시각
 	private int setNo; // 고객그룹번호
 	private List<PlayUserVo> playUserList; // 플레이 유져리스트
-
 	private int tableFee;
 	private int minFee;
 

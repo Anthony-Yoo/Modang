@@ -31,6 +31,8 @@
 				top : 50%;
 				transform : translate(-50%,-50%);						  	
 			}
+			input:focus {outline: 2px solid #d50000;} /* outline 테두리 속성 수정 */
+			input:focus {outline: none;} /* outline 테두리 없애기 */
 			.top {
 				height: 150px;
 			}
@@ -109,8 +111,8 @@
 					<div id="time" class="time">00:00:00</div>
 				</div>
 				<div class="timerBox float-l" id="top-fee">
-					<label for="btn-fee">결제요금</label>
-					<input type="button" id="btn-fee">
+					<label for="usingfee">사용요금</label>
+					<input type="text" id="usingfee" value="">
 				</div>       
 			</div>	
 			<!-- Mid Info -->		
@@ -133,7 +135,7 @@
 							 마이너스
 							</div>
 							<div class="panel marks float-l">
-							 점수판<p id="crtscore">${playUser.currentAverage}</p>
+							 	<p id="crtscore">${playUser.currentAverage}</p>
 							</div>
 							<div class="panel score float-l">
 							 플러스
@@ -153,95 +155,161 @@ var minFee = ${tableGameVo.minFee};
 /* 타이머 기술 */
 var time = 0;
 var starFlag = true;
+
 $(document).ready(function(){
-  buttonEvt();
+	  buttonEvt();
 });
 
+	
 function init(){
-  document.getElementById("time").innerHTML = "00:00:00";
+	$("#time").html("00:00:00");
 }
 
 function buttonEvt(){
-  var hour = 0;
-  var min = 0;
-  var sec = 0;
-  var timer;
+	var hour = 0;
+	var min = 0;
+	var sec = 0;
+	var timer;
+	// start btn
+ 	$("#startbtn").on("click", function(){
+ 		
+ 		
+		if(starFlag){    
+			starFlag = false;
+			
+			if(time == 0){
+				init();
+				$.ajax({			
+					url : "${pageContext.request.contextPath}/tablet/playstart",		
+					type : "post",
+					/* contentType : "application/json", */
+					//data : ,
 
-  // start btn
-  $("#startbtn").on("click", function(){
-
-    if(starFlag){    
-      starFlag = false;
-
-      if(time == 0){
-        init();
-      }
-
-      timer = setInterval(function(){
-        time++;
-
-        min = Math.floor(time/60);
-        hour = Math.floor(min/60);
-        sec = time%60;
-        min = min%60;
-
-        var th = hour;
-        var tm = min;
-        var ts = sec;
-        if(th<10){
-        th = "0" + hour;
-        }
-        if(tm < 10){
-        tm = "0" + min;
-        }
-        if(ts < 10){
-        ts = "0" + sec;
-        }
-
-        document.getElementById("time").innerHTML = th + ":" + tm + ":" + ts;
-      }, 1000);
-    }
-  });
-
-  // pause btn
-  $("#pausebtn").click(function(){
-    if(time != 0){
-      clearInterval(timer);
-      starFlag = true;
-    }
-  });  
+					dataType : "json",
+					success : function(action){
+						console.log(action);
+						
+						if(action.result == 'success') {//처리성공	
+							console.log("성공");
+							console.log(action.data);
+							/* 리다이렉트 */					
+							let url = '/modang/tablet/${tableNo}/scoreboard?gameNo='+action.data+'&tableNo='+tableNo;
+							window.location.replace(url); 	 						
+							
+						}else {//오류처리
+							var msg = action.failMsg;
+								alert(msg);				
+						}
+					},
+					error : function(XHR, status, error) {
+						console.error(status + " : " + error);
+					}				
+				});	
+			}	
+			
+			timer = setInterval(function(){
+				time++;
+				min = Math.floor(time/60);
+				hour = Math.floor(min/60);
+				sec = time%60;
+				min = min%60;
+			
+				var th = hour;
+				var tm = min;
+				var ts = sec;
+				
+				if(th < 10 ){
+					th = "0" + hour;
+				}			
+				if(tm < 10){
+					tm = "0" + min;
+				}			
+				if(ts < 10){
+					ts = "0" + sec;
+				}
 	
-  // stop btn
-  $("#stopbtn").click(function(){
-    if(time != 0){
-      clearInterval(timer);
-      starFlag = true;
-      time = 0;
-      init();      
-    }
-  });
+				$("#time").html(th + ":" + tm + ":" + ts);
+			}, 1000);
+	   	}
+	});
+	
+	// pause btn
+	$("#pausebtn").click(function(){
+		if(time != 0){
+			clearInterval(timer);
+			starFlag = true;
+		}
+	});  
+	
+	// stop btn
+	$("#stopbtn").click(function(){
+		if(time != 0){
+			clearInterval(timer);
+			starFlag = true;
+			time = 0;
+			init();  
+		}
+	});
+	
+	/* 요금 산출 */ 	
+	$("#time").on('DOMSubtreeModified', function(){
+		
+		//---------------------------------------------------------------------
+		console.log("시간변화감지");
+		console.log(tableFee);
+		var $time = $("#time").text();
+		console.log("타임텍스트 솔팅 : "+$time);	
+		var splitTime = $time.split(":");
+		console.log("split텍스트 슬라이팅 : "+splitTime);	
+	  	var sumMin =  splitTime[0]*60 + splitTime[1]*1;	
+	  	console.log("=========================");
+	  	console.log(sumMin); //경기시간  60분	  
+	  	var ceilMin =  Math.ceil(sumMin/10)*10;
+	  	console.log(ceilMin); 
+	  	//00:00:01 -->30
+	  	//00:29:11 -->30
+	    //00:30:00 -->30
+	    
+	  	//00:30:01 -->30   
+	  	//00:30:59 -->30
+	  	
+	  	//00:31:00 -->40
+	  	//00:31:02 -->40
+	  	//00:31:59 -->40
+	  	//00:32:00 -->40
+	  	
+	  	//00:39:59 -->40
+	  	//00:40:00 -->40
+	  	//00:40:01 -->40
+	  	//00:40:59 -->40
+	  	
+	  	//00:41:00 -->50
+	  	//00:41:01 -->50  	
+	  	
+	  	//
+	  	//-실제경기시간
+	  	//-올림한경기시간* 
+	  	//---------------------------------------------------------------------
+		
+	  	//30분 이하일때
+	  	//    기본요금적용
+	  	//30분 초과일때
+	  	//    기본요금+ ((올림한경기시간-30)/10)*10분당 요금	  	
+	  	var useFee = 0;
+	  	
+	  	if (ceilMin <= 30 ) {//올림한경기시간이 30분 이하일때
+	  		useFee = tableFee;	  	
+	  	}else{//올림한경기시간이 30분 초과일때	  		
+	  		useFee = tableFee + ((ceilMin-30)/10) * minFee;	  		
+	  	}
+	  	
+		console.log(useFee);
+		$('#usingfee').val(useFee);			  
   
-
-  /* 요금 산출 */
-  $('#time').txt().on("propertychange change keyup paste input", function(){ 
-	  console.log("시간변화감지");
-	  var $time = $(this).html();
-	  console.log($time);
-	  var splitTime = $time.split(":");	  
-	  var sumMin =  splitTime.eq(0)*60+splitTime.eq(1);
-	  var ceilMin10 =  Math.ceil(sumMin/10);
-	  var useMin10 = ceilMin-3;
-	  if (useMin10<=3) {
-		  useMin10 = 0;
-	  }else {
-		  useMin10 = useMin10;
-	  }
-	  console.log(useMin10);
-	  var useFee = tableFee + (minFee*useMin10);
-	  
-	  $('#btn-fee').val(useFee);	  
-  });
+	 });
 }
+
+  
 
 </script>
 </html>
