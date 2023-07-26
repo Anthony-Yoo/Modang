@@ -30,14 +30,14 @@
     <div id="main-content">
 
          <div class="container text-center">
-        
-									<div class="btn-group-vertical">
-  										<button type="button" class="btn btn-light">회원정보</button>
-  										<button type="button" class="btn btn-light">친구목록</button>
-  										<button type="button" class="btn btn-light">그룹친구</button>
-  										<button type="button" class="btn btn-light"><a href="${pageContext.request.contextPath}/board/list">매칭목록</a></button>
-  										<button type="button" class="btn btn-light">전적보기</button>
-									</div>
+        	
+				<div class="btn-group-vertical">
+							<button type="button" class="btn btn-light">회원정보</button>
+							<button type="button" class="btn btn-light">친구목록</button>
+							<button type="button" class="btn btn-light" onclick="">그룹친구</button>
+							<button type="button" class="btn btn-light" onclick="document.location='${pageContext.request.contextPath}/board/list'">매칭목록</button>
+							<button type="button" class="btn btn-light">전적보기</button>
+				</div>
 								
                 <div id="user">
 				
