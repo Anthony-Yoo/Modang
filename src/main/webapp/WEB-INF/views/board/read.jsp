@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -106,28 +105,28 @@
 					<pre class="form-value">${rList.content}
 						</pre>
 				</div>
-				<!-- 댓글 리스트 -->
 				<div id="comment_list">
+					<!-- 댓글 리스트 출력(cList) -->
 					<div id="cList">
-						
-					</div><!-- cList end -->
+					
+					</div>
+					<!-- cList end -->
 					<!-- comment_add -->
 					<c:if test="${sessionScope.authUser != null}">
-						<div id="comment_add">
+						<div class="comment_add">
 							<div id="comment_inbox">
 								<strong class="blind">댓글을 입력하세요</strong> <input type="hidden"
 									value="${sessionScope.authUser.userNo}" name="userNo">
 								<input type="hidden" value="${rList.boardNo}" name="boardNo">
-								<input type="hidden" id="depth" value=1> <em
-									id="comment_inbox_name">${sessionScope.authUser.nick}</em>
+								<input type="hidden" id="depth" value=1> 
+								<em	id="comment_inbox_name">${sessionScope.authUser.nick}</em>
 								<div class="comment_inbox_wrapper">
 									<div class="comment_textarea_wrapper">
-										<textarea placeholder="댓글을 남겨보세요" rows="1"
-											id="comment_inbox_text"
+										<textarea placeholder="댓글을 남겨보세요" rows="1" id="comment_inbox_text"
 											style="overflow: hidden; overflow-wrap: break-word;"></textarea>
 									</div>
 									<div id="register_box">
-										<a href="" role="button" id="btn_register">등록</a>
+										<a href="#" role="button" class="btn_register">등록</a>
 									</div>
 								</div>
 							</div>
@@ -147,6 +146,14 @@
 	</div>
 </body>
 <script>
+$(document).ready(function() {
+	
+	commentList();
+	
+	
+    
+});
+
 	// 댓글 입력란 관련 코드 start
 	//DOM에서 textarea 요소를 찾기
 	var textarea = document.getElementById('comment_inbox_text');
@@ -156,7 +163,7 @@
 		// 현재 스크롤 높이를 저장합니다.
 		var scrollTop = textarea.scrollTop;
 
-		// textarea의 높이를 임시로 0으로 설정하여 자동 높이를 측정
+		// textarea의 높이를 임시로 0으로 설정하여 자동 높이를
 		textarea.style.height = '0';
 
 		// 스크롤 높이를 유지하기 위해 textarea의 높이를 측정한 뒤 scrollTop 값을 설정
@@ -180,8 +187,21 @@
 		}
 	});
 	// 댓글 입력란 관련 코드 end
-
-	$("#btn_register").on("click", function(event) {
+	
+	function extractHiddenValues(commentNumber) {
+	    // commentNumber에 따라 해당하는 댓글 입력 상자의 값들을 추출하여 콘솔에 출력
+	    var userNo = document.querySelector('#comment_inbox_' + commentNumber + ' input[name="userNo"]').value;
+	    var boardNo = document.querySelector('#comment_inbox_' + commentNumber + ' input[name="boardNo"]').value;
+	    var depth = document.querySelector('#comment_inbox_' + commentNumber + ' input[name="depth"]').value;
+	
+	    console.log("댓글 입력 상자 #" + commentNumber);
+	    console.log("userNo:", userNo);
+	    console.log("boardNo:", boardNo);
+	    console.log("depth:", depth);
+	}
+	
+	//등록버튼
+	$(document).on("click", ".btn_register", function(event) {
 		event.preventDefault(); // 기본 동작 막기
 		console.log("버튼 클릭");
 		var id = "${sessionScope.authUser.id}";
@@ -235,6 +255,57 @@
 		});
 	});
 
+	// 리스트 출력함수
+	function commentList(){
+		// URL에서 쿼리 문자열을 가져온 뒤
+		// 쿼리 문자열을 파싱하여 객체 형태로 변환
+		const queryString = window.location.search;
+        const params = new URLSearchParams(queryString);
+     	// boardNo 값을 가져와서 화면에 출력하거나 필요한 작업을 수행
+        const boardNo = params.get("boardNo");
+        const data = { boardNo: boardNo };
+		$.ajax({
+			url : "${pageContext.request.contextPath}/api/comment/list",
+			type : "post",
+			dataType : "json",
+			data : data,
+			success : function(result) {
+				console.log(result);
+				//성공시 처리해야 될 코드 작성
+				for (var i = 0; i < result.data.length; i++) {
+					listRender(result.data[i], "down", i);
+				}
+				// "답글쓰기" 버튼에 대한 이벤트 처리
+				// textarea의 높이 자동 조절을 적용할 클래스를 정의합니다.
+
+				// 답글쓰기 버튼 클릭 시 대댓글 입력 창 생성
+				$("#cList").on("click", ".comment_info_button", function () {
+					
+					// 기존에 생성된 모든 댓글 입력창 삭제
+			        $(".line.new").remove();
+			        $(".comment_add.new").remove();
+					
+				    var index = $(this).data("index");
+				    var commentAddDiv = $(this).closest(".comment_area");
+				    commentRender(result.data[index], "down", commentAddDiv, index);
+
+				    // 생성된 textarea에 자동 높이 조절 기능 적용
+				    commentAddDiv.find("textarea").on('input', function () {
+				        var scrollTop = this.scrollTop;
+				        this.style.height = 'auto';
+				        this.style.height = this.scrollHeight + 'px';
+				        this.scrollTop = scrollTop;
+				    });
+				});
+			},
+			error : function() {
+
+			}
+		}); 
+
+	}
+	
+	
 	/* <div id="comment_add">
 	<div id="comment_inbox">
 		<strong class="blind">댓글을 입력하세요</strong> <input type="hidden"
@@ -255,40 +326,82 @@
 
 	
 	// 대댓글 입력 창
-	function commentRender(BDCommentVo, dir) {
+	function commentRender(BDCommentVo, dir, commentAddDiv, index) {
 		var str = "";
-		str += ' <div id="comment_add">';
-		str += ' 	<div id="comment_inbox_second">';
+		str += ' <div class="line new"></div>';
+		str += ' <div class="comment_add new">';
+		str += ' 	<div class="" id="comment_inbox_'+index+'">';
 		str += ' 		<strong class="blind">댓글을 입력하세요</strong>';
 		str += ' 		<input type="hidden" value="${sessionScope.authUser.userNo}" name="userNo">';
-		str += ' 		<input type="hidden" value='+BDCommentVo.boardNo+' name="boardNo">';
-		str += ' 		<input type="hidden" value='+BDCommentVo.depth+' name="depth" >';
-		str += ' 		<input type="hidden" value='+BDCommentVo.groupNo+' name="groupNo">';
-		str += ' 		<em id="comment_inbox_name">${sessionScope.authUser.nick}</em>;
+		str += ' 		<input type="hidden" value=' + BDCommentVo.boardNo + ' name="boardNo">';
+		str += ' 		<input type="hidden" value=' + BDCommentVo.depth + ' name="depth" >';
+		str += ' 		<input type="hidden" value=' + BDCommentVo.groupNo + ' name="groupNo">';
+		str += ' 		<input type="hidden" value=' + BDCommentVo.orderNo + ' name="orderNo">';
+		str += ' 		<em id="comment_inbox_name">${sessionScope.authUser.nick}</em>';
 		str += ' 		<div class="comment_inbox_wrapper">';
 		str += ' 			<div class="comment_textarea_wrapper">';
 		str += ' 				<textarea placeholder="댓글을 남겨보세요" rows="1" id="comment_inbox_text" style="overflow: hidden; overflow-wrap: break-word;"></textarea>';
 		str += ' 			</div>';
 		str += ' 			<div id="register_box">';
-		str += ' 	 			<a href="" role="button" id="btn_register">등록</a>';
+		str += ' 	 			<a href="" role="button" class="btn_register" id = "btn_register_'+index+'" onclick="extractHiddenValues('+index+')">등록</a>';
 		str += ' 			</div>';
 		str += ' 		</div>';
 		str += ' 	</div>';
 		str += ' </div>';
-
-		if (dir == 'up') {
-			$("#cList").append(str);
-		} else {
+		
+		// 'down' 방향일 경우 commentAddDiv 아래에 대댓글 입력창을 생성
+	    if (dir === 'down') {
+	        commentAddDiv.after(str);
+	    }
+	    // 'up' 방향일 경우 commentAddDiv 위에 대댓글 입력창을 생성
+	    else if (dir === 'up') {
+	        commentAddDiv.before(str);
+	    } else {
 			console.log("에러요");
 		}
+		
+	    // textarea의 이벤트 리스너 추가
+        var textarea = document.getElementById('comment_inbox_text');
+        textarea.addEventListener('input', function () {
+        	// 현재 스크롤 높이를 저장합니다.
+    		var scrollTop = textarea.scrollTop;
+
+    		// textarea의 높이를 임시로 0으로 설정하여 자동 높이를 측정
+    		textarea.style.height = '0';
+
+    		// 스크롤 높이를 유지하기 위해 textarea의 높이를 측정한 뒤 scrollTop 값을 설정
+    		textarea.style.height = textarea.scrollHeight + 'px';
+    		textarea.scrollTop = scrollTop;
+        });
+
+        textarea.addEventListener('keydown', function (event) {
+        	if (event.key === 'Backspace') {
+    			// 현재 스크롤 높이를 저장
+    			var scrollTop = textarea.scrollTop;
+
+    			// textarea의 높이를 임시로 0으로 설정하여 자동 높이를 측정
+    			textarea.style.height = '0';
+
+    			// 스크롤 높이를 유지하기 위해 textarea의 높이를 측정한 뒤 scrollTop 값을 설정
+    			textarea.style.height = Math.max(textarea.scrollHeight - 17, 0)
+    					+ 'px';
+    			textarea.scrollTop = scrollTop;
+    		}
+        });
 	}
 	
 	// 대댓글 리스트 그리기
-	function listRender(BDCommentVo, dir) {
+	function listRender(BDCommentVo, dir, i) {
+		var authUser = "${sessionScope.authUser}";
+	    // BDCommentVo.depth 값을 가져와서 JavaScript 변수로 저장
+	    var leftValue = BDCommentVo.depth;
+	    console.log(authUser);
+	    console.log(leftValue);
+		
 		var str = "";
-		str += ' <div id="line"></div>';
+		str += ' <div class="line"></div>';
 		str += ' <input type="hidden" name="groupNo" value="'+BDCommentVo.groupNo+'">';
-		str += ' 	<div class="comment_area" style="position: relative; left: '+BDCommentVo.depth+' * 50}px;">';
+		str += ' 	<div class="comment_area" style="position: relative; left: ' + (BDCommentVo.depth * 50) + 'px" data-index='+i+' >';
 		str += ' 	<a href="" class="comment_thumb">';
 		str += ' 		<img src="${pageContext.request.contextPath}/assets/images/modang.png" alt="프로필 사진" width="36" height="36">';
 		str += ' 	</a>';
@@ -302,16 +415,14 @@
 		str += ' 		</div>';
 		str += ' 		<div class="comment_text_box">';
 		str += ' 			<p class="comment_text_view">';
-		str += ' 				<span class="text_comment">' + BDCommentVo.content
-				+ '</span>';
+		str += ' 				<span class="text_comment">' + BDCommentVo.content + '</span>';
 		str += ' 			</p>';
 		str += ' 		</div>';
 		str += ' 		<div class="comment_info_box">';
-		str += ' 			<span class="comment_info_date">' + BDCommentVo.writeDate
-				+ '</span>';
-		if ("${sessionScope.authUser.id}" != null && BDCommentVo.depth < 2 ) {
-			str += ' 			<a href="#" role="button" class="comment_info_button">답글쓰기</a>';
-		}
+		str += ' 			<span class="comment_info_date">' + BDCommentVo.writeDate + '</span>';
+		if (authUser != "" && leftValue < 2) {
+		str += ' 			<a href="#" role="button" class="comment_info_button" data-index=' + i + '>답글쓰기</a>';
+	    }
 		str += ' 		</div>';
 		str += ' 	</div>';
 		str += ' </div>';
