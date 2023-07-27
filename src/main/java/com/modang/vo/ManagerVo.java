@@ -25,13 +25,7 @@ public class ManagerVo {
 	public ManagerVo() {
 		super();
 	}
-	public ManagerVo(int biliardNo,String imageFile1, String imageFile2, String imageFile3) {
-		super();
-		this.biliardNo = biliardNo;
-		this.imageFile1 = imageFile1;
-		this.imageFile2 = imageFile2;
-		this.imageFile3 = imageFile3;
-	}
+
 	public ManagerVo(int biliardNo, String id, String passwd, String companyNo, String repName, String biliardName,
 			int postcode, String biliardAddress1, String biliardAddress2, String latitude, String longtitude,
 			String biliardPhone, String imageFile1, String imageFile2, String imageFile3, String time1, String time2,
