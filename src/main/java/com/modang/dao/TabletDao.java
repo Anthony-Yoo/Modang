@@ -10,6 +10,7 @@ import com.modang.vo.CardMemberVo;
 import com.modang.vo.CardUsersVo;
 import com.modang.vo.CueTableVo;
 import com.modang.vo.FavoriteUsersVo;
+import com.modang.vo.ManagerVo;
 import com.modang.vo.PlayUserVo;
 import com.modang.vo.TableGamesVo;
 import com.modang.vo.TabletUserVo;
@@ -20,6 +21,18 @@ public class TabletDao {
 	
 	@Autowired
 	private SqlSession session;
+	
+	public ManagerVo selectManager(ManagerVo managerVo) {
+		System.out.println("TabletDao.selectManager()");
+		return session.selectOne("tablet.selectManager", managerVo);
+	}
+	
+	public List<CueTableVo> selectTableForManager(ManagerVo managerVo) {
+		System.out.println("TabletDao.selectTableForManager()");
+		System.out.println(managerVo);
+		
+		return session.selectList("tablet.selectTableForManager", managerVo);				
+	}	
 	
 	public TabletUserVo selectUser(TabletUserVo userVo) {
 		System.out.println("TabletDao.selectUser()");
@@ -90,6 +103,13 @@ public class TabletDao {
 		return session.insert("tablet.insertPlay", playUser);
 	}
 	
+	public TableGamesVo selectGameforTableNo(int tableNo) {
+		System.out.println("TabletDao.selectGameforTableNo()");
+		
+		return session.selectOne("tablet.selectGameforTableNo", tableNo);
+	}
+	
+	
 	public CueTableVo selectCueTable(int tableNo) {
 		System.out.println("TabletDao.selectbiliard()");
 		
@@ -106,6 +126,12 @@ public class TabletDao {
 		System.out.println("TabletDao.selectTariff()");
 		
 		return session.selectOne("tablet.selectTariff", tableInfo);
+	}
+	
+	public void updateTbStatus() {
+		System.out.println("TabletDao.updateTbStatus");
+		
+		session.update("tablet.updateTbStatus");
 	}
 	
 	

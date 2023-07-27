@@ -10,6 +10,7 @@ import com.modang.vo.CardMemberVo;
 import com.modang.vo.CardUsersVo;
 import com.modang.vo.CueTableVo;
 import com.modang.vo.FavoriteUsersVo;
+import com.modang.vo.ManagerVo;
 import com.modang.vo.PlayUserVo;
 import com.modang.vo.StaticVo;
 import com.modang.vo.TableGamesVo;
@@ -21,6 +22,20 @@ public class TabletService {
 	
 	@Autowired
 	private TabletDao tabletDao;
+	
+	public ManagerVo managerLogin(ManagerVo managerVo) {
+		System.out.println("TabletService.managerLogin()");
+		
+		return tabletDao.selectManager(managerVo);
+	}
+	
+	public List<CueTableVo> managerFindTable(ManagerVo managerVo) {
+		System.out.println("TabletService.managerFindTable()");
+		
+		
+			
+		return tabletDao.selectTableForManager(managerVo);
+	}
 	
 	public TabletUserVo loginGetKey(TabletUserVo userVo) {
 		System.out.println("TabletService.loginGetKey()");
@@ -132,15 +147,19 @@ public class TabletService {
 		
 		return gameNo;
 	}
-	
-	public TableGamesVo playFind(TableGamesVo myGameInfo) {
-		System.out.println("TabletService.gameFind()");		
 		
-		int tableNo = myGameInfo.getTableNo();
+	public TableGamesVo playFind(int tableNo) {
+		System.out.println("TabletService.playFind()");		
+		
+		//게임정보 찾기
+		TableGamesVo myGameInfo = tabletDao.selectGameforTableNo(tableNo);
+		System.out.println(myGameInfo);
 		//당구장번호찾기 & 테이블 종류찾기
-		CueTableVo tableInfo = tabletDao.selectCueTable(tableNo);		
+		CueTableVo tableInfo = tabletDao.selectCueTable(tableNo);
+		System.out.println(tableInfo);
 		//요금표 찾기
 		TariffVo tariffInfo = tabletDao.selectTariff(tableInfo);
+		System.out.println(tariffInfo);
 		//테이블에 맞는 요금찾기
 		int tableFee = 0;
 		int minFee = 0;
@@ -162,20 +181,16 @@ public class TabletService {
 		// 요금을 플레이유져에 넣기			
 		myGameInfo.setTableFee(tableFee);
 		myGameInfo.setMinFee(minFee);
+		//게임VO에 Play리스트 넣기		
 		myGameInfo.setPlayUserList(tabletDao.selectPlayUser(myGameInfo)); 			
 		
 		return myGameInfo;
 	}
 	
-	public int biliardFind(int tableNo) {
-		System.out.println("TabletService.biliardFind()");
+	public void startGame() {
+		System.out.println("TabletService.startGame()");
 		
-		//당구장번호찾기 & 테이블 종류찾기
-		CueTableVo tableInfo = tabletDao.selectCueTable(tableNo);		
-		//요금표 요금찾기
-		tabletDao.selectTariff(tableInfo);
-		
-		
-		return 0;
+		tabletDao.updateTbStatus();
 	}
+	
 }

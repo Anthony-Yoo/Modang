@@ -24,6 +24,13 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	// 사용자 선택폼
+	@RequestMapping(value= "/userJoinForm", method = {RequestMethod.GET, RequestMethod.POST})
+	public String userJoinForm() {
+		System.out.println("UserController.userJoinForm()");
+		
+		return "user/userJoinForm";
+	}
 	
 	// 회원가입 폼
 	@RequestMapping(value = "/joinForm", method = { RequestMethod.GET, RequestMethod.POST })

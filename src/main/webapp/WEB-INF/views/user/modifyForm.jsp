@@ -31,13 +31,13 @@
 
          <div class="container text-center">
         	
-				<div class="btn-group-vertical">
-							<button type="button" class="btn btn-light">회원정보</button>
-							<button type="button" class="btn btn-light">친구목록</button>
-							<button type="button" class="btn btn-light" onclick="">그룹친구</button>
+				<%-- <div class="btn-group-vertical">
+							<button type="button" class="btn btn-light" onclick="document.location=''">회원정보</button>
+							<button type="button" class="btn btn-light" onclick="document.location=''">친구목록</button>
+							<button type="button" class="btn btn-light" onclick="document.location=''">그룹친구</button>
 							<button type="button" class="btn btn-light" onclick="document.location='${pageContext.request.contextPath}/board/list'">매칭목록</button>
-							<button type="button" class="btn btn-light">전적보기</button>
-				</div>
+							<button type="button" class="btn btn-light" onclick="document.location=''">전적보기</button>
+				</div> --%>
 								
                 <div id="user">
 				
@@ -129,6 +129,10 @@
            
     <!-- 푸터 시작 -->
     <c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
-    <!-- 푸터 끝 -->   
+    <!-- 푸터 끝 -->  
+
+     
 </body>
+
+
 </html>
