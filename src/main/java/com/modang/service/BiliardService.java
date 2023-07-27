@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.modang.dao.BiliardDao;
 import com.modang.dao.ManagerDao;
-
+import com.modang.dao.TabletDao;
 import com.modang.vo.ManagerVo;
 import com.modang.vo.TableGamesVo;
 import com.modang.vo.CueTableVo;
@@ -21,6 +21,9 @@ public class BiliardService {
 	
 	@Autowired
 	private BiliardDao biliardDao;
+	
+	@Autowired
+	private TabletDao tableDao;
 	
 	/* 테이블현황 페이지-------------------------------------------------------------------------------- */
 	/* 테이블 현황 - 테이블 추가 */
@@ -63,7 +66,9 @@ public class BiliardService {
 		TableGamesVo gamesVo = biliardDao.selectTable(cuetableVo);
 		TariffVo tariffVo = biliardDao.selectPrice(biliardNo);
 		CueTableVo oneTable = biliardDao.selectCuetable(tableNo);
-				
+		if(gamesVo!=null) {
+			gamesVo.setPlayUserList(tableDao.selectPlayUser(gamesVo));
+		}
 		List<CueTableVo> cueTableList = biliardDao.selectList(biliardNo);
 		
 		Map<String, Object> tMap = new HashMap<String, Object>();
