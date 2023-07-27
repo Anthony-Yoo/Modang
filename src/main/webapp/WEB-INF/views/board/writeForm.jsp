@@ -124,8 +124,8 @@ body {
 		<!-- /writeForm -->
 	</div>
 	<!-- /board -->
-
-	<%-- <c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import> --%>
+	<!-- footer -->
+	<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
 </body>
 <script type="text/javascript">
 </script>

@@ -30,7 +30,8 @@ public class BiliardController {
 	@Autowired
 	private BiliardService biliardService;
 	
-	/* 테이블 추가 */
+	/* 테이블현황 페이지-------------------------------------------------------------------------------- */
+	/* 테이블 현황 - 테이블 추가 */
 	@ResponseBody
 	@RequestMapping(value="/addTable", method= {RequestMethod.GET, RequestMethod.POST})
 	public JsonResult addTable(HttpSession session,@ModelAttribute CueTableVo cuetableVo) {
@@ -48,7 +49,6 @@ public class BiliardController {
 		return jsonResult;
 	}
 	
-	
 	/* 테이블 현황 - 테이블 종류 변경 */
 	@ResponseBody
 	@RequestMapping(value="/tabletype", method= {RequestMethod.GET, RequestMethod.POST})
@@ -63,8 +63,6 @@ public class BiliardController {
 		return jsonResult;
 	}
 	
-	
-
 	/* 테이블 현황 - 상세정보 가져오기 */
 	@ResponseBody
 	@RequestMapping(value ="/info", method = { RequestMethod.GET, RequestMethod.POST })
@@ -78,8 +76,8 @@ public class BiliardController {
 
 		return jsonResult;
 	}
-
-	/* 테이블 현황-테이블 전체리스트 */
+	
+	/* 테이블 현황 - 테이블 전체리스트 */
 	@RequestMapping(value="/index", method = {RequestMethod.GET,RequestMethod.POST})
 	public String tableList(HttpSession session, Model model) {
 		System.out.println("BiliardController.tableList()");
@@ -99,36 +97,9 @@ public class BiliardController {
 		}else { //로그인 안되어있을 경우 로그인페이지로 이동
 			return "/manager/managerLoginForm";
 		}
-		
 	}
 
-	/* 요금테이블폼(요금가져오기) */
-	@RequestMapping(value = "/pricePolicyForm", method = { RequestMethod.GET, RequestMethod.POST })
-	public String pricePolicyForm(HttpSession session, Model model) {
-		System.out.println("BiliardController.pricePolicyForm()");
-
-		ManagerVo loginManager = (ManagerVo) session.getAttribute("loginManager");
-		int biliardNo = loginManager.getbiliardNo();
-
-		TariffVo tariffVo = biliardService.getPrice(biliardNo);
-		model.addAttribute(tariffVo);
-
-		return "/manager/pricePolicy";
-	}
-
-	/* 요금테이블 수정 */
-	@RequestMapping(value = "/pricePolicy", method = { RequestMethod.GET, RequestMethod.POST })
-	public String pricePolicy(HttpSession session, @ModelAttribute TariffVo tariffVo) {
-		System.out.println("BiliardController.pricePolicy()");
-
-		ManagerVo loginManager = (ManagerVo) session.getAttribute("loginManager");
-		int biliardNo = loginManager.getbiliardNo();
-
-		biliardService.updatePrice(tariffVo);
-
-		return "/manager/pricePolicy";
-	}
-
+	/* 테이블 매출 페이지-------------------------------------------------------------------------------- */
 	/* 테이블 매출폼 */
 	@RequestMapping(value = "/tableSalesForm", method = { RequestMethod.GET, RequestMethod.POST })
 	public String tableSalesForm() {
@@ -146,11 +117,51 @@ public class BiliardController {
 		System.out.println(maxdate);
 		return "/manager/tableSales";
 	}
+	
+	/* 일별 매출 페이지--------------------------------------------------------------------------------- */
+	@RequestMapping(value="/daySalesForm", method= {RequestMethod.GET,RequestMethod.POST})
+	public String daySales() {
+		System.out.println("BiliardController.daySales()");
+		
+		return "/manager/daySales";
+	}
+	
+	/* 요금테이블 페이지--------------------------------------------------------------------------------- */
+	/* 요금테이블 수정 */
+	@RequestMapping(value = "/pricePolicy", method = { RequestMethod.GET, RequestMethod.POST })
+	public String pricePolicy(HttpSession session, @ModelAttribute TariffVo tariffVo) {
+		System.out.println("BiliardController.pricePolicy()");
 
+		ManagerVo loginManager = (ManagerVo) session.getAttribute("loginManager");
+		int biliardNo = loginManager.getbiliardNo();
+
+		biliardService.updatePrice(tariffVo);
+
+		return "/manager/pricePolicy";
+	}
+	
+	/* 요금테이블폼(요금가져오기) */
+	@RequestMapping(value = "/pricePolicyForm", method = { RequestMethod.GET, RequestMethod.POST })
+	public String pricePolicyForm(HttpSession session, Model model) {
+		System.out.println("BiliardController.pricePolicyForm()");
+
+		ManagerVo loginManager = (ManagerVo) session.getAttribute("loginManager");
+		int biliardNo = loginManager.getbiliardNo();
+
+		TariffVo tariffVo = biliardService.getPrice(biliardNo);
+		model.addAttribute(tariffVo);
+
+		return "/manager/pricePolicy";
+	}
+
+	/* 관리자 설정 페이지-------------------------------------------------------------------------------- */
 	/* 관리자 설정폼 */
 	@RequestMapping(value = "/settingsForm", method = { RequestMethod.GET, RequestMethod.POST })
-	public String settingsForm() {
+	public String settingsForm(HttpSession session) {
 		System.out.println("BiliardController.settingsForm()");
+		
+		ManagerVo loginManager = (ManagerVo) session.getAttribute("loginManager");
+		biliardService.getbiliardInfo(loginManager);
 
 		return "/manager/settings";
 	}

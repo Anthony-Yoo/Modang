@@ -84,7 +84,7 @@ public class BoardController {
 		BoardVo vo = boardService.read(boardNo);
 		System.out.println(vo);
 		model.addAttribute("rList", vo);
-		List<BDCommentVo> list = bDCommentService.list();
+		List<BDCommentVo> list = bDCommentService.list(boardNo);
 		System.out.println(list);
 		model.addAttribute("cList", list);
 		return "/board/read";

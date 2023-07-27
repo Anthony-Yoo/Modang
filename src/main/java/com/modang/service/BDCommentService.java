@@ -19,9 +19,9 @@ public class BDCommentService {
 		bDCommentdao.insert(vo);
 	}
 	
-	public List<BDCommentVo> list(){
+	public List<BDCommentVo> list(int boardNo){
 		System.out.println("RBoardService.list()");
-		List<BDCommentVo> list = bDCommentdao.list(); 
+		List<BDCommentVo> list = bDCommentdao.list(boardNo); 
 		return list;
 	}
 }

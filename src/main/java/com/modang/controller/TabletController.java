@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,27 +17,60 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.modang.service.TabletService;
 import com.modang.vo.CardUsersVo;
+import com.modang.vo.CueTableVo;
 import com.modang.vo.JsonResult;
+import com.modang.vo.ManagerVo;
 import com.modang.vo.TableGamesVo;
 import com.modang.vo.TabletUserVo;
 
 
 @Controller
+@RequestMapping("/tablet")
 public class TabletController {
 	
 	@Autowired
-	private TabletService tabletService;
+	private TabletService tabletService;	
+
+	/*로그인폼 출력*/
+	@RequestMapping(value ="", method = {RequestMethod.GET, RequestMethod.POST})
+	public String managerLoginForm() {
+		System.out.println("TabletController.managerLoginForm()");
+		
+		return "/tablet/managerLoginForm";
+	}
 	
-	@RequestMapping(value = "/tablet",method = {RequestMethod.GET,RequestMethod.POST})
-	public String keyLoginForm() {
+	/* 로그인 */
+	@RequestMapping(value = "/managerlogin", method = { RequestMethod.GET, RequestMethod.POST })
+	public String managerlogin(@ModelAttribute ManagerVo managerVo, Model model) {
+		System.out.println("TabletController.managerlogin()");
+		
+		managerVo = tabletService.managerLogin(managerVo);
+		
+		System.out.println(managerVo);
+		if (managerVo != null) {
+			System.out.println("로그인 성공");
+			List<CueTableVo> tableList = tabletService.managerFindTable(managerVo);
+			System.out.println(tableList);
+			model.addAttribute("tableList", tableList);			
+			return "/tablet/index";
+		} else {
+			System.out.println("로그인 실패");
+			return "redirect:/tablet?result=fail";
+		}
+	}
+	
+	@RequestMapping(value = "/{tableNo}/loginForm",method = {RequestMethod.GET,RequestMethod.POST})
+	public String keyLoginForm(@PathVariable("tableNo") int tableNo,Model model) {
 		System.out.println("TabletController.keyLoginForm()");		
 		
+		model.addAttribute(tableNo);
 		
 		return "/tablet/login";
 	}
 	
-	@RequestMapping(value = "/tablet/keyLogin",method = {RequestMethod.GET,RequestMethod.POST})
-	public String keyLogin(@RequestParam("keyNum") int keyNum,HttpSession session) {
+	@RequestMapping(value = "/{tableNo}/keyLogin",method = {RequestMethod.GET,RequestMethod.POST})
+	public String keyLogin(@RequestParam("keyNum") int keyNum,HttpSession session,
+			@PathVariable("tableNo") int tableNo,Model model) {
 		System.out.println("TabletController.keyLogin()");		
 		System.out.println(keyNum);
 		
@@ -51,28 +85,30 @@ public class TabletController {
 			authUser.setNick(resultVo.getNick());
 			authUser.setAverage(resultVo.getAverage());
 			session.setAttribute("authUser", authUser);
-			  
+			model.addAttribute(tableNo);
+			
 			return "/tablet/selectball";
 		
 		} else { 
 			System.out.println("로그인실패");
 			
-			return "redirect:/tablet?result=fail";		
+			return "redirect:/tablet/"+tableNo+"/loginForm?result=fail";		
 		}	
 
 	}	
 	
+	/*
+	 * @RequestMapping(value = "/selectBall",method =
+	 * {RequestMethod.GET,RequestMethod.POST}) public String selectBall() {
+	 * System.out.println("TabletController.selectBall()");
+	 * 
+	 * 
+	 * return "/tablet/selectball"; }
+	 */
 	
-	@RequestMapping(value = "/tablet/selectBall",method = {RequestMethod.GET,RequestMethod.POST})
-	public String selectBall() {
-		System.out.println("TabletController.selectBall()");		
-		
-		
-		return "/tablet/selectball";
-	}
-	
-	@RequestMapping(value="/tablet/memberForm", method = {RequestMethod.GET,RequestMethod.POST})
-	public String memberForm(Model model,HttpSession session) {
+	@RequestMapping(value="/{tableNo}/memberForm", method = {RequestMethod.GET,RequestMethod.POST})
+	public String memberForm(Model model,HttpSession session,
+			@PathVariable("tableNo") int tableNo) {
 		System.out.println("TabletController.memberForm()");
 		
 		TabletUserVo authUser = (TabletUserVo)session.getAttribute("authUser");
@@ -81,12 +117,13 @@ public class TabletController {
 		List<CardUsersVo> cardList = tabletService.myMember(userNo);
 		System.out.println(cardList);
 		model.addAttribute("cardList", cardList);
+		model.addAttribute("tableNo",tableNo);
 		
 		return "/tablet/memberForm";
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/tablet/confirm", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value="/confirm", method = {RequestMethod.GET,RequestMethod.POST})
 	public JsonResult confirm(@RequestBody TableGamesVo tableGame) {
 		System.out.println("TabletController.confirm()");
 		System.out.println(tableGame);
@@ -106,17 +143,31 @@ public class TabletController {
 		return jsonResult;
 	}
 	
-	@RequestMapping(value="tablet/scoreboard", method = {RequestMethod.GET,RequestMethod.POST})
-	public String scoreboard() {
+	@RequestMapping(value="/{tableNo}/scoreboard", method = {RequestMethod.GET,RequestMethod.POST})
+	public String scoreboard(@PathVariable("tableNo") int tableNo,Model model) {  //테이블No 게임No
 		System.out.println("TabletController.scoreboard()");
+		
+		TableGamesVo tableGameVo = tabletService.playFind(tableNo);
+		System.out.println(tableGameVo);
+		model.addAttribute("tableGameVo", tableGameVo);		
+		model.addAttribute("tableNo",tableNo);
 		
 		return "/tablet/scoreboard";
 	}
 	
+	@RequestMapping(value="/playstart", method = {RequestMethod.GET,RequestMethod.POST})
+	public String playStart(Model model) {  //게임시작!
+		System.out.println("TabletController.playStart()");
+			
+		tabletService.startGame();
 	
+		//model.addAttribute("tableGameVo", tableGameVo);		
+		
+		return "/tablet/scoreboard";
+	}
 	
 	@ResponseBody
-	@RequestMapping(value="/tablet/idfind", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value="/idfind", method = {RequestMethod.GET,RequestMethod.POST})
 	public JsonResult userFind(@RequestParam(value="id") String id) {
 		System.out.println("TabletController.userFind()");
 		System.out.println(id);
