@@ -391,7 +391,7 @@
 			url : "${pageContext.request.contextPath}/tablet/confirm",		
 			type : "post",
 			contentType : "application/json",
-			data : JSON.stringify(tableGameVo),
+			data : JSON.stringify(tableGameVo),//제이슨형식 변경
 
 			dataType : "json",
 			success : function(action){
@@ -401,7 +401,7 @@
 					console.log("성공");
 					console.log(action.data);
 					/* 리다이렉트 */					
-					let url = '/modang/tablet/scoreboard?gameNo='+action.data+'&tableNo='+tableNo;
+					let url = '/modang/tablet/${tableNo}/scoreboard';
 					window.location.replace(url); 	 						
 					
 				}else {//오류처리
