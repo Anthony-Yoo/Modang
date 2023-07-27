@@ -30,7 +30,7 @@
 
     		<div id="user">
 		
-				<div id="joinFail">
+				<div id="userJoinFrom">
 		
 					<div id="main">
 					

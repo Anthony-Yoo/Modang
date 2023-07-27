@@ -182,4 +182,18 @@ public class UserController {
 		return "redirect:/user/modifyForm";
 	}
 	
+	//나의 페이지
+	@RequestMapping(value="/userPage", method= {RequestMethod.GET, RequestMethod.POST})
+	public String userPage(HttpSession session,  Model model) {
+		System.out.println("UserController.userPage()");
+		
+		String id=((UserVo)session.getAttribute("authUser")).getId();
+		System.out.println(id);
+		
+		UserVo userVo=userService.userPage(id);
+		model.addAttribute("userVo", userVo);
+		
+		return "user/userPage";
+	}
+	
 }
