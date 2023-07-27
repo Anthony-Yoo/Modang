@@ -7,6 +7,26 @@
 	<insert id="insertManager" parameterType="com.modang.vo.ManagerVo">
 		<![CDATA[
 			insert into biliards
+				(BILIARDNO,
+				ID,
+				PASSWD,
+				COMPANYNO,
+				REPNAME,
+				BILIARDNAME,
+				POSTCODE,
+				BILIARDADDRESS1,
+				BILIARDADDRESS2,
+				LATITUDE,
+				LONGTITUDE,
+				BILIARDPHONE,
+				IMAGEFILE1,
+				IMAGEFILE2,
+				IMAGEFILE3,
+				TIME1,
+				TIME2,
+				PARKING,
+				BDCOMMENT
+				)
 				values(
 				    seq_biliards_no.nextval,
 				    #{id},
@@ -14,19 +34,19 @@
 				    #{companyNo},
 				    #{repName},
 				    #{biliardName},
+				    #{postcode},
 				    #{biliardAddress1},
+				    #{biliardAddress2},
 				    null,
 				    null,
 				    #{biliardPhone},
-				    #{parking},
-				    #{bdComment},
+				    #{imageFile1},
+				    #{imageFile2},
+				    #{imageFile3},
 				    #{time1},
 				    #{time2},
-				    #{biliardAddress2},
-				    #{postcode},
-				    #{imageFile1},
-				    null,
-				    null
+				    #{parking},
+				    #{bdComment}
 				)
 		]]>
 	</insert>

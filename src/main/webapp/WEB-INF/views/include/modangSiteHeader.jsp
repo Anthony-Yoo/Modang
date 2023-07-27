@@ -13,7 +13,7 @@ pageEncoding="UTF-8"%>
             <!-- 로그인실패시, 로그인전 -->
             <ul>
                 <li class="user"><a href="${pageContext.request.contextPath}/user/loginForm">로그인</a></li>
-                <li class="user"><a href="${pageContext.request.contextPath}/user/joinForm">회원가입</a></li>
+                <li class="user"><a href="${pageContext.request.contextPath}/user/userJoinForm">회원가입</a></li>
             </ul>
             </c:when>
             <c:otherwise>
@@ -23,7 +23,7 @@ pageEncoding="UTF-8"%>
                 <li><strong><a href="${pageContext.request.contextPath}">${sessionScope.authUser.nick}님 안녕하세요 ^^</a></strong></li>
                 
                 <li><a href="${pageContext.request.contextPath}/user/logout">로그아웃</a></li>
-                <li><a href="${pageContext.request.contextPath}/user/modifyForm">마이페이지</a></li>
+                <li><a href="${pageContext.request.contextPath}/user/userPage">마이페이지</a></li>
             </ul> 
             </c:otherwise>
         </c:choose>

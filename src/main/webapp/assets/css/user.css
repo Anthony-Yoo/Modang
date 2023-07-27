@@ -203,6 +203,7 @@
 	margin: 0px 10px 20px 0px;
 	
 }
+
 .row {
     margin-right: -0px;
     margin-left: -5px;
@@ -214,21 +215,30 @@
     padding-left: 0;
 }
 
-#userJoinForm .element.style #1QCzC {
+/* userJoinForm */
+.element .style {
+    width: 200px;
+    height: 211px;
+    margin: 180px 1px 0px 365px;
+}
+
+.element .data-text-content {
     border: 1px solid #000000;
+    
    
 }
 
-#userJoinForm .element .style #1QCzC {
+.element .data-text-content {
     background-color: rgb(255, 255, 255);
     text-shadow: none;
     box-shadow: rgba(46, 65, 154, 0.28) 5px 10px 10px 0px;
     border-width: 0px;
     border-style: none;
     border-radius: 4px;
+    
 }
 
-#userJoinForm .data-text-content #1QCzC{
+.data-text-content {
     position: absolute;
     top: 0;
     left: 0;
@@ -243,30 +253,76 @@
 }
 
 
-.element.style #myCanvas2 {
-    border: 1px solid #000000;
-    margin: 3px 0px 0px 615px;
+/* side nav */
+.sidebar {
+  margin: 0;
+  font-family: "Lato", sans-serif;
 }
 
-.element .style #myCanvas2 {
-    background-color: rgb(255, 255, 255);
-    text-shadow: none;
-    box-shadow: rgba(46, 65, 154, 0.28) 5px 10px 10px 0px;
-    border-width: 0px;
-    border-style: none;
-    border-radius: 4px;
-}
-
-.data-text-content #myCanvas2 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+.sidebar {
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    white-space: pre-wrap;
-    word-break: break-all;
-    margin: 255px 0px 0px 730px;
+    width: 120px;
+    background-color: #f1f1f1;
+    position: absolute;
+    height: 30%;
+    overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: #2E419A;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 450px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+
+#userPage button {
+	width: 30%;
+	background-color:  #2E419A;
+	color: #fff;
+	border-radius:10px;
+	line-height: 40px;
+	font-size: 15px;
+    border: 0;
+    padding: 0;
+    margin: 100px 0px 0px 240px;
+}
+
+
+#userPage img {
+    vertical-align: top;
+    width:30%;
 }

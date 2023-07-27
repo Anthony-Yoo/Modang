@@ -54,6 +54,8 @@ public class BoardDao {
 
 		return boardList;
 	}
+	
+	/* 검색기능 결과에 대한 카운트 */
 	public int totalCount(String keyword, String category) {
 		System.out.println("boardDao.totalCount()");
 		Map<String, Object> paramMap = new HashMap<>();
@@ -76,6 +78,10 @@ public class BoardDao {
 		int total = sqlSession.selectOne("board.totalCount", paramMap);
 		System.out.println(total);
 		return total;
+	}
+	
+	public void hitAddCount(int boardNo) {
+		sqlSession.update("board.hitAddCount", boardNo);
 	}
 	
 	public BoardVo selectOne(int boardNo) {
