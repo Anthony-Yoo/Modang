@@ -87,7 +87,7 @@ public class BiliardController {
 		ManagerVo loginManager =(ManagerVo)session.getAttribute("loginManager");
 		
 		if(loginManager!=null) { //로그인 되어있을 경우 접속
-			int biliardNo = loginManager.getbiliardNo();
+			int biliardNo = loginManager.biliardNo();
 					
 			List<CueTableVo> cueTableList = biliardService.tableList(biliardNo);
 			List<TableGamesVo> gamesList =biliardService.getGames(biliardNo);

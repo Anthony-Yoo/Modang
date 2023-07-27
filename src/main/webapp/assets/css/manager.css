@@ -2,7 +2,8 @@
 
 /*공통*/
 .container {width: 1200px; margin: 0 auto;}
-.error-msg{color: #F94069; font-size: 13px;}
+.error-msg{color: #F94069; font-size: 13px; display: none; text-align: center;padding-top:5px;}
+.correct-msg{color: #F94069; font-size: 13px; display: none; text-align: center; padding-top:5px;}
 h2,h3{color: #2E419A; text-align: center; margin: 20px 0 20px 0;}
 #main-content .container{margin-top:50px; margin-bottom: 100px; height: 100%;}
 .chck{display: inline-block; width: 100px; height: 40px; background-color: #2E419A; 
@@ -58,22 +59,19 @@ input::placeholder{color: #B8B8B8;}
 .join-wrap .con .sel-box select{width: 130px; height: 40px; padding: 8px 20px 9px;
     background-color: #F5F5F5; border: 1px solid #B8B8B8; box-sizing: border-box; border-radius: 8px;}
 .join-wrap .con .sel-box select:nth-child(1){width: 130px;}
-.join-wrap .con span.inp-txt>input.post{width: 250px; cursor: pointer;}
-.join-wrap .con span.inp-txt>input.postBt{width: 145px;}
+.join-wrap .con span.inp-txt>input.post{width: 250px; }
+.join-wrap .con span.inp-txt>input.postBt{width: 145px;cursor: pointer;}
 .join-wrap .con span.inp-txt>input.addr{margin: 5px 0 0 55px;}
+#btnJoin{margin-top: 20px;}
 .join-wrap .con span.inp-txt>input.time{width: 190px;}
 .join-wrap .con span.inp-txt>div.parking{display: inline-block; margin: 0 38px;}
 .join-wrap .con span.inp-txt>div.parking input[type="radio"]{display: none;}
 .join-wrap .con span.inp-txt>div.parking input[type="radio"]:checked + label{background-color: #2E419A; color: #fff;}
 .join-wrap .con span.inp-txt>div.parking label{display: inline-block; margin-right: 10px; padding: 8px 20px; background-color:#F5F5F5;
 	border: 1px solid #B8B8B8; border-radius: 8px; cursor: pointer;}
-.join-wrap .con input .image img{display: block; width: 100%; height: 100%;}
-#imageContainer {display: flex;flex-wrap: wrap;align-items: center;gap: 10px; background-color: gray; margin-bottom: 20px;}
-.imageBox {position: relative;width: 300px;height: 240px;border: 1px solid #ddd; background-color: olive;}
-.imageBox.add-btn{width: 100%; height: 100%; }
-.image{ display: none;}
-.remove-btn {position: absolute;top: 5px;right: 5px;background-color: red;color: white;
-	border: none;cursor: pointer;padding: 2px 5px;border-radius: 5px;font-size: 12px; }
+.join-wrap .con .imageBox{width:950px;margin: 0 auto;}
+.join-wrap .con .imageBox li{ display: inline-block;width: 300px; height:250px; border: 1px solid #000; box-sizing:border-box; margin-left: 10px; }
+.join-wrap .con .imageBox li>input{width: 100%; height: 100%; opacity: 0;}
 /*매니저-메인컨텐츠-로그인*/
 .login-wrap{}
 .login-wrap .con{position: relative;}

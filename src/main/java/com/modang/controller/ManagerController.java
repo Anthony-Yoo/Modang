@@ -1,5 +1,7 @@
 package com.modang.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,11 +33,17 @@ public class ManagerController {
 
 	/* 회원가입 */
 	@RequestMapping(value ="/join", method = {RequestMethod.GET, RequestMethod.POST})
-	public String join(@ModelAttribute ManagerVo managerVo,@RequestParam("file") MultipartFile file) {
-		System.out.println("ManagerController.join");
-		System.out.println(file);
-		managerService.join(file,managerVo);
-		return "/manager/managerLoginForm";
+	public String join(@ModelAttribute ManagerVo managerVo, @RequestParam("file") List<MultipartFile> file) {
+		//웹 폼에서 전송된 모든 파일들이 file 리스트에 저장되어 컨트롤러로 전달
+	    System.out.println("ManagerController.join");
+	    System.out.println(managerVo);
+	    managerVo.setImageFile1(file.get(0).getOriginalFilename());
+	    managerVo.setImageFile2(file.get(1).getOriginalFilename());
+	    managerVo.setImageFile3(file.get(2).getOriginalFilename());
+	    System.out.println(managerVo);//이미지 파일명 보임
+	    managerService.join(managerVo,file);
+	    
+	    return "/manager/managerLoginForm";
 	}
 	 
 	/*회원가입 id 중복체크*/
