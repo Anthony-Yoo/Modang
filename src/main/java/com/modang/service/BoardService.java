@@ -96,7 +96,10 @@ public class BoardService {
 
 		return pMap;
 	}
-	
+	public void hitCount(int boardNo) {
+		boardDao.hitAddCount(boardNo);
+	}
+	/* 글 읽기 서비스 */
 	public BoardVo read(int boardNo) {
 		System.out.println("BoardService.read()");
 		return boardDao.selectOne(boardNo);

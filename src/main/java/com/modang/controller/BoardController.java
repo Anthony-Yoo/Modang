@@ -78,6 +78,15 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 
+	//조회수 증가후 read 페이지로 이동
+	@RequestMapping(value = "/hitCount")
+	public String hitCount(@RequestParam("boardNo") int boardNo) {
+		boardService.hitCount(boardNo);
+		return "redirect:/board/read?boardNo="+boardNo;
+	}
+	
+	
+	/* 글 읽기 */
 	@RequestMapping(value = "/read")
 	public String read(@RequestParam("boardNo") int boardNo, Model model) {
 		System.out.println("BoardController.read()");

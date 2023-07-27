@@ -26,9 +26,25 @@ public class ApiBDCommentController {
 	public JsonResult addComment(@RequestBody BDCommentVo bdCommentVo) {
 		System.out.println("ApiBoardController.addComment()");
 		System.out.println(bdCommentVo);
-		bDCommentService.addComment(bdCommentVo);
+		BDCommentVo result = bDCommentService.addComment(bdCommentVo);
 
-		return null;
+		JsonResult jsonResult = new JsonResult();
+		jsonResult.success(result);
+		
+		return jsonResult;
+	}
+	
+	@ResponseBody
+	@PostMapping("/addSComment")
+	public JsonResult addSComment(@RequestBody BDCommentVo bdCommentVo) {
+		System.out.println("ApiBoardController.addSComment()");
+		System.out.println(bdCommentVo);
+		BDCommentVo result = bDCommentService.addSComment(bdCommentVo);
+		System.out.println("결과"+result);
+		JsonResult jsonResult = new JsonResult();
+		jsonResult.success(result);
+		
+		return jsonResult;
 	}
 	
 	@ResponseBody
