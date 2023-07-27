@@ -29,7 +29,7 @@
 					<div class="con">
 						<!-- 아이디 -->
 						<span class="inp-txt">
-							<img src="${pageContext.request.contextPath}/assets/images/id.png" alt="아이디">
+							<img src="${pageContext.request.contextPath}/assets/images/id.png" alt="아이디" class="icon">
 							<input type="text" id="id" name="id" placeholder="아이디">
 							<button class="chck" id="btnIdCheck">중복체크</button>
 						</span>
@@ -39,35 +39,35 @@
 					<div class="con">
 						<!-- 비밀번호 -->
 						<span class="inp-txt">
-							<img src="${pageContext.request.contextPath}/assets/images/passwd.png" alt="비밀번호">
+							<img src="${pageContext.request.contextPath}/assets/images/passwd.png" alt="비밀번호" class="icon">
 							<input type="password" id="passwd" name="passwd" placeholder="비밀번호">
 						</span>
 					</div>
 					<div class="con">
 						<!-- 사업자등록번호 -->
 						<span class="inp-txt">
-							<img src="${pageContext.request.contextPath}/assets/images/file.png" alt="사업자 등록번호">
+							<img src="${pageContext.request.contextPath}/assets/images/file.png" alt="사업자 등록번호" class="icon">
 							<input type="text" id="companyNo" name="companyNo" placeholder="사업자 등록번호">
 						</span>
 					</div>
 					<div class="con">
 						<!-- 이름 -->
 						<span class="inp-txt">
-							<img src="${pageContext.request.contextPath}/assets/images/user.png" alt="이름">
+							<img src="${pageContext.request.contextPath}/assets/images/user.png" alt="이름" class="icon">
 							<input type="text" id="repName" name="repName" placeholder="이름">
 						</span>
 					</div>
 					<div class="con">
 						<!-- 매장이름 -->
 						<span class="inp-txt">
-							<img src="${pageContext.request.contextPath}/assets/images/home.png" alt="매장 이름">
+							<img src="${pageContext.request.contextPath}/assets/images/home.png" alt="매장 이름" class="icon">
 							<input type="text" id="biliardName" name="biliardName" placeholder="매장 이름">
 						</span>
 					</div>
 					<div class="con">
 						<!-- 매장주소/우편번호 찾기 -->
 						<span class="inp-txt">
-							<img src="${pageContext.request.contextPath}/assets/images/map.png" alt="매장 주소">
+							<img src="${pageContext.request.contextPath}/assets/images/map.png" alt="매장 주소" class="icon">
 							<input type="text" class="post" id="postcode" name="postcode" placeholder="우편번호">
 							<input type="button" class="postBt" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
 							<input type="text" class="addr" id="biliardAddress1" name="biliardAddress1" placeholder="주소"><br>
@@ -77,7 +77,7 @@
 					<div class="con">
 						<!-- 매장번호 -->
 						<span class="inp-txt">
-							<img src="${pageContext.request.contextPath}/assets/images/phone.png" alt="매장 번호">
+							<img src="${pageContext.request.contextPath}/assets/images/phone.png" alt="매장 번호" class="icon">
 							<input type="text" id="biliardPhone" name="biliardPhone" placeholder="매장 번호">
 						</span>
 					</div>
@@ -88,42 +88,48 @@
 					<div class="con" id="imageContainer">
 						<!-- 모든 이미지 포함하는 박스 -->
 						<ul class="imageBox">
-							<li>
-								<input type="file" name="file" class="image" multiple/>
-								<img id="resultImg" src="${pageContext.request.contextPath }/upload/${imageFile1}">
-							</li>
- 							<li>
- 								<input type="file" name="file" class="image" multiple/>
- 								<img id="resultImg" src="${pageContext.request.contextPath }/upload/${imageFile1}">
- 							</li>
-							<li>
-								<input type="file" name="file" class="image" multiple/>
-								<img id="resultImg" src="${pageContext.request.contextPath }/upload/${imageFile1}">
-							</li>
+				            <li>
+				            	<!-- 미리보기 이미지 -->
+				                <img id="resultImg1" class="resultImg" src="${pageContext.request.contextPath }/upload/${imageFile1}" />
+				                <!-- 이미지 파일 입력 요소 -->
+				                <input type="file" name="file" class="image" accept="image/*" multiple onchange="previewImage(event, 'resultImg1')" />
+				            </li>
+				            <li>
+				            	<!-- 미리보기 이미지 -->
+				                <img id="resultImg2" class="resultImg" src="${pageContext.request.contextPath }/upload/${imageFile2}" />
+				                <!-- 이미지 파일 입력 요소 -->
+				                <input type="file" name="file" class="image" accept="image/*" multiple onchange="previewImage(event, 'resultImg2')" />
+				            </li>
+				            <li>
+				            	<!-- 미리보기 이미지 -->
+				                <img id="resultImg3" class="resultImg" src="${pageContext.request.contextPath }/upload/${imageFile3}" />
+				                <!-- 이미지 파일 입력 요소 -->
+				                <input type="file" name="file" class="image" accept="image/*" multiple onchange="previewImage(event, 'resultImg3')" />
+				            </li>				            
 						</ul>
 					</div>
 
 					<div class="con">
 						<!-- 매장이용시간 -->
 						<span class="inp-txt">
-							<img src="${pageContext.request.contextPath}/assets/images/clock.png" alt="이용시간">
+							<img src="${pageContext.request.contextPath}/assets/images/clock.png" alt="이용시간" class="icon">
 							<input type="time" class="time" name="time1"> ~ <input type="time" class="time" name="time2">
 						</span>
 					</div>
 					<div class="con">
 						<!-- 주차 가능여부 -->
 						<span class="inp-txt"> <img
-							src="${pageContext.request.contextPath}/assets/images/parking.png" alt="주차 여부">
-							<div class="parking">
+							src="${pageContext.request.contextPath}/assets/images/parking.png" alt="주차 여부" class="icon">
+							<span class="parking">
 								<input type="radio" id="parking1" name="parking" value="Y"><label for="parking1">주차가능하당</label>
 								<input type="radio" id="parking2" name="parking" value="N"><label for="parking2">주차 불가능하당</label>
-							</div>
+							</span>
 						</span>
 					</div>
 					<div class="con">
 						<!-- 추가 내용 -->
 						<span class="inp-txt">
-							<img src="${pageContext.request.contextPath}/assets/images/file.png" alt="추가 내용">
+							<img src="${pageContext.request.contextPath}/assets/images/file.png" alt="추가 내용" class="icon">
 							<input type="text" id="bdComment" name="bdComment" placeholder="추가 정보">
 						</span>
 					</div>
@@ -139,6 +145,36 @@
 	<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
 	<!-- 푸터 끝 -->
 </body>
+    <!-- 회원가입 완료 메시지를 표시하기 위한 JavaScript 코드 -->
+ <script>
+    // JSP에서 Java 변수를 JavaScript 변수로 변환
+    var successMessage = "${successMessage}";
+    var failMessage = "${failMessage}";
+
+    if (successMessage) {
+        alert(successMessage); // 회원가입 성공 알림창
+        location.href = "/manager/managerLoginForm"; // 로그인 창으로 이동
+    } else if (failMessage) {
+        alert(failMessage); // 회원가입 실패 알림창
+    }
+</script>
+ <script>/*이미지 미리보기*/
+	function previewImage(event, imgId) {
+		const input = event.target;
+		const imgElement = document.getElementById(imgId);
+
+		if (input.files && input.files[0]) {
+			const reader = new FileReader();
+
+			reader.onload = function (e) {
+			imgElement.src = e.target.result;
+			
+		};
+
+		reader.readAsDataURL(input.files[0]);
+		}
+	}
+</script> 
 <script>
 	/*우편변호/주소*/
 function execDaumPostcode() {

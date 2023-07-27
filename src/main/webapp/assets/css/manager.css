@@ -49,7 +49,7 @@ input::placeholder{color: #B8B8B8;}
 .join-wrap .con{position: relative;}
 .join-wrap .con .inp-txt{ display:block; text-align: center; }
 .join-wrap .con:nth-child(1) .inp-txt{margin-left: 115px;}
-.join-wrap .con img{display: inline-block; width: 40px; height: 40px; margin-right: 10px;}
+.join-wrap .con img.icon{display: inline-block; width: 40px; height: 40px; margin-right: 10px;}
 .join-wrap .con + .con{margin-top: 20px;}
 .join-wrap .con .inp-txt input{ width: 400px; height: 40px; padding : 8px 20px 9px 20px; background: #F5F5F5;
     border: 1px solid #B8B8B8; box-sizing: border-box; border-radius: 8px;  color: #111;}
@@ -64,14 +64,17 @@ input::placeholder{color: #B8B8B8;}
 .join-wrap .con span.inp-txt>input.addr{margin: 5px 0 0 55px;}
 #btnJoin{margin-top: 20px;}
 .join-wrap .con span.inp-txt>input.time{width: 190px;}
-.join-wrap .con span.inp-txt>div.parking{display: inline-block; margin: 0 38px;}
-.join-wrap .con span.inp-txt>div.parking input[type="radio"]{display: none;}
-.join-wrap .con span.inp-txt>div.parking input[type="radio"]:checked + label{background-color: #2E419A; color: #fff;}
-.join-wrap .con span.inp-txt>div.parking label{display: inline-block; margin-right: 10px; padding: 8px 20px; background-color:#F5F5F5;
+.join-wrap .con span.inp-txt>span.parking{display: inline-block; margin: 0 38px;}
+.join-wrap .con span.inp-txt>span.parking input[type="radio"]{display: none;}
+.join-wrap .con span.inp-txt>span.parking input[type="radio"]:checked + label{background-color: #2E419A; color: #fff;}
+.join-wrap .con span.inp-txt>span.parking label{display: inline-block; margin-right: 10px; padding: 8px 20px; background-color:#F5F5F5;
 	border: 1px solid #B8B8B8; border-radius: 8px; cursor: pointer;}
 .join-wrap .con .imageBox{width:950px;margin: 0 auto;}
-.join-wrap .con .imageBox li{ display: inline-block;width: 300px; height:250px; border: 1px solid #000; box-sizing:border-box; margin-left: 10px; }
-.join-wrap .con .imageBox li>input{width: 100%; height: 100%; opacity: 0;}
+.join-wrap .con .imageBox li{ display: inline-block;width: 300px; height:250px; border: 1px solid #000; box-sizing:border-box; margin-left: 10px;
+	 position: relative; overflow: hidden;}
+.join-wrap .con .imageBox li>input{border: 1px solid #2E419A;position: absolute; top: 0; left: 0;opacity: 0;
+	width: 100%;height: 100%;cursor: pointer;}
+.join-wrap .con img.resultImg{display: inline-block; width: 100%; height: 100%; object-fit: cover;}/* 이미지가 비율을 유지하면서 박스에 맞게 자동으로 조절되도록 설정 */
 /*매니저-메인컨텐츠-로그인*/
 .login-wrap{}
 .login-wrap .con{position: relative;}

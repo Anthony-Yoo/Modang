@@ -13,9 +13,10 @@ public class ManagerDao {
 	private SqlSession sqlSession;
 	
 	/*회원가입*/
-	public void insertManager(ManagerVo managerVo){
+	public int insertManager(ManagerVo managerVo){
 		System.out.println("ManagerDao.insertManager.managerVo");
-		sqlSession.insert("manager.insertManager",managerVo);
+		int count=sqlSession.insert("manager.insertManager",managerVo);
+		return count;
 	}
 	
 	/*회원가입 id 중복체크*/

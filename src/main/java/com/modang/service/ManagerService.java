@@ -21,7 +21,7 @@ public class ManagerService {
 	private ManagerDao managerDao;
 	
 	/*회원가입*/
-	public void join(ManagerVo managerVo, List<MultipartFile> file) {
+	public int join(ManagerVo managerVo, List<MultipartFile> file) {
 		System.out.println("managerService.join");
 		//요금테이블(tariff) 정보 삽입
 		
@@ -67,7 +67,8 @@ public class ManagerService {
 		//db에 저장
 		//ManagerVo managerVo= new ManagerVo();
 		System.out.println(managerVo);
-		managerDao.insertManager(managerVo);
+		int count=managerDao.insertManager(managerVo);
+		return count;
 		
 	}
 	
