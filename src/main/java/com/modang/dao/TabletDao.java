@@ -128,12 +128,65 @@ public class TabletDao {
 		return session.selectOne("tablet.selectTariff", tableInfo);
 	}
 	
-	public void updateTbStatus() {
-		System.out.println("TabletDao.updateTbStatus");
+	public int updateStartTime(TableGamesVo tableGameVo) {
+		System.out.println("TabletDao.updateStartTime()");
 		
-		session.update("tablet.updateTbStatus");
+		return session.update("tablet.updateStartTime",tableGameVo);
 	}
 	
+	public int updateIngStatus(TableGamesVo tableGameVo) {
+		System.out.println("TabletDao.updateIngStatus()");
+		
+		return session.update("tablet.updateIngStatus",tableGameVo);
+	}
+	
+	public int updatePauseStart(TableGamesVo tableGameVo) {
+		System.out.println("TabletDao.updatePauseStart()");
+		
+		return session.update("tablet.updatePauseStart",tableGameVo);
+	}
+	
+	public int updatePauseStatus(TableGamesVo tableGameVo) {
+		System.out.println("TabletDao.updatePauseStatus()");
+		
+		return session.update("tablet.updatePauseStatus",tableGameVo);
+	}
+	
+	public int updatePauseStop(TableGamesVo tableGameVo) {
+		System.out.println("TabletDao.updatePauseStop()");		
+		
+		return session.update("tablet.updatePauseStop",tableGameVo);
+	}	
+	
+	public int updatePauseTime(TableGamesVo tableGameVo) {
+		System.out.println("TabletDao.updatePauseTime()");		
+		
+		return session.update("tablet.updatePauseTime",tableGameVo);
+	}
+	
+	public int updateEndStatus(TableGamesVo tableGameVo) {
+		System.out.println("TabletDao.updateEndStatus()");
+		
+		return session.update("tablet.updateEndStatus",tableGameVo);
+	}
+	
+	public int updateEndTime(TableGamesVo tableGameVo) {
+		System.out.println("TabletDao.updateEndTime()");
+		
+		return session.update("tablet.updateEndTime",tableGameVo);
+	}
+	
+	public int updateGameTime(TableGamesVo tableGameVo) {
+		System.out.println("TabletDao.updateGameTime()");		
+		
+		return session.update("tablet.updateGameTime",tableGameVo);
+	}
+	
+	public int updatePayMoney(TableGamesVo tableGameVo) {
+		System.out.println("TabletDao.updatePayMoney()");		
+		
+		return session.update("tablet.updatePayMoney",tableGameVo);
+	}
 	
 	
 }
