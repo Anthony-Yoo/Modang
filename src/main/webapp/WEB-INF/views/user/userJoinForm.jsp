@@ -40,8 +40,10 @@
                     			<div class="element">
 									
 										<div data-text-content="true" style="background-color: rgb(255, 255, 255);text-shadow: none;box-shadow: rgba(46, 65, 154, 0.28) 5px 10px 10px 0px;border-width: 0px;border-style: none;border-radius: 4px;width: 202px;height: 150px;margin: 66px 0px 110px 336px;padding: 10px 10px 10px 10px;">
-											<div data-text-content="true" onclick="document.location='${pageContext.request.contextPath}/user/joinForm'" style="font-size: 16px;font-weight: bold;padding: 15px 0px 15px 25px;" class="">
-											개인 회원 가입
+											<div data-text-content="true" style="font-size: 16px;font-weight: bold;padding: 6px 0px 15px 25px;" class="">
+											
+											<p>개인 회원 가입
+											<img src="${pageContext.request.contextPath}/assets/images/right-chevron.png" height="30px" onclick="document.location='${pageContext.request.contextPath}/user/joinForm'" alt=""></p>
 										
 											</div>
 											<div data-obj-id="1QCzC" data-obj-type="element" data-text-editable="true" class="" style="position: sticky;top: 300px;left: 360px;width: 185px;height: 100px;margin: 0px 0px 18px 13px;">
@@ -56,13 +58,15 @@
 										</div>
 										
 										<div data-obj-id="CU3Tk" data-obj-type="element" data-text-editable="true" class="" style="position: absolute;top: 240px;left: 630px;width: 200px;height: 150px;margin: 67px 10px 10px 316px;" data-link-to="page:PBjRh">
-											<div data-text-content="true" onclick="document.location='${pageContext.request.contextPath}/manager/joinForm'" style="background-color: rgb(255, 255, 255);text-shadow: none;box-shadow: rgba(46, 65, 154, 0.28) 5px 10px 10px 0px;border-width: 0px;border-style: none;border-radius: 4px;margin: -27px -55px 0px 30px;padding: 13px 10px 10px 10px;height: 150px;">
+											<div data-text-content="true" style="background-color: rgb(255, 255, 255);text-shadow: none;box-shadow: rgba(46, 65, 154, 0.28) 5px 10px 10px 0px;border-width: 0px;border-style: none;border-radius: 4px;margin: -27px -55px 0px 30px;padding: 13px 10px 10px 10px;height: 150px;">
 									
 											</div>
 										</div>
 										<div data-obj-id="DOLqn" data-obj-type="element" data-text-editable="true" class="" style="position: absolute;top: 261.997px;left: 664.983px;width: 120px;height: 20px;margin: 60px 72px -37px 311px;">
-											<div data-text-content="true" style="font-size: 16px;font-weight: bold;margin: -13px -35px 10px 37px;" class="">사업자 회원가입</div>
-									
+											<div data-text-content="true" style="font-size: 16px;font-weight: bold;width: 170px;margin: -24px -35px 10px 37px;" class="">
+											
+											사업자 회원가입 
+											<img src="/modang/assets/images/right-chevron.png" height="30px" onclick="document.location='/modang/manager/joinForm'" alt=""></div>
 										</div>
 									
 										<div data-obj-id="7TjRA" data-obj-type="element" data-text-editable="true" class="" style="position: absolute;top: 300px;left: 647.986px;width: 175px;height: 69px;margin: 52px 10px 10px 315px;">
