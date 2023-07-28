@@ -68,19 +68,23 @@
 							<!-- 작성자 본인인 경우 -->
 							<c:choose>
 								<c:when test="${sessionScope.authUser.userNo == rList.userNo}">
+								
 									<a id="btn_applyList" href="">신청 리스트</a>
-									<a id="btn_boardList" href="">목록</a>
+									<a id="btn_boardList" href="${pageContext.request.contextPath}/board/list">목록</a>
 									<a id="btn_modify" href="">글 수정</a>
 									<a id="btn_delete" href="">삭제</a>
+									
 								</c:when>
 								<c:when test="${sessionScope.authUser.userNo != rList.userNo}">
-									<a id="btn_boardList" href="">목록</a>
-									<a id="btn_apply" href="" onclick="alert('신청되셨습니다!')">신청하기</a>
+								
+									<a id="btn_boardList" href="${pageContext.request.contextPath}/board/list">목록</a>
+									<a id="btn_apply" href="#">신청하기</a>
+									
 								</c:when>
 							</c:choose>
 						</div>
 					</div>
-				</div>
+				</div>	
 				<div>
 					<div id="title_set_result">
 						플레이 예정 정보 : [
@@ -149,7 +153,41 @@ $(document).ready(function() {
 	
 	commentList();
 	
-	
+	/* 신청하기 버튼 클릭이벤트 */
+	$(document).on("click", "#btn_apply" , function(event){
+		event.preventDefault();
+		console.log("클릭 성공")
+		var userNo = "${sessionScope.authUser.userNo}";
+		var boardNo= "${rList.boardNo}";
+		
+		var AttendUsersVo={
+			userNo: userNo,
+			boardNo: boardNo
+		}
+		
+		console.log(AttendUsersVo);
+		
+		$.ajax({
+			url : "${pageContext.request.contextPath}/attendUsers/apply",
+			type : "post",
+			contentType : "application/json",
+			data : JSON.stringify(AttendUsersVo) ,
+			
+			// 데이터 받은 후 
+			dataType : "json",
+			success : function(jsonResult) {
+				console.log("테스트");
+				console.log(jsonResult); 
+				alert(jsonResult.result);				 
+			 },
+			error : function(XHR, status, error) {
+				// 실패
+
+			}
+
+		}); 
+		
+	});
     
 });
 
@@ -339,24 +377,6 @@ $(document).ready(function() {
 
 	}
 	
-	
-	/* <div id="comment_add">
-	<div id="comment_inbox">
-		<strong class="blind">댓글을 입력하세요</strong> <input type="hidden"
-			value="${sessionScope.authUser.userNo}" name="userNo">
-		<input type="hidden" value="${rList.boardNo}" name="boardNo">
-		<input type="hidden" id="depth" value=1>
-		<em id="comment_inbox_name">${sessionScope.authUser.nick}</em>
-		<div class="comment_inbox_wrapper">
-			<div class="comment_textarea_wrapper">
-				<textarea placeholder="댓글을 남겨보세요" rows="1" id="comment_inbox_text" style="overflow: hidden; overflow-wrap: break-word;"></textarea>
-			</div>
-			<div id="register_box">
-				<a href="" role="button" id="btn_register">등록</a>
-			</div>
-		</div>
-	</div>
-	</div> */
 
 	
 	// 대댓글 입력 창
@@ -471,5 +491,7 @@ $(document).ready(function() {
 		}
 		
 	}
+	
+	
 </script>
 </html>

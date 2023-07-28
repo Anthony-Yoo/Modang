@@ -21,6 +21,7 @@ public class ApiBDCommentController {
 	@Autowired
 	private BDCommentService bDCommentService;
 
+	/* 댓글 추가 컨트롤러*/
 	@ResponseBody
 	@PostMapping("/addComment")
 	public JsonResult addComment(@RequestBody BDCommentVo bdCommentVo) {
@@ -34,6 +35,7 @@ public class ApiBDCommentController {
 		return jsonResult;
 	}
 	
+	/* 대댓글 추가 컨트롤러*/
 	@ResponseBody
 	@PostMapping("/addSComment")
 	public JsonResult addSComment(@RequestBody BDCommentVo bdCommentVo) {
@@ -47,6 +49,7 @@ public class ApiBDCommentController {
 		return jsonResult;
 	}
 	
+	/* 댓글 리스트 컨트롤러 */
 	@ResponseBody
 	@PostMapping(value = "/list")
 	public JsonResult commentList(@RequestParam int boardNo) {

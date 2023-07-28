@@ -57,6 +57,14 @@ public class BiliardDao {
 		return gamesList;
 	}
 	
+	/* 테이블 현황 - 테이블별 미정산 리스트 가져오기 */
+	public List<TableGamesVo> selectIncaluList(CueTableVo cuetableVo) {
+		System.out.println("BiliardDao.selectIncaluList()");
+		List<TableGamesVo> incaluList = sqlSession.selectList("biliard.selectIncaluList", cuetableVo);
+		
+		return incaluList;
+	}
+	
 	/* 테이블 현황 - 상세정보 가져오기 */
 	public TableGamesVo selectTable(CueTableVo cuetableVo) {
 		System.out.println("BiliardDao.selectTable()");

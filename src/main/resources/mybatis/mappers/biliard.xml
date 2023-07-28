@@ -2,7 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="biliard">
-    
+
+    <!-- 테이블별 미정산 리스트 가져오기 -->
+    	<select id="selectIncaluList" parameterType="com.modang.vo.CueTableVo" resultType="com.modang.vo.TableGamesVo">
+			<![CDATA[
+					select row_number()over(order by gameno)num, 
+					        gameno,
+					        tableno,
+					        starttime,
+					        endtime,
+					        paymoney 
+					        from 
+					        games 
+					        where tableno=#{tableNo} and  paystatus='0'					
+			]]>
+		</select>
 
 	<!-- 테이블 추가하기 -->
 	<insert id="insertTable" parameterType="com.modang.vo.CueTableVo">  
@@ -24,7 +38,8 @@
 					       tablename,
 					       tabletype,
 					       status as tableStatus      
-					from cuetable where tableno = #{tableno} 
+					from cuetable 
+					where tableno = #{tableno} 
 			]]>
 		</select>
 		
@@ -61,7 +76,6 @@
 				and c.biliardNo=#{biliardNo}
 				and g.payStatus=0
 			]]>	
-		
 		</select>
 
 	<!-- 테이블상세정보 -->
