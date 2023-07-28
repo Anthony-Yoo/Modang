@@ -44,23 +44,20 @@ public class ManagerController {
 	    managerVo.setImageFile2(file.get(1).getOriginalFilename());
 	    managerVo.setImageFile3(file.get(2).getOriginalFilename());
 	    System.out.println(managerVo);//이미지 파일명 보임
-	    String successMessage = "회원가입 성공했당!";
-        String failMessage = "회원가입 실패했당!";
         int count = managerService.join(managerVo, file);
-        if (count == 1) {
-            // 회원가입이 성공적으로 완료되었을 때, 알림 메시지를 전달
-            model.addAttribute("successMessage", successMessage);
-        } else {
-            model.addAttribute("failMessage", failMessage);
-        }
-        return "/manager/joinForm";
+        if(count==1) {
+        	System.out.println("회원가입성공");
+        	return "manager/managerJoinSuccess";
+        }else {
+        	System.out.println("회원가입실패");
+            return "redirect:/manager/joinForm";
 	   }
+	}
 
-	 
 
-	/*회원가입 id 중복체크*/
-	@ResponseBody
-	@RequestMapping(value ="/join/idcheck", method = {RequestMethod.GET, RequestMethod.POST})
+	/*회원가입 id 중복체크*/ 
+	@ResponseBody  
+    @RequestMapping(value ="/join/idcheck", method = {RequestMethod.GET, RequestMethod.POST})
 	public JsonResult idcheck(@RequestParam("id") String id) {
 		System.out.println("ManagerController.idcheck");
 		boolean data =managerService.idcheck(id);
