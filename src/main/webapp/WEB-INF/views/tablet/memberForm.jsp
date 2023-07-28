@@ -353,7 +353,7 @@
 	$('#confirm').on("click",function() {
 		console.log("확정 버튼 클릭");			
 		
-		var tableNo = 1;
+		var tableNo = ${tableNo};
 		var gameType = ${param.ball};
 		var userNo = new Array();
 		var nick = new Array();

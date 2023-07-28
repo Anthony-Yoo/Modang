@@ -71,5 +71,15 @@ public class UserDao {
 		
 		return userVo;
 	}
+	
+	//회원정보 확인
+	public UserVo selectUserInfo(String id) {
+		System.out.println("userDao.selectUser()");
+		System.out.println(id);
+		
+		UserVo userNo=session.selectOne("user.selectUserPageByNo", id);
+		System.out.println(id);
+		return userNo;
+	}
 
 }

@@ -58,7 +58,7 @@
 							<div class="form-group">
 								<div class="input-group">
 									<span class="input-group-addon">
-										<img src="${pageContext.request.contextPath}/assets/images/settings.png" alt="">
+										<img src="${pageContext.request.contextPath}/assets/images/passwd.png" alt="">
 									</span>
 									
 									<span class="input-group-addon">

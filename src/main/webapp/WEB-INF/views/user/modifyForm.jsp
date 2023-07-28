@@ -30,15 +30,7 @@
     <div id="main-content">
 
          <div class="container text-center">
-        	
-				<%-- <div class="btn-group-vertical">
-							<button type="button" class="btn btn-light" onclick="document.location=''">회원정보</button>
-							<button type="button" class="btn btn-light" onclick="document.location=''">친구목록</button>
-							<button type="button" class="btn btn-light" onclick="document.location=''">그룹친구</button>
-							<button type="button" class="btn btn-light" onclick="document.location='${pageContext.request.contextPath}/board/list'">매칭목록</button>
-							<button type="button" class="btn btn-light" onclick="document.location=''">전적보기</button>
-				</div> --%>
-								
+        				
                 <div id="user">
 				
 					<div id="modifyForm">

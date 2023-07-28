@@ -186,5 +186,15 @@ public class UserService {
 		
 		return result;
 	}
+	
+	//userPage 아이디 받기
+	public UserVo userPage(String id) {
+		System.out.println("userService.userPage()");
+		System.out.println(id);
+		
+		UserVo userNo=userDao.selectUserInfo(id);
+		System.out.println(id);
+		return userNo;
+	}
 
 }

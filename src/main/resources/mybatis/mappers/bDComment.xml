@@ -2,32 +2,107 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bDComment">
 
-	<!-- <insert id="insert" parameterType="com.modang.vo.BDCommentVo">
+	<!-- 첫 댓글 등록 -->
+	<insert id="insert" parameterType="com.modang.vo.BDCommentVo">
+		<selectKey keyProperty="commentNo" resultType="int" order="BEFORE">	
+				select seq_bdcomment_no.nextval from dual
+		</selectKey>
+		<![CDATA[
+			insert into bdcomment(
+	            commentNo, 
+	            boardNo, 
+	            userNo, 
+	            writeDate, 
+	            content, 
+	            groupNo, 
+	            groupOrder, 
+	            depth) 
+	        values(
+	            #{commentNo}, 
+	            #{boardNo}, 
+	            #{userNo}, 
+	            sysdate, 
+	            #{content},
+	            seq_groupNo_no.nextval, 
+	            1,
+	            0)
+          ]]>
+	</insert> 
+	
+	<!-- 대댓글 등록 -->
+	<insert id="sInsert" parameterType="com.modang.vo.BDCommentVo">
+		<selectKey keyProperty="commentNo" resultType="int" order="BEFORE">	
+				select seq_bdcomment_no.nextval from dual
+		</selectKey>
+		<![CDATA[
+			insert into bdcomment(
+	            commentNo, 
+	            boardNo, 
+	            userNo, 
+	            writeDate, 
+	            content, 
+	            groupNo, 
+	            groupOrder, 
+	            depth) 
+	        values(
+	            #{commentNo}, 
+	            #{boardNo}, 
+	            #{userNo}, 
+	            sysdate, 
+	            #{content},
+	            #{groupNo}, 
+	            #{groupOrder},
+	            (#{depth}+1))
+          ]]>
+	</insert>
+	 
+	<!-- 대댓글 한개의 데이터 반환-->
+	<select id="selectComment" parameterType="com.modang.vo.BDCommentVo" resultType="com.modang.vo.BDCommentVo">
 	<![CDATA[
-		insert into bdcomment(
-            commentNo, 
-            boardNo, 
-            userNo, 
-            writeDate, 
-            content, 
-            groupNo, 
-            groupOrder, 
-            depth) 
-        values(
-            seq_bdcomment_no.nextval, 
-            #{boardNo}, 
-            #{userNo}, 
-            sysdate, 
-            #{content}, ]]>
-            
-            2, 
-            2,
-             <![CDATA[ 
-            #{depth})
-            ]]>
-	</insert> -->
-
-
+		select a.commentNo
+				 , a.boardNo
+				 , a.userNo
+				 , writeDate
+				 , content
+				 , groupNo
+				 , groupOrder
+				 , depth
+				 , b.nick
+				 , b.id
+			from bdcomment a, users b
+			where a.userNo = b.userNo and a.boardNo = #{boardNo} and a.commentNo = #{commentNo}
+			   
+	]]>
+	</select>
+	
+	<!-- 대댓글 한개의 데이터 존재여부 체크-->
+	<select id="checkVal" parameterType="com.modang.vo.BDCommentVo" resultType="com.modang.vo.BDCommentVo">
+	<![CDATA[
+		select commentNo
+			 , boardNo
+			 , userNo
+			 , writeDate
+			 , content
+			 , groupNo
+			 , groupOrder
+			 , depth
+		from bdcomment
+		where commentNo = #{commentNo} and boardNo = #{boardNo} and groupNo=#{groupNo} and groupOrder=#{groupOrder} 
+			   
+	]]>
+	</select>
+	
+	
+	<!-- 댓글에 새로운 댓글이 달릴시 기존에 존재하던 GroupNo그룹의 orderNo값 1증가 -->
+	<update id="sCModify" parameterType="com.modang.vo.BDCommentVo">
+		<![CDATA[
+		UPDATE BDComment
+		SET groupOrder = groupOrder + 1
+		WHERE boardNo = #{boardNo} AND groupNo = #{groupNo} AND groupOrder > #{groupOrder}-1 
+		]]>
+	</update>
+	
+	<!-- 댓글 리스트 반환 -->
 	<select id="list" resultType="com.modang.vo.BDCommentVo" parameterType="int">
 		<![CDATA[
 			select a.commentNo
@@ -42,8 +117,8 @@
 				 , b.id
 			from bdcomment a, users b
 			where a.userNo = b.userNo and a.boardNo = #{boardNo}
-			order by groupNo DESC
-				   , groupOrder ASC
+			order by groupNo desc
+				   , groupOrder desc
 		]]>
 	</select>
 
