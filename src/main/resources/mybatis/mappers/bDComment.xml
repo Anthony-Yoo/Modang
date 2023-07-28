@@ -28,6 +28,7 @@
 	            0)
           ]]>
 	</insert> 
+	
 	<!-- 대댓글 등록 -->
 	<insert id="sInsert" parameterType="com.modang.vo.BDCommentVo">
 		<selectKey keyProperty="commentNo" resultType="int" order="BEFORE">	
@@ -92,6 +93,7 @@
 	</select>
 	
 	
+	<!-- 댓글에 새로운 댓글이 달릴시 기존에 존재하던 GroupNo그룹의 orderNo값 1증가 -->
 	<update id="sCModify" parameterType="com.modang.vo.BDCommentVo">
 		<![CDATA[
 		UPDATE BDComment

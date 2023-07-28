@@ -50,6 +50,8 @@ public class BDCommentDao {
 		return sqlSession.update("bDComment.sCModify", vo);
 	}
 	
+	
+	/* 대댓글 데이터 삽입 */
 	public BDCommentVo SCInsert(BDCommentVo vo) {
 		System.out.println("BDCommentService.SCInsert()");
 		System.out.println(vo);

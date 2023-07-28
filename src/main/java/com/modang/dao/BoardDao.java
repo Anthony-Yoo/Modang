@@ -80,10 +80,12 @@ public class BoardDao {
 		return total;
 	}
 	
+	/* 조회수 증가 */
 	public void hitAddCount(int boardNo) {
 		sqlSession.update("board.hitAddCount", boardNo);
 	}
 	
+	/* 글 read시 필요한 한개의 데이터 */
 	public BoardVo selectOne(int boardNo) {
 		System.out.println("BoardDao.selectOne()");
 		BoardVo result = sqlSession.selectOne("selectOne", boardNo);

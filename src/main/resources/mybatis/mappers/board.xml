@@ -134,6 +134,7 @@
 		]]>
 	</select>
 	
+	<!-- 조회수 1 증가 -->
 	<update id="hitAddCount" parameterType="int">
 		<![CDATA[
 			UPDATE matchboard
