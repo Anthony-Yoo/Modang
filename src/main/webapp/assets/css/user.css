@@ -326,3 +326,10 @@ div.content {
     vertical-align: top;
     width:30%;
 }
+
+
+#joinOk button {
+    margin-left: 0;
+    background-color:  #2E419A;
+    color: #fff;
+}

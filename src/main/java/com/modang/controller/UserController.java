@@ -192,7 +192,7 @@ public class UserController {
 		
 		UserVo userVo=userService.userPage(id);
 		model.addAttribute("userVo", userVo);
-		
+		System.out.println(userVo);
 		return "user/userPage";
 	}
 	
