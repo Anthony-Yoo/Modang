@@ -187,10 +187,114 @@ public class TabletService {
 		return myGameInfo;
 	}
 	
-	public void startGame() {
-		System.out.println("TabletService.startGame()");
+	public TableGamesVo startGame(TableGamesVo tableGameVo) {
+		System.out.println("TabletService.startGame()");	
 		
-		tabletDao.updateTbStatus();
+		tabletDao.updateStartTime(tableGameVo);
+		tabletDao.updateIngStatus(tableGameVo);
+		
+		int tableNo = tableGameVo.getTableNo();
+		System.out.println(tableNo);
+		
+		TableGamesVo myGameInfo = tabletDao.selectGameforTableNo(tableNo);
+		
+		
+		return myGameInfo;
 	}
 	
+	public TableGamesVo pauseGame(TableGamesVo tableGameVo) {
+		System.out.println("TabletService.pauseGame()");
+		
+		tabletDao.updatePauseStart(tableGameVo);
+		tabletDao.updatePauseStatus(tableGameVo);
+		
+		int tableNo = tableGameVo.getTableNo();
+		System.out.println(tableNo);
+		
+		TableGamesVo myGameInfo = tabletDao.selectGameforTableNo(tableNo);		
+		
+		return myGameInfo;
+	}
+	
+	public TableGamesVo reStartGame(TableGamesVo tableGameVo) {
+		System.out.println("TabletService.reStartGame()");
+		
+		tabletDao.updatePauseStop(tableGameVo);
+		tabletDao.updatePauseTime(tableGameVo);
+		tabletDao.updateIngStatus(tableGameVo);
+		
+		int tableNo = tableGameVo.getTableNo();
+		System.out.println(tableNo);
+		
+		TableGamesVo myGameInfo = tabletDao.selectGameforTableNo(tableNo);
+		System.out.println(myGameInfo);
+		
+		return myGameInfo;
+	}
+	
+	public TableGamesVo endGame(TableGamesVo tableGameVo) {
+		System.out.println("TabletService.endGame()");
+		
+		tabletDao.updateEndStatus(tableGameVo);
+		tabletDao.updateEndTime(tableGameVo);
+		tabletDao.updateGameTime(tableGameVo);
+		
+		int tableNo =tableGameVo.getTableNo();
+		System.out.println(tableNo);
+		
+		///////////////////////////////////////////////////////////////////////////////
+		//*요금표찾기*/////////////
+		////////////////////////////////////////////////////////////////////////////
+		
+		//게임정보 찾기
+			tableGameVo = tabletDao.selectGameforTableNo(tableNo);
+			System.out.println(tableGameVo);
+		//당구장번호찾기 & 테이블 종류찾기
+			CueTableVo tableInfo = tabletDao.selectCueTable(tableNo);
+			System.out.println(tableInfo);
+		//요금표 찾기
+			TariffVo tariffInfo = tabletDao.selectTariff(tableInfo);
+			System.out.println(tariffInfo);
+		//테이블에 맞는 요금찾기
+			int tableFee = 0;
+			int minFee = 0;
+			int tableType = tableInfo.getTableType();
+			switch(tableType) {
+				case 0 :  	tableFee = tariffInfo.getBtablefee();
+							minFee = tariffInfo.getBminfee();
+							break;
+				case 1 :	tableFee = tariffInfo.getMtablefee();
+							minFee = tariffInfo.getMminfee();
+							break;
+				case 2 :	tableFee = tariffInfo.getPtablefee();
+							minFee = tariffInfo.getPminfee();
+							break;
+				default : 	tableFee = 0;
+							minFee = 0;
+							break;
+			}
+			// 요금을 플레이유져에 넣기			
+			tableGameVo.setTableFee(tableFee);
+			tableGameVo.setMinFee(minFee);			
+		////////////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////////////
+		
+		int gameSeconds = tableGameVo.getGameTime();
+		int gameMin = (int)Math.round(gameSeconds/60);
+		int ceilMin = (int)(Math.ceil(gameMin/10)*10);
+		int useFee = 0;
+		if (ceilMin <= 30) {
+			useFee = tableFee;// 기본요금
+		}else {
+			useFee = tableFee + ((ceilMin-30)/10) * minFee;//기본요금 +((올림한경기시간-30)/10) * 10분당 요금
+		}
+		System.out.println(useFee);
+		tableGameVo.setPayMoney(useFee);		
+		tabletDao.updatePayMoney(tableGameVo);	
+		
+		TableGamesVo myGameInfo = tabletDao.selectGameforTableNo(tableNo);
+		System.out.println(myGameInfo);
+		
+		return myGameInfo;
+	}
 }

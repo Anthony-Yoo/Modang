@@ -211,7 +211,7 @@
 					TABLENO,
 					GAMETYPE,
 					MEMBERNUM,
-					GAMEDATE,
+					GAMEDATE,					
 					GAMETIME,
 					STARTTIME,
 					ENDTIME,
@@ -221,17 +221,15 @@
 					INCOME,
 					PAYMONEY,
 					PAUSESTART,
-					PAUSESTOP,
+					PAUSESTOP,					
 					PAUSETIME,
-					SETNO
+					SETNO,
+					ROUND((sysdate-STARTTIME) * 24 * 60 * 60, 2)- PAUSETIME as secondsToTime
 			from GAMES
 			where GAMENO = (select max(GAMENO) from GAMES 
 							where TABLENO = #{tableNo})	
-		]]>
-	
-	
-	</select>
-	
+		]]>	
+	</select>	
 	
 	
 	<!-- 당구장찾기 -->
@@ -243,6 +241,7 @@
 			where TABLENO = #{tableNo}		
 		]]>
 	</select>
+	
 	<!-- 나의 플레이 찾기 -->
 	<select id="selectPlayUser" parameterType="com.modang.vo.TableGamesVo" resultType="com.modang.vo.PlayUserVo">
 		<![CDATA[
@@ -276,17 +275,104 @@
 								where BILIARDNO = #{biliardNo})			
 		]]>	
 	</select>
+	<!--게임시작: 게임시작시간 변경 -->
+	<update id="updateStartTime" parameterType="com.modang.vo.TableGamesVo">
+		<![CDATA[
+			update GAMES
+			set
+			STARTTIME = sysdate,
+			PAUSETIME = 0			
+			where GAMENO = #{gameNo} 		
+		]]>
+	</update>
 	
-	<!-- 테이블 상태 사용중변경 -->
-	<update id="updateTbStatus">
+	<!--게임시작: 테이블 상태 사용중변경 -->
+	<update id="updateIngStatus" parameterType="com.modang.vo.TableGamesVo">
 		<![CDATA[
 			update CUETABLE
 			set 
 			STATUS = 1
-			where = 
-		
-		
-		]]>
-	
+			where TABLENO = #{tableNo}		
+		]]>	
 	</update>
+	
+	<!--일시정지: 일시정지시간 변경 -->
+	<update id="updatePauseStart" parameterType="com.modang.vo.TableGamesVo">
+		<![CDATA[
+			update GAMES
+			set
+			PAUSESTART = sysdate		
+			where GAMENO = #{gameNo} 		
+		]]>
+	</update>
+	
+	<!--일시정지: 테이블 상태 사용중변경 -->
+	<update id="updatePauseStatus" parameterType="com.modang.vo.TableGamesVo">
+		<![CDATA[
+			update CUETABLE
+			set 
+			STATUS = 2
+			where TABLENO = #{tableNo}		
+		]]>	
+	</update>
+	
+	<!--재시작: 일시정지종료 변경 -->
+	<update id="updatePauseStop" parameterType="com.modang.vo.TableGamesVo">
+		<![CDATA[
+				update GAMES
+				set
+				PAUSESTOP = sysdate								
+				where GAMENO = #{gameNo} 		
+		]]>
+	</update>
+	<!--재시작: 일시정지 누적시간 변경 -->
+	<update id="updatePauseTime" parameterType="com.modang.vo.TableGamesVo">
+		<![CDATA[
+				update GAMES
+				set
+				PAUSETIME = PAUSETIME + ROUND((PAUSESTOP-PAUSESTART) * 24 * 60 * 60, 2)									
+				where GAMENO = #{gameNo} 		
+		]]>
+	</update>	
+	
+	<!--종료: 테이블 상태 대기중변경 -->
+	<update id="updateEndStatus" parameterType="com.modang.vo.TableGamesVo">
+		<![CDATA[
+			update CUETABLE
+			set 
+			STATUS = 0
+			where TABLENO = #{tableNo}		
+		]]>	
+	</update>
+	
+	<!--종료: 게임종료시간 변경 -->
+	<update id="updateEndTime" parameterType="com.modang.vo.TableGamesVo">
+		<![CDATA[
+			update GAMES
+			set
+			ENDTIME = sysdate				
+			where GAMENO = #{gameNo} 		
+		]]>
+	</update>
+	
+	<!--종료: 게임플레이 시간 변경 -->
+	<update id="updateGameTime" parameterType="com.modang.vo.TableGamesVo">
+		<![CDATA[
+				update GAMES
+				set
+				GAMETIME = ROUND((ENDTIME-STARTTIME) * 24 * 60 * 60, 2) - PAUSETIME							
+				where GAMENO = #{gameNo} 		
+		]]>
+	</update>
+	
+	<!--종료: 게임비 변경 -->
+	<update id="updatePayMoney" parameterType="int">
+		<![CDATA[
+				update GAMES
+				set
+				PAYMONEY = #{payMoney}						
+				where GAMENO = #{gameNo} 		
+		]]>
+	</update>
+	
 </mapper>

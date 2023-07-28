@@ -17,20 +17,21 @@ public class TableGamesVo {
 	private int income; // 지불금액
 	private int payMoney; // 게임결제금액
 	private String pauseStart; // 정지시작시각
-	private String pauseEnd; // 정지종료시각
+	private String pauseStop; // 정지종료시각
 	private int pauseTime; // 정지누적시각
 	private int setNo; // 고객그룹번호
 	private List<PlayUserVo> playUserList; // 플레이 유져리스트
 	private int tableFee;
 	private int minFee;
+	private int secondsToTime;
 
 	public TableGamesVo() {
 	}
 
 	public TableGamesVo(int gameNo, int tableNo, int gameType, int memberNum, String gameDate, int gameTime,
 			String startTime, String endTime, int payStatus, int payType, String payDate, int income, int payMoney,
-			String pauseStart, String pauseEnd, int pauseTime, int setNo, List<PlayUserVo> playUserList, int tableFee,
-			int minFee) {
+			String pauseStart, String pauseStop, int pauseTime, int setNo, List<PlayUserVo> playUserList, int tableFee,
+			int minFee, int secondsToTime) {
 		this.gameNo = gameNo;
 		this.tableNo = tableNo;
 		this.gameType = gameType;
@@ -45,12 +46,13 @@ public class TableGamesVo {
 		this.income = income;
 		this.payMoney = payMoney;
 		this.pauseStart = pauseStart;
-		this.pauseEnd = pauseEnd;
+		this.pauseStop = pauseStop;
 		this.pauseTime = pauseTime;
 		this.setNo = setNo;
 		this.playUserList = playUserList;
 		this.tableFee = tableFee;
 		this.minFee = minFee;
+		this.secondsToTime = secondsToTime;
 	}
 
 	public int getGameNo() {
@@ -165,12 +167,12 @@ public class TableGamesVo {
 		this.pauseStart = pauseStart;
 	}
 
-	public String getPauseEnd() {
-		return pauseEnd;
+	public String getPauseStop() {
+		return pauseStop;
 	}
 
-	public void setPauseEnd(String pauseEnd) {
-		this.pauseEnd = pauseEnd;
+	public void setPauseStop(String pauseStop) {
+		this.pauseStop = pauseStop;
 	}
 
 	public int getPauseTime() {
@@ -213,14 +215,23 @@ public class TableGamesVo {
 		this.minFee = minFee;
 	}
 
+	public int getSecondsToTime() {
+		return secondsToTime;
+	}
+
+	public void setSecondsToTime(int secondsToTime) {
+		this.secondsToTime = secondsToTime;
+	}
+
 	@Override
 	public String toString() {
 		return "TableGamesVo [gameNo=" + gameNo + ", tableNo=" + tableNo + ", gameType=" + gameType + ", memberNum="
 				+ memberNum + ", gameDate=" + gameDate + ", gameTime=" + gameTime + ", startTime=" + startTime
 				+ ", endTime=" + endTime + ", payStatus=" + payStatus + ", payType=" + payType + ", payDate=" + payDate
-				+ ", income=" + income + ", payMoney=" + payMoney + ", pauseStart=" + pauseStart + ", pauseEnd="
-				+ pauseEnd + ", pauseTime=" + pauseTime + ", setNo=" + setNo + ", playUserList=" + playUserList
-				+ ", tableFee=" + tableFee + ", minFee=" + minFee + "]";
+				+ ", income=" + income + ", payMoney=" + payMoney + ", pauseStart=" + pauseStart + ", pauseStop="
+				+ pauseStop + ", pauseTime=" + pauseTime + ", setNo=" + setNo + ", playUserList=" + playUserList
+				+ ", tableFee=" + tableFee + ", minFee=" + minFee + ", secondsToTime=" + secondsToTime + "]";
 	}
-
+	
+	
 }
