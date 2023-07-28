@@ -236,7 +236,8 @@
 	<select id="selectCueTable" parameterType="int" resultType="com.modang.vo.CueTableVo">
 		<![CDATA[
 			select  BILIARDNO,
-					tableType
+					tableType,
+					STATUS
 			from CUETABLE
 			where TABLENO = #{tableNo}		
 		]]>
@@ -375,4 +376,45 @@
 		]]>
 	</update>
 	
+	<!-- 플레이정보 업데이트 -->
+	<update id="updatePlayInfo" parameterType="com.modang.vo.PlayUserVo">
+		<![CDATA[
+				update PLAYS
+				set				
+				RECORD = #{record},
+				ACTIVEAVERAGE = #{activeAverage},
+				ENDTIME = sysdate					
+				where PLAYNO = #{playNo} 		
+		]]>
+	</update>
+	
+	<!-- 플레이시간 계산업데이트 -->
+	<update id="updatePlayTime" parameterType="com.modang.vo.PlayUserVo">
+		<![CDATA[
+				update plays
+				set playTime = (select  round((p.endtime - g.starttime)*24*60*60)-g.PAUSETIME as playTime
+				                from    games g, plays p
+				                where g.gameNo = p.gameNo
+				                and p.playNo = #{playNo})
+				where playno = #{playNo} ;		
+		]]>
+	</update>
+	
+	<!-- 플레이정보 획득 -->
+	<select id="selectPlayforPlayNo" parameterType="int" resultType="com.modang.vo.PlayUserVo">
+		<![CDATA[[
+			select  PLAYNO,
+					USERNO,
+					GAMENO,
+					PLAYTIME,
+					RECORD,
+					CURRENTAVERAGE,
+					ACTIVEAVERAGE,
+					ENDTIME,
+					ORDERNO
+			from Plays
+			where PLAYNO = #{playNo}		
+		]]>		
+	
+	</select>
 </mapper>
