@@ -105,15 +105,14 @@
 							<div class="form-group">
 								<div class="input-group">
 									<div class="row">
-										<div class="input-group col-sm-2" class="text-large bold">
+										<div class="input-group col-sm-2">
 											<img src="${pageContext.request.contextPath}/assets/images/smartphone.png" alt="cellphone number">
 										</div>
 									
-										<div class="input-group col-sm-1" class="text-large bold">
-											<input id="cellphone"
-										type="text" value="" maxlength="11" class="form-control"
-										name="cellphone" placeholder="HP">
+										<div class="input-group col-sm-1">
+											<input id="cellphone" type="text" value="" maxlength="11" class="form-control" name="cellphone" placeholder="HP">
 										</div>
+										
 									</div>	
 								</div>
 							</div>
@@ -197,7 +196,7 @@
           			<h4 class="modal-title">ID 확인!</h4>
         		</div>
         		<div class="modal-body">
-          			<p id="idcheckMsg"></p>
+          			<p id="idCheckMsg"></p>
         		</div>
         		<div class="modal-footer">
           			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -214,7 +213,7 @@
           			<h4 class="modal-title">닉네임 확인!</h4>
         		</div>
         		<div class="modal-body">
-          			<p id="nickcheckMsg"></p>
+          			<p id="nickCheckMsg"></p>
         		</div>
         		<div class="modal-footer">
           			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -312,7 +311,7 @@
 		//통신 id
 		$.ajax({
 
-			url : "${pageContext.request.contextPath }/user/idcheck",//주소 요청
+			url : "${pageContext.request.contextPath }/user/idCheck",//주소 요청
 			type : "post",
 			//contentType : "application/json",
 			data : {id : id},
@@ -324,10 +323,10 @@
 				if(jsonResult.result == "success"){//성공이면
 					//사용가능한지 표현함
 					if(jsonResult.data == true){//사용가능
-						$("#idcheckMsg").html(id + "사용가능");
+						$("#idCheckMsg").html(id + "사용가능");
 						
 					}else{//불가
-						$("#idcheckMsg").html(id + "사용중");
+						$("#idCheckMsg").html(id + "사용중");
 					}
 					
 				}else{//실패면
@@ -356,7 +355,7 @@
 		//통신 id
 		$.ajax({
 
-			url : "${pageContext.request.contextPath }/user/nickchek",//주소 요청
+			url : "${pageContext.request.contextPath }/user/nickChek",//주소 요청
 			type : "post",
 			//contentType : "application/json",
 			data : {nick : nick},
@@ -368,10 +367,10 @@
 				if(jsonResult.result == "success"){//성공이면
 					//사용가능한지 표현함
 					if(jsonResult.data == true){//사용가능
-						$("#nickcheckMsg").html(nick + "사용가능");
+						$("#nickCheckMsg").html(nick + "사용가능");
 						
 					}else{//불가
-						$("#nickcheckMsg").html(nick + "사용중");
+						$("#nickCheckMsg").html(nick + "사용중");
 					}
 					
 				}else{//실패면
