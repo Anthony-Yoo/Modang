@@ -40,10 +40,10 @@
                     			<div class="element">
 									
 										<div data-text-content="true" style="background-color: rgb(255, 255, 255);text-shadow: none;box-shadow: rgba(46, 65, 154, 0.28) 5px 10px 10px 0px;border-width: 0px;border-style: none;border-radius: 4px;width: 202px;height: 150px;margin: 66px 0px 110px 336px;padding: 10px 10px 10px 10px;">
-											<div data-text-content="true" style="font-size: 16px;font-weight: bold;padding: 6px 0px 15px 25px;" class="">
+											<div data-text-content="true" style="font-size: 20px;font-weight: bold;padding: 6px 0px 15px 25px;" class="">
 											
 											<p>개인 회원 가입
-											<img src="${pageContext.request.contextPath}/assets/images/right-chevron.png" height="30px" onclick="document.location='${pageContext.request.contextPath}/user/joinForm'" alt=""></p>
+											<img src="${pageContext.request.contextPath}/assets/images/right-chevron.png" height="20px" onclick="document.location='${pageContext.request.contextPath}/user/joinForm'" alt=""></p>
 										
 											</div>
 											<div data-obj-id="1QCzC" data-obj-type="element" data-text-editable="true" class="" style="position: sticky;top: 300px;left: 360px;width: 185px;height: 100px;margin: 0px 0px 18px 13px;">
@@ -63,14 +63,14 @@
 											</div>
 										</div>
 										<div data-obj-id="DOLqn" data-obj-type="element" data-text-editable="true" class="" style="position: absolute;top: 261.997px;left: 664.983px;width: 120px;height: 20px;margin: 60px 72px -37px 311px;">
-											<div data-text-content="true" style="font-size: 16px;font-weight: bold;width: 170px;margin: -24px -35px 10px 37px;" class="">
+											<div data-text-content="true" style="font-size: 20px;font-weight: bold;width: 179px;margin: -24px -35px 10px 25px;" class="">
 											
 											사업자 회원가입 
-											<img src="/modang/assets/images/right-chevron.png" height="30px" onclick="document.location='/modang/manager/joinForm'" alt=""></div>
+											<img src="/modang/assets/images/right-chevron.png" height="20px" onclick="document.location='/modang/manager/joinForm'" alt=""></div>
 										</div>
 									
 										<div data-obj-id="7TjRA" data-obj-type="element" data-text-editable="true" class="" style="position: absolute;top: 300px;left: 647.986px;width: 175px;height: 69px;margin: 52px 10px 10px 315px;">
-											<div data-text-content="true" style="font-size: 13px;margin: -1px -26px 0px 35px;" class="">
+											<div data-text-content="true" style="font-size: 13px;margin: -10px -26px 0px 35px;" class="">
 												<div>사업자등록을 보유중이라면,</div><br>
 												<div>사업자회원으로 가입하여</div><br>
 												<div>모당을 이용하실수 있습니다</div><br>
