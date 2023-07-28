@@ -68,19 +68,23 @@
 							<!-- 작성자 본인인 경우 -->
 							<c:choose>
 								<c:when test="${sessionScope.authUser.userNo == rList.userNo}">
+								
 									<a id="btn_applyList" href="">신청 리스트</a>
-									<a id="btn_boardList" href="">목록</a>
+									<a id="btn_boardList" href="${pageContext.request.contextPath}/board/list">목록</a>
 									<a id="btn_modify" href="">글 수정</a>
 									<a id="btn_delete" href="">삭제</a>
+									
 								</c:when>
 								<c:when test="${sessionScope.authUser.userNo != rList.userNo}">
-									<a id="btn_boardList" href="">목록</a>
-									<a id="btn_apply" href="">신청하기</a>
+								
+									<a id="btn_boardList" href="${pageContext.request.contextPath}/board/list">목록</a>
+									<a id="btn_apply" href="#">신청하기</a>
+									
 								</c:when>
 							</c:choose>
 						</div>
 					</div>
-				</div>
+				</div>	
 				<div>
 					<div id="title_set_result">
 						플레이 예정 정보 : [
@@ -115,18 +119,17 @@
 					<c:if test="${sessionScope.authUser != null}">
 						<div class="comment_add">
 							<div id="comment_inbox">
-								<strong class="blind">댓글을 입력하세요</strong> <input type="hidden"
-									value="${sessionScope.authUser.userNo}" name="userNo">
+								<strong class="blind">댓글을 입력하세요</strong> 
+								<input type="hidden" value="${sessionScope.authUser.userNo}" name="userNo">
 								<input type="hidden" value="${rList.boardNo}" name="boardNo">
-								<input type="hidden" id="depth" value=1> 
 								<em	id="comment_inbox_name">${sessionScope.authUser.nick}</em>
 								<div class="comment_inbox_wrapper">
 									<div class="comment_textarea_wrapper">
 										<textarea placeholder="댓글을 남겨보세요" rows="1" id="comment_inbox_text"
-											style="overflow: hidden; overflow-wrap: break-word;"></textarea>
+											style="overflow: hidden; overflow-wrap: break-word;" name="content"></textarea>
 									</div>
 									<div id="register_box">
-										<a href="#" role="button" class="btn_register">등록</a>
+										<a href="#" role="button" class="btn_register" id="main_btn">등록</a>
 									</div>
 								</div>
 							</div>
@@ -150,7 +153,41 @@ $(document).ready(function() {
 	
 	commentList();
 	
-	
+	/* 신청하기 버튼 클릭이벤트 */
+	$(document).on("click", "#btn_apply" , function(event){
+		event.preventDefault();
+		console.log("클릭 성공")
+		var userNo = "${sessionScope.authUser.userNo}";
+		var boardNo= "${rList.boardNo}";
+		
+		var AttendUsersVo={
+			userNo: userNo,
+			boardNo: boardNo
+		}
+		
+		console.log(AttendUsersVo);
+		
+		$.ajax({
+			url : "${pageContext.request.contextPath}/attendUsers/apply",
+			type : "post",
+			contentType : "application/json",
+			data : JSON.stringify(AttendUsersVo) ,
+			
+			// 데이터 받은 후 
+			dataType : "json",
+			success : function(jsonResult) {
+				console.log("테스트");
+				console.log(jsonResult); 
+				alert(jsonResult.result);				 
+			 },
+			error : function(XHR, status, error) {
+				// 실패
+
+			}
+
+		}); 
+		
+	});
     
 });
 
@@ -188,34 +225,86 @@ $(document).ready(function() {
 	});
 	// 댓글 입력란 관련 코드 end
 	
-	function extractHiddenValues(commentNumber) {
-	    // commentNumber에 따라 해당하는 댓글 입력 상자의 값들을 추출하여 콘솔에 출력
-	    var userNo = document.querySelector('#comment_inbox_' + commentNumber + ' input[name="userNo"]').value;
-	    var boardNo = document.querySelector('#comment_inbox_' + commentNumber + ' input[name="boardNo"]').value;
-	    var depth = document.querySelector('#comment_inbox_' + commentNumber + ' input[name="depth"]').value;
 	
-	    console.log("댓글 입력 상자 #" + commentNumber);
-	    console.log("userNo:", userNo);
-	    console.log("boardNo:", boardNo);
-	    console.log("depth:", depth);
+	/* 대댓글에 입력한 textarea 등록버튼 이벤트 */
+	function extractHiddenValues(commentNumber) {
+		event.preventDefault();
+	    // commentNumber에 따라 해당하는 댓글 입력 상자의 값들을 추출하여 콘솔에 출력
+	    var userNo = "${sessionScope.authUser.userNo}";
+	    var commentNo = $('.new input[name="commentNo"]').val();
+	    var boardNo = $('.new input[name="boardNo"]').val();
+	    var depth = $('.new input[name="depth"]').val();
+	    var groupNo = $('.new input[name="groupNo"]').val();
+	    var groupOrder = $('.new input[name="groupOrder"]').val();
+	    var content = $("#comment_inbox_text").val();
+	    var id = "${sessionScope.authUser.id}";
+	    var nick = "${sessionScope.authUser.nick}";
+	    
+	    var BDCommentVo = {
+			id : id,
+			nick : nick,
+			userNo : userNo,
+			commentNo : commentNo,
+			content : content,
+			boardNo : boardNo,
+			depth : depth,
+			groupNo : groupNo,
+			groupOrder : groupOrder
+		}	
+	    
+	    var str = JSON.stringify(BDCommentVo);
+	    console.log(str);
+	    
+	    $.ajax({
+			url : "${pageContext.request.contextPath}/api/comment/addSComment",
+			type : "post",
+			contentType : "application/json",
+			data : str,
+			
+			// 데이터 받은 후 
+			dataType : "json",
+			success : function(jsonResult) {
+				console.log("테스트");
+				console.log(jsonResult.data); 
+				// 성공시 ㅊㅓㄹㅣㅎㅐㅇㅑ할 코드
+
+				if (jsonResult.result == "success") {
+					// 정상 처리
+					listRender(jsonResult.data, "sDown", 0); 	// 리스트에 추가
+				
+					/* 창 초기화 */
+					$(".line.lNew").remove();
+			        $(".comment_add.new").remove();
+				 
+				} else {
+					// 오류 처리
+				
+				}
+			 },
+			error : function(XHR, status, error) {
+				// 실패
+
+			}
+
+		}); 
 	}
 	
 	//등록버튼
-	$(document).on("click", ".btn_register", function(event) {
+	$(document).on("click", "#main_btn", function(event) {
 		event.preventDefault(); // 기본 동작 막기
 		console.log("버튼 클릭");
 		var id = "${sessionScope.authUser.id}";
+		var nick = "${sessionScope.authUser.nick}";
 		var userNo = $("[name='userNo']").val();
 		var boardNo = $("[name='boardNo']").val();
 		var content = $("#comment_inbox_text").val();
-		var depth = $("#depth").val();
 
 		var BDCommentVo = {
 			id : id,
+			nick : nick,
 			userNo : userNo,
 			content : content,
 			boardNo : boardNo,
-			depth : depth
 		}
 
 		console.log(BDCommentVo);
@@ -232,12 +321,12 @@ $(document).ready(function() {
 			// 데이터 받은 후 
 			dataType : "json",
 			success : function(jsonResult) {
-				console.log(jsonResult);
+				console.log(jsonResult); 
 				// 성공시 ㅊㅓㄹㅣㅎㅐㅇㅑ할 코드
 
-				/* if (jsonResult.result == "success") {
+				if (jsonResult.result == "success") {
 					// 정상 처리
-					render(jsonResult.data); // 리스트에 추가
+					listRender(jsonResult.data, "down", 0) // 리스트에 추가
 				
 					//등록폼 비우기
 					$("#comment_inbox_text").val("");
@@ -245,14 +334,14 @@ $(document).ready(function() {
 				} else {
 					// 오류 처리
 				
-				} */
-			},
+				}
+			 },
 			error : function(XHR, status, error) {
 				// 실패
 
 			}
 
-		});
+		}); 
 	});
 
 	// 리스트 출력함수
@@ -279,24 +368,7 @@ $(document).ready(function() {
 				// textarea의 높이 자동 조절을 적용할 클래스를 정의합니다.
 
 				// 답글쓰기 버튼 클릭 시 대댓글 입력 창 생성
-				$("#cList").on("click", ".comment_info_button", function () {
-					
-					// 기존에 생성된 모든 댓글 입력창 삭제
-			        $(".line.new").remove();
-			        $(".comment_add.new").remove();
-					
-				    var index = $(this).data("index");
-				    var commentAddDiv = $(this).closest(".comment_area");
-				    commentRender(result.data[index], "down", commentAddDiv, index);
-
-				    // 생성된 textarea에 자동 높이 조절 기능 적용
-				    commentAddDiv.find("textarea").on('input', function () {
-				        var scrollTop = this.scrollTop;
-				        this.style.height = 'auto';
-				        this.style.height = this.scrollHeight + 'px';
-				        this.scrollTop = scrollTop;
-				    });
-				});
+				
 			},
 			error : function() {
 
@@ -305,45 +377,28 @@ $(document).ready(function() {
 
 	}
 	
-	
-	/* <div id="comment_add">
-	<div id="comment_inbox">
-		<strong class="blind">댓글을 입력하세요</strong> <input type="hidden"
-			value="${sessionScope.authUser.userNo}" name="userNo">
-		<input type="hidden" value="${rList.boardNo}" name="boardNo">
-		<input type="hidden" id="depth" value=1>
-		<em id="comment_inbox_name">${sessionScope.authUser.nick}</em>
-		<div class="comment_inbox_wrapper">
-			<div class="comment_textarea_wrapper">
-				<textarea placeholder="댓글을 남겨보세요" rows="1" id="comment_inbox_text" style="overflow: hidden; overflow-wrap: break-word;"></textarea>
-			</div>
-			<div id="register_box">
-				<a href="" role="button" id="btn_register">등록</a>
-			</div>
-		</div>
-	</div>
-	</div> */
 
 	
 	// 대댓글 입력 창
 	function commentRender(BDCommentVo, dir, commentAddDiv, index) {
+		console.log(BDCommentVo);	
 		var str = "";
-		str += ' <div class="line new"></div>';
+		str += ' <div class="line lNew"></div>';
 		str += ' <div class="comment_add new">';
-		str += ' 	<div class="" id="comment_inbox_'+index+'">';
+		str += ' 	<div class="" id="comment_inbox_'+(index+1)+'">';
 		str += ' 		<strong class="blind">댓글을 입력하세요</strong>';
-		str += ' 		<input type="hidden" value="${sessionScope.authUser.userNo}" name="userNo">';
+		str += ' 		<input type="hidden" value=' + BDCommentVo.commentNo + ' name="commentNo">';
 		str += ' 		<input type="hidden" value=' + BDCommentVo.boardNo + ' name="boardNo">';
 		str += ' 		<input type="hidden" value=' + BDCommentVo.depth + ' name="depth" >';
 		str += ' 		<input type="hidden" value=' + BDCommentVo.groupNo + ' name="groupNo">';
-		str += ' 		<input type="hidden" value=' + BDCommentVo.orderNo + ' name="orderNo">';
+		str += ' 		<input type="hidden" value=' + BDCommentVo.groupOrder + ' name="groupOrder">';
 		str += ' 		<em id="comment_inbox_name">${sessionScope.authUser.nick}</em>';
 		str += ' 		<div class="comment_inbox_wrapper">';
 		str += ' 			<div class="comment_textarea_wrapper">';
-		str += ' 				<textarea placeholder="댓글을 남겨보세요" rows="1" id="comment_inbox_text" style="overflow: hidden; overflow-wrap: break-word;"></textarea>';
+		str += ' 				<textarea placeholder="'+BDCommentVo.nick+'님에게 글을 남겨보세요" rows="1" id="comment_inbox_text" style="overflow: hidden; overflow-wrap: break-word;"></textarea>';
 		str += ' 			</div>';
 		str += ' 			<div id="register_box">';
-		str += ' 	 			<a href="" role="button" class="btn_register" id = "btn_register_'+index+'" onclick="extractHiddenValues('+index+')">등록</a>';
+		str += ' 	 			<a href="#" role="button" class="btn_register" id = "btn_register_'+index+'" onclick="extractHiddenValues('+(index+1)+')">등록</a>';
 		str += ' 			</div>';
 		str += ' 		</div>';
 		str += ' 	</div>';
@@ -352,10 +407,6 @@ $(document).ready(function() {
 		// 'down' 방향일 경우 commentAddDiv 아래에 대댓글 입력창을 생성
 	    if (dir === 'down') {
 	        commentAddDiv.after(str);
-	    }
-	    // 'up' 방향일 경우 commentAddDiv 위에 대댓글 입력창을 생성
-	    else if (dir === 'up') {
-	        commentAddDiv.before(str);
 	    } else {
 			console.log("에러요");
 		}
@@ -388,6 +439,8 @@ $(document).ready(function() {
     			textarea.scrollTop = scrollTop;
     		}
         });
+        
+        
 	}
 	
 	// 대댓글 리스트 그리기
@@ -431,9 +484,14 @@ $(document).ready(function() {
 			$("#cList").prepend(str);
 		} else if (dir == 'down') {
 			$("#cList").append(str);
+		} else if(dir == 'sDown'){
+			$(".new").after(str);
 		} else {
 			console.log("에러요");
 		}
+		
 	}
+	
+	
 </script>
 </html>

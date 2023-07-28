@@ -203,6 +203,7 @@
 	margin: 0px 10px 20px 0px;
 	
 }
+
 .row {
     margin-right: -0px;
     margin-left: -5px;
@@ -251,3 +252,84 @@
     
 }
 
+
+/* side nav */
+.sidebar {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 120px;
+    background-color: #f1f1f1;
+    position: absolute;
+    height: 30%;
+    overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: #2E419A;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 450px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+
+#userPage button {
+	width: 30%;
+	background-color:  #2E419A;
+	color: #fff;
+	border-radius:10px;
+	line-height: 40px;
+	font-size: 15px;
+    border: 0;
+    padding: 0;
+    margin: 100px 0px 0px 240px;
+}
+
+
+#userPage img {
+    vertical-align: top;
+    width:30%;
+}
+
+
+#joinOk button {
+    margin-left: 0;
+    background-color:  #2E419A;
+    color: #fff;
+}

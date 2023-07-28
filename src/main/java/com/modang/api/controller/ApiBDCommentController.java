@@ -21,16 +21,35 @@ public class ApiBDCommentController {
 	@Autowired
 	private BDCommentService bDCommentService;
 
+	/* 댓글 추가 컨트롤러*/
 	@ResponseBody
 	@PostMapping("/addComment")
 	public JsonResult addComment(@RequestBody BDCommentVo bdCommentVo) {
 		System.out.println("ApiBoardController.addComment()");
 		System.out.println(bdCommentVo);
-		bDCommentService.addComment(bdCommentVo);
+		BDCommentVo result = bDCommentService.addComment(bdCommentVo);
 
-		return null;
+		JsonResult jsonResult = new JsonResult();
+		jsonResult.success(result);
+		
+		return jsonResult;
 	}
 	
+	/* 대댓글 추가 컨트롤러*/
+	@ResponseBody
+	@PostMapping("/addSComment")
+	public JsonResult addSComment(@RequestBody BDCommentVo bdCommentVo) {
+		System.out.println("ApiBoardController.addSComment()");
+		System.out.println(bdCommentVo);
+		BDCommentVo result = bDCommentService.addSComment(bdCommentVo);
+		System.out.println("결과"+result);
+		JsonResult jsonResult = new JsonResult();
+		jsonResult.success(result);
+		
+		return jsonResult;
+	}
+	
+	/* 댓글 리스트 컨트롤러 */
 	@ResponseBody
 	@PostMapping(value = "/list")
 	public JsonResult commentList(@RequestParam int boardNo) {
