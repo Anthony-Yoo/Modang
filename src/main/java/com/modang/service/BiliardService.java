@@ -63,19 +63,23 @@ public class BiliardService {
 		int biliardNo = cuetableVo.getBiliardNo();
 		int tableNo = cuetableVo.getTableNo();
 				
-		TableGamesVo gamesVo = biliardDao.selectTable(cuetableVo);
-		TariffVo tariffVo = biliardDao.selectPrice(biliardNo);
-		CueTableVo oneTable = biliardDao.selectCuetable(tableNo);
-		if(gamesVo!=null) {
-			gamesVo.setPlayUserList(tableDao.selectPlayUser(gamesVo));
+		TableGamesVo gamesVo = biliardDao.selectTable(cuetableVo); //큐테이블정보로 게임정보 가져오기
+		TariffVo tariffVo = biliardDao.selectPrice(biliardNo);     //요금정보 가져오기
+		CueTableVo oneTable = biliardDao.selectCuetable(tableNo);  //테이블 기본정보
+		List<TableGamesVo> incaluList = biliardDao.selectIncaluList(cuetableVo);     //테이블 미정산 리스트 가져오기            
+		
+		if(gamesVo!=null) { //게임정보가 있을때 게임유저정보를 가져오기
+		gamesVo.setPlayUserList(tableDao.selectPlayUser(gamesVo)); //게임유저정보
+		 
 		}
-		List<CueTableVo> cueTableList = biliardDao.selectList(biliardNo);
+	//	List<CueTableVo> cueTableList = biliardDao.selectList(biliardNo);
 		
 		Map<String, Object> tMap = new HashMap<String, Object>();
 		
 		tMap.put("gamesVo", gamesVo);
 		tMap.put("tariffVo", tariffVo);
 		tMap.put("oneTable", oneTable);
+		tMap.put("incaluList", incaluList);
 		System.out.println(tMap);
 		
 		return tMap;
