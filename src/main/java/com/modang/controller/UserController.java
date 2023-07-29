@@ -24,6 +24,13 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	// 사용자 선택폼
+	@RequestMapping(value= "/userJoinForm", method = {RequestMethod.GET, RequestMethod.POST})
+	public String userJoinForm() {
+		System.out.println("UserController.userJoinForm()");
+		
+		return "user/userJoinForm";
+	}
 	
 	// 회원가입 폼
 	@RequestMapping(value = "/joinForm", method = { RequestMethod.GET, RequestMethod.POST })
@@ -81,9 +88,9 @@ public class UserController {
 	
 	  //id check
 	 @ResponseBody 
-	 @RequestMapping(value="/idcheck", method= {RequestMethod.GET, RequestMethod.POST}) 
+	 @RequestMapping(value="/idCheck", method= {RequestMethod.GET, RequestMethod.POST}) 
 	 public JsonResult idCheck(@RequestParam ("id") String id) {
-		 System.out.println("UserController.idcheck()");
+		 System.out.println("UserController.idCheck()");
 		 System.out.println(id); 
 	  
 		 boolean data=userService.idCheck(id);
@@ -96,7 +103,24 @@ public class UserController {
 		 return jsonResult; 
 	  
 	 }
-	  
+	 
+	 //닉네임 체크
+	 @ResponseBody 
+	 @RequestMapping(value="/nickChek", method= {RequestMethod.GET, RequestMethod.POST})
+	 public JsonResult nickCheck(String nick) {
+		 System.out.println("UserController.nickCheck()");
+		 System.out.println(nick);
+		 
+		 boolean data=userService.nickCheck(nick);
+		 
+		 JsonResult jsonResult=new JsonResult();
+		 jsonResult.success(data);
+		 
+		 System.out.println(jsonResult);
+	 
+		 return jsonResult;
+	 }
+	 
 	 
 	//logout 
 	@RequestMapping(value="/logout", method= {RequestMethod.GET,
@@ -140,10 +164,10 @@ public class UserController {
 		UserVo authUser=(UserVo)session.getAttribute("authUser");
 		
 		//가져온 세션 정보에서 로그인한 사용자 no값 가져오기
-		int userno=authUser.getUserno();
+		int userNo=authUser.getUserNo();
 		
 		//파라미터로 넘어온 사용자 정보 : UserVo 정보로 로그인 한 사용자 no값 추가
-		userVo.setUserno(userno);
+		userVo.setUserNo(userNo);
 		
 		//userService 를 통해 로그인한 사용자 정보 수정 (service에서 UserVo로 받은 정보 전체)
 		userService.modify(userVo, file);
@@ -156,6 +180,20 @@ public class UserController {
 		 */
 		 
 		return "redirect:/user/modifyForm";
+	}
+	
+	//나의 페이지
+	@RequestMapping(value="/userPage", method= {RequestMethod.GET, RequestMethod.POST})
+	public String userPage(HttpSession session,  Model model) {
+		System.out.println("UserController.userPage()");
+		
+		String id=((UserVo)session.getAttribute("authUser")).getId();
+		System.out.println(id);
+		
+		UserVo userVo=userService.userPage(id);
+		model.addAttribute("userVo", userVo);
+		System.out.println(userVo);
+		return "user/userPage";
 	}
 	
 }

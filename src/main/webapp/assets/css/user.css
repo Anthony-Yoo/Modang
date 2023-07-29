@@ -1,12 +1,11 @@
 @charset "UTF-8";
 
 
-
+/* 전체 폭 */
  .container{
 	width: 1200px;
  }
-
-
+/* container 중앙 맞춤 */
 #main-content .container{
 	width: 1200px;
 	height: 100%;
@@ -14,21 +13,44 @@
 	margin: 0px auto 100px auto;
 }
 
-
+/* the width for center position */
 #main-content .container #joinForm #main {
-	width: 300px;
+	width: 360px;
 	margin: 0 auto;
 	
 }
+#joinForm .input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    margin: 0px 0px -10px 0px;
+}
+
+/* the width for center position */
 #main-content .container #loginForm #main,
 #main-content .container #joinOk #main,
 #main-content .container #modifyForm #main {
-	width: 324px;
+	width: 350px;
 	margin: 0 auto;
 	
 }
 
+/* 수정폼 세로버튼 
+.btn-group-vertical {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+	background-color:  #2E419A;
+	color: #fff;
+	border: 1px solid #2E419A;
+	border-radius:10px;
+	line-height: 40px;
+    margin: 0px 0px -455px -1055px;
+    padding: 2px 2px 2px 2px;
+}
+*/
 
+/* title 위치및 굵기 */
 #main h3 {
 	margin: 50px 0px 35px 0px;
 	font-size: 35px;
@@ -36,8 +58,9 @@
 	text-align: center;
 }
 
-#main form .input-group .input-group-addon #btnIdCheck {
-	width: 125px;
+/* idcheck modal */
+#main form .input-group #btnIdCheck {
+	width: 70px;
 	height: 40px;
 	padding : 8px 20px 9px 20px;
 	background: #2E419A;
@@ -45,10 +68,12 @@
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #fff;
+	margin: 0px 0px 30px 0px;
 }
 
-#main form .input-group .input-group-addon #input-uid {
-	width: 125px;
+/* input id 체크용 */
+#main form .input-group #input-uid {
+	width: 230px;
 	height: 40px;
 	padding : 8px 20px 9px 20px;
 	background: #F5F5F5;
@@ -56,6 +81,7 @@
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
+	margin: 0px 0px 30px 0px;
 }
 
 #main form .input-group #id {
@@ -67,6 +93,8 @@
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
+	margin: 0px 0px 30px 0px;
+
 }
 
 #main form .input-group #passwd {
@@ -78,6 +106,8 @@
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
+	margin: 0px 0px 30px 0px;
+
 }
 
 #main form .input-group #cellphone {
@@ -89,10 +119,12 @@
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
+	margin: 0px 0px 30px 0px;
+
 }
 
 #main form .input-group #nick {
-	width: 300px;
+	width: 230px;
 	height: 40px;
 	padding : 8px 20px 9px 20px;
 	background: #F5F5F5;
@@ -100,17 +132,34 @@
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
+	margin: 0px 0px 30px 0px;
+
 }
 
-#main form .input-group #cellphone {
-	width: 300px;
+/* nick modal */
+#main form .input-group #btnNickCheck {
+	width: 70px;
 	height: 40px;
 	padding : 8px 20px 9px 20px;
-	background: #F5F5F5;
+	background: #2E419A;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
 	border-radius: 8px;
-	color: #111;
+	color: #fff;
+	margin: 0px 0px 30px 0px;
+}
+
+/* Cellphone modal */
+#main form .input-group #btnCellphoneCheck {
+	width: 70px;
+	height: 40px;
+	padding : 8px 20px 9px 20px;
+	background: #2E419A;
+	border: 1px solid #B8B8B8;
+	box-sizing: border-box;
+	border-radius: 8px;
+	color: #fff;
+	margin: 0px 0px 30px 0px;
 }
 
 #main form .input-group #average {
@@ -122,13 +171,30 @@
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
+	margin: 0px 0px 30px 0px;
+
 }
+
+#main form .input-group #profileImage {
+	width: 300px;
+	height: 40px;
+	padding : 9px 20px 9px 15px;
+	background: #F5F5F5;
+	border: 1px solid #B8B8B8;
+	box-sizing: border-box;
+	border-radius: 8px;
+	color: #111;
+	margin: 0px 0px 20px 0px;
+
+}
+
 
 #main form .button-area {
 	margin: 30px 0px 30px 0px;
 	
 }
 
+/* submit button */
 #main form .button-area #btn-submit{
 	width: 100%;
 	background-color:  #2E419A;
@@ -137,7 +203,146 @@
 	line-height: 40px;
 }
 
+/* modify image size */
 #main form .form-group #image-show img{
-	width: 317px;
+	width: 345px;
 	margin: 0px 0px 3px 0px;
+}
+
+/* icon */
+#main form .form-group .input-group img{
+	width: 40px; 
+	height: 40px;
+	margin: 0px 10px 20px 0px;
+	
+}
+
+.row {
+    margin-right: -0px;
+    margin-left: -5px;
+}
+
+.input-group[class*=col-] {
+    float: none;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+/* userJoinForm */
+.element .style {
+    width: 200px;
+    height: 211px;
+    margin: 180px 1px 0px 365px;
+}
+
+.element .data-text-content {
+    border: 1px solid #000000;
+    
+   
+}
+
+.element .data-text-content {
+    background-color: rgb(255, 255, 255);
+    text-shadow: none;
+    box-shadow: rgba(46, 65, 154, 0.28) 5px 10px 10px 0px;
+    border-width: 0px;
+    border-style: none;
+    border-radius: 4px;
+    
+}
+
+.data-text-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    white-space: pre-wrap;
+    word-break: break-all;
+    
+}
+
+
+/* side nav */
+.sidebar {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 120px;
+    background-color: #f1f1f1;
+    position: absolute;
+    height: 30%;
+    overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: #2E419A;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 450px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+
+#userPage button {
+	width: 30%;
+	background-color:  #2E419A;
+	color: #fff;
+	border-radius:10px;
+	line-height: 40px;
+	font-size: 15px;
+    border: 0;
+    padding: 0;
+    margin: 100px 0px 0px 240px;
+}
+
+
+#userPage img {
+    vertical-align: top;
+    width:30%;
+}
+
+
+#joinOk button {
+    margin-left: 0;
+    background-color:  #2E419A;
+    color: #fff;
 }

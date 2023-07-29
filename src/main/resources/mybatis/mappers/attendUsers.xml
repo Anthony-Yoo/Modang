@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="attendUsers">
+
+	<!-- 신청하기 버튼을 통해 신청 목록 db에 저장 -->
+	<insert id="insert" parameterType="com.modang.vo.AttendUsersVo">
+		<![CDATA[
+			insert into attendUsers
+				   		values(seq_attendUsers_no.nextval,
+				 	   		  #{boardNo},
+				 	   		  #{userNo},
+				 	   		  sysdate,
+				 	   		  0)
+		]]>
+	</insert>
+	
+	<!-- 신청이 되어있는지 체크하기 위한 작업 -->
+	<select id="applyCheck" parameterType="com.modang.vo.AttendUsersVo" resultType="com.modang.vo.AttendUsersVo">
+		<![CDATA[
+			select attendNo,
+				   boardNo,
+				   userNo,
+				   attendDate,
+				   status
+			from attendusers
+			where boardNo = #{boardNo} and userNo = #{userNo}
+		]]>
+	</select>
+
+</mapper>

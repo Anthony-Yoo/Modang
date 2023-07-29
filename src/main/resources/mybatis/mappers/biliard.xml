@@ -3,115 +3,155 @@
 
 <mapper namespace="biliard">
 
+    <!-- 테이블별 미정산 리스트 가져오기 -->
+    	<select id="selectIncaluList" parameterType="com.modang.vo.CueTableVo" resultType="com.modang.vo.TableGamesVo">
+			<![CDATA[
+					select row_number()over(order by gameno)num, 
+					        gameno,
+					        tableno,
+					        starttime,
+					        endtime,
+					        paymoney 
+					        from 
+					        games 
+					        where tableno=#{tableNo} and  paystatus='0'					
+			]]>
+		</select>
+
+	<!-- 테이블 추가하기 -->
+	<insert id="insertTable" parameterType="com.modang.vo.CueTableVo">  
+		 <![CDATA[
+				insert into cuetable(tableno,biliardno,tabletype,status,tablename) 
+				values( SEQ_CUETABLE_NO.nextval,
+                        #{biliardNo},
+                        #{tableType},
+                        0,
+                        #{tableName})
+		 ]]>
+	</insert>
+
+    <!-- 하나의 테이블 기본정보 가져오기 -->
+    	<select id="selectOnetable" parameterType="int" resultType="com.modang.vo.CueTableVo">
+			<![CDATA[
+					select tableno,
+					       biliardno,
+					       tablename,
+					       tabletype,
+					       status as tableStatus      
+					from cuetable 
+					where tableno = #{tableno} 
+			]]>
+		</select>
+		
 	<!-- 테이블 종류 수정 -->
 	<update id="updatetableType" parameterType="com.modang.vo.CueTableVo">
-	<![CDATA[
-	update cuetable set tabletype=#{tableType}
-    where tableNo =#{tableNo}  
-	  ]]>
+		<![CDATA[
+			update cuetable set tabletype=#{tableType}
+		    where tableNo =#{tableNo}  
+		  ]]>
 	</update>
 	
 	<!-- 게임정보리스트가져오기 -->
 		<select id="selectGamesList" parameterType="int" resultType="com.modang.vo.TableGamesVo">
-		<![CDATA[
-			select g.gameNo,
-			         g.tableNo,
-			         g.gameType,
-			         g.memberNum,
-			         g.gameDate,
-			         g.gameTime,
-			         g.startTime,
-			         g.endTime,
-			         g.payStatus,
-			         g.payType,
-			         g.payDate,
-			         g.income,
-			         g.payMoney,
-			         g.pauseStart,
-			         g.pauseStop,
-			         g.pauseTime,
-			         g.setNo
-			from games g, cuetable c
-			where g.tableNo=c.tableNo
-			and c.biliardNo=#{biliardNo}
-			and g.payStatus=0
-		]]>	
-		
-	</select>
+			<![CDATA[
+				select g.gameNo,
+				         g.tableNo,
+				         g.gameType,
+				         g.memberNum,
+				         g.gameDate,
+				         g.gameTime,
+				         g.startTime,
+				         g.endTime,
+				         g.payStatus,
+				         g.payType,
+				         g.payDate,
+				         g.income,
+				         g.payMoney,
+				         g.pauseStart,
+				         g.pauseStop,
+				         g.pauseTime,
+				         g.setNo
+				from games g, cuetable c
+				where g.tableNo=c.tableNo
+				and c.biliardNo=#{biliardNo}
+				and g.payStatus=0
+			]]>	
+		</select>
 
 	<!-- 테이블상세정보 -->
 		<select id="selectTableInfo" parameterType="com.modang.vo.CueTableVo" resultType="com.modang.vo.TableGamesVo">
-		<![CDATA[
-			select g.gameno,
-			       g.tableno,
-			       g.gametype,
-			       g.membernum,
-			       g.gamedate,
-			       g.gametime,
-			       g.starttime,
-			       g.endtime,
-			       g.paystatus,
-			       g.paytype,
-			       g.paydate,
-			       g.income,
-			       g.paymoney,
-			       g.pausestart,
-			       g.pausestop,
-			       g.pausetime,
-			       g.setno,
-			       c.biliardno,
-			       c.tablename,
-			       c.tabletype,
-			       c.status
-			from games g
-			full join cuetable c
-			on g.tableno=c.tableno
-			where g.tableno=#{tableNo} 
-
-		]]>	
-		
-	</select>
+			<![CDATA[
+				select g.gameno,
+				       g.tableno,
+				       g.gametype,
+				       g.membernum,
+				       g.gamedate,
+				       g.gametime,
+				       g.starttime,
+				       g.endtime,
+				       g.paystatus,
+				       g.paytype,
+				       g.paydate,
+				       g.income,
+				       g.paymoney,
+				       g.pausestart,
+				       g.pausestop,
+				       g.pausetime,
+				       g.setno,
+				       c.tableno,
+				       c.biliardno,
+				       c.tablename,
+				       c.tabletype,
+				       c.status as tableStatus
+				from cuetable c
+				full join games g
+				on g.tableno=c.tableno
+				where g.gameno = (select Max(gameno) from games where tableno= #{tableNo})
+	
+			]]>	
+			
+		</select>
 
 	<!-- 테이블전체리스트 -->
 		<select id="selectTableList" parameterType="int" resultType="com.modang.vo.CueTableVo">
-		<![CDATA[
-		select tableno,
-		       biliardno,
-		       tablename,
-		       tabletype,
-		       status as tableStatus      
-		from cuetable where biliardno = #{biliardNo}
-		]]>	
-		
-	</select> 
+			<![CDATA[
+				select tableno,
+				       biliardno,
+				       tablename,
+				       tabletype,
+				       status as tableStatus      
+				from cuetable where biliardno = #{biliardNo}
+				order by tablename
+			]]>	
+		</select> 
 	
 	<!-- 요금 테이블 정보 가져오기 -->
-	<select id="selectPrice" parameterType="int" resultType="com.modang.vo.TariffVo">
-		<![CDATA[
-			select biliardno,
-			       btablefee,
-			       mtablefee,
-			       ptablefee,
-			       bminfee,
-			       mminfee,
-			       pminfee
-			from tariff
-			where biliardno =#{[biliardNo}
-		]]>	
-		
-	</select>
+		<select id="selectPrice" parameterType="int" resultType="com.modang.vo.TariffVo">
+			<![CDATA[
+				select biliardno,
+				       btablefee,
+				       mtablefee,
+				       ptablefee,
+				       bminfee,
+				       mminfee,
+				       pminfee
+				from tariff
+				where biliardno =#{[biliardNo}
+			]]>	
+			
+		</select>
 	
 	<!-- 요금 테이블 수정 -->
-	<update id="updatePrice" parameterType="com.modang.vo.TariffVo">
-	<![CDATA[
-			update tariff set btablefee = #{btablefee},
-			                  mtablefee = #{mtablefee},
-			                  ptablefee = #{ptablefee},
-			                  bminfee = #{bminfee},
-			                  mminfee = #{mminfee},
-			                  pminfee = #{pminfee}
-			where biliardno=#{biliardno}
-	  ]]>
-	</update>
+		<update id="updatePrice" parameterType="com.modang.vo.TariffVo">
+			<![CDATA[
+					update tariff set btablefee = #{btablefee},
+					                  mtablefee = #{mtablefee},
+					                  ptablefee = #{ptablefee},
+					                  bminfee = #{bminfee},
+					                  mminfee = #{mminfee},
+					                  pminfee = #{pminfee}
+					where biliardno=#{biliardno}
+			  ]]>
+		</update>
 
 </mapper>

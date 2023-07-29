@@ -75,7 +75,7 @@
 	</head>
 	<body>
 		<div id="container">
-			<h2 id="logtitle">Modang</h2>
+			<h2 id="logtitle">Modang</h2>			
 			<div class="content">	
 				<div class="box float-l" id="qrbox">
 					<img src="${pageContext.request.contextPath}/assets/images/photo.jpg"/>
@@ -83,7 +83,7 @@
 				<div class="box float-l" id="logbox">
 					<img src="${pageContext.request.contextPath}/assets/images/photo.jpg"/>
 					<div id="idbox">
-						<form action="${pageContext.request.contextPath}/tablet/keyLogin" method="get">
+						<form action="${pageContext.request.contextPath}/tablet/${tableNo}/keyLogin" method="get">
 							<input type="text" name="keyNum">
 							<button type="submit" id="keyin">키입력</button>
 						</form>

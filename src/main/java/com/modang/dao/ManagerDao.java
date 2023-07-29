@@ -13,15 +13,23 @@ public class ManagerDao {
 	private SqlSession sqlSession;
 	
 	/*회원가입*/
-	public void insertManager(ManagerVo managerVO){
-		System.out.println("ManagerDao.insertManager");
-		sqlSession.insert("manager.insertManager",managerVO);
+	public int insertManager(ManagerVo managerVo){
+		System.out.println("ManagerDao.insertManager.managerVo");
+		int count=sqlSession.insert("manager.insertManager",managerVo);
+		return count;
+	}
+	
+	/*회원가입 id 중복체크*/
+	public ManagerVo selectManager(String id) {
+		System.out.println("ManagerDao.selectManager"+id);
+		ManagerVo managerVo = sqlSession.selectOne("manager.selectManagerById",id);
+		return managerVo;
 	}
 	
 	/*로그인*/
-	public ManagerVo selectManager(ManagerVo managerVO){
+	public ManagerVo selectManager(ManagerVo managerVo){
 		System.out.println("ManagerDao.selectManager");
-		ManagerVo loginManager = sqlSession.selectOne("manager.selectManager",managerVO);
+		ManagerVo loginManager = sqlSession.selectOne("manager.selectManager",managerVo);
 		System.out.println(loginManager);
 		return loginManager;
 	}

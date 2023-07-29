@@ -12,7 +12,6 @@ body, div, ul, li, dl, dt, ol, h1, h2, h3, h4, h5, h6, input, fieldset,
 
 body {
 	font: 12px "맑은 고딕", 돋움, 굴림;
-	text-align: center;
 }
 
 ul, ol {
@@ -123,6 +122,7 @@ input[type="password"] {
 	background-color: #FFFFFF;
 	margin: 0 auto;
 	position: relative;
+	text-align: center;
 }
 
 #content h2>a {
@@ -161,23 +161,25 @@ input[type="password"] {
 	padding: 5px 15px 5px 15px;
 	margin: 10px 0px 0px 520px;
 	position: absolute;
-	z-index:1;
+	z-index: 1;
 }
 /*----------------------------------------------------------------------------------------------------------*/
 /* 게시판 관련 */
 #board {
 	width: 1200px;
-	height: 140px;
+	/* height: 600px; */
 	background-color: #FFFFFF;
 	margin: 0 auto;
 	padding: 10px;
 	position: relative;
+	text-align: center;
 }
 
-#board #list{
+#board #list {
 	padding-top: 10px;
 	margin-top: 10px;
 }
+
 #board #list table {
 	width: 100%;
 	margin: auto;
@@ -299,7 +301,6 @@ textarea {
 
 #board #writeForm {
 	text-align: center;
-	border-top: 2px solid #2E419A;
 	padding-top: 60px
 }
 
@@ -325,7 +326,6 @@ textarea {
 }
 
 #board #writeForm .form-group #text-area {
-	border-bottom: 2px solid #2E419A;
 	padding-bottom: 90px;
 }
 
@@ -371,7 +371,7 @@ textarea {
 
 #board #read .title {
 	font-size: 30px;
-	font-weight: 400;
+	font-weight: 500;
 }
 
 #board #read #writer_btn {
@@ -393,7 +393,11 @@ textarea {
 
 #board #read .title_area {
 	position: relative;
-	padding: 12px 23px 10px 0;
+	padding: 12px 1px 10px 0;
+}
+
+#board #read #title_set_result {
+	float:left;
 }
 
 #board #read div {
@@ -418,6 +422,7 @@ textarea {
 #board #read #title_state {
 	left: 100px;
 	font-weight: bold;
+	float:right;
 }
 
 /***** 작성자 정보 끝 *****/
@@ -444,7 +449,7 @@ textarea {
 #board #read #txt-content {
 	margin: 40px 0px 10px 0px;
 	padding: 20px 20px 20px 20px;
-	border-top: 1px solid #A6A6A6;
+	border-top: 2px solid #2E419A;
 }
 
 /* read 삭제 수정 목록 신청리스트 버튼 */
@@ -458,7 +463,8 @@ textarea {
 }
 
 /* read 삭제 수정 목록 신청리스트 버튼 */
-#board #read #btn_modify, #btn_applyList, #btn_boardList, #btn_delete {
+#board #read #btn_modify, #btn_applyList, #btn_boardList, #btn_delete,
+	#btn_apply {
 	border: 1px solid #808080;
 	border-radius: 10px;
 	background-color: #0c0a04;
@@ -547,19 +553,16 @@ textarea {
 	font-size: 13px;
 }
 
-#comment_list #line {
-	border-top: 1px solid rgb(230, 230, 230);
+#comment_list .line {
+	border-top: 1px solid rgb(166, 163, 255);
 	border-bottom: 10px;
+	margin-top: 20px;
 }
 
 #comment_list .comment_area {
 	position: relative;
 	padding-top: 20px;
-	padding: 12px 23px 10px 0;
-}
-
-#comment_list #comment_second_list .comment_area {
-	left: 50px;
+	padding: 12px 23px 0px 0;
 }
 
 #comment_list div {
@@ -606,23 +609,33 @@ address, em {
 	overflow: hidden;
 }
 
-#comment_add {
+.comment_add {
 	margin-top: 10px;
 	margin: 12px 0 29px;
-	border: 2px solid rgb(214, 214, 214);
+	border: 2px solid rgb(160, 164, 211);
 	border-radius: 6px;
 	box-sizing: border-box;
-	background: whitesmoke;
+	background: dadaed;
 }
 
-#comment_add #comment_inbox {
+.new {
+	margin-top: 10px;
+	position: relative;
+	margin-bottom: 10px;
+	display: block;
+	padding: 10px;
+}
+[class^="comment_inbox_"]{
+	margin-bottom: 20px;
+}
+.comment_add #comment_inbox{
 	position: relative;
 	margin-bottom: 10px;
 	display: block;
 	padding: 10px;
 }
 
-#comment_add #comment_inbox_name {
+.comment_add #comment_inbox_name {
 	display: block;
 	margin-bottom: 10px;
 	font-weight: 700;
@@ -630,7 +643,7 @@ address, em {
 	text-align: unset;
 }
 
-#comment_add #comment_inbox_text {
+.comment_add #comment_inbox_text {
 	max-height: 500px;
 	overflow-x: hidden;
 	overflow-y: auto;
@@ -654,13 +667,13 @@ address, em {
 	float: right;
 }
 
-#register_box #btn_register {
+#register_box .btn_register {
 	display: inline-block;
 	min-width: 46px;
 	height: 50px;
 	line-height: 0px;
 	font-size: 13px;
-	color: rgb(164, 164, 164);
+	color: rgb(43, 29, 85);
 	border-radius: 6px;
 	box-sizing: border-box;
 	font-weight: 700;
@@ -684,11 +697,16 @@ address, em {
 }
 
 #comment_inbox_text {
-	width: 100%;
+	width: 90%;
 }
 
-#btn_register {
-	width: 100px;
+.btn_register {
+	width: 50px;
 	padding: 5px;
 	cursor: pointer;
 }
+
+/* #readFooter {
+  아래로 이동시키고 싶은 거리만큼 값을 조절하세요. 예: 20px
+  margin-top: 260px;
+} */

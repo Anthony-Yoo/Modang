@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.modang.dao.BiliardDao;
 import com.modang.dao.ManagerDao;
-
+import com.modang.dao.TabletDao;
 import com.modang.vo.ManagerVo;
 import com.modang.vo.TableGamesVo;
 import com.modang.vo.CueTableVo;
@@ -22,52 +22,81 @@ public class BiliardService {
 	@Autowired
 	private BiliardDao biliardDao;
 	
-	/* 테이블 현황-테이블 종류 변경 */
-	public void tableTypeModify(CueTableVo cuetableVo) {
-		System.out.println("BiliardService.tableTypeModify()");
+	@Autowired
+	private TabletDao tableDao;
+	
+	/* 테이블현황 페이지-------------------------------------------------------------------------------- */
+	/* 테이블 현황 - 테이블 추가 */
+	public int addTable(CueTableVo cuetableVo) {
+		System.out.println("BiliardService.addTable()");
 		
-		biliardDao.updatetableType(cuetableVo);
+		int count = biliardDao.insertTable(cuetableVo);
+		return count;
 	}
 	
+	/* 테이블 현황 - 테이블 종류 변경 */
+	public int tableTypeModify(CueTableVo cuetableVo) {
+		System.out.println("BiliardService.tableTypeModify()");
+		
+		int count = biliardDao.updatetableType(cuetableVo);
+		return count;
+	}
 	
-	/* 게임정보 가져오기 */
+	/* 테이블 현황 - 게임정보 가져오기(미정산리스트만) */
+	public void getIncaluList() {
+		System.out.println("BiliardService.getIncaluList()");
+		
+	}
+	
+	/* 테이블 현황 - 게임정보 가져오기 */
 	public List<TableGamesVo> getGames(int biliardNo) {
 		System.out.println("BiliardService.getGames()");
 		List<TableGamesVo> gamesList = biliardDao.selectGames(biliardNo);
 		System.out.println(gamesList);
 		
 		return gamesList;
-		
 	}
 	
 	/* 테이블 현황 - 상세정보 가져오기 */
 	public Map<String, Object> tableInfo(CueTableVo cuetableVo) {
 		System.out.println("BiliardService.tableInfo()");
 		int biliardNo = cuetableVo.getBiliardNo();
+		int tableNo = cuetableVo.getTableNo();
 				
-		TableGamesVo gamesVo = biliardDao.selectTable(cuetableVo);
-		TariffVo tariffVo = biliardDao.selectPrice(biliardNo);
+		TableGamesVo gamesVo = biliardDao.selectTable(cuetableVo); //큐테이블정보로 게임정보 가져오기
+		TariffVo tariffVo = biliardDao.selectPrice(biliardNo);     //요금정보 가져오기
+		CueTableVo oneTable = biliardDao.selectCuetable(tableNo);  //테이블 기본정보
+		List<TableGamesVo> incaluList = biliardDao.selectIncaluList(cuetableVo);     //테이블 미정산 리스트 가져오기            
+		
+		if(gamesVo!=null) { //게임정보가 있을때 게임유저정보를 가져오기
+		gamesVo.setPlayUserList(tableDao.selectPlayUser(gamesVo)); //게임유저정보
+		 
+		}
+	//	List<CueTableVo> cueTableList = biliardDao.selectList(biliardNo);
 		
 		Map<String, Object> tMap = new HashMap<String, Object>();
+		
 		tMap.put("gamesVo", gamesVo);
 		tMap.put("tariffVo", tariffVo);
+		tMap.put("oneTable", oneTable);
+		tMap.put("incaluList", incaluList);
 		System.out.println(tMap);
 		
 		return tMap;
 	}
 	
-	/*테이블현황-테이블 전체리스트 가져오기*/
+	/*테이블 현황 - 테이블 전체리스트 가져오기*/
 	public List<CueTableVo> tableList(int biliardNo) {
 		System.out.println("BiliardService.tableList()");
 		
 		List<CueTableVo> cueTableList = biliardDao.selectList(biliardNo);
-		
 		System.out.println(cueTableList);
 		
 		return cueTableList;
 	}
 	
-	/* 요금테이블-요금정보 가져오기 */
+	/* 요금테이블 페이지--------------------------------------------------------------------------------- */
+	/* 요금테이블 - 요금정보 가져오기 */
 	public TariffVo getPrice(int biliardNo) {
 		System.out.println("BiliardService.getPrice()");
 		
@@ -75,12 +104,19 @@ public class BiliardService {
 		return tariffVo;
 	}
 	
-	/* 요금테이블-요금수정 */
+	/* 요금테이블 - 요금수정 */
 	public int updatePrice(TariffVo tariffVo) {
 		System.out.println("BiliardService.updatePrice()");
 		
 		int count = biliardDao.updatePrice(tariffVo);
 		return count;
+	}
+	
+	/* 관리자 설정 페이지-------------------------------------------------------------------------------- */
+	/* 관리자 설정 - 당구장 정보 불러오기 */
+	public void getbiliardInfo(ManagerVo loginManager) {
+		System.out.println("BiliardService.getbiliardInfo()");
+		
 	}
 
 }

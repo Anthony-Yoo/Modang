@@ -9,6 +9,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/managerdefault.css" />
+	<!-- jquery -->
+	<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
 </head>
 <body>
 	<div id="page-wrapper">
@@ -44,7 +46,7 @@
 						<nav id="nav">
 							<a href="${pageContext.request.contextPath}/manager/index">테이블 현황</a>
 							<a href="${pageContext.request.contextPath}/manager/tableSalesForm">테이블 매출</a>
-							<a href="${pageContext.request.contextPath}/manager/daySales">일별 매출</a>
+							<a href="${pageContext.request.contextPath}/manager/daySalesForm">일별 매출</a>
 							<a href="${pageContext.request.contextPath}/manager/pricePolicyForm" class="active">요금 테이블</a>
 							<a href="${pageContext.request.contextPath}/manager/settingsForm">관리자 설정</a>
 						</nav>
@@ -71,7 +73,7 @@
 											<label class="form-label">대대요금</label>
 											<div class="col input-group">
 											    <input type="hidden" id="" name="biliardno" value="${requestScope.tariffVo.biliardno}">
-												<input type="text" name="btablefee" class="form-control text-big text-right" maxlength="8" value="${requestScope.tariffVo.btablefee}"/>
+												<input type="text" name="btablefee" class="form-control text-big text-right btablefee" maxlength="8" value="${requestScope.tariffVo.btablefee}"/>
 												<span class="input-group-append"><span class="input-group-text">원</span></span>
 											</div>
 										</div>
@@ -134,4 +136,54 @@
 		<div id="copyright">&copy; modang. All rights reserved.</div>
 	</div>
 </body>
+
+<script type="text/javascript">
+// 천 단위 포맷을 적용할 input 요소들을 선택합니다.
+var $btablefeeInput = $('.btablefee');
+var $mtablefeeInput = $('input[name="mtablefee"]');
+var $ptablefeeInput = $('input[name="ptablefee"]');
+var $bminfeeInput = $('input[name="bminfee"]');
+var $mminfeeInput = $('input[name="mminfee"]');
+var $pminfeeInput = $('input[name="pminfee"]');
+
+// 천 단위 포맷 함수
+function formatThousandSeparator(number) {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+// 값이 변경될 때 이벤트를 처리합니다.
+function formatInputValue($input) {
+  var value = $input.val();
+  var formattedValue = formatThousandSeparator(value);
+  $input.val(formattedValue);
+}
+
+// 초기 로딩 시에도 천 단위로 표기하기 위해 값을 변경 이벤트를 강제로 발생시킵니다.
+formatInputValue($btablefeeInput);
+formatInputValue($mtablefeeInput);
+formatInputValue($ptablefeeInput);
+formatInputValue($bminfeeInput);
+formatInputValue($mminfeeInput);
+formatInputValue($pminfeeInput);
+
+// 폼 전송 이벤트 처리
+$('form').on('submit', function(event) {
+  // 각 input 요소의 값을 가져와 쉼표를 제거하여 수정합니다.
+  var btablefeeValue = $btablefeeInput.val().replace(/,/g, '');
+  var mtablefeeValue = $mtablefeeInput.val().replace(/,/g, '');
+  var ptablefeeValue = $ptablefeeInput.val().replace(/,/g, '');
+  var bminfeeValue = $bminfeeInput.val().replace(/,/g, '');
+  var mminfeeValue = $mminfeeInput.val().replace(/,/g, '');
+  var pminfeeValue = $pminfeeInput.val().replace(/,/g, '');
+
+  // 수정된 값을 다시 해당 input 요소에 설정합니다.
+  $btablefeeInput.val(btablefeeValue);
+  $mtablefeeInput.val(mtablefeeValue);
+  $ptablefeeInput.val(ptablefeeValue);
+  $bminfeeInput.val(bminfeeValue);
+  $mminfeeInput.val(mminfeeValue);
+  $pminfeeInput.val(pminfeeValue);
+});
+</script>
+
 </html>

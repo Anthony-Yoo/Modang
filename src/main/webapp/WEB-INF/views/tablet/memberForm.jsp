@@ -108,7 +108,14 @@
 	<body>
 		<div id="container">				
 			<h2 id="logtitle">Modang</h2>
-			<h4>게임형식 : ${param.ball}구</h4>
+			<c:choose>
+				<c:when test="${param.ball eq 0}">
+					<h4>게임형식 : 3구</h4>
+				</c:when>
+				<c:when test="${param.ball eq 1}">
+					<h4>게임형식 : 4구</h4>
+				</c:when>
+			</c:choose>
 			<!-- 카드리스트 -->
 			<div class="left float-l" id="cardlist">
 				<div id="tab"><p>카드리스트</p></div>
@@ -120,7 +127,7 @@
 	                 	</dt>
 	                 	<c:forEach var="member" items="${card.memberList}">
 		                 	<dd>${member.guestNick} &nbsp;&nbsp;&nbsp;
-		                 		<button type="button" class="addPlayer" data-userno="${member.getUserNo}" data-no="${member.memberNo}" data-nick="${member.guestNick}" data-average="${member.average}">추가</button>
+		                 		<button type="button" class="addPlayer" data-userno="${member.getUserNo}" data-no="1" data-nick="${member.guestNick}" data-average="${member.average}">추가</button>
 		                 	</dd>
 	                 	</c:forEach>
 	                 		                                       
@@ -148,13 +155,18 @@
 					      <th>Delete</th>
 					    </tr>
 					  </thead>
-					  <tbody>
+					  <tbody>					  	
 					  	<tr id="t0">
 					  		<td>${sessionScope.authUser.userNo}</td>
 							<td>${sessionScope.authUser.nick}</td>
-							<td>${sessionScope.authUser.average}</td>
 							<td>
-	 							<button type="button" class="delPlayer" data-userno="${sessionScope.authUser.userNo}" data-no="0" data-nick="${sessionScope.authUser.nick}" data-average="${sessionScope.authUser.average}" >삭제</button>		
+								<input class="confirmAverage" type="number" value="${sessionScope.authUser.average}" min="0" max="300" step="10" size="5">
+							</td>
+							<td>
+	 							<button type="button" class="delPlayer" data-userno="${sessionScope.authUser.userNo}" data-no="0" 
+	 									data-nick="${sessionScope.authUser.nick}" data-average="" 
+	 									disabled="disabled">삭제
+	 							</button>		
 							</td>
 					  	</tr>
 					  </tbody>
@@ -184,7 +196,10 @@
 							  		<td>${favorite.favoriteNo}</td>
 							  		<td>${favorite.nick}</td>
 							  		<td>${favorite.average}</td>
-							  		<td><button type="button" class="addPlayer" data-userno="${favorite.getUserNo}" data-no="${favorite.favoriteNo}" data-nick="${favorite.nick}" data-average="${favorite.average}">추가</button></td>
+							  		<td>
+							  			<button type="button" class="addPlayer" data-userno="${favorite.getUserNo}" data-no="${favorite.favoriteNo}" data-nick="${favorite.nick}" data-average="${favorite.average}">추가
+							  			</button>
+							  		</td>
 							  	</tr>					  		
 							  </tbody>	
 						</c:forEach>
@@ -196,6 +211,7 @@
 <script>
    var $target = $("dt"), isClass = null;
    var cnt = $("#tb_cnt").val();
+   
 
    $target.on("click", function() {
       var _$self = $(this), isActive = _$self.hasClass("active");
@@ -265,7 +281,7 @@
 		src += '<tr id="t' + btn.data('no') + '">';
 		src += '	<td>' + btn.data('userno') + '</td>';
 		src += '	<td>' + btn.data('nick') +'</td>';
-		src += '	<td>' + btn.data('average') + '</td>';
+		src += '	<td><input class="confirmAverage" type="number" value="' + btn.data('average') + '" min="0" max="300" step="10" size="5"></td>';
 		src += '	<td>';
 		src += ' 		<button type="button" class="delPlayer" data-userno="'+btn.data('userno')+'" data-no="'+ cnt +'" data-nick="'+ btn.data('nick') +'" data-average="'+ btn.data('average') +'" >삭제</button>';			
 		src += '	</td>';
@@ -332,51 +348,61 @@
 		console.log(tags);
 		console.log("===========================");	
 	    
- 	});
+ 	});	
 
 	$('#confirm').on("click",function() {
-		console.log("확정 버튼 클릭");
+		console.log("확정 버튼 클릭");			
 		
+		var tableNo = ${tableNo};
 		var gameType = ${param.ball};
 		var userNo = new Array();
 		var nick = new Array();
 		var average = new Array();
 		let btnTags = $(".delPlayer");
 		
-		var tableUserList = []; 
+		var playUserList = []; 
 		
 		for(let i=0; i<btnTags.length; i++){
 			userNo = btnTags.eq(i).data("userno");
 			nick = btnTags.eq(i).data("nick");
-			average = btnTags.eq(i).data("average");
-		
+			average = btnTags.eq(i).parent().prev().children(".confirmAverage").val();
+			orderNo = btnTags.eq(i).parent().parent().index();
 			/* 순서, table번호 */			
-			var tabletUserVo {
-				tableNo : 
-				gameType : gameType
+			var playUserVo = {				
 				userNo : userNo,
 				nick : nick,
-				average : average
-				order : order
+				currentAverage : average,
+				orderNo : orderNo
 			}
-			tableUserList.push(tabletUserVo)
+			playUserList.push(playUserVo);
 			
 		}		
-		console.log(tableUserList);
+		var tableGameVo = {
+				/* biliardNo : 1,
+				tableName : 1,		 */
+				tableNo : tableNo,
+				memberNum : btnTags.length,
+				gameType : gameType,
+				playUserList : playUserList
+		}
+		console.log(JSON.stringify(tableGameVo));
 		
 		$.ajax({			
-			url : "${pageContext.request.contextPath}/tablet/idfind",		
+			url : "${pageContext.request.contextPath}/tablet/confirm",		
 			type : "post",
-			/* contentType : "application/json"*/
-			data : {tableUserList : tableUserList},
+			contentType : "application/json",
+			data : JSON.stringify(tableGameVo),//제이슨형식 변경
 
 			dataType : "json",
 			success : function(action){
 				console.log(action);
 				
 				if(action.result == 'success') {//처리성공	
-					console.log("성공");						
-					renderEach(action.data);					
+					console.log("성공");
+					console.log(action.data);
+					/* 리다이렉트 */					
+					let url = '/modang/tablet/${tableNo}/scoreboard';
+					window.location.replace(url); 	 						
 					
 				}else {//오류처리
 					var msg = action.failMsg;
@@ -388,10 +414,9 @@
 			}				
 		});	
 		
-		리다이렉트
-		
+
 	
-	}); */
+	}); 
 
 
 </script>

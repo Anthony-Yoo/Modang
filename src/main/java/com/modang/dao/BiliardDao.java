@@ -20,20 +20,49 @@ public class BiliardDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	/* 테이블현황 페이지-------------------------------------------------------------------------------- */
+	/* 테이블 현황 - 테이블 추가 */
+	public int insertTable(CueTableVo cuetableVo) {
+		System.out.println("BiliardDao.insertTable()");
+		System.out.println(cuetableVo);
+		int count = sqlSession.insert("biliard.insertTable",cuetableVo);
+		System.out.println("테이블추가:"+count);
+		return count;
+	}
+	
+	/* 테이블 현황 - 하나의 테이블기본정보 가져오기(클릭한) */
+	public CueTableVo selectCuetable(int tableNo) {
+		System.out.println("BiliardDao.selectCuetable()");
+		CueTableVo oneTable= sqlSession.selectOne("biliard.selectOnetable", tableNo);
+		System.out.println("dao결과:"+ oneTable);
+		
+		return oneTable;
+	}
+	
 	/* 테이블 현황-테이블 종류 변경 */
-    public void updatetableType(CueTableVo cuetableVo) {
+    public int updatetableType(CueTableVo cuetableVo) {
     	System.out.println("BiliardDao.updatetableType()");
     	System.out.println(cuetableVo);
     	int count = sqlSession.update("biliard.updatetableType", cuetableVo);
     	System.out.println(count);
+    	
+    	return count;
     }
 	
-	/* 게임정보 가져오기 */
+	/* 테이블 현황 - 게임정보 가져오기 */
 	public List<TableGamesVo> selectGames(int biliardNo) {
 		System.out.println("BiliardDao.selectGames()");
 		List<TableGamesVo> gamesList = sqlSession.selectList("biliard.selectGamesList",biliardNo);
 		
 		return gamesList;
+	}
+	
+	/* 테이블 현황 - 테이블별 미정산 리스트 가져오기 */
+	public List<TableGamesVo> selectIncaluList(CueTableVo cuetableVo) {
+		System.out.println("BiliardDao.selectIncaluList()");
+		List<TableGamesVo> incaluList = sqlSession.selectList("biliard.selectIncaluList", cuetableVo);
+		
+		return incaluList;
 	}
 	
 	/* 테이블 현황 - 상세정보 가져오기 */
@@ -46,7 +75,7 @@ public class BiliardDao {
 		return gamesVo;
 	}
 	
-	/*테이블현황-테이블 전체리스트 가져오기*/
+	/*테이블현황 - 테이블 전체리스트 가져오기*/
 	public List<CueTableVo> selectList(int biliardNo) {
 		System.out.println("BiliardDao.selectList()");
 		System.out.println(biliardNo);
@@ -55,7 +84,8 @@ public class BiliardDao {
 		
 	}
 	
-	/* 요금테이블-요금정보가져오기 */
+	/* 요금테이블 페이지--------------------------------------------------------------------------------- */
+	/* 요금테이블 - 요금정보가져오기 */
 	public TariffVo selectPrice(int biliardNo) {
 		System.out.println("BiliardDao.selectPrice()");
 		System.out.println(biliardNo);
@@ -64,7 +94,7 @@ public class BiliardDao {
 		return tariffVo;
 	}
 	
-	/* 요금테이블-요금수정 */
+	/* 요금테이블 - 요금수정 */
 	public int updatePrice(TariffVo tariffVo) {
 		System.out.println("BiliardDao.updatePrice()");
 		System.out.println(tariffVo);

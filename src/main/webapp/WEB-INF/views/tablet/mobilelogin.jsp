@@ -24,7 +24,7 @@
 		<div class="container">			
 			<h1 class="logo"><img src="${pageContext.request.contextPath}/assets/images/logo.png"/></h1>
 			<div class="content">
-				<form method="get" id="loginProcess" action="${pageContext.request.contextPath}/mobile/login">
+				<form method="get" id="loginProcess" action="${pageContext.request.contextPath}/tablet/mobile/login">
 					<fieldset class="login-form3">
 						<legend class="blind">로그인</legend>
 						<div class="login-ipt-box">

@@ -30,13 +30,13 @@
     <div id="main-content">
 
          <div class="container text-center">
-         
+        				
                 <div id="user">
 				
 					<div id="modifyForm">
-					
-						<div id="main">
 						
+						<div id="main">
+							
 							<h3>이것은 수정 ^^</h3>
 					
                    			<form id="modifysubmitForm" action="${pageContext.request.contextPath }/user/modify" method="post" enctype="multipart/form-data">
@@ -44,7 +44,7 @@
 	                   			<!-- 아이디 -->
 	                   			<div class="form-group">
 	                     			<div class="input-group">
-	                     				<span class="input-group-addon" class="text-large bold"></span>
+	                     				<span class="input-group-addon" class="text-large bold"><img src="${pageContext.request.contextPath}/assets/images/user.png" alt=""></span>
 	                       				<input id="id" type="text" maxlength="16" class="form-control" name="id" value="${requestScope.userVo.id}" placeholder="" readonly="readonly">
 	                       				
 	                     			</div>
@@ -53,7 +53,7 @@
 	                   			<!-- 비밀번호 -->
 								<div class="form-group">
 	                     			<div class="input-group">
-	                       				<span class="input-group-addon" class="text-large bold"></span>
+	                       				<span class="input-group-addon" class="text-large bold"><img src="${pageContext.request.contextPath}/assets/images/unlock.png" alt=""></span>
 	                       				<input id="passwd" type="password" maxlength="16" class="form-control" name="passwd" value="${requestScope.userVo.passwd}" placeholder="PW">
 	                       			
 	                     			</div>
@@ -62,7 +62,7 @@
 	                   			<!-- 휴대폰 -->
 	                   			<div class="form-group">
 	                     			<div class="input-group">
-	                       				<span class="input-group-addon" class="text-large bold"></span>
+	                       				<span class="input-group-addon" class="text-large bold"><img src="${pageContext.request.contextPath}/assets/images/smartphone.png" alt=""></span>
 	                       				<input id="cellphone" type="text" maxlength="11" class="form-control" name="cellphone" value="${requestScope.userVo.cellphone}" placeholder="">
 	                       				
 	                     			</div>
@@ -71,8 +71,8 @@
 	                   			<!-- 별명 -->
 	                   			<div class="form-group">
 	                     			<div class="input-group">
-	                       				<span class="input-group-addon" class="text-large bold"></span>
-	                       				<input id="nick" type="text" maxlength="7" class="form-control" name="nick" value="${requestScope.userVo.nick}" placeholder="">
+	                       				<span class="input-group-addon" class="text-large bold"><img src="${pageContext.request.contextPath}/assets/images/business-card.png" alt=""></span>
+	                       				<input id="nick" type="text" maxlength="10" class="form-control" name="nick" value="${requestScope.userVo.nick}" placeholder="">
 	                       				
 	                     			</div>
 	                   			</div>
@@ -80,7 +80,7 @@
 	                   			<!-- 평균 -->
 	                   			<div class="form-group">
 	                     			<div class="input-group">
-	                       				<span class="input-group-addon" class="text-large bold"></span>
+	                       				<span class="input-group-addon" class="text-large bold"><img src="${pageContext.request.contextPath}/assets/images/line-graph.png" alt=""></span>
 	                       				<input id="average" type="text" maxlength="3" class="form-control" name="average" value="${requestScope.userVo.average}" placeholder="">
 	                       				
 	                     			</div>
@@ -89,14 +89,14 @@
                    			 	<!-- 이미지 -->
                    				<div class="form-group">
                    					<div class="image-show" id="image-show" >
-		        						<img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileimage}" >
+		        						<img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileImage}" >
 		        					</div>
 									<div class="fileContainer">
 										
 			                			<div class="fileInput">
 				                  			<span class="input-group">
 				                  			
-				                  				<input id="profileimage" class="form-control" type="file" name="file"  value="" placeholder="">
+				                  				<input id="profileImage" class="form-control" type="file" name="file"  value="" placeholder="">
 				                  			</span>
 			            				</div>
 		        					</div>
@@ -121,6 +121,10 @@
            
     <!-- 푸터 시작 -->
     <c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
-    <!-- 푸터 끝 -->   
+    <!-- 푸터 끝 -->  
+
+     
 </body>
+
+
 </html>

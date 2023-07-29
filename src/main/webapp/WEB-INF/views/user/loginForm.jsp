@@ -12,6 +12,7 @@
 <!-- icon -->
 <link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
 
+
 <!-- css -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
@@ -40,20 +41,29 @@
 						<h3>이것은 로그인 ^^</h3>
 					
 						<form id="loginSubmitForm" action="${pageContext.request.contextPath }/user/login" method="post" enctype="multipart/form-data">
-            	
-			            	<div class="form-group">
+            				
+	            			<div class="form-group">
 								<div class="input-group">
-									<span class="input-group-addon"></span>
-									<input id="id" type="text" maxlength="10" class="form-control" name="id" placeholder="ID">
+							
+									<span class="input-group-addon">
+										<img src="${pageContext.request.contextPath}/assets/images/user.png" alt="">
+									</span>
+									<span class="input-group-addon">
+										<input id="id" type="text" maxlength="10" class="form-control" name="id" placeholder="ID">
+									</span>
 									
 								</div>
-			                </div>
-	               
+						    </div>
+			                
 							<div class="form-group">
 								<div class="input-group">
-									<span class="input-group-addon"></span>
-									<input id="passwd" type="password" maxlength="16" class="form-control" name="passwd" placeholder="PASSWORD">
+									<span class="input-group-addon">
+										<img src="${pageContext.request.contextPath}/assets/images/passwd.png" alt="">
+									</span>
 									
+									<span class="input-group-addon">
+										<input id="passwd" type="password" maxlength="16" class="form-control" name="passwd" placeholder="PASSWORD">
+									</span>
 								</div>
 							</div>
 	             
