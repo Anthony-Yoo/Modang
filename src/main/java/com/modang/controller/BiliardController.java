@@ -88,9 +88,10 @@ public class BiliardController {
 			int biliardNo = loginManager.getbiliardNo();
 					
 			List<CueTableVo> cueTableList = biliardService.tableList(biliardNo);
-			List<TableGamesVo> gamesList =biliardService.getGames(biliardNo);
-			
-			model.addAttribute("cueTableList", cueTableList);
+			//List<TableGamesVo> gamesList =biliardService.getGames(biliardNo);
+			if(cueTableList!=null) {
+				model.addAttribute("cueTableList", cueTableList);
+			}
 			
 			return "/manager/index";
 		
