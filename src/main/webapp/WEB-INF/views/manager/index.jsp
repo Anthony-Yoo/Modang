@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -6,15 +7,20 @@
 <head>
 <title>modang 관리자페이지</title>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/managerdefault.css" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="icon" sizes="any"
+	href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/managerdefault.css" />
 
 <!-- jquery -->
-<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
 
 <!-- 부트스트랩 js -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 
 
 </head>
@@ -29,32 +35,43 @@
 
 						<!-- Logo -->
 						<h1>
-							<a href="${pageContext.request.contextPath}/manager/index"><img src="${pageContext.request.contextPath}/assets/images/logo.png" /></a>
+							<a href="${pageContext.request.contextPath}/manager/index"><img
+								src="${pageContext.request.contextPath}/assets/images/logo.png" /></a>
 						</h1>
 
 						<!-- User login -->
 						<c:choose>
 							<c:when test="${sessionScope.loginManager==null}">
 								<ul>
-									<li><a href="${pageContext.request.contextPath}/manager/loginForm" class="btn btn-sm">로그인</a></li>
+									<li><a
+										href="${pageContext.request.contextPath}/manager/loginForm"
+										class="btn btn-sm">로그인</a></li>
 								</ul>
 							</c:when>
 							<c:otherwise>
-								<ul>	
+								<ul>
 									<li class="mr-2"><strong>${sessionScope.loginManager.repName}</strong>님</li>
-									<li><a href="${pageContext.request.contextPath}/manager/logout" class="btn btn-sm">로그아웃</a></li>
-									<li><a href="${pageContext.request.contextPath}/" class="btn btn-sm">모두의 당구장</a></li>
+									<li><a
+										href="${pageContext.request.contextPath}/manager/logout"
+										class="btn btn-sm">로그아웃</a></li>
+									<li><a href="${pageContext.request.contextPath}/"
+										class="btn btn-sm">모두의 당구장</a></li>
 								</ul>
 							</c:otherwise>
 						</c:choose>
 
 						<!-- Nav -->
 						<nav id="nav">
-							<a href="${pageContext.request.contextPath}/manager/index" class="active">테이블 현황</a> 
-							<a href="${pageContext.request.contextPath}/manager/tableSalesForm">테이블 매출</a> 
-							<a href="${pageContext.request.contextPath}/manager/daySalesForm">일별 매출</a> 
-							<a href="${pageContext.request.contextPath}/manager/pricePolicyForm">요금 테이블</a> 
-							<a href="${pageContext.request.contextPath}/manager/settingsForm">관리자 설정</a>
+							<a href="${pageContext.request.contextPath}/manager/index"
+								class="active">테이블 현황</a> <a
+								href="${pageContext.request.contextPath}/manager/tableSalesForm">테이블
+								매출</a> <a
+								href="${pageContext.request.contextPath}/manager/daySalesForm">일별
+								매출</a> <a
+								href="${pageContext.request.contextPath}/manager/pricePolicyForm">요금
+								테이블</a> <a
+								href="${pageContext.request.contextPath}/manager/settingsForm">관리자
+								설정</a>
 						</nav>
 					</div>
 				</div>
@@ -70,98 +87,103 @@
 					<div class="col-8">
 						<section>
 							<header class="d-inline-block">
-								<h2>&nbsp;테이블 현황</h2>                             
+								<h2>&nbsp;테이블 현황</h2>
 							</header>
 							<div class="d-inline-block status">
-								대기
-								<img src="${pageContext.request.contextPath}/assets/images/tableStatus1.png" class="imgbox">
-								사용중
-								<img src="${pageContext.request.contextPath}/assets/images/tableStatus0.png" class="imgbox">
-								일시정지
-								<img src="${pageContext.request.contextPath}/assets/images/tableStatus2.png" class="imgbox">
-								&nbsp;&nbsp;
-								
+								대기 <img
+									src="${pageContext.request.contextPath}/assets/images/tableStatus1.png"
+									class="imgbox"> 사용중 <img
+									src="${pageContext.request.contextPath}/assets/images/tableStatus0.png"
+									class="imgbox"> 일시정지 <img
+									src="${pageContext.request.contextPath}/assets/images/tableStatus2.png"
+									class="imgbox"> &nbsp;&nbsp;
+
 							</div>
 							<div id="tablelist">
 								<c:forEach items="${cueTableList}" var="cueTableVo">
-									<div class="tableArea" data-biliardno="${cueTableVo.biliardNo}" data-tableno="${cueTableVo.tableNo}" data-tablename="${cueTableVo.tableName}" data-tabletype="${cueTableVo.tableType}">
-										<large class="font-weight-normal text-blue float-left"><strong>No. ${cueTableVo.tableName}</strong></large>
-										    <c:choose>
-										      <c:when test="${cueTableVo.tableStatus==0}"> <!--테이블 상태별 배경색 변경(대기)  -->
-												     <div class="status-available" style="background-color: #d2e4fb;">
-													     <div class="small float-right">
-														 	<c:if test="${cueTableVo.tableType==0}" >
-																<strong>대대</strong>
-															</c:if>
-															<c:if test="${cueTableVo.tableType==1}" >
-																<strong>중대</strong>
-															</c:if>
-															<c:if test="${cueTableVo.tableType==2}" >
-																<strong>포켓</strong>
-															</c:if>
-														</div>
-														<div class="tableTime1 pt-8 pl-3">
-														    <strong>대 기</strong>
-														</div>
-														<br><br>
-														<div class="tablePay">
-															
-														</div>
-										        	</div>
-										      </c:when>
-										      <c:when test="${cueTableVo.tableStatus==1}"> <!--테이블 상태별 배경색 변경(사용)  -->
-										        <div class="status-occupied" style="background-color:#fdeba2;">
-													     <div class="small float-right">
-														 	<c:if test="${cueTableVo.tableType==0}" >
-																<strong>대대</strong>
-															</c:if>
-															<c:if test="${cueTableVo.tableType==1}" >
-																<strong>중대</strong>
-															</c:if>
-															<c:if test="${cueTableVo.tableType==2}" >
-																<strong>포켓</strong>
-															</c:if>
-														</div>
-														<div class="tableTime pt-8 pl-2">
-														    00:43
-														</div>
-														<br><br>
-														<div class="tablePay">
-															<strong>9,000원</strong>
-														</div>
-										        </div>
-										      </c:when>
-										      <c:otherwise> <!--테이블 상태별 배경색 변경(정지)  -->
-										        <div class="status-default" style="background-color: #ffeded;">
-													     <div class="small float-right">
-														 	<c:if test="${cueTableVo.tableType==0}" >
-																<strong>대대</strong>
-															</c:if>
-															<c:if test="${cueTableVo.tableType==1}" >
-																<strong>중대</strong>
-															</c:if>
-															<c:if test="${cueTableVo.tableType==2}" >
-																<strong>포켓</strong>
-															</c:if>
-														</div>
-														<div class="tableTime pt-8 pl-2">
-														    00:43
-														</div>
-														<br><br>
-														<div class="tablePay">
-															<strong>9,000원</strong>
-														</div>
-										        </div>
-										      </c:otherwise>
-										    </c:choose>
+									<div class="tableArea" data-biliardno="${cueTableVo.biliardNo}"
+										data-tableno="${cueTableVo.tableNo}"
+										data-tablename="${cueTableVo.tableName}"
+										data-tabletype="${cueTableVo.tableType}">
+										<large class="font-weight-normal text-blue float-left">
+										<strong>No. ${cueTableVo.tableName}</strong></large>
+										<c:choose>
+											<c:when test="${cueTableVo.tableStatus==0}">
+												<!--테이블 상태별 배경색 변경(대기)  -->
+												<div class="status-available"
+													style="background-color: #d2e4fb;">
+													<div class="small float-right">
+														<c:if test="${cueTableVo.tableType==0}">
+															<strong>대대</strong>
+														</c:if>
+														<c:if test="${cueTableVo.tableType==1}">
+															<strong>중대</strong>
+														</c:if>
+														<c:if test="${cueTableVo.tableType==2}">
+															<strong>포켓</strong>
+														</c:if>
+													</div>
+													<div class="tableTime1 pt-8 pl-3">
+														<strong>대 기</strong>
+													</div>
+													<br> <br>
+													<div class="tablePay"></div>
+												</div>
+											</c:when>
+											<c:when test="${cueTableVo.tableStatus==1}">
+												<!--테이블 상태별 배경색 변경(사용)  -->
+												<div class="status-occupied"
+													style="background-color: #fdeba2;">
+													<div class="small float-right">
+														<c:if test="${cueTableVo.tableType==0}">
+															<strong>대대</strong>
+														</c:if>
+														<c:if test="${cueTableVo.tableType==1}">
+															<strong>중대</strong>
+														</c:if>
+														<c:if test="${cueTableVo.tableType==2}">
+															<strong>포켓</strong>
+														</c:if>
+													</div>
+													<div class="tableTime pt-8 pl-2">00:43</div>
+													<br> <br>
+													<div class="tablePay">
+														<strong>9,000원</strong>
+													</div>
+												</div>
+											</c:when>
+											<c:otherwise>
+												<!--테이블 상태별 배경색 변경(정지)  -->
+												<div class="status-default"
+													style="background-color: #ffeded;">
+													<div class="small float-right">
+														<c:if test="${cueTableVo.tableType==0}">
+															<strong>대대</strong>
+														</c:if>
+														<c:if test="${cueTableVo.tableType==1}">
+															<strong>중대</strong>
+														</c:if>
+														<c:if test="${cueTableVo.tableType==2}">
+															<strong>포켓</strong>
+														</c:if>
+													</div>
+													<div class="tableTime pt-8 pl-2">00:43</div>
+													<br> <br>
+													<div class="tablePay">
+														<strong>9,000원</strong>
+													</div>
+												</div>
+											</c:otherwise>
+										</c:choose>
 
 									</div>
 								</c:forEach>
 								<!-- 테이블 추가버튼 -->
 								<div class="tableAdd">
-									<img src="${pageContext.request.contextPath}/assets/images/addbt.png"/>
+									<img
+										src="${pageContext.request.contextPath}/assets/images/addbt.png" />
 								</div>
-							</div>							
+							</div>
 						</section>
 					</div>
 
@@ -171,97 +193,112 @@
 							<header>
 								<h2 id="info-01">테이블 정보</h2>
 							</header>
-<!-- 테이블종류 -->
-							<form action="${pageContext.request.contextPath}/manager/tableInfo" method="get">
+							<!-- 테이블종류 -->
+							<form
+								action="${pageContext.request.contextPath}/manager/tableInfo"
+								method="get">
 								<div class="form-group row mb-1">
 									<label class="col-form-label col-4">테이블 종류</label>
 									<div id="" class="col tableRadio01">
- 										<label id="" class="custom-control d-inline-block">
-											<span id="tabletypename" class="custom-control pt-1">대 대</span>
-										</label> 
-											<button id="tableSetting" type="button" class=".your-button-selector">
-										     	<img src="${pageContext.request.contextPath}/assets/images/settings.png" width="15px"/>
-										    </button>
+										<label id="" class="custom-control d-inline-block"> <span
+											id="tabletypename" class="custom-control pt-1">대 대</span>
+										</label>
+										<button id="tableSetting" type="button"
+											class=".your-button-selector">
+											<img
+												src="${pageContext.request.contextPath}/assets/images/settings.png"
+												width="15px" />
+										</button>
 									</div>
 								</div>
 
-<!-- 게임종류	 -->							
+								<!-- 게임종류	 -->
 								<div class="form-group row mb-1">
 									<label class="col-form-label col-4">게임 종류</label>
 									<div class="col tableRadio02 ">
 										<div class="gametype-1 ">
 											<label class="custom-control custom-radio d-inline-block">
-												<input type="radio" name="gametype0" class="custom-control-input" /> 
-												<span id="gametype" class="custom-control-label">3구</span>
-											</label> 
-											<label class="custom-control custom-radio d-inline-block">
-												<input type="radio" name="gametype1" class="custom-control-input" /> 
-												<span id="gametype" class="custom-control-label">4구</span>
+												<input type="radio" name="gametype0"
+												class="custom-control-input" /> <span id="gametype"
+												class="custom-control-label">3구</span>
+											</label> <label class="custom-control custom-radio d-inline-block">
+												<input type="radio" name="gametype1"
+												class="custom-control-input" /> <span id="gametype"
+												class="custom-control-label">4구</span>
 											</label>
 										</div>
 										<div class="gametype-2" style="display: none">
 											<label class="custom-control custom-radio d-inline-block">
-												<input type="radio" name="gametype2" class="custom-control-input" /> 
-												<span id="gametype" class="custom-control-label">8볼</span>
-											</label> 
-											<label class="custom-control custom-radio d-inline-block">
-												<input type="radio" name="gametype3" class="custom-control-input" /> 
-												<span id="gametype" class="custom-control-label">10볼</span>
+												<input type="radio" name="gametype2"
+												class="custom-control-input" /> <span id="gametype"
+												class="custom-control-label">8볼</span>
+											</label> <label class="custom-control custom-radio d-inline-block">
+												<input type="radio" name="gametype3"
+												class="custom-control-input" /> <span id="gametype"
+												class="custom-control-label">10볼</span>
 											</label>
 										</div>
 									</div>
 								</div>
-<!-- 고객정보	 -->								
+								<!-- 고객정보	 -->
 								<div class="form-group row mb-1">
 									<label class="col-form-label col-4">고객정보</label>
 									<div class="col">
-										<textarea id="playUserList" class="form-control mb-1" rows="4" maxlength="1000" disabled>
+										<textarea id="playUserList" class="form-control mb-1" rows="4"
+											maxlength="1000" disabled>
 										</textarea>
-									</div> 
+									</div>
 								</div>
 								<div class="form-group row mb-1">
 									<label class="col-form-label col-4">요금제</label>
 									<div class="col input-group">
-										<span class="input-group-prepend">
-											<span class="input-group-text px-2 text-tiny" style="height: 2rem;">10분당</span>
+										<span class="input-group-prepend"> <span
+											class="input-group-text px-2 text-tiny" style="height: 2rem;">10분당</span>
+										</span> <input type="text" id="tableFee"
+											class="form-control form-control-sm px-2" maxlength="4"
+											readonly /> <span class="input-group-append"> <span
+											class="input-group-text px-2 text-tiny" style="height: 2rem;">원</span>
 										</span>
-										<input type="text" id="tableFee" class="form-control form-control-sm px-2" maxlength="4" readonly/> 
-											<span class="input-group-append">
-												<span class="input-group-text px-2 text-tiny" style="height: 2rem;">원</span>
-											</span>
 									</div>
 								</div>
-<!-- 시작시간	 -->								
+								<!-- 시작시간	 -->
 								<div class="form-group row mb-1">
 									<label class="col-form-label col-4">시작 시간</label>
 									<div class="col-4">
-										<input type="text" id="startTime" class="form-control form-control-sm mb-1" maxlength="20" readonly />
+										<input type="text" id="startTime"
+											class="form-control form-control-sm mb-1" maxlength="20"
+											readonly />
 									</div>
 								</div>
-<!-- 종료시간	 -->								
+								<!-- 종료시간	 -->
 								<div class="form-group row mb-1">
 									<label class="col-form-label col-4">종료 시간</label>
 									<div class="col-4">
-										<input type="text" id="endTime" class="form-control form-control-sm mb-0" maxlength="20"	readonly />
+										<input type="text" id="endTime"
+											class="form-control form-control-sm mb-0" maxlength="20"
+											readonly />
 									</div>
 								</div>
-<!-- 결제금액	 -->								
+								<!-- 결제금액	 -->
 								<div class="form-group row mb-1">
 									<label class="col-form-label col-4">결제 금액</label>
 									<div class="col input-group">
-										<input type="text" name="" class="form-control form-control-sm mb-0" maxlength="20" readonly />
+										<input type="text" name=""
+											class="form-control form-control-sm mb-0" maxlength="20"
+											readonly />
 									</div>
 								</div>
 								<div class="mt-4" style="position: absolute; bottom: 32px;">
-									<button id="paybt" type="button" class="btn btn-red btn-lg btn-block">정 산</button>
+									<button id="paybt" type="button"
+										class="btn btn-red btn-lg btn-block">정 산</button>
 								</div>
-<!-- 미정산리스트	 -->								
+								<!-- 미정산리스트	 -->
 								<div class="row">
 									<div class="col-12">
-									 <strong><미정산 리스트></strong>
+										<strong><미정산 리스트></strong>
 										<div class="table-striped">
-										    <table class="inCaluList">
-										    	<thead class="thead-dark">
+											<table class="inCaluList">
+												<thead class="thead-dark">
 													<tr>
 														<th>no</th>
 														<th>시작시간</th>
@@ -270,17 +307,17 @@
 														<th>결제상태</th>
 													</tr>
 												</thead>
-											    <tbody class="listTalbe">
-<!-- 											        <tr class="custom-height">
+												<tbody class="listTalbe">
+													<!-- 											        <tr class="custom-height">
 												          <td>1</td>
 												          <td>11:45</td>
 												          <td>12:51</td>
 												          <td>8,000</td>
 												          <td>미정산</td>
 											        </tr> -->
-											    </tbody>
+												</tbody>
 											</table>
-										</div> 
+										</div>
 									</div>
 								</div>
 							</form>
@@ -294,114 +331,137 @@
 		<div id="copyright">&copy; modang. All rights reserved.</div>
 
 	</div>
-	
-<!--테이블 변경 모달창 ------------------------------------------------------- -->	
 
-<div class="modal fade modal-center" id="tableMngModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm modal-center">
-    <div class="modal-content">
-		<div class="modal-header">
-		    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-		    <h4 class="modal-title" id="mySmallModalLabel"><strong>테이블 변경</strong></h4>
-		</div>
-      <div class="modal-body">
-        <label for="inputEmail3" class="label01">테이블 종류</label>
-		<div id="" class="col">
-			<label class="custom-control custom-radio d-inline-block">
-				<input type="radio" name="tabletypeModify" value="0" class="custom-control-input tabletypeModify"  /> 
-				<span class="custom-control-label">대대</span>
-			</label> 
-			<label class="custom-control custom-radio d-inline-block">
-				<input type="radio" name="tabletypeModify" value="1" class="custom-control-input tabletypeModify"  /> 
-				<span class="custom-control-label">중대</span>
-			</label> 
-			<label class="custom-control custom-radio d-inline-block">
-				<input type="radio" name="tabletypeModify" value="2" class="custom-control-input tabletypeModify"  /> 
-				<span class="custom-control-label">포켓</span>
-			</label>
-		</div>
-      </div>
-      <div class="modal-footer">
-        <button id="btnSave" type="button" class="btn btn-primary">변경</button>
-        <button type="button" class="btn btn-dark" data-dismiss="modal">닫기</button>
-      </div>
-    </div>
-  </div>
-</div> 	 	
-<!--테이블 변경 모달창 끝------------------------------------------------------- -->	
-<!--테이블 추가 모달창 ------------------------------------------------------- -->	
+	<!--테이블 변경 모달창 ------------------------------------------------------- -->
 
-<div class="modal fade modal-center" id="tableAddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm modal-center">
-    <div class="modal-content">
-		<div class="modal-header">
-		    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-		    <h4 class="modal-title" id="mySmallModalLabel"><strong>테이블 추가</strong></h4>
-		</div>
-      <div class="modal-body">
-      	<label for="inputEmail3" class="label01">테이블 번호</label>
-      	<input class="form-control-2 " id="tableName" type="text" name="" >
-      	<br>
-        <label for="inputEmail3" class="label01">테이블 종류</label>
-		<div id="" class="col">
-			<label class="custom-control custom-radio d-inline-block">
-				<input type="radio" name="tabletype1" value="add0" class="custom-control-input"  />
-				<span class="custom-control-label">대대</span>
-			</label> 
-			<label class="custom-control custom-radio d-inline-block">
-				<input type="radio" name="tabletype1" value="add1" class="custom-control-input"  /> 
-				<span class="custom-control-label">중대</span>
-			</label> 
-			<label class="custom-control custom-radio d-inline-block">
-				<input type="radio" name="tabletype1" value="add2" class="custom-control-input"  /> 
-				<span class="custom-control-label">포켓</span>
-			</label>
-		</div>
-      </div>
-      <div class="modal-footer">
-        <button id="btnAdd" type="button" class="btn btn-primary">추가</button>
-        <button type="button" class="btn btn-dark" data-dismiss="modal">닫기</button>
-      </div>
-    </div>
-  </div>
-</div> 	
-<!--테이블 추가 모달창 끝------------------------------------------------------- -->	
-<!--테이블 정산 모달창 ------------------------------------------------------- -->	
-
-<div class="modal fade modal-center" id="tablePayModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-sm modal-center">
-		    <div class="modal-content">
+	<div class="modal fade modal-center" id="tableMngModal" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm modal-center">
+			<div class="modal-content">
 				<div class="modal-header">
-				    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-				    <h4 class="modal-title" id="mySmallModalLabel"><strong>게임 결제</strong></h4>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<h4 class="modal-title" id="mySmallModalLabel">
+						<strong>테이블 변경</strong>
+					</h4>
 				</div>
 				<div class="modal-body">
-		      		<label for="inputEmail3" class="label01">테이블 번호</label>
-		      		<input class="form-control-2 " id="tableName" type="text" name="" >
-		      		<br>
-			        <div class="modal-body">
-			        	<label for="inputEmail3" class="label01">테이블 종류</label>
-						<div id="" class="col">
-							<label class="custom-control custom-radio d-inline-block">
-								<input type="radio" name="" value="0" class="custom-control-input"  /> 
-								<span class="custom-control-label">카드</span>
-							</label> 
-							<label class="custom-control custom-radio d-inline-block">
-								<input type="radio" name="" value="1" class="custom-control-input"  /> 
-								<span class="custom-control-label">현금</span>
-							</label> 
-						</div>
-			      </div>
-			      <div class="modal-footer">
-			        	<button id="btnSave" type="button" class="btn btn-primary">결제</button>
-			       		<button type="button" class="btn btn-dark" data-dismiss="modal">닫기</button>
-			      </div>
-			    </div>
-		    </div>
-	  </div>
-</div> 	 	
-<!--테이블 변경 모달창 끝------------------------------------------------------- -->		
-	
+					<label for="inputEmail3" class="label01">테이블 종류</label>
+					<div id="" class="col">
+						<label class="custom-control custom-radio d-inline-block">
+							<input type="radio" name="tabletypeModify" value="0"
+							class="custom-control-input tabletypeModify" /> <span
+							class="custom-control-label">대대</span>
+						</label> <label class="custom-control custom-radio d-inline-block">
+							<input type="radio" name="tabletypeModify" value="1"
+							class="custom-control-input tabletypeModify" /> <span
+							class="custom-control-label">중대</span>
+						</label> <label class="custom-control custom-radio d-inline-block">
+							<input type="radio" name="tabletypeModify" value="2"
+							class="custom-control-input tabletypeModify" /> <span
+							class="custom-control-label">포켓</span>
+						</label>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button id="btnSave" type="button" class="btn btn-primary">변경</button>
+					<button type="button" class="btn btn-dark" data-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--테이블 변경 모달창 끝------------------------------------------------------- -->
+	<!--테이블 추가 모달창 ------------------------------------------------------- -->
+	<div class="modal fade modal-center" id="tableAddModal" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm modal-center">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<h4 class="modal-title" id="mySmallModalLabel">
+						<strong>테이블 추가</strong>
+					</h4>
+				</div>
+				<div class="modal-body">
+					<label for="inputEmail3" class="label01">테이블 번호</label> <input
+						class="form-control-2 " id="tableName" type="text" name="">
+					<br> <label for="inputEmail3" class="label01">테이블 종류</label>
+					<div id="" class="col">
+						<label class="custom-control custom-radio d-inline-block">
+							<input type="radio" name="tabletype1" value="add0"
+							class="custom-control-input" /> <span
+							class="custom-control-label">대대</span>
+						</label> <label class="custom-control custom-radio d-inline-block">
+							<input type="radio" name="tabletype1" value="add1"
+							class="custom-control-input" /> <span
+							class="custom-control-label">중대</span>
+						</label> <label class="custom-control custom-radio d-inline-block">
+							<input type="radio" name="tabletype1" value="add2"
+							class="custom-control-input" /> <span
+							class="custom-control-label">포켓</span>
+						</label>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button id="btnAdd" type="button" class="btn btn-primary">추가</button>
+					<button type="button" class="btn btn-dark" data-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--테이블 추가 모달창 끝------------------------------------------------------- -->
+	<!--테이블 정산 모달창 ------------------------------------------------------- -->
+	<div class="modal fade modal-center" id="tablePayModal" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm1 modal-center">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<h4 class="modal-title" id="paytitle">
+					</h4>
+				</div>
+				<div class="modal-body1">
+					<div class="form-group">
+						<label for="gameNo" class="label02 d-inline-block">결제
+							번호</label> <input class="form-control-4 d-inline-block" id="gameNo"
+							type="text" name="">
+					</div>
+					<div class="form-group">
+						<label for="" class="label02 custom-control d-inline-block">테이블
+							종류</label> <label class="custom-control custom-radio d-inline-block">
+							<input id="payType" type="radio" name="payType" value="0" class="custom-control-input" /> 
+							<span class="custom-control-label">카드</span>
+						</label> <label class="custom-control custom-radio d-inline-block">
+							<input id="payType" type="radio" name="payType" value="1" class="custom-control-input" /> 
+							<span class="custom-control-label">현금</span>
+						</label>
+					</div>
+					<div class="form-group">
+						<label for="payMoney" class="label02 d-inline-block">결제금액</label>
+						<input class="form-control-4 d-inline-block" id="payMoney" type="text">
+					</div>
+					<div class="form-group">
+						<label for="income" class="label02 d-inline-block">입금금액</label> 
+						<input class="form-control-4 d-inline-block" id="income" type="text">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button id="btnPay" type="button" class="btn btn-primary">결제</button>
+					<button type="button" class="btn btn-dark" data-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--테이블 변경 모달창 끝------------------------------------------------------- -->
+
 </body>
 
 <script type="text/javascript">
@@ -412,9 +472,64 @@ let crtTableName=0; //현재 선택된 테이블네임
 <!--결제 모달창 호출------------------------------------------------------ -->
 $("#paybt").on("click",function(){
 	console.log("결제버튼 클릭");
-	
+	$("#paytitle").empty();
+	var tableNo = crtTableNo;
+	var tableName = crtTableName;
+	console.log("테이블 네임:"+tableName);
+	console.log("테이블 번호:"+tableNo);
+	$("#paytitle").append("<strong>게임 결제 ["+tableName+"번 테이블]</strong>");
+	$("#payType input[type='radio']").prop("checked", false);
 	$('#tablePayModal').modal('show');
+
 });
+
+
+<!--결제 버튼 클릭-------------------------------------------------------- -->
+$("#btnPay").on("click",function(){
+	console.log("결제버튼 클릭");
+	
+	var tableName = crtTableName;
+	var tableNo = crtTableNo;
+	console.log("테이블 네임:"+tableName);
+	console.log("테이블 번호:"+tableNo);
+	var gameNo = $("#gameNo").val();
+	var payType = $('#tablePayModal [name="payType"]:checked').val();
+	var income = $('#income').val();
+	console.log("게임번호:"+ tableName); //
+	console.log("결제타입:"+ payType);
+	console.log("입금금액:"+ income);
+	
+	var gamesVo={
+			gameNo: gameNo,
+			payType: payType,
+			income: income
+	}
+	
+	$.ajax({
+		
+		url : "${pageContext.request.contextPath}/manager/payMent",		
+		type : "get",
+		contentType : "application/json",
+		data : gamesVo,
+
+		dataType : "json",
+		success : function(jsonResult){
+			/*성공시 처리해야될 코드 작성*/
+			if(jsonResult.data !=null){
+				$('#tablePayModal').modal('hide');
+				alert("결제가 완료되었습니다.");
+				location.reload();
+			}else{
+				
+			} 
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+	
+});
+
 
 <!--테이블 추가클릭------------------------------------------------------- -->
 $(".tableAdd").on("click",function(){
@@ -455,7 +570,8 @@ $("#btnAdd").on("click", function(){
 		success : function(jsonResult){
 			console.log(jsonResult);
 			/*성공시 처리해야될 코드 작성*/
- 			if(jsonResult.data !=null){
+			
+  			if(jsonResult.data !=null){
  			
 				$('#tableAddModal').modal('hide');
 				alert("테이블이 추가되었습니다.");
@@ -463,7 +579,7 @@ $("#btnAdd").on("click", function(){
 	 					
 			}else{
 				
-			} 
+			}  
 		},
 		error : function(XHR, status, error) { 
 			console.error(status + " : " + error);
