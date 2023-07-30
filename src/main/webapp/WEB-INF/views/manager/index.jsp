@@ -69,12 +69,21 @@
 					<!-- 테이블 목록 -->
 					<div class="col-8">
 						<section>
-							<header>
-								<h2>테이블 현황</h2>
+							<header class="d-inline-block">
+								<h2>&nbsp;테이블 현황</h2>                             
 							</header>
+							<div class="d-inline-block status">
+								대기
+								<img src="${pageContext.request.contextPath}/assets/images/tableStatus1.png" class="imgbox">
+								사용중
+								<img src="${pageContext.request.contextPath}/assets/images/tableStatus0.png" class="imgbox">
+								일시정지
+								<img src="${pageContext.request.contextPath}/assets/images/tableStatus2.png" class="imgbox">
+								&nbsp;&nbsp;
+								
+							</div>
 							<div id="tablelist">
 								<c:forEach items="${cueTableList}" var="cueTableVo">
-								
 									<div class="tableArea" data-biliardno="${cueTableVo.biliardNo}" data-tableno="${cueTableVo.tableNo}" data-tablename="${cueTableVo.tableName}" data-tabletype="${cueTableVo.tableType}">
 										<large class="font-weight-normal text-blue float-left"><strong>No. ${cueTableVo.tableName}</strong></large>
 										    <c:choose>
@@ -170,7 +179,7 @@
  										<label id="" class="custom-control d-inline-block">
 											<span id="tabletypename" class="custom-control pt-1">대 대</span>
 										</label> 
-											<button id="tableSetting" type="button">
+											<button id="tableSetting" type="button" class=".your-button-selector">
 										     	<img src="${pageContext.request.contextPath}/assets/images/settings.png" width="15px"/>
 										    </button>
 									</div>
@@ -244,47 +253,36 @@
 									</div>
 								</div>
 								<div class="mt-4" style="position: absolute; bottom: 32px;">
-									<button type="submit" class="btn btn-red btn-lg btn-block">정 산</button>
+									<button id="paybt" type="button" class="btn btn-red btn-lg btn-block">정 산</button>
 								</div>
 <!-- 미정산리스트	 -->								
-								<div class=" ">
-									<div class="table-sm table-striped inCaluList">
-									    <table class="table inCaluList">
-									      <tbody>
-									        <tr class="custom-height">
-									          <td>1</td>
-									          <td>11:45</td>
-									          <td>12:51</td>
-									          <td>8,000</td>
-									          <td>미정산</td>
-									        </tr>
-									        <tr class="custom-height">
-									          <td>1</td>
-									          <td>11:45</td>
-									          <td>12:51</td>
-									          <td>8,000</td>
-									          <td>미정산</td>
-									        </tr>
-									        <tr class="custom-height">
-									          <td>1</td>
-									          <td>11:45</td>
-									          <td>12:51</td>
-									          <td>8,000</td>
-									          <td>미정산</td>
-									        </tr>
-									        <tr class="custom-height">
-									          <td>1</td>
-									          <td>11:45</td>
-									          <td>12:51</td>
-									          <td>8,000</td>
-									          <td>미정산</td>
-									        </tr>
-									      </tbody>
-									    </table>
-									</div> 
+								<div class="row">
+									<div class="col-12">
+									 <strong><미정산 리스트></strong>
+										<div class="table-striped">
+										    <table class="inCaluList">
+										    	<thead class="thead-dark">
+													<tr>
+														<th>no</th>
+														<th>시작시간</th>
+														<th>종료시간</th>
+														<th>결제금액</th>
+														<th>결제상태</th>
+													</tr>
+												</thead>
+											    <tbody class="listTalbe">
+<!-- 											        <tr class="custom-height">
+												          <td>1</td>
+												          <td>11:45</td>
+												          <td>12:51</td>
+												          <td>8,000</td>
+												          <td>미정산</td>
+											        </tr> -->
+											    </tbody>
+											</table>
+										</div> 
+									</div>
 								</div>
-
-
 							</form>
 						</section>
 					</div>
@@ -368,7 +366,41 @@
   </div>
 </div> 	
 <!--테이블 추가 모달창 끝------------------------------------------------------- -->	
-	
+<!--테이블 정산 모달창 ------------------------------------------------------- -->	
+
+<div class="modal fade modal-center" id="tablePayModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-sm modal-center">
+		    <div class="modal-content">
+				<div class="modal-header">
+				    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				    <h4 class="modal-title" id="mySmallModalLabel"><strong>게임 결제</strong></h4>
+				</div>
+				<div class="modal-body">
+		      		<label for="inputEmail3" class="label01">테이블 번호</label>
+		      		<input class="form-control-2 " id="tableName" type="text" name="" >
+		      		<br>
+			        <div class="modal-body">
+			        	<label for="inputEmail3" class="label01">테이블 종류</label>
+						<div id="" class="col">
+							<label class="custom-control custom-radio d-inline-block">
+								<input type="radio" name="" value="0" class="custom-control-input"  /> 
+								<span class="custom-control-label">카드</span>
+							</label> 
+							<label class="custom-control custom-radio d-inline-block">
+								<input type="radio" name="" value="1" class="custom-control-input"  /> 
+								<span class="custom-control-label">현금</span>
+							</label> 
+						</div>
+			      </div>
+			      <div class="modal-footer">
+			        	<button id="btnSave" type="button" class="btn btn-primary">결제</button>
+			       		<button type="button" class="btn btn-dark" data-dismiss="modal">닫기</button>
+			      </div>
+			    </div>
+		    </div>
+	  </div>
+</div> 	 	
+<!--테이블 변경 모달창 끝------------------------------------------------------- -->		
 	
 </body>
 
@@ -377,6 +409,12 @@
 let crtbiliardNo=0;//현재 선택된 당구장넘버
 let crtTableNo=0; //현재 선택된 테이블넘버
 let crtTableName=0; //현재 선택된 테이블네임
+<!--결제 모달창 호출------------------------------------------------------ -->
+$("#paybt").on("click",function(){
+	console.log("결제버튼 클릭");
+	
+	$('#tablePayModal').modal('show');
+});
 
 <!--테이블 추가클릭------------------------------------------------------- -->
 $(".tableAdd").on("click",function(){
@@ -438,155 +476,208 @@ $("#btnAdd").on("click", function(){
 <!--테이블 상세정보 가져오기------------------------------------------------------- -->	
 $(".tableArea").on("click",function(){
 	
-		crtTableNo = $(this).data("tableno");
-		crtTableName = $(this).data("tablename");
-		crtbiliardNo = $(this).data("biliardno");
-		
-		console.log('테이블 클릭');
-		var biliardno = $(this).data("biliardno");
-		var tableno = $(this).data("tableno");
-		var tablename = $(this).data("tablename");
-		var tabletype = $(this).data("tabletype");
-		console.log("당구장번호: "+biliardno);
-		console.log("테이블번호: "+tableno);
-		console.log("테이블이름: "+tablename);
-		console.log("테이블종류: "+tabletype);
-		
-		var cuetableVo={
-			biliardNo: biliardno,
-			tableNo: tableno,
-			tableName: tablename,
-			tableType: tabletype
-		};
-		
 
-		$.ajax({
-			url : "${pageContext.request.contextPath }/manager/info",		
-			type : "get",
-			data : cuetableVo,
-
-			dataType : "json",
-			success : function(jsonResult){
-				console.log(jsonResult);
-				/*성공시 처리해야될 코드 작성*/
-	 			if(jsonResult.data !=null){
-	 			
-		 			$("#info-01").empty(); 									// 당구대 번호 초기화
-		 			$('#startTime').empty();                                // 요금 초기화
-		 			$(".tableRadio02 input[type='radio']").prop("checked", false);	//라디오버튼 게임종류 초기화
-		 			
-		 			/* 테이블타입별표기 */
-		 			$('#tabletypename').empty();
-		 			var tableType = jsonResult.data.oneTable.tableType;
-		 			if(tableType==0){
-		 				$("#tabletypename").append("대 대");
-		 			}else if(tableType==1){
-			 			$("#tabletypename").append("중 대");	
-		 			}else{
-		 				$("#tabletypename").append("포 켓");
-		 			}
-						
-					$("#info-01").append("No."+jsonResult.data.oneTable.tableName); //테이블이름 출력
-					
-					$('[value='+jsonResult.data.oneTable.tableType+']').prop("checked",true); //테이블타입 라디오버튼 선택
-						
-					if(jsonResult.data.oneTable.tableType < 2 ){ //게임타입정보 대대/중대일때 3구/4구 show 포켓일때 8볼/10볼 show
-						$( ".gametype-2" ).hide();
-						$( ".gametype-1" ).show();
-					}else{
-						$( ".gametype-1" ).hide();
-						$( ".gametype-2" ).show();
-					}
-					
-					var tableFee = 0; //요금정보 매칭
-					switch (jsonResult.data.oneTable.tableType) {
-						case 0:
-							tableFee = jsonResult.data.tariffVo.btablefee;
-							break;
-						case 1:
-							tableFee = jsonResult.data.tariffVo.mtablefee;
-							break;
-						case 2:
-							tableFee = jsonResult.data.tariffVo.ptablefee;
-							break;
-						default:
-							tableFee = 0;
-							break;
-					}
-					
-					var formattedTableFee = tableFee.toLocaleString(); // 천단위 구분기호
-					$('#tableFee').val(formattedTableFee); //기본요금 표기
-					
-					$('#startTime').val(""); //시작시간 초기화
-					$('#endTime').val("");
-					
-					if(jsonResult.data.gamesVo!=null){ //게임정보 있는 경우 보여주기
-						
-						$('[name=gametype'+jsonResult.data.gamesVo.gameType+']').prop("checked",true); //게임타입정보 라디오버튼 선택
-						
-						var cnt = jsonResult.data.gamesVo.playUserList.length; //테이블 게임고객 총인원수
-						var userList = ""; 
-						for(i=0;i<cnt;i++){                                    //테이블 게임고객 닉네임리스트
-							userList += jsonResult.data.gamesVo.playUserList[i].nick +"  " ;
-							console.log("고객이름:"+jsonResult.data.gamesVo.playUserList[i].nick);
-						}
-						$("#playUserList").html(userList); //게임고객 닉네임 표기하기
-		
-						var startTime = jsonResult.data.gamesVo.startTime; 
-						var endTime = jsonResult.data.gamesVo.endTime;
-
-							if (startTime) {
-						        var startDate = new Date(startTime);
-						        var startHours = startDate.getHours();
-						        var startMinutes = startDate.getMinutes();
-
-						        // 시작 시간을 오전/오후와 시:분 형식으로 변환합니다.
-						        var formattedStartTime =
-						          (startHours < 12 ? "오전" : "오후") +
-						          " " +
-						          (startHours % 12 === 0 ? 12 : startHours % 12) +
-						          ":" +
-						          (startMinutes < 10 ? "0" : "") +
-						          startMinutes;
-
-						        // 형식화된 시작 시간을 입력란에 설정합니다.
-						        $("#startTime").val(formattedStartTime);
-						      } else {
-						        $("#startTime").val(""); // 시작 시간이 없는 경우 입력란을 비웁니다.
-						      }
-
-						      if (endTime) {
-						        var endDate = new Date(endTime);
-						        var endHours = endDate.getHours();
-						        var endMinutes = endDate.getMinutes();
-
-						        // 종료 시간을 오전/오후와 시:분 형식으로 변환합니다.
-						        var formattedEndTime =
-						          (endHours < 12 ? "오전" : "오후") +
-						          " " +
-						          (endHours % 12 === 0 ? 12 : endHours % 12) +
-						          ":" +
-						          (endMinutes < 10 ? "0" : "") +
-						          endMinutes;
-
-						        // 형식화된 종료 시간을 입력란에 설정합니다.
-						        $("#endTime").val(formattedEndTime);
-						      } else {
-						        $("#endTime").val(""); // 종료 시간이 없는 경우 입력란을 비웁니다.
-						      }
+	crtTableNo = $(this).data("tableno");
+	crtTableName = $(this).data("tablename");
+	crtbiliardNo = $(this).data("biliardno");
 	
-					}
+	console.log('테이블 클릭');
+	var biliardno = $(this).data("biliardno");
+	var tableno = $(this).data("tableno");
+	var tablename = $(this).data("tablename");
+	var tabletype = $(this).data("tabletype");
+	console.log("당구장번호: "+biliardno);
+	console.log("테이블번호: "+tableno);
+	console.log("테이블이름: "+tablename);
+	console.log("테이블종류: "+tabletype);
+	
+	var cuetableVo={
+		biliardNo: biliardno,
+		tableNo: tableno,
+		tableName: tablename,
+		tableType: tabletype
+	};
+	
+
+	$.ajax({
+		url : "${pageContext.request.contextPath }/manager/info",		
+		type : "get",
+		data : cuetableVo,
+
+		dataType : "json",
+		success : function(jsonResult){
+			console.log(jsonResult);
+			/*성공시 처리해야될 코드 작성*/
+ 			if(jsonResult.data !=null){
+ 			
+	 			$("#info-01").empty(); 									// 당구대 번호 초기화
+	 			$('#startTime').empty();                                // 요금 초기화
+	 			$(".tableRadio02 input[type='radio']").prop("checked", false);	//라디오버튼 게임종류 초기화
+	 			$("#playUserList").empty(); 
+	 			$(".listTalbe").empty();
+	 			
+	 			/* 테이블타입별표기 */
+	 			$('#tabletypename').empty();
+	 			var tableType = jsonResult.data.oneTable.tableType;
+	 			if(tableType==0){
+	 				$("#tabletypename").append("대 대");
+	 			}else if(tableType==1){
+		 			$("#tabletypename").append("중 대");	
+	 			}else{
+	 				$("#tabletypename").append("포 켓");
+	 			}
 					
+				$("#info-01").append("No."+jsonResult.data.oneTable.tableName); //테이블이름 출력
+				
+				$('[value='+jsonResult.data.oneTable.tableType+']').prop("checked",true); //테이블타입 라디오버튼 선택
+					
+				if(jsonResult.data.oneTable.tableType < 2 ){ //게임타입정보 대대/중대일때 3구/4구 show 포켓일때 8볼/10볼 show
+					$( ".gametype-2" ).hide();
+					$( ".gametype-1" ).show();
 				}else{
+					$( ".gametype-1" ).hide();
+					$( ".gametype-2" ).show();
+				}
+				
+				var tableFee = 0; //요금정보 매칭
+				switch (jsonResult.data.oneTable.tableType) {
+					case 0:
+						tableFee = jsonResult.data.tariffVo.btablefee;
+						break;
+					case 1:
+						tableFee = jsonResult.data.tariffVo.mtablefee;
+						break;
+					case 2:
+						tableFee = jsonResult.data.tariffVo.ptablefee;
+						break;
+					default:
+						tableFee = 0;
+						break;
+				}
+				
+				var formattedTableFee = tableFee.toLocaleString(); // 천단위 구분기호
+				$('#tableFee').val(formattedTableFee); //기본요금 표기
+				
+				$('#startTime').val(""); //시작시간 초기화
+				$('#endTime').val("");   //종료시간 초기화
+				
+				
+				if(jsonResult.data.gamesVo!=null){ //게임정보 있는 경우 보여주기
 					
-				} 
-			},
-			error : function(XHR, status, error) { 
-				console.error(status + " : " + error);
-			}
-	    }); //ajax end
-		
-	});
+					$('[name=gametype'+jsonResult.data.gamesVo.gameType+']').prop("checked",true); //게임타입정보 라디오버튼 선택
+					
+					var cnt = jsonResult.data.gamesVo.playUserList.length; //테이블 게임고객 총인원수
+					var userList = ""; 
+					for(i=0;i<cnt;i++){                                    //테이블 게임고객 닉네임리스트
+						userList += jsonResult.data.gamesVo.playUserList[i].nick +"  " ;
+						console.log("고객이름:"+jsonResult.data.gamesVo.playUserList[i].nick);
+					}//for end
+					$("#playUserList").html(userList); //게임고객 닉네임 표기하기
+	
+					var startTime = jsonResult.data.gamesVo.startTime; 
+					var endTime = jsonResult.data.gamesVo.endTime;
+
+						if (startTime) {           //시작시간 단위 변경하기 함수
+					        var startDate = new Date(startTime);
+					        var startHours = startDate.getHours();
+					        var startMinutes = startDate.getMinutes();
+
+					        // 시작 시간을 오전/오후와 시:분 형식으로 변환합니다.
+					        var formattedStartTime =
+					          (startHours < 12 ? "오전" : "오후") +
+					          " " +
+					          (startHours % 12 === 0 ? 12 : startHours % 12) +
+					          ":" +
+					          (startMinutes < 10 ? "0" : "") +
+					          startMinutes;
+
+					        // 형식화된 시작 시간을 입력란에 설정합니다.
+					        $("#startTime").val(formattedStartTime);
+					      } else {
+					        $("#startTime").val(""); // 시작 시간이 없는 경우 입력란을 비웁니다.
+					      }//startTime end
+
+					      if (endTime) {           //종료시간 단위 변경하기 함수
+					        var endDate = new Date(endTime);
+					        var endHours = endDate.getHours();
+					        var endMinutes = endDate.getMinutes();
+
+					        // 종료 시간을 오전/오후와 시:분 형식으로 변환합니다.
+					        var formattedEndTime =
+					          (endHours < 12 ? "오전" : "오후") +
+					          " " +
+					          (endHours % 12 === 0 ? 12 : endHours % 12) +
+					          ":" +
+					          (endMinutes < 10 ? "0" : "") +
+					          endMinutes;
+
+					        // 형식화된 종료 시간을 입력란에 설정합니다.
+					        $("#endTime").val(formattedEndTime);
+					      } else {
+					        $("#endTime").val(""); // 종료 시간이 없는 경우 입력란을 비웁니다.
+					      }//endTiem end
+					      
+					      console.log(jsonResult.data.incaluList[0]);
+					      
+					      var incaluList =jsonResult.data.incaluList;
+					      
+					      for(var i=0;i<incaluList.length;i++){
+					    	  console.log(incaluList[i].gameNo);
+					    	  render(incaluList[i],"down");
+					      }
+					      
+				}//if end
+				
+			}else{
+				
+			} 
+		},
+		error : function(XHR, status, error) { 
+			console.error(status + " : " + error);
+		}
+    }); //ajax end
+	
+});
+
+
+
+function render (tableGamesVo, dir) {
+
+	var tr = ""; 
+  	tr += '<tr class="custom-height">' ; 
+    tr +=    '<td>' +tableGamesVo.gameNo+  '</td>' ;
+    
+    // startTime 처리
+    var startDate = new Date(tableGamesVo.startTime);
+    var startHours = startDate.getHours();
+    var startMinutes = startDate.getMinutes();
+    var formattedStartTime =
+      (startHours < 10 ? "0" : "") + startHours + ":" + (startMinutes < 10 ? "0" : "") + startMinutes;
+    tr += '<td>' + formattedStartTime + '</td>';  
+    
+    // endTime 처리
+    var endDate = new Date(tableGamesVo.endTime);
+    var endHours = endDate.getHours();
+    var endMinutes = endDate.getMinutes();
+    var formattedEndTime =
+      (endHours < 10 ? "0" : "") + endHours + ":" + (endMinutes < 10 ? "0" : "") + endMinutes;
+    tr += '<td>' + formattedEndTime + '</td>';
+    
+    tr +=    '<td>' + tableGamesVo.payMoney + '</td>' ;
+    tr +=    '<td>'+"미정산"+ '</td>' ;
+    tr += '</tr>';
+    
+	if(dir =='up'){
+	    $(".listTalbe").prepend(tr);
+	}else if(dir =='down'){
+		$(".listTalbe").append(tr);
+	}else{
+		console.log("방향오류");
+	}
+   
+}
+	
+
 <!--테이블 변경모달창 호출------------------------------------------------------- -->
 $(".form-group").on("click","#tableSetting", function(){
 			console.log("설정클릭");
@@ -639,7 +730,6 @@ $("#btnSave").on("click", function(){
 				}
 	    }); //ajax end */ 
 }); 
-   
 
 </script>
 </html>

@@ -178,7 +178,7 @@ textarea.form-control {height:auto; resize: none !important;}
 .input-group-prepend{margin-right:-1px}
 .input-group-append{margin-left:-1px}
 .input-group-text{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;padding:.5rem .875rem;margin-bottom:0;font-size:.875rem;line-height:1.5;color:#4E5155;text-align:center;white-space:nowrap;background-color:#fff;border:1px solid rgba(24,28,33,0.1);border-radius:.25rem}
-.btn-block {display: block; width: 425%;}
+.btn-block {display: block; width: 420%;}
 
 /* 텍스트 */
 .text-big {font-size:1rem !important}
@@ -280,9 +280,12 @@ button, html input[type=button], input[type=reset], input[type=submit] {cursor: 
 /* 모달 라벨 */
 .label01{width: 150px;}
 
-.inCaluList {height: 150px;overflow-y: auto; margin-right: 0; margin-left: 0; background-color: #fff; border-color: #ddd; border-width: 1px; border-radius: 4px 4px 0 0; -webkit-box-shadow: none; box-shadow: none;}
-.inCaluList tr{height:20px !important;margin-bottom:0;padding:.2rem;text-align:center;vertical-align:top;border-top:1px solid #e8e8e9;}
-.inCaluList tr.custom-height {
-  height: 20px;}
-
+.inCaluList{width:100%;margin-bottom:1rem;color:#4E5155;border-bottom:1px solid #e8e8e9;}
+.inCaluList {height:50%; margin-right: 0; margin-left: 0; background-color: #fff; border-color: #ddd; border-width: 1px; border-radius: 4px 4px 0 0; -webkit-box-shadow: none; box-shadow: none;}
+.inCaluList th,.inCaluList td{padding:0;text-align:center;vertical-align:top;border-top:1px solid #e8e8e9;}
+.inCaluList th {font-weight:bold; vertical-align:middle;}
+.inCaluList tr {height: 30px;}
+.inCaluList td {vertical-align:middle;}
+.status {float: right;}
+.imgbox {width:10px;}
 
