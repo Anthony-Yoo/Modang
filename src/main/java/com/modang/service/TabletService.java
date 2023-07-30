@@ -182,7 +182,9 @@ public class TabletService {
 		myGameInfo.setTableFee(tableFee);
 		myGameInfo.setMinFee(minFee);
 		//게임VO에 Play리스트 넣기		
-		myGameInfo.setPlayUserList(tabletDao.selectPlayUser(myGameInfo)); 			
+		myGameInfo.setPlayUserList(tabletDao.selectPlayUser(myGameInfo));
+		//게임Vo에 table 넣기
+		myGameInfo.setTableInfo(tableInfo);
 		
 		return myGameInfo;
 	}
@@ -208,6 +210,17 @@ public class TabletService {
 		tabletDao.updatePauseStart(tableGameVo);
 		tabletDao.updatePauseStatus(tableGameVo);
 		
+		int tableNo = tableGameVo.getTableNo();
+		System.out.println(tableNo);
+		
+		TableGamesVo myGameInfo = tabletDao.selectGameforTableNo(tableNo);		
+		
+		return myGameInfo;
+	}
+	
+	public TableGamesVo playStatus(TableGamesVo tableGameVo) {
+		System.out.println("TabletService.playStatus()");
+				
 		int tableNo = tableGameVo.getTableNo();
 		System.out.println(tableNo);
 		
@@ -296,5 +309,18 @@ public class TabletService {
 		System.out.println(myGameInfo);
 		
 		return myGameInfo;
+	}
+	
+	public PlayUserVo updatePlayInfo(PlayUserVo playUserVo) {
+		System.out.println("TabletService.updatePlayInfo()");
+		
+		int playNo = playUserVo.getPlayNo();
+		
+		tabletDao.updatePlayInfo(playUserVo);
+		tabletDao.updatePlayTime(playUserVo);	
+		
+		PlayUserVo myPlayInfo = tabletDao.selectPlayforPlayNo(playNo);
+		
+		return myPlayInfo;
 	}
 }

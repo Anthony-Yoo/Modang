@@ -21,6 +21,7 @@ public class TableGamesVo {
 	private int pauseTime; // 정지누적시각
 	private int setNo; // 고객그룹번호
 	private List<PlayUserVo> playUserList; // 플레이 유져리스트
+	private CueTableVo tableInfo;
 	private int tableFee;
 	private int minFee;
 	private int secondsToTime;
@@ -30,8 +31,8 @@ public class TableGamesVo {
 
 	public TableGamesVo(int gameNo, int tableNo, int gameType, int memberNum, String gameDate, int gameTime,
 			String startTime, String endTime, int payStatus, int payType, String payDate, int income, int payMoney,
-			String pauseStart, String pauseStop, int pauseTime, int setNo, List<PlayUserVo> playUserList, int tableFee,
-			int minFee, int secondsToTime) {
+			String pauseStart, String pauseStop, int pauseTime, int setNo, List<PlayUserVo> playUserList,
+			CueTableVo tableInfo, int tableFee, int minFee, int secondsToTime) {
 		this.gameNo = gameNo;
 		this.tableNo = tableNo;
 		this.gameType = gameType;
@@ -50,6 +51,7 @@ public class TableGamesVo {
 		this.pauseTime = pauseTime;
 		this.setNo = setNo;
 		this.playUserList = playUserList;
+		this.tableInfo = tableInfo;
 		this.tableFee = tableFee;
 		this.minFee = minFee;
 		this.secondsToTime = secondsToTime;
@@ -199,6 +201,14 @@ public class TableGamesVo {
 		this.playUserList = playUserList;
 	}
 
+	public CueTableVo getTableInfo() {
+		return tableInfo;
+	}
+
+	public void setTableInfo(CueTableVo tableInfo) {
+		this.tableInfo = tableInfo;
+	}
+
 	public int getTableFee() {
 		return tableFee;
 	}
@@ -230,8 +240,8 @@ public class TableGamesVo {
 				+ ", endTime=" + endTime + ", payStatus=" + payStatus + ", payType=" + payType + ", payDate=" + payDate
 				+ ", income=" + income + ", payMoney=" + payMoney + ", pauseStart=" + pauseStart + ", pauseStop="
 				+ pauseStop + ", pauseTime=" + pauseTime + ", setNo=" + setNo + ", playUserList=" + playUserList
-				+ ", tableFee=" + tableFee + ", minFee=" + minFee + ", secondsToTime=" + secondsToTime + "]";
+				+ ", tableInfo=" + tableInfo + ", tableFee=" + tableFee + ", minFee=" + minFee + ", secondsToTime="
+				+ secondsToTime + "]";
 	}
-	
 	
 }

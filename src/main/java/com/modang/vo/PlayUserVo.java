@@ -6,21 +6,21 @@ public class PlayUserVo {
 	private int userNo;
 	private String nick;
 	private int gameNo;
-	private String playTime; 
-	private int number;
+	private int playTime; 
+	private int record;
 	private int currentAverage;
 	private int activeAverage;
 	private String endTime;
 	private int orderNo;
 	private TariffVo tariff;
-	public PlayUserVo(int playNo, int userNo, String nick, int gameNo, String playTime, int number, int currentAverage,
+	public PlayUserVo(int playNo, int userNo, String nick, int gameNo, int playTime, int record, int currentAverage,
 			int activeAverage, String endTime, int orderNo, TariffVo tariff) {
 		this.playNo = playNo;
 		this.userNo = userNo;
 		this.nick = nick;
 		this.gameNo = gameNo;
 		this.playTime = playTime;
-		this.number = number;
+		this.record = record;
 		this.currentAverage = currentAverage;
 		this.activeAverage = activeAverage;
 		this.endTime = endTime;
@@ -53,17 +53,17 @@ public class PlayUserVo {
 	public void setGameNo(int gameNo) {
 		this.gameNo = gameNo;
 	}
-	public String getPlayTime() {
+	public int getPlayTime() {
 		return playTime;
 	}
-	public void setPlayTime(String playTime) {
+	public void setPlayTime(int playTime) {
 		this.playTime = playTime;
 	}
-	public int getNumber() {
-		return number;
+	public int getRecord() {
+		return record;
 	}
-	public void setNumber(int number) {
-		this.number = number;
+	public void setRecord(int record) {
+		this.record = record;
 	}
 	public int getCurrentAverage() {
 		return currentAverage;
@@ -98,13 +98,9 @@ public class PlayUserVo {
 	@Override
 	public String toString() {
 		return "PlayUserVo [playNo=" + playNo + ", userNo=" + userNo + ", nick=" + nick + ", gameNo=" + gameNo
-				+ ", playTime=" + playTime + ", number=" + number + ", currentAverage=" + currentAverage
+				+ ", playTime=" + playTime + ", record=" + record + ", currentAverage=" + currentAverage
 				+ ", activeAverage=" + activeAverage + ", endTime=" + endTime + ", orderNo=" + orderNo + ", tariff="
 				+ tariff + "]";
-	}	
+	}
 	
-	
-	
-	
-
 }

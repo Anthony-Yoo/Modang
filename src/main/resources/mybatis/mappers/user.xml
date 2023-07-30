@@ -103,4 +103,5 @@ values( SEQ_USERS_NO.nextval,
 	]]>
 
 </select>
+
 </mapper>

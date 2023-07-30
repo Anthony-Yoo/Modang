@@ -20,6 +20,7 @@ import com.modang.vo.CardUsersVo;
 import com.modang.vo.CueTableVo;
 import com.modang.vo.JsonResult;
 import com.modang.vo.ManagerVo;
+import com.modang.vo.PlayUserVo;
 import com.modang.vo.TableGamesVo;
 import com.modang.vo.TabletUserVo;
 
@@ -147,10 +148,9 @@ public class TabletController {
 	public String scoreboard(@PathVariable("tableNo") int tableNo,Model model) {  //테이블No 게임No
 		System.out.println("TabletController.scoreboard()");
 		
-		TableGamesVo tableGameVo = tabletService.playFind(tableNo);
+		TableGamesVo tableGameVo = tabletService.playFind(tableNo);		
 		System.out.println(tableGameVo);
-		model.addAttribute("tableGameVo", tableGameVo);		
-		model.addAttribute("tableNo",tableNo);
+		model.addAttribute("tableGameVo", tableGameVo);	
 		
 		return "/tablet/scoreboard";
 	}
@@ -182,6 +182,47 @@ public class TabletController {
 		JsonResult jsonResult = new JsonResult();
 		if (myGameInfo != null) { 			
 			jsonResult.success(myGameInfo);
+			System.out.println(jsonResult);
+			
+			}else {				
+				System.out.println("해당Game이 없습니다."); 
+			}
+		
+		
+		return jsonResult;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/playstatus", method = {RequestMethod.GET,RequestMethod.POST})
+	public JsonResult playStatus(@ModelAttribute TableGamesVo tableGameVo) {  //일시정지!
+		System.out.println("TabletController.playStatus()");
+			
+		TableGamesVo myGameInfo = tabletService.playStatus(tableGameVo);	
+		System.out.println(myGameInfo);
+		JsonResult jsonResult = new JsonResult();
+		if (myGameInfo != null) { 			
+			jsonResult.success(myGameInfo);
+			System.out.println(jsonResult);
+			
+			}else {				
+				System.out.println("해당Game이 없습니다."); 
+			}
+		
+		
+		return jsonResult;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/saveplay", method = {RequestMethod.GET,RequestMethod.POST})
+	public JsonResult savePlay(@ModelAttribute PlayUserVo playUserVo) {  //개인게임종료!
+		System.out.println("TabletController.playStatus()");
+		System.out.println(playUserVo);
+			
+		PlayUserVo myPlayInfo = tabletService.updatePlayInfo(playUserVo);	
+		System.out.println(myPlayInfo);
+		JsonResult jsonResult = new JsonResult();
+		if (myPlayInfo != null) { 			
+			jsonResult.success(myPlayInfo);
 			System.out.println(jsonResult);
 			
 			}else {				

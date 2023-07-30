@@ -88,9 +88,9 @@ public class UserController {
 	
 	  //id check
 	 @ResponseBody 
-	 @RequestMapping(value="/idcheck", method= {RequestMethod.GET, RequestMethod.POST}) 
+	 @RequestMapping(value="/idCheck", method= {RequestMethod.GET, RequestMethod.POST}) 
 	 public JsonResult idCheck(@RequestParam ("id") String id) {
-		 System.out.println("UserController.idcheck()");
+		 System.out.println("UserController.idCheck()");
 		 System.out.println(id); 
 	  
 		 boolean data=userService.idCheck(id);
@@ -106,7 +106,7 @@ public class UserController {
 	 
 	 //닉네임 체크
 	 @ResponseBody 
-	 @RequestMapping(value="/nickchek", method= {RequestMethod.GET, RequestMethod.POST})
+	 @RequestMapping(value="/nickChek", method= {RequestMethod.GET, RequestMethod.POST})
 	 public JsonResult nickCheck(String nick) {
 		 System.out.println("UserController.nickCheck()");
 		 System.out.println(nick);
@@ -120,7 +120,7 @@ public class UserController {
 	 
 		 return jsonResult;
 	 }
-	  
+	 
 	 
 	//logout 
 	@RequestMapping(value="/logout", method= {RequestMethod.GET,
