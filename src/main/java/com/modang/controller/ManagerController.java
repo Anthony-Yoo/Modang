@@ -32,7 +32,7 @@ public class ManagerController {
 		return "/manager/managerJoinForm";
 	}
 
-	/* 회원가입 */
+	/* 회원가입 */ //요금테이블 정보 같이 삽입
 	@RequestMapping(value ="/join", method = {RequestMethod.GET, RequestMethod.POST})
 	public String join(@ModelAttribute ManagerVo managerVo, 
 			@RequestParam("file") List<MultipartFile> file,
@@ -45,13 +45,12 @@ public class ManagerController {
 	    managerVo.setImageFile3(file.get(2).getOriginalFilename());
 	    System.out.println(managerVo);//이미지 파일명 보임
         int count = managerService.join(managerVo, file);
-        if(count==1) {
-        	System.out.println("회원가입성공");
-        	return "manager/managerJoinSuccess";
-        }else {
-        	System.out.println("회원가입실패");
-            return "redirect:/manager/joinForm";
-	   }
+		
+		 if(count==1) { System.out.println("회원가입성공"); 
+		 return  "manager/managerJoinSuccess"; }
+		 else { System.out.println("회원가입실패"); 
+		 return  "redirect:/manager/joinForm"; }
+		 
 	}
 
 

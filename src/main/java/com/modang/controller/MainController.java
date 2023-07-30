@@ -13,24 +13,24 @@ public class MainController {
 	@Autowired
 	private MainService mainService;
 	
+	/*모당 메인페이지*/
 	@RequestMapping("/")
 	public String main() {
 		System.out.println("MainController.main()");
-		
 		return "main/main";
 	}
 	
 	@RequestMapping("/insert")
 	public String insert(@RequestParam int no) {
 		System.out.println("MainController.insert()");
-		
-		
 		mainService.insert(no);
-		
 		return "redirect:/";		
-		
 	}
 	
-	
-
+	/*모당 당구장 찾기*/
+	@RequestMapping("/modangFind")
+	public String modangFind() {
+		System.out.println("MainController.modangFind()");
+		return "main/modangFind";
+	}
 }
