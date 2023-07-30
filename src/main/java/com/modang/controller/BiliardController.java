@@ -31,6 +31,28 @@ public class BiliardController {
 	private BiliardService biliardService;
 	
 	/* 테이블현황 페이지-------------------------------------------------------------------------------- */
+	/* 테이블 현황 - 하나의 게임정보의 결제금액 가져오기*/
+	@ResponseBody
+	@RequestMapping(value="/gamesPaymoney",method= {RequestMethod.GET,RequestMethod.POST})
+	public String gamesPaymoney() {
+		System.out.println("BiliardController.gamesPaymoney()");
+		
+		return "";
+	}
+	
+	/* 테이블 현황 - 게임 결제 */
+	@ResponseBody
+	@RequestMapping(value="/payMent", method= {RequestMethod.GET,RequestMethod.POST})
+	public JsonResult payMent(@ModelAttribute TableGamesVo gamesVo) {
+		System.out.println("BiliardController.payMent()");
+		int count = biliardService.payMent(gamesVo);
+		
+		JsonResult jsonResult = new JsonResult();
+		jsonResult.success(count);
+				
+		return jsonResult;
+	}
+	
 	/* 테이블 현황 - 테이블 추가 */
 	@ResponseBody
 	@RequestMapping(value="/addTable", method= {RequestMethod.GET, RequestMethod.POST})
