@@ -204,6 +204,52 @@
 					#{currentAverage},
 					#{orderNo} )	
 	</insert>
+	<!-- 게임찾기(게임번호) -->
+	<select id="selectGameforGameNo" parameterType="com.modang.vo.TableGamesVo" resultType="com.modang.vo.TableGamesVo">
+		<![CDATA[
+			select 	GAMENO,
+					TABLENO,
+					GAMETYPE,
+					MEMBERNUM,
+					GAMEDATE,					
+					GAMETIME,
+					STARTTIME,
+					ENDTIME,
+					PAYSTATUS,
+					PAYTYPE,
+					PAYDATE,
+					INCOME,
+					PAYMONEY,
+					PAUSESTART,
+					PAUSESTOP,					
+					PAUSETIME,
+					SETNO,
+					GAMESTATUS 
+			from games
+			where  GAMENO = #{gameNo}	
+		
+		]]>	
+	</select>
+	<!-- 나의 플레이 찾기(오더번호순) -->
+	<select id="selectPlayUser" parameterType="com.modang.vo.TableGamesVo" resultType="com.modang.vo.PlayUserVo">
+		<![CDATA[			
+			select      p.PLAYNO,
+						p.USERNO,
+			            u.nick,
+			            p.PLAYTIME,
+			            p.RECORD,
+			            p.CURRENTAVERAGE,
+			            p.ACTIVEAVERAGE,
+			            p.ENDTIME,
+			            p.ORDERNO            
+			from 		PLAYS p,
+                 		users u
+			where p.GAMENO = #{gameNo}
+            AND p.USERNO = u.USERNO
+			order by p.ORDERNO ASC		
+		]]>	
+	</select>
+	
 	<!-- 게임찾기(테이블번호) -->
 	<select id="selectGameforTableNo" parameterType="int" resultType="com.modang.vo.TableGamesVo">
 		<![CDATA[
@@ -241,24 +287,7 @@
 			from CUETABLE
 			where TABLENO = #{tableNo}		
 		]]>
-	</select>
-	
-	<!-- 나의 플레이 찾기 -->
-	<select id="selectPlayUser" parameterType="com.modang.vo.TableGamesVo" resultType="com.modang.vo.PlayUserVo">
-		<![CDATA[
-			select      p.PLAYNO,
-						p.USERNO,
-			            u.nick,
-			            p.CURRENTAVERAGE,
-			            p.ORDERNO            
-			from 		PLAYS p,
-                 		users u
-			where GAMENO = #{gameNo}
-            AND p.USERNO = u.USERNO
-			order by ORDERNO ASC		
-		]]>	
-	</select>
-	
+	</select>	
 	
 	<!-- 요금표 찾기 -->
 	<select id="selectTariff" parameterType="com.modang.vo.CueTableVo" resultType="com.modang.vo.TariffVo">
@@ -440,7 +469,7 @@
 				where GAMENO = #{gameNo} 		
 		]]>
 	</update>
-	
+	<!--강제종료: 게임플레이 정보 변경 -->
 	<update id="updateQuickPlayInfo" parameterType="com.modang.vo.TableGamesVo">
 		<![CDATA[
 				update PLAYS
@@ -452,6 +481,26 @@
 				where GAMENO = #{gameNo} 		
 		]]>
 	</update>
+	
+	<!-- 나의 플레이 찾기(등수순) -->
+	<select id="selectPlayRecord" parameterType="com.modang.vo.TableGamesVo" resultType="com.modang.vo.PlayUserVo">
+		<![CDATA[			
+			select      p.PLAYNO,
+						p.USERNO,
+			            u.nick,
+			            p.PLAYTIME,
+			            p.RECORD,
+			            p.CURRENTAVERAGE,
+			            p.ACTIVEAVERAGE,
+			            p.ENDTIME,
+			            p.ORDERNO            
+			from 		PLAYS p,
+                 		users u
+			where GAMENO = #{gameNo}
+            AND p.USERNO = u.USERNO
+			order by RECORD ASC		
+		]]>	
+	</select>
 	
 	
 </mapper>

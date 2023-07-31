@@ -193,7 +193,6 @@ $(".panalty").on("click",function(){
 			console.log("부꼴지플레이번호 :"+playNo);
 			var activeAverage = $(this).parent().siblings(".bdtop").find("#act-average").text();
 			console.log("총친다마 : "+activeAverage);
-			record++;
 			var playUserVo = {
 					playNo : playNo,
 					record : record,
@@ -256,16 +255,17 @@ $(".panalty").on("click",function(){
 			$(thisForm).off('click');
 			if(memberNum - 1 == $(thisForm).data('record')) {//멤버숫자 - 1 = 현재 등수 와 같으면 -> 꼴지와 꼴지-1등같이 처리	
 				console.log("멤버숫자 :" + memberNum);
+				record++;
+				$(this).attr("data-record",record);
 				var $this = $("div[data-record=0]");
-				var lastPlayNo = $this.data('playno');	
-				console.log("등수번호 :"+$this.data("record"));				
+				var lastPlayNo = $this.data('playno');					
 				console.log("꼴지플레이번호 :"+lastPlayNo);
 				var lastActiveAverage = $this.parent().siblings(".bdtop").find("#act-average").text();				
-				console.log("등수 : "+lastActiveAverage);
+				console.log("꼴지 총친타수 : "+lastActiveAverage);
 				
 				var lastPlayUserVo = {
 						playNo : lastPlayNo,
-						record : record,
+						record : 4,
 						gameNo : gameNo,					
 						activeAverage : lastActiveAverage
 
@@ -283,11 +283,8 @@ $(".panalty").on("click",function(){
 						console.log(action);	
 						if(action.result == 'success') {//처리성공	
 							console.log("성공");
-							console.log(action.data);
-							
-							/* 리다이렉트 */					
-							//let url = '/modang/tablet/${tableNo}/scoreboard';
-							//window.location.replace(url);							
+							console.log(action.data);							
+													
 							console.log("플레이정보 입력완료");
 							time = action.data.playTime;
 							timeStamper = function(){	
@@ -312,8 +309,7 @@ $(".panalty").on("click",function(){
 								$this.append(th + ":" + tm + ":" + ts);						
 						}
 							timeStamper();
-							gameStop();
-			
+							gameStop();							
 							
 						}else {//오류처리
 							var msg = action.failMsg;
@@ -367,15 +363,30 @@ $('.btnBox').on("click","#restartbtn", function(){
 
 /* 동작4. 종료버튼 클릭했을때 */
 $(".btnBox").on("click","#stopbtn",function(){
-	console.log("종료버튼 클릭!")
+	console.log("종료버튼 클릭!");
+	$('.bdmid > div').off('click');		
 	 if(confirm("강제종료시 일시정지시간은 초기화됩니다.") == true){
-		 	gamequit();
-	        alert("강제종료되었습니다");
+		 	gameQuit();
+	        alert("강제종료되었습니다");	       
 	    }
 	    else{
 	        return ;
 	    }
 	
+});
+/* 동작5. 결과보기 버튼 클릭했을때 */
+$(".btnBox").on("click","#resultbtn", function(){
+	console.log("결과보기버튼 클릭!");
+	$('.bdmid > div').off('click');		
+	var returnValue = confirm("결과확인하러 가기");
+
+	if (returnValue == true) {		
+		let url = '/modang/tablet/${tableNo}/resultPage?gameNo='+gameNo;
+		window.location.replace(url);
+	}else {
+		return ;
+	}					
+
 });
 
 /* 기능1. 게임시작 */
@@ -619,14 +630,16 @@ function gameStop(){
 				
 				console.log("결제액 : "+action.data.payMoney);
 				//2.버튼출력변경()
-				 $('.btnBox > button').attr("disabled", true);			 
+				 $('.btnBox > button').remove();
+				 $('.btnBox').html('<button id="resultbtn" class="fa fa-stop" aria-hidden="true">결과보기</button>')				 
+				 
+						
 				 
 				//3.타이머 기본값 결정
 					console.log(action.data.secondsToTime);
 					time = action.data.secondsToTime;
-					if(time != 0){
-						clearInterval(timer);
-					}	
+					clearInterval(timer);
+	
 					console.log("타이머 정지!")
 					//4.사용시간 (출력)  //요금계산은 자동				 
 					timeStamper = function(){
@@ -667,7 +680,7 @@ function gameStop(){
 	
 }
 /* 기능5. 게임 강제종료 */
-function playQuit() {
+function gameQuit() {
 	//1.테이블 게임번호 전송-->게임정보 받음
 	var tableGameVo = {
 			tableNo : tableNo,
@@ -693,8 +706,9 @@ function playQuit() {
 				
 				console.log("결제액 : "+action.data.payMoney);
 				//2.버튼출력변경() 및 이벤트 종료
-				$('div').off('click');
-				 $('.btnBox > button').attr("disabled", true);			 
+				
+				$('.btnBox > button').remove();
+				$('.btnBox').html('<button id="resultbtn" class="fa fa-stop" aria-hidden="true">결과보기</button>')				 
 				 
 				//3.타이머 기본값 결정
 					console.log(action.data.secondsToTime);

@@ -52,20 +52,21 @@
 		        					
 		        					<div class="image-icon">
 								
-  										<p><img src="${pageContext.request.contextPath}/assets/images/user.png" style="width: 5%;margin:-227px 10px 286px 400px" alt=""><div data-text-content="true" style="font-size:30px;padding : 50px 0px 0px 318px;margin:-380px 0px -25px 150px" class="">${requestScope.userVo.id}</div>
+  										<p><img src="${pageContext.request.contextPath}/assets/images/user.png" style="width: 5%;margin:-247px 10px 286px 250px;" alt=""><div data-text-content="true" style="font-size:30px;padding : 50px 0px 0px 318px;margin:-380px 0px -25px 0px;" class="">${requestScope.userVo.id}</div>
   									
-  										<p><img src="${pageContext.request.contextPath}/assets/images/smartphone.png" style="width: 5%;margin:50px 10px 10px 400px" alt=""><div data-text-content="true" style="font-size:30px;padding : 50px 0px 0px 318px;margin:-100px 0px -25px 150px" class="">${requestScope.userVo.cellphone}</div>
+  										<p><img src="${pageContext.request.contextPath}/assets/images/smartphone.png" style="width: 5%;margin:50px 10px 10px 250px;" alt=""><div data-text-content="true" style="font-size:30px;padding : 50px 0px 0px 318px;margin:-100px 0px -25px 0px;" class="">${requestScope.userVo.cellphone}</div>
   									
-  										<p><img src="${pageContext.request.contextPath}/assets/images/business-card.png" style="width: 5%;margin:50px 10px 10px 400px" alt=""><div data-text-content="true" style="font-size:30px;padding : 50px 0px 0px 318px;margin:-105px 0px -25px 150px" class="">${requestScope.userVo.nick}</div>
+  										<p><img src="${pageContext.request.contextPath}/assets/images/business-card.png" style="width: 5%;margin:50px 10px 10px 250px;" alt=""><div data-text-content="true" style="font-size:30px;padding : 50px 0px 0px 318px;margin:-105px 0px -25px 0px;" class="">${requestScope.userVo.nick}</div>
   									
-  										<p><img src="${pageContext.request.contextPath}/assets/images/line-graph.png" style="width: 5%;margin:50px 10px 10px 400px" alt=""><div data-text-content="true" style="font-size:30px;padding : 50px 0px 0px 318px;margin:-100px 0px -25px 150px" class="">${requestScope.userVo.average}</div>
+  										<p><img src="${pageContext.request.contextPath}/assets/images/line-graph.png" style="width: 5%;margin:50px 10px 10px 250px;" alt=""><div data-text-content="true" style="font-size:30px;padding : 50px 0px 0px 318px;margin:-100px 0px -25px 0px;" class="">${requestScope.userVo.average}</div>
   									
   									</div>
 		        					
  					 				<button type="button" class="btn btn-light" onclick="document.location='${pageContext.request.contextPath}/user/modifyForm'">수정하기로 고고!</button>
 								</div>
 								
-
+								
+							
     				</div>
            		</div>
     		</div>
