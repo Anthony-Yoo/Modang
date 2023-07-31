@@ -188,5 +188,22 @@ public class TabletDao {
 		return session.update("tablet.updatePayMoney",tableGameVo);
 	}
 	
+	public int updatePlayInfo(PlayUserVo playUserVo) {
+		System.out.println("TabletDao.updatePlayInfo()");
+		
+		return session.update("tablet.updatePlayInfo", playUserVo);
+	}
+	
+	public int updatePlayTime(PlayUserVo playUserVo) {
+		System.out.println("TabletDao.updatePlayTime()");
+		
+		return session.update("tablet.updatePlayTime", playUserVo);				
+	}
+	
+	public PlayUserVo selectPlayforPlayNo(int playNo) {
+		System.out.println("TabletDao.selectPlayforPlayNo()");
+		
+		return session.selectOne("tablet.selectPlayforPlayNo", playNo);
+	}
 	
 }

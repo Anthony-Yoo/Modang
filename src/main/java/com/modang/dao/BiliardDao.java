@@ -21,6 +21,15 @@ public class BiliardDao {
 	private SqlSession sqlSession;
 	
 	/* 테이블현황 페이지-------------------------------------------------------------------------------- */
+	/* 테이블 현황 - 게임 결제 */
+	public int updateIncome(TableGamesVo gamesVo) {
+		System.out.println("BiliardDao.updatePaymoney()");
+		System.out.println(gamesVo);
+		int count = sqlSession.update("biliard.updateIncome", gamesVo);
+		System.out.println("게임결제성공:"+count);
+		return count;
+	}
+	
 	/* 테이블 현황 - 테이블 추가 */
 	public int insertTable(CueTableVo cuetableVo) {
 		System.out.println("BiliardDao.insertTable()");
