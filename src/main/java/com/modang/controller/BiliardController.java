@@ -124,15 +124,23 @@ public class BiliardController {
 
 	/* 테이블 매출 페이지-------------------------------------------------------------------------------- */
 	/* 테이블 매출폼 */
-	@RequestMapping(value = "/tableSalesForm", method = { RequestMethod.GET, RequestMethod.POST })
-	public String tableSalesForm() {
+	@RequestMapping(value ="/tableSalesForm", method = { RequestMethod.GET, RequestMethod.POST })
+	public String tableSalesForm(HttpSession session, Model model) {
 		System.out.println("BiliardController.tableSalesForm()");
+		
+		ManagerVo loginManager = (ManagerVo) session.getAttribute("loginManager");
+		int biliardNo = loginManager.getbiliardNo();
+		System.out.println(biliardNo);
+		List<CueTableVo> cuetableList = biliardService.tablesalesList(biliardNo);
+		
+		System.out.println(cuetableList);
+		model.addAttribute("cuetableList",cuetableList);
 
 		return "/manager/tableSales";
 	}
 
 	/* 테이블 매출검색 */
-	@RequestMapping(value = "/tableSales", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value ="/tableSales", method = { RequestMethod.GET, RequestMethod.POST })
 	public String tableSales(@RequestParam int tableno, @RequestParam String mindate, @RequestParam String maxdate) {
 		System.out.println("BiliardController.tableSales()");
 		System.out.println(tableno);

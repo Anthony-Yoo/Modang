@@ -10,9 +10,12 @@
     <link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
     <style>
     p {
-    	margin-left : 480px;
+    	margin-left : 100px;
     	align-content: center;
-    }
+    	color: #F94069; 
+    	font-size: 13px; 
+    	text-align: center;    	
+      }
     </style>
 </head>
 <body>
@@ -34,9 +37,9 @@
                                     <input type="password" id="passwd" name="passwd" placeholder="비밀번호">
                                 </span>
                             </div>
-                            <c:if test="${param.result=='fail'}">
-                            	<p class="error-msg">아이디 또는 비밀번호가 틀렸습니다.</p>
-                            </c:if>         
+	                            <c:if test="${param.result == 'fail'}">
+	                            	<p>아이디 또는 비밀번호가 틀렸습니다.</p>
+	                            </c:if>       
                          <button class="button" type="submit" >로그인</button>
                      </div>
                 </form>

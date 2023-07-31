@@ -203,7 +203,38 @@ public class TabletDao {
 	public PlayUserVo selectPlayforPlayNo(int playNo) {
 		System.out.println("TabletDao.selectPlayforPlayNo()");
 		
+		System.out.println(playNo);
+		
 		return session.selectOne("tablet.selectPlayforPlayNo", playNo);
+	}
+	
+	public int updateQuitTime(TableGamesVo tableGameVo) {
+		System.out.println("TabletDao.updateQuitTime()");
+		
+		return session.update("tablet.updateQuitTime",tableGameVo);
+	}
+	
+	public int updateQuitGameTime(TableGamesVo tableGameVo) {
+		System.out.println("TabletDao.updateQuitGameTime()");		
+		
+		return session.update("tablet.updateQuitGameTime",tableGameVo);
+	}
+	
+	public int updateQuickPlayInfo(TableGamesVo tableGameVo) {
+		System.out.println("TabletDao.updateQuickPlayInfo()");
+		
+		return session.update("tablet.updateQuickPlayInfo", tableGameVo);
+	}
+	
+	public TableGamesVo selectGameforGameNo(TableGamesVo tableGameVo) {
+		System.out.println("TabletDao.selectGameforGameNo()");
+		
+		return session.selectOne("tablet.selectGameforGameNo", tableGameVo);
+	}
+	public List<PlayUserVo> selectPlayRecord(TableGamesVo myGameInfo) {
+		System.out.println("TabletDao.selectPlayRecord()");
+		
+		return session.selectList("tablet.selectPlayRecord",myGameInfo);
 	}
 	
 }
