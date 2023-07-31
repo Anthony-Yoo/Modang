@@ -2,6 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="biliard">
+	<!-- 테이블 결제하기 -->
+		<update id="updateIncome" parameterType="com.modang.vo.TableGamesVo">
+			<![CDATA[
+				update games set income=#{income},
+				                 payType=#{payType},
+                 				 paystatus=1
+       			where gameno=#{gameNo}	
+			]]>
+		</update>
 
     <!-- 테이블별 미정산 리스트 가져오기 -->
     	<select id="selectIncaluList" parameterType="com.modang.vo.CueTableVo" resultType="com.modang.vo.TableGamesVo">
@@ -19,16 +28,16 @@
 		</select>
 
 	<!-- 테이블 추가하기 -->
-	<insert id="insertTable" parameterType="com.modang.vo.CueTableVo">  
-		 <![CDATA[
+		<insert id="insertTable" parameterType="com.modang.vo.CueTableVo">  
+			 <![CDATA[
 				insert into cuetable(tableno,biliardno,tabletype,status,tablename) 
 				values( SEQ_CUETABLE_NO.nextval,
                         #{biliardNo},
                         #{tableType},
                         0,
                         #{tableName})
-		 ]]>
-	</insert>
+			 ]]>
+		</insert>
 
     <!-- 하나의 테이블 기본정보 가져오기 -->
     	<select id="selectOnetable" parameterType="int" resultType="com.modang.vo.CueTableVo">

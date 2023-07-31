@@ -35,21 +35,6 @@
 	
 }
 
-/* 수정폼 세로버튼 
-.btn-group-vertical {
-    position: relative;
-    display: inline-flex;
-    vertical-align: middle;
-	background-color:  #2E419A;
-	color: #fff;
-	border: 1px solid #2E419A;
-	border-radius:10px;
-	line-height: 40px;
-    margin: 0px 0px -455px -1055px;
-    padding: 2px 2px 2px 2px;
-}
-*/
-
 /* title 위치및 굵기 */
 #main h3 {
 	margin: 50px 0px 35px 0px;
@@ -205,8 +190,11 @@
 
 /* modify image size */
 #main form .form-group #image-show img{
-	width: 345px;
+	width: 340px;
+	height: 340px;
 	margin: 0px 0px 3px 0px;
+	border: outset 2px;
+    border-color: darkslateblue;
 }
 
 /* icon */
@@ -265,40 +253,6 @@
     
 }
 
-
-/* side nav */
-.sidebar {
-  margin: 0;
-  font-family: "Lato", sans-serif;
-}
-
-.sidebar {
-    margin: 0;
-    padding: 0;
-    width: 120px;
-    background-color: #f1f1f1;
-    position: absolute;
-    height: 30%;
-    overflow: auto;
-}
-
-.sidebar a {
-  display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none;
-}
- 
-.sidebar a.active {
-  background-color: #2E419A;
-  color: white;
-}
-
-.sidebar a:hover:not(.active) {
-  background-color: #555;
-  color: white;
-}
-
 div.content {
   margin-left: 200px;
   padding: 1px 16px;
@@ -322,6 +276,7 @@ div.content {
   }
 }
 
+/* 마이페이지 버튼 */
 #userPage button {
 	width: 30%;
 	background-color:  #2E419A;
@@ -334,12 +289,21 @@ div.content {
     margin: 100px 0px 0px 240px;
 }
 
-
-#userPage img {
+/* 마이페이지 대표이미지 */
+#userPage .image-show img {
     vertical-align: top;
-    width:30%;
+    width:290px; 
+    height: 290px; 
+    /* border: outset 2px; 
+    border-color: darkslateblue; */
+    
+  
 }
-
+/* 마이페이지 아이콘 기본 위치 */
+#userPage .image-icon img {
+    vertical-align: top;
+    
+}
 
 #joinOk button {
     margin-left: 0;
