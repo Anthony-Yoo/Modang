@@ -19,7 +19,7 @@
                 <img src="${pageContext.request.contextPath}/assets/images/modang_logo.png" alt="">
             </div>
             <div class="intro">
-                <h2>&nbsp&nbsp모당이란?</h2>
+                <h2 style="padding:0 0 0 25px;">모당이란?</h2>
                 <div class="modang_tip">
                     <ul class="user_tip">
                         <li class="tip">
