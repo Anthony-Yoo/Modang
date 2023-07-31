@@ -420,7 +420,7 @@
 	</select>
 	
 	<!--강제종료: 게임종료시간 변경 -->
-	<update id="updateEndTime" parameterType="com.modang.vo.TableGamesVo">
+	<update id="updateQuitTime" parameterType="com.modang.vo.TableGamesVo">
 		<![CDATA[
 			update GAMES
 			set
