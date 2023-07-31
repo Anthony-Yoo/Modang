@@ -133,7 +133,7 @@ img {vertical-align: top;}/*reset*/
 
 
 
-/* side nav */
+/* 마이페이지(userPage) side nav */
 .sidebar {
   margin: 0;
   font-family: "Lato", sans-serif;
@@ -142,7 +142,7 @@ img {vertical-align: top;}/*reset*/
 .sidebar {
     margin: 0;
     padding: 0;
-    width: 200px;
+    width: 150px;
     background-color: #f1f1f1;
     position: absolute;
     height: 30%;
@@ -154,6 +154,8 @@ img {vertical-align: top;}/*reset*/
   color: black;
   padding: 16px;
   text-decoration: none;
+  text-align: -webkit-center;
+  
 }
  
 .sidebar a.active {

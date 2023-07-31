@@ -89,7 +89,7 @@
                    			 	<!-- 이미지 -->
                    				<div class="form-group">
                    					<div class="image-show" id="image-show" >
-		        						<img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileImage}" style="width:340px; height: 340px;">
+		        						<img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileImage}" >
 		        					</div>
 									<div class="fileContainer">
 										
