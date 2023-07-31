@@ -176,3 +176,38 @@ input::placeholder{color: #B8B8B8;}
 #footer .f_right ul.sns li img{width: 100%; height: 100%;}
 
 
+
+/* 마이페이지(userPage) side nav */
+#userPage .sidebar {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+#userPage .sidebar {
+    margin: 0;
+    padding: 0;
+    width: 150px;
+    background-color: #f1f1f1;
+    position: absolute;
+    height: 30%;
+    overflow: auto;
+}
+
+#userPage .sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+  text-align: -webkit-center;
+  
+}
+ 
+#userPage .sidebar a.active {
+  background-color: #2E419A;
+  color: white;
+}
+
+#userPage .sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}

@@ -351,7 +351,8 @@
 		<![CDATA[
 			update GAMES
 			set
-			ENDTIME = sysdate				
+			ENDTIME = sysdate,
+			GAMESTATUS = 1				
 			where GAMENO = #{gameNo} 		
 		]]>
 	</update>
@@ -396,13 +397,13 @@
 				                from    games g, plays p
 				                where g.gameNo = p.gameNo
 				                and p.playNo = #{playNo})
-				where playno = #{playNo} ;		
+				where playno = #{playNo} 		
 		]]>
 	</update>
 	
 	<!-- 플레이정보 획득 -->
 	<select id="selectPlayforPlayNo" parameterType="int" resultType="com.modang.vo.PlayUserVo">
-		<![CDATA[[
+		<![CDATA[
 			select  PLAYNO,
 					USERNO,
 					GAMENO,
@@ -411,10 +412,46 @@
 					CURRENTAVERAGE,
 					ACTIVEAVERAGE,
 					ENDTIME,
-					ORDERNO
+					ORDERNO				
 			from Plays
 			where PLAYNO = #{playNo}		
 		]]>		
 	
 	</select>
+	
+	<!--강제종료: 게임종료시간 변경 -->
+	<update id="updateQuitTime" parameterType="com.modang.vo.TableGamesVo">
+		<![CDATA[
+			update GAMES
+			set
+			ENDTIME = sysdate,
+			GAMESTATUS = 0,
+			PAUSETIME = 0				
+			where GAMENO = #{gameNo} 		
+		]]>
+	</update>
+	
+	<!--강제종료: 게임플레이 시간 변경 -->
+	<update id="updateQuitGameTime" parameterType="com.modang.vo.TableGamesVo">
+		<![CDATA[
+				update GAMES
+				set
+				GAMETIME = ROUND((ENDTIME-STARTTIME) * 24 * 60 * 60, 2)					
+				where GAMENO = #{gameNo} 		
+		]]>
+	</update>
+	
+	<update id="updateQuickPlayInfo" parameterType="com.modang.vo.TableGamesVo">
+		<![CDATA[
+				update PLAYS
+				set				
+				RECORD = ORDERNO+1,
+				ACTIVEAVERAGE = CURRENTAVERAGE,
+				ENDTIME = sysdate,
+				PLAYTIME = (select GAMETIME from Games where gameNo = #{gameNo})			
+				where GAMENO = #{gameNo} 		
+		]]>
+	</update>
+	
+	
 </mapper>

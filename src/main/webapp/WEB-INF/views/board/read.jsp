@@ -164,11 +164,17 @@ $(document).ready(function() {
 			userNo: userNo,
 			boardNo: boardNo
 		}
+		if(userNo==""){
+				var url = "${pageContext.request.contextPath}/user/loginForm";
+				window.location.href = url;
+		}else{
+				var url = "${pageContext.request.contextPath}/attendUsers/apply";
+		}
 		
 		console.log(AttendUsersVo);
 		
 		$.ajax({
-			url : "${pageContext.request.contextPath}/attendUsers/apply",
+			url : url,
 			type : "post",
 			contentType : "application/json",
 			data : JSON.stringify(AttendUsersVo) ,

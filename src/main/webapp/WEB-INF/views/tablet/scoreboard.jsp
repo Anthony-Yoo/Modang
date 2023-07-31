@@ -73,7 +73,7 @@ body {
 						<div class="panel panalty float-l">
 							<p class="touch" id="panalty">마이너스</p>
 						</div>
-						<div class="panel marks float-l" data-playNo="${playUser.playNo" data-record="0">
+						<div class="panel marks float-l" data-playno="${playUser.playNo}" data-record="0">
 							<p class="currentbd" id="marks">${playUser.currentAverage}</p>
 						</div>
 						<div class="panel score float-l">
@@ -115,7 +115,7 @@ $(document).ready(function(){
 	$('.btnBox > button').remove('#startbtn');
 	$('.btnBox > button').remove('#restartbtn');
 	$('.btnBox > button').remove('#stopbtn');
-	$('.btnBox').prepend('<button id="stopbtn" class="fa fa-stop" aria-hidden="true">종료</button> ');
+	$('.btnBox').prepend('<button id="stopbtn" class="fa fa-stop" aria-hidden="true">강제종료</button> ');
 	//테이블상태값 가져오기
 	console.log("테이블상태 :"+tableStatus);
 	switch(tableStatus) {
@@ -185,30 +185,98 @@ $(".panalty").on("click",function(){
 									"font" : "50px bold",
 									"text-align" : "center"});
 		$($this.parent(".marks")).on("click",function(){
-			console.log("게임종료!!")			
-			$this.text(++record);	
-			$(this).data('record',record);
-			if(memberNum - 1 == $(this).data('record')) {//멤버숫자 - 1 = 현재 등수 와 같으면 -> 꼴지와 꼴지-1등같이 처리			
-				var lastPlayNo = $("div[data-record=0]").data('playNo');
-				var playNo = $(this).data('playNo');
-				console.log("부꼴지플레이번호 :"+playNo);
+			console.log("게임종료!!");			
+			$(this).children("#marks").text(++record);	
+			$(this).attr("data-record",record);
+			var playNo = $(this).data("playno");
+			console.log("등수번호 :"+$(this).data("record"));
+			console.log("부꼴지플레이번호 :"+playNo);
+			var activeAverage = $(this).parent().siblings(".bdtop").find("#act-average").text();
+			console.log("총친다마 : "+activeAverage);
+			record++;
+			var playUserVo = {
+					playNo : playNo,
+					record : record,
+					gameNo : gameNo,					
+					activeAverage : activeAverage					
+			}
+			var thisForm = this;
+			$.ajax({			
+				url : "${pageContext.request.contextPath}/tablet/saveplay",		
+				type : "post",
+				/* contentType : "application/json", */
+				data : playUserVo,
+				
+				dataType : "json",
+				success : function(action){						
+					console.log(action);	
+					if(action.result == 'success') {//처리성공	
+						console.log("성공");
+						console.log(action.data);
+						
+						/* 리다이렉트 */					
+						//let url = '/modang/tablet/${tableNo}/scoreboard';
+						//window.location.replace(url);							
+						
+						console.log("플레이정보 입력완료");
+						time = action.data.playTime;
+						timeStamper = function(){	
+							min = Math.floor(time/60);
+							hour = Math.floor(min/60);
+							sec = time%60;
+							min = min%60;
+							
+							var th = hour;
+							var tm = min;
+							var ts = sec;
+							
+							if(th < 10 ){
+								th = "0" + hour;
+							}			
+							if(tm < 10){
+								tm = "0" + min;
+							}			
+							if(ts < 10){
+								ts = "0" + sec;
+							}
+							$(thisForm).append(th + ":" + tm + ":" + ts);						
+					}
+						timeStamper();
+						
+					}else {//오류처리
+						var msg = action.failMsg;
+							alert(msg);				
+					}					
+				},
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}		
+				
+			});	
+			$(thisForm).off('click');
+			if(memberNum - 1 == $(thisForm).data('record')) {//멤버숫자 - 1 = 현재 등수 와 같으면 -> 꼴지와 꼴지-1등같이 처리	
+				console.log("멤버숫자 :" + memberNum);
+				var $this = $("div[data-record=0]");
+				var lastPlayNo = $this.data('playno');	
+				console.log("등수번호 :"+$this.data("record"));				
 				console.log("꼴지플레이번호 :"+lastPlayNo);
-				var lastActiveAverage = $("div[data-record=0]").parent().siblings(".bdtop").find("#act-average").txt();
-				var activeAverage = $(this).siblings(".bdtop").find("#act-average").txt();
-				console.log("총친다마 : "+activeAverage);
-				console.log("등수 : "+record);
-				var PlayUserVo = {
-							playNo : playNo,
-							record : record,
-							gameNo : gameNo,					
-							activeAverage : activeAverage
+				var lastActiveAverage = $this.parent().siblings(".bdtop").find("#act-average").text();				
+				console.log("등수 : "+lastActiveAverage);
+				
+				var lastPlayUserVo = {
+						playNo : lastPlayNo,
+						record : record,
+						gameNo : gameNo,					
+						activeAverage : lastActiveAverage
+
 				}
+				console.log(lastPlayUserVo);
 			
 				$.ajax({			
 					url : "${pageContext.request.contextPath}/tablet/saveplay",		
 					type : "post",
 					/* contentType : "application/json", */
-					data : tableGameVo,
+					data : lastPlayUserVo,
 					
 					dataType : "json",
 					success : function(action){						
@@ -220,8 +288,32 @@ $(".panalty").on("click",function(){
 							/* 리다이렉트 */					
 							//let url = '/modang/tablet/${tableNo}/scoreboard';
 							//window.location.replace(url);							
-							console.log("플레이정보 입력완료")
-							$this.append("<br> 종료시간 <br>00:00:00");	
+							console.log("플레이정보 입력완료");
+							time = action.data.playTime;
+							timeStamper = function(){	
+								min = Math.floor(time/60);
+								hour = Math.floor(min/60);
+								sec = time%60;
+								min = min%60;
+								
+								var th = hour;
+								var tm = min;
+								var ts = sec;
+								
+								if(th < 10 ){
+									th = "0" + hour;
+								}			
+								if(tm < 10){
+									tm = "0" + min;
+								}			
+								if(ts < 10){
+									ts = "0" + sec;
+								}
+								$this.append(th + ":" + tm + ":" + ts);						
+						}
+							timeStamper();
+							gameStop();
+			
 							
 						}else {//오류처리
 							var msg = action.failMsg;
@@ -233,7 +325,7 @@ $(".panalty").on("click",function(){
 					}		
 					
 				});	
-				$(this).off('click');
+				$("div[data-record=0]").off('click');
 			 }
 		});
 		
@@ -276,7 +368,14 @@ $('.btnBox').on("click","#restartbtn", function(){
 /* 동작4. 종료버튼 클릭했을때 */
 $(".btnBox").on("click","#stopbtn",function(){
 	console.log("종료버튼 클릭!")
-	gameStop();
+	 if(confirm("강제종료시 일시정지시간은 초기화됩니다.") == true){
+		 	gamequit();
+	        alert("강제종료되었습니다");
+	    }
+	    else{
+	        return ;
+	    }
+	
 });
 
 /* 기능1. 게임시작 */
@@ -387,7 +486,7 @@ function gamePause(){
 				console.log("타이머 일시정지!");
 				//4.사용시간 (출력)  //요금계산은 자동	
 				console.log("타임출력 실행!");
-				timer = function(){	
+				timeStamper = function(){	
 						min = Math.floor(time/60);
 						hour = Math.floor(min/60);
 						sec = time%60;
@@ -408,9 +507,8 @@ function gamePause(){
 						}
 						$("#time").html(th + ":" + tm + ":" + ts);						
 				}
-				timer();
-				clearInterval(timer);
-				console.log("사용시간 출력!");
+				timeStamper();
+				console.log("일시정지시간 출력!");
 					
 			}else {//오류처리
 				var msg = action.failMsg;
@@ -494,7 +592,7 @@ function gameReStart(){
 		}		
 	});		
 }
-/* 기능4. 게임종료 */
+/* 기능4. 게임정상종료 */
 function gameStop(){
 	//1.테이블 게임번호 전송-->게임정보 받음
 	var tableGameVo = {
@@ -531,8 +629,7 @@ function gameStop(){
 					}	
 					console.log("타이머 정지!")
 					//4.사용시간 (출력)  //요금계산은 자동				 
-					timer = function(){
-							time;
+					timeStamper = function(){
 							min = Math.floor(time/60);
 							hour = Math.floor(min/60);
 							sec = time%60;
@@ -554,6 +651,7 @@ function gameStop(){
 
 							$("#time").html(th + ":" + tm + ":" + ts);		
 						};	
+						timeStamper();
 						console.log("사용시간 출력!")				
 			
 			}else {//오류처리
@@ -568,12 +666,87 @@ function gameStop(){
 	});						
 	
 }
+/* 기능5. 게임 강제종료 */
+function playQuit() {
+	//1.테이블 게임번호 전송-->게임정보 받음
+	var tableGameVo = {
+			tableNo : tableNo,
+			gameNo : gameNo
+	}
+	console.log(tableGameVo);
+	$.ajax({			
+		url : "${pageContext.request.contextPath}/tablet/playquit",		
+		type : "post",
+		/* contentType : "application/json", */
+		data : tableGameVo,
+		
+		dataType : "json",
+		success : function(action){						
+			console.log(action);	
+			if(action.result == 'success') {//처리성공	
+				console.log("성공");
+				console.log(action.data);
+				
+				/* 리다이렉트 */					
+				//let url = '/modang/tablet/${tableNo}/scoreboard';
+				//window.location.replace(url);			
+				
+				console.log("결제액 : "+action.data.payMoney);
+				//2.버튼출력변경() 및 이벤트 종료
+				$('div').off('click');
+				 $('.btnBox > button').attr("disabled", true);			 
+				 
+				//3.타이머 기본값 결정
+					console.log(action.data.secondsToTime);
+					time = action.data.secondsToTime;
+					if(time != 0){
+						clearInterval(timer);
+					}	
+					console.log("타이머 정지!")
+					//4.사용시간 (출력)  //요금계산은 자동				 
+					timeStamper = function(){
+							min = Math.floor(time/60);
+							hour = Math.floor(min/60);
+							sec = time%60;
+							min = min%60;
+							
+							var th = hour;
+							var tm = min;
+							var ts = sec;
+							
+							if(th < 10 ){
+								th = "0" + hour;
+							}			
+							if(tm < 10){
+								tm = "0" + min;
+							}			
+							if(ts < 10){
+								ts = "0" + sec;
+							}
 
-/* 기능5. 시간그리기 */
+							$("#time").html(th + ":" + tm + ":" + ts);		
+						};	
+						timeStamper();
+						console.log("사용시간 출력!")				
+			
+			}else {//오류처리
+				var msg = action.failMsg;
+					alert(msg);				
+			}					
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}		
+		
+	});	
+	
+}
+
+/* 기능6. 시간그리기 */
 function init(){
 	$("#time").html("00:00:00");
 }
-/* 기능6. 포즈상태 */
+/* 기능7. 포즈상태 */
 function statusPause(){	
 	//1.테이블 게임번호 전송-->게임정보 받음
 	var tableGameVo = {
@@ -610,7 +783,7 @@ function statusPause(){
 				console.log("타이머 일시정지!");
 				//4.사용시간 (출력)  //요금계산은 자동	
 				console.log("타임출력 실행!");
-				timer = function(){	
+				timeStamper = function(){	
 						min = Math.floor(time/60);
 						hour = Math.floor(min/60);
 						sec = time%60;
@@ -631,8 +804,7 @@ function statusPause(){
 						}
 						$("#time").html(th + ":" + tm + ":" + ts);						
 				}
-				timer();
-				clearInterval(timer);
+				timeStamper();
 				console.log("사용시간 출력!");
 					
 			}else {//오류처리
@@ -646,7 +818,7 @@ function statusPause(){
 		
 	});	
 }
-/* 기능6. 재시작상태 */
+/* 기능8. 재시작상태 */
 function statusReStart(){
 	//1.테이블 게임번호 전송-->게임정보 받음
 	var tableGameVo = {

@@ -26,6 +26,13 @@ public class BiliardService {
 	private TabletDao tableDao;
 	
 	/* 테이블현황 페이지-------------------------------------------------------------------------------- */
+	/* 테이블 현황 - 게임 결제 */
+	public int payMent(TableGamesVo gamesVo) {
+		System.out.println("BiliardService.payMent()");
+		int count = biliardDao.updateIncome(gamesVo);
+		return count;
+	}
+	
 	/* 테이블 현황 - 테이블 추가 */
 	public int addTable(CueTableVo cuetableVo) {
 		System.out.println("BiliardService.addTable()");
