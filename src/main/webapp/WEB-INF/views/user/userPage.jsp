@@ -47,7 +47,7 @@
 								<div class="content">
 									
 									<div class="image-show" id="image-show" >
-		        						<img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileImage}" >
+		        						<img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileImage}" style="width:290px; height: 290px;"  >
 		        					</div>
 								
   									<p><img src="${pageContext.request.contextPath}/assets/images/user.png" style="width: 5%;margin:-227px 10px 286px 400px" alt=""><div data-text-content="true" style="font-size:30px;padding : 50px 0px 0px 318px;margin:-380px 0px -25px 150px" class="">${requestScope.userVo.id}</div>
