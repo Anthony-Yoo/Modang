@@ -6,18 +6,18 @@ public class CueTableVo {
 	private int biliardNo;      //당구장넘버
 	private String tableName;      //테이블이름(번호)
 	private int tableType;      //테이블타입(0:대대/1:중대/2:포켓)
-	private int status;    //테이블상태(0:대기/1:사용/2:일시정지)
+	private int tableStatus;    //테이블상태(0:대기/1:사용/2:일시정지)
 	private TariffVo myTariff; // 테이블별 요금표
 	
 	public CueTableVo() {	
 	}
 
-	public CueTableVo(int tableNo, int biliardNo, String tableName, int tableType, int status, TariffVo myTariff) {
+	public CueTableVo(int tableNo, int biliardNo, String tableName, int tableType, int tableStatus, TariffVo myTariff) {
 		this.tableNo = tableNo;
 		this.biliardNo = biliardNo;
 		this.tableName = tableName;
 		this.tableType = tableType;
-		this.status = status;
+		this.tableStatus = tableStatus;
 		this.myTariff = myTariff;
 	}
 
@@ -53,12 +53,12 @@ public class CueTableVo {
 		this.tableType = tableType;
 	}
 
-	public int getStatus() {
-		return status;
+	public int gettableStatus() {
+		return tableStatus;
 	}
 
-	public void setStatus(int status) {
-		this.status = status;
+	public void settableStatus(int tableStatus) {
+		this.tableStatus = tableStatus;
 	}
 
 	public TariffVo getMyTariff() {
@@ -72,7 +72,7 @@ public class CueTableVo {
 	@Override
 	public String toString() {
 		return "CueTableVo [tableNo=" + tableNo + ", biliardNo=" + biliardNo + ", tableName=" + tableName
-				+ ", tableType=" + tableType + ", status=" + status + ", myTariff=" + myTariff + "]";
+				+ ", tableType=" + tableType + ", tableStatus=" + tableStatus + ", myTariff=" + myTariff + "]";
 	}
 	
 
