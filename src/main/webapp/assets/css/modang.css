@@ -134,12 +134,12 @@ img {vertical-align: top;}/*reset*/
 
 
 /* 마이페이지(userPage) side nav */
-.sidebar {
+#userPage .sidebar {
   margin: 0;
   font-family: "Lato", sans-serif;
 }
 
-.sidebar {
+#userPage .sidebar {
     margin: 0;
     padding: 0;
     width: 150px;
@@ -149,7 +149,7 @@ img {vertical-align: top;}/*reset*/
     overflow: auto;
 }
 
-.sidebar a {
+#userPage .sidebar a {
   display: block;
   color: black;
   padding: 16px;
@@ -158,12 +158,12 @@ img {vertical-align: top;}/*reset*/
   
 }
  
-.sidebar a.active {
+#userPage .sidebar a.active {
   background-color: #2E419A;
   color: white;
 }
 
-.sidebar a:hover:not(.active) {
+#userPage .sidebar a:hover:not(.active) {
   background-color: #555;
   color: white;
 }
