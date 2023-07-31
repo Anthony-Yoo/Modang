@@ -10,8 +10,6 @@
 <link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
 <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/assets/css/user.css" rel="stylesheet" type="text/css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
     <!-- 헤더 시작 -->
@@ -19,35 +17,13 @@
 	<!-- 헤더 끝 -->
 	
 	<div id="main-content">
-	
-		<div class="container text-center">
-
-    		<div id="user">
-		
-				<div id="joinOK">
-		
-					<div id="main">
-						<br>
-						<p>
-
-        					<div class="jumbotron">
-            					<br>
-            					<br>
-            					<h1>회원가입을 축하합니다.</h1>
-            					<br>      
-            					<p><strong>modang! modang! 즐거운 modang!</strong></p>
-        					</div>
-    
-    				</div>
-    			</div>
-           
-    		</div>
-    		<!-- //user -->
+		<div id="main">
+			<div class="success">
+			    <h1>회원가입을 축하합니당.</h1>   
+            	<p><strong>modang! modang! 즐거운 modang!</strong></p>
+			</div>
     	</div>
-    	<!-- //container -->
-    </div>
-    <!-- //main-content -->
-    
+    </div><!-- //main-content -->
 	<!-- 푸터 시작 -->
     <c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
     <!-- 푸터 끝 -->

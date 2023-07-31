@@ -8,44 +8,43 @@
 	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
     <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
     <link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
-    <link href="${pageContext.request.contextPath}/assets/css/modangFind.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <!-- 헤더 시작 -->
     <c:import url="/WEB-INF/views/include/modangSiteHeader.jsp"></c:import>
     <!-- 헤더 끝 -->
      <div class="main-con">
-        <h1>모당 찾기</h1>
+        <h2>모당 찾기</h2>
         <div class="con">
-        <div class="search">
-            <div class="search-map">
-                <p>주변당구장</p>
-                <select name="" id="do" class="search-add">
-                    <option value="시/도">시/도</option>
-                    <option value="서울시">서울시</option>
-                    <option value="경기도">경기도</option>
-                </select>
-                <select name="" id="gu" class="search-add">
-                    <option value="구">구</option>
-                    <option value="강동구">강동구</option>
-                    <option value="강남구">강남구</option>
-                    <option value="송파구">송파구</option>
-                    <option value="어쩌구">어쩌구</option>
-                    <option value="저쩌구">저쩌구</option>
-                </select>
-                <select name="" id="dong" class="search-add">
-                    <option value="동">동</option>
-                    <option value="천호동">천호동</option>
-                    <option value="풍납동">풍납동</option>
-                    <option value="성내동">성내동</option>
-                </select>
-                <button type="button">검색</button>
-            </div>
-            <div class="search-list">
-                <input type="text" id="" name="" placeholder="당구장 이름으로 검색">
-                <button type="button">검색</button>
-            </div>
-        </div>
+        	<div class="search">
+            	<div class="search-map">
+                	<p>주변당구장</p>
+                	<select name="" id="do" class="search-add">
+                    	<option value="시/도">시/도</option>
+                    	<option value="서울시">서울시</option>
+                    	<option value="경기도">경기도</option>
+                	</select>
+                	<select name="" id="gu" class="search-add">
+                    	<option value="구">구</option>
+                    	<option value="강동구">강동구</option>
+                    	<option value="강남구">강남구</option>
+                    	<option value="송파구">송파구</option>
+                    	<option value="어쩌구">어쩌구</option>
+                   	 	<option value="저쩌구">저쩌구</option>
+                	</select>
+                	<select name="" id="dong" class="search-add">
+                    	<option value="동">동</option>
+	                    <option value="천호동">천호동</option>
+	                    <option value="풍납동">풍납동</option>
+                    	<option value="성내동">성내동</option>
+                	</select>
+                	<button type="button">검색</button>
+            	</div>
+            	<div class="search-list">
+                	<input type="text" id="" name="" placeholder="당구장 이름으로 검색">
+                	<button type="button">검색</button>
+            	</div>
+        	</div>
             <div class="map">
                 <div class="mapImg">
                     지도
