@@ -182,12 +182,29 @@ public class TabletService {
 		myGameInfo.setTableFee(tableFee);
 		myGameInfo.setMinFee(minFee);
 		//게임VO에 Play리스트 넣기		
-		myGameInfo.setPlayUserList(tabletDao.selectPlayUser(myGameInfo));
+		List<PlayUserVo> playUserList = new ArrayList<PlayUserVo>();
+		playUserList = tabletDao.selectPlayUser(myGameInfo);
+		myGameInfo.setPlayUserList(playUserList);
+		System.out.println(myGameInfo);
 		//게임Vo에 table 넣기
 		myGameInfo.setTableInfo(tableInfo);
 		
 		return myGameInfo;
 	}
+	public TableGamesVo playResultFind(TableGamesVo tableGameVo) {
+		System.out.println("TabletService.playResultFind()");
+		
+		TableGamesVo myGameInfo = tabletDao.selectGameforGameNo(tableGameVo);
+		System.out.println(myGameInfo);
+		List<PlayUserVo> playUserList = new ArrayList<PlayUserVo>();
+		playUserList = tabletDao.selectPlayRecord(myGameInfo);
+		myGameInfo.setPlayUserList(playUserList);
+		System.out.println(myGameInfo);
+		
+		return myGameInfo;
+	}
+	
+	
 	
 	public TableGamesVo startGame(TableGamesVo tableGameVo) {
 		System.out.println("TabletService.startGame()");	
