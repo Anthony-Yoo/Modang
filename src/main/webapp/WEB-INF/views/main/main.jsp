@@ -19,37 +19,34 @@
                 <img src="${pageContext.request.contextPath}/assets/images/modang_logo.png" alt="">
             </div>
             <div class="intro">
-                <h2>&nbsp&nbsp모당이란?</h2>
+                <h2 style="padding:0 0 0 25px;">모당이란?</h2>
                 <div class="modang_tip">
                     <ul class="user_tip">
                         <li class="tip">
                             <a href="${pageContext.request.contextPath}/">
                                 <em>모당 서비스란?</em>
-                                <p>
-                                    본인 전적 저장가능<br>
-                                    지역별 당구장 검색<br>
-                                    모르는사람과 당구칠수잇는<br>
-                                    뭐다냐 제공해주는 사이트
-                                </p>
+                                <p><b>전 지역 어디서든,</b></p>
+                                <p><b>당구를 사랑하는 분들에 도전을 위한,</b></p>
+                                <p><b>매칭 기록 서비스!</b></p>
+                                   
                             </a>
                         </li>
                         <li class="tip">
                             <a href="${pageContext.request.contextPath}/">
-                                <em>모당 서비스란 이용방법</em>
-                                <p>
-                                회원가입-<br>
-                                -주 기능 회원매칭 서비스<br>
-                                -친구 목록에서 간편 팀 만들기
-                                </p>
+                                <em>모당 서비스 이용방법</em>
+                                <p><b>회원가입</b></p>
+                                <p><b>지역별 당구장 검색을 통한 매칭 게시판 회원매칭,</b></p>
+                                <p><b>친구목록 유저 불러오기로 간편 팀 만들기</b></p>
+                                
                             </a>
                         </li>
                         <li class="tip">
                             <a href="${pageContext.request.contextPath}/board/list">
                                 <em>매칭 서비스</em>
-                                <p>
-                                    게시글에 글 올리거나 댓글<br>
-                                    - 수락 되면 놀자 키킥
-                                </p>
+                                <p><b>원하는 지역 검색,</b></p>
+                                <p><b>매칭 게시판에 매칭 글 게시,</b></p>
+                                <p><b>게시된 글에 댓글 달기</b></p>
+                                  
                             </a>
                         </li>
                     </ul>
@@ -58,11 +55,10 @@
                         <li class="tip">
                             <a href="${pageContext.request.contextPath}/manager/loginForm">
                                 <em>당구장 관리 서비스</em>
-                                <p>
-                                    기본 당구장 관리시스템과 비슷해<br>
-                                    처음 사용시 어려움이 없지 않을까?<br>
-                                    본인 매장 어필 가능?어캐?
-                                </p>
+                                <p><b>기존 당구장 관리 시스템을 기본으로 업그레이드 완료!</b></p>
+                                <p><b>처음 사용자도 간편하게 사용 가능,</b></p>
+                                <p><b>신세대 디자인으로 멋지고 고급스러운 당구장 어필!</b></p>
+                                 
                             </a>
                         </li>
                         <li class="tip">
