@@ -1,7 +1,7 @@
 package com.modang.vo;
 
 public class PlayUserVo {
-	
+
 	private int playNo;
 	private int userNo;
 	private String nick;
