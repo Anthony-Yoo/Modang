@@ -22,7 +22,7 @@
 			select  TABLENO,
 					BILIARDNO,
 					TABLETYPE,
-					STATUS,
+					tableStatus,
 					TABLENAME
 			from CUETABLE
 			where BILIARDNO = #{biliardNo}
@@ -308,9 +308,10 @@
 	<!-- 당구장찾기 -->
 	<select id="selectCueTable" parameterType="int" resultType="com.modang.vo.CueTableVo">
 		<![CDATA[
-			select  BILIARDNO,
+			select  TABLENO,
+					BILIARDNO,
 					tableType,
-					STATUS
+					tableStatus
 			from CUETABLE
 			where TABLENO = #{tableNo}		
 		]]>
@@ -348,7 +349,7 @@
 		<![CDATA[
 			update CUETABLE
 			set 
-			STATUS = 1
+			tableStatus = 1
 			where TABLENO = #{tableNo}		
 		]]>	
 	</update>
@@ -368,7 +369,7 @@
 		<![CDATA[
 			update CUETABLE
 			set 
-			STATUS = 2
+			tableStatus = 2
 			where TABLENO = #{tableNo}		
 		]]>	
 	</update>
@@ -397,7 +398,7 @@
 		<![CDATA[
 			update CUETABLE
 			set 
-			STATUS = 0
+			tableStatus = 0
 			where TABLENO = #{tableNo}		
 		]]>	
 	</update>

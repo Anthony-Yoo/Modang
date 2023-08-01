@@ -159,7 +159,7 @@ input[type="password"] {
 	font-size: 15px;
 	font-weight: bold;
 	padding: 5px 15px 5px 15px;
-	margin: 10px 0px 0px 520px;
+	margin: -8px 0px 0px 520px;
 	position: absolute;
 	z-index: 1;
 }
