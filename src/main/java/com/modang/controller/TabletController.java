@@ -254,7 +254,7 @@ public class TabletController {
 	
 	@ResponseBody
 	@RequestMapping(value="/playend", method = {RequestMethod.GET,RequestMethod.POST})
-	public JsonResult playEnd(@ModelAttribute TableGamesVo tableGameVo) {  //재시작!
+	public JsonResult playEnd(@ModelAttribute TableGamesVo tableGameVo) {  // 게임종료(마지막완료)!
 		System.out.println("TabletController.playEnd()");
 			
 		TableGamesVo myGameInfo = tabletService.endGame(tableGameVo);	
@@ -282,6 +282,43 @@ public class TabletController {
 		if (myGameInfo != null) { 			
 			jsonResult.success(myGameInfo);
 			System.out.println(jsonResult);
+			
+			}else {				
+				System.out.println("해당Game이 없습니다."); 
+			}		
+		
+		return jsonResult;
+	}
+	
+	@RequestMapping(value="/{tableNo}/resultPage", method = {RequestMethod.GET,RequestMethod.POST})
+	public String resultPage(@PathVariable("tableNo") int tableNo,@ModelAttribute TableGamesVo tableGameVo,Model model) {  //결과페이지!
+		System.out.println("TabletController.resultPage()");
+		System.out.println(tableGameVo);
+		
+		TableGamesVo myGameInfo = tabletService.playResultFind(tableGameVo);	
+		System.out.println(myGameInfo);
+
+		if (myGameInfo != null) { 
+			model.addAttribute("tableGameVo", myGameInfo);
+			System.out.println(myGameInfo);
+			
+			}else {				
+				System.out.println("해당Game이 없습니다."); 
+			}		
+		
+		return "/tablet/resultPage";
+	}
+	@ResponseBody
+	@RequestMapping(value="/resultdata", method = {RequestMethod.GET,RequestMethod.POST})
+	public JsonResult resultData(@ModelAttribute TableGamesVo tableGameVo) {  //결과페이지!
+		System.out.println("TabletController.resultPage()");
+			
+		TableGamesVo myGameInfo = tabletService.playResultFind(tableGameVo);	
+		System.out.println(myGameInfo);
+		JsonResult jsonResult = new JsonResult();
+		if (myGameInfo != null) { 
+			jsonResult.success(myGameInfo);
+			System.out.println(myGameInfo);
 			
 			}else {				
 				System.out.println("해당Game이 없습니다."); 

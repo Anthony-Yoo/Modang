@@ -67,9 +67,9 @@
 				                , mb.matchgametype
 				                , mb.matchregion
 				                , mb.membernum
-				                , mb.matchdate
+				                , TO_CHAR(mb.matchdate, 'YYYY-MM-DD') AS matchdate
 				                , mb.content
-				                , mb.boarddate
+                			    , TO_CHAR(mb.boarddate, 'YYYY-MM-DD') AS boarddate 
 				                , mb.count
 				                , mb.status
 				                , u.nick
@@ -151,9 +151,9 @@
 			       mb.matchgametype,
 			       mb.matchregion,
 			       mb.memberNum,
-			       mb.matchdate,
+			       TO_CHAR(mb.matchdate, 'YYYY-MM-DD') AS matchdate,
 			       mb.content,
-			       mb.boardDate,
+			       TO_CHAR(mb.boardDate, 'YYYY-MM-DD') AS boarddate,
 			       mb.count,
 			       mb.status,
 			       u.nick,

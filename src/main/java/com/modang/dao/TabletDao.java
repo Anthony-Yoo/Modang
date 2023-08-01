@@ -226,4 +226,15 @@ public class TabletDao {
 		return session.update("tablet.updateQuickPlayInfo", tableGameVo);
 	}
 	
+	public TableGamesVo selectGameforGameNo(TableGamesVo tableGameVo) {
+		System.out.println("TabletDao.selectGameforGameNo()");
+		
+		return session.selectOne("tablet.selectGameforGameNo", tableGameVo);
+	}
+	public List<PlayUserVo> selectPlayRecord(TableGamesVo myGameInfo) {
+		System.out.println("TabletDao.selectPlayRecord()");
+		
+		return session.selectList("tablet.selectPlayRecord",myGameInfo);
+	}
+	
 }

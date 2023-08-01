@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>글 읽기</title>
+<title>${rList.title}</title>
 <link rel="icon" sizes="any"
 	href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
 <!-- 게시판 css -->

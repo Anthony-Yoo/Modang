@@ -102,6 +102,15 @@ public class BiliardService {
 		return cueTableList;
 	}
 	
+	/* 테이블 매출 페이지-------------------------------------------------------------------------------- */
+	/* 테이블 매출폼 */
+	public List<CueTableVo> tablesalesList(int biliardNo) {
+		System.out.println("BiliardService.tablesalesList()");
+		List<CueTableVo> cuetableList = biliardDao.selectList(biliardNo);
+		
+		return cuetableList;
+	}
+	
 	/* 요금테이블 페이지--------------------------------------------------------------------------------- */
 	/* 요금테이블 - 요금정보 가져오기 */
 	public TariffVo getPrice(int biliardNo) {
