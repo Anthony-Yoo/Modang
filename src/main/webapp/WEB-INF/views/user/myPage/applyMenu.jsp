@@ -41,7 +41,7 @@
 					</div>
 					<div id="board" style="margin-right: -9px; width: 1030px;">
 						<div>
-							<a class="apply_btn">신청 목록</a>
+							<a class="apply_btn">내 게시글 목록</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a class="apply_btn">내 신청글 목록</a>
 						</div>
 						<div id="list">
 							<table>
