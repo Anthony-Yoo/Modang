@@ -50,7 +50,7 @@ public class ManagerController {
 			return "redirect:/manager/joinForm";
 		}
 	}
-
+	
 	/* 회원가입 id 중복체크 */
 	@ResponseBody
 	@RequestMapping(value = "/join/idcheck", method = { RequestMethod.GET, RequestMethod.POST })
