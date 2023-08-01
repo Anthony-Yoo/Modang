@@ -769,7 +769,7 @@ function statusPause(){
 	}
 	console.log(tableGameVo);
 	$.ajax({			
-		url : "${pageContext.request.contextPath}/tablet/playstatus",		
+		url : "${pageContext.request.contextPath}/tablet/pausestatus",		
 		type : "post",
 		/* contentType : "application/json", */
 		data : tableGameVo,

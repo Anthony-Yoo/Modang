@@ -193,6 +193,26 @@ public class TabletController {
 	}
 	
 	@ResponseBody
+	@RequestMapping(value="/pausestatus", method = {RequestMethod.GET,RequestMethod.POST})
+	public JsonResult pauseStatus(@ModelAttribute TableGamesVo tableGameVo) {  //일시정지!
+		System.out.println("TabletController.pauseStatus()");
+			
+		TableGamesVo myGameInfo = tabletService.pauseStatus(tableGameVo);	
+		System.out.println(myGameInfo);
+		JsonResult jsonResult = new JsonResult();
+		if (myGameInfo != null) { 			
+			jsonResult.success(myGameInfo);
+			System.out.println(jsonResult);
+			
+			}else {				
+				System.out.println("해당Game이 없습니다."); 
+			}
+		
+		
+		return jsonResult;
+	}
+	
+	@ResponseBody
 	@RequestMapping(value="/playstatus", method = {RequestMethod.GET,RequestMethod.POST})
 	public JsonResult playStatus(@ModelAttribute TableGamesVo tableGameVo) {  //일시정지!
 		System.out.println("TabletController.playStatus()");

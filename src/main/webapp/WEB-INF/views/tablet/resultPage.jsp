@@ -209,9 +209,6 @@ function renderEach(playerList) {
 		
 		$("#playTime-"+value.record).html(timeVo.th + ":" + timeVo.tm + ":" + timeVo.ts);
 	});
-	
-	
-
 	 
 	 
 	 

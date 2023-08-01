@@ -235,6 +235,17 @@ public class TabletService {
 		return myGameInfo;
 	}
 	
+	public TableGamesVo pauseStatus(TableGamesVo tableGameVo) {
+		System.out.println("TabletService.pauseStatus()");
+				
+		int tableNo = tableGameVo.getTableNo();
+		System.out.println(tableNo);
+		
+		TableGamesVo myGameInfo = tabletDao.selectPauseGameforTableNo(tableNo);		
+		
+		return myGameInfo;
+	}
+	
 	public TableGamesVo playStatus(TableGamesVo tableGameVo) {
 		System.out.println("TabletService.playStatus()");
 				
@@ -245,6 +256,7 @@ public class TabletService {
 		
 		return myGameInfo;
 	}
+	
 	
 	public TableGamesVo reStartGame(TableGamesVo tableGameVo) {
 		System.out.println("TabletService.reStartGame()");
