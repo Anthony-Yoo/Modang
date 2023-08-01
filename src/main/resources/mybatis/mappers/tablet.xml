@@ -277,6 +277,33 @@
 		]]>	
 	</select>	
 	
+	<!-- 일시정지게임찾기(테이블번호) -->
+	<select id="selectPauseGameforTableNo" parameterType="int" resultType="com.modang.vo.TableGamesVo">
+		<![CDATA[
+			select 	GAMENO,
+					TABLENO,
+					GAMETYPE,
+					MEMBERNUM,
+					GAMEDATE,					
+					GAMETIME,
+					STARTTIME,
+					ENDTIME,
+					PAYSTATUS,
+					PAYTYPE,
+					PAYDATE,
+					INCOME,
+					PAYMONEY,
+					PAUSESTART,
+					PAUSESTOP,					
+					PAUSETIME,
+					SETNO,
+					ROUND((PAUSESTART-STARTTIME) * 24 * 60 * 60, 2)- PAUSETIME as secondsToTime
+			from GAMES
+			where GAMENO = (select max(GAMENO) from GAMES 
+							where TABLENO = #{tableNo})	
+		]]>	
+	</select>
+	
 	
 	<!-- 당구장찾기 -->
 	<select id="selectCueTable" parameterType="int" resultType="com.modang.vo.CueTableVo">
