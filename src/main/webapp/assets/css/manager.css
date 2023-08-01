@@ -6,13 +6,16 @@
 h2,h3{color: #2E419A; text-align: center; margin: 20px 0 20px 0;}
 #main-content{width: 1200px; margin: 0 auto; height: auto;}
 #main-content .container{margin-top:50px; margin-bottom: 100px; height: 100%;}
-.chck{display: inline-block; width: 100px; height: 40px; background-color: #2E419A; 
-    color: #fff; line-height: 40px; border-radius: 10px; font-size: 14px;}
-.chck:hover{display: inline-block; width: 100px; height: 40px; background-color: #2E419A; 
-    color: #fff; line-height: 40px; border-radius: 10px; font-size: 14px;}
+.chck{display: inline-block; width: 100px; height: 40px; background : linear-gradient(to bottom right, rgb(9, 32, 80),
+      rgb(81, 117, 164)); color: #fff; line-height: 40px; border-radius: 10px; font-size: 14px;}
+.chck:hover{display: inline-block; width: 100px; height: 40px;
+	background : linear-gradient(to bottom right, rgb(9, 32, 80),rgb(81, 117, 164)); 
+    color: #fff; line-height: 40px; border-radius: 10px; font-size: 14px; cursor: pointer;}
 .button{display: block; width: 480px; height: 40px; text-align: center;
-        background-color:  #2E419A; color: #fff; border-radius:10px; line-height: 40px;
+        background : linear-gradient(to bottom right, rgb(9, 32, 80),
+      rgb(81, 117, 164)); color: #fff; border-radius:10px; line-height: 40px;
         margin: 10px auto 30px; cursor: pointer;}
+
 input[type="text"],input[type="password"]{ width: 300px; height: 40px;padding : 8px 20px 9px 20px; background: #F5F5F5;
     border: 1px solid #B8B8B8; box-sizing: border-box; border-radius: 8px;  color: #111;}
 input::placeholder{color: #B8B8B8;}
@@ -42,7 +45,8 @@ input::placeholder{color: #B8B8B8;}
 .intro .modang_tip ul.manager_tip .tip:nth-child(2){width: 250px; height: 100px; margin: 20px 0 0 50px; 
 	border: 2px solid #2E419A; background-color: #fafafa;}
 .intro .modang_tip ul.manager_tip .tip:nth-child(2) a{display: block; text-align: center;line-height: 6;}
-.intro .modang_tip ul.manager_tip .tip:nth-child(2):hover a{background-color: #2E419A; color: #fff;}
+.intro .modang_tip ul.manager_tip .tip:nth-child(2):hover a{background : linear-gradient(to bottom right, rgb(9, 32, 80),
+      rgb(81, 117, 164)); color: #fff;}
 /*매니저-회원가입성공페이지*/
 #main-content #main{background-color: #e9e9e9; width: 800px; height: 440px; margin: 50px auto;}
 #main-content #main .success{padding: 100px 0 120px;}
@@ -108,12 +112,13 @@ justify-content: center;align-items: center; pointer-events: none;}
 .search-map p{display: inline-block; font-size: 15px; font-weight: 600;}
 .search-map .search-add{border: 1px solid #2E419A; width: 100px; height: 30px; border-radius: 6px;
 	background-color: #f1f1f1;}
-.search-map button{background: #2E419A; width: 60px; height: 30px; color: #fff;
-	border-radius: 6px; cursor: pointer;}
+.search-map button{background : linear-gradient(to bottom right, rgb(9, 32, 80),
+      rgb(81, 117, 164)); width: 60px; height: 30px; color: #fff;border-radius: 6px; cursor: pointer;}
 .search-list{width: 490px; float: left; margin-left: 110px;}
 .search-list input{border: 1px solid #2E419A; width: 200px; height: 30px; border-radius: 6px;
 	background-color: #f1f1f1;}
-.search-list button{background: #2E419A; width: 60px; height: 30px; color: #fff;
+.search-list button{background : linear-gradient(to bottom right, rgb(9, 32, 80),
+      rgb(81, 117, 164)); width: 60px; height: 30px; color: #fff;
 	border-radius: 6px; cursor: pointer;}
 .con .map{float: left; width: 590px; height: 500px;}
 .con .map .mapImg{background-color: aquamarine; width: 500px; height: 440px; margin: 30px auto 0;}
@@ -146,7 +151,8 @@ justify-content: center;align-items: center; pointer-events: none;}
 .record-view .userRecent .recentAver{height: 100px; background-color: #efefef; border-radius: 10px;}
 .record-view .userRecent .recentAver ul{margin-top: 20px; line-height: normal; font-weight: 600;}
 .record-view .userRecent .recentAver ul li{display: inline-block; width: 20px; height: 20px; border: 1px solid #2E419A;}
-.record-view .userRecent .recentAver ul li.win{background-color: lightblue; color: #fff;}
+.record-view .userRecent .recentAver ul li.win{background : linear-gradient(to bottom right, rgb(9, 32, 80),
+      rgb(81, 117, 164)); color: #fff;}
 .record-view .userRecent .recentGame{height: 120px; background-color: #efefef; margin-top: 10px;border-radius: 10px;}
 .record-view .userRecent .recentGame table{margin: 14px auto 0;}
 .record-view .userRecent .recentGame thead{font-size: 14px;}

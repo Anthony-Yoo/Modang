@@ -23,17 +23,6 @@
 <!-- js -->
 
 <style type="text/css">
-
-
-.apply_btn a{
-
-	border: 1px solid black;
-	padding: 3px 10px 3px 10px;
-	border-radius: 3px;
-	
-}
-
-
 </style>
 
 
@@ -43,75 +32,74 @@
 	<c:import url="/WEB-INF/views/include/modangSiteHeader.jsp"></c:import>
 	<!-- 헤더 끝 -->
 
-	<div id="main-content">
-		<div class="container text-center">
-			<div id="userPage">
-				<div id="main">
-					<div class="sidebar">
-						<a href="userPage">&nbsp;&nbsp;회원정보</a> <a href="userPage">&nbsp;&nbsp;친구목록</a>
-						<a href="userPage">&nbsp;&nbsp;그룹친구</a> <a class="active"
-							href="${pageContext.request.contextPath }/attendUsers/myPage/applyMenu">&nbsp;게시판매칭</a> <a href="userPage">&nbsp;&nbsp;전적보기</a>
-					</div>
-					<div id="board" style="margin-right: -9px; width: 1030px;">
-						<div class="apply_btn" >
-							<a id="myList" href="">내 게시글 목록</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a id="myList" href="">내 신청글 목록</a>
-						</div>
-						<div id="list">
-							<table>
-								<thead>
-									<tr>
-										<th>번호</th>
-										<th>게임종류</th>
-										<th>지역</th>
-										<th>제목</th>
-										<th>구인 현황</th>
-										<th>작성자</th>
-										<th>게임 희망일자</th>
-										<th>승인 현황</th>
-									</tr>
-								</thead>
-
-								<c:forEach items="${pMap.bList}" var="boardVo">
-									<tbody>
-										<tr>
-											<td>${boardVo.boardNo}</td>
-											<!-- 게시판 번호 -->
-											<!-- 게임타입 번호에 따른 게임 종류 출력 -->
-											<c:choose>
-												<c:when test="${boardVo.matchGameType == '0'}">
-													<td>3구</td>
-												</c:when>
-												<c:when test="${boardVo.matchGameType == '1'}">
-													<td>4구</td>
-												</c:when>
-												<c:when test="${boardVo.matchGameType == '2'}">
-													<td>포켓볼</td>
-												</c:when>
-											</c:choose>
-											<td>${boardVo.matchRegion}</td>
-											<!-- 경기 지역 -->
-											<td class="text-left"><a
-												href="${pageContext.request.contextPath}/board/hitCount?boardNo=${boardVo.boardNo}">${boardVo.title}</a></td>
-											<!-- 제목 -->
-											<td>1/${boardVo.membernum}</td>
-											<!-- 멤버 구인현황 현재 인원/ 총 모집인원 -->
-											<td>${boardVo.nick}</td>
-											<!-- 글쓴이 닉네임 -->
-											<td>${boardVo.matchDate}</td>
-											<!-- 개임 날짜 -->
-										</tr>
-									</tbody>
-								</c:forEach>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- //user -->
+	<div id="sideNav">
+		<div id="userPage" class="sidebar">
+			<a href="userPage">회원정보</a> <a href="userPage">친구목록</a>
+			<a href="userPage">그룹친구</a> <a class="active"
+				href="${pageContext.request.contextPath }/attendUsers/myPage/applyMenu">게시판매칭</a>
+			<a href="userPage">전적보기</a>
 		</div>
-		<!-- //container -->
 	</div>
-	<!-- //main-content -->
+
+	<div id="apply" style="margin-right: -9px; width: 1030px;">
+		<div class="apply_btn">
+			<a id="myList"
+				href="${pageContext.request.contextPath }/attendUsers/myPage/applyMenu?userNo=${sessionScope.authUser.userNo}">내
+				게시글 목록</a>&nbsp;&nbsp;&nbsp;&nbsp;<a id="myList" class="active" href="">내
+				신청글 목록</a>
+		</div>
+		<div id="list">
+			<table>
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>게임종류</th>
+						<th>지역</th>
+						<th>제목</th>
+						<th>구인 현황</th>
+						<th>작성자</th>
+						<th>게임 희망일자</th>
+						<th>신청 현황</th>
+					</tr>
+				</thead>
+
+				<c:forEach items="${pMap.bList}" var="boardVo">
+					<tbody>
+						<tr>
+							<td>${boardVo.boardNo}</td>
+							<!-- 게시판 번호 -->
+							<!-- 게임타입 번호에 따른 게임 종류 출력 -->
+							<c:choose>
+								<c:when test="${boardVo.matchGameType == '0'}">
+									<td>3구</td>
+								</c:when>
+								<c:when test="${boardVo.matchGameType == '1'}">
+									<td>4구</td>
+								</c:when>
+								<c:when test="${boardVo.matchGameType == '2'}">
+									<td>포켓볼</td>
+								</c:when>
+							</c:choose>
+							<td>${boardVo.matchRegion}</td>
+							<!-- 경기 지역 -->
+							<td class="text-left"><a
+								href="${pageContext.request.contextPath}/board/hitCount?boardNo=${boardVo.boardNo}">${boardVo.title}</a></td>
+							<!-- 제목 -->
+							<td>1/${boardVo.membernum}</td>
+							<!-- 멤버 구인현황 현재 인원/ 총 모집인원 -->
+							<td>${boardVo.nick}</td>
+							<!-- 글쓴이 닉네임 -->
+							<td>${boardVo.matchDate}</td>
+							<!-- 개임 날짜 -->
+							<td>${boardVo.status}</td>
+						</tr>
+					</tbody>
+				</c:forEach>
+			</table>
+		</div>
+	</div>
+	<!-- //user -->
+	<!-- //container -->
 
 	<!-- 푸터 시작 -->
 	<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
