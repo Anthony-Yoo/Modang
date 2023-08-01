@@ -39,13 +39,10 @@
 						<a href="userPage">&nbsp;&nbsp;그룹친구</a> <a class="active"
 							href="userPage">&nbsp;게시판매칭</a> <a href="userPage">&nbsp;&nbsp;전적보기</a>
 					</div>
-					<div id="content">
-						<div id="write">
-							<a class="btn"
-								href="${pageContext.request.contextPath}/board/writeForm">글쓰기</a>
+					<div id="board" style="margin-right: -9px; width: 1030px;">
+						<div>
+							<a class="apply_btn">신청 목록</a>
 						</div>
-					</div>
-					<div id="board" style="margin-right: -9px; width: 1080px;">
 						<div id="list">
 							<table>
 								<thead>
