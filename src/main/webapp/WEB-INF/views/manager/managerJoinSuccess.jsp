@@ -22,6 +22,7 @@
 			    <h1>회원가입을 축하합니당.</h1>   
             	<p><strong>modang! modang! 즐거운 modang!</strong></p>
 			</div>
+			<a class="button" href="${pageContext.request.contextPath}/manager/loginForm">로그인페이지로 돌아가기</a>
     	</div>
     </div><!-- //main-content -->
 	<!-- 푸터 시작 -->
