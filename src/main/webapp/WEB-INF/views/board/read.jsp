@@ -374,6 +374,23 @@ $(document).ready(function() {
 				// textarea의 높이 자동 조절을 적용할 클래스를 정의합니다.
 
 				// 답글쓰기 버튼 클릭 시 대댓글 입력 창 생성
+				$("#cList").on("click", ".comment_info_button", function () {
+					
+					// 기존에 생성된 모든 댓글 입력창 삭제
+			        $(".line.new").remove();
+			        $(".comment_add.new").remove();
+					
+				    var index = $(this).data("index");
+				    var commentAddDiv = $(this).closest(".comment_area");
+				    commentRender(result.data[index], "down", commentAddDiv, index);
+				    // 생성된 textarea에 자동 높이 조절 기능 적용
+				    commentAddDiv.find("textarea").on('input', function () {
+				        var scrollTop = this.scrollTop;
+				        this.style.height = 'auto';
+				        this.style.height = this.scrollHeight + 'px';
+				        this.scrollTop = scrollTop;
+				    });
+				});
 				
 			},
 			error : function() {

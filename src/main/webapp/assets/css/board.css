@@ -213,7 +213,7 @@ input[type="password"] {
 }
 
 #board #list table>thead>tr>th:nth-child(4) {
-	width: 48%;
+	width: 40%;
 }
 
 #board #list table>thead>tr>th:nth-child(5) {
@@ -225,7 +225,10 @@ input[type="password"] {
 }
 
 #board #list table>thead>tr>th:nth-child(7) {
-	width: 15%;
+	width: 13%;
+}
+#board #list table>thead>tr>th:nth-child(8) {
+	width: 10%;
 }
 
 /* 게시판 메뉴 목록 테두리 끝*/
