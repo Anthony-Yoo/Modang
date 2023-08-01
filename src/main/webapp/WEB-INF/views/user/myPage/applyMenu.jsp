@@ -37,7 +37,7 @@
 					<div class="sidebar">
 						<a href="userPage">&nbsp;&nbsp;회원정보</a> <a href="userPage">&nbsp;&nbsp;친구목록</a>
 						<a href="userPage">&nbsp;&nbsp;그룹친구</a> <a class="active"
-							href="userPage">&nbsp;게시판매칭</a> <a href="userPage">&nbsp;&nbsp;전적보기</a>
+							href="${pageContext.request.contextPath }/attendUsers/myPage/applyMenu">&nbsp;게시판매칭</a> <a href="userPage">&nbsp;&nbsp;전적보기</a>
 					</div>
 					<div id="board" style="margin-right: -9px; width: 1030px;">
 						<div>
