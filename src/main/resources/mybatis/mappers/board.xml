@@ -48,7 +48,6 @@
 			     , ort.content
 			     , ort.boarddate
 			     , ort.count
-			     , ort.status
 			     , ort.nick
 			from (select rownum rn
 	                  , ot.boardno
@@ -60,7 +59,6 @@
 	                  , ot.content
 	                  , ot.boarddate
 	                  , ot.count
-	                  , ot.status
 	                  , ot.nick
 				     from (select mb.boardno
 				                , mb.title
@@ -71,7 +69,6 @@
 				                , mb.content
                 			    , TO_CHAR(mb.boarddate, 'YYYY-MM-DD') AS boarddate 
 				                , mb.count
-				                , mb.status
 				                , u.nick
 				          from matchboard mb, users u
 				          where mb.userNo = u.userNo 
