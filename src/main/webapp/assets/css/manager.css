@@ -4,7 +4,7 @@
 .error-msg{color: #F94069; font-size: 13px; display: none; text-align: center;padding-top:5px;}
 .correct-msg{color: #F94069; font-size: 13px; display: none; text-align: center; padding-top:5px;}
 h2,h3{color: #2E419A; text-align: center; margin: 20px 0 20px 0;}
-#main-content{width: 1000px; margin: 0 auto; height: auto;}
+#main-content{width: 1200px; margin: 0 auto; height: auto;}
 #main-content .container{margin-top:50px; margin-bottom: 100px; height: 100%;}
 .chck{display: inline-block; width: 100px; height: 40px; background-color: #2E419A; 
     color: #fff; line-height: 40px; border-radius: 10px; font-size: 14px;}
@@ -132,18 +132,15 @@ justify-content: center;align-items: center; pointer-events: none;}
 
 /*유저 전적보기*/
 /*게임 유저 정보?*/
-.record-view{ width: 1200px;height: 400px; position: relative; margin: 50px auto;}
+.record-view{ width: 1200px;height: 400px; position: relative; margin: 50px auto 0;}
 
 .record-view .left{display: inline-block;width: 300px; height: 100%;position: absolute; top: 0; left: 0;}
-.record-view .userImg img{display: block; width: 250px; height: 250px; margin: 0 auto;}
-.record-view .userImg p{background-color: #2E419A; border-radius: 4px; width: 200px; 
-    padding: 10px 15px;margin: 10px 0 10px 35px; text-align: center; color: #fff;}
-.record-view .town{display: block; width: 200px;height: 90px;  margin: 10px auto 0;}
-.record-view .town img{display:block; width: 50px; height: 50px;  float: left; margin-top: 10px;}
-.record-view .town span{display: inline-block; margin:  10px 0 0 8px;}
-.record-view .town span.area{ color: red; font-weight: 600;}
-.record-view .town span.Rname{ font-size: 14px;}
-
+.record-view .userImg img{display: block; width: 250px; height: 250px; margin: 0 auto; border: 1px solid #2E419A;
+    box-sizing: border-box; border-radius: 10px;}
+.record-view .town{display: block; width: 250px;height: 110px;  margin: 15px auto 0; border: 1px solid  #2E419A;
+    border-radius: 10px;}
+.record-view .town span{display: inline-block; margin:  20px 0 0 20px;}
+.record-view .town span strong{color: #2E419A; font-size: 20px;}
 .record-view .center{display: inline-block;width: 300px;height: 100%;position: absolute; top: 0; left: 300px;
     text-align: center;}
 .record-view .userRecent p{border-bottom: 1px solid #2E419A; padding: 6px 0; width: 280px; margin: 0 auto;}
@@ -151,33 +148,32 @@ justify-content: center;align-items: center; pointer-events: none;}
 .record-view .userRecent .recentAver ul{margin-top: 20px; line-height: normal; font-weight: 600;}
 .record-view .userRecent .recentAver ul li{display: inline-block; width: 20px; height: 20px; border: 1px solid #2E419A;}
 .record-view .userRecent .recentAver ul li.win{background-color: lightblue; color: #fff;}
-.record-view .userRecent .recentGame{height: 140px; background-color: #efefef; margin-top: 10px;border-radius: 10px;}
-.record-view .userRecent .recentGame table{margin: 20px auto 0;}
+.record-view .userRecent .recentGame{height: 120px; background-color: #efefef; margin-top: 10px;border-radius: 10px;}
+.record-view .userRecent .recentGame table{margin: 14px auto 0;}
 .record-view .userRecent .recentGame thead{font-size: 14px;}
-.record-view .userRecent .recentGame tbody{font-size: 16px; color: red;}
+.record-view .userRecent .recentGame thead th{width:85px;}
+.record-view .userRecent .recentGame tbody{font-size: 20px; color: red; font-weight: 700; margin-top: 10px;}
+.record-view .userRecent .recentGame th{width: 80px; height: 20px;}
 .record-view .userRecent .recentPlayer{height: 140px; background-color: #efefef; margin-top: 10px;border-radius: 10px;}
 .record-view .userRecent .recentPlayer ul{font-size: 12px; width: 300px; margin-top: 6px;}
 .record-view .userRecent .recentPlayer ul li{display: inline-block; width: 100px; padding: 5px;
-    border: 1px solid #2E419A; box-sizing: border-box; border-radius: 10px; margin: 4px 5px;}
+    border: 1px solid #2E419A; box-sizing: border-box; border-radius: 10px; margin: 2px 5px;}
 .record-view .right{display: inline-block;width: 550px;height: 100%;position: absolute; top: 0; left: 630px;}
-.record-view .userPlay>p{color: #fff; background-color: lightblue; width: 100px; height: 20px;
-    border-radius: 10px; font-size: 12px;line-height: 20px; text-align: center; padding: 2px 4px;}
-.record-view .userPlay ul{width: 550px; margin-top: 10px;}
-.record-view .userPlay ul li{display: inline-block; width: 178px; height: 130px;}
-.record-view .userPlay ul li>p{font-size: 16px; padding: 5px 0 0 10px;}
-.record-view .userPlay ul li>span{display: flex; font-weight: 600; font-size: 30px;  width: 178px; height: 100px;
- margin-top: 10px;}
-.record-view .userPlay ul li.per{display: block; width: 500px; height: 50px; margin: 10px auto;}
-.record-view .userPlay ul li.per>p{}
+.record-view .userPlay ul{width: 550px;}
+.record-view .userPlay ul li{display: inline-block; width: 178px; height: 150px; background-color: #ecdfdf;
+    border-radius: 10px;}
+.record-view .userPlay ul li>p{font-size: 14px; padding: 10px 0 0 10px; }
+.record-view .userPlay ul li>span{display: inline-block; font-weight: 600; font-size: 30px;  width: 178px; height: 50px; text-align: center;
+    padding: 30px 0 0;}
+.record-view .userPlay ul li.per{display: block; width: 500px; height: 50px; margin: 10px auto; padding: 10px 18px 10px 30px;}
 .record-view .userPlay ul li.per>span{display: block; width: 500px; height: 16px; margin: 0 auto; background-color: red;
-    border-radius: 6px; text-align: center; color: #fff; font-size: 14px; line-height: 16px;}
-/*.record-view .userPlay ul li span>img{display: inline-block; width: 50px; height: 50px;}*/
-.record-view .userPlay ul li.fight>span span.nick{font-size: 16px; width: 170px; }
+    border-radius: 6px; text-align: center; color: #fff; font-size: 14px; line-height: 16px; padding: 0;}
 /*게임 리스트*/
-.record-list{ height: 500px; width: 1200px; margin: 30px auto 0;}
-.record-list table{border: 1px solid #2E419A; text-align: center; margin: 0 auto;}
-.record-list table thead{border: 1px solid #2E419A; background-color: #efefef;}
-.record-list table thead th{border-top: 2px solid #2E419A;border-bottom: 2px solid #2E419A; width: 110px; height: 30px;}
-.record-list table tbody{border: 1px solid #2E419A;}
-.record-list table tr{border: 1px solid #2E419A;}
-.record-list table td{border: 1px solid #2E419A;}
+.record-list{ height: 500px; width: 1200px; margin: 25px auto 0;}
+.record-list table{text-align: center; margin: 0 auto; line-height: 30px;}
+.record-list table thead{background-color: #ecdfdf;}
+.record-list table thead th{border-top: 2px solid #2E419A;border-bottom: 2px solid #2E419A; width: 100px; height: 35px;}
+.record-list table thead th:nth-child(2),.record-list table thead th:nth-child(3){width: 180px;}
+.record-list table tbody{}
+.record-list table tr{border: 1px solid #2E419A; border-left: 0;border-right: 0;}
+.record-list table td{height: 30px;}
