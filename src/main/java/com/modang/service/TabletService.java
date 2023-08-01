@@ -38,17 +38,18 @@ public class TabletService {
 	}
 	
 	public TabletUserVo loginGetKey(TabletUserVo userVo) {
-		System.out.println("TabletService.loginGetKey()");
+		System.out.println("TabletService.loginGetKey()");		
+		
+		
+		// 30분 넘는 번호 삭제
+		tabletDao.deleteTime(30);
 		
 		//유져 로그인 & Key확인
 		TabletUserVo logOnVo = tabletDao.selectUser(userVo);		
 		
 		//로그인 완료
 		if (logOnVo != null) {
-			System.out.println("로그인성공!"+logOnVo);
-			
-			// 30분 넘는 번호 삭제
-			tabletDao.deleteTime(StaticVo.NORMAL_TIME);
+			System.out.println("로그인성공!"+logOnVo);			
 
 			// 유효한 키 있는지 검사(있다/없다분개)
 			if(logOnVo.getKeyNum() <= 0 ) {

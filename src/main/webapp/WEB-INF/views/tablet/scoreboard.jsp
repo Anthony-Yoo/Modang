@@ -89,7 +89,7 @@ body {
 /* 게임정보 저장 */
 var tableNo = ${tableGameVo.tableNo};
 var gameNo = ${tableGameVo.gameNo};
-var tableStatus = ${tableGameVo.tableInfo.status}
+var tableStatus = ${tableGameVo.tableInfo.tableStatus}
 var memberNum = ${tableGameVo.memberNum}
 var tableFee = ${tableGameVo.tableFee};
 var minFee = ${tableGameVo.minFee};	

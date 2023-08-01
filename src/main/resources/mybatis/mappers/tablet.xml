@@ -22,7 +22,7 @@
 			select  TABLENO,
 					BILIARDNO,
 					TABLETYPE,
-					STATUS,
+					Status as tableStatus,
 					TABLENAME
 			from CUETABLE
 			where BILIARDNO = #{biliardNo}
@@ -123,7 +123,7 @@
 	<delete id="deleteTime" parameterType="int">
 		<![CDATA[
 			delete from LOGINKEY
-			where createdate < (sysdate - #{normalTime}/24/60)	
+			where createdate < (sysdate - 30/24/60)	
 		]]>
 	</delete>
 	<!-- 카드목록 검색 -->
@@ -308,9 +308,10 @@
 	<!-- 당구장찾기 -->
 	<select id="selectCueTable" parameterType="int" resultType="com.modang.vo.CueTableVo">
 		<![CDATA[
-			select  BILIARDNO,
+			select  TABLENO,
+					BILIARDNO,
 					tableType,
-					STATUS
+					Status as tableStatus
 			from CUETABLE
 			where TABLENO = #{tableNo}		
 		]]>
@@ -348,7 +349,7 @@
 		<![CDATA[
 			update CUETABLE
 			set 
-			STATUS = 1
+			Status = 1
 			where TABLENO = #{tableNo}		
 		]]>	
 	</update>
@@ -368,7 +369,7 @@
 		<![CDATA[
 			update CUETABLE
 			set 
-			STATUS = 2
+			Status = 2
 			where TABLENO = #{tableNo}		
 		]]>	
 	</update>
@@ -397,7 +398,7 @@
 		<![CDATA[
 			update CUETABLE
 			set 
-			STATUS = 0
+			Status = 0
 			where TABLENO = #{tableNo}		
 		]]>	
 	</update>
