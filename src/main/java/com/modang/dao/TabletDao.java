@@ -236,5 +236,11 @@ public class TabletDao {
 		
 		return session.selectList("tablet.selectPlayRecord",myGameInfo);
 	}
+	public TableGamesVo selectPauseGameforTableNo(int tableNo) {
+		System.out.println("TabletDao.selectPauseGameforTableNo()");
+		
+		return session.selectOne("tablet.selectPauseGameforTableNo", tableNo);
+	}
+	
 	
 }
