@@ -140,9 +140,9 @@ public class BiliardController {
 
 	/* 테이블 매출검색 */
 	@RequestMapping(value ="/tableSales", method = { RequestMethod.GET, RequestMethod.POST })
-	public String tableSales(@RequestParam int tableno, @RequestParam String mindate, @RequestParam String maxdate) {
+	public String tableSales(@RequestParam int tableName, @RequestParam String mindate, @RequestParam String maxdate) {
 		System.out.println("BiliardController.tableSales()");
-		System.out.println(tableno);
+		System.out.println(tableName);
 		System.out.println(mindate);
 		System.out.println(maxdate);
 		return "/manager/tableSales";
