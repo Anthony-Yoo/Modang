@@ -36,7 +36,7 @@
 			.mid {
 				height: 760px;
 			}
-			.board {
+			.tableStatus {
 				width: 255px;
 				height: 255px;
 				outline: 2px solid black;
@@ -53,7 +53,10 @@
 				outline: 1px solid black;
 				font: 20px bold;
 			}
-			#tableID {
+			.tableType {
+				font: 20px bold;
+			}
+			.tableName {
 				font: 30px bold;
 			}
 				
@@ -70,27 +73,27 @@
 			<!-- Mid Info -->		
 			<div class="mid" id="mid-scores">
 				<c:forEach var="tableVo" items="${tableList}">
-					<div class="board float-l bd-${tableVo.tableType}" id="boardno-${tableVo.tableName}" data-no="${tableVo.tableType}" onclick="location.href='${pageContext.request.contextPath}/tablet/${tableVo.tableNo}/loginForm'">						
-						<input id="tableID" type="button" value="${tableVo.tableNo}">${tableVo.tableName}
-					</div> 
+					<c:choose>
+						<c:when test = "${tableVo.tableType eq 0}">
+							<div class="tableStatus float-l tb-${tableVo.tableStatus}" id="boardno-${tableVo.tableNo}" data-no="${tableVo.tableStatus}" onclick="location.href='${pageContext.request.contextPath}/tablet/${tableVo.tableNo}/loginForm'">						
+								<input class="tableType" type="button" value="대대"><p class="tableName">${tableVo.tableName}</p>								
+							</div>
+						</c:when>
+						<c:when test = "${tableVo.tableType eq 1}">
+							<div class="tableStatus float-l tb-${tableVo.tableStatus}" id="boardno-${tableVo.tableNo}" data-no="${tableVo.tableStatus}" onclick="location.href='${pageContext.request.contextPath}/tablet/${tableVo.tableNo}/loginForm'">						
+								<input class="tableType" type="button" value="중대"><p class="tableName">${tableVo.tableName}</p>								
+							</div>
+						</c:when>
+						<c:when test = "${tableVo.tableType eq 2}">
+							<div class="tableStatus float-l tb-${tableVo.tableStatus}" id="boardno-${tableVo.tableNo}" data-no="${tableVo.tableStatus}" onclick="location.href='${pageContext.request.contextPath}/tablet/${tableVo.tableNo}/loginForm'">						
+								<input class="tableType" type="button" value="포켓"><p class="tableName">${tableVo.tableName}</p>								
+							</div>
+						</c:when>
+					</c:choose> 
 				</c:forEach>				
 			</div>
 		</div>
 	</body>
 <script>
-var type = [0,1,2];
-$(document).ready(function(){	
-	switch ($(".board").data('no')){
-		case 0 :
-			$(".bd-0").css("background-color" , "blue");
-			break;
-		case 1 :
-			$(".bd-1").css("background-color" , "yellow");
-			break;
-		case 2 :
-			$(".bd-2").css("background-color" , "red");
-			break;
-	};
-});
 </script>
 </html>

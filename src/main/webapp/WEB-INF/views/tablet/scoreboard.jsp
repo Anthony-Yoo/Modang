@@ -256,6 +256,7 @@ $(".panalty").on("click",function(){
 			if(memberNum - 1 == $(thisForm).data('record')) {//멤버숫자 - 1 = 현재 등수 와 같으면 -> 꼴지와 꼴지-1등같이 처리	
 				console.log("멤버숫자 :" + memberNum);
 				record++;
+				$(this).off('click');
 				$(this).attr("data-record",record);
 				var $this = $("div[data-record=0]");
 				var lastPlayNo = $this.data('playno');					
@@ -265,7 +266,7 @@ $(".panalty").on("click",function(){
 				
 				var lastPlayUserVo = {
 						playNo : lastPlayNo,
-						record : 4,
+						record : memberNum,
 						gameNo : gameNo,					
 						activeAverage : lastActiveAverage
 

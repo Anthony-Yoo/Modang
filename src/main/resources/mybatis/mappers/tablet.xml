@@ -172,7 +172,8 @@
 	<insert id="insertGame" parameterType="com.modang.vo.TableGamesVo">
 		<selectKey keyProperty="gameNo" resultType="int" order="BEFORE">
 			select seq_games_no.nextval from dual		
-		</selectKey>		
+		</selectKey>
+		<![CDATA[		
 		insert into 
 		games(		gameNo,
 					tableNo,
@@ -185,7 +186,8 @@
 					#{gameType},
 					#{memberNum},
 					sysdate,
-					#{gameNo} )	
+					#{gameNo} )
+		]]>		
 	</insert>
 	<!-- 플레이 생성 -->
 	<insert id="insertPlay" parameterType="com.modang.vo.PlayUserVo">
