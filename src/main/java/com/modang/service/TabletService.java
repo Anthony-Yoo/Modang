@@ -137,6 +137,7 @@ public class TabletService {
 		//플레이넘버 인서트 및 찾기		
 		int gameNo = tableGame.getGameNo();
 		List<PlayUserVo> playUserList = new ArrayList<PlayUserVo>();
+		
 		playUserList = tableGame.getPlayUserList();
 		for (PlayUserVo vo : playUserList) {
 			vo.setGameNo(gameNo);
