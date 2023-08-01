@@ -306,7 +306,9 @@ div.content {
     
 }
 
-#joinOk button {
+/* joinOk buttons */
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    cursor: pointer;
     margin-left: 0;
     background-color:  #2E419A;
     color: #fff;
