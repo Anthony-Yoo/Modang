@@ -11,21 +11,16 @@
     <link href="${pageContext.request.contextPath}/assets/css/user.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <!-- 헤더 시작 -->
-    <c:import url="/WEB-INF/views/include/modangSiteHeader.jsp"></c:import>
-    <!-- 헤더 끝 -->
-        <div class="main-content">
+    <div class="main-content">
         <div class="record-view">
             <div class="left">
                 <div class="userImg">
-                    <img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="">
-                    <p>"인생 8할이 당구였당"</p>
+                    <img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="유저 프로필 이미지">
                 </div>
                 <div class="town">
-                    <img src="${pageContext.request.contextPath}/assets/images/map.png" alt="">
-                    <span class="area">서울지역</span>
+                    <span>닉네임 : <strong>내가짱임</strong></span>
                     <br>
-                    <span class="Rname">천호동 불나방당구장</span>
+                    <span>아이디 : <strong>qwer12</strong></span>
                 </div>
             </div>
             <div class="userRecent center">
@@ -76,7 +71,6 @@
                 </div>
             </div>
             <div class="userPlay right">
-                <p> 112 경기 / W 45</p>
                 <ul>
                     <li>
                         <p>권장다마</p>
@@ -95,26 +89,21 @@
                         <span>100%</span>
                     </li>
                     <li>
-                        <p>물린비용</p>
-                        <span>2,210,000원</span>
+                        <p>총 경기</p>
+                        <span>112</span>
                     </li>
                     <li>
-                        <p>물리게 한 비용</p>
-                        <span>5,330,000원</span>
+                        <p>이긴 경기</p>
+                        <span>45</span>
                     </li>
-                    <li class="fight">
-                        <p>나의 주적</p>
-                        <span>
-                            <!--<img src="./ori.png" alt="">-->
-                            <span class="nick">
-                                방배동나이샤 <br>
-                                1,130,000원
-                            </span>
-                        </span>
+                    <li>
+                        <p>패한 경기</p>
+                        <span>1</span>
                     </li>
                 </ul>
             </div>
         </div>
+        <!-- 리스트시작-상세보기 모달창 만들어애함 -->
         <div class="record-list">
             <table>
                 <thead>
@@ -183,9 +172,8 @@
                 </tbody>
             </table>
         </div>
+        <!-- 리스트 끝-상세보기 모달창 만들어애함 -->
     </div>
-    <!-- 푸터 시작 -->
-    <c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
-    <!-- 푸터 끝 -->
+</body>
 </body>
 </html>
