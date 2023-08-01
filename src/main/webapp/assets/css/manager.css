@@ -138,7 +138,7 @@ justify-content: center;align-items: center; pointer-events: none;}
 .record-view .userImg img{display: block; width: 250px; height: 250px; margin: 0 auto;}
 .record-view .userImg p{background-color: #2E419A; border-radius: 4px; width: 200px; 
     padding: 10px 15px;margin: 10px 0 10px 35px; text-align: center; color: #fff;}
-.record-view .town{display: block; width: 200px;height: 90px;  margin: 0 auto;}
+.record-view .town{display: block; width: 200px;height: 90px;  margin: 10px auto 0;}
 .record-view .town img{display:block; width: 50px; height: 50px;  float: left; margin-top: 10px;}
 .record-view .town span{display: inline-block; margin:  10px 0 0 8px;}
 .record-view .town span.area{ color: red; font-weight: 600;}
@@ -158,7 +158,7 @@ justify-content: center;align-items: center; pointer-events: none;}
 .record-view .userRecent .recentPlayer{height: 140px; background-color: #efefef; margin-top: 10px;border-radius: 10px;}
 .record-view .userRecent .recentPlayer ul{font-size: 12px; width: 300px; margin-top: 6px;}
 .record-view .userRecent .recentPlayer ul li{display: inline-block; width: 100px; padding: 5px;
-    border: 1px solid #2E419A; box-sizing: border-box; border-radius: 10px; margin: 2px 5px;}
+    border: 1px solid #2E419A; box-sizing: border-box; border-radius: 10px; margin: 4px 5px;}
 .record-view .right{display: inline-block;width: 550px;height: 100%;position: absolute; top: 0; left: 630px;}
 .record-view .userPlay>p{color: #fff; background-color: lightblue; width: 100px; height: 20px;
     border-radius: 10px; font-size: 12px;line-height: 20px; text-align: center; padding: 2px 4px;}
