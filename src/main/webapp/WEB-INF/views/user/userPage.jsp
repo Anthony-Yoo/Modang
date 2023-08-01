@@ -30,19 +30,15 @@
 	
 		<div class="container text-center">
 
-    		<div id="user">
+    		
 		
 				<div id="userPage">
 		
-					<div id="main">
 					
-                    			<div class="sidebar">
-  									<a class="active" href="userPage">회원정보</a>
-  									<a href="userPage">친구목록</a>
-  									<a href="userPage">그룹친구</a>
-  									<a href="${pageContext.request.contextPath }/attendUsers/myPage/applyMenu">게시판매칭</a>
-  									<a href="userPage">전적보기</a>
-								</div>
+					
+                    			<!-- sideNav 시작 -->
+								<c:import url="/WEB-INF/views/include/modangSideNav.jsp"></c:import>
+								<!-- sideNav 끝 -->
 
 								<div class="content">
 									
@@ -67,9 +63,9 @@
 								
 								
 							
-    				</div>
+    				
            		</div>
-    		</div>
+    		
     		<!-- //user -->
     	</div>
     	<!-- //container -->
