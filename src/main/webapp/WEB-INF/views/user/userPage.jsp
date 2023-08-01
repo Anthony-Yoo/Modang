@@ -40,21 +40,17 @@
 						
        							<div class="image-icon">
 					
-									
-									
-									<span class="text" data-text-content="true"><img src="${pageContext.request.contextPath}/assets/images/user.png" alt="">${requestScope.userVo.id}</span>
+									<span class="text" data-text-content="true" style="margin: -100px 0px -25px 140px;">${requestScope.userVo.id}
+									<img src="${pageContext.request.contextPath}/assets/images/user.png" alt=""></span>
 								
-									
-									
-									<span class="text" data-text-content="true"><img src="${pageContext.request.contextPath}/assets/images/smartphone.png" alt="">${requestScope.userVo.cellphone}</span>
+									<span class="text" data-text-content="true" style="margin: -100px 0px -25px 225px;">${requestScope.userVo.cellphone}
+									<img src="${pageContext.request.contextPath}/assets/images/smartphone.png" alt=""></span>
 								
-									
-									
-									<span class="text" data-text-content="true"><img src="${pageContext.request.contextPath}/assets/images/business-card.png" alt="">${requestScope.userVo.nick}</span>
+									<span class="text" data-text-content="true" style="margin: -100px 0px -25px 225px;">${requestScope.userVo.nick}
+									<img src="${pageContext.request.contextPath}/assets/images/business-card.png" alt=""></span>
 								
-									
-									
-									<span class="text" data-text-content="true"><img src="${pageContext.request.contextPath}/assets/images/line-graph.png" alt="">${requestScope.userVo.average}</span>
+									<span class="text" data-text-content="true" style="margin: -100px 0px -25px 225px;">${requestScope.userVo.average}
+									<img src="${pageContext.request.contextPath}/assets/images/line-graph.png" alt=""></span>
 								
 								</div>
 								
