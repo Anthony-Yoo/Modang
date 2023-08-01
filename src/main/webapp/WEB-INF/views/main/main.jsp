@@ -32,7 +32,7 @@
                             </a>
                         </li>
                         <li class="tip">
-                            <a href="${pageContext.request.contextPath}/">
+                            <a href="${pageContext.request.contextPath}/user/joinForm">
                                 <em>모당 서비스 이용방법</em>
                                 <p><b>회원가입</b></p>
                                 <p><b>지역별 당구장 검색을 통한 매칭 게시판 회원매칭,</b></p>

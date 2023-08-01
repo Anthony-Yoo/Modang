@@ -289,14 +289,12 @@
 									</div>
 								</div>
 								<div class="mt-4" style="position: absolute; bottom: 32px;">
-									<button id="paybt" type="button"
-										class="btn btn-red btn-lg btn-block">정 산</button>
+									<button id="Modalpayview" type="button" class="btn btn-red btn-lg btn-block Modalpayview">정 산</button>
 								</div>
 								<!-- 미정산리스트	 -->
 								<div class="row">
 									<div class="col-12">
 										<strong><미정산 리스트></strong>
-										<div class="table-striped">
 											<table class="inCaluList">
 												<thead class="thead-dark">
 													<tr>
@@ -317,7 +315,6 @@
 											        </tr> -->
 												</tbody>
 											</table>
-										</div>
 									</div>
 								</div>
 							</form>
@@ -430,14 +427,14 @@
 				</div>
 				<div class="modal-body1">
 					<div class="form-group">
-						<label for="gameNo" class="label02 d-inline-block">결제
-							번호</label> <input class="form-control-4 d-inline-block" id="gameNo"
-							type="text" name="">
+						<label for="modalgameNo" class="label02 d-inline-block">결제
+							번호</label> <input class="form-control-4 d-inline-block" id="modalgameNo"
+							type="text" name="" readonly>
 					</div>
 					<div class="form-group">
-						<label for="" class="label02 custom-control d-inline-block">테이블
-							종류</label> <label class="custom-control custom-radio d-inline-block">
-							<input id="payType" type="radio" name="payType" value="0" class="custom-control-input" /> 
+						<label for="" class="label02 custom-control d-inline-block">테이블 종류</label> 
+						<label class="custom-control custom-radio d-inline-block">
+							<input id="payType" type="radio" name="payType" value="0" class="custom-control-input" checked/> 
 							<span class="custom-control-label">카드</span>
 						</label> <label class="custom-control custom-radio d-inline-block">
 							<input id="payType" type="radio" name="payType" value="1" class="custom-control-input" /> 
@@ -445,8 +442,8 @@
 						</label>
 					</div>
 					<div class="form-group">
-						<label for="payMoney" class="label02 d-inline-block">결제금액</label>
-						<input class="form-control-4 d-inline-block" id="payMoney" type="text">
+						<label for="modalPayMoney" class="label02 d-inline-block">결제금액</label>
+						<input class="form-control-4 d-inline-block" id="modalpayMoney" type="text" readonly>
 					</div>
 					<div class="form-group">
 						<label for="income" class="label02 d-inline-block">입금금액</label> 
@@ -460,7 +457,7 @@
 			</div>
 		</div>
 	</div>
-	<!--테이블 변경 모달창 끝------------------------------------------------------- -->
+	<!--테이블 정산 모달창 끝------------------------------------------------------- -->
 
 </body>
 
@@ -469,20 +466,47 @@
 let crtbiliardNo=0;//현재 선택된 당구장넘버
 let crtTableNo=0; //현재 선택된 테이블넘버
 let crtTableName=0; //현재 선택된 테이블네임
+let selectGameNo = ""; 
+let selectPayMoney = ""; 
+
+//리스트 테이블 클릭 이벤트 처리
+$(document).on("click", ".listTalbe tr.custom-height", function() {
+	
+  // 클릭한 행에 "selected" 클래스 추가/제거
+ 	$(this).toggleClass("selected");
+
+	var selectedRow = $(this);
+	var selectGameNo = selectedRow.find("td:eq(0)").text();
+	var selectPayMoney = selectedRow.find("td:eq(3)").text();
+	
+	console.log("결제번호:"+selectGameNo);
+	console.log("결제금액:"+selectPayMoney);
+	
+	$("#modalgameNo").val(selectGameNo);
+	$("#modalpayMoney").val(selectPayMoney);
+	
+  // 다른 행들의 "selected" 클래스 제거
+  $(".listTalbe tr.custom-height").not(this).removeClass("selected");
+
+});
+
+
 <!--결제 모달창 호출------------------------------------------------------ -->
-$("#paybt").on("click",function(){
+$("#Modalpayview").on("click",function(){
 	console.log("결제버튼 클릭");
+	
 	$("#paytitle").empty();
 	var tableNo = crtTableNo;
 	var tableName = crtTableName;
 	console.log("테이블 네임:"+tableName);
 	console.log("테이블 번호:"+tableNo);
 	$("#paytitle").append("<strong>게임 결제 ["+tableName+"번 테이블]</strong>");
-	$("#payType input[type='radio']").prop("checked", false);
-	$('#tablePayModal').modal('show');
+	$("#payType input[type='radio']").prop("checked", true);
+    console.log(selectGameNo);
+	
+ 	$('#tablePayModal').modal('show'); 
 
 });
-
 
 <!--결제 버튼 클릭-------------------------------------------------------- -->
 $("#btnPay").on("click",function(){
@@ -492,11 +516,13 @@ $("#btnPay").on("click",function(){
 	var tableNo = crtTableNo;
 	console.log("테이블 네임:"+tableName);
 	console.log("테이블 번호:"+tableNo);
-	var gameNo = $("#gameNo").val();
+	var gameNo = $("#modalgameNo").val();
 	var payType = $('#tablePayModal [name="payType"]:checked').val();
+	var payMoney = $("#modalpayMoney").val();
 	var income = $('#income').val();
-	console.log("게임번호:"+ tableName); //
+	console.log("게임번호:"+ gameNo); //
 	console.log("결제타입:"+ payType);
+	console.log("결제금액:"+ payMoney);
 	console.log("입금금액:"+ income);
 	
 	var gamesVo={
@@ -529,7 +555,6 @@ $("#btnPay").on("click",function(){
 	});
 	
 });
-
 
 <!--테이블 추가클릭------------------------------------------------------- -->
 $(".tableAdd").on("click",function(){
@@ -586,12 +611,10 @@ $("#btnAdd").on("click", function(){
 		}
     }); //ajax end	
 	
-	
 });
 
 <!--테이블 상세정보 가져오기------------------------------------------------------- -->	
 $(".tableArea").on("click",function(){
-	
 
 	crtTableNo = $(this).data("tableno");
 	crtTableName = $(this).data("tablename");
@@ -614,7 +637,6 @@ $(".tableArea").on("click",function(){
 		tableType: tabletype
 	};
 	
-
 	$.ajax({
 		url : "${pageContext.request.contextPath }/manager/info",		
 		type : "get",
@@ -677,7 +699,6 @@ $(".tableArea").on("click",function(){
 				$('#startTime').val(""); //시작시간 초기화
 				$('#endTime').val("");   //종료시간 초기화
 				
-				
 				if(jsonResult.data.gamesVo!=null){ //게임정보 있는 경우 보여주기
 					
 					$('[name=gametype'+jsonResult.data.gamesVo.gameType+']').prop("checked",true); //게임타입정보 라디오버튼 선택
@@ -737,15 +758,24 @@ $(".tableArea").on("click",function(){
 					      
 					      var incaluList =jsonResult.data.incaluList;
 					      
-					      for(var i=0;i<incaluList.length;i++){
-					    	  console.log(incaluList[i].gameNo);
-					    	  render(incaluList[i],"down");
-					      }
+					      if(incaluList.length>0){ //미정산 리스트 있는 경우
+					    	  for(var i=0;i<incaluList.length;i++){ //미정산 리스트 출력하기
+						    	  console.log(incaluList[i].gameNo);
+						    	  render(incaluList[i],"down");
+						      }
+					    	 //버튼 보이게 처리
+					    	  $("#Modalpayview").show();
+					      }else {
+					    	 //버튼 안보이게 처리
+					    	  $("#Modalpayview").hide();
+					      }//미정산리스트 end
 					      
+				}else{
+					$("#Modalpayview").hide();
 				}//if end
 				
 			}else{
-				
+				 
 			} 
 		},
 		error : function(XHR, status, error) { 
@@ -760,7 +790,7 @@ $(".tableArea").on("click",function(){
 function render (tableGamesVo, dir) {
 
 	var tr = ""; 
-  	tr += '<tr class="custom-height">' ; 
+  	tr += '<tr class="custom-height" data-no="'+tableGamesVo.gameNo +'" data-price="'+tableGamesVo.payMoney+'">' ; 
     tr +=    '<td>' +tableGamesVo.gameNo+  '</td>' ;
     
     // startTime 처리
@@ -846,6 +876,7 @@ $("#btnSave").on("click", function(){
 				}
 	    }); //ajax end */ 
 }); 
+
 
 </script>
 </html>

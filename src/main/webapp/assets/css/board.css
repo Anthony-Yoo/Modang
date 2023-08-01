@@ -154,7 +154,7 @@ input[type="password"] {
 #content #write .btn {
 	border: 1px solid #808080;
 	border-radius: 10px;
-	background-color: #0c0a04 !important;
+	background-color: #2E419A !important;
 	color: white;
 	font-size: 15px;
 	font-weight: bold;
@@ -201,7 +201,7 @@ input[type="password"] {
 }
 
 #board #list table>thead>tr>th:nth-child(1) {
-	width: 5%;
+	width: 5%;	
 }
 
 #board #list table>thead>tr>th:nth-child(2) {
@@ -333,7 +333,7 @@ textarea {
 #board #writeForm #btn_add {
 	border-radius: 10px;
 	border: 1px solid #808080;
-	background-color: #242424;
+	background-color: #2E419A;
 	color: white;
 	font-size: 15px;
 	font-weight: bold;

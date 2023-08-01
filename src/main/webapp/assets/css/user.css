@@ -292,8 +292,9 @@ div.content {
 /* 마이페이지 대표이미지 */
 #userPage .image-show img {
     vertical-align: top;
-    width:290px; 
-    height: 290px; 
+    width:289px; 
+    height: 289px;
+    margin: -1px 10px 10px -147px; 
     /* border: outset 2px; 
     border-color: darkslateblue; */
     
