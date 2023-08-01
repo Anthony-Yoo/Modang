@@ -292,18 +292,28 @@ div.content {
 /* 마이페이지 대표이미지 */
 #userPage .image-show img {
     vertical-align: top;
-    width:289px; 
-    height: 289px;
-    margin: -1px 10px 10px -147px; 
+    width:258px; 
+    height: 258px;
+    margin: -250px 10px 10px -66px; 
     /* border: outset 2px; 
     border-color: darkslateblue; */
-    
+    border: outset 2px;
+    border-color: darkslateblue;
   
 }
 /* 마이페이지 아이콘 기본 위치 */
 #userPage .image-icon img {
-    vertical-align: top;
+    vertical-align: super;
+    width: 5%;
+    margin:50px 10px 10px 480px;
     
+}
+
+#userPage .text {
+	font-size: 30px;
+	padding: 40px 0px 0px 320px;
+	margin: -100px 0px -25px 240px;
+	
 }
 
 /* joinOk buttons */

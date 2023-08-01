@@ -27,126 +27,38 @@
 			
 	/* 점수판 */						
 			
-			.top {
-				height: 150px;
-			}
-			.mid {
-				height: 615px;
-				margin-left: 1px;
-			}
-			.board {
-				z-index : 2;
-				margin-left: 1px;
-				margin-top: 25px;
-				width: 510px;
-				height: 300px;
-
-			}
-			.bdtop {
-				width : 510px;
-				height: 45px;
-
-			}
-			.bdmid {
-				z-index : 5;
-			}
-			.userinfo {
-				margin-top: 5px;
-			}
-			.usertext {
-				margin-left: 10px;
-			}
-			.act-average {
-				margin-right: 10px;
-			}
-			.panel {
-				z-index : 10;
-				margin-left : 1px;
-				width : 168px;
-				height: 250px;
-				outline: 1px solid black;
-				 
-			}
-			.touch {
-				margin-top: 100px;
-				text-align: center;
-				vertical-align : middle;
-				font-family: 'Noto Sans KR', sans-serif;
-				font: 30px bold;
-				color: #ffffff;
-			}		
-			.currentbd {
-				margin-top: 50px;
-				text-align: center;
-				vertical-align : middle;
-				font-family: 'Noto Sans KR', sans-serif;
-				font: 30px bold;
-				color: #ffffff;
-			}		
-			.panalty {
-				background-color: red;			
-			}
-			
-			.marks {
-				background-color: blue;	
-			}
-			#marks  {
-				border: none;
-				outline: none;
-				font-family: 'Noto Sans KR', sans-serif;
-				font: 20px bold;			
-				
-			}
-			.score {
-				background-color: green;
-			}
-			
-			img {
-				display: inline-block;
-			}			
-			.box{
-				width: 200px;
-				height: 150px;
-			}
-			.timerBox{
-				width: 180px;
-				height : 100px;				
-				margin-top: 15px;
-			}
-			#usingfee  {
-				border: none;
-				outline: none;
-				font-family: 'Noto Sans KR', sans-serif;
-				font: 30px bold;				
-				
-			} /* outline 테두리 없애기 */
-			#timerBox{
-				margin-left: 200px;			
-			
-			}
-			#top-fee{
-				margin-left: 150px;
-			}
-			.timerBox .time{
-				font-size: 30pt;
-				color: #4C4C4C;
-				text-align: center;
-				font-family: sans-serif;
-			}			
-			
-			.btnBox{
-				width : 200px;
-				margin: 20px auto;
-				text-align: center;
-			}
-			.btnBox .fa{
-				margin: 0px 5px;
-				font-size: 10pt;
-				color: #000000;
-				cursor: pointer;
-			}		
-			.btnBox input {
-				width: 50px;			
-			}
-			
-				
+.top {height: 150px;}
+.mid {height: 615px;margin-left: 1px;}
+.board {z-index : 2;margin-left: 1px;margin-top: 10px;width: 480px;height: 300px;}
+.bdtop {padding-left:20px;width: 400px;height: 80px;}
+.bdmid {padding-left:20px;z-index : 5;}
+.userinfo {margin-top: 5px;}
+.usertext {margin-left: 10px;color:white;}
+.act-average {margin-right: 10px;}
+.panel {border-top-left-radius:10px;border-bottom-left-radius:10px;margin-left : 1px;	width : 150px;height: 200px;}
+.panel1{margin-left : 1px;	width : 150px;height: 200px;}
+.panel2{border-top-right-radius:10px;border-bottom-right-radius:10px; margin-left : 1px;	width : 150px;height: 200px;}
+.touch {margin-top: 100px;text-align: center;vertical-align : middle;	font-family: 'Noto Sans KR', sans-serif;font: 150px bold;color: #ffffff;}		
+.touch1 {margin-top: -20px;text-align: center;vertical-align : middle;	font-family: 'Noto Sans KR', sans-serif;font: 150px bold;color: #ffffff;}	
+.currentbd {margin-top: 50px;text-align: center;vertical-align : middle;font-family: 'Noto Sans KR', sans-serif;font: 30px bold;color: #ffffff;}		
+.panalty {background-color:#f1bb2e;}
+.marks {background-color: blue;}
+#marks  {border: none;outline: none;font-family: 'Noto Sans KR', sans-serif;font: 20px bold;}
+.score {background-color:#fad122;}
+img {display: inline-block;}			
+.box{width: 200px;height: 150px;}
+.timerBox{width: 180px;height : 100px;margin-top: 15px;}
+.timerBox1{width: 200px;height : 100px;margin-top: 15px;}
+#usingfee  {width:150px; border: none;outline: none;font-family: 'Noto Sans KR', sans-serif;	font: 30px bold;} /* outline 테두리 없애기 */
+#timerBox{margin-left: 100px;}
+#top-fee{margin-left: 150px;}
+.timerBox .time{font-size:38pt;color:white;text-align: center;font-family: sans-serif;}			
+.btnBox{width : 350px;margin-top:20px;text-align: center;}
+.btnBox .fa{margin: 5px 10px;display:inline-block;font-weight:400;color:#fff;text-align:center;vertical-align:middle;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background:#257c0e;border:none;padding:.5rem 1.25rem;font-size:.875rem;line-height:1.5rem;border-radius:.25rem;cursor:pointer;}
+.btnBox .fa1{margin: 10px 10px;font-size: 10pt;color: #000000;cursor: pointer;}
+.btnBox input {width: 50px;}
+.d-inline {display:inline !important}
+.d-block {display:block !important}
+.d-inline-block {display:inline-block !important}	
+.row{padding:20px;width:96.1%;height:647px;margin-top:100px;}	
+.imgbox{width:70px;height:70px;border-radius:5px;}				

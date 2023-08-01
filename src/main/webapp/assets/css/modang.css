@@ -115,49 +115,7 @@ img {vertical-align: top;}/*reset*/
 }
 /* 헤더 끝 */
 
-/*-------------------------------모당메인-----------------------------------*/
-/*공통*/
-#main-content{width: 1200px; margin: 0 auto;}
-.error-msg{color: #F94069; font-size: 13px; display: none; text-align: center;padding-top:5px;}
-.correct-msg{color: #F94069; font-size: 13px; display: none; text-align: center; padding-top:5px;}
-h2,h3{color: #2E419A; text-align: center; margin: 20px 0 20px 0;}
-#main-content .container{margin-top:50px; margin-bottom: 100px; height: 100%;}
-.chck{display: inline-block; width: 100px; height: 40px; background-color: #2E419A; 
-    color: #fff; line-height: 40px; border-radius: 10px; font-size: 14px;}
-.chck:hover{display: inline-block; width: 100px; height: 40px; background-color: #2E419A; 
-    color: #fff; line-height: 40px; border-radius: 10px; font-size: 14px;}
-.button{display: block; width: 480px; height: 40px; text-align: center;
-        background-color:  #2E419A; color: #fff; border-radius:10px; line-height: 40px;
-        margin: 10px auto 30px; cursor: pointer;}
-input[type="text"],input[type="password"]{ width: 300px; height: 40px;padding : 8px 20px 9px 20px; background: #F5F5F5;
-    border: 1px solid #B8B8B8; box-sizing: border-box; border-radius: 8px;  color: #111;}
-input::placeholder{color: #B8B8B8;}
-/*메인컨텐츠 - 모당메인*/
-.main{}
-.main{width: 1200px; height: 600px; position: relative; border-bottom: 2px solid #2E419A;}
-.main::before{content: "";background: url(../images/dang0.jpg) no-repeat center center;
-    background-size: 760px 420px; opacity: 0.5; position: absolute;top: 0px;left: 0px; right: 0px;bottom: 0px;}
-.main img{display: block; width: 500px; height: 220px; position: relative; top: 33%; left: 30%;}
-/*모당소개*/
-.intro{height: 500px; position: relative; width: 1200px;}
-.intro::before{content: "";background: url(../images/dang1.jpg) no-repeat center center;
-    background-size: 700px 350px; opacity: 0.1; position: absolute;top: 0px;left: 10px; right: 0px;bottom: 0px; z-index: -1;}
-.intro>h2{text-align: left; margin :50px 0;}
-.intro .modang_tip {z-index: 1;}
-.intro .modang_tip ul.user_tip{display: flex;}
-.intro .modang_tip ul.manager_tip{display: flex; margin-top: 30px;}
-.intro .modang_tip li.tip{display:inline-block; font-weight: 800; width: 360px; height: 150px;
-    margin-right: 16px; border: 1px solid #2E419A; border-radius: 10px;}
-.intro .modang_tip .tip a{display: block;width: 100%;height: 100%;}
-.intro .modang_tip .tip a em{display: block;font-size: 18px;color: #333; font-style: normal; padding: 10px 0 ;
-    border-bottom: 1px dotted #2E419A; text-align: center;}
-.intro .modang_tip .tip a p{ font-size: 14px; color: #666;font-weight: 300;margin-bottom: 10px; padding: 10px 0 0 10px;}
-.intro .modang_tip .user_tip .tip:nth-child(1){margin-left: 30px;}
-.intro .modang_tip .manager_tip .tip:nth-child(1){margin-left: 30px;}
-.intro .modang_tip ul.manager_tip .tip:nth-child(2){width: 250px; height: 100px; margin: 20px 0 0 50px; 
-	border: 2px solid #2E419A; background-color: #fafafa;}
-.intro .modang_tip ul.manager_tip .tip:nth-child(2) a{display: block; text-align: center;line-height: 6;}
-.intro .modang_tip ul.manager_tip .tip:nth-child(2):hover a{background-color: #2E419A; color: #fff;}
+
 
 /*------------------푸터----------------------*/
 #footer{width: 1200px; padding: 20px 0;height: 260px; color: #000; margin: 0 auto; border-top: 2px solid #2E419A;}
@@ -179,32 +137,31 @@ input::placeholder{color: #B8B8B8;}
 
 /* 마이페이지(userPage) side nav */
 #userPage .sidebar {
-  margin: 0;
-  font-family: "Lato", sans-serif;
-}
-
-#userPage .sidebar {
-    margin: 0;
+  	margin: 0;
+  	font-family: "Lato", sans-serif;
     padding: 0;
     width: 150px;
     background-color: #f1f1f1;
     position: absolute;
-    height: 30%;
-    overflow: auto;
+   /*  height: 30%; */
+    
 }
+
 
 #userPage .sidebar a {
   display: block;
   color: black;
   padding: 16px;
+  width: 118px;
   text-decoration: none;
   text-align: -webkit-center;
   font:15px "맑은 고딕", 돋움, 굴림;
+  
 }
  
 #userPage .sidebar a.active {
-  background-color: #2E419A;
-  color: white;
+	background-color: #2E419A;
+  	color: white;
 }
 
 #userPage .sidebar a:hover:not(.active) {

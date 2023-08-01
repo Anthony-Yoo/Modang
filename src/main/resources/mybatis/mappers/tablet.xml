@@ -179,7 +179,7 @@
 					tableNo,
 					gameType,
 					memberNum,
-					GAMEDATE,					
+					gameDate,					
 					setNo	)
 		values (	#{gameNo},
 					#{tableNo},
@@ -187,13 +187,15 @@
 					#{memberNum},
 					sysdate,
 					#{gameNo} )
-		]]>		
+		]]>	
+
 	</insert>
 	<!-- 플레이 생성 -->
 	<insert id="insertPlay" parameterType="com.modang.vo.PlayUserVo">
 		<selectKey keyProperty="playNo" resultType="int" order="BEFORE">
 			select seq_plays_no.nextval from dual		
-		</selectKey>	
+		</selectKey>
+		<![CDATA[	
 		insert into 
 		plays(		playNo,
 					userNo,
@@ -204,7 +206,8 @@
 					#{userNo},
 					#{gameNo},
 					#{currentAverage},
-					#{orderNo} )	
+					#{orderNo} )
+		]]>	
 	</insert>
 	<!-- 게임찾기(게임번호) -->
 	<select id="selectGameforGameNo" parameterType="com.modang.vo.TableGamesVo" resultType="com.modang.vo.TableGamesVo">
@@ -278,7 +281,7 @@
 							where TABLENO = #{tableNo})	
 		]]>	
 	</select>	
-	
+
 	<!-- 일시정지게임찾기(테이블번호) -->
 	<select id="selectPauseGameforTableNo" parameterType="int" resultType="com.modang.vo.TableGamesVo">
 		<![CDATA[

@@ -73,12 +73,12 @@
 							<header>
 								<h2 class="float-left">테이블 매출</h2>
 								
-								<form name="" class="form-inline float-right mb-4" action="${pageContext.request.contextPath}/manager/tableSalesForm" method="get" >
+								<form name="" class="form-inline float-right mb-4" action="${pageContext.request.contextPath}/manager/tableSales" method="get" >
 									<label class="mr-2">테이블 번호</label>
 									<div class="col-4">
 									  <select class="form-control-5">
 									    <c:forEach items="${cuetableList}" var="cueTableVo">
-									      <option>${cueTableVo.tableName}</option>
+									      <option name="tableName">${cueTableVo.tableName}</option>
 									    </c:forEach>
 									  </select>
 									</div>
@@ -87,7 +87,6 @@
 									<label class="mr-1 ml-2">~</label>
 										<input type="date" name="maxdate" class="form-control form-control-sm" maxlength="20" />
 									<button type="submit" class="btn btn-sm btn-dark">검색</button>
-									</form>
 								</form>
 							</header>
 							
@@ -96,8 +95,8 @@
 									<tr>
 										<th>No</th>
 										<th>테이블번호</th>
-										<th>테이블종류</th>
 										<th>게임종류</th>
+										<th>게임날짜</th>
 										<th>시작시간</th>
 										<th>종료시간</th>
 										<th>사용시간</th>
@@ -110,8 +109,8 @@
 									<tr>
 										<td>1</td>
 										<td>1</td>
-										<td>대대</td>
 										<td>3구</td>
+										<td>07/24</td>
 										<td>00:00</td>
 										<td>00:00</td>
 										<td>00:00</td>
@@ -122,8 +121,8 @@
 									<tr>
 										<td>2</td>
 										<td>1</td>
-										<td>대대</td>
 										<td>4구</td>
+										<td>07/24</td>
 										<td>00:00</td>
 										<td>00:00</td>
 										<td>00:00</td>

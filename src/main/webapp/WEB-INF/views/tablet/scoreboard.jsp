@@ -16,29 +16,13 @@ body {
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
-#container {
-	z-index: 1;
-	border: 1px;
-	outline: dashed 1px black;
-	width: 1024px;
-	height: 768px;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-}
+#container {background:#094e94;border-radius:10px; z-index: 1;	border: 1px;width: 1024px;height: 768px;position: absolute;left: 50%;	top: 50%;transform: translate(-50%, -50%);}
 
-.float-r {
-	float: right;
-}
+.float-r {float: right;}
 
-.float-l {
-	float: left;
-}
+.float-l {float: left;}
 
-.clear {
-	clear: both;
-}
+.clear {clear: both;}
 </style>
 </head>
 <body>
@@ -49,39 +33,41 @@ body {
 			<div class="timerBox float-l" id='timerBox'>
 				<div id="time" class="time">00:00:00</div>
 			</div>
-			<div class="timerBox float-l" id="top-fee">
-				<label for="usingfee">사용요금</label> <input type="text" id="usingfee" value="">
+			<div class="timerBox1 float-l" id="top-fee">
+				<label for="usingfee" class="d-block">사용요금</label><input class="d-block" type="text" id="usingfee" value="">
 			</div>
 		</div>
 		<!-- Mid Info -->
-		<div class="mid" id="mid-scores">
-			<c:forEach var="playUser" items="${tableGameVo.playUserList}">
-				<div class="board float-l" id="boardno${playUser.orderNo}">
-					<div class="bdtop">
-						<div class="userinfo">
-							<img class="float-l" src="${pageContext.request.contextPath}/assets/images/modang.png" width="36" height="36">
-							<div class="usertext float-l">
-								다마수 : ${playUser.currentAverage} <br> ${playUser.nick}
+		<div class="row">
+			<div class="mid" id="mid-scores">
+				<c:forEach var="playUser" items="${tableGameVo.playUserList}">
+					<div class="board float-l" id="boardno${playUser.orderNo}">
+						<div class="bdtop">
+							<div class="userinfo">
+								<img class="float-l imgbox" src="${pageContext.request.contextPath}/assets/images/modang_img.png">
+								<div class="usertext float-l">
+									다마수 : ${playUser.currentAverage} <br> ${playUser.nick}
+								</div>
+							</div>
+							<div class="act-average float-r">
+								총갯수
+								<p id="act-average">${playUser.currentAverage}</p>
 							</div>
 						</div>
-						<div class="act-average float-r">
-							총갯수
-							<p id="act-average">${playUser.currentAverage}</p>
+						<div class="bdmid">
+							<div class="panel panalty float-l">
+								<p class="touch1" id="panalty"><strong>-</strong></p>
+							</div>
+							<div class="panel1 marks float-l" data-playno="${playUser.playNo}" data-record="0">
+								<p class="currentbd" id="marks">${playUser.currentAverage}</p>
+							</div>
+							<div class="panel2 score float-l">
+								<p class="touch1" id="score"><strong>+</strong></p>
+							</div>
 						</div>
 					</div>
-					<div class="bdmid">
-						<div class="panel panalty float-l">
-							<p class="touch" id="panalty">마이너스</p>
-						</div>
-						<div class="panel marks float-l" data-playno="${playUser.playNo}" data-record="0">
-							<p class="currentbd" id="marks">${playUser.currentAverage}</p>
-						</div>
-						<div class="panel score float-l">
-							<p class="touch" id="score">플러스</p>
-						</div>
-					</div>
-				</div>
-			</c:forEach>
+				</c:forEach>
+			</div>
 		</div>
 	</div>
 </body>

@@ -49,7 +49,7 @@ body {
 	<!-- 글쓰기 바디-->
 	<div id="board">
 		<div id="writeForm">
-			<form action="write" method="post">
+			<form action="write" method="post" onsubmit="return validateForm()">
 				<!-- 제목 -->
 				<div id="category">
 					<label for="type">게임 종류</label> <select name=matchGameType

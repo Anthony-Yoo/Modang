@@ -23,9 +23,6 @@ public class AttendUsersController {
 	@Autowired
 	private AttendUsersService attendUserService;
 
-	@Autowired
-	private BoardService boardService;
-
 	@ResponseBody
 	@RequestMapping(value = "/apply", method = { RequestMethod.POST, RequestMethod.GET })
 	public JsonResult apply(@RequestBody AttendUsersVo vo) {
@@ -39,15 +36,13 @@ public class AttendUsersController {
 
 	// 유저 마이페이지의 신청 리스트 목록
 	@RequestMapping(value = "/myPage/applyMenu")
-	public String applyList(@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword,
-			@RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage,
-			@RequestParam(value = "category", required = false, defaultValue = "") String category, Model model) {
-		System.out.println("BoardController.list");
-		Map<String, Object> pMap = boardService.getList(crtPage, keyword, category);
+	public String applyList(@RequestParam(value = "userNo", required = false, defaultValue = "-1") int userNo, Model model) {
+		System.out.println("AttendUsersController.applyList()");
+		// Map<String, Object> pMap = boardService.getList(crtPage, keyword, category);
 		// System.out.println(pMap);
-		model.addAttribute("pMap", pMap);
+		// model.addAttribute("pMap", pMap);	
 		
-		return "user/myPage/applyMenu";
+		return "user/myPage/applyManagement";
 	}
 
 }
