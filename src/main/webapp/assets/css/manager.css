@@ -132,7 +132,7 @@ justify-content: center;align-items: center; pointer-events: none;}
 
 /*유저 전적보기*/
 /*게임 유저 정보?*/
-.record-view{ width: 1200px;height: 400px; position: relative; margin: 0 auto;}
+.record-view{ width: 1200px;height: 400px; position: relative; margin: 50px auto;}
 
 .record-view .left{display: inline-block;width: 300px; height: 100%;position: absolute; top: 0; left: 0;}
 .record-view .userImg img{display: block; width: 250px; height: 250px; margin: 0 auto;}
@@ -165,16 +165,16 @@ justify-content: center;align-items: center; pointer-events: none;}
 .record-view .userPlay ul{width: 550px; margin-top: 10px;}
 .record-view .userPlay ul li{display: inline-block; width: 178px; height: 130px;}
 .record-view .userPlay ul li>p{font-size: 16px; padding: 5px 0 0 10px;}
-.record-view .userPlay ul li>span{display: flex; font-weight: 600; font-size: 30px;  width: 178px; height: 100px; }
+.record-view .userPlay ul li>span{display: flex; font-weight: 600; font-size: 30px;  width: 178px; height: 100px;
+ margin-top: 10px;}
 .record-view .userPlay ul li.per{display: block; width: 500px; height: 50px; margin: 10px auto;}
 .record-view .userPlay ul li.per>p{}
 .record-view .userPlay ul li.per>span{display: block; width: 500px; height: 16px; margin: 0 auto; background-color: red;
     border-radius: 6px; text-align: center; color: #fff; font-size: 14px; line-height: 16px;}
-.record-view .userPlay ul li.fight>span::after{content: ""; display: block; clear: both;}
 /*.record-view .userPlay ul li span>img{display: inline-block; width: 50px; height: 50px;}*/
 .record-view .userPlay ul li.fight>span span.nick{font-size: 16px; width: 170px; }
 /*게임 리스트*/
-.record-list{ height: 500px; width: 1200px; margin-top: 30px;}
+.record-list{ height: 500px; width: 1200px; margin: 30px auto 0;}
 .record-list table{border: 1px solid #2E419A; text-align: center; margin: 0 auto;}
 .record-list table thead{border: 1px solid #2E419A; background-color: #efefef;}
 .record-list table thead th{border-top: 2px solid #2E419A;border-bottom: 2px solid #2E419A; width: 110px; height: 30px;}

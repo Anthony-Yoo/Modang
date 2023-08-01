@@ -17,11 +17,11 @@
         <div class="record-view">
             <div class="left">
                 <div class="userImg">
-                    <img src="ori.png" alt="">
+                    <img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="">
                     <p>"인생 8할이 당구였당"</p>
                 </div>
                 <div class="town">
-                    <img src="./map.png" alt="">
+                    <img src="${pageContext.request.contextPath}/assets/images/map.png" alt="">
                     <span class="area">서울지역</span>
                     <br>
                     <span class="Rname">천호동 불나방당구장</span>
