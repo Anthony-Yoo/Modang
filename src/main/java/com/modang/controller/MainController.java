@@ -13,6 +13,13 @@ public class MainController {
 	@Autowired
 	private MainService mainService;
 	
+	/*유저전적-나중에 유저컨트롤러로 옮기기*/
+	@RequestMapping("/userRecord")
+	public String userRecord() {
+		System.out.println("MainController.userRecord()");
+		return "manager/userRecord";
+	}
+	
 	/*모당 메인페이지*/
 	@RequestMapping("/")
 	public String main() {

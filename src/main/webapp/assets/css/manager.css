@@ -116,17 +116,68 @@ justify-content: center;align-items: center; pointer-events: none;}
 	background-color: #f1f1f1;}
 .search-list button{background: #2E419A; width: 60px; height: 30px; color: #fff;
 	border-radius: 6px; cursor: pointer;}
-.con .map{float: left; width: 584px; height: 500px;}
-.con .map .mapImg{background-color: aquamarine; width: 440px; height: 400px; margin: 40px auto 0;}
+.con .map{float: left; width: 590px; height: 500px;}
+.con .map .mapImg{background-color: aquamarine; width: 500px; height: 440px; margin: 30px auto 0;}
 .con .modang_list{float: right; width: 600px; height: 500px; overflow-y: auto;  box-sizing: border-box;
 	border-left: 2px solid #2E419A; padding-left: 10px;}
-.con .modang_list ul{}
+.con .modang_list ul{margin-top: 10px;}
 .con .modang_list ul li{ height: 100px; border-bottom: 1px solid #2E419A; box-sizing: border-box;
 	 width: 550px; cursor: pointer;}
+.con .modang_list ul li:nth-child(1){border-top: 1px solid #2E419A;}
 .con .modang_list ul li .txt{float: left; width: 400px;}
 .con .modang_list ul li .txt p.repname{font-weight: 800; font-size: 20px; text-align: center;margin:14px 0 10px;}
 .con .modang_list ul li .txt p.addr{font-size: 15px; padding: 0 10px;margin:5px 0 0; height: 46px; overflow-y: auto;}
 .con .modang_list ul li img{display: inline-block; width: 120px; height: 90px; float: right; margin: 5px;
 	border: 1px solid #2E419A; box-sizing: border-box;}
 
+/*유저 전적보기*/
+/*게임 유저 정보?*/
+.record-view{ width: 1200px;height: 400px; position: relative; margin: 0 auto;}
 
+.record-view .left{display: inline-block;width: 300px; height: 100%;position: absolute; top: 0; left: 0;}
+.record-view .userImg img{display: block; width: 250px; height: 250px; margin: 0 auto;}
+.record-view .userImg p{background-color: #2E419A; border-radius: 4px; width: 200px; 
+    padding: 10px 15px;margin: 10px 0 10px 35px; text-align: center; color: #fff;}
+.record-view .town{display: block; width: 200px;height: 90px;  margin: 0 auto;}
+.record-view .town img{display:block; width: 50px; height: 50px;  float: left; margin-top: 10px;}
+.record-view .town span{display: inline-block; margin:  10px 0 0 8px;}
+.record-view .town span.area{ color: red; font-weight: 600;}
+.record-view .town span.Rname{ font-size: 14px;}
+
+.record-view .center{display: inline-block;width: 300px;height: 100%;position: absolute; top: 0; left: 300px;
+    text-align: center;}
+.record-view .userRecent p{border-bottom: 1px solid #2E419A; padding: 6px 0; width: 280px; margin: 0 auto;}
+.record-view .userRecent .recentAver{height: 100px; background-color: #efefef; border-radius: 10px;}
+.record-view .userRecent .recentAver ul{margin-top: 20px; line-height: normal; font-weight: 600;}
+.record-view .userRecent .recentAver ul li{display: inline-block; width: 20px; height: 20px; border: 1px solid #2E419A;}
+.record-view .userRecent .recentAver ul li.win{background-color: lightblue; color: #fff;}
+.record-view .userRecent .recentGame{height: 140px; background-color: #efefef; margin-top: 10px;border-radius: 10px;}
+.record-view .userRecent .recentGame table{margin: 20px auto 0;}
+.record-view .userRecent .recentGame thead{font-size: 14px;}
+.record-view .userRecent .recentGame tbody{font-size: 16px; color: red;}
+.record-view .userRecent .recentPlayer{height: 140px; background-color: #efefef; margin-top: 10px;border-radius: 10px;}
+.record-view .userRecent .recentPlayer ul{font-size: 12px; width: 300px; margin-top: 6px;}
+.record-view .userRecent .recentPlayer ul li{display: inline-block; width: 100px; padding: 5px;
+    border: 1px solid #2E419A; box-sizing: border-box; border-radius: 10px; margin: 2px 5px;}
+.record-view .right{display: inline-block;width: 550px;height: 100%;position: absolute; top: 0; left: 630px;}
+.record-view .userPlay>p{color: #fff; background-color: lightblue; width: 100px; height: 20px;
+    border-radius: 10px; font-size: 12px;line-height: 20px; text-align: center; padding: 2px 4px;}
+.record-view .userPlay ul{width: 550px; margin-top: 10px;}
+.record-view .userPlay ul li{display: inline-block; width: 178px; height: 130px;}
+.record-view .userPlay ul li>p{font-size: 16px; padding: 5px 0 0 10px;}
+.record-view .userPlay ul li>span{display: flex; font-weight: 600; font-size: 30px;  width: 178px; height: 100px; }
+.record-view .userPlay ul li.per{display: block; width: 500px; height: 50px; margin: 10px auto;}
+.record-view .userPlay ul li.per>p{}
+.record-view .userPlay ul li.per>span{display: block; width: 500px; height: 16px; margin: 0 auto; background-color: red;
+    border-radius: 6px; text-align: center; color: #fff; font-size: 14px; line-height: 16px;}
+.record-view .userPlay ul li.fight>span::after{content: ""; display: block; clear: both;}
+/*.record-view .userPlay ul li span>img{display: inline-block; width: 50px; height: 50px;}*/
+.record-view .userPlay ul li.fight>span span.nick{font-size: 16px; width: 170px; }
+/*게임 리스트*/
+.record-list{ height: 500px; width: 1200px; margin-top: 30px;}
+.record-list table{border: 1px solid #2E419A; text-align: center; margin: 0 auto;}
+.record-list table thead{border: 1px solid #2E419A; background-color: #efefef;}
+.record-list table thead th{border-top: 2px solid #2E419A;border-bottom: 2px solid #2E419A; width: 110px; height: 30px;}
+.record-list table tbody{border: 1px solid #2E419A;}
+.record-list table tr{border: 1px solid #2E419A;}
+.record-list table td{border: 1px solid #2E419A;}
