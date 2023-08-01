@@ -38,17 +38,18 @@ public class TabletService {
 	}
 	
 	public TabletUserVo loginGetKey(TabletUserVo userVo) {
-		System.out.println("TabletService.loginGetKey()");
+		System.out.println("TabletService.loginGetKey()");		
+		
+		
+		// 30분 넘는 번호 삭제
+		tabletDao.deleteTime(30);
 		
 		//유져 로그인 & Key확인
 		TabletUserVo logOnVo = tabletDao.selectUser(userVo);		
 		
 		//로그인 완료
 		if (logOnVo != null) {
-			System.out.println("로그인성공!"+logOnVo);
-			
-			// 30분 넘는 번호 삭제
-			tabletDao.deleteTime(StaticVo.NORMAL_TIME);
+			System.out.println("로그인성공!"+logOnVo);			
 
 			// 유효한 키 있는지 검사(있다/없다분개)
 			if(logOnVo.getKeyNum() <= 0 ) {
@@ -136,6 +137,7 @@ public class TabletService {
 		//플레이넘버 인서트 및 찾기		
 		int gameNo = tableGame.getGameNo();
 		List<PlayUserVo> playUserList = new ArrayList<PlayUserVo>();
+		
 		playUserList = tableGame.getPlayUserList();
 		for (PlayUserVo vo : playUserList) {
 			vo.setGameNo(gameNo);
@@ -235,6 +237,17 @@ public class TabletService {
 		return myGameInfo;
 	}
 	
+	public TableGamesVo pauseStatus(TableGamesVo tableGameVo) {
+		System.out.println("TabletService.pauseStatus()");
+				
+		int tableNo = tableGameVo.getTableNo();
+		System.out.println(tableNo);
+		
+		TableGamesVo myGameInfo = tabletDao.selectPauseGameforTableNo(tableNo);		
+		
+		return myGameInfo;
+	}
+	
 	public TableGamesVo playStatus(TableGamesVo tableGameVo) {
 		System.out.println("TabletService.playStatus()");
 				
@@ -245,6 +258,7 @@ public class TabletService {
 		
 		return myGameInfo;
 	}
+	
 	
 	public TableGamesVo reStartGame(TableGamesVo tableGameVo) {
 		System.out.println("TabletService.reStartGame()");

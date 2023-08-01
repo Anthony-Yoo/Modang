@@ -10,39 +10,6 @@
 	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/managerdefault.css" />
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script>
-	// 우편번호 서비스
-	function daumPostcode() {
-		new daum.Postcode({
-			oncomplete: function(data) {
-				var fullAddr = '';
-				var extraAddr = '';
-				
-				if (data.userSelectedType === 'R') {
-					fullAddr = data.roadAddress;
-				} else {
-					fullAddr = data.jibunAddress;
-				}
-				
-				if(data.userSelectedType === 'R'){
-					if(data.bname !== ''){
-						extraAddr += data.bname;
-					}
-					
-					if(data.buildingName !== ''){
-						extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-					}
-					
-					fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
-				}
-
-				document.getElementById("zonecode").value = data.zonecode;
-				document.getElementById("address").value = fullAddr;
-				document.getElementById("address_detail").focus();
-			}
-		}).open();
-	}
-	</script>
 </head>
 <body>
 	<div id="page-wrapper">
@@ -173,5 +140,38 @@
 		<!-- Copyright -->
 		<div id="copyright">&copy; modang. All rights reserved.</div>
 	</div>
+	<script>
+	// 우편번호 서비스
+	function daumPostcode() {
+		new daum.Postcode({
+			oncomplete: function(data) {
+				var fullAddr = '';
+				var extraAddr = '';
+				
+				if (data.userSelectedType === 'R') {
+					fullAddr = data.roadAddress;
+				} else {
+					fullAddr = data.jibunAddress;
+				}
+				
+				if(data.userSelectedType === 'R'){
+					if(data.bname !== ''){
+						extraAddr += data.bname;
+					}
+					
+					if(data.buildingName !== ''){
+						extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+					}
+					
+					fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+				}
+
+				document.getElementById("zonecode").value = data.zonecode;
+				document.getElementById("address").value = fullAddr;
+				document.getElementById("address_detail").focus();
+			}
+		}).open();
+	}
+	</script>
 </body>
 </html>

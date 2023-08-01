@@ -11,20 +11,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.modang.dao.BiliardDao;
 import com.modang.dao.ManagerDao;
 import com.modang.vo.ManagerVo;
+import com.modang.vo.TariffVo;
 
 @Service
 public class ManagerService {
 	String saveDir = "C:\\javaStudy\\upload";
-	@Autowired
-	private ManagerDao managerDao;
+	@Autowired private ManagerDao managerDao;
+	//@Autowired private TariffVo tariffVo;
+	//@Autowired private BiliardDao biliardDao;
 	
-	/*회원가입*/
+	/*회원가입*/	//요금테이블 정보 같이 삽입
 	public int join(ManagerVo managerVo, List<MultipartFile> file) {
 		System.out.println("managerService.join");
 		//요금테이블(tariff) 정보 삽입
-		
+		//TariffVo tariffVo = new TariffVo();
+		//tariffVo.setbiliardno(managerVo.getbiliardNo());//뭐라는거양(*´⌒`*)
+		//biliardDao.
 		//매니저 정보 삽입
 		//이미지 삽입
 		for(int i=0; i<file.size(); i++) {
@@ -67,9 +72,11 @@ public class ManagerService {
 		//db에 저장
 		//ManagerVo managerVo= new ManagerVo();
 		System.out.println(managerVo);
-		int count=managerDao.insertManager(managerVo);
+		managerDao.insertManager(managerVo);
+		int biliardno=managerVo.getbiliardNo();
+		System.out.println("요금테이블생성할 당구장:"+biliardno);
+		int count = managerDao.insertTariff(biliardno);
 		return count;
-		
 	}
 	
 	/*회원가입 id 중복체크*/

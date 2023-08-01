@@ -22,7 +22,7 @@
 			select  TABLENO,
 					BILIARDNO,
 					TABLETYPE,
-					STATUS,
+					Status as tableStatus,
 					TABLENAME
 			from CUETABLE
 			where BILIARDNO = #{biliardNo}
@@ -123,7 +123,7 @@
 	<delete id="deleteTime" parameterType="int">
 		<![CDATA[
 			delete from LOGINKEY
-			where createdate < (sysdate - #{normalTime}/24/60)	
+			where createdate < (sysdate - 30/24/60)	
 		]]>
 	</delete>
 	<!-- 카드목록 검색 -->
@@ -172,26 +172,30 @@
 	<insert id="insertGame" parameterType="com.modang.vo.TableGamesVo">
 		<selectKey keyProperty="gameNo" resultType="int" order="BEFORE">
 			select seq_games_no.nextval from dual		
-		</selectKey>		
+		</selectKey>
+		<![CDATA[		
 		insert into 
 		games(		gameNo,
 					tableNo,
 					gameType,
 					memberNum,
-					GAMEDATE,					
+					gameDate,					
 					setNo	)
 		values (	#{gameNo},
 					#{tableNo},
 					#{gameType},
 					#{memberNum},
 					sysdate,
-					#{gameNo} )	
+					#{gameNo} )
+		]]>	
+
 	</insert>
 	<!-- 플레이 생성 -->
 	<insert id="insertPlay" parameterType="com.modang.vo.PlayUserVo">
 		<selectKey keyProperty="playNo" resultType="int" order="BEFORE">
 			select seq_plays_no.nextval from dual		
-		</selectKey>	
+		</selectKey>
+		<![CDATA[	
 		insert into 
 		plays(		playNo,
 					userNo,
@@ -202,7 +206,8 @@
 					#{userNo},
 					#{gameNo},
 					#{currentAverage},
-					#{orderNo} )	
+					#{orderNo} )
+		]]>	
 	</insert>
 	<!-- 게임찾기(게임번호) -->
 	<select id="selectGameforGameNo" parameterType="com.modang.vo.TableGamesVo" resultType="com.modang.vo.TableGamesVo">
@@ -276,14 +281,42 @@
 							where TABLENO = #{tableNo})	
 		]]>	
 	</select>	
+
+	<!-- 일시정지게임찾기(테이블번호) -->
+	<select id="selectPauseGameforTableNo" parameterType="int" resultType="com.modang.vo.TableGamesVo">
+		<![CDATA[
+			select 	GAMENO,
+					TABLENO,
+					GAMETYPE,
+					MEMBERNUM,
+					GAMEDATE,					
+					GAMETIME,
+					STARTTIME,
+					ENDTIME,
+					PAYSTATUS,
+					PAYTYPE,
+					PAYDATE,
+					INCOME,
+					PAYMONEY,
+					PAUSESTART,
+					PAUSESTOP,					
+					PAUSETIME,
+					SETNO,
+					ROUND((PAUSESTART-STARTTIME) * 24 * 60 * 60, 2)- PAUSETIME as secondsToTime
+			from GAMES
+			where GAMENO = (select max(GAMENO) from GAMES 
+							where TABLENO = #{tableNo})	
+		]]>	
+	</select>
 	
 	
 	<!-- 당구장찾기 -->
 	<select id="selectCueTable" parameterType="int" resultType="com.modang.vo.CueTableVo">
 		<![CDATA[
-			select  BILIARDNO,
+			select  TABLENO,
+					BILIARDNO,
 					tableType,
-					STATUS
+					Status as tableStatus
 			from CUETABLE
 			where TABLENO = #{tableNo}		
 		]]>
@@ -321,7 +354,7 @@
 		<![CDATA[
 			update CUETABLE
 			set 
-			STATUS = 1
+			Status = 1
 			where TABLENO = #{tableNo}		
 		]]>	
 	</update>
@@ -341,7 +374,7 @@
 		<![CDATA[
 			update CUETABLE
 			set 
-			STATUS = 2
+			Status = 2
 			where TABLENO = #{tableNo}		
 		]]>	
 	</update>
@@ -370,7 +403,7 @@
 		<![CDATA[
 			update CUETABLE
 			set 
-			STATUS = 0
+			Status = 0
 			where TABLENO = #{tableNo}		
 		]]>	
 	</update>

@@ -6,7 +6,7 @@
 <html lang="ko">
 
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8">WW
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>글 쓰기</title>
 <link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
@@ -49,7 +49,7 @@ body {
 	<!-- 글쓰기 바디-->
 	<div id="board">
 		<div id="writeForm">
-			<form action="write" method="post">
+			<form action="write" method="post" onsubmit="return validateForm()">
 				<!-- 제목 -->
 				<div id="category">
 					<label for="type">게임 종류</label> <select name=matchGameType

@@ -111,7 +111,7 @@ public class TabletDao {
 	
 	
 	public CueTableVo selectCueTable(int tableNo) {
-		System.out.println("TabletDao.selectbiliard()");
+		System.out.println("TabletDao.selectCueTable()");
 		
 		return session.selectOne("tablet.selectCueTable", tableNo);			
 	}
@@ -236,5 +236,11 @@ public class TabletDao {
 		
 		return session.selectList("tablet.selectPlayRecord",myGameInfo);
 	}
+	public TableGamesVo selectPauseGameforTableNo(int tableNo) {
+		System.out.println("TabletDao.selectPauseGameforTableNo()");
+		
+		return session.selectOne("tablet.selectPauseGameforTableNo", tableNo);
+	}
+	
 	
 }

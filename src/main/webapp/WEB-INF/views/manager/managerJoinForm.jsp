@@ -6,14 +6,11 @@
 <meta charset="UTF-8">
 <title>modang 관리자 회원가입</title>
 <link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
-<link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet"
-	type="text/css">
-<link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet"
-	type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e86c03dc169e845e1ac8650bdaa97ae6a"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 </head>
 <body>
 	<!-- 헤더 시작 -->
@@ -93,18 +90,24 @@
 				                <img id="resultImg1" class="resultImg" src="${pageContext.request.contextPath }/upload/${imageFile1}" />
 				                <!-- 이미지 파일 입력 요소 -->
 				                <input type="file" name="file" class="image" accept="image/*" multiple onchange="previewImage(event, 'resultImg1')" />
+				                <!-- 빈 상태일 때 나타낼 내용 -->
+				                <div class="empty-icon"><img src="${pageContext.request.contextPath}/assets/images/modang_img.png" /></div>
 				            </li>
 				            <li>
 				            	<!-- 미리보기 이미지 -->
 				                <img id="resultImg2" class="resultImg" src="${pageContext.request.contextPath }/upload/${imageFile2}" />
 				                <!-- 이미지 파일 입력 요소 -->
 				                <input type="file" name="file" class="image" accept="image/*" multiple onchange="previewImage(event, 'resultImg2')" />
+				                <!-- 빈 상태일 때 나타낼 내용 -->
+				                <div class="empty-icon"><img src="${pageContext.request.contextPath}/assets/images/modang_img.png" /></div>
 				            </li>
 				            <li>
 				            	<!-- 미리보기 이미지 -->
 				                <img id="resultImg3" class="resultImg" src="${pageContext.request.contextPath }/upload/${imageFile3}" />
 				                <!-- 이미지 파일 입력 요소 -->
 				                <input type="file" name="file" class="image" accept="image/*" multiple onchange="previewImage(event, 'resultImg3')" />
+				                <!-- 빈 상태일 때 나타낼 내용 -->
+				                <div class="empty-icon"><img src="${pageContext.request.contextPath}/assets/images/modang_img.png" /></div>
 				            </li>				            
 						</ul>
 					</div>
@@ -118,8 +121,8 @@
 					</div>
 					<div class="con">
 						<!-- 주차 가능여부 -->
-						<span class="inp-txt"> <img
-							src="${pageContext.request.contextPath}/assets/images/parking.png" alt="주차 여부" class="icon">
+						<span class="inp-txt"> 
+							<img src="${pageContext.request.contextPath}/assets/images/parking.png" alt="주차 여부" class="icon">
 							<span class="parking">
 								<input type="radio" id="parking1" name="parking" value="Y"><label for="parking1">주차가능하당</label>
 								<input type="radio" id="parking2" name="parking" value="N"><label for="parking2">주차 불가능하당</label>
@@ -146,33 +149,40 @@
 	<!-- 푸터 끝 -->
 </body>
     <!-- 회원가입 완료 메시지를 표시하기 위한 JavaScript 코드 -->
- <script>
-    // JSP에서 Java 변수를 JavaScript 변수로 변환
-    var successMessage = "${successMessage}";
-    var failMessage = "${failMessage}";
+<script type="text/javascript">
+	window.onload=function(){
+		var result="${resultMsg}";
+		window.location.herf="${pageContext.request.contextPath}/manager/loginForm";
+		if(result!=""){
+			alert(result);
+		}
+	})
 
-    if (successMessage) {
-        alert(successMessage); // 회원가입 성공 알림창
-        location.href = "/manager/managerLoginForm"; // 로그인 창으로 이동
-    } else if (failMessage) {
-        alert(failMessage); // 회원가입 실패 알림창
-    }
-</script>
- <script>/*이미지 미리보기*/
+</script>    
+
+ <script>
+  /*이미지 미리보기*/
 	function previewImage(event, imgId) {
 		const input = event.target;
 		const imgElement = document.getElementById(imgId);
+		const emptyIcon = input.nextElementSibling; // 다음 요소 (빈 상태 표시 아이콘)
 
 		if (input.files && input.files[0]) {
 			const reader = new FileReader();
 
 			reader.onload = function (e) {
+			imgElement.style.display = "block"; // 이미지 보이도록 변경
 			imgElement.src = e.target.result;
+			emptyIcon.style.display = "none"; // 빈 상태 아이콘 숨김
 			
 		};
 
 		reader.readAsDataURL(input.files[0]);
-		}
+		}else {
+		      // 파일을 선택하지 않은 경우 빈 상태로 되돌림
+		      imgElement.style.display = "none"; // 이미지 숨김
+		      emptyIcon.style.display = "block"; // 빈 상태 아이콘 보이도록 변경
+		    }
 	}
 </script> 
 <script>

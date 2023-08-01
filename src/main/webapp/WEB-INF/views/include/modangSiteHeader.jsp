@@ -13,7 +13,7 @@ pageEncoding="UTF-8"%>
             <!-- 로그인실패시, 로그인전 -->
             <ul>
                 <li class="user"><a href="${pageContext.request.contextPath}/user/loginForm">로그인</a></li>
-                <li class="user"><a href="${pageContext.request.contextPath}/user/joinForm">회원가입</a></li>
+                <li class="user"><a href="${pageContext.request.contextPath}/user/userJoinForm">회원가입</a></li>
             </ul>
             </c:when>
             <c:otherwise>
@@ -32,7 +32,7 @@ pageEncoding="UTF-8"%>
         <div id="header-menu">
             <ul>
                 <li><a href="${pageContext.request.contextPath}/">모당이란?</a></li>
-                <li><a href="">당구장 찾기</a></li>
+                <li><a href="${pageContext.request.contextPath}/modangFind">당구장 찾기</a></li>
                 <li><a href="${pageContext.request.contextPath}/board/list">매칭 게시판</a></li>
             </ul>
         </div>

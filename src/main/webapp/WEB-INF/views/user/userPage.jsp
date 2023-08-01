@@ -30,52 +30,45 @@
 	
 		<div class="container text-center">
 
-    		<div id="user">
-		
 				<div id="userPage">
 		
-					<div id="main">
-					
-                    			<div class="sidebar">
-  									<a class="active" href="userPage">회원정보</a>
-  									<a href="userPage">친구목록</a>
-  									<a href="userPage">그룹친구</a>
-  									<a href="userPage">게시판매칭</a>
-  									<a href="userPage">전적보기</a>
-								</div>
+                 	<!-- sideNav 시작 -->
+					<c:import url="/WEB-INF/views/include/modangSideNav.jsp"></c:import>
+					<!-- sideNav 끝 -->
 
-								<div class="content">
-									
-									<div class="image-show" id="image-show" >
-		        						<img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileImage}" >
-		        					</div>
-		        					
-		        					<div class="image-icon">
+					<div class="content">
+						
+       							<div class="image-icon">
+					
+									<span class="text" data-text-content="true" style="margin: -100px 0px -25px 140px;">${requestScope.userVo.id}
+									<img src="${pageContext.request.contextPath}/assets/images/user.png" alt=""></span>
 								
-  										<p><img src="${pageContext.request.contextPath}/assets/images/user.png" style="width: 5%;margin:-247px 10px 286px 250px;" alt=""><div data-text-content="true" style="font-size:30px;padding : 50px 0px 0px 318px;margin:-380px 0px -25px 0px;" class="">${requestScope.userVo.id}</div>
-  									
-  										<p><img src="${pageContext.request.contextPath}/assets/images/smartphone.png" style="width: 5%;margin:50px 10px 10px 250px;" alt=""><div data-text-content="true" style="font-size:30px;padding : 50px 0px 0px 318px;margin:-100px 0px -25px 0px;" class="">${requestScope.userVo.cellphone}</div>
-  									
-  										<p><img src="${pageContext.request.contextPath}/assets/images/business-card.png" style="width: 5%;margin:50px 10px 10px 250px;" alt=""><div data-text-content="true" style="font-size:30px;padding : 50px 0px 0px 318px;margin:-105px 0px -25px 0px;" class="">${requestScope.userVo.nick}</div>
-  									
-  										<p><img src="${pageContext.request.contextPath}/assets/images/line-graph.png" style="width: 5%;margin:50px 10px 10px 250px;" alt=""><div data-text-content="true" style="font-size:30px;padding : 50px 0px 0px 318px;margin:-100px 0px -25px 0px;" class="">${requestScope.userVo.average}</div>
-  									
-  									</div>
-		        					
- 					 				<button type="button" class="btn btn-light" onclick="document.location='${pageContext.request.contextPath}/user/modifyForm'">수정하기로 고고!</button>
+									<span class="text" data-text-content="true" style="margin: -100px 0px -25px 225px;">${requestScope.userVo.cellphone}
+									<img src="${pageContext.request.contextPath}/assets/images/smartphone.png" alt=""></span>
+								
+									<span class="text" data-text-content="true" style="margin: -100px 0px -25px 225px;">${requestScope.userVo.nick}
+									<img src="${pageContext.request.contextPath}/assets/images/business-card.png" alt=""></span>
+								
+									<span class="text" data-text-content="true" style="margin: -100px 0px -25px 225px;">${requestScope.userVo.average}
+									<img src="${pageContext.request.contextPath}/assets/images/line-graph.png" alt=""></span>
+								
 								</div>
 								
-								
+       								<div class="image-show" id="image-show" >
+       									<img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileImage}" >
+       								</div>
+       								
+			 				<button type="button" class="btn btn-light" onclick="document.location='${pageContext.request.contextPath}/user/modifyForm'">수정하기로 고고!</button>
+					
 							
-    				</div>
-           		</div>
-    		</div>
+           			</div>
+    		
     		<!-- //user -->
     	</div>
     	<!-- //container -->
     </div>
     <!-- //main-content -->
-  
+  	</div>
 	<!-- 푸터 시작 -->
     <c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
     <!-- 푸터 끝 -->
