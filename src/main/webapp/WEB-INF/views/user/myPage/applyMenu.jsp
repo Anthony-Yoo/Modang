@@ -22,6 +22,19 @@
 
 <!-- js -->
 
+<style type="text/css">
+
+
+.apply_btn a{
+
+	border: 1px solid black;
+	padding: 3px 10px 3px 10px;
+	border-radius: 3px;
+	
+}
+
+
+</style>
 
 
 </head>
@@ -40,8 +53,8 @@
 							href="${pageContext.request.contextPath }/attendUsers/myPage/applyMenu">&nbsp;게시판매칭</a> <a href="userPage">&nbsp;&nbsp;전적보기</a>
 					</div>
 					<div id="board" style="margin-right: -9px; width: 1030px;">
-						<div>
-							<a class="apply_btn">내 게시글 목록</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a class="apply_btn">내 신청글 목록</a>
+						<div class="apply_btn" >
+							<a id="myList" href="">내 게시글 목록</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a id="myList" href="">내 신청글 목록</a>
 						</div>
 						<div id="list">
 							<table>

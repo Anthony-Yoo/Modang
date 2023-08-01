@@ -45,7 +45,7 @@ public class AttendUsersController {
 		System.out.println("BoardController.list");
 		Map<String, Object> pMap = boardService.getList(crtPage, keyword, category);
 		// System.out.println(pMap);
-		model.addAttribute("pMap", pMap);
+		model.addAttribute("pMap", pMap);	
 		
 		return "user/myPage/applyMenu";
 	}
