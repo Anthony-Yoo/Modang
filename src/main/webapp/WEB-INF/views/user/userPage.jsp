@@ -37,30 +37,30 @@
 					<!-- sideNav 끝 -->
 
 					<div class="content">
-						
+									<div class="image-show" id="image-show" >
+       									<img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileImage}" >
+       								</div>
        							<div class="image-icon">
-					
 									
+									<img src="${pageContext.request.contextPath}/assets/images/user.png" style="margin:-475px 10px -15px 240px;" alt="">
+									<div class="text" data-text-content="true" style="margin: -255px 0px -25px 295px;font-size: 30px;">${requestScope.userVo.id}
+									</div>
 									
-									<span class="text" data-text-content="true"><img src="${pageContext.request.contextPath}/assets/images/user.png" alt="">${requestScope.userVo.id}</span>
-								
+									<img src="${pageContext.request.contextPath}/assets/images/smartphone.png" style="margin:50px 10px 0px 240px;" alt="">
+									<div class="text" data-text-content="true" style="margin: -42px 0px -25px 295px;font-size: 30px;">${requestScope.userVo.cellphone}
+									</div>
 									
+									<img src="${pageContext.request.contextPath}/assets/images/business-card.png" style="margin:55px 10px -15px 240px;" alt="">
+									<div class="text" data-text-content="true" style="margin: -30px 0px -25px 290px;font-size: 30px;">${requestScope.userVo.nick}
+									</div>
 									
-									<span class="text" data-text-content="true"><img src="${pageContext.request.contextPath}/assets/images/smartphone.png" alt="">${requestScope.userVo.cellphone}</span>
-								
-									
-									
-									<span class="text" data-text-content="true"><img src="${pageContext.request.contextPath}/assets/images/business-card.png" alt="">${requestScope.userVo.nick}</span>
-								
-									
-									
-									<span class="text" data-text-content="true"><img src="${pageContext.request.contextPath}/assets/images/line-graph.png" alt="">${requestScope.userVo.average}</span>
+									<img src="${pageContext.request.contextPath}/assets/images/line-graph.png" style="margin:50px 10px -15px 240px;" alt="">
+									<div class="text" data-text-content="true" style="margin: -25px 0px -25px 295px;font-size: 30px;">${requestScope.userVo.average}
+									</div>
 								
 								</div>
 								
-       								<div class="image-show" id="image-show" >
-       									<img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileImage}" >
-       								</div>
+       								
        								
 			 				<button type="button" class="btn btn-light" onclick="document.location='${pageContext.request.contextPath}/user/modifyForm'">수정하기로 고고!</button>
 					
