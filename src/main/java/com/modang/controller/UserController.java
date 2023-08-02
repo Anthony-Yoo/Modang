@@ -196,7 +196,7 @@ public class UserController {
 		if(userVo!=null) { //로그인 되어있을 경우 접속
 		model.addAttribute("userVo", userVo);
 		System.out.println(userVo);
-		System.out.println(id);//check
+		System.out.println();//check
 		
 		}
 		return "user/userPage";

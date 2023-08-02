@@ -264,6 +264,70 @@ div.content {
   height: 450px;
 }
 
+
+
+/* 마이페이지 버튼 */
+#userPage button {
+	width: 30%;
+	color: #fff;
+	border-radius:10px;
+	line-height: 40px;
+	font-size: 15px;
+    border: 0;
+    padding: 0;
+    margin: 100px 0px 0px 200px;
+    background : linear-gradient(to bottom right, rgb(9, 32, 80),
+      rgb(81, 117, 164))
+}
+
+/* 마이페이지 대표이미지 */
+#userPage {
+	width:1200px; 
+	margin:auto;
+	
+}
+
+#userPage .element .style .content  {
+    margin: 0px;
+    width: 1050px;
+    margin-left: auto;
+}
+
+#userPage .element.style .image-show {
+    width: 960px;
+    height: 260px;
+    margin: -1px 10px 10px -66px;
+    position: absolute;
+}
+
+#userPage .image-show img {
+    vertical-align: top;
+    width: 260px; 
+    height: 260px;
+	
+}
+
+/* 마이페이지 아이콘 기본 위치 */
+#userPage .image-icon img {
+    vertical-align: middle;
+    width: 5%;
+    margin: auto;
+    position: relative;
+    
+}
+
+#userPage .image-icon hr{
+	margin:-5px -15px 10px 455px;
+	border:1px solid #0000a0;
+}
+
+#userPage .text {
+	margin: 20px 10px 10px 220px;
+    font-size: 30px;
+    position: relative;
+	
+	
+}
 @media screen and (max-width: 700px) {
   .sidebar {
     width: 100%;
@@ -280,51 +344,6 @@ div.content {
     float: none;
   }
 }
-
-/* 마이페이지 버튼 */
-#userPage button {
-	width: 30%;
-	color: #fff;
-	border-radius:10px;
-	line-height: 40px;
-	font-size: 15px;
-    border: 0;
-    padding: 0;
-    margin: 100px 0px 0px 475px;
-    background : linear-gradient(to bottom right, rgb(9, 32, 80),
-      rgb(81, 117, 164))
-}
-
-/* 마이페이지 대표이미지 */
-#userPage .image-show img {
-    vertical-align: top;
-    width:258px; 
-    height: 258px;
-    margin: -3px 10px 10px -151px; 
-    /* border: outset 2px; 
-    border-color: darkslateblue; */
-    border: outset 2px;
-    border-color: darkslateblue;
-  
-}
-/* 마이페이지 아이콘 기본 위치 */
-#userPage .image-icon img {
-    vertical-align: middle;
-    width: 2%;
-    
-    
-}
-
-#userPage .image-icon hr{
-	margin:-5px -15px 10px 455px;
-	border:1px solid #0000a0;
-}
-/* #userPage .text {
-	
-	
-	
-} */
-
 /* joinOk buttons */
 [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
     cursor: pointer;
