@@ -16,29 +16,13 @@ body {
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
-#container {
-	z-index: 1;
-	border: 1px;
-	outline: dashed 1px black;
-	width: 1024px;
-	height: 768px;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-}
+#container {background:#094e94;border-radius:10px; z-index: 1;	border: 1px;width: 1024px;height: 768px;position: absolute;left: 50%;	top: 50%;transform: translate(-50%, -50%);}
 
-.float-r {
-	float: right;
-}
+.float-r {float: right;}
 
-.float-l {
-	float: left;
-}
+.float-l {float: left;}
 
-.clear {
-	clear: both;
-}
+.clear {clear: both;}
 </style>
 </head>
 <body>
@@ -49,39 +33,41 @@ body {
 			<div class="timerBox float-l" id='timerBox'>
 				<div id="time" class="time">00:00:00</div>
 			</div>
-			<div class="timerBox float-l" id="top-fee">
-				<label for="usingfee">사용요금</label> <input type="text" id="usingfee" value="">
+			<div class="timerBox1 float-l" id="top-fee">
+				<label for="usingfee" class="d-block">사용요금</label><input class="d-block" type="text" id="usingfee" value="">
 			</div>
 		</div>
 		<!-- Mid Info -->
-		<div class="mid" id="mid-scores">
-			<c:forEach var="playUser" items="${tableGameVo.playUserList}">
-				<div class="board float-l" id="boardno${playUser.orderNo}">
-					<div class="bdtop">
-						<div class="userinfo">
-							<img class="float-l" src="${pageContext.request.contextPath}/assets/images/modang.png" width="36" height="36">
-							<div class="usertext float-l">
-								다마수 : ${playUser.currentAverage} <br> ${playUser.nick}
+		<div class="row">
+			<div class="mid" id="mid-scores">
+				<c:forEach var="playUser" items="${tableGameVo.playUserList}">
+					<div class="board float-l" id="boardno${playUser.orderNo}">
+						<div class="bdtop">
+							<div class="userinfo">
+								<img class="float-l imgbox" src="${pageContext.request.contextPath}/assets/images/modang_img.png">
+								<div class="usertext float-l">
+									다마수 : ${playUser.currentAverage} <br> ${playUser.nick}
+								</div>
+							</div>
+							<div class="act-average float-r">
+								총갯수
+								<p id="act-average">${playUser.currentAverage}</p>
 							</div>
 						</div>
-						<div class="act-average float-r">
-							총갯수
-							<p id="act-average">${playUser.currentAverage}</p>
+						<div class="bdmid">
+							<div class="panel panalty float-l">								
+								<p class="touch1" id="panalty"><strong>-</strong></p>
+							</div>
+							<div class="panel1 marks float-l" data-playno="${playUser.playNo}" data-record="0">
+								<p class="currentbd" id="marks">${playUser.currentAverage}</p>
+							</div>
+							<div class="panel2 score float-l">
+								<p class="touch1" id="score"><strong>+</strong></p>
+							</div>
 						</div>
 					</div>
-					<div class="bdmid">
-						<div class="panel panalty float-l">
-							<p class="touch" id="panalty">마이너스</p>
-						</div>
-						<div class="panel marks float-l" data-playno="${playUser.playNo}" data-record="0">
-							<p class="currentbd" id="marks">${playUser.currentAverage}</p>
-						</div>
-						<div class="panel score float-l">
-							<p class="touch" id="score">플러스</p>
-						</div>
-					</div>
-				</div>
-			</c:forEach>
+				</c:forEach>
+			</div>
 		</div>
 	</div>
 </body>
@@ -116,6 +102,9 @@ $(document).ready(function(){
 	$('.btnBox > button').remove('#restartbtn');
 	$('.btnBox > button').remove('#stopbtn');
 	$('.btnBox').prepend('<button id="stopbtn" class="fa fa-stop" aria-hidden="true">강제종료</button> ');
+	
+	//스코어필드 대기상태
+	
 	//테이블상태값 가져오기
 	console.log("테이블상태 :"+tableStatus);
 	switch(tableStatus) {
@@ -159,9 +148,9 @@ $("#time").on('DOMSubtreeModified', function(){
   	var useFee = 0;
   	
   	if (ceilMin <= 30 ) {//올림한경기시간이 30분 이하일때
-  		useFee = tableFee;	  	
+  		useFee = minFee;	  	
   	}else{//올림한경기시간이 30분 초과일때	  		
-  		useFee = tableFee + ((ceilMin-30)/10) * minFee;	 		
+  		useFee = minFee + ((ceilMin-30)/10) * tableFee;	 		
   	}  
 	$('#usingfee').val(useFee);
  });
@@ -256,16 +245,24 @@ $(".panalty").on("click",function(){
 			if(memberNum - 1 == $(thisForm).data('record')) {//멤버숫자 - 1 = 현재 등수 와 같으면 -> 꼴지와 꼴지-1등같이 처리	
 				console.log("멤버숫자 :" + memberNum);
 				record++;
+				$(this).off('click');
 				$(this).attr("data-record",record);
-				var $this = $("div[data-record=0]");
-				var lastPlayNo = $this.data('playno');					
+				var lastMemeber = $("div[data-record=0]");
+				var lastPlayNo = lastMemeber.data('playno');					
 				console.log("꼴지플레이번호 :"+lastPlayNo);
-				var lastActiveAverage = $this.parent().siblings(".bdtop").find("#act-average").text();				
+				lastMemeber.css({
+								"background-color" : "black",
+								"color" : "white",
+								"font" : "50px bold",
+								"text-align" : "center"
+								});
+				lastMemeber.siblings().off('click');
+				var lastActiveAverage = lastMemeber.parent().siblings(".bdtop").find("#act-average").text();				
 				console.log("꼴지 총친타수 : "+lastActiveAverage);
 				
 				var lastPlayUserVo = {
 						playNo : lastPlayNo,
-						record : 4,
+						record : memberNum,
 						gameNo : gameNo,					
 						activeAverage : lastActiveAverage
 
@@ -306,7 +303,7 @@ $(".panalty").on("click",function(){
 								if(ts < 10){
 									ts = "0" + sec;
 								}
-								$this.append(th + ":" + tm + ":" + ts);						
+								lastMemeber.append(th + ":" + tm + ":" + ts);						
 						}
 							timeStamper();
 							gameStop();							
@@ -343,8 +340,8 @@ $(".score").on("click",function(){
 	console.log(score);	
 });
 
-/* 동작1. 시작버튼 클릭했을때 */
-$(".btnBox").on("click","#startbtn", function(){
+/* 동작1. 시작버튼 클릭했을때(1번만실행) */
+$(".btnBox").one("click","#startbtn", function(){
 	console.log("시작버튼 클릭!")
 	gameStart();
 });

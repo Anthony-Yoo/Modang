@@ -48,12 +48,13 @@
 	width: 70px;
 	height: 40px;
 	padding : 8px 20px 9px 20px;
-	background: #2E419A;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #fff;
 	margin: 0px 0px 30px 0px;
+	background : linear-gradient(to bottom right, rgb(9, 32, 80),
+      rgb(81, 117, 164))
 }
 
 /* input id 체크용 */
@@ -126,12 +127,13 @@
 	width: 70px;
 	height: 40px;
 	padding : 8px 20px 9px 20px;
-	background: #2E419A;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #fff;
 	margin: 0px 0px 30px 0px;
+	background : linear-gradient(to bottom right, rgb(9, 32, 80),
+      rgb(81, 117, 164))
 }
 
 /* Cellphone modal */
@@ -182,10 +184,11 @@
 /* submit button */
 #main form .button-area #btn-submit{
 	width: 100%;
-	background-color:  #2E419A;
 	color: #fff;
 	border-radius:10px;
 	line-height: 40px;
+	background : linear-gradient(to bottom right, rgb(9, 32, 80),
+      rgb(81, 117, 164))
 }
 
 /* modify image size */
@@ -279,7 +282,6 @@ div.content {
 /* 마이페이지 버튼 */
 #userPage button {
 	width: 30%;
-	background-color:  #2E419A;
 	color: #fff;
 	border-radius:10px;
 	line-height: 40px;
@@ -287,6 +289,8 @@ div.content {
     border: 0;
     padding: 0;
     margin: 100px 0px 0px 240px;
+    background : linear-gradient(to bottom right, rgb(9, 32, 80),
+      rgb(81, 117, 164))
 }
 
 /* 마이페이지 대표이미지 */
@@ -294,7 +298,7 @@ div.content {
     vertical-align: top;
     width:258px; 
     height: 258px;
-    margin: -250px 10px 10px -66px; 
+    margin: -3px 10px 10px -151px; 
     /* border: outset 2px; 
     border-color: darkslateblue; */
     border: outset 2px;
@@ -303,18 +307,21 @@ div.content {
 }
 /* 마이페이지 아이콘 기본 위치 */
 #userPage .image-icon img {
-    vertical-align: super;
+    vertical-align: middle;
     width: 5%;
-    margin:50px 10px 10px 480px;
+    
     
 }
 
-#userPage .text {
-	font-size: 30px;
-	padding: 40px 0px 0px 320px;
-	margin: -100px 0px -25px 240px;
+#userPage .image-icon hr{
+	margin:-5px -15px 10px 455px;
 	
 }
+/* #userPage .text {
+	
+	
+	
+} */
 
 /* joinOk buttons */
 [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {

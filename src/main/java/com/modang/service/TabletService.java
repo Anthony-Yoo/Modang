@@ -137,6 +137,7 @@ public class TabletService {
 		//플레이넘버 인서트 및 찾기		
 		int gameNo = tableGame.getGameNo();
 		List<PlayUserVo> playUserList = new ArrayList<PlayUserVo>();
+		
 		playUserList = tableGame.getPlayUserList();
 		for (PlayUserVo vo : playUserList) {
 			vo.setGameNo(gameNo);
@@ -327,9 +328,9 @@ public class TabletService {
 		int ceilMin = (int)(Math.ceil(gameMin/10)*10);
 		int useFee = 0;
 		if (ceilMin <= 30) {
-			useFee = tableFee;// 기본요금
+			useFee = minFee;// 기본요금
 		}else {
-			useFee = tableFee + ((ceilMin-30)/10) * minFee;//기본요금 +((올림한경기시간-30)/10) * 10분당 요금
+			useFee = minFee + ((ceilMin-30)/10) * tableFee;//기본요금 +((올림한경기시간-30)/10) * 10분당 요금
 		}
 		System.out.println(useFee);
 		tableGameVo.setPayMoney(useFee);		
