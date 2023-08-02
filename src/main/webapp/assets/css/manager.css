@@ -179,6 +179,93 @@ justify-content: center;align-items: center; pointer-events: none;}
 .record-list table thead{background-color: #ecdfdf;}
 .record-list table thead th{border-top: 2px solid #2E419A;border-bottom: 2px solid #2E419A; width: 100px; height: 35px;}
 .record-list table thead th:nth-child(2),.record-list table thead th:nth-child(3){width: 180px;}
-.record-list table tbody{}
 .record-list table tr{border: 1px solid #2E419A; border-left: 0;border-right: 0;}
 .record-list table td{height: 30px;}
+
+/*친구목록*/
+.mainCon{width: 1050px; height: auto; margin: 50px auto 0;}
+h2{color: #2E419A; margin: 30px auto; width: 110px;}
+.del{background-color: #2E419A; color: #fff; padding: 2px 8px; border-radius: 4px;
+	cursor: pointer;}
+/*친구 찾기*/
+.mainCon .friendSearch{width: 1000px; height: 180px; margin: 0 auto; text-align: center;}
+.mainCon .friendSearch label{font-size: 14px;}
+.mainCon .friendSearch input#seardid{width: 500px; height: 36px; border: 2px solid #2E419A; border-radius: 4px;
+	padding-left: 10px; background-color: #f6f6f6;}
+.mainCon .friendSearch .search{background-color: #2E419A; color: #fff; padding: 3px 8px; border-radius: 4px; cursor: pointer;}
+.mainCon .friendSearch .searchList{width: 500px; height: 100px; margin: 0 0 0 278px;}
+.mainCon .friendSearch .searchList ul{width: 500px; height: 100%; margin-top: 3px; border: 2px solid #2E419A;
+	box-sizing: border-box; border-radius: 4px; overflow-y: scroll; background-color: #f6f6f6;}
+.mainCon .friendSearch .searchList ul li{margin: 4px 0;height: 24px; }
+.mainCon .friendSearch .searchList ul li span{display: inline-block; width: 400px; text-align: left;}
+.mainCon .friendSearch .searchList ul li button.add{background-color: #2E419A; font-size: 12px; color: #fff;
+	padding: 3px 6px; border-radius: 4px;cursor: pointer;}
+/*핀구 리스트*/
+.mainCon .friendList{width: 1000px; height: 400px; margin: 0 auto ; }
+.mainCon .friendList table{width: 1000px; text-align: center; margin: 0 auto; border: 1px solid #2E419A;}
+.mainCon .friendList table thead{height: 40px; border-top: 1px solid #2E419A;border-bottom: 1px solid #2E419A;
+	background-color: #ecdfdf; line-height: 40px;}
+.mainCon .friendList table thead th{color: #2E419A; font-weight: 600;width: 100px;}
+.mainCon .friendList tbody{height: 100%;}
+.mainCon .friendList tbody tr{height: 30px;}
+.mainCon .friendList tbody tr td{padding: 3px 0;}
+.mainCon .friendList tbody tr td strong{padding: 2px; font-size: 16px;}
+.mainCon .friendList .pasing{ height: 30px; margin: 20px auto 50px; width: 246px;}
+.mainCon .friendList .pasing span{display: inline-block; width: 30px; height: 24px; text-align: center;
+	color: #2E419A; line-height: 10px; cursor: pointer;}
+
+
+/*친구카드*/
+.main-Con{width: 1050px; height: 800px; margin: 50px auto;}
+.main-Con .border{display: inline-block; width: 2px; height: 700px; background: #2E419A;
+	margin-left: 25px;}
+.cardAdd>h2,.cardList>h2{color: #2E419A; margin: 20px auto; width: 150px;}
+.left{float: left;width: 500px;height: 100%;}
+.call{display:block; width: 360px;height: 30px; margin: 0 auto; background-color: #2E419A;
+	color: #fff; border-radius: 4px; cursor: pointer;}
+/*카드추가*/
+.cardAdd .searhId{width: 360px; margin: 0 auto; height: auto;}
+.cardAdd .searhId input.insertId{display: inline-block; width: 300px; height: 30px;
+	padding-left: 10px; border-radius: 4px; background-color: #f6f6f6;}
+.cardAdd .searhId>button.del{font-size: 14px; line-height:22px;  padding: 3px 10px;}
+.cardAdd .searhId ul{background-color: #f6f6f6; width: 360px; height: 120px; overflow-y: scroll; margin-top: 2px;
+	border: 1px solid #2E419A; border-radius: 4px; box-sizing: border-box;}
+.cardAdd .searhId ul li{width: 310px; height: 24px; margin-bottom: 2px; padding:2px 15px;}
+.cardAdd .searhId ul li span{display: inline-block; width: 240px;}
+.cardAdd .searhId ul li button{float: right;font-size: 12px;}
+/*친구목록 부르기*/
+.cardAdd .callFriend{width: 360px; margin: 10px auto 0;}
+.cardAdd .callFriend ul{background-color: #f6f6f6; width: 360px; height: 120px; overflow-y: scroll; margin-top: 2px;
+	border: 1px solid #2E419A; border-radius: 4px; box-sizing: border-box;}
+.cardAdd .callFriend ul li{width: 310px; height: 22px; margin-bottom: 2px; padding:2px 15px;}
+.cardAdd .callFriend ul li img{display: inline-block; width: 20px; height: 20px; border-radius: 10px;}
+.cardAdd .callFriend ul li span{display: inline-block; width: 200px;}
+.cardAdd .callFriend ul li button{float: right;font-size: 12px;}
+/*카드 멤버 리스트*/
+.List{width: 440px; height: 330px;margin: 50px auto; padding: 20px 0; background-color: #ecdfdf; border: 2px solid #2E419A;
+	border-radius: 10px; box-sizing: border-box;}
+.List p{color: #2E419A; font-weight: 800; border: 2px solid #2E419A; padding: 6px 5px; width: 200px; text-align: center;
+	margin: 0 auto 20px; border-radius: 4px; box-sizing: border-box;}
+.List label{margin-left: 40px; font-size: 14px;}
+.List input.cardName{display:inline-block; width: 300px; height: 30px; background-color: #f6f6f6;
+	padding: 2px 0 2px 15px; border-radius: 4px; border: 1px solid #2E419A; margin: 0 auto;}
+.List ul{ margin: 20px auto; width: 400px;}
+.List ul li{margin:0 auto 4px; border-bottom: 1px solid #2E419A; padding: 2px 0 3px; width: 360px;}
+.List ul li span{width: 260px; display: inline-block; font-weight: 600; padding:2px 20px;}
+.List ul li button.del{font-size: 12px; }
+.List .call{margin-top: 30px;}
+.main-Con .border{width: 2px; height: 800px; background-color: #2E419A;margin-left:10px;}
+/*카드리스트*/
+.right{float: right; width: 530px; height: 100%;}
+.cardList>ul{ width: 520px; height: 700px; margin: 0 0 0 10px; overflow-y: scroll;}
+.cardList>ul>li{display: inline-block; width: 240px; height: 180px; border: 2px solid #2E419A; border-radius: 10px;
+	margin-top: 20px;}
+.cardList>ul>li:nth-child(1),.cardList>ul>li:nth-child(2){margin-top: 0;}
+.cardList>ul li h4{color: #2E419A; text-align: center; line-height: 36px; height: 36px;}
+.cardList>ul>li ul.nick{ width: 220px; margin: 0 auto; border-top: 1px solid #2E419A; height: 110px;}
+.cardList>ul>li ul.nick li{ width: 220px; margin-top: 5px; text-align: center; font-size: 16px;
+	font-weight: 600; height: 20px;}
+.cardList>ul>li span{display: inline-block; width: 180px; height: 26px; margin-left: 10px;
+	padding-left: 10px; font-size: 14px;}
+.cardList>ul>li button{display: inline-block; width: 26px; height: 26px; cursor: pointer;
+	color: #2E419A; border-radius: 4px; background-color: #fff; border: 1px solid #2E419A;}
