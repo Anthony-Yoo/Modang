@@ -55,7 +55,7 @@ body {
 							</div>
 						</div>
 						<div class="bdmid">
-							<div class="panel panalty float-l">
+							<div class="panel panalty float-l">								
 								<p class="touch1" id="panalty"><strong>-</strong></p>
 							</div>
 							<div class="panel1 marks float-l" data-playno="${playUser.playNo}" data-record="0">
@@ -102,6 +102,9 @@ $(document).ready(function(){
 	$('.btnBox > button').remove('#restartbtn');
 	$('.btnBox > button').remove('#stopbtn');
 	$('.btnBox').prepend('<button id="stopbtn" class="fa fa-stop" aria-hidden="true">강제종료</button> ');
+	
+	//스코어필드 대기상태
+	
 	//테이블상태값 가져오기
 	console.log("테이블상태 :"+tableStatus);
 	switch(tableStatus) {
@@ -145,9 +148,9 @@ $("#time").on('DOMSubtreeModified', function(){
   	var useFee = 0;
   	
   	if (ceilMin <= 30 ) {//올림한경기시간이 30분 이하일때
-  		useFee = tableFee;	  	
+  		useFee = minFee;	  	
   	}else{//올림한경기시간이 30분 초과일때	  		
-  		useFee = tableFee + ((ceilMin-30)/10) * minFee;	 		
+  		useFee = minFee + ((ceilMin-30)/10) * tableFee;	 		
   	}  
 	$('#usingfee').val(useFee);
  });
@@ -244,10 +247,17 @@ $(".panalty").on("click",function(){
 				record++;
 				$(this).off('click');
 				$(this).attr("data-record",record);
-				var $this = $("div[data-record=0]");
-				var lastPlayNo = $this.data('playno');					
+				var lastMemeber = $("div[data-record=0]");
+				var lastPlayNo = lastMemeber.data('playno');					
 				console.log("꼴지플레이번호 :"+lastPlayNo);
-				var lastActiveAverage = $this.parent().siblings(".bdtop").find("#act-average").text();				
+				lastMemeber.css({
+								"background-color" : "black",
+								"color" : "white",
+								"font" : "50px bold",
+								"text-align" : "center"
+								});
+				lastMemeber.siblings().off('click');
+				var lastActiveAverage = lastMemeber.parent().siblings(".bdtop").find("#act-average").text();				
 				console.log("꼴지 총친타수 : "+lastActiveAverage);
 				
 				var lastPlayUserVo = {
@@ -293,7 +303,7 @@ $(".panalty").on("click",function(){
 								if(ts < 10){
 									ts = "0" + sec;
 								}
-								$this.append(th + ":" + tm + ":" + ts);						
+								lastMemeber.append(th + ":" + tm + ":" + ts);						
 						}
 							timeStamper();
 							gameStop();							
@@ -330,8 +340,8 @@ $(".score").on("click",function(){
 	console.log(score);	
 });
 
-/* 동작1. 시작버튼 클릭했을때 */
-$(".btnBox").on("click","#startbtn", function(){
+/* 동작1. 시작버튼 클릭했을때(1번만실행) */
+$(".btnBox").one("click","#startbtn", function(){
 	console.log("시작버튼 클릭!")
 	gameStart();
 });
