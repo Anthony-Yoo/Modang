@@ -46,12 +46,12 @@ body {
 							<div class="userinfo">
 								<img class="float-l imgbox" src="${pageContext.request.contextPath}/assets/images/modang_img.png">
 								<div class="usertext float-l">
-									다마수 : ${playUser.currentAverage} <br> ${playUser.nick}
+									 <br> ${playUser.nick} [다마수: ${playUser.currentAverage} ]
 								</div>
 							</div>
 							<div class="act-average float-r">
-								총갯수
-								<p id="act-average">${playUser.currentAverage}</p>
+								
+								<p id="act-average">Total: ${playUser.currentAverage}</p>
 							</div>
 						</div>
 						<div class="bdmid">
@@ -167,7 +167,7 @@ $(".panalty").on("click",function(){
 		$(this).off('click');
 		$(this).siblings(".score").off('click');		
 		$this.parent(".marks").css({"background-color" : "black",
-									"color" : "white",
+									"color" : "#379c23",
 									"font" : "50px bold",
 									"text-align" : "center"});
 		$($this.parent(".marks")).on("click",function(){
