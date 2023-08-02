@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0, minimum-scale=1.0">
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 <title>Insert title here</title>
 <link href="${pageContext.request.contextPath}/assets/css/tablet.css" rel="stylesheet" type="text/css">
@@ -17,12 +18,10 @@ body {
 }
 
 #container {background:#094e94;border-radius:10px; z-index: 1;	border: 1px;width: 1024px;height: 768px;position: absolute;left: 50%;	top: 50%;transform: translate(-50%, -50%);}
-
 .float-r {float: right;}
-
 .float-l {float: left;}
-
 .clear {clear: both;}
+
 </style>
 </head>
 <body>
@@ -34,7 +33,7 @@ body {
 				<div id="time" class="time">00:00:00</div>
 			</div>
 			<div class="timerBox1 float-l" id="top-fee">
-				<label for="usingfee" class="d-block">사용요금</label><input class="d-block" type="text" id="usingfee" value="">
+				<label for="usingfee" class="d-inline-block payMoney">사용요금</label><input class="d-inline-block usingfee" type="text" id="usingfee" value="" readonly>
 			</div>
 		</div>
 		<!-- Mid Info -->
@@ -50,8 +49,8 @@ body {
 								</div>
 							</div>
 							<div class="act-average float-r">
-								
-								<p id="act-average">Total: ${playUser.currentAverage}</p>
+								<p id="total">Total</p>
+								<p id="act-average">${playUser.currentAverage}</p>
 							</div>
 						</div>
 						<div class="bdmid">
@@ -169,9 +168,9 @@ $(".panalty").on("click",function(){
 		$this.text("쿠션");
 		$(this).off('click');
 		$(this).siblings(".score").off('click');		
-		$this.parent(".marks").css({"background-color" : "black",
-									"color" : "#379c23",
-									"font" : "50px bold",
+		$this.parent(".marks").css({"background-color" : "#379c23",
+									"color" : "white",
+									"font" : "30px bold",
 									"text-align" : "center"});
 		$($this.parent(".marks")).on("click",function(){
 			console.log("게임종료!!");			
@@ -251,9 +250,9 @@ $(".panalty").on("click",function(){
 				var lastPlayNo = lastMemeber.data('playno');					
 				console.log("꼴지플레이번호 :"+lastPlayNo);
 				lastMemeber.css({
-								"background-color" : "black",
+								"background-color" : "#379c23",
 								"color" : "white",
-								"font" : "50px bold",
+								"font" : "30px bold",
 								"text-align" : "center"
 								});
 				lastMemeber.siblings().off('click');
