@@ -206,12 +206,13 @@ public class UserController {
 	}
 
 	
-	@RequestMapping(value="/testPage", method= {RequestMethod.GET, RequestMethod.POST})
-	public String testPage() {
-		System.out.println("UserController.testPage()");
-		
-		return "user/testPage";
-	}
+	/*
+	 * @RequestMapping(value="/testPage", method= {RequestMethod.GET,
+	 * RequestMethod.POST}) public String testPage() {
+	 * System.out.println("UserController.testPage()");
+	 * 
+	 * return "user/testPage"; }
+	 */
 }
 	
 
