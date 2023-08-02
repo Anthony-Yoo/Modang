@@ -42,20 +42,20 @@
        								</div>
        							<div class="image-icon">
 									
-									<img src="${pageContext.request.contextPath}/assets/images/user.png" style="margin:-462px 10px -15px 570px;" alt="">
-									<div class="text" data-text-content="true" style="margin: -250px 0px -10px 610px;font-size: 30px;">${requestScope.userVo.id}
+									<img src="${pageContext.request.contextPath}/assets/images/user.png" style="margin:-462px 10px -15px 590px;" alt="">
+									<div class="text" data-text-content="true" style="margin: -250px 0px -10px 645px;font-size: 30px;">${requestScope.userVo.id}
 									</div>
 									
-									<img src="${pageContext.request.contextPath}/assets/images/smartphone.png" style="margin:37px 24px 15px 570px;" alt="">
-									<div class="text" data-text-content="true" style="margin: -50px 0px -25px 610px;font-size: 30px;">${requestScope.userVo.cellphone}
+									<img src="${pageContext.request.contextPath}/assets/images/smartphone.png" style="margin:37px 24px 15px 590px;" alt="">
+									<div class="text" data-text-content="true" style="margin: -50px 0px -25px 645px;font-size: 30px;">${requestScope.userVo.cellphone}
 									</div>
 									
-									<img src="${pageContext.request.contextPath}/assets/images/business-card.png" style="margin:45px 10px -6px 570px;" alt="">
-									<div class="text" data-text-content="true" style="margin: -30px 0px -25px 605px;font-size: 30px;">${requestScope.userVo.nick}
+									<img src="${pageContext.request.contextPath}/assets/images/business-card.png" style="margin:45px 10px -6px 590px;" alt="">
+									<div class="text" data-text-content="true" style="margin: -30px 0px -25px 645px;font-size: 30px;">${requestScope.userVo.nick}
 									</div>
 									
-									<img src="${pageContext.request.contextPath}/assets/images/line-graph.png" style="margin:41px 10px -22px 570px;" alt="">
-									<div class="text" data-text-content="true" style="margin: -10px 0px -25px 610px;font-size: 30px;">${requestScope.userVo.average}
+									<img src="${pageContext.request.contextPath}/assets/images/line-graph.png" style="margin:41px 10px -22px 590px;" alt="">
+									<div class="text" data-text-content="true" style="margin: -10px 0px -25px 645px;font-size: 30px;">${requestScope.userVo.average}
 									</div>
 										
 								</div>

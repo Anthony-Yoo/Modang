@@ -203,7 +203,7 @@ public class UserController {
 	}else {//로그 아웃 되었을 때 메인페이지로
 		return "user/loginForm";
 	}
-	}
+}
 
 	
 	/*

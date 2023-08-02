@@ -186,7 +186,7 @@
 	width: 480px;
 	color: #fff;
 	border-radius:10px;
-	line-height: 40px;
+	line-height: 25px;
 	margin:10px 10px 10px -55px;
 	background : linear-gradient(to bottom right, rgb(9, 32, 80),
       rgb(81, 117, 164))
@@ -328,7 +328,12 @@ div.content {
 /* joinOk buttons */
 [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
     cursor: pointer;
-    margin-left: 0;
-    background-color:  #2E419A;
     color: #fff;
+    width: 480px;
+    height: 40px;
+	border-radius:10px;
+	line-height: 25px;
+	margin:17px 10px 10px 17px;
+	background : linear-gradient(to bottom right, rgb(9, 32, 80),
+      rgb(81, 117, 164))
 }
