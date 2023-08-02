@@ -138,20 +138,26 @@ public class UserController {
 	public String modifyForm(HttpSession session, Model model) {
 		System.out.println("UserController.modifyForm()");
 		
-		//새로 저장된 UserVo의 session코드를 받아 변수 no에 저장
-		String id=((UserVo)session.getAttribute("authUser")).getId();
+		UserVo authUser=(UserVo)session.getAttribute("authUser");
+		
+		if(authUser!=null) {
+		
+		//새로 저장된 UserVo의 session코드를 받아 변수 id에 저장
+		String id=authUser.getId();
 		System.out.println(id);
 		
-		//userService를 통해 로그인한 유저의 모든정보 가져오기
+		//userService id를통해 로그인한 유저의 모든정보 가져오기
 		UserVo userVo=userService.modifyForm(id);
 		System.out.println(userVo);
 		
 		//Dispacher servlet에 유저정보 전달
 		model.addAttribute("userVo", userVo);
-		System.out.println(userVo);
+		System.out.println(userVo);//test vo출력1
 		return "user/modifyForm";
+	}else {
+		return "redirect:/user/loginForm";
 	}
-	
+}
 	/*회원정보 수정*/
 	@RequestMapping(value="/modify", method= {RequestMethod.GET, RequestMethod.POST})
 	public String modify(@ModelAttribute UserVo userVo, MultipartFile file, HttpSession session) {
@@ -197,7 +203,7 @@ public class UserController {
 	        UserVo userVo = userService.userPage(userNo);
 	        model.addAttribute("userVo", userVo);
 	        System.out.println(userVo);
-	        System.out.println(userNo); // check no 출력10
+	        System.out.println(userNo); // check no 출력11
 
 	        return "user/userPage";
 	    } else { // 로그아웃 되었을 때 메인페이지로 리다이렉트
