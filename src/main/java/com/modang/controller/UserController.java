@@ -183,27 +183,28 @@ public class UserController {
 	}
 	
 	//나의 페이지
-	@RequestMapping(value="/userPage", method= {RequestMethod.GET, RequestMethod.POST})
-	public String userPage(HttpSession session,  Model model) {
-		System.out.println("UserController.userPage()");
-		
-		String id=((UserVo)session.getAttribute("authUser")).getId();
-		System.out.println(id);
-		
-		if(id!=null) { //로그인 되어있을 경우 접속
-		
-		UserVo userVo=userService.userPage(id);
-		if(userVo!=null) { //로그인 되어있을 경우 접속
-		model.addAttribute("userVo", userVo);
-		System.out.println(userVo);
-		System.out.println();//check
-		
-		}
-		return "user/userPage";
-	}else {//로그 아웃 되었을 때 메인페이지로
-		return "user/loginForm";
+	@RequestMapping(value = "/userPage", method = { RequestMethod.GET, RequestMethod.POST })
+	public String userPage(HttpSession session, Model model) {
+	    System.out.println("UserController.userPage()");
+
+	    // 세션에서 "authUser" 속성 가져오기
+	    UserVo authUser = (UserVo) session.getAttribute("authUser");
+
+	    if (authUser != null) { // 로그인 되어있을 경우 접속
+	        String userNo = authUser.getId();
+	        System.out.println(userNo);
+
+	        UserVo userVo = userService.userPage(userNo);
+	        model.addAttribute("userVo", userVo);
+	        System.out.println(userVo);
+	        System.out.println(userNo); // check no 출력10
+
+	        return "user/userPage";
+	    } else { // 로그아웃 되었을 때 메인페이지로 리다이렉트
+	        return "redirect:/user/loginForm";
+	    }
 	}
-}
+
 
 	
 	/*

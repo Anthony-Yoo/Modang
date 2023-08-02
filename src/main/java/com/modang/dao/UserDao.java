@@ -77,9 +77,9 @@ public class UserDao {
 		System.out.println("userDao.selectUser()");
 		System.out.println(id);
 		
-		UserVo nick=session.selectOne("user.selectUserPageByNo", id);
-		System.out.println(nick);
-		return nick;
+		UserVo userNo=session.selectOne("user.selectUserPageByNo", id);
+		System.out.println(userNo);
+		return userNo;
 	}
 
 }

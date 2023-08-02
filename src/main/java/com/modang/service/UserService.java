@@ -193,9 +193,9 @@ public class UserService {
 		System.out.println("userService.userPage()");
 		System.out.println(id);
 		
-		UserVo nick=userDao.selectUserInfo(id);
-		System.out.println(nick);
-		return nick;
+		UserVo userNo=userDao.selectUserInfo(id);
+		System.out.println(userNo);
+		return userNo;
 	}
 	
 }
