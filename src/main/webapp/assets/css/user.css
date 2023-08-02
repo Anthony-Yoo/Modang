@@ -288,7 +288,7 @@ div.content {
 	font-size: 15px;
     border: 0;
     padding: 0;
-    margin: 100px 0px 0px 240px;
+    margin: 100px 0px 0px 475px;
     background : linear-gradient(to bottom right, rgb(9, 32, 80),
       rgb(81, 117, 164))
 }
@@ -308,7 +308,7 @@ div.content {
 /* 마이페이지 아이콘 기본 위치 */
 #userPage .image-icon img {
     vertical-align: middle;
-    width: 5%;
+    width: 2%;
     
     
 }
