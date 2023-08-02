@@ -190,10 +190,29 @@ public class UserController {
 		String id=((UserVo)session.getAttribute("authUser")).getId();
 		System.out.println(id);
 		
+		if(id!=null) { //로그인 되어있을 경우 접속
+		
 		UserVo userVo=userService.userPage(id);
+		if(userVo!=null) { //로그인 되어있을 경우 접속
 		model.addAttribute("userVo", userVo);
 		System.out.println(userVo);
+		System.out.println(id);//check
+		
+		}
 		return "user/userPage";
+	}else {//로그 아웃 되었을 때 메인페이지로
+		return "user/loginForm";
 	}
-	
 }
+
+	
+	/*
+	 * @RequestMapping(value="/testPage", method= {RequestMethod.GET,
+	 * RequestMethod.POST}) public String testPage() {
+	 * System.out.println("UserController.testPage()");
+	 * 
+	 * return "user/testPage"; }
+	 */
+}
+	
+

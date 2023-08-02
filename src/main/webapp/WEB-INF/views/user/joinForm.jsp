@@ -164,10 +164,7 @@
 		        				<div class="image-show" id="image-show"></div>
 		    				</div>
 		    				 
-		    				<!-- 서버전송 -->
-		  					<div class="button-area">
-								<button type="submit" id="btn-submit" class="btn btn-primary">회원가입 할거당 ^^</button>
-							</div>
+		    				
 							
 			    		</form>
 			    		<!-- //joinSubmitForm -->
@@ -178,7 +175,10 @@
 		 
 			</div>
 			<!-- //user -->
-			
+			<!-- 서버전송 -->
+		  					<div class="button-area" >
+								<button type="submit" id="btn-submit" class="btn btn-primary" style="height: 35px;">회원가입 할거당 ^^</button>
+							</div>
 		</div>
 		<!-- //container -->
     <!-- 푸터 시작 -->
