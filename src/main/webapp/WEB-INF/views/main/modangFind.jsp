@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>modang 당구장 찾기</title>
 	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
     <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">

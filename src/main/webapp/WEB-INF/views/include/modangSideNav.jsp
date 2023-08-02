@@ -10,7 +10,11 @@
 <body>
 	<div id="sideNav">
 		<div class="sidebar">
+
 			<a class="active" href="userPage">회원정보</a> <a href="userPage">친구목록</a>
+
+			<a class="active" href="${pageContext.request.contextPath}/user/userPage">회원정보</a> <a href="userPage">친구목록</a>
+
 			<a href="userPage">그룹친구</a> <a
 				href="${pageContext.request.contextPath }/attendUsers/myPage/myBoardList">게시판매칭</a>
 			<a href="userPage">전적보기</a>
