@@ -37,8 +37,10 @@
 					<!-- sideNav 끝 -->
 
 					<div class="content">
+					
 									<div class="image-show" id="image-show" >
        									<img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileImage}" >
+       									<img src="${pageContext.request.contextPath}/assets/images/gplayer.jpg" style="margin:-3px 0px 0px -15px;width:760px;opacity: 0.2;" alt="">
        								</div>
        							<div class="image-icon">
 									
@@ -57,7 +59,7 @@
 									<img src="${pageContext.request.contextPath}/assets/images/line-graph.png" style="margin:50px 10px -15px 240px;" alt="">
 									<div class="text" data-text-content="true" style="margin: -25px 0px -25px 295px;font-size: 30px;">${requestScope.userVo.average}
 									</div>
-								
+										
 								</div>
 								
        								
