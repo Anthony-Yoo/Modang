@@ -375,7 +375,7 @@ $(document).ready(function() {
 
 				// 답글쓰기 버튼 클릭 시 대댓글 입력 창 생성
 				$("#cList").on("click", ".comment_info_button", function () {
-					
+					event.preventDefault();
 					// 기존에 생성된 모든 댓글 입력창 삭제
 			        $(".line.lNew").remove();
 			        $(".comment_add.new").remove();
