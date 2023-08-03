@@ -68,4 +68,33 @@ public class AttendUsersController {
 			return "user/loginForm";
 		}
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/myPage/applyList")
+	public JsonResult applyList(@RequestParam("boardNo") int boardNo ,HttpSession session, Model model) {
+		System.out.println("AttendUsersController.applyList()");
+		System.out.println(boardNo);
+		List<AttendUsersVo> result = attendUserService.applyList(boardNo);
+		JsonResult jsonResult = new JsonResult();
+		jsonResult.success(result);
+		
+		return jsonResult;
+	}
+	
+	@RequestMapping(value="/decide")
+	public JsonResult decide(@RequestParam("buttonClass") String buttonClass,
+			@RequestParam("userNo") int userNo) {
+		System.out.println("AttendUsersController.decide()");
+		System.out.println(userNo);
+		System.out.println(buttonClass);
+		if("agree".equals(buttonClass)) {
+			System.out.println("성공");
+		}else if("refuse".equals(buttonClass)) {
+			System.out.println("실패");
+		}
+		
+		
+		JsonResult jsonResult = new JsonResult();
+		return jsonResult;
+	}
 }

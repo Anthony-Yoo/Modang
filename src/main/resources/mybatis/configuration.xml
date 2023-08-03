@@ -14,5 +14,6 @@
         <mapper resource="mybatis/mappers/biliard.xml" /> <!-- 당구장관리용 -->
         <mapper resource="mybatis/mappers/bDComment.xml" /> <!-- 대댓글 -->
         <mapper resource="mybatis/mappers/attendUsers.xml" /> <!-- 신청목록 -->
+        <mapper resource="mybatis/mappers/mypage.xml" />
     </mappers>
 </configuration>

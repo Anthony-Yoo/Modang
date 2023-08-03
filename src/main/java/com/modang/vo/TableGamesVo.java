@@ -22,6 +22,7 @@ public class TableGamesVo {
 	private int setNo; // 고객그룹번호
 	private int gameStatus;
 	private List<PlayUserVo> playUserList; // 플레이 유져리스트
+	private List<RecordUserVo> recordUserList; // 전적 유져리스트
 	private CueTableVo tableInfo;
 	private int tableFee;
 	private int minFee;
@@ -29,7 +30,8 @@ public class TableGamesVo {
 	public TableGamesVo(int gameNo, int tableNo, int gameType, int memberNum, String gameDate, int gameTime,
 			String startTime, String endTime, int payStatus, int payType, String payDate, int income, int payMoney,
 			String pauseStart, String pauseStop, int pauseTime, int setNo, int gameStatus,
-			List<PlayUserVo> playUserList, CueTableVo tableInfo, int tableFee, int minFee, int secondsToTime) {
+			List<PlayUserVo> playUserList, List<RecordUserVo> recordUserList, CueTableVo tableInfo, int tableFee,
+			int minFee, int secondsToTime) {
 		this.gameNo = gameNo;
 		this.tableNo = tableNo;
 		this.gameType = gameType;
@@ -49,6 +51,7 @@ public class TableGamesVo {
 		this.setNo = setNo;
 		this.gameStatus = gameStatus;
 		this.playUserList = playUserList;
+		this.recordUserList = recordUserList;
 		this.tableInfo = tableInfo;
 		this.tableFee = tableFee;
 		this.minFee = minFee;
@@ -170,6 +173,12 @@ public class TableGamesVo {
 	public void setPlayUserList(List<PlayUserVo> playUserList) {
 		this.playUserList = playUserList;
 	}
+	public List<RecordUserVo> getRecordUserList() {
+		return recordUserList;
+	}
+	public void setRecordUserList(List<RecordUserVo> recordUserList) {
+		this.recordUserList = recordUserList;
+	}
 	public CueTableVo getTableInfo() {
 		return tableInfo;
 	}
@@ -201,9 +210,8 @@ public class TableGamesVo {
 				+ ", endTime=" + endTime + ", payStatus=" + payStatus + ", payType=" + payType + ", payDate=" + payDate
 				+ ", income=" + income + ", payMoney=" + payMoney + ", pauseStart=" + pauseStart + ", pauseStop="
 				+ pauseStop + ", pauseTime=" + pauseTime + ", setNo=" + setNo + ", gameStatus=" + gameStatus
-				+ ", playUserList=" + playUserList + ", tableInfo=" + tableInfo + ", tableFee=" + tableFee + ", minFee="
-				+ minFee + ", secondsToTime=" + secondsToTime + "]";
+				+ ", playUserList=" + playUserList + ", recordUserList=" + recordUserList + ", tableInfo=" + tableInfo
+				+ ", tableFee=" + tableFee + ", minFee=" + minFee + ", secondsToTime=" + secondsToTime + "]";
 	}
-	
 	
 }

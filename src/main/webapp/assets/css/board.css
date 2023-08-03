@@ -840,8 +840,20 @@ address, em {
     height: 300px;
 }
 
-#applyList .btnModal {
+#applyList .btnModal{
     width: 65px;
     margin: 0 auto;
     height: 30px;
+    background: linear-gradient(to bottom right, rgb(9, 32, 80), rgb(81, 117, 164));
+	color: white;
+	border-radius: 2px;
+}
+
+.modal-header .close{
+	color: black;
+}
+
+.modal-header .modal-title{
+	text-align: center;
+	font-weight: bold;
 }
