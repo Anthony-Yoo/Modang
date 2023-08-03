@@ -48,7 +48,7 @@
                         <span>강동구일짱</span>
                         <button type="button" class="del">추가</button>                        </li>
                     <li>
-                        <img src="${pageContext.request.contextPath}/assets/images/modang_logo.png"" alt="">
+                        <img src="${pageContext.request.contextPath}/assets/images/modang_logo.png" alt="">
                         <span>김개똥</span>
                         <button type="button" class="del">추가</button>
                     </li>
