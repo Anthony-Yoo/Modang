@@ -34,4 +34,11 @@ public class AttendUsersService {
 		
 		return vo;
 	}
+	
+	public List<AttendUsersVo> applyList(int boardNo){
+		System.out.println("AttendUserService.applyList()");
+		List<AttendUsersVo> vo = new ArrayList<AttendUsersVo>();
+		vo = attendUsersDao.applyList(boardNo);
+		return vo;
+	}
 }

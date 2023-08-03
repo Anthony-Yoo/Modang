@@ -35,7 +35,15 @@ public class AttendUsersDao {
 	public List<BoardVo> myApplyList(int userNo){
 		System.out.println("AttendUsersDao.myApplyList()");
 		List<BoardVo> vo = new ArrayList<BoardVo>();
-		vo = sqlSession.selectList("attendUsers.applyList", userNo);
+		vo = sqlSession.selectList("attendUsers.myApplyList", userNo);
+		return vo;
+	}
+	
+	public List<AttendUsersVo> applyList(int boardNo){
+		System.out.println("AttendUsersDao.applyList()");
+		List<AttendUsersVo> vo = new ArrayList<AttendUsersVo>();
+		vo = sqlSession.selectList("attendUsers.applyList", boardNo);
+		System.out.println(vo);
 		return vo;
 	}
 	

@@ -48,7 +48,7 @@
 	
 	</select>
 	
-	<select id="applyList" parameterType="int" resultType="com.modang.vo.BoardVo">
+	<select id="myApplyList" parameterType="int" resultType="com.modang.vo.BoardVo">
 	<![CDATA[
 		SELECT 
 		    mb.boardno,
@@ -72,5 +72,21 @@
 		WHERE 
 		    au.userNo = #{userNo}
 	]]>
+	</select>
+
+	<select id="applyList" parameterType="int" resultType="com.modang.vo.AttendUsersVo">
+		<![CDATA[
+			select rownum,
+				   au.attendNo,
+				   au.boardNo,
+				   au.userNo,
+				   TO_CHAR(au.attendDate, 'YYYY-MM-DD') AS attendDate,
+				   au.status,
+				   u.nick,
+				   u.average 
+			from attendusers au, users u 
+			where au.boardNo = #{boardNo} and au.userNo = u.userNo
+			order by attenddate asc
+		]]>
 	</select>
 </mapper>
