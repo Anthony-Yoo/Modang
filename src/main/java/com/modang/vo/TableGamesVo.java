@@ -26,10 +26,20 @@ public class TableGamesVo {
 	private int tableFee;
 	private int minFee;
 	private int secondsToTime;
+	private int rownum; //순서
+	private String minDate; //검색최소날짜
+	private String maxDate; //검색최대날짜
+	private String tableName; //테이블네임
+	
+	public TableGamesVo() {
+	}
+	
 	public TableGamesVo(int gameNo, int tableNo, int gameType, int memberNum, String gameDate, int gameTime,
 			String startTime, String endTime, int payStatus, int payType, String payDate, int income, int payMoney,
 			String pauseStart, String pauseStop, int pauseTime, int setNo, int gameStatus,
-			List<PlayUserVo> playUserList, CueTableVo tableInfo, int tableFee, int minFee, int secondsToTime) {
+			List<PlayUserVo> playUserList, CueTableVo tableInfo, int tableFee, int minFee, int secondsToTime,
+			int rownum, String minDate, String maxDate, String tableName) {
+		super();
 		this.gameNo = gameNo;
 		this.tableNo = tableNo;
 		this.gameType = gameType;
@@ -53,9 +63,12 @@ public class TableGamesVo {
 		this.tableFee = tableFee;
 		this.minFee = minFee;
 		this.secondsToTime = secondsToTime;
+		this.rownum = rownum;
+		this.minDate = minDate;
+		this.maxDate = maxDate;
+		this.tableName = tableName;
 	}
-	public TableGamesVo() {
-	}
+
 	public int getGameNo() {
 		return gameNo;
 	}
@@ -194,6 +207,39 @@ public class TableGamesVo {
 	public void setSecondsToTime(int secondsToTime) {
 		this.secondsToTime = secondsToTime;
 	}
+		
+	public String getMinDate() {
+		return minDate;
+	}
+
+	public void setMinDate(String minDate) {
+		this.minDate = minDate;
+	}
+
+	public String getMaxDate() {
+		return maxDate;
+	}
+
+	public void setMaxDate(String maxDate) {
+		this.maxDate = maxDate;
+	}
+
+	public int getRownum() {
+		return rownum;
+	}
+
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
+	}
+
+	public String getTableName() {
+		return tableName;
+	}
+
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
+	}
+
 	@Override
 	public String toString() {
 		return "TableGamesVo [gameNo=" + gameNo + ", tableNo=" + tableNo + ", gameType=" + gameType + ", memberNum="
@@ -202,8 +248,9 @@ public class TableGamesVo {
 				+ ", income=" + income + ", payMoney=" + payMoney + ", pauseStart=" + pauseStart + ", pauseStop="
 				+ pauseStop + ", pauseTime=" + pauseTime + ", setNo=" + setNo + ", gameStatus=" + gameStatus
 				+ ", playUserList=" + playUserList + ", tableInfo=" + tableInfo + ", tableFee=" + tableFee + ", minFee="
-				+ minFee + ", secondsToTime=" + secondsToTime + "]";
+				+ minFee + ", secondsToTime=" + secondsToTime + ", rownum=" + rownum + ", minDate=" + minDate
+				+ ", maxDate=" + maxDate + ", tableName=" + tableName + "]";
 	}
-	
+
 	
 }

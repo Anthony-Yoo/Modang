@@ -50,14 +50,15 @@ img {display: inline-block;}
 .box{width: 200px;height: 150px;}
 .timerBox{width: 180px;height : 100px;margin-top: 15px;}
 .timerBox1{width: 250px;height : 100px;margin-top: 5px;}
-.timerBox2{width: 300px;height : 100px;margin-top: 5px;}
 .usingfee  {margin-left: 20px; margin-top: 20px; width: 110px;text-align: center; border: none;outline: none;font-family: 'Noto Sans KR', sans-serif;	font: 30px bold;} /* outline 테두리 없애기 */
-.usingfee1  {width: 150px;height: 50px;margin-left: 20px; margin-top: 20px;text-align: center; border: none;outline: none;font-family: 'Noto Sans KR', sans-serif;	font: 30px bold;} /* outline 테두리 없애기 */
 #timerBox{margin-left: 35px;}
 #top-fee{margin-left: 150px;}
-.timerBox .time{font-size:38pt;color:white;text-align: center;font-family: sans-serif;}			
+
+.timerBox .time{font-size:38pt;color:white;text-align: center;font-family: sans-serif;}		
+			
 .btnBox{margin-left:31px;width: 350px;margin-top:20px;text-align:left;}
-.btnBox .fa{margin: 5px 10px;display:inline-block;font-weight:400;color:#fff;text-align:center;vertical-align:middle;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background:#45a8d6;border:none;padding:.5rem 1.25rem;font-size:.875rem;line-height:1.5rem;border-radius:.25rem;cursor:pointer;}
+
+.btnBox .fa{width:100px;margin: 5px 10px;display:inline-block;font-weight:400;color:#fff;text-align:center;vertical-align:middle;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background:#45a8d6;border:none;padding:.5rem 1.25rem;font-size:.875rem;line-height:1.5rem;border-radius:.25rem;cursor:pointer;}
 .btnBox .fa1{margin: 10px 10px;font-size: 10pt;color: #000000;cursor: pointer;}
 .btnBox input {width: 50px;}
 .d-inline {display:inline !important}
@@ -68,22 +69,36 @@ img {display: inline-block;}
 .imgbox{width:70px;height:70px;border-radius:5px;}	
 .imgbox1{width:150px;height:150px;border-radius:5px;}	
 #total{font-size:10px;}	
-.rangkbox1{position: fixed;bottom: 110px;left:100px;width: 200px; height: 260px;background-color: #b93f0f;}
-.rangkbox2{position: fixed;left: 310px;bottom: 110px;width: 200px; height: 210px;background-color: #fad122;}
-.rangkbox3{position: fixed;left: 520px;bottom: 110px;width: 200px; height: 180px;background-color: #fad122;}
-.rangkbox4{position: fixed;left: 730px;bottom: 110px;width: 200px; height: 150px;background-color: #fad122;}
 .payMoney{font-size:20px;}
+.listbox{background-color:orange;width:100}
+#playname{width:150px;font-size:20px;color: #1e43bf;text-align:center;margin-top: 5px;}
+.playTime{margin-top:5px;}
+#activeAverage{position: fixed;}
+
+/*결과보기 */
+#top-fee1{margin-left: 50px;margin-right: 5px;}
+.timerBox2{width: 300px;height : 100px;margin-top: 15px;}
+.timerBox3{width: 500px;height : 100px;margin-top: 15px;}
+.timerBox3 .time{width:300px;font-size:28pt;color:white;font-family: sans-serif;margin-top: 25px;margin-left: 20px;}
 #crown{margin-left: 25px;margin-top: 100px;width:150px;}	
 #rboardno-1{margin-top: 20px;margin-left:105px;}	
 #rboardno-2{margin-top: 70px;margin-left:10px;}	
 #rboardno-3{margin-top: 100px;margin-left:10px;}	
 #rboardno-4{margin-top: 130px;margin-left:10px;}	
-.listbox{background-color:orange;width:100}
-#playname{width:150px;font-size:20px;color: #1e43bf;text-align:center;margin-top: 5px;}
-.playTime{margin-top:5px;}
-#activeAverage{position: fixed;}
 #name1{text-align:center;width: 200px;position: fixed;font-size:60px;margin-top:10px;color: white;}
 #name2{text-align:center;width: 200px;position: fixed;font-size:30px;margin-top:30px;color: #f1920f;}
 #winText{font-size:30px;width:150px;text-align:center;color:#b93f0f;}
 #recordText{font-size:30px;width:150px;text-align:center;margin-bottom: 20px;}
 #loseText{font-size:30px;width:150px;text-align:center;margin-bottom: 20px;}
+.rankbox1{position: fixed;bottom: 110px;left:100px;width: 200px; height: 260px;background-color: #b93f0f;}
+.rankbox2{position: fixed;left: 310px;bottom: 110px;width: 200px; height: 210px;background-color: #fad122;}
+.rankbox3{position: fixed;left: 520px;bottom: 110px;width: 200px; height: 180px;background-color: #fad122;}
+.rankbox4{position: fixed;left: 730px;bottom: 110px;width: 200px; height: 150px;background-color: #fad122;}
+.timelabel1{font-size:30px;color:white;margin-left: 20px;}
+.timelabel2{font-size:30px;color:white;}
+.usingfee1  {width: 150px;height: 50px;margin-left: 20px; margin-top: 20px; border: none;outline: none;text-align: center;font-family: 'Noto Sans KR', sans-serif;	font: 30px bold;} /* outline 테두리 없애기 */
+.btnBox1{margin-right: 4px;width: 350px;margin-top:20px;text-align:left;}
+.btnBox1 .fa2{margin: 5px 10px;width: 150px; height: 50px;display:inline-block;font-weight:400;color:#fff;text-align:center;vertical-align:middle;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background:#45a8d6;border:none;padding:.5rem 1.25rem;font-size:.875rem;line-height:1.5rem;border-radius:.25rem;cursor:pointer;}
+#startButton {display: none; /* 버튼 숨기기 */}
+#stopButton {display: none; /* 버튼 숨기기 */}
+

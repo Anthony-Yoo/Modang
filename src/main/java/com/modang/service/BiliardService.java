@@ -111,6 +111,14 @@ public class BiliardService {
 		return cuetableList;
 	}
 	
+	/* 테이블 매출 검색 */
+	public List<TableGamesVo> searchTable(TableGamesVo gamesVo ) {
+		System.out.println("BiliardService.searchTable()");
+		
+		List<TableGamesVo> salesList = biliardDao.selectOneTableSales(gamesVo);
+		return salesList;
+	}
+	
 	/* 요금테이블 페이지--------------------------------------------------------------------------------- */
 	/* 요금테이블 - 요금정보 가져오기 */
 	public TariffVo getPrice(int biliardNo) {
