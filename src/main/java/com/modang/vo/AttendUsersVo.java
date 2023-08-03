@@ -2,6 +2,7 @@ package com.modang.vo;
 
 public class AttendUsersVo {
 
+	private String buttonClass;
 	private int rownum;
 	private int attendNo;
 	private int boardNo;
@@ -16,9 +17,10 @@ public class AttendUsersVo {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AttendUsersVo(int rownum, int attendNo, int boardNo, int userNo, String attendDate, int status, String nick,
-			int average) {
+	public AttendUsersVo(String buttonClass, int rownum, int attendNo, int boardNo, int userNo, String attendDate,
+			int status, String nick, int average) {
 		super();
+		this.buttonClass = buttonClass;
 		this.rownum = rownum;
 		this.attendNo = attendNo;
 		this.boardNo = boardNo;
@@ -27,6 +29,14 @@ public class AttendUsersVo {
 		this.status = status;
 		this.nick = nick;
 		this.average = average;
+	}
+
+	public String getButtonClass() {
+		return buttonClass;
+	}
+
+	public void setButtonClass(String buttonClass) {
+		this.buttonClass = buttonClass;
 	}
 
 	public int getRownum() {
@@ -95,9 +105,9 @@ public class AttendUsersVo {
 
 	@Override
 	public String toString() {
-		return "AttendUsersVo [rownum=" + rownum + ", attendNo=" + attendNo + ", boardNo=" + boardNo + ", userNo="
-				+ userNo + ", attendDate=" + attendDate + ", status=" + status + ", nick=" + nick + ", average="
-				+ average + "]";
+		return "AttendUsersVo [buttonClass=" + buttonClass + ", rownum=" + rownum + ", attendNo=" + attendNo
+				+ ", boardNo=" + boardNo + ", userNo=" + userNo + ", attendDate=" + attendDate + ", status=" + status
+				+ ", nick=" + nick + ", average=" + average + "]";
 	}
-	
+
 }

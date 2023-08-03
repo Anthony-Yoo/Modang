@@ -42,6 +42,7 @@ public class AttendUsersController {
 		return jsonResult;
 	}
 
+	
 	// 마이페이지 내가 쓴 글 리스트 목록
 	@RequestMapping(value = "/myPage/myBoardList")
 	public String myBoardList(HttpSession session, Model model) {
@@ -56,6 +57,7 @@ public class AttendUsersController {
 		}
 	}
 	
+	/* 내가 신청한 리스트 */
 	@RequestMapping(value="/myPage/myApplyList")
 	public String myApplyList(HttpSession session, Model model) {
 		System.out.println("AttendUsersController.myApplyList()");
@@ -69,6 +71,7 @@ public class AttendUsersController {
 		}
 	}
 	
+	/* 내 글에 신청한 리스트 */
 	@ResponseBody
 	@RequestMapping(value="/myPage/applyList")
 	public JsonResult applyList(@RequestParam("boardNo") int boardNo ,HttpSession session, Model model) {
@@ -81,15 +84,15 @@ public class AttendUsersController {
 		return jsonResult;
 	}
 	
+	/* 내 글 신청자들 승인 및 거절 */
+	@ResponseBody
 	@RequestMapping(value="/decide")
-	public JsonResult decide(@RequestParam("buttonClass") String buttonClass,
-			@RequestParam("userNo") int userNo) {
+	public JsonResult decide(@RequestBody AttendUsersVo attendUsersVo) {
 		System.out.println("AttendUsersController.decide()");
-		System.out.println(userNo);
-		System.out.println(buttonClass);
-		if("agree".equals(buttonClass)) {
-			System.out.println("성공");
-		}else if("refuse".equals(buttonClass)) {
+		System.out.println(attendUsersVo);
+		if("agree".equals(attendUsersVo.getButtonClass())) {
+			attendUserService.approve(attendUsersVo);
+		}else if("refuse".equals(attendUsersVo.getButtonClass())) {
 			System.out.println("실패");
 		}
 		
