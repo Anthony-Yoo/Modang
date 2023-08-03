@@ -135,36 +135,38 @@ img {vertical-align: top;}/*reset*/
 
 
 
-/* 마이페이지(userPage) side nav */
-#userPage .sidebar {
+/*  side nav */
+ .sidebar {
   	margin: 0;
   	font-family: "Lato", sans-serif;
     padding: 0;
     width: 150px;
     background-color: #f1f1f1;
+    margin: auto;
     position: absolute;
    /*  height: 30%; */
     
 }
 
 
-#userPage .sidebar a {
+ .sidebar a {
   display: block;
   color: black;
   padding: 16px;
-  width: 118px;
   text-decoration: none;
   text-align: -webkit-center;
   font:15px "맑은 고딕", 돋움, 굴림;
   
 }
  
-#userPage .sidebar a.active {
+ .sidebar a.active {
 	background-color: #2E419A;
   	color: white;
 }
 
-#userPage .sidebar a:hover:not(.active) {
+ .sidebar a:hover:not(.active) {
   background-color: #555;
   color: white;
 }
+
+

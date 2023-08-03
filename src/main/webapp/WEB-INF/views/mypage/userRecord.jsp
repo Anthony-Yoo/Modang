@@ -220,11 +220,13 @@ $("#gameInfo").on("click", "tr", function(){
    //모달창 호출
    $('#myModal').modal('show');
 });
-function renderEach(playlist) {	  	
-	$.each(playlist,function(key,data){
+
+function renderEach(playlist) {	 
 	var cnt = 0;
+	$.each(playlist,function(key,data){	
+	cnt++
 	var src = "";
-	src += '<tr id="t-' + cnt++ + '">';
+	src += '<tr id="t-' + cnt + '">';
 	src += '	<td>' + cnt + '</td>';
 	src += '	<td>' + data.nick +'</td>';
 	src += '	<td>' + data.average +'</td>';
