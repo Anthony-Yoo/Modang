@@ -8,6 +8,10 @@
 	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
     <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
     <link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
+    <!-- jquery -->   
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
+	<!-- 부트스트랩 -->
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 </head>
 <body>
     <!-- 헤더 시작 -->
@@ -117,26 +121,26 @@
                 <div class="modal-body">
                     <div class="mView">
                         <div class="mImg">
-                            <img src="./map1.png" alt="당구장 이미지 1(필수)">
-                            <img src="./ori.png" alt="당구장 이미지 2">
-                            <img src="./d.jpeg" alt="당구장 이미지 3">
+                            <img src="${pageContext.request.contextPath}/assets/images/room.jpg" alt="당구장 이미지 1(필수)">
+                            <img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="당구장 이미지 2">
+                            <img src="${pageContext.request.contextPath}/assets/images/smoking.jpg" alt="당구장 이미지 3">
                         </div>
                         <div class="mDetail">
                             <ul>
                                 <li>
-                                    <img src="./clock.png" alt="시간">
+                                    <img src="${pageContext.request.contextPath}/assets/images/clock.png" alt="시간">
                                     <span>11:00 ~24:00</span>
                                 </li>
                                 <li>
-                                    <img src="./parking.png" alt="주차 여부">
+                                    <img src="${pageContext.request.contextPath}/assets/images/parking.png" alt="주차 여부">
                                     <span>주차 가능</span>
                                 </li>
                                 <li>
-                                    <img src="./map.png" alt="매장 주소">
+                                    <img src="${pageContext.request.contextPath}/assets/images/map.png" alt="매장 주소">
                                     <span>강동구 강동동 강동 88-88 2층</span>
                                 </li>
                                 <li class="txt">
-                                    <img src="./business-card.png" alt="추가 내용">
+                                    <img src="${pageContext.request.contextPath}/assets/images/file.png" alt="추가 내용">
                                     <span>가브리엘 국제식 대대 5대 및 중대, 포켓볼을 구비한 강동구 최고 시설</span>
                                 </li>
                             </ul>
@@ -151,12 +155,14 @@
     </div>
 </body>
 <script>
-    //당구장 상세보기 모달창 호출 버튼->모달창 뜸
-    $(".modangList").on("click", ".btnModal" , function(){
-   console.log("모달창 호출버튼 클릭");
-   
-   //모달창 호출
-   $('#detailModal').modal('show')
-});
+	$(document).ready(function() {
+	    // 당구장 상세보기 모달창 호출 버튼 -> 모달창 뜸
+	    $(".modangList").on("click", function() {
+	        console.log("모달창 호출버튼 클릭");
+	
+	        // 모달창 호출
+	        $('#detailModal').modal('show');
+	    });
+	});
 </script>
 </html>
