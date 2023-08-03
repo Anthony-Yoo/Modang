@@ -12,10 +12,10 @@
 
 
 <!-- css -->
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/user.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
     
     
 <!-- js -->
@@ -43,8 +43,8 @@
        					
     			</div>
     			<div class="button-area">	
-						<button type="button" class="btn btn-primary" style="width:200px;height: 40px;color:white;background:linear-gradient(to bottom right, rgb(9, 32, 80),rgb(81, 117, 164));" onclick="document.location='${pageContext.request.contextPath}/user/loginForm'">로그인화면으로</button>
-						<button type="button" class="btn btn-primary" style="width:200px;height: 40px;color:white;background:linear-gradient(to bottom right, rgb(9, 32, 80),rgb(81, 117, 164));" onclick="document.location='${pageContext.request.contextPath}/'">시작화면으로</button>
+						<button type="button" class="btn btn-primary" style="width:240px;height: 40px;border-radius:10px;color:white;background:linear-gradient(to bottom right, rgb(9, 32, 80),rgb(81, 117, 164));" onclick="document.location='${pageContext.request.contextPath}/user/loginForm'">로그인화면으로</button>
+						<button type="button" class="btn btn-primary" style="width:240px;height: 40px;border-radius:10px;color:white;background:linear-gradient(to bottom right, rgb(9, 32, 80),rgb(81, 117, 164));" onclick="document.location='${pageContext.request.contextPath}/'">시작화면으로</button>
    				</div>
     	</div>
     </div>
