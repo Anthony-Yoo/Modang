@@ -27,7 +27,7 @@
 	<!-- 헤더 끝 -->
 	
 			<div id="userPage">
-		
+				<div id="user">
                  	<!-- sideNav 시작 -->
 					<c:import url="/WEB-INF/views/include/modangSideNav.jsp"></c:import>
 					<!-- sideNav 끝 -->
@@ -68,8 +68,8 @@
 							</div>
 							
            			</div>
-    		
-    		<!-- //user -->
+    			</div>
+    			<!-- //user -->
     		</div>
     	<!-- //container -->
     

@@ -39,7 +39,7 @@
 							<div class="form-group">
                     			<div class="element">
 									
-										<div data-text-content="true" onclick="document.location='${pageContext.request.contextPath}/user/joinForm'" style="background-color: rgb(255, 255, 255);text-shadow: none;box-shadow: rgba(46, 65, 154, 0.28) 5px 10px 10px 0px;border-width: 0px;border-style: none;border-radius: 4px;width: 202px;height: 150px;margin: 66px 0px 110px 336px;padding: 10px 10px 10px 10px;">
+										<div data-text-content="true" onclick="document.location='${pageContext.request.contextPath}/user/joinForm'" style="background-color: rgb(255, 255, 255);cursor: pointer;text-shadow: none;box-shadow: rgba(46, 65, 154, 0.28) 5px 10px 10px 0px;border-width: 0px;border-style: none;border-radius: 4px;width: 202px;height: 150px;margin: 66px 0px 110px 336px;padding: 10px 10px 10px 10px;">
 											<div data-text-content="true" style="font-size: 20px;font-weight: bold;padding: 6px 0px 15px 25px;" class="">
 											
 											<p>개인 회원 가입
@@ -56,7 +56,7 @@
 											</div>
 										
 										</div>
-										<div onclick="document.location='/modang/manager/joinForm'">
+										<div onclick="document.location='/modang/manager/joinForm'" style="cursor: pointer;">
 											<div data-obj-id="CU3Tk" data-obj-type="element" data-text-editable="true" class="" style="position: absolute;top: 240px;left: 630px;width: 200px;height: 150px;margin: 67px 10px 10px 316px;" data-link-to="page:PBjRh">
 												<div data-text-content="true" style="background-color: rgb(255, 255, 255);text-shadow: none;box-shadow: rgba(46, 65, 154, 0.28) 5px 10px 10px 0px;border-width: 0px;border-style: none;border-radius: 4px;margin: -27px -55px 0px 30px;padding: 13px 10px 10px 10px;height: 150px;">
 									

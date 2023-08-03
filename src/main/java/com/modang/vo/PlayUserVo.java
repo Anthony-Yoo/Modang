@@ -8,24 +8,28 @@ public class PlayUserVo {
 	private int gameNo;
 	private int playTime; 
 	private int record;
+	private String comRecord;
 	private int currentAverage;
 	private int activeAverage;
 	private String endTime;
 	private int orderNo;
-	private TariffVo tariff;
-	public PlayUserVo(int playNo, int userNo, String nick, int gameNo, int playTime, int record, int currentAverage,
-			int activeAverage, String endTime, int orderNo, TariffVo tariff) {
+	private TariffVo tariff;  // 요금표
+	private int UpperHit; //상위다마수
+	public PlayUserVo(int playNo, int userNo, String nick, int gameNo, int playTime, int record, String comRecord,
+			int currentAverage, int activeAverage, String endTime, int orderNo, TariffVo tariff, int upperHit) {
 		this.playNo = playNo;
 		this.userNo = userNo;
 		this.nick = nick;
 		this.gameNo = gameNo;
 		this.playTime = playTime;
 		this.record = record;
+		this.comRecord = comRecord;
 		this.currentAverage = currentAverage;
 		this.activeAverage = activeAverage;
 		this.endTime = endTime;
 		this.orderNo = orderNo;
 		this.tariff = tariff;
+		UpperHit = upperHit;
 	}
 	public PlayUserVo() {
 	}
@@ -65,6 +69,12 @@ public class PlayUserVo {
 	public void setRecord(int record) {
 		this.record = record;
 	}
+	public String getComRecord() {
+		return comRecord;
+	}
+	public void setComRecord(String comRecord) {
+		this.comRecord = comRecord;
+	}
 	public int getCurrentAverage() {
 		return currentAverage;
 	}
@@ -95,12 +105,19 @@ public class PlayUserVo {
 	public void setTariff(TariffVo tariff) {
 		this.tariff = tariff;
 	}
+	public int getUpperHit() {
+		return UpperHit;
+	}
+	public void setUpperHit(int upperHit) {
+		UpperHit = upperHit;
+	}
 	@Override
 	public String toString() {
 		return "PlayUserVo [playNo=" + playNo + ", userNo=" + userNo + ", nick=" + nick + ", gameNo=" + gameNo
-				+ ", playTime=" + playTime + ", record=" + record + ", currentAverage=" + currentAverage
-				+ ", activeAverage=" + activeAverage + ", endTime=" + endTime + ", orderNo=" + orderNo + ", tariff="
-				+ tariff + "]";
+				+ ", playTime=" + playTime + ", record=" + record + ", comRecord=" + comRecord + ", currentAverage="
+				+ currentAverage + ", activeAverage=" + activeAverage + ", endTime=" + endTime + ", orderNo=" + orderNo
+				+ ", tariff=" + tariff + ", UpperHit=" + UpperHit + "]";
 	}
 	
+
 }

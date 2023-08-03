@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mypage">
+
+	<!-- 세션 유져정보확인 -->
+	<select id="selectUserNo" parameterType="int" resultType="com.modang.vo.RecordUserVo">  
+		<![CDATA[
+			select  USERNO,
+			        NICK,        
+			        AVERAGE,
+			        RECOMMAVERAGE,
+			        UPPERHIT
+			from users
+			where USERNO = #{userNo}	
+		]]>		
+	</select>
+	<!-- 최근 3게임 플레이리스트 -->
+	<select id="selectPlayListRank3" parameterType="int" resultType="com.modang.vo.RecordUserVo">  
+	    <![CDATA[
+	    	select  ur.USERNO,
+			        ur.NICK,        
+			        ur.AVERAGE,
+			        ur.RECOMMAVERAGE,        
+			        ur.PROFILEIMAGE,
+			        ur.UPPERHIT,
+			        pl.PLAYNO,        
+			        pl.GAMENO,
+			        pl.PLAYTIME,
+			        pl.RECORD,
+			        pl.CURRENTAVERAGE,
+			        pl.ACTIVEAVERAGE
+			from plays pl,
+			     users ur
+			where pl.gameno in ( select ort.gameNo
+			                     from (  select  rownum rn,
+			                                     ot.gameNo
+			                             from (  select g.GAMENO
+			                                     from games g, users u, plays p
+			                                     where p.USERNO = u.USERNO
+			                                     AND p.gameno = g.gameno
+			                                     AND u.userno = #{userNo}
+			                                     ORDER BY g.GAMENO DESC) ot
+			                          )ort
+		                    	 where rn >=1
+			                     and rn<=3
+			                   )
+			AND ur.userno = pl.userno     
+	    ]]>
+	</select>
+	<!-- 최근 플레이 정보 확인 -->
+	<select id="selectGameList" parameterType="int" resultType="com.modang.vo.RecordUserVo">
+		<![CDATA[
+			select  ort.rn recordNo,
+			        ort.gameNo,
+			        ort.biliardAddress,
+			        ort.biliardName,
+			        ort.TABLETYPE,
+			        ort.GAMETYPE,
+			        ort.MEMBERNUM,
+			        ort.GAMEDATE,
+			        ort.gametime,
+			        ort.record,
+			        ort.PAYMONEY,
+			        ort.calGameTime,
+			        ort.ACTIVEAVERAGE
+			    from ( select rownum rn, 
+			              ot.gameNo,
+			              ot.biliardAddress,
+			              ot.biliardName,
+			              ot.TABLETYPE,
+			              ot.GAMETYPE,
+			              ot.MEMBERNUM,
+			              ot.GAMEDATE,
+			              ot.gametime,
+			              ot.record,
+			              ot.PAYMONEY,
+			              ot.calGameTime,
+			              ot.ACTIVEAVERAGE
+			       from (  select   g.gameNo,
+			                        REGEXP_SUBSTR(b.BILIARDADDRESS1, '[^ ]+', 1, 1, 'i') || ' ' ||  REGEXP_SUBSTR(b.BILIARDADDRESS1, '[^ ]+', 1, 2, 'i') as BILIARDADDRESS,
+			                        b.biliardName,
+			                        c.TABLETYPE,
+			                        g.GAMETYPE,
+			                        g.MEMBERNUM,
+			                        extract(year from g.gamedate) ||'/'|| extract(month from g.gamedate) ||'/'|| extract(day from g.gamedate) as GAMEDATE,
+			                        NVL(trunc(g.gametime/3600)||':'||
+			                        lpad(trunc(mod(g.gametime,3600)/60),2,'0')||':'||
+			                        lpad(mod(mod(g.gametime,3600),60),2,'0'),0) as gametime,
+			                        p.record,			                        
+			                        g.PAYMONEY,
+			                        g.gametime as calGameTime,
+			                        p.ACTIVEAVERAGE
+			                from games g, plays p, cueTable c, biliards b 
+			                where g.gameNo = p.gameNo
+			                and g.tableNo = c.tableNo
+			                and c.biliardNo = b.biliardNo
+			                and p.userno = #{userNo}
+			                and g.gamestatus = 1
+			                order by g.gameNo desc ) ot
+			            )ort
+		]]>
+	</select>
+	<!-- 유져 플레이리스트(게임넘버) -->
+	<select id="selectPlayListforGameNo" parameterType="com.modang.vo.RecordUserVo" resultType="com.modang.vo.RecordUserVo">
+		<![CDATA[
+			select  p.PLAYNO,
+			        u.NICK,
+			        u.Average,
+			        u.RECOMMAVERAGE,
+			        NVL(trunc(p.PLAYTIME/3600)||':'||
+	                        lpad(trunc(mod(p.PLAYTIME,3600)/60),2,'0')||':'||
+	                        lpad(mod(mod(p.PLAYTIME,3600),60),2,'0'),0)  as PLAYTIME,
+			        u.userNo,
+			        NVL(trunc(tpt.totalPlayTime/3600)||':'||
+	                        lpad(trunc(mod(tpt.totalPlayTime,3600)/60),2,'0')||':'||
+	                        lpad(mod(mod(tpt.totalPlayTime,3600),60),2,'0'),0) as totalGameTime,
+			        round(twc.winCount/tgc.totalCount,2) as totalWinRate,
+			        tgc.totalCount as totalCountGame,
+			        twc.winCount as totalCountWinGame
+			from plays p,
+			     users u,
+			     games g,
+			     
+			     (select userno, sum(playTime) totalPlayTime
+			      from plays 
+			      group by userno)tpt,
+			     
+			     (select p.userNo, count(PlayNo) totalCount
+			      from plays p,
+			           games g    
+			      where p.gameno = g.gameno
+			      and g.gamestatus = 1
+			      group by p.userNo) tgc,
+			     
+			     (select p.userNo, count(PlayNo) winCount
+			      from plays p,
+			           games g    
+			      where p.gameno = g.gameno
+			      and g.gamestatus = 1
+			      and p.record=1
+			      group by p.userNo) twc 
+			      
+			where p.USERNO = u.USERNO
+			AND p.gameno = g.gameno
+			and tpt.userNo = p.userNo
+			and tgc.userNo = p.userNo
+			and twc.userNo = p.userNo			
+			
+			AND g.gameNo = #{gameNo}
+		
+		]]>
+	
+	</select>
+
+</mapper>
