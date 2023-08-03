@@ -1,6 +1,9 @@
 package com.modang.controller;
 
+import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.modang.service.AttendUsersService;
 import com.modang.service.BoardService;
 import com.modang.vo.AttendUsersVo;
+import com.modang.vo.BoardVo;
 import com.modang.vo.JsonResult;
+import com.modang.vo.UserVo;
 
 @Controller
 @RequestMapping(value = "/attendUsers")
@@ -22,6 +27,9 @@ public class AttendUsersController {
 
 	@Autowired
 	private AttendUsersService attendUserService;
+	
+	@Autowired
+	private BoardService boardService;
 
 	@ResponseBody
 	@RequestMapping(value = "/apply", method = { RequestMethod.POST, RequestMethod.GET })
@@ -34,15 +42,59 @@ public class AttendUsersController {
 		return jsonResult;
 	}
 
-	// 유저 마이페이지의 신청 리스트 목록
-	@RequestMapping(value = "/myPage/applyMenu")
-	public String applyList(@RequestParam(value = "userNo", required = false, defaultValue = "-1") int userNo, Model model) {
-		System.out.println("AttendUsersController.applyList()");
-		// Map<String, Object> pMap = boardService.getList(crtPage, keyword, category);
-		// System.out.println(pMap);
-		// model.addAttribute("pMap", pMap);	
-		
-		return "user/myPage/applyManagement";
+	// 마이페이지 내가 쓴 글 리스트 목록
+	@RequestMapping(value = "/myPage/myBoardList")
+	public String myBoardList(HttpSession session, Model model) {
+		System.out.println("AttendUsersController.myBoardList()");
+		UserVo vo = (UserVo)session.getAttribute("authUser");
+		if(vo != null) {
+		List<BoardVo> result = boardService.myBoardList(vo.getUserNo());
+		model.addAttribute("mBList", result);
+			return "user/myPage/applyManagement";
+		}else {
+			return "user/loginForm";
+		}
 	}
-
+	
+	@RequestMapping(value="/myPage/myApplyList")
+	public String myApplyList(HttpSession session, Model model) {
+		System.out.println("AttendUsersController.myApplyList()");
+		UserVo vo = (UserVo)session.getAttribute("authUser");
+		if(vo != null) {
+			List<BoardVo> result = attendUserService.myApplyList(vo.getUserNo());
+			model.addAttribute("mAList", result);
+			return "user/myPage/applyMenu";
+		}else {
+			return "user/loginForm";
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/myPage/applyList")
+	public JsonResult applyList(@RequestParam("boardNo") int boardNo ,HttpSession session, Model model) {
+		System.out.println("AttendUsersController.applyList()");
+		System.out.println(boardNo);
+		List<AttendUsersVo> result = attendUserService.applyList(boardNo);
+		JsonResult jsonResult = new JsonResult();
+		jsonResult.success(result);
+		
+		return jsonResult;
+	}
+	
+	@RequestMapping(value="/decide")
+	public JsonResult decide(@RequestParam("buttonClass") String buttonClass,
+			@RequestParam("userNo") int userNo) {
+		System.out.println("AttendUsersController.decide()");
+		System.out.println(userNo);
+		System.out.println(buttonClass);
+		if("agree".equals(buttonClass)) {
+			System.out.println("성공");
+		}else if("refuse".equals(buttonClass)) {
+			System.out.println("실패");
+		}
+		
+		
+		JsonResult jsonResult = new JsonResult();
+		return jsonResult;
+	}
 }

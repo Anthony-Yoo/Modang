@@ -377,7 +377,7 @@ $(document).ready(function() {
 				$("#cList").on("click", ".comment_info_button", function () {
 					
 					// 기존에 생성된 모든 댓글 입력창 삭제
-			        $(".line.new").remove();
+			        $(".line.lNew").remove();
 			        $(".comment_add.new").remove();
 					
 				    var index = $(this).data("index");
@@ -496,9 +496,10 @@ $(document).ready(function() {
 		str += ' 		</div>';
 		str += ' 		<div class="comment_info_box">';
 		str += ' 			<span class="comment_info_date">' + BDCommentVo.writeDate + '</span>';
-		if (authUser != "" && leftValue < 2) {
-		str += ' 			<a href="#" role="button" class="comment_info_button" data-index=' + i + '>답글쓰기</a>';
-	    }
+		if (authUser != "" && leftValue < 2) 
+		{
+			str += ' 			<a href="#" role="button" class="comment_info_button" data-index=' + i + '>답글쓰기</a>';
+		}
 		str += ' 		</div>';
 		str += ' 	</div>';
 		str += ' </div>';

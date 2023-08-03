@@ -78,7 +78,7 @@
 			<h2 id="logtitle">Modang</h2>			
 			<div class="content">	
 				<div class="box float-l" id="qrbox">
-					<img src="${pageContext.request.contextPath}/assets/images/photo.jpg"/>
+					<img src="${pageContext.request.contextPath}/assets/images/qrcode_modang2.png"/>
 				</div>
 				<div class="box float-l" id="logbox">
 					<img src="${pageContext.request.contextPath}/assets/images/photo.jpg"/>

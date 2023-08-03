@@ -1,11 +1,15 @@
 package com.modang.service;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.modang.dao.AttendUsersDao;
 import com.modang.vo.AttendUsersVo;
-import com.modang.vo.JsonResult;
+import com.modang.vo.BoardVo;
 
 @Service
 public class AttendUsersService {
@@ -22,5 +26,19 @@ public class AttendUsersService {
 		}else {
 			return "이미 신청된 글입니다.";
 		}
+	}
+	public List<BoardVo> myApplyList(int userNo){
+		System.out.println("AttendUserService.myApplyList()");
+		List<BoardVo> vo = new ArrayList<BoardVo>();
+		vo = attendUsersDao.myApplyList(userNo);
+		
+		return vo;
+	}
+	
+	public List<AttendUsersVo> applyList(int boardNo){
+		System.out.println("AttendUserService.applyList()");
+		List<AttendUsersVo> vo = new ArrayList<AttendUsersVo>();
+		vo = attendUsersDao.applyList(boardNo);
+		return vo;
 	}
 }

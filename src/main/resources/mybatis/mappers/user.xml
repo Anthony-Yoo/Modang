@@ -91,9 +91,9 @@ values( SEQ_USERS_NO.nextval,
 <!-- 회원정보 받기 -->
 <select id="selectUserPageByNo" parameterType="String" resultType="com.modang.vo.UserVo">
 	<![CDATA[
-		select id,  
+		select userNo,
+			   id,  
 			   nick,
-			   passwd,
 			   cellphone, 
 			   average,
 			   profileImage

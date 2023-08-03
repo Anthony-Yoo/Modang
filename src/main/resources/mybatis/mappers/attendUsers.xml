@@ -27,5 +27,66 @@
 			where boardNo = #{boardNo} and userNo = #{userNo}
 		]]>
 	</select>
+	
+    <!-- // 마이페이지 내가 쓴 글 리스트 목록 -->
+	<select id="myBoardList" parameterType="int" resultType="com.modang.vo.BoardVo">
+	<![CDATA[
+		SELECT mb.boardno
+		     , mb.userNo
+			 , mb.title
+		     , mb.matchgametype
+		     , mb.matchregion
+		     , mb.membernum
+		     , TO_CHAR(mb.matchdate, 'YYYY-MM-DD') AS matchdate
+		     , TO_CHAR(mb.boarddate, 'YYYY-MM-DD') AS boarddate
+		     , mb.count
+		     , mb.status
+		     , u.nick
+		FROM matchboard mb, users u
+		where mb.userNo = #{userNo} and u.userNo = mb.userNo
+	]]>
+	
+	</select>
+	
+	<select id="myApplyList" parameterType="int" resultType="com.modang.vo.BoardVo">
+	<![CDATA[
+		SELECT 
+		    mb.boardno,
+		    au.userNo,
+		    mb.title,
+		    mb.matchgametype,
+		    mb.matchregion,
+		    mb.membernum,
+		    mb.matchdate,
+		    mb.boarddate,
+		    mb.count,
+		    au.status as aStatus,
+		    mb.status,
+		    u.nick
+		FROM 
+		    matchboard mb
+		INNER JOIN 
+		    users u ON mb.userNo = u.userNo
+		INNER JOIN 
+		    attendusers au ON mb.boardNo = au.boardNo
+		WHERE 
+		    au.userNo = #{userNo}
+	]]>
+	</select>
 
+	<select id="applyList" parameterType="int" resultType="com.modang.vo.AttendUsersVo">
+		<![CDATA[
+			select rownum,
+				   au.attendNo,
+				   au.boardNo,
+				   au.userNo,
+				   TO_CHAR(au.attendDate, 'YYYY-MM-DD') AS attendDate,
+				   au.status,
+				   u.nick,
+				   u.average 
+			from attendusers au, users u 
+			where au.boardNo = #{boardNo} and au.userNo = u.userNo
+			order by attenddate asc
+		]]>
+	</select>
 </mapper>
