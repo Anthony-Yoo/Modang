@@ -87,7 +87,7 @@ a {background-color: transparent;}
 .btn btn-primary {float:right;}
 .btn-red {color:#fff; background: #d9534f;}
 .btn-dark {color:#fff; background: rgba(47,51,55,0.8);}
-
+.btn-dark1 {color:#fff; background: rgba(47,51,55,0.8);margin-left: 10px;}
 .col-sm-10{float:left;width:200px; height:25px;}
 
 .custom-control {position:relative; display:block; min-width:1.125rem; min-height:1.125rem; line-height:1.125rem}

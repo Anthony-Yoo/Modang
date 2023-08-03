@@ -1,5 +1,10 @@
 @charset "UTF-8";
-
+/* 여백 초기화 */
+/* body, div, ul, li, dl, dt, ol, h1, h2, h3, h4, h5, h6, input, fieldset, span, img,
+	legend, p, select, table, th, td, tr, textarea, button, form {
+	margin: 0;
+	padding: 0;
+} */
 
 /* 전체 폭 */
  .container{
@@ -166,6 +171,7 @@
 #main form .input-group #profileImage {
 	width: 300px;
 	height: 40px;
+	object-fit: cover;
 	padding : 9px 20px 9px 15px;
 	background: #F5F5F5;
 	border: 1px solid #B8B8B8;
@@ -193,6 +199,7 @@
 #main form .form-group #image-show img{
 	width: 340px;
 	height: 340px;
+	object-fit: cover;
 	margin: 0px 0px 3px 0px;
 	border: outset 2px;
     border-color: darkslateblue;
@@ -310,6 +317,7 @@ div.content {
     vertical-align: top;
     padding: 0;
     width: 260px;
+    object-fit: cover;
     margin: -1px 0 0 -150px;
     position: absolute; 
     height: 260px;

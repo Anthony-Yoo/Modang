@@ -15,12 +15,10 @@
 	href="${pageContext.request.contextPath}/assets/css/managerdefault.css" />
 
 <!-- jquery -->
-<script type="text/javascript"
-	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript"	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
 
 <!-- 부트스트랩 js -->
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript"	src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 
 
 </head>
