@@ -38,7 +38,7 @@
 		
 					<div id="main">
 						
-						<div class="form-group">
+						<div class="form">
 						<br>
 						<p>
 

@@ -36,9 +36,9 @@
 
 					<div class="content" >
 							
-									<div class="image-show" style="width:960px;height:260px;margin: -1px 10px 10px -66px;position: absolute;">
-       									<a><img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileImage}"></a> 
-       									<img src="${pageContext.request.contextPath}/assets/images/gplayer0.jpg" style="margin:-260px 10px 10px 260px;width:790px;opacity: 0.2;" alt="">
+									<div class="image-show" >
+       									<img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileImage}">
+       									<img src="${pageContext.request.contextPath}/assets/images/gplayer0.jpg" style="width:790px;margin: -1px 0 0 110px;padding:0;position: absolute;opacity: 0.2;" alt=""> 
        								</div>
        								
        							<div class="image-icon">

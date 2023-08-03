@@ -206,7 +206,7 @@ public class UserController {
 	        System.out.println(userNo); // check no 출력11
 
 	        return "user/userPage";
-	    } else { // 로그아웃 되었을 때 메인페이지로 리다이렉트
+	    } else { // 세션 종료시 로그인페이지로 리다이렉트
 	        return "redirect:/user/loginForm";
 	    }
 	}
