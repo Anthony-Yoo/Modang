@@ -65,10 +65,9 @@
 										
 								</div>
 								
-       								
-       								
-			 				<button type="button" class="btn btn-light" onclick="document.location='${pageContext.request.contextPath}/user/modifyForm'">수정하기로 고고!</button>
-					
+       						<div class="button-area">	
+			 					<button type="submit" class="btn btn-light" onclick="document.location='${pageContext.request.contextPath}/user/modifyForm'">수정하기로 고고!</button>
+							</div>
 							
            			</div>
     		
