@@ -194,7 +194,7 @@ public class UserService {
 		System.out.println(id);
 		
 		UserVo userNo=userDao.selectUserInfo(id);
-		System.out.println(id);
+		System.out.println(userNo);
 		return userNo;
 	}
 	

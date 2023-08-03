@@ -38,7 +38,7 @@
 		
 					<div id="main">
 						
-						<div class="form-group">
+						<div class="form">
 						<br>
 						<p>
 
@@ -48,13 +48,14 @@
             					<h1>회원가입을 축하합니다.</h1>
             					<br>      
             					<p><strong>modang! modang! 즐거운 modang!</strong></p>
-        					</div>
-        					
         					<div class="btn">
 							
 								<button type="button" class="btn btn-light" onclick="document.location='${pageContext.request.contextPath}/user/loginForm'">로그인화면으로</button>
 								<button type="button" class="btn btn-light" onclick="document.location='${pageContext.request.contextPath}/'">시작화면으로</button>
     						</div>
+        					</div>
+        					
+        					
     					</div>
     				</div>
     			</div>

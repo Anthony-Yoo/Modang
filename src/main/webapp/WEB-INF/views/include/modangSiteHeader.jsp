@@ -2,7 +2,6 @@
 pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<body>
     <div id="header">
         <div id="logo">
             <h1><a href="${pageContext.request.contextPath}/"><img id="logo-img" src="${pageContext.request.contextPath}/assets/images/modang.png"></a></h1> <!-- 헤더 로고 이미지 -->
@@ -38,4 +37,3 @@ pageEncoding="UTF-8"%>
         </div>
         <!-- 사이트 메뉴 카테고리(?) 끝 -->
     </div>
-</body>

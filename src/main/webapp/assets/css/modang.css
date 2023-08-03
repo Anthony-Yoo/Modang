@@ -142,7 +142,7 @@ img {vertical-align: top;}/*reset*/
     padding: 0;
     width: 150px;
     background-color: #f1f1f1;
-    margin:0px 0px 0px 360px;
+    margin: auto;
     position: absolute;
    /*  height: 30%; */
     
@@ -153,7 +153,6 @@ img {vertical-align: top;}/*reset*/
   display: block;
   color: black;
   padding: 16px;
-  width: 118px;
   text-decoration: none;
   text-align: -webkit-center;
   font:15px "맑은 고딕", 돋움, 굴림;
@@ -169,3 +168,5 @@ img {vertical-align: top;}/*reset*/
   background-color: #555;
   color: white;
 }
+
+

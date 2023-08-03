@@ -12,7 +12,8 @@ public class BoardVo {
 	private String content;		/* 게시판 글 */
 	private String boardDate;	/* 게시판 작성일 */
 	private int count; 			/* 조회수 */
-	private byte status; 		/* 신청 상태 0: 신청중, 1: 모집완료 */
+	private byte status; 		/* 신청 상태 0: 모집중, 1: 마감 */
+	private byte aStatus;		/* 신청 상태 0: 신청중, 1: 승인, 2: 거절, 3: 확정 */
 	private String nick;
 	
 	public BoardVo() {
@@ -20,8 +21,10 @@ public class BoardVo {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
 	public BoardVo(int boardNo, int userNo, String title, byte matchGameType, String matchRegion, int membernum,
-			String matchDate, String content, String boardDate, int count, byte status, String nick) {
+			String matchDate, String content, String boardDate, int count, byte status, byte aStatus, String nick) {
 		super();
 		this.boardNo = boardNo;
 		this.userNo = userNo;
@@ -34,8 +37,11 @@ public class BoardVo {
 		this.boardDate = boardDate;
 		this.count = count;
 		this.status = status;
+		this.aStatus = aStatus;
 		this.nick = nick;
 	}
+
+
 
 	public int getBoardNo() {
 		return boardNo;
@@ -133,11 +139,21 @@ public class BoardVo {
 		this.nick = nick;
 	}
 
+	
+	public byte getaStatus() {
+		return aStatus;
+	}
+
+
+	public void setaStatus(byte aStatus) {
+		this.aStatus = aStatus;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardVo [boardNo=" + boardNo + ", userNo=" + userNo + ", title=" + title + ", matchGameType="
 				+ matchGameType + ", matchRegion=" + matchRegion + ", membernum=" + membernum + ", matchDate="
 				+ matchDate + ", content=" + content + ", boardDate=" + boardDate + ", count=" + count + ", status="
-				+ status + ", nick=" + nick + "]";
+				+ status + ", aStatus=" + aStatus + ", nick=" + nick + "]";
 	}
 }

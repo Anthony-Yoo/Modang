@@ -2,7 +2,6 @@
 pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<body>
     <div id="footer">
         <div class="container">
             <div class="f_left">
@@ -42,4 +41,3 @@ pageEncoding="UTF-8"%>
             </div><!-- //.f_right -->
         </div><!-- //.container -->
     </div>
-</body>
