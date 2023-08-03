@@ -4,6 +4,7 @@
 <mapper namespace="board">
 
 	<!-- 쿼리문 작성 -->
+	<!-- 글 작성 -->
 	<insert id="insert" parameterType="com.modang.vo.BoardVo">
 		<![CDATA[
 			insert into MatchBoard (
@@ -15,7 +16,8 @@
 			    , membernum
 			    , matchDate
 			    , content
-			    , boardDate)
+			    , boardDate
+			    , count)
 			values (
 				  seq_matchBoard_no.nextval
 				, #{userNo}
@@ -26,10 +28,13 @@
 				, TO_DATE(#{matchDate}, 'YYYY-MM-DD HH24:MI:SS')
 				, #{content}
 				, sysdate
+				, 0
 			)
 		]]>
 	</insert>
 
+
+	<!-- 게시판 리스트 출력 -->
 	<select id="selectList" parameterType="map"
 		resultType="com.modang.vo.BoardVo">
 		<![CDATA[
@@ -43,33 +48,30 @@
 			     , ort.content
 			     , ort.boarddate
 			     , ort.count
-			     , ort.status
 			     , ort.nick
 			from (select rownum rn
-			                  , ot.boardno
-			                  , ot.title
-			                  , ot.matchgametype
-			                  , ot.matchregion
-			                  , ot.membernum
-			                  , ot.matchdate
-			                  , ot.content
-			                  , ot.boarddate
-			                  , ot.count
-			                  , ot.status
-			                  , ot.nick
-			     from (select mb.boardno
-			                , mb.title
-			                , mb.matchgametype
-			                , mb.matchregion
-			                , mb.membernum
-			                , mb.matchdate
-			                , mb.content
-			                , mb.boarddate
-			                , mb.count
-			                , mb.status
-			                , u.nick
-			          from matchboard mb, users u
-			          where mb.userNo = u.userNo 
+	                  , ot.boardno
+	                  , ot.title
+	                  , ot.matchgametype
+	                  , ot.matchregion
+	                  , ot.membernum
+	                  , ot.matchdate
+	                  , ot.content
+	                  , ot.boarddate
+	                  , ot.count
+	                  , ot.nick
+				     from (select mb.boardno
+				                , mb.title
+				                , mb.matchgametype
+				                , mb.matchregion
+				                , mb.membernum
+				                , TO_CHAR(mb.matchdate, 'YYYY-MM-DD') AS matchdate
+				                , mb.content
+                			    , TO_CHAR(mb.boarddate, 'YYYY-MM-DD') AS boarddate 
+				                , mb.count
+				                , u.nick
+				          from matchboard mb, users u
+				          where mb.userNo = u.userNo 
            	]]>
 				<if test='category == "title" and keyword != "" and keyword != null'>
 					and mb.title like '%'|| #{keyword} ||'%'
@@ -98,6 +100,9 @@
 			and rn <= #{endRnum}
 		]]>
 	</select>
+	
+	
+	<!-- 게시판 검색시 검색 결과 수  -->
 	<select id="totalCount" parameterType="map" resultType="int">
         <![CDATA[
             select count(*)
@@ -126,6 +131,16 @@
 		]]>
 	</select>
 	
+	<!-- 조회수 1 증가 -->
+	<update id="hitAddCount" parameterType="int">
+		<![CDATA[
+			UPDATE matchboard
+			SET count = count + 1
+			WHERE boardNo = #{boardNo}
+		]]>
+	</update>
+	
+	<!-- 게시판 글 하나의 정보  -->
 	<select id="selectOne" parameterType="int" resultType="com.modang.vo.BoardVo">
 		<![CDATA[
 			select mb.boardNo,
@@ -133,9 +148,9 @@
 			       mb.matchgametype,
 			       mb.matchregion,
 			       mb.memberNum,
-			       mb.matchdate,
+			       TO_CHAR(mb.matchdate, 'YYYY-MM-DD') AS matchdate,
 			       mb.content,
-			       mb.boardDate,
+			       TO_CHAR(mb.boardDate, 'YYYY-MM-DD') AS boarddate,
 			       mb.count,
 			       mb.status,
 			       u.nick,

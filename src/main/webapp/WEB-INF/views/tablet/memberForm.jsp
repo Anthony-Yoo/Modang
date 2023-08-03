@@ -103,6 +103,15 @@
 		  		background-color: black;
 		  		color:white;
 			}	
+			
+			input[type=range]::-webkit-slider-runnable-track { 
+			  width: 100%; height: 8.4px; 
+			  cursor: pointer; 
+			  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; 
+			  background: #3071a9; 
+			  border-radius: 1.3px; 
+			  border: 0.2px solid #010101; 
+			} 
 		</style>
 	</head>
 	<body>
@@ -144,38 +153,42 @@
 					<!-- 검색결과 -->		
 					<div id="findResult">
 					</div>	
-					<!-- 확정리스트 -->		
+					<!-- 확정리스트 -->
+					<form id="playerForm">		
 					<input type="hidden" value="0" id="tb_cnt">			
-					<table id="playerTable" style="border: 1px">
-					  <thead>
-					    <tr>
-					      <th>UserNo</th>
-					      <th>Nick</th>
-					      <th>Average</th>
-					      <th>Delete</th>
-					    </tr>
-					  </thead>
-					  <tbody>					  	
-					  	<tr id="t0">
-					  		<td>${sessionScope.authUser.userNo}</td>
-							<td>${sessionScope.authUser.nick}</td>
-							<td>
-								<input class="confirmAverage" type="number" value="${sessionScope.authUser.average}" min="0" max="300" step="10" size="5">
-							</td>
-							<td>
-	 							<button type="button" class="delPlayer" data-userno="${sessionScope.authUser.userNo}" data-no="0" 
-	 									data-nick="${sessionScope.authUser.nick}" data-average="" 
-	 									disabled="disabled">삭제
-	 							</button>		
-							</td>
-					  	</tr>
-					  </tbody>
-					  <tfoot>
-					  	<tr>
-					  		<td><button type="submit" id="confirm">확정</button></td>
-					  	</tr>
-					  </tfoot>
-					</table>
+						<table id="playerTable" style="border: 1px">
+						  <thead>
+						    <tr>
+						      <th>UserNo</th>
+						      <th>Nick</th>
+						      <th>Average</th>
+						      <th>Delete</th>
+						    </tr>
+						  </thead>
+						  <tbody class="confirmBody">					  	
+						  	<tr id="t0">
+						  		<td>${sessionScope.authUser.userNo}</td>
+								<td>${sessionScope.authUser.nick}</td>
+								<td>
+									<%-- <input class="confirmAverage" type="number" value="${sessionScope.authUser.average}" min="30" step="10" size="10" > --%>
+									<input class="confirmAverage" type="range" value="${sessionScope.authUser.average}" min="30" max="500" step="10" size="10" data-range="0">
+									<span id="range-0">${sessionScope.authUser.average}</span>
+								</td>
+								<td>
+		 							<button type="button" class="delPlayer" data-userno="${sessionScope.authUser.userNo}" data-no="0" 
+		 									data-nick="${sessionScope.authUser.nick}" data-average="" 
+		 									disabled="disabled">삭제
+		 							</button>		
+								</td>
+						  	</tr>
+						  </tbody>
+						  <tfoot>
+						  	<tr>
+						  		<td><button type="submit" id="confirm">확정</button></td>
+						  	</tr>
+						  </tfoot>
+						</table>
+					</form>
 				</div>
 			</div>
 			<div class="right float-l" id="favoriteList">
@@ -210,9 +223,22 @@
 	</body>
 <script>
    var $target = $("dt"), isClass = null;
-   var cnt = $("#tb_cnt").val();
+   var cnt = $("#tb_cnt").val();   
    
-
+   
+   //다마수 레인지 움질일때
+   $(".confirmBody").on("change",".confirmAverage", function(){
+	   console.log($(this).val());
+	   
+	   var avg = $(this).val();
+	   var no= $(this).data("range"); 
+	   $("#range-"+no).text(avg);	   
+   })
+   
+   
+   /* document.getElementById('value1').innerHTML=this.value
+   $("#") */
+   
    $target.on("click", function() {
       var _$self = $(this), isActive = _$self.hasClass("active");
 
@@ -278,12 +304,14 @@
 	
 	function renderTr(btn) {
 		var src = "";
-		src += '<tr id="t' + btn.data('no') + '">';
+		src += '<tr id="t' + cnt + '">';
 		src += '	<td>' + btn.data('userno') + '</td>';
 		src += '	<td>' + btn.data('nick') +'</td>';
-		src += '	<td><input class="confirmAverage" type="number" value="' + btn.data('average') + '" min="0" max="300" step="10" size="5"></td>';
+		src += '	<td><input class="confirmAverage" type="range" value="' + btn.data('average') + '" min="0" max="500" step="10" size="5" data-range="' + cnt + '">';
+		src += '	<span id="range-'+ cnt +'">'+btn.data('average')+'</span>';
+		src += ' 	</td>';
 		src += '	<td>';
-		src += ' 		<button type="button" class="delPlayer" data-userno="'+btn.data('userno')+'" data-no="'+ cnt +'" data-nick="'+ btn.data('nick') +'" data-average="'+ btn.data('average') +'" >삭제</button>';			
+		src += ' 		<button type="button" class="delPlayer" data-userno="'+btn.data('userno')+'" data-no="'+ cnt +'" data-nick="'+ btn.data('nick') +'" data-average="'+ btn.data('average') +'" >삭제</button>';		
 		src += '	</td>';
 		src += '</tr>';		
 		
@@ -350,10 +378,11 @@
 	    
  	});	
 
-	$('#confirm').on("click",function() {
+	$('#playerForm').on("submit",function(e) {
+		e.preventDefault();
 		console.log("확정 버튼 클릭");			
 		
-		var tableNo = 1;
+		var tableNo = ${tableNo};
 		var gameType = ${param.ball};
 		var userNo = new Array();
 		var nick = new Array();
@@ -391,7 +420,7 @@
 			url : "${pageContext.request.contextPath}/tablet/confirm",		
 			type : "post",
 			contentType : "application/json",
-			data : JSON.stringify(tableGameVo),
+			data : JSON.stringify(tableGameVo),//제이슨형식 변경
 
 			dataType : "json",
 			success : function(action){
@@ -401,7 +430,7 @@
 					console.log("성공");
 					console.log(action.data);
 					/* 리다이렉트 */					
-					let url = '/modang/tablet/scoreboard?gameNo='+action.data+'&tableNo='+tableNo;
+					let url = '/modang/tablet/${tableNo}/scoreboard';
 					window.location.replace(url); 	 						
 					
 				}else {//오류처리

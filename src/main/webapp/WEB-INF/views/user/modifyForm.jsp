@@ -30,13 +30,13 @@
     <div id="main-content">
 
          <div class="container text-center">
-         
+        				
                 <div id="user">
 				
 					<div id="modifyForm">
-					
-						<div id="main">
 						
+						<div id="main">
+							
 							<h3>이것은 수정 ^^</h3>
 					
                    			<form id="modifysubmitForm" action="${pageContext.request.contextPath }/user/modify" method="post" enctype="multipart/form-data">
@@ -121,6 +121,10 @@
            
     <!-- 푸터 시작 -->
     <c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
-    <!-- 푸터 끝 -->   
+    <!-- 푸터 끝 -->  
+
+     
 </body>
+
+
 </html>

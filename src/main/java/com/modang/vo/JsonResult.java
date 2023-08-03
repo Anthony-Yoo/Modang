@@ -17,16 +17,15 @@ public class JsonResult {
 	}
 	
 	//성공했을 때
-		public void success(Object data) {
-			this.result="success";
-			this.data=data;
-		}
-		//실패 했을 떄
-		public void fail(String msg) {
-			this.result="fail";
-			this.failMsg=msg;
-			
-		}
+	public void success(Object data) {
+		this.result="success";
+		this.data=data;
+	}
+	//실패 했을 떄
+	public void fail(String msg) {
+		this.result="fail";
+		this.failMsg=msg;
+	}
 
 	public String getResult() {
 		return result;

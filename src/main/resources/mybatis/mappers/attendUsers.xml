@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="attendUsers">
+
+	<!-- 신청하기 버튼을 통해 신청 목록 db에 저장 -->
+	<insert id="insert" parameterType="com.modang.vo.AttendUsersVo">
+		<![CDATA[
+			insert into attendUsers
+				   		values(seq_attendUsers_no.nextval,
+				 	   		  #{boardNo},
+				 	   		  #{userNo},
+				 	   		  sysdate,
+				 	   		  0)
+		]]>
+	</insert>
+	
+	<!-- 신청이 되어있는지 체크하기 위한 작업 -->
+	<select id="applyCheck" parameterType="com.modang.vo.AttendUsersVo" resultType="com.modang.vo.AttendUsersVo">
+		<![CDATA[
+			select attendNo,
+				   boardNo,
+				   userNo,
+				   attendDate,
+				   status
+			from attendusers
+			where boardNo = #{boardNo} and userNo = #{userNo}
+		]]>
+	</select>
+	
+    <!-- // 마이페이지 내가 쓴 글 리스트 목록 -->
+	<select id="myBoardList" parameterType="int" resultType="com.modang.vo.BoardVo">
+	<![CDATA[
+		SELECT mb.boardno
+		     , mb.userNo
+			 , mb.title
+		     , mb.matchgametype
+		     , mb.matchregion
+		     , mb.membernum
+		     , TO_CHAR(mb.matchdate, 'YYYY-MM-DD') AS matchdate
+		     , TO_CHAR(mb.boarddate, 'YYYY-MM-DD') AS boarddate
+		     , mb.count
+		     , mb.status
+		     , u.nick
+		FROM matchboard mb, users u
+		where mb.userNo = #{userNo} and u.userNo = mb.userNo
+	]]>
+	
+	</select>
+	
+	<select id="myApplyList" parameterType="int" resultType="com.modang.vo.BoardVo">
+	<![CDATA[
+		SELECT 
+		    mb.boardno,
+		    au.userNo,
+		    mb.title,
+		    mb.matchgametype,
+		    mb.matchregion,
+		    mb.membernum,
+		    mb.matchdate,
+		    mb.boarddate,
+		    mb.count,
+		    au.status as aStatus,
+		    mb.status,
+		    u.nick
+		FROM 
+		    matchboard mb
+		INNER JOIN 
+		    users u ON mb.userNo = u.userNo
+		INNER JOIN 
+		    attendusers au ON mb.boardNo = au.boardNo
+		WHERE 
+		    au.userNo = #{userNo}
+	]]>
+	</select>
+
+	<select id="applyList" parameterType="int" resultType="com.modang.vo.AttendUsersVo">
+		<![CDATA[
+			select rownum,
+				   au.attendNo,
+				   au.boardNo,
+				   au.userNo,
+				   TO_CHAR(au.attendDate, 'YYYY-MM-DD') AS attendDate,
+				   au.status,
+				   u.nick,
+				   u.average 
+			from attendusers au, users u 
+			where au.boardNo = #{boardNo} and au.userNo = u.userNo
+			order by attenddate asc
+		]]>
+	</select>
+	
+	<update id="approve" parameterType="com.modang.vo.AttendUsersVo">
+		<![CDATA[
+			UPDATE attendusers
+		]]>
+		<if test='buttonClass == "agree"'>
+			SET status = 1
+		</if>
+		<if test='buttonClass == "refuse"'>
+			SET status = 2
+		</if>
+		<![CDATA[
+			WHERE attendNo = #{attendNo} and boardNo = #{boardNo}
+		
+		]]>
+	</update>
+</mapper>

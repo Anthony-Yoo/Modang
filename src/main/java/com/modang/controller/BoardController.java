@@ -78,13 +78,22 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 
+	//조회수 증가후 read 페이지로 이동
+	@RequestMapping(value = "/hitCount")
+	public String hitCount(@RequestParam("boardNo") int boardNo) {
+		boardService.hitCount(boardNo);
+		return "redirect:/board/read?boardNo="+boardNo;
+	}
+	
+	
+	/* 글 읽기 */
 	@RequestMapping(value = "/read")
 	public String read(@RequestParam("boardNo") int boardNo, Model model) {
 		System.out.println("BoardController.read()");
 		BoardVo vo = boardService.read(boardNo);
 		System.out.println(vo);
 		model.addAttribute("rList", vo);
-		List<BDCommentVo> list = bDCommentService.list();
+		List<BDCommentVo> list = bDCommentService.list(boardNo);
 		System.out.println(list);
 		model.addAttribute("cList", list);
 		return "/board/read";

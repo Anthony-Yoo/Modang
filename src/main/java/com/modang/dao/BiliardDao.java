@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 
 import com.modang.vo.ManagerVo;
-
 import com.modang.vo.CueTableVo;
 import com.modang.vo.TableGamesVo;
 
@@ -20,7 +19,17 @@ public class BiliardDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	/* 테이블 추가 */
+	/* 테이블현황 페이지-------------------------------------------------------------------------------- */
+	/* 테이블 현황 - 게임 결제 */
+	public int updateIncome(TableGamesVo gamesVo) {
+		System.out.println("BiliardDao.updatePaymoney()");
+		System.out.println(gamesVo);
+		int count = sqlSession.update("biliard.updateIncome", gamesVo);
+		System.out.println("게임결제성공:"+count);
+		return count;
+	}
+	
+	/* 테이블 현황 - 테이블 추가 */
 	public int insertTable(CueTableVo cuetableVo) {
 		System.out.println("BiliardDao.insertTable()");
 		System.out.println(cuetableVo);
@@ -29,7 +38,7 @@ public class BiliardDao {
 		return count;
 	}
 	
-	/* 하나의 테이블기본정보 가져오기(클릭한) */
+	/* 테이블 현황 - 하나의 테이블기본정보 가져오기(클릭한) */
 	public CueTableVo selectCuetable(int tableNo) {
 		System.out.println("BiliardDao.selectCuetable()");
 		CueTableVo oneTable= sqlSession.selectOne("biliard.selectOnetable", tableNo);
@@ -48,12 +57,20 @@ public class BiliardDao {
     	return count;
     }
 	
-	/* 게임정보 가져오기 */
+	/* 테이블 현황 - 게임정보 가져오기 */
 	public List<TableGamesVo> selectGames(int biliardNo) {
 		System.out.println("BiliardDao.selectGames()");
 		List<TableGamesVo> gamesList = sqlSession.selectList("biliard.selectGamesList",biliardNo);
 		
 		return gamesList;
+	}
+	
+	/* 테이블 현황 - 테이블별 미정산 리스트 가져오기 */
+	public List<TableGamesVo> selectIncaluList(CueTableVo cuetableVo) {
+		System.out.println("BiliardDao.selectIncaluList()");
+		List<TableGamesVo> incaluList = sqlSession.selectList("biliard.selectIncaluList", cuetableVo);
+		
+		return incaluList;
 	}
 	
 	/* 테이블 현황 - 상세정보 가져오기 */
@@ -66,7 +83,7 @@ public class BiliardDao {
 		return gamesVo;
 	}
 	
-	/*테이블현황-테이블 전체리스트 가져오기*/
+	/*테이블현황 - 테이블 전체리스트 가져오기*/
 	public List<CueTableVo> selectList(int biliardNo) {
 		System.out.println("BiliardDao.selectList()");
 		System.out.println(biliardNo);
@@ -74,8 +91,18 @@ public class BiliardDao {
 		return tableVo;
 		
 	}
+	/* 테이블 매출 페이지-------------------------------------------------------------------------------- */
+	/* 테이블 매출 검색 */
+	public List<TableGamesVo> selectOneTableSales(TableGamesVo gamesVo ) {
+		System.out.println("BiliardDao.selectOneTableSales()");
+		System.out.println(gamesVo);
+		List<TableGamesVo> salesList = sqlSession.selectList("biliard.selectOneTableSales", gamesVo);
+		
+		return salesList;
+	}
 	
-	/* 요금테이블-요금정보가져오기 */
+	/* 요금테이블 페이지--------------------------------------------------------------------------------- */
+	/* 요금테이블 - 요금정보가져오기 */
 	public TariffVo selectPrice(int biliardNo) {
 		System.out.println("BiliardDao.selectPrice()");
 		System.out.println(biliardNo);
@@ -84,7 +111,7 @@ public class BiliardDao {
 		return tariffVo;
 	}
 	
-	/* 요금테이블-요금수정 */
+	/* 요금테이블 - 요금수정 */
 	public int updatePrice(TariffVo tariffVo) {
 		System.out.println("BiliardDao.updatePrice()");
 		System.out.println(tariffVo);

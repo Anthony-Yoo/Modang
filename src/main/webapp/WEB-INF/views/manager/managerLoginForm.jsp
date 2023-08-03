@@ -27,7 +27,7 @@
                             </div>
                             <div class="con">
                                 <span class="inp-txt">
-                                    <img src="${pageContext.request.contextPath}/assets/images/settings.png" alt="">
+                                    <img src="${pageContext.request.contextPath}/assets/images/passwd.png" alt="">
                                     <input type="password" id="passwd" name="passwd" placeholder="비밀번호">
                                 </span>
                             </div>

@@ -87,4 +87,21 @@ values( SEQ_USERS_NO.nextval,
 	]]>
 
 </select>
+
+<!-- 회원정보 받기 -->
+<select id="selectUserPageByNo" parameterType="String" resultType="com.modang.vo.UserVo">
+	<![CDATA[
+		select userNo,
+			   id,  
+			   nick,
+			   cellphone, 
+			   average,
+			   profileImage
+		from users
+		where id=#{id}
+				
+	]]>
+
+</select>
+
 </mapper>

@@ -1,5 +1,6 @@
 package com.modang.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +19,7 @@ public class BoardService {
 
 	/* 게시판 글 작성 등록 */
 	public void write(BoardVo boardVo) {
-//		System.out.println("BoardService.write");
+		// System.out.println("BoardService.write");
 		boardDao.insert(boardVo);
 	}
 
@@ -96,9 +97,24 @@ public class BoardService {
 
 		return pMap;
 	}
-	
+
+	/* 조회수 증가 서비스 */
+	public void hitCount(int boardNo) {
+		System.out.println("BoardController.hitCount()");
+		boardDao.hitAddCount(boardNo);
+	}
+
+	/* 글 읽기 서비스 */
 	public BoardVo read(int boardNo) {
 		System.out.println("BoardService.read()");
 		return boardDao.selectOne(boardNo);
+	}
+
+	// 마이페이지 내가 쓴 글 리스트 목록
+	public List<BoardVo> myBoardList(int userNo) {
+		List<BoardVo> vo = new ArrayList<BoardVo>();
+		vo = boardDao.myBoardList(userNo);
+
+		return vo;
 	}
 }

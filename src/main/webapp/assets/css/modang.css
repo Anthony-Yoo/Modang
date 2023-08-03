@@ -115,7 +115,9 @@ img {vertical-align: top;}/*reset*/
 }
 /* 헤더 끝 */
 
-/*푸터*/
+
+
+/*------------------푸터----------------------*/
 #footer{width: 1200px; padding: 20px 0;height: 260px; color: #000; margin: 0 auto; border-top: 2px solid #2E419A;}
 #footer .f_left{width: 60%;font-size: 14px;float: left;}
 #footer .f_left .f_logo{margin-bottom: 10px;}
@@ -130,5 +132,41 @@ img {vertical-align: top;}/*reset*/
 #footer .f_right ul.sns li{float: left;margin-left: 15px; width: 30px; height: 30px;}
 #footer .f_right ul.sns li:nth-child(3){margin-right: 10px;}
 #footer .f_right ul.sns li img{width: 100%; height: 100%;}
+
+
+
+/*  side nav */
+ .sidebar {
+  	margin: 0;
+  	font-family: "Lato", sans-serif;
+    padding: 0;
+    width: 150px;
+    background-color: #f1f1f1;
+    margin: auto;
+    position: absolute;
+   /*  height: 30%; */
+    
+}
+
+
+ .sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+  text-align: -webkit-center;
+  font:15px "맑은 고딕", 돋움, 굴림;
+  
+}
+ 
+ .sidebar a.active {
+	background-color: #2E419A;
+  	color: white;
+}
+
+ .sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
 
 

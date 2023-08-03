@@ -1,30 +1,35 @@
 package com.modang.vo;
 
 public class PlayUserVo {
-	
+
 	private int playNo;
 	private int userNo;
 	private String nick;
 	private int gameNo;
-	private String playTime; 
-	private int number;
+	private int playTime; 
+	private int record;
+	private String comRecord;
 	private int currentAverage;
 	private int activeAverage;
 	private String endTime;
 	private int orderNo;
-	
-	public PlayUserVo(int playNo, int userNo, String nick, int gameNo, String playTime, int number, int currentAverage,
-			int activeAverage, String endTime, int orderNo) {
+	private TariffVo tariff;  // 요금표
+	private int UpperHit; //상위다마수
+	public PlayUserVo(int playNo, int userNo, String nick, int gameNo, int playTime, int record, String comRecord,
+			int currentAverage, int activeAverage, String endTime, int orderNo, TariffVo tariff, int upperHit) {
 		this.playNo = playNo;
 		this.userNo = userNo;
 		this.nick = nick;
 		this.gameNo = gameNo;
 		this.playTime = playTime;
-		this.number = number;
+		this.record = record;
+		this.comRecord = comRecord;
 		this.currentAverage = currentAverage;
 		this.activeAverage = activeAverage;
 		this.endTime = endTime;
 		this.orderNo = orderNo;
+		this.tariff = tariff;
+		UpperHit = upperHit;
 	}
 	public PlayUserVo() {
 	}
@@ -52,17 +57,23 @@ public class PlayUserVo {
 	public void setGameNo(int gameNo) {
 		this.gameNo = gameNo;
 	}
-	public String getPlayTime() {
+	public int getPlayTime() {
 		return playTime;
 	}
-	public void setPlayTime(String playTime) {
+	public void setPlayTime(int playTime) {
 		this.playTime = playTime;
 	}
-	public int getNumber() {
-		return number;
+	public int getRecord() {
+		return record;
 	}
-	public void setNumber(int number) {
-		this.number = number;
+	public void setRecord(int record) {
+		this.record = record;
+	}
+	public String getComRecord() {
+		return comRecord;
+	}
+	public void setComRecord(String comRecord) {
+		this.comRecord = comRecord;
 	}
 	public int getCurrentAverage() {
 		return currentAverage;
@@ -82,20 +93,31 @@ public class PlayUserVo {
 	public void setEndTime(String endTime) {
 		this.endTime = endTime;
 	}
-	
 	public int getOrderNo() {
 		return orderNo;
 	}
 	public void setOrderNo(int orderNo) {
 		this.orderNo = orderNo;
 	}
+	public TariffVo getTariff() {
+		return tariff;
+	}
+	public void setTariff(TariffVo tariff) {
+		this.tariff = tariff;
+	}
+	public int getUpperHit() {
+		return UpperHit;
+	}
+	public void setUpperHit(int upperHit) {
+		UpperHit = upperHit;
+	}
 	@Override
 	public String toString() {
 		return "PlayUserVo [playNo=" + playNo + ", userNo=" + userNo + ", nick=" + nick + ", gameNo=" + gameNo
-				+ ", playTime=" + playTime + ", number=" + number + ", currentAverage=" + currentAverage
-				+ ", activeAverage=" + activeAverage + ", endTime=" + endTime + ", orderNo=" + orderNo + "]";
+				+ ", playTime=" + playTime + ", record=" + record + ", comRecord=" + comRecord + ", currentAverage="
+				+ currentAverage + ", activeAverage=" + activeAverage + ", endTime=" + endTime + ", orderNo=" + orderNo
+				+ ", tariff=" + tariff + ", UpperHit=" + UpperHit + "]";
 	}
-	
 	
 
 }

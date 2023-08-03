@@ -12,6 +12,12 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/managerdefault.css" />
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+	<!-- jquery -->
+	<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
+
+	<!-- 부트스트랩 js -->
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
+	
 </head>
 <body>
 	<div id="page-wrapper">
@@ -47,7 +53,7 @@
 						<nav id="nav">
 							<a href="${pageContext.request.contextPath}/manager/index">테이블 현황</a>
 							<a href="${pageContext.request.contextPath}/manager/tableSalesForm" class="active">테이블 매출</a>
-							<a href="${pageContext.request.contextPath}/manager/daySales">일별 매출</a>
+							<a href="${pageContext.request.contextPath}/manager/daySalesForm">일별 매출</a>
 							<a href="${pageContext.request.contextPath}/manager/pricePolicyForm">요금 테이블</a>
 							<a href="${pageContext.request.contextPath}/manager/settingsForm">관리자 설정</a>
 						</nav>
@@ -70,61 +76,61 @@
 								<form name="" class="form-inline float-right mb-4" action="${pageContext.request.contextPath}/manager/tableSales" method="get" >
 									<label class="mr-2">테이블 번호</label>
 									<div class="col-4">
-										<input type="text" name="tableno" class="form-control form-control-sm" maxlength="10" />
+									  <select class="form-control-5" name="tableName" id="tableNameSelect">
+									    <c:forEach items="${cuetableList}" var="cueTableVo">
+									      <option value="${cueTableVo.tableName}">${cueTableVo.tableName}</option>
+									    </c:forEach>
+									  </select>
 									</div>
-									<label class="mr-2">날짜</label>
-										<input type="date" name="mindate" class="form-control form-control-sm" maxlength="20" />
-									<label class="mr-1">~</label>
-										<input type="date" name="maxdate" class="form-control form-control-sm" maxlength="20" />
-									<button type="submit" class="btn btn-sm btn-dark">검색</button>
+									<label class="mr-2 ml-2">날짜</label>
+										<input type="date" name="minDate" class="form-control form-control-sm" maxlength="20" />
+									<label class="mr-1 ml-2">~</label>
+										<input type="date" name="maxDate" class="form-control form-control-sm" maxlength="20" />
+									<button type="submit" class="btn btn-sm btn-dark1">검색</button>
 								</form>
 							</header>
 							
 							<table class="table table-striped">
 								<thead class="thead-dark">
 									<tr>
-										<th>테이블 번호</th>
-										<th>종류</th>
+										<th>No</th>
+										<th>테이블번호</th>
+										<th>게임종류</th>
+										<th>게임날짜</th>
 										<th>시작시간</th>
 										<th>종료시간</th>
 										<th>사용시간</th>
-										<th>요금제</th>
+										<th>결제방법</th>
 										<th>결제금액</th>
 										<th>입금금액</th>
-										<th>결제방법</th>
-										<th>상태</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>1</td>
-										<td>4구</td>
-										<td>00:00</td>
-										<td>00:00</td>
-										<td>00:00</td>
-										<td>후불제</td>
-										<td>10,000</td>
-										<td>10,000</td>
-										<td>카드</td>
-										<td><span class="badge badge-success">완료</span></td>
-									</tr>
-									<tr>
-										<td>2</td>
-										<td>4구</td>
-										<td>00:00</td>
-										<td>00:00</td>
-										<td>00:00</td>
-										<td>후불제</td>
-										<td>10,000</td>
-										<td>10,000</td>
-										<td>카드</td>
-										<td><span class="badge badge-danger">미수</span></td>
-									</tr>
+									<c:forEach items="${salesList}" var="gamesVo">
+										<tr>
+											<td>${gamesVo.rownum}</td>
+											<td>${gamesVo.tableName}</td>
+											<td>
+											<c:if test ="${gamesVo.gameType==0}">3구</c:if>
+											<c:if test ="${gamesVo.gameType==1}">4구</c:if>
+											<c:if test ="${gamesVo.gameType==2}">8볼</c:if>
+											<c:if test ="${gamesVo.gameType==3}">10볼</c:if>
+											</td>
+											<td>${gamesVo.gameDate}</td>
+											<td>${gamesVo.startTime}</td>
+											<td>${gamesVo.endTime}</td>
+											<td>${gamesVo.gameTime}</td>
+											<td>
+											<c:if test ="${gamesVo.payType==0}">카드</c:if>
+											<c:if test ="${gamesVo.payType==1}">현금</c:if>
+											</td>
+											<td>${gamesVo.payMoney}</td>
+											<td>${gamesVo.income}</td>
+										</tr>
+									</c:forEach>
 								</tbody>
 							</table>
-							
 						</section>
-
 					</div>
 				</div>
 			</div>
@@ -134,4 +140,27 @@
 		<div id="copyright">&copy; modang. All rights reserved.</div>
 	</div>
 </body>
+<script type="text/javascript">
+// 페이지 로드 시 실행
+window.onload = function() {
+    // "tableName" Select 요소 가져오기
+    const tableNameSelect = document.getElementById("tableNameSelect");
+
+    // URL의 쿼리 파라미터에서 "tableName" 값 가져오기
+    const params = new URLSearchParams(window.location.search);
+    const tableName = params.get("tableName");
+
+    // "tableName" 값이 있을 경우 해당 값과 일치하는 옵션 선택
+    if (tableName) {
+        for (let i = 0; i < tableNameSelect.options.length; i++) {
+            if (tableNameSelect.options[i].value === tableName) {
+                tableNameSelect.selectedIndex = i;
+                break;
+            }
+        }
+    }
+};//페이지 로드 end
+
+
+</script>
 </html>

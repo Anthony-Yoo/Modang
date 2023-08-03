@@ -41,6 +41,7 @@ public class UserService {
 		
 		//파일관련정보 뽑는다
 		System.out.println("FileUploadService.restore()");
+		/*파일 업로드 서비스를 복원한다는 메시지를 출력합니다.*/
 		System.out.println(file);
 		
 		//원파일 이름
@@ -186,5 +187,15 @@ public class UserService {
 		
 		return result;
 	}
-
+	
+	//userPage 아이디 받기
+	public UserVo userPage(String id) {
+		System.out.println("userService.userPage()");
+		System.out.println(id);
+		
+		UserVo userNo=userDao.selectUserInfo(id);
+		System.out.println(userNo);
+		return userNo;
+	}
+	
 }

@@ -2,31 +2,91 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="manager">
+    <!-- 회원가입시 요금테이블 생성 -->
+    <insert id="insertTariff" parameterType="int">
+    <![CDATA[
+    	insert into tariff (
+    	            biliardno,
+    	            TARIFFNO,
+    	            btablefee,
+    	            mtablefee,
+    	            ptablefee,
+    	            bminfee,
+    	            mminfee,
+    	            pminfee	) 
+    	values(#{biliardno},
+    	       SEQ_TARIFF_NO.nextval,
+	    			2000,
+	    			2000,
+	    			2000,
+	    			6000,
+	    			6000,
+	    			6000
+	    			) 
+	   ]]> 			     
+    </insert>
+
 	
 	<!-- 회원가입 -->
 	<insert id="insertManager" parameterType="com.modang.vo.ManagerVo">
+	    <selectKey keyProperty="biliardNo" resultType="int" order="BEFORE">
+	    	select SEQ_BILIARDS_NO.nextval from dual
+	    </selectKey>
 		<![CDATA[
 			insert into biliards
+				(biliardNo,
+				ID,
+				PASSWD,
+				COMPANYNO,
+				REPNAME,
+				BILIARDNAME,
+				POSTCODE,
+				BILIARDADDRESS1,
+				BILIARDADDRESS2,
+				LATITUDE,
+				LONGTITUDE,
+				BILIARDPHONE,
+				IMAGEFILE1,
+				IMAGEFILE2,
+				IMAGEFILE3,
+				TIME1,
+				TIME2,
+				PARKING,
+				BDCOMMENT
+				)
 				values(
-				    seq_biliards_no.nextval,
+				    #{biliardNo},
 				    #{id},
 				    #{passwd},
 				    #{companyNo},
 				    #{repName},
 				    #{biliardName},
+				    #{postcode},
 				    #{biliardAddress1},
+				    #{biliardAddress2},
 				    null,
 				    null,
 				    #{biliardPhone},
-				    #{parking},
-				    #{bdComment},
+				    #{imageFile1},
+				    #{imageFile2},
+				    #{imageFile3},
 				    #{time1},
 				    #{time2},
-				    #{biliardAddress2},
-				    #{postcode}
+				    #{parking},
+				    #{bdComment}
 				)
 		]]>
 	</insert>
+	
+	<!-- 회원가입 id 중복체크 -->
+	<select id="selectManagerById" parameterType="String" resultType="com.modang.vo.ManagerVo">
+		<![CDATA[
+			select biliardNo,
+					id
+					from biliards
+					where id=#{id}
+		]]>
+	</select>
 	
 	<!-- 로그인 -->
 	<select id="selectManager" parameterType="com.modang.vo.ManagerVo" resultType="com.modang.vo.ManagerVo">
