@@ -53,56 +53,110 @@
                 </div>
                 <div class="modang_list">
                     <ul>
-                        <li>
+                        <li class="modangList">
+                        	<img src="${pageContext.request.contextPath}/assets/images/room.jpg" alt="오리">
                             <div class="txt">
                                 <p class="repname">☆☆당구장</p>
                                 <p class="addr">서울시 강동구 천호대로 1027 5층에서 썩어가는</p>
                             </div>
-                            <img src="${pageContext.request.contextPath}/assets/images/room.jpg" alt="오리">
                         </li>
-                        <li>
+                        <li class="modangList">
+                        	<img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="모당">
                             <div class="txt">
                                 <p class="repname">내가짱당구장</p>
                                 <p class="addr">서울시 강동구 천호대로 1027 5층 하이미디어 학원 너무 춥다</p>
                             </div>
-                            <img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="모당">
                         </li>
-                        <li>
+                        <li class="modangList">
+		 					<img src="${pageContext.request.contextPath}/assets/images/smoking.jpg" alt="오리">                       
                             <div class="txt">
                                 <p class="repname">개똥당구장</p>
                                 <p class="addr">서울 강동구 진황도로 5</p>
                             </div>
-                            <img src="${pageContext.request.contextPath}/assets/images/smoking.jpg" alt="오리">
                         </li>
-                        <li>
+                        <li class="modangList">
+ 							<img src="${pageContext.request.contextPath}/assets/images/modang_logo.png" alt="오리">                       
                             <div class="txt">
                                 <p class="repname">위아일랜드당구장</p>
                                 <p class="addr">서울 강동구 천호대로157길 18</p>
                             </div>
-                            <img src="${pageContext.request.contextPath}/assets/images/modang_logo.png" alt="오리">
                         </li>
-                        <li>
+                        <li class="modangList">
+                        	<img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="오리">
                             <div class="txt">
                                 <p class="repname">키키당구장</p>
                                 <p class="addr">서울시 강동구 천호동 453-8</p>
                             </div>
-                            <img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="오리">
                         </li>
-                        <li>
+                        <li class="modangList">
+                        	<img src="${pageContext.request.contextPath}/assets/images/room.jpg" alt="오리">
                             <div class="txt">
                                 <p class="repname">라인당구장</p>
                                 <p class="addr">서울 강동구 천호옛길 82</p>
                             </div>
-                            <img src="${pageContext.request.contextPath}/assets/images/room.jpg" alt="오리">
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>    
-
     <!-- 푸터 시작 -->
     <c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
     <!-- 푸터 끝 -->
+    
+    <!--당구장 상세보기 모달창-->
+    <div class="modal fade" id="detailModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>-->
+                    <h4>☆☆당구장</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="mView">
+                        <div class="mImg">
+                            <img src="./map1.png" alt="당구장 이미지 1(필수)">
+                            <img src="./ori.png" alt="당구장 이미지 2">
+                            <img src="./d.jpeg" alt="당구장 이미지 3">
+                        </div>
+                        <div class="mDetail">
+                            <ul>
+                                <li>
+                                    <img src="./clock.png" alt="시간">
+                                    <span>11:00 ~24:00</span>
+                                </li>
+                                <li>
+                                    <img src="./parking.png" alt="주차 여부">
+                                    <span>주차 가능</span>
+                                </li>
+                                <li>
+                                    <img src="./map.png" alt="매장 주소">
+                                    <span>강동구 강동동 강동 88-88 2층</span>
+                                </li>
+                                <li class="txt">
+                                    <img src="./business-card.png" alt="추가 내용">
+                                    <span>가브리엘 국제식 대대 5대 및 중대, 포켓볼을 구비한 강동구 최고 시설</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">닫당</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+<script>
+    //당구장 상세보기 모달창 호출 버튼->모달창 뜸
+    $(".modangList").on("click", ".btnModal" , function(){
+   console.log("모달창 호출버튼 클릭");
+   
+   //모달창 호출
+   $('#detailModal').modal('show')
+});
+</script>
 </html>
