@@ -26,9 +26,7 @@
 	<c:import url="/WEB-INF/views/include/modangSiteHeader.jsp"></c:import>
 	<!-- 헤더 끝 -->
 	
-	
-
-				<div id="userPage">
+			<div id="userPage">
 		
                  	<!-- sideNav 시작 -->
 					<c:import url="/WEB-INF/views/include/modangSideNav.jsp"></c:import>
@@ -72,7 +70,7 @@
            			</div>
     		
     		<!-- //user -->
-    	</div>
+    		</div>
     	<!-- //container -->
     
 	<!-- 푸터 시작 -->

@@ -269,6 +269,7 @@ div.content {
 
 /* 마이페이지 버튼 */
 #userPage button {
+	cursor: pointer;
 	width: 480px;
 	color: #fff;
 	border-radius:10px;
