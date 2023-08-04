@@ -33,13 +33,13 @@
 	<!-- 유져검색 -->
 	<select id="selectUser" parameterType="com.modang.vo.TabletUserVo" resultType="com.modang.vo.TabletUserVo">
 		<![CDATA[
+
 			select  u.userNo
 					,u.id
 					,u.passwd
 					,u.nick
 					,u.cellphone
 					,u.average
-					,u.recommAverage
 					,u.recentLogonTime
 					,u.profileImage
 					,l.loginKeyNo
@@ -108,7 +108,6 @@
 					,u.nick
 					,u.cellphone
 					,u.average
-					,u.recommAverage
 					,u.recentLogonTime
 					,u.profileImage
 					,l.loginKeyNo

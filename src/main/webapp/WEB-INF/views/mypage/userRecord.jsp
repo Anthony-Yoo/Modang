@@ -28,7 +28,12 @@
         <div class="record-view">
             <div class="left">
                 <div class="userImg">
-                    <img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="유저 프로필 이미지">
+                	<c:if test="${empty myUserVo.profileImage}">
+                		<img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="유저 프로필 이미지">
+                	</c:if>
+                	<c:if test="${not empty myUserVo.profileImage}">
+                		<img src="${pageContext.request.contextPath }/upload/${myUserVo.profileImage}" alt="유저 프로필 이미지">
+                    </c:if>
                 </div>
                 <div class="town">
                     <span>닉네임 : <strong>${myUserVo.nick}</strong></span>
