@@ -11,14 +11,18 @@ public class AttendUsersVo {
 	private int status;
 	private String nick;
 	private int average;
+	private byte agreeCount;	// 승인 인원 카운트
+	private byte mbStatus;
 	
 	public AttendUsersVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
 	public AttendUsersVo(String buttonClass, int rownum, int attendNo, int boardNo, int userNo, String attendDate,
-			int status, String nick, int average) {
+			int status, String nick, int average, byte agreeCount, byte mbStatus) {
 		super();
 		this.buttonClass = buttonClass;
 		this.rownum = rownum;
@@ -29,7 +33,11 @@ public class AttendUsersVo {
 		this.status = status;
 		this.nick = nick;
 		this.average = average;
+		this.agreeCount = agreeCount;
+		this.mbStatus = mbStatus;
 	}
+
+
 
 	public String getButtonClass() {
 		return buttonClass;
@@ -102,12 +110,31 @@ public class AttendUsersVo {
 	public void setAverage(int average) {
 		this.average = average;
 	}
+	
+	public byte getAgreeCount() {
+		return agreeCount;
+	}
+
+	public void setAgreeCount(byte agreeCount) {
+		this.agreeCount = agreeCount;
+	}
+
+
+	public byte getMbStatus() {
+		return mbStatus;
+	}
+
+	public void setMbStatus(byte mbStatus) {
+		this.mbStatus = mbStatus;
+	}
 
 	@Override
 	public String toString() {
 		return "AttendUsersVo [buttonClass=" + buttonClass + ", rownum=" + rownum + ", attendNo=" + attendNo
 				+ ", boardNo=" + boardNo + ", userNo=" + userNo + ", attendDate=" + attendDate + ", status=" + status
-				+ ", nick=" + nick + ", average=" + average + "]";
+				+ ", nick=" + nick + ", average=" + average + ", agreeCount=" + agreeCount + ", mbStatus=" + mbStatus
+				+ "]";
 	}
 
+	
 }

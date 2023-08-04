@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.modang.dao.AttendUsersDao;
 import com.modang.dao.BoardDao;
 import com.modang.vo.BoardVo;
 
@@ -16,6 +17,9 @@ public class BoardService {
 
 	@Autowired
 	private BoardDao boardDao;
+	
+	@Autowired
+	private AttendUsersDao attendUsersDao;
 
 	/* 게시판 글 작성 등록 */
 	public void write(BoardVo boardVo) {
@@ -43,7 +47,7 @@ public class BoardService {
 		// 끝글번호
 		int endRum = (startRnum + listCnt) - 1;
 		List<BoardVo> bList = boardDao.selectList(startRnum, endRum, keyword, category);
-
+		
 		/////////////////////////////////////////////////////////
 		// 페이징 계산
 		/////////////////////////////////////////////////////////
@@ -116,5 +120,13 @@ public class BoardService {
 		vo = boardDao.myBoardList(userNo);
 
 		return vo;
+	}
+	
+	/* 모집 완료된 게시글인지 체크 */
+	public BoardVo checkBStatus(int boardNo) {
+		System.out.println("BoardService.checkStatus()");
+		BoardVo result = boardDao.checkBStatus(boardNo);
+		
+		return result;
 	}
 }
