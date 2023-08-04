@@ -35,7 +35,8 @@
 /* the width for center position */
 #main-content .container #loginForm #main,
 #main-content .container #joinOk #main,
-#main-content .container #modifyForm #main {
+#main-content .container #modifyForm #main,
+#main-content .container #userJoinForm #main {
 	width: 350px;
 	margin: 0 auto;
 	
@@ -225,7 +226,8 @@
 }
 
 /* userJoinForm */
-#userJoinForm .element  .button-box {
+
+#shadowBox {
 	background-color: rgb(255, 255, 255);
 	cursor: pointer;
 	text-shadow: none;
@@ -233,54 +235,70 @@
 	border-width: 0px;
 	border-style: none;
 	border-radius: 4px;
-	width: 202px;
+	display:inline-block;
+	position: relative;
+    left: 370px;
+    top: 40px;
+	width: 13em;
 	height: 150px;
-	margin: 66px 0px 110px 336px;
-	padding: 10px 10px 10px 10px;
-}
-#userJoinForm .element .style {
-    width: 200px;
-    height: 211px;
-    margin: 180px 1px 0px 365px;
+	margin: 0px auto;
+	
 }
 
-#userJoinForm .element .data-text-content {
-    border: 1px solid #000000;
-    
-   
+#shadowBox2 {
+	background-color: rgb(255, 255, 255);
+	cursor: pointer;
+	text-shadow: none;
+	box-shadow: rgba(46, 65, 154, 0.28) 5px 10px 10px 0px;
+	border-width: 0px;
+	border-style: none;
+	border-radius: 4px;
+	display:inline-block;
+	position: relative;
+    left: 440px;
+    top: 40px;
+	width: 13em;
+	height: 150px;
+	margin: 0px auto;
+	
 }
 
-#userJoinForm .element .data-text-content {
-    background-color: rgb(255, 255, 255);
-    text-shadow: none;
-    box-shadow: rgba(46, 65, 154, 0.28) 5px 10px 10px 0px;
-    border-width: 0px;
-    border-style: none;
-    border-radius: 4px;
-    
+#shadowTitle {
+	cursor: pointer;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 6px 0px 15px 25px;
+	position: relative;
+    left: 365px;
+    top: -110px;
 }
 
-#userJoinForm .data-text-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    white-space: pre-wrap;
-    word-break: break-all;
-    
+#subTitleSize {
+	
+	font-size: 13px;
+	position: relative;
+	left: -5px;
+    top: 15px;
 }
 
-#userJoinForm div.content {
-  margin-left: 200px;
-  padding: 1px 16px;
-  height: 450px;
+#shadowTitle2 {
+	cursor: pointer;
+	font-size: 20px;
+	font-weight: bold;
+	width: 179px;
+	position: relative;
+   	left: 660px;
+    top: -248px;
 }
 
-
+#subTitleSize2{
+	
+	font-size: 13px;
+	margin: -10px -26px 0px 35px;
+	position: relative;
+   	left: -25px;
+    top: 35px;
+}
 
 /* 마이페이지 대표이미지 */
 #userPage {
