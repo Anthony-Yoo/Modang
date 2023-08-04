@@ -1,7 +1,6 @@
 package com.modang.vo;
 
 public class RecordUserVo {	
-
 	
 	private int recordNo;
 	private int playNo;
@@ -29,11 +28,18 @@ public class RecordUserVo {
 	private double totalWinRate;
 	private int totalCountGame;	
 	private int totalCountWinGame;
+	private int totalCountNormGame;			// 누적 본인다마 전체게임수	
+	private int totalCountWinNormGame;			// 누적 본인다마 승리게임수	
+	private int totalCountLoseNormGame;		// 누적 본인다마 패배게임수
+	private double totalNormRate; 			// 본인 다마 안물린비율
+	private int totalNormRatePercent;		// 누적 본인다마 안물린승률 100분위
+	private int recommStatus;				// 권장다마 상태
 	public RecordUserVo(int recordNo, int playNo, int userNo, int gameNo, String nick, int average, int recommAverage,
 			int currentAverage, int activeAverage, int hitMarker, String profileImage, String biliardAddress,
 			String biliardName, int tableType, int gameType, int memberNum, String gameDate, String gameTime,
 			String playTime, int record, int paymoney, int calGameTime, String totalGameTime, double totalWinRate,
-			int totalCountGame, int totalCountWinGame) {
+			int totalCountGame, int totalCountWinGame, int totalCountNormGame, int totalCountWinNormGame,
+			int totalCountLoseNormGame, double totalNormRate, int totalNormRatePercent, int recommStatus) {
 		this.recordNo = recordNo;
 		this.playNo = playNo;
 		this.userNo = userNo;
@@ -60,6 +66,12 @@ public class RecordUserVo {
 		this.totalWinRate = totalWinRate;
 		this.totalCountGame = totalCountGame;
 		this.totalCountWinGame = totalCountWinGame;
+		this.totalCountNormGame = totalCountNormGame;
+		this.totalCountWinNormGame = totalCountWinNormGame;
+		this.totalCountLoseNormGame = totalCountLoseNormGame;
+		this.totalNormRate = totalNormRate;
+		this.totalNormRatePercent = totalNormRatePercent;
+		this.recommStatus = recommStatus;
 	}
 	public RecordUserVo() {
 	}
@@ -219,6 +231,42 @@ public class RecordUserVo {
 	public void setTotalCountWinGame(int totalCountWinGame) {
 		this.totalCountWinGame = totalCountWinGame;
 	}
+	public int getTotalCountNormGame() {
+		return totalCountNormGame;
+	}
+	public void setTotalCountNormGame(int totalCountNormGame) {
+		this.totalCountNormGame = totalCountNormGame;
+	}
+	public int getTotalCountWinNormGame() {
+		return totalCountWinNormGame;
+	}
+	public void setTotalCountWinNormGame(int totalCountWinNormGame) {
+		this.totalCountWinNormGame = totalCountWinNormGame;
+	}
+	public int getTotalCountLoseNormGame() {
+		return totalCountLoseNormGame;
+	}
+	public void setTotalCountLoseNormGame(int totalCountLoseNormGame) {
+		this.totalCountLoseNormGame = totalCountLoseNormGame;
+	}
+	public double getTotalNormRate() {
+		return totalNormRate;
+	}
+	public void setTotalNormRate(double totalNormRate) {
+		this.totalNormRate = totalNormRate;
+	}
+	public int getTotalNormRatePercent() {
+		return totalNormRatePercent;
+	}
+	public void setTotalNormRatePercent(int totalNormRatePercent) {
+		this.totalNormRatePercent = totalNormRatePercent;
+	}
+	public int getRecommStatus() {
+		return recommStatus;
+	}
+	public void setRecommStatus(int recommStatus) {
+		this.recommStatus = recommStatus;
+	}
 	@Override
 	public String toString() {
 		return "RecordUserVo [recordNo=" + recordNo + ", playNo=" + playNo + ", userNo=" + userNo + ", gameNo=" + gameNo
@@ -228,8 +276,12 @@ public class RecordUserVo {
 				+ tableType + ", gameType=" + gameType + ", memberNum=" + memberNum + ", gameDate=" + gameDate
 				+ ", gameTime=" + gameTime + ", playTime=" + playTime + ", record=" + record + ", paymoney=" + paymoney
 				+ ", calGameTime=" + calGameTime + ", totalGameTime=" + totalGameTime + ", totalWinRate=" + totalWinRate
-				+ ", totalCountGame=" + totalCountGame + ", totalCountWinGame=" + totalCountWinGame + "]";
+				+ ", totalCountGame=" + totalCountGame + ", totalCountWinGame=" + totalCountWinGame
+				+ ", totalCountNormGame=" + totalCountNormGame + ", totalCountWinNormGame=" + totalCountWinNormGame
+				+ ", totalCountLoseNormGame=" + totalCountLoseNormGame + ", totalNormRate=" + totalNormRate
+				+ ", totalNormRatePercent=" + totalNormRatePercent + ", recommStatus=" + recommStatus + "]";
 	}
 	
+
 }
 
