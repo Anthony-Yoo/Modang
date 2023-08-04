@@ -240,6 +240,7 @@
 			select      p.PLAYNO,
 						p.USERNO,
 			            u.nick,
+			            u.PROFILEIMAGE,
 			            p.PLAYTIME,
 			            p.RECORD,
 			            p.CURRENTAVERAGE,

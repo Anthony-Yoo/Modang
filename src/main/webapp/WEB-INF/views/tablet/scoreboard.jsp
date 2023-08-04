@@ -43,7 +43,7 @@ body {
 					<div class="board float-l" id="boardno${playUser.orderNo}">
 						<div class="bdtop">
 							<div class="userinfo">
-								<img class="float-l imgbox" src="${pageContext.request.contextPath}/assets/images/modang_img.png">
+								<img class="float-l imgbox" src="${pageContext.request.contextPath }/upload/${playUser.proFileImage}" alt="유저 프로필 이미지">
 								<div class="usertext float-l">
 									 <br> ${playUser.nick} [다마수: ${playUser.currentAverage} ]
 								</div>

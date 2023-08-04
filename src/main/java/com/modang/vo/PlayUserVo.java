@@ -14,9 +14,9 @@ public class PlayUserVo {
 	private String endTime;
 	private int orderNo;
 	private TariffVo tariff;  // 요금표
-	private int UpperHit; //상위다마수
+	private String proFileImage;
 	public PlayUserVo(int playNo, int userNo, String nick, int gameNo, int playTime, int record, String comRecord,
-			int currentAverage, int activeAverage, String endTime, int orderNo, TariffVo tariff, int upperHit) {
+			int currentAverage, int activeAverage, String endTime, int orderNo, TariffVo tariff, String proFileImage) {
 		this.playNo = playNo;
 		this.userNo = userNo;
 		this.nick = nick;
@@ -29,7 +29,7 @@ public class PlayUserVo {
 		this.endTime = endTime;
 		this.orderNo = orderNo;
 		this.tariff = tariff;
-		UpperHit = upperHit;
+		this.proFileImage = proFileImage;
 	}
 	public PlayUserVo() {
 	}
@@ -105,19 +105,19 @@ public class PlayUserVo {
 	public void setTariff(TariffVo tariff) {
 		this.tariff = tariff;
 	}
-	public int getUpperHit() {
-		return UpperHit;
+	public String getProFileImage() {
+		return proFileImage;
 	}
-	public void setUpperHit(int upperHit) {
-		UpperHit = upperHit;
+	public void setProFileImage(String proFileImage) {
+		this.proFileImage = proFileImage;
 	}
 	@Override
 	public String toString() {
 		return "PlayUserVo [playNo=" + playNo + ", userNo=" + userNo + ", nick=" + nick + ", gameNo=" + gameNo
 				+ ", playTime=" + playTime + ", record=" + record + ", comRecord=" + comRecord + ", currentAverage="
 				+ currentAverage + ", activeAverage=" + activeAverage + ", endTime=" + endTime + ", orderNo=" + orderNo
-				+ ", tariff=" + tariff + ", UpperHit=" + UpperHit + "]";
+				+ ", tariff=" + tariff + ", proFileImage=" + proFileImage + "]";
 	}
 	
-
+	
 }

@@ -192,7 +192,7 @@
 				</div>
 			</div>
 			<div class="right float-l" id="favoriteList">
-				<div id="tab"><p>즐겨찾기</p></div>	
+				<div id="tab"><p>친구목록</p></div>	
 				<table id="favoriteTable" style="border: 1px">
 					  <thead>
 					  	<tr>
