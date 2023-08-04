@@ -15,6 +15,7 @@ public class BoardVo {
 	private byte status; 		/* 신청 상태 0: 모집중, 1: 마감 */
 	private byte aStatus;		/* 신청 상태 0: 신청중, 1: 승인, 2: 거절, 3: 확정 */
 	private String nick;
+	private String profileImage;		/*프로필이미지명*/
 	
 	public BoardVo() {
 		super();
@@ -24,7 +25,8 @@ public class BoardVo {
 	
 
 	public BoardVo(int boardNo, int userNo, String title, byte matchGameType, String matchRegion, int membernum,
-			String matchDate, String content, String boardDate, int count, byte status, byte aStatus, String nick) {
+			String matchDate, String content, String boardDate, int count, byte status, byte aStatus, String nick,
+			String profileImage) {
 		super();
 		this.boardNo = boardNo;
 		this.userNo = userNo;
@@ -39,6 +41,7 @@ public class BoardVo {
 		this.status = status;
 		this.aStatus = aStatus;
 		this.nick = nick;
+		this.profileImage = profileImage;
 	}
 
 
@@ -148,12 +151,21 @@ public class BoardVo {
 	public void setaStatus(byte aStatus) {
 		this.aStatus = aStatus;
 	}
+	
+	public String getProfileImage() {
+		return profileImage;
+	}
+
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
+	}
 
 	@Override
 	public String toString() {
 		return "BoardVo [boardNo=" + boardNo + ", userNo=" + userNo + ", title=" + title + ", matchGameType="
 				+ matchGameType + ", matchRegion=" + matchRegion + ", membernum=" + membernum + ", matchDate="
 				+ matchDate + ", content=" + content + ", boardDate=" + boardDate + ", count=" + count + ", status="
-				+ status + ", aStatus=" + aStatus + ", nick=" + nick + "]";
+				+ status + ", aStatus=" + aStatus + ", nick=" + nick + ", profileImage=" + profileImage + "]";
 	}
+	
 }

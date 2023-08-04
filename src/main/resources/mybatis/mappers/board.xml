@@ -154,7 +154,8 @@
 			       mb.count,
 			       mb.status,
 			       u.nick,
-			       u.userNo
+			       u.userNo,
+			       u.profileImage
 			from Matchboard mb, users u
 			where mb.boardNo = #{boardNo} and u.userNo = mb.userNo
 		]]>

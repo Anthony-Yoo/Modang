@@ -12,14 +12,16 @@ public class BDCommentVo {
 	private int depth;
 	private String nick;
 	private String id;
+	private String profileImage;		/*프로필이미지명*/
+	
 	
 	public BDCommentVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	public BDCommentVo(int commentNo, int boardNo, int userNo, String writeDate, String content, int groupNo,
-			int groupOrder, int depth, String nick, String id) {
+			int groupOrder, int depth, String nick, String id, String profileImage) {
 		super();
 		this.commentNo = commentNo;
 		this.boardNo = boardNo;
@@ -31,8 +33,8 @@ public class BDCommentVo {
 		this.depth = depth;
 		this.nick = nick;
 		this.id = id;
+		this.profileImage = profileImage;
 	}
-
 
 	public int getCommentNo() {
 		return commentNo;
@@ -114,13 +116,18 @@ public class BDCommentVo {
 		this.id = id;
 	}
 
+	public String getProfileImage() {
+		return profileImage;
+	}
+
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
+	}
+
 	@Override
 	public String toString() {
 		return "BDCommentVo [commentNo=" + commentNo + ", boardNo=" + boardNo + ", userNo=" + userNo + ", writeDate="
 				+ writeDate + ", content=" + content + ", groupNo=" + groupNo + ", groupOrder=" + groupOrder
-				+ ", depth=" + depth + ", nick=" + nick + ", id=" + id + "]";
+				+ ", depth=" + depth + ", nick=" + nick + ", id=" + id + ", profileImage=" + profileImage + "]";
 	}
-
-	
-	
 }
