@@ -29,6 +29,7 @@ public class ManagerController {
 	@RequestMapping(value = "/joinForm", method = { RequestMethod.GET, RequestMethod.POST })
 	public String joinForm() {
 		System.out.println("ManagerController.joinForm");
+		
 		return "/manager/managerJoinForm";
 	}
 
@@ -38,15 +39,13 @@ public class ManagerController {
 			Model model) {
 		// 웹 폼에서 전송된 모든 파일들이 file 리스트에 저장되어 컨트롤러로 전달
 		System.out.println("ManagerController.join");
-		System.out.println(managerVo);
-		managerVo.setImageFile1(file.get(0).getOriginalFilename());
-		managerVo.setImageFile2(file.get(1).getOriginalFilename());
-		managerVo.setImageFile3(file.get(2).getOriginalFilename());
 		System.out.println(managerVo);// 이미지 파일명 보임
 		int count = managerService.join(managerVo, file);
 		if(count==1) { System.out.println("회원가입성공");
 			return "manager/managerJoinSuccess"; 
-		}else { System.out.println("회원가입실패");
+			
+		}else { System.out.println("회원가입실패");		
+		
 			return "redirect:/manager/joinForm";
 		}
 	}
@@ -55,11 +54,20 @@ public class ManagerController {
 	@ResponseBody
 	@RequestMapping(value = "/join/idcheck", method = { RequestMethod.GET, RequestMethod.POST })
 	public JsonResult idcheck(@RequestParam("id") String id) {
-		System.out.println("ManagerController.idcheck");
-		boolean data = managerService.idcheck(id);
+		System.out.println("ManagerController.idcheck()");
+		ManagerVo idcheckVo = managerService.idcheck(id);
+		
 		JsonResult jsonResult = new JsonResult();
-		jsonResult.success(data);
-		System.out.println(jsonResult);
+		
+		if(idcheckVo !=null ) {
+			System.out.println("아이디가 있어욤~");
+			jsonResult.success(idcheckVo);//Json에 담아서 전달
+		}else {
+			System.out.println("아이디가 없어용~");
+		}		
+		
+		System.out.println(jsonResult);	
+				
 		return jsonResult;
 	}
 

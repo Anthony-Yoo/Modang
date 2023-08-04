@@ -37,7 +37,7 @@ public class UserService {
 		//System.out.println(userVo);
 		
 		//파일저장경로
-		String saveDir = "C:\\javastudy\\upload";
+		String saveDir = "D:\\Dev\\upload";
 		
 		//파일관련정보 뽑는다
 		System.out.println("FileUploadService.restore()");

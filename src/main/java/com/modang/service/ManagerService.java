@@ -18,7 +18,7 @@ import com.modang.vo.TariffVo;
 
 @Service
 public class ManagerService {
-	String saveDir = "C:\\javaStudy\\upload";
+	String saveDir = "D:\\Dev\\upload";
 	@Autowired private ManagerDao managerDao;
 	//@Autowired private TariffVo tariffVo;
 	//@Autowired private BiliardDao biliardDao;
@@ -32,8 +32,9 @@ public class ManagerService {
 		//biliardDao.
 		//매니저 정보 삽입
 		//이미지 삽입
+		int count = 0; 
 		for(int i=0; i<file.size(); i++) {
-			System.out.println(file.get(i).getOriginalFilename());
+			System.out.println(file.get(i).getOriginalFilename());		
 			
 			//원 파일 이름
 			String orgName = file.get(i).getOriginalFilename();
@@ -68,27 +69,42 @@ public class ManagerService {
 			}catch (IOException e) {
 				e.printStackTrace();
 			}
-		}
+			count++;
+			switch (count) {
+				case 1 : 
+					managerVo.setImageFile1(saveName);	
+					break;
+				case 2 :
+					managerVo.setImageFile2(saveName);	
+					break;
+				case 3 :
+					managerVo.setImageFile3(saveName);
+					break;
+				default :
+					System.out.println("saveName이 없어용~");
+					break;
+			}			
+		}		
 		//db에 저장
 		//ManagerVo managerVo= new ManagerVo();
-		System.out.println(managerVo);
-		managerDao.insertManager(managerVo);
-		int biliardno=managerVo.getbiliardNo();
-		System.out.println("요금테이블생성할 당구장:"+biliardno);
-		int count = managerDao.insertTariff(biliardno);
-		return count;
+		System.out.println(managerVo);	
+		
+		managerDao.insertManager(managerVo); // 당구장 사장님 회원가입 
+		
+		int biliardNo = managerVo.getbiliardNo(); // 당구장 번호 가져오기
+		System.out.println("요금테이블생성할 당구장:"+biliardNo);
+		int countNo = managerDao.insertTariff(biliardNo); // 당구장 요금표(기본가격) 셍성하기
+		
+		
+		return countNo;
 	}
 	
 	/*회원가입 id 중복체크*/
-	public boolean idcheck(String id) {
+	public ManagerVo idcheck(String id) {
 		System.out.println("ManagerService.idcheck");
-		ManagerVo managerVo = managerDao.selectManager(id);
-		boolean result;
-		if(managerVo==null) {//사용가능
-			return true;
-		}else {				//사용 불가능
-			return false;
-		}
+		ManagerVo managerVo = managerDao.selectManager(id);		
+		
+		return managerVo;
 	}
 	
 	/*로그인*/
