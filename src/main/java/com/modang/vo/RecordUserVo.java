@@ -12,7 +12,7 @@ public class RecordUserVo {
 	private int recommAverage;
 	private int currentAverage;
 	private int activeAverage;	
-	private int upperHit;
+	private int hitMarker;
 	private String profileImage;
 	private String biliardAddress;
 	private String biliardName; 
@@ -30,7 +30,7 @@ public class RecordUserVo {
 	private int totalCountGame;	
 	private int totalCountWinGame;
 	public RecordUserVo(int recordNo, int playNo, int userNo, int gameNo, String nick, int average, int recommAverage,
-			int currentAverage, int activeAverage, int upperHit, String profileImage, String biliardAddress,
+			int currentAverage, int activeAverage, int hitMarker, String profileImage, String biliardAddress,
 			String biliardName, int tableType, int gameType, int memberNum, String gameDate, String gameTime,
 			String playTime, int record, int paymoney, int calGameTime, String totalGameTime, double totalWinRate,
 			int totalCountGame, int totalCountWinGame) {
@@ -43,7 +43,7 @@ public class RecordUserVo {
 		this.recommAverage = recommAverage;
 		this.currentAverage = currentAverage;
 		this.activeAverage = activeAverage;
-		this.upperHit = upperHit;
+		this.hitMarker = hitMarker;
 		this.profileImage = profileImage;
 		this.biliardAddress = biliardAddress;
 		this.biliardName = biliardName;
@@ -117,11 +117,11 @@ public class RecordUserVo {
 	public void setActiveAverage(int activeAverage) {
 		this.activeAverage = activeAverage;
 	}
-	public int getUpperHit() {
-		return upperHit;
+	public int getHitMarker() {
+		return hitMarker;
 	}
-	public void setUpperHit(int upperHit) {
-		this.upperHit = upperHit;
+	public void setHitMarker(int hitMarker) {
+		this.hitMarker = hitMarker;
 	}
 	public String getProfileImage() {
 		return profileImage;
@@ -223,7 +223,7 @@ public class RecordUserVo {
 	public String toString() {
 		return "RecordUserVo [recordNo=" + recordNo + ", playNo=" + playNo + ", userNo=" + userNo + ", gameNo=" + gameNo
 				+ ", nick=" + nick + ", average=" + average + ", recommAverage=" + recommAverage + ", currentAverage="
-				+ currentAverage + ", activeAverage=" + activeAverage + ", upperHit=" + upperHit + ", profileImage="
+				+ currentAverage + ", activeAverage=" + activeAverage + ", hitMarker=" + hitMarker + ", profileImage="
 				+ profileImage + ", biliardAddress=" + biliardAddress + ", biliardName=" + biliardName + ", tableType="
 				+ tableType + ", gameType=" + gameType + ", memberNum=" + memberNum + ", gameDate=" + gameDate
 				+ ", gameTime=" + gameTime + ", playTime=" + playTime + ", record=" + record + ", paymoney=" + paymoney

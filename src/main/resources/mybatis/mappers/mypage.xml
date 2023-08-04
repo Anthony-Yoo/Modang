@@ -9,7 +9,7 @@
 			        NICK,        
 			        AVERAGE,
 			        RECOMMAVERAGE,
-			        UPPERHIT
+			        HITMARKER
 			from users
 			where USERNO = #{userNo}	
 		]]>		
@@ -22,7 +22,7 @@
 			        ur.AVERAGE,
 			        ur.RECOMMAVERAGE,        
 			        ur.PROFILEIMAGE,
-			        ur.UPPERHIT,
+			        ur.HITMARKER,
 			        pl.PLAYNO,        
 			        pl.GAMENO,
 			        pl.PLAYTIME,
@@ -62,7 +62,8 @@
 			        ort.record,
 			        ort.PAYMONEY,
 			        ort.calGameTime,
-			        ort.ACTIVEAVERAGE
+			        ort.ACTIVEAVERAGE,
+                    ort.Average
 			    from ( select rownum rn, 
 			              ot.gameNo,
 			              ot.biliardAddress,
@@ -75,7 +76,8 @@
 			              ot.record,
 			              ot.PAYMONEY,
 			              ot.calGameTime,
-			              ot.ACTIVEAVERAGE
+			              ot.ACTIVEAVERAGE,
+                          ot.Average
 			       from (  select   g.gameNo,
 			                        REGEXP_SUBSTR(b.BILIARDADDRESS1, '[^ ]+', 1, 1, 'i') || ' ' ||  REGEXP_SUBSTR(b.BILIARDADDRESS1, '[^ ]+', 1, 2, 'i') as BILIARDADDRESS,
 			                        b.biliardName,
@@ -89,15 +91,17 @@
 			                        p.record,			                        
 			                        g.PAYMONEY,
 			                        g.gametime as calGameTime,
-			                        p.ACTIVEAVERAGE
-			                from games g, plays p, cueTable c, biliards b 
+			                        p.ACTIVEAVERAGE,
+                                    u.Average
+			                from games g, plays p, cueTable c, biliards b, users u 
 			                where g.gameNo = p.gameNo
 			                and g.tableNo = c.tableNo
 			                and c.biliardNo = b.biliardNo
+                            and p.userno = u.userno
 			                and p.userno = #{userNo}
 			                and g.gamestatus = 1
 			                order by g.gameNo desc ) ot
-			            )ort
+			            )ort;
 		]]>
 	</select>
 	<!-- 유져 플레이리스트(게임넘버) -->

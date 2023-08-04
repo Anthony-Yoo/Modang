@@ -112,8 +112,13 @@
 .newApList .applyCheck .agree{
     background: linear-gradient(to bottom right, rgb(9, 32, 80), rgb(81, 117, 164));
 }
-
+.newApList .applyCheck .agreed{
+    background: linear-gradient(to bottom right, rgb(9, 32, 80), rgb(81, 117, 164));
+}
 .newApList .applyCheck .refuse{
+    background: linear-gradient(to bottom right, rgb(247 17 17), rgb(185 114 121));
+}
+.newApList .applyCheck .refused{
     background: linear-gradient(to bottom right, rgb(247 17 17), rgb(185 114 121));
 }
 
@@ -374,8 +379,14 @@ function aLRender(AttendUsersVo, dir) {
 		str += ' 		<td>'+AttendUsersVo.average+'</td>';
 		str += ' 		<td>'+AttendUsersVo.attendDate+'</td>';
 		str += ' 		<td class="applyCheck">';
-		str += ' 			<button type="button" class="agree" data-attendNo='+AttendUsersVo.attendNo+' data-boardNo='+AttendUsersVo.boardNo+'>승인</button>';
-		str += ' 			<button type="button" class="refuse" data-attendNo='+AttendUsersVo.attendNo+' data-boardNo='+AttendUsersVo.boardNo+'>거절</button>';
+		if(AttendUsersVo.status == 0){
+			str += ' 			<button type="button" class="agree" data-attendNo='+AttendUsersVo.attendNo+' data-boardNo='+AttendUsersVo.boardNo+'>승인</button>';
+			str += ' 			<button type="button" class="refuse" data-attendNo='+AttendUsersVo.attendNo+' data-boardNo='+AttendUsersVo.boardNo+'>거절</button>';
+		}else if(AttendUsersVo.status == 1){
+			str += ' 			<button type="" class="agreed" data-attendNo='+AttendUsersVo.attendNo+' data-boardNo='+AttendUsersVo.boardNo+'>승인됨</button>';
+		}else if(AttendUsersVo.status == 2){
+			str += ' 			<button type="" class="refused" data-attendNo='+AttendUsersVo.attendNo+' data-boardNo='+AttendUsersVo.boardNo+'>거절됨</button>';
+		}
 		str += ' 		</td>';
 		str += ' 	</tr>';
 		/* str += ' </tbody>'; */

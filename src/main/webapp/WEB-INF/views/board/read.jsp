@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -8,17 +7,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${rList.title}</title>
-<link rel="icon" sizes="any"
-	href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
+<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
 <!-- 게시판 css -->
-<link href="${pageContext.request.contextPath}/assets/css/board.css"
-	rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/board.css" rel="stylesheet" type="text/css">
 <!-- 사이트 전체 css -->
-<link href="${pageContext.request.contextPath}/assets/css/modang.css"
-	rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
+
 <!-- jquery -->
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 </head>
 
 
@@ -48,14 +44,14 @@
 				<!-- 글 및 작성자 정보 -->
 				<div class="title_area">
 					<a href="" class="title_thumb"> <img
-						src="${pageContext.request.contextPath}/assets/images/modang.png"
+						src="${pageContext.request.contextPath}/upload/${rList.profileImage}"
 						alt="프로필 사진" width="36" height="36">
 					</a>
 					<div class="title_box">
 						<div class="title_nick_box">
 							<!-- 작성자 -->
 							<div class="title_nick_info">
-								<a id="" href="#" role="button" aria-haspopup="true"
+								<a id="" href="${pageContext.request.contextPath}/mypage/${rList.userNo}/record" role="button" aria-haspopup="true"
 									aria-expanded="false" class="title_nickname">${rList.nick}</a>
 							</div>
 						</div>
@@ -479,12 +475,12 @@ $(document).ready(function() {
 		str += ' <input type="hidden" name="groupNo" value="'+BDCommentVo.groupNo+'">';
 		str += ' 	<div class="comment_area" style="position: relative; left: ' + (BDCommentVo.depth * 50) + 'px" data-index='+i+' >';
 		str += ' 	<a href="" class="comment_thumb">';
-		str += ' 		<img src="${pageContext.request.contextPath}/assets/images/modang.png" alt="프로필 사진" width="36" height="36">';
+		str += ' 		<img src="${pageContext.request.contextPath}/upload/'+BDCommentVo.profileImage+'" alt="프로필 사진" width="36" height="36">';
 		str += ' 	</a>';
 		str += ' 	<div class="comment_box">';
 		str += ' 		<div class="comment_nick_box">';
 		str += ' 			<div class="comment_nick_info">';
-		str += ' 				<a id="" href="#" role="button" aria-haspopup="true" aria-expanded="false" class="comment_nickname">';
+		str += ' 				<a id="" href="${pageContext.request.contextPath}/mypage/' + BDCommentVo.userNo+ '/record" role="button" aria-haspopup="true" aria-expanded="false" class="comment_nickname">';
 		str += ' 					' + BDCommentVo.nick + '';
 		str += ' 				</a>';
 		str += ' 	 		</div>';
