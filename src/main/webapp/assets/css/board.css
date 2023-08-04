@@ -844,7 +844,16 @@ address, em {
     width: 65px;
     margin: 0 auto;
     height: 30px;
-    background: linear-gradient(to bottom right, rgb(9, 32, 80), rgb(81, 117, 164));
+    background: linear-gradient(to bottom right, rgb(25 58 127), rgb(81, 117, 164));
+	color: white;
+	border-radius: 2px;
+}
+
+#confirmed .btnModal{
+    width: 65px;
+    margin: 0 auto;
+    height: 30px;
+    background: linear-gradient(to bottom right, rgb(74 74 74), rgb(3 10 86));
 	color: white;
 	border-radius: 2px;
 }
@@ -856,4 +865,12 @@ address, em {
 .modal-header .modal-title{
 	text-align: center;
 	font-weight: bold;
+}
+
+.result {
+        color: black; /* 기본 글자 색상 */
+    }
+
+.result.red {
+      color: red; /* 빨간 글자 색상 */
 }

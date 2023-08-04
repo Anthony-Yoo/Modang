@@ -97,7 +97,7 @@
 						</c:choose>
 						${rList.matchRegion} ${rList.matchDate}]
 					</div>
-					<span id="title_state">구인현황 1/${rList.membernum}</span>
+					<span id="title_state" style="color: ${rList.agreeCount+1 >= rList.membernum ? 'red' : 'black'}">구인현황: ${rList.agreeCount+1}/${rList.membernum}</span>
 				</div>
 
 				<!-- 내용 -->

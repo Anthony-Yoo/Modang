@@ -54,7 +54,8 @@
 				<c:forEach items="${pMap.bList}" var="boardVo">
 					<tbody>
 						<tr>
-							<td>${boardVo.boardNo}</td>	<!-- 게시판 번호 -->
+							<td>${boardVo.boardNo}</td>
+							<!-- 게시판 번호 -->
 							<!-- 게임타입 번호에 따른 게임 종류 출력 -->
 							<c:choose>
 								<c:when test="${boardVo.matchGameType == '0'}">
@@ -67,11 +68,17 @@
 									<td>포켓볼</td>
 								</c:when>
 							</c:choose>
-							<td>${boardVo.matchRegion}</td>		<!-- 경기 지역 -->
-							<td class="text-left"><a href="${pageContext.request.contextPath}/board/hitCount?boardNo=${boardVo.boardNo}">${boardVo.title}</a></td> <!-- 제목 -->
-							<td>1/${boardVo.membernum}</td>		<!-- 멤버 구인현황 현재 인원/ 총 모집인원 -->
-							<td>${boardVo.nick}</td>			<!-- 글쓴이 닉네임 -->
-							<td>${boardVo.matchDate}</td>		<!-- 개임 날짜 -->
+							<td>${boardVo.matchRegion}</td>
+							<!-- 경기 지역 -->
+							<td class="text-left"><a
+								href="${pageContext.request.contextPath}/board/hitCount?boardNo=${boardVo.boardNo}">${boardVo.title}</a></td>
+							<!-- 제목 -->
+							<td class="result">${boardVo.agreeCount+1}/${boardVo.membernum}</td>
+							<!-- 멤버 구인현황 현재 인원/ 총 모집인원 -->
+							<td>${boardVo.nick}</td>
+							<!-- 글쓴이 닉네임 -->
+							<td>${boardVo.matchDate}</td>
+							<!-- 개임 날짜 -->
 						</tr>
 					</tbody>
 				</c:forEach>
@@ -80,18 +87,23 @@
 			<div id="paging">
 				<ul>
 					<c:if test="${pMap.prev == true}">
-						<li><a href="${pageContext.request.contextPath}/board/list?crtPage=${pMap.startPageBtnNo-1}&keyword=${pMap.keyword}">◀</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/board/list?crtPage=${pMap.startPageBtnNo-1}&keyword=${pMap.keyword}">◀</a></li>
 					</c:if>
-					<c:forEach begin="${pMap.startPageBtnNo}" end="${pMap.endPageBtnNo}" step="1" var="page">
-						<li class="active"><a href="${pageContext.request.contextPath}/board/list?crtPage=${page}&keyword=${pMap.keyword}">${page}</a></li>
+					<c:forEach begin="${pMap.startPageBtnNo}"
+						end="${pMap.endPageBtnNo}" step="1" var="page">
+						<li class="active"><a
+							href="${pageContext.request.contextPath}/board/list?crtPage=${page}&keyword=${pMap.keyword}">${page}</a></li>
 					</c:forEach>
 					<c:if test="${pMap.next == true}">
-						<li><a href="${pageContext.request.contextPath}/board/list?crtPage=${pMap.endPageBtnNo+1}&keyword=${pMap.keyword}">▶</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/board/list?crtPage=${pMap.endPageBtnNo+1}&keyword=${pMap.keyword}">▶</a></li>
 					</c:if>
 				</ul>
 				<div class="clear"></div>
 			</div>
-			<form action="${pageContext.request.contextPath}/board/list" method="get">
+			<form action="${pageContext.request.contextPath}/board/list"
+				method="get">
 				<div class="form-group text-center">
 					<select name="category">
 						<option>선택</option>
@@ -108,7 +120,23 @@
 		<!-- //list -->
 	</div>
 	<!-- footer -->
-<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
+	<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
 </body>
+<script>
+	var elements = document.querySelectorAll('.result'); // 모든 결과 요소 선택
+
+	elements.forEach(function(element) {
+		var text = element.textContent; // 요소의 내부 텍스트 가져오기
+
+		// 정규식을 사용하여 텍스트에서 숫자 값을 추출합니다.
+		var values = text.match(/\d+/g);
+		var agreeCount = parseInt(values[0]); // 첫 번째 숫자는 agreeCount 값
+		var membernum = parseInt(values[1]); // 두 번째 숫자는 membernum 값
+
+		if (agreeCount >= membernum) {
+			element.classList.add('red');
+		}
+	});
+</script>
 
 </html>

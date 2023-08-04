@@ -109,6 +109,15 @@
     color: white;
    	border-radius: 2px;
 }
+
+.newApList .confirmed button{
+    width: 57px;
+    margin: 0 auto;
+    height: 24px;
+    color: white;
+   	border-radius: 2px;
+}
+
 .newApList .applyCheck .agree{
     background: linear-gradient(to bottom right, rgb(9, 32, 80), rgb(81, 117, 164));
 }
@@ -161,11 +170,12 @@
 
 		<div id="apply" style="margin-right: 0px; width: 1030px;">
 			<div class="apply_btn">
-				<a id="myList" class="active"
-					href="${pageContext.request.contextPath}/attendUsers/myPage/myBoardList">내
-					게시글 목록</a>&nbsp;&nbsp;&nbsp;&nbsp;<a id="myList"
-					href="${pageContext.request.contextPath}/attendUsers/myPage/myApplyList">내
-					신청글 목록</a>
+				<a id="myList" class="active" href="${pageContext.request.contextPath}/attendUsers/myPage/myBoardList">내
+					게시글 목록
+				</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a id="myList" href="${pageContext.request.contextPath}/attendUsers/myPage/myApplyList">
+					내 신청글 목록
+				</a>
 			</div>
 			<div id="list">
 				<table>
@@ -205,7 +215,7 @@
 									href="${pageContext.request.contextPath}/board/hitCount?boardNo=${boardVo.boardNo}">
 										${boardVo.title} </a></td>
 								<!-- 제목 -->
-								<td>1/${boardVo.membernum}</td>
+								<td style="color: ${boardVo.agreeCount+1 >= boardVo.membernum ? 'red' : 'black'}">${boardVo.agreeCount+1}/${boardVo.membernum}</td>
 								<!-- 멤버 구인현황 현재 인원/ 총 모집인원 -->
 								<td>${boardVo.nick}</td>
 								<!-- 글쓴이 닉네임 -->
@@ -219,9 +229,9 @@
 										</td>
 									</c:when>
 									<c:otherwise>
-										<td>
+										<td id="confirmed"> 
 											<button type="button" class="btnModal"
-												data-boardno="${boardVo.boardNo}">확정</button>
+												data-boardno="${boardVo.boardNo}">모집 완료</button>
 										</td>
 									</c:otherwise>
 								</c:choose>
@@ -267,7 +277,7 @@
 						</tbody>
 					</table>
 					
-					<div id="decide">
+					<div id="decide" style="display: none;">
 						<button type="button" id="confirmation">확정하기</button>
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<button type="button" id="dismiss">해산하기</button>
@@ -304,10 +314,35 @@ $("#list").on("click", ".btnModal", function() {
 		success : function(jsonResult) {
 			console.log("테스트");
 			console.log(jsonResult); 
+			
+			
 			$(".newApList").remove();
 			for(var i=0; i<jsonResult.data.length;i++){
 				aLRender(jsonResult.data[i], "down")
 			}
+		 },
+		error : function(XHR, status, error) {
+			// 실패
+		}
+	});
+	
+	/* 버튼이벤트 구현을 위한 코드 */
+	$.ajax({
+		url : "${pageContext.request.contextPath}/board/checkBStatus",
+		type : "get",
+		contentType : "application/json",
+		data : {boardNo: boardNo},
+		
+		// 데이터 받은 후 
+		dataType : "json",
+		success : function(jsonResult) {
+			console.log("테스트");
+			console.log(jsonResult.data.status); 
+			if (jsonResult.data.status === 1) {
+                $("#decide").hide();
+            } else {
+                $("#decide").show();
+           	}
 		 },
 		error : function(XHR, status, error) {
 			// 실패
@@ -370,7 +405,6 @@ $(document).on("click", ".applyCheck button", function () {
 
 function aLRender(AttendUsersVo, dir) {
     // BDCommentVo.depth 값을 가져와서 JavaScript 변수로 저장
-   	console.log(AttendUsersVo.userNo);
 	var str = "";
 		/* str += ' <tbody>'; */
 		str += ' 	<tr class="newApList">';
