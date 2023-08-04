@@ -28,8 +28,6 @@
 	
 		<div class="container text-center">
 
-    		<div id="user">
-		
 				<div id="userJoinFrom">
 		
 					<div id="main">
@@ -39,7 +37,7 @@
 							<div class="form-group">
                     			<div class="element">
 									
-										<div data-text-content="true" onclick="document.location='${pageContext.request.contextPath}/user/joinForm'" style="background-color: rgb(255, 255, 255);cursor: pointer;text-shadow: none;box-shadow: rgba(46, 65, 154, 0.28) 5px 10px 10px 0px;border-width: 0px;border-style: none;border-radius: 4px;width: 202px;height: 150px;margin: 66px 0px 110px 336px;padding: 10px 10px 10px 10px;">
+										<div data-text-content="true" id="button-box" onclick="document.location='${pageContext.request.contextPath}/user/joinForm'" style="">
 											<div data-text-content="true" style="font-size: 20px;font-weight: bold;padding: 6px 0px 15px 25px;" class="">
 											
 											<p>개인 회원 가입
@@ -86,7 +84,7 @@
     			<!-- //user -->
     			</div>
     		<!-- //container -->
-    		</div>
+    		
     <!-- //main-content -->
   
 	<!-- 푸터 시작 -->
