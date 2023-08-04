@@ -1,10 +1,10 @@
 @charset "UTF-8";
 /* 여백 초기화 */
-/* body, div, ul, li, dl, dt, ol, h1, h2, h3, h4, h5, h6, input, fieldset, span, img,
-	legend, p, select, table, th, td, tr, textarea, button, form {
+ body, div, h1, h2, h3, h4, h5, h6, input, span, img, 
+ p, select, table, button, form {
 	margin: 0;
 	padding: 0;
-} */
+}
 
 /* 전체 폭 */
  .container{
@@ -185,11 +185,11 @@
 
 /* submit button */
 #main form .button-area #btn-submit{
-	width: 480px;
+	width: 100%;
 	color: #fff;
 	border-radius:10px;
 	height: 40px;
-	margin:10px 10px 10px -55px;
+	margin: 0 auto;
 	background : linear-gradient(to bottom right, rgb(9, 32, 80),
       rgb(81, 117, 164))
       
@@ -205,7 +205,7 @@
     border-color: darkslateblue;
 }
 
-/* icon */
+/* modify icon */
 #main form .form-group .input-group img{
 	width: 40px; 
 	height: 40px;
@@ -225,19 +225,32 @@
 }
 
 /* userJoinForm */
-.element .style {
+#userJoinForm .element  .button-box {
+	background-color: rgb(255, 255, 255);
+	cursor: pointer;
+	text-shadow: none;
+	box-shadow: rgba(46, 65, 154, 0.28) 5px 10px 10px 0px;
+	border-width: 0px;
+	border-style: none;
+	border-radius: 4px;
+	width: 202px;
+	height: 150px;
+	margin: 66px 0px 110px 336px;
+	padding: 10px 10px 10px 10px;
+}
+#userJoinForm .element .style {
     width: 200px;
     height: 211px;
     margin: 180px 1px 0px 365px;
 }
 
-.element .data-text-content {
+#userJoinForm .element .data-text-content {
     border: 1px solid #000000;
     
    
 }
 
-.element .data-text-content {
+#userJoinForm .element .data-text-content {
     background-color: rgb(255, 255, 255);
     text-shadow: none;
     box-shadow: rgba(46, 65, 154, 0.28) 5px 10px 10px 0px;
@@ -247,7 +260,7 @@
     
 }
 
-.data-text-content {
+#userJoinForm .data-text-content {
     position: absolute;
     top: 0;
     left: 0;
@@ -261,28 +274,13 @@
     
 }
 
-div.content {
+#userJoinForm div.content {
   margin-left: 200px;
   padding: 1px 16px;
   height: 450px;
 }
 
 
-
-/* 마이페이지 버튼 */
-#userPage button {
-	cursor: pointer;
-	width: 480px;
-	color: #fff;
-	border-radius:10px;
-	line-height: 40px;
-	font-size: 15px;
-    border: 0;
-    padding: 0;
-    margin: 100px 0px 0px 200px;
-    background : linear-gradient(to bottom right, rgb(9, 32, 80),
-      rgb(81, 117, 164))
-}
 
 /* 마이페이지 대표이미지 */
 #userPage {
@@ -291,7 +289,7 @@ div.content {
 	
 }
 
-#userPage div.content {
+#userPage .content {
   margin-left: 200px;
   padding: 1px 16px;
   height: 450px;
@@ -305,6 +303,7 @@ div.content {
     margin-left: auto;
 }
 
+/* 마이페이지 이미지 */
 #userPage .element.style .image-show {
     width: 960px;
     height: 260px;
@@ -313,15 +312,15 @@ div.content {
     position: absolute;
 }
 
+/* 마이페이지 이미지 */
 #userPage .image-show img {
     vertical-align: top;
     padding: 0;
     width: 260px;
+    height: 260px;
     object-fit: cover;
     margin: -1px 0 0 -150px;
     position: absolute; 
-    height: 260px;
-	
 }
 
 /* 마이페이지 아이콘 기본 위치 */
@@ -332,32 +331,30 @@ div.content {
     position: relative;
     
 }
-
+/* 마이페이지 아이콘 */
 #userPage .image-icon hr{
 	margin:-5px -15px 10px 455px;
 	border:1px solid #0000a0;
 }
 
+/* 마이페이지 사용자 정보 */
 #userPage .text {
 	margin: 20px 10px 10px 220px;
     font-size: 30px;
     position: relative;
 	
-	
 }
-@media screen and (max-width: 700px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-  .sidebar a {float: left;}
-  div.content {margin-left: 0;}
-}
-
-@media screen and (max-width: 400px) {
-  .sidebar a {
-    text-align: center;
-    float: none;
-  }
+/* 마이페이지 버튼 */
+#userPage .button-area .btn {
+	cursor: pointer;
+	width: 40%;
+	color: #fff;
+	border-radius:10px;
+	line-height: 40px;
+	font-size: 15px;
+    border: 0;
+    padding: 0;
+    margin: 100px 0px 0px 200px;
+    background : linear-gradient(to bottom right, rgb(9, 32, 80),
+      rgb(81, 117, 164))
 }
