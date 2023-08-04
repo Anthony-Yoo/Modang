@@ -80,6 +80,20 @@ public class MypageService {
 			}			
 		}
 		
+		/* 권장다마 계산 */
+		int totalCountNormGame = 0;			// 누적 본인다마 게임수			
+		int totalCountLoseNormGame = 0;		// 누적 본인다마 패배게임수
+		double totalNormRate = 0;			// 누적 승률
+		
+		/*
+		 * for(RecordUserVo vo : getGameList) { if(vo.getAverage() = ) totalGameTime +=
+		 * vo.getCalGameTime(); // 누적 게임시간 완료 if(vo.getRecord()==1) {
+		 * totalCountWinGame++; // 누적 승리게임수 완료 }else
+		 * if(vo.getRecord()==vo.getMemberNum()) { totalCountLoseGame++; // 누적 패배게임수 완료
+		 * } }
+		 */
+		
+		
 		curRecordVo.setTotalGameTime(totalGameTime);
 		curRecordVo.setTotalCountWinGame(totalCountWinGame);
 		curRecordVo.setTotalCountLoseGame(totalCountLoseGame);
