@@ -96,7 +96,6 @@ public class AttendUsersController {
 			System.out.println("실패");
 		}
 		
-		
 		JsonResult jsonResult = new JsonResult();
 		return jsonResult;
 	}
