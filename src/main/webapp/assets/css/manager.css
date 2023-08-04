@@ -143,7 +143,7 @@ justify-content: center;align-items: center; pointer-events: none;}
 .con .modang_list ul li .txt p.repname{font-weight: 800; font-size: 20px; text-align: center;margin:10px 0; }
 .con .modang_list ul li .txt p.addr{font-size: 14px; padding:10px 10px 0; height: 40px; overflow-y: auto;}
 /*당구장리스트-상세보기-모달*/
-#detailModal{width: 1000px;height: 650px; margin: 0 auto; border: 2px solid #2E419A; background-color: #fff;
+#detailModal{width: 1200px;height: 720px; margin: 0 auto; border: 2px solid #2E419A; background-color: #fff;
 	border-radius: 10px; box-sizing: border-box;}
 .modal-header{ width: 900px; margin: 0 auto; font-size: 26px; height: 100px;
 	border-bottom: 1px solid #2E419A;box-sizing: border-box; padding-top: 30px;}
@@ -164,7 +164,8 @@ justify-content: center;align-items: center; pointer-events: none;}
 .modal-footer{ margin-top: 20px; height: 40px; text-align: right;}
 .modal-footer>button{width: 90px; height: 30px; background-color: #2E419A;
 	border-radius: 4px; color: #fff; cursor: pointer; margin-right:40px;}
-
+/* 모달 창 가운데 정렬 */
+.modal-dialog {display: flex;justify-content: center;align-items: center;}
 /*유저 전적보기*/
 /*게임 유저 정보?*/
 .record-view{ width: 1200px;height: 400px; position: relative; margin: 50px auto 0;}
@@ -172,15 +173,15 @@ justify-content: center;align-items: center; pointer-events: none;}
 .record-view .left{display: inline-block;width: 300px; height: 100%;position: absolute; top: 0; left: 0;}
 .record-view .userImg img{display: block; width: 250px; height: 250px; margin: 0 auto; border: 1px solid #2E419A;
     box-sizing: border-box; border-radius: 10px;}
-.record-view .town{display: block; width: 250px;height: 110px;  margin: 15px auto 0; border: 1px solid  #2E419A;
+.record-view .town{display: block; width: 250px;height: 127px;  margin: 15px auto 0; border: 1px solid  #2E419A;
     border-radius: 10px;}
-.record-view .town span{display: inline-block; margin:  20px 0 0 20px;}
+.record-view .town span{display: inline-block; margin:  25px 0 0 20px;}
 .record-view .town span strong{color: #2E419A; font-size: 20px;}
 .record-view .center{display: inline-block;width: 300px;height: 100%;position: absolute; top: 0; left: 300px;
     text-align: center;}
 .record-view .userRecent p{border-bottom: 1px solid #2E419A; padding: 6px 0; width: 280px; margin: 0 auto;}
 .record-view .userRecent .recentAver{height: 100px; background-color: #efefef; border-radius: 10px;}
-.record-view .userRecent .recentAver ul{margin-top: 20px; line-height: normal; font-weight: 600;}
+.record-view .userRecent .recentAver ul{margin-top: 20px; line-height: normal; font-weight: 700;}
 .record-view .userRecent .recentAver ul li{display: inline-block; width: 20px; height: 20px; border: 1px solid #2E419A;}
 .record-view .userRecent .recentAver ul li.win{background : linear-gradient(to bottom right, rgb(9, 32, 80),
       rgb(81, 117, 164)); color: #fff;}
@@ -190,7 +191,7 @@ justify-content: center;align-items: center; pointer-events: none;}
 .record-view .userRecent .recentGame thead th{width:85px;}
 .record-view .userRecent .recentGame tbody{font-size: 20px; color: red; font-weight: 700; margin-top: 10px;}
 .record-view .userRecent .recentGame th{width: 80px; height: 20px;}
-.record-view .userRecent .recentPlayer{height: 140px; background-color: #efefef; margin-top: 10px;border-radius: 10px;}
+.record-view .userRecent .recentPlayer{height: 155px; background-color: #efefef; margin-top: 10px;border-radius: 10px;}
 .record-view .userRecent .recentPlayer ul{font-size: 12px; width: 300px; margin-top: 6px;}
 .record-view .userRecent .recentPlayer ul li{display: inline-block; width: 100px; padding: 5px;
     border: 1px solid #2E419A; box-sizing: border-box; border-radius: 10px; margin: 2px 5px;}
@@ -201,9 +202,14 @@ justify-content: center;align-items: center; pointer-events: none;}
 .record-view .userPlay ul li>p{font-size: 14px; padding: 10px 0 0 10px; }
 .record-view .userPlay ul li>span{display: inline-block; font-weight: 600; font-size: 30px;  width: 178px; height: 50px; text-align: center;
     padding: 30px 0 0;}
+.record-view .userPlay ul li>span.recommTxt{display: inline-block; line-height: 46px; font-weight: 600; font-size: 15px;  width: 178px; height: 50px; text-align: center;
+    padding: 30px 0 0;}
 .record-view .userPlay ul li.per{display: block; width: 500px; height: 50px; margin: 10px auto; padding: 10px 18px 10px 30px;}
+.record-view .userPlay ul li.per>p{padding: 5px 0 0 0;}
 .record-view .userPlay ul li.per>span{display: block; width: 500px; height: 16px; margin: 0 auto; background-color: red;
     border-radius: 6px; text-align: center; color: #fff; font-size: 14px; line-height: 16px; padding: 0;}
+
+ 
 
 /* Modal */
 .modal.fade .modal-dialog {-webkit-transition: -webkit-transform .3s ease-out; -o-transition: -o-transform .3s ease-out; transition: transform .3s ease-out;  -webkit-transform: translate(0, -25%); -ms-transform: translate(0, -25%); -o-transform: translate(0, -25%); transform: translate(0, -25%);}
@@ -262,7 +268,7 @@ button, html input[type=button], input[type=reset], input[type=submit] {cursor: 
 
 
 /*플레이 리스트*/
-.record-list2{ height: 500px; width: 960px; margin: 0 auto ;}
+.record-list2{ height: 500px; width: 950px; margin: 0 auto ;}
 .record-list2 table{text-align: center; margin: 0 auto; line-height: 30px;}
 .record-list2 table thead{background-color: #ecdfdf;}
 .record-list2 table thead th{border-top: 2px solid #2E419A;border-bottom: 2px solid #2E419A; width: 100px; height: 35px;}

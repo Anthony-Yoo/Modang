@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 
 import com.modang.vo.ManagerVo;
-
 import com.modang.vo.CueTableVo;
 import com.modang.vo.TableGamesVo;
 
@@ -91,6 +90,15 @@ public class BiliardDao {
 		List<CueTableVo> tableVo = sqlSession.selectList("biliard.selectTableList", biliardNo);
 		return tableVo;
 		
+	}
+	/* 테이블 매출 페이지-------------------------------------------------------------------------------- */
+	/* 테이블 매출 검색 */
+	public List<TableGamesVo> selectOneTableSales(TableGamesVo gamesVo ) {
+		System.out.println("BiliardDao.selectOneTableSales()");
+		System.out.println(gamesVo);
+		List<TableGamesVo> salesList = sqlSession.selectList("biliard.selectOneTableSales", gamesVo);
+		
+		return salesList;
 	}
 	
 	/* 요금테이블 페이지--------------------------------------------------------------------------------- */

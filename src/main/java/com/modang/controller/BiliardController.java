@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.modang.service.BiliardService;
-import com.modang.service.ManagerService;
 
 import com.modang.vo.ManagerVo;
 import com.modang.vo.TableGamesVo;
@@ -127,25 +126,50 @@ public class BiliardController {
 	@RequestMapping(value ="/tableSalesForm", method = { RequestMethod.GET, RequestMethod.POST })
 	public String tableSalesForm(HttpSession session, Model model) {
 		System.out.println("BiliardController.tableSalesForm()");
-		
 		ManagerVo loginManager = (ManagerVo) session.getAttribute("loginManager");
-		int biliardNo = loginManager.getbiliardNo();
-		System.out.println(biliardNo);
-		List<CueTableVo> cuetableList = biliardService.tablesalesList(biliardNo);
 		
-		System.out.println(cuetableList);
-		model.addAttribute("cuetableList",cuetableList);
+		if(loginManager!=null) { //로그인 되어있을 경우 접속
 
-		return "/manager/tableSales";
+			int biliardNo = loginManager.getbiliardNo();
+			System.out.println(biliardNo);
+			List<CueTableVo> cuetableList = biliardService.tablesalesList(biliardNo);
+			
+			System.out.println(cuetableList);
+			model.addAttribute("cuetableList",cuetableList);
+
+			return "/manager/tableSales";
+			
+		}else { //로그인 안되어있을 경우 로그인페이지로 이동
+			return "/manager/managerLoginForm";
+		}
 	}
 
 	/* 테이블 매출검색 */
 	@RequestMapping(value ="/tableSales", method = { RequestMethod.GET, RequestMethod.POST })
-	public String tableSales(@RequestParam int tableName, @RequestParam String mindate, @RequestParam String maxdate) {
+	public String tableSales(HttpSession session, @RequestParam String tableName, @RequestParam String minDate, 
+			@RequestParam String maxDate, Model model) {
+		ManagerVo loginManager = (ManagerVo) session.getAttribute("loginManager");
+		int biliardNo = loginManager.getbiliardNo();
+		System.out.println(biliardNo);
+		List<CueTableVo> cuetableList = biliardService.tablesalesList(biliardNo);
+
+		System.out.println(cuetableList);
+		model.addAttribute("cuetableList", cuetableList);
+
 		System.out.println("BiliardController.tableSales()");
-		System.out.println(tableName);
-		System.out.println(mindate);
-		System.out.println(maxdate);
+			System.out.println("테이블네임: "+tableName);
+			System.out.println("최소날짜: "+minDate);
+			System.out.println("최대날짜: "+maxDate);
+		
+		    TableGamesVo gamesVo = new TableGamesVo();
+			gamesVo.setTableName(tableName);
+			gamesVo.setMinDate(minDate);
+			gamesVo.setMaxDate(maxDate);
+		
+			List<TableGamesVo> salesList =biliardService.searchTable(gamesVo);
+			System.out.println(salesList);
+			model.addAttribute("salesList",salesList);
+		
 		return "/manager/tableSales";
 	}
 	
@@ -160,13 +184,10 @@ public class BiliardController {
 	/* 요금테이블 페이지--------------------------------------------------------------------------------- */
 	/* 요금테이블 수정 */
 	@RequestMapping(value = "/pricePolicy", method = { RequestMethod.GET, RequestMethod.POST })
-	public String pricePolicy(HttpSession session, @ModelAttribute TariffVo tariffVo) {
+	public String pricePolicy(@ModelAttribute TariffVo tariffVo) {
 		System.out.println("BiliardController.pricePolicy()");
 
-		ManagerVo loginManager = (ManagerVo) session.getAttribute("loginManager");
-		int biliardNo = loginManager.getbiliardNo();
-
-		biliardService.updatePrice(tariffVo);
+			biliardService.updatePrice(tariffVo);
 
 		return "/manager/pricePolicy";
 	}

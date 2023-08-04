@@ -76,17 +76,17 @@
 								<form name="" class="form-inline float-right mb-4" action="${pageContext.request.contextPath}/manager/tableSales" method="get" >
 									<label class="mr-2">테이블 번호</label>
 									<div class="col-4">
-									  <select class="form-control-5">
+									  <select class="form-control-5" name="tableName" id="tableNameSelect">
 									    <c:forEach items="${cuetableList}" var="cueTableVo">
-									      <option name="tableName">${cueTableVo.tableName}</option>
+									      <option value="${cueTableVo.tableName}">${cueTableVo.tableName}</option>
 									    </c:forEach>
 									  </select>
 									</div>
 									<label class="mr-2 ml-2">날짜</label>
-										<input type="date" name="mindate" class="form-control form-control-sm" maxlength="20" />
+										<input type="date" name="minDate" class="form-control form-control-sm" maxlength="20" />
 									<label class="mr-1 ml-2">~</label>
-										<input type="date" name="maxdate" class="form-control form-control-sm" maxlength="20" />
-									<button type="submit" class="btn btn-sm btn-dark">검색</button>
+										<input type="date" name="maxDate" class="form-control form-control-sm" maxlength="20" />
+									<button type="submit" class="btn btn-sm btn-dark1">검색</button>
 								</form>
 							</header>
 							
@@ -106,30 +106,28 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>1</td>
-										<td>1</td>
-										<td>3구</td>
-										<td>07/24</td>
-										<td>00:00</td>
-										<td>00:00</td>
-										<td>00:00</td>
-										<td>카드</td>
-										<td>10,000</td>
-										<td>10,000</td>
-									</tr>
-									<tr>
-										<td>2</td>
-										<td>1</td>
-										<td>4구</td>
-										<td>07/24</td>
-										<td>00:00</td>
-										<td>00:00</td>
-										<td>00:00</td>
-										<td>현금</td>
-										<td>8,000</td>
-										<td>8,000</td>
-									</tr>
+									<c:forEach items="${salesList}" var="gamesVo">
+										<tr>
+											<td>${gamesVo.rownum}</td>
+											<td>${gamesVo.tableName}</td>
+											<td>
+											<c:if test ="${gamesVo.gameType==0}">3구</c:if>
+											<c:if test ="${gamesVo.gameType==1}">4구</c:if>
+											<c:if test ="${gamesVo.gameType==2}">8볼</c:if>
+											<c:if test ="${gamesVo.gameType==3}">10볼</c:if>
+											</td>
+											<td>${gamesVo.gameDate}</td>
+											<td>${gamesVo.startTime}</td>
+											<td>${gamesVo.endTime}</td>
+											<td>${gamesVo.gameTime}</td>
+											<td>
+											<c:if test ="${gamesVo.payType==0}">카드</c:if>
+											<c:if test ="${gamesVo.payType==1}">현금</c:if>
+											</td>
+											<td>${gamesVo.payMoney}</td>
+											<td>${gamesVo.income}</td>
+										</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 						</section>
@@ -142,4 +140,27 @@
 		<div id="copyright">&copy; modang. All rights reserved.</div>
 	</div>
 </body>
+<script type="text/javascript">
+// 페이지 로드 시 실행
+window.onload = function() {
+    // "tableName" Select 요소 가져오기
+    const tableNameSelect = document.getElementById("tableNameSelect");
+
+    // URL의 쿼리 파라미터에서 "tableName" 값 가져오기
+    const params = new URLSearchParams(window.location.search);
+    const tableName = params.get("tableName");
+
+    // "tableName" 값이 있을 경우 해당 값과 일치하는 옵션 선택
+    if (tableName) {
+        for (let i = 0; i < tableNameSelect.options.length; i++) {
+            if (tableNameSelect.options[i].value === tableName) {
+                tableNameSelect.selectedIndex = i;
+                break;
+            }
+        }
+    }
+};//페이지 로드 end
+
+
+</script>
 </html>

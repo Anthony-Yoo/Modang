@@ -60,17 +60,18 @@
 	<select id="selectComment" parameterType="com.modang.vo.BDCommentVo" resultType="com.modang.vo.BDCommentVo">
 	<![CDATA[
 		select a.commentNo
-				 , a.boardNo
-				 , a.userNo
-				 , writeDate
-				 , content
-				 , groupNo
-				 , groupOrder
-				 , depth
-				 , b.nick
-				 , b.id
-			from bdcomment a, users b
-			where a.userNo = b.userNo and a.boardNo = #{boardNo} and a.commentNo = #{commentNo}
+			 , a.boardNo
+			 , a.userNo
+			 , writeDate
+			 , content
+			 , groupNo
+			 , groupOrder
+			 , depth
+			 , b.nick
+			 , b.id
+			 , b.profileImage
+		from bdcomment a, users b
+		where a.userNo = b.userNo and a.boardNo = #{boardNo} and a.commentNo = #{commentNo}
 			   
 	]]>
 	</select>
@@ -115,6 +116,7 @@
 				 , depth
 				 , b.nick
 				 , b.id
+				 , b.profileImage
 			from bdcomment a, users b
 			where a.userNo = b.userNo and a.boardNo = #{boardNo}
 			order by groupNo desc

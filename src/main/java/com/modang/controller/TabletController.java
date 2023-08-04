@@ -98,14 +98,16 @@ public class TabletController {
 
 	}	
 	
-	/*
-	 * @RequestMapping(value = "/selectBall",method =
-	 * {RequestMethod.GET,RequestMethod.POST}) public String selectBall() {
-	 * System.out.println("TabletController.selectBall()");
-	 * 
-	 * 
-	 * return "/tablet/selectball"; }
-	 */
+	
+	@RequestMapping(value = "/{tableNo}/selectBall",method ={RequestMethod.GET,RequestMethod.POST}) 
+	public String selectBall(@PathVariable("tableNo") int tableNo,Model model) {
+		System.out.println("TabletController.selectBall()");	
+		
+		model.addAttribute("tableNo", tableNo);
+	
+		return "/tablet/selectball"; 
+	}
+	
 	
 	@RequestMapping(value="/{tableNo}/memberForm", method = {RequestMethod.GET,RequestMethod.POST})
 	public String memberForm(Model model,HttpSession session,

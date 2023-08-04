@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 <script src="https://tistory4.daumcdn.net/tistory/3134841/skin/images/confetti_v2.js"></script>
-<title>Insert title here</title>
+<title>모두의 당구장-결과보기</title>
 <link href="${pageContext.request.contextPath}/assets/css/tablet.css" rel="stylesheet" type="text/css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
@@ -39,12 +39,12 @@ canvas{z-index:10;pointer-events: none;position: fixed;top: 0;transform: scale(1
 	<div id="container">
 		<!-- Top Info -->
 		<div class="rtop" id="top-container">			
-			<div class="timerBox float-l" id='timerBox'>
-				<label for="" class="d-inline-block white">사용시간</label>
-				<div id="time" class="time">00:00:00</div>
+			<div class="timerBox3 float-l" id="">
+				<label for="" class="timelabel1">게임시간:</label>
+				<div id="time" class="time d-inline-block">00:00:00</div>
 			</div>
-			<div class="timerBox2 float-r" id="top-fee">
-				<label for="usingfee" class="d-inline-block whitetext">결제요금</label> <input class="d-inline-block usingfee1" type="text" id="usingfee" value="${tableGameVo.payMoney}" readonly>
+			<div class="timerBox2 float-r" id="top-fee1">
+				<label for="usingfee" class="timelabel2">결제요금</label> <input class="d-inline-block usingfee1" type="text" id="usingfee" value="${tableGameVo.payMoney}" readonly>
 			</div>
 		</div>
 		<!-- Mid Info -->
@@ -70,31 +70,50 @@ canvas{z-index:10;pointer-events: none;position: fixed;top: 0;transform: scale(1
 							<div class="profileImg float-l">						
 								<img class="float-l imgbox1" src="${pageContext.request.contextPath}/assets/images/modang_img.png">						
 							</div>
-							<div class="playTime float-l">
-								<%-- <p id="playname">${playUser.nick}님</p>	 --%>				
-							</div>
-
 						</div>	
 					</c:forEach>
-				</div>
+				</div><!--listbox end -->
 				<!-- 순위박스 -->
-				<div class="rangkbox1 float-l">
-					<p id="name1">김우빈</p><img src="${pageContext.request.contextPath}/assets/images/crown.png" id="crown"></div>
-				<div class="rangkbox2 float-l">
-					<p id="name2">김연아</p>
-				</div>
-				<div class="rangkbox3 float-l">
-					<p id="name2">이도단</p>
-				</div>
-				<div class="rangkbox4 float-l">
-					<p id="name2">박유준</p>
-				</div>
+				<div class="rankgroup">
+					<div class="rankbox1 float-l">
+						<p id="name1">${tableGameVo.playUserList[1].nick}</p><img src="${pageContext.request.contextPath}/assets/images/crown.png" id="crown"></div>
+					<div class="rankbox2 float-l">
+						<c:if test="${not empty tableGameVo.playUserList[2]}">
+							<p id="name2">${tableGameVo.playUserList[2].nick}</p>
+						</c:if>
+						<c:if test="${empty tableGameVo.playUserList[2]}">
+							<p id="name2"></p>
+						</c:if>
+					</div>
+					<div class="rankbox3 float-l">
+						<c:if test="${not empty tableGameVo.playUserList[3]}">
+							<p id="name2">${tableGameVo.playUserList[3].nick}</p>
+						</c:if>
+						<c:if test="${empty tableGameVo.playUserList[3]}">
+							<p id="name2"></p>
+						</c:if>
+					</div>
+					<div class="rankbox4 float-l">
+						<c:if test="${not empty tableGameVo.playUserList[4]}">
+							<p id="name2">${tableGameVo.playUserList[4].nick}</p>
+						</c:if>
+						<c:if test="${empty tableGameVo.playUserList[4]}">
+							<p id="name2"></p>
+						</c:if>
+					</div>
+				</div><!-- rankgroup end -->
 			</div>
-		</div>
+		</div><!--row end -->
+		<div class="buttongroup">
+			<div class="btnBox1 float-r">
+				<button id="gameEndbtn" class="fa2 fa-pause" aria-hidden="true" onclick="location.href='${pageContext.request.contextPath}/${tableGameVo.tableNo}/loginForm.jsp'">게임종료</button>
+				<button id="reStartbtn" class="fa2 fa-pause" aria-hidden="true" onclick="location.href='${pageContext.request.contextPath}/${tableGameVo.tableNo}/selectball.jsp'">이어하기</button>
+			</div>
+		</div><!--buttongroup end-->
 	</div>
 <div class="buttonContainer">
-	<button class="canvasBtn" id="stopButton">Stop Confetti</button>
-	<button class="canvasBtn" id="startButton">Drop Confetti</button>	
+	<button id="stopButton">Stop</button>
+	<button id="startButton">Start</button>	
 </div>
 <canvas id="canvas"></canvas>
 </body>
@@ -172,7 +191,7 @@ function timeStamper(){
 	if(ts < 10){
 		ts = "0" + sec;
 	}
-	$("#time").html(th + "시" + tm + "간" + ts +"초");		
+	$("#time").html(th + "시 " + tm + "분 " + ts +"초");		
 	
 	
 }
@@ -222,6 +241,16 @@ function renderEach(playerList) {
 	 
 	 
 }
+
+// 페이지 로딩이 완료된 후 자동으로 스타트 버튼을 클릭하는 함수
+function clickStartButton() {
+    var startButton = document.getElementById('startButton');
+    if (startButton) {
+        startButton.click(); // 버튼 클릭
+    }
+}
+
+window.onload = clickStartButton;
 
 </script>
 </html>

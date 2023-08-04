@@ -27,11 +27,21 @@ public class TableGamesVo {
 	private int tableFee;
 	private int minFee;
 	private int secondsToTime;
+	private int rownum; //순서
+	private String minDate; //검색최소날짜
+	private String maxDate; //검색최대날짜
+	private String tableName;//테이블네임
+	
+	public TableGamesVo() {
+		
+	}
+
 	public TableGamesVo(int gameNo, int tableNo, int gameType, int memberNum, String gameDate, int gameTime,
 			String startTime, String endTime, int payStatus, int payType, String payDate, int income, int payMoney,
 			String pauseStart, String pauseStop, int pauseTime, int setNo, int gameStatus,
 			List<PlayUserVo> playUserList, List<RecordUserVo> recordUserList, CueTableVo tableInfo, int tableFee,
-			int minFee, int secondsToTime) {
+			int minFee, int secondsToTime, int rownum, String minDate, String maxDate, String tableName) {
+		super();
 		this.gameNo = gameNo;
 		this.tableNo = tableNo;
 		this.gameType = gameType;
@@ -56,153 +66,236 @@ public class TableGamesVo {
 		this.tableFee = tableFee;
 		this.minFee = minFee;
 		this.secondsToTime = secondsToTime;
+		this.rownum = rownum;
+		this.minDate = minDate;
+		this.maxDate = maxDate;
+		this.tableName = tableName;
 	}
-	public TableGamesVo() {
-	}
+
 	public int getGameNo() {
 		return gameNo;
 	}
+
 	public void setGameNo(int gameNo) {
 		this.gameNo = gameNo;
 	}
+
 	public int getTableNo() {
 		return tableNo;
 	}
+
 	public void setTableNo(int tableNo) {
 		this.tableNo = tableNo;
 	}
+
 	public int getGameType() {
 		return gameType;
 	}
+
 	public void setGameType(int gameType) {
 		this.gameType = gameType;
 	}
+
 	public int getMemberNum() {
 		return memberNum;
 	}
+
 	public void setMemberNum(int memberNum) {
 		this.memberNum = memberNum;
 	}
+
 	public String getGameDate() {
 		return gameDate;
 	}
+
 	public void setGameDate(String gameDate) {
 		this.gameDate = gameDate;
 	}
+
 	public int getGameTime() {
 		return gameTime;
 	}
+
 	public void setGameTime(int gameTime) {
 		this.gameTime = gameTime;
 	}
+
 	public String getStartTime() {
 		return startTime;
 	}
+
 	public void setStartTime(String startTime) {
 		this.startTime = startTime;
 	}
+
 	public String getEndTime() {
 		return endTime;
 	}
+
 	public void setEndTime(String endTime) {
 		this.endTime = endTime;
 	}
+
 	public int getPayStatus() {
 		return payStatus;
 	}
+
 	public void setPayStatus(int payStatus) {
 		this.payStatus = payStatus;
 	}
+
 	public int getPayType() {
 		return payType;
 	}
+
 	public void setPayType(int payType) {
 		this.payType = payType;
 	}
+
 	public String getPayDate() {
 		return payDate;
 	}
+
 	public void setPayDate(String payDate) {
 		this.payDate = payDate;
 	}
+
 	public int getIncome() {
 		return income;
 	}
+
 	public void setIncome(int income) {
 		this.income = income;
 	}
+
 	public int getPayMoney() {
 		return payMoney;
 	}
+
 	public void setPayMoney(int payMoney) {
 		this.payMoney = payMoney;
 	}
+
 	public String getPauseStart() {
 		return pauseStart;
 	}
+
 	public void setPauseStart(String pauseStart) {
 		this.pauseStart = pauseStart;
 	}
+
 	public String getPauseStop() {
 		return pauseStop;
 	}
+
 	public void setPauseStop(String pauseStop) {
 		this.pauseStop = pauseStop;
 	}
+
 	public int getPauseTime() {
 		return pauseTime;
 	}
+
 	public void setPauseTime(int pauseTime) {
 		this.pauseTime = pauseTime;
 	}
+
 	public int getSetNo() {
 		return setNo;
 	}
+
 	public void setSetNo(int setNo) {
 		this.setNo = setNo;
 	}
+
 	public int getGameStatus() {
 		return gameStatus;
 	}
+
 	public void setGameStatus(int gameStatus) {
 		this.gameStatus = gameStatus;
 	}
+
 	public List<PlayUserVo> getPlayUserList() {
 		return playUserList;
 	}
+
 	public void setPlayUserList(List<PlayUserVo> playUserList) {
 		this.playUserList = playUserList;
 	}
+
 	public List<RecordUserVo> getRecordUserList() {
 		return recordUserList;
 	}
+
 	public void setRecordUserList(List<RecordUserVo> recordUserList) {
 		this.recordUserList = recordUserList;
 	}
+
 	public CueTableVo getTableInfo() {
 		return tableInfo;
 	}
+
 	public void setTableInfo(CueTableVo tableInfo) {
 		this.tableInfo = tableInfo;
 	}
+
 	public int getTableFee() {
 		return tableFee;
 	}
+
 	public void setTableFee(int tableFee) {
 		this.tableFee = tableFee;
 	}
+
 	public int getMinFee() {
 		return minFee;
 	}
+
 	public void setMinFee(int minFee) {
 		this.minFee = minFee;
 	}
+
 	public int getSecondsToTime() {
 		return secondsToTime;
 	}
+
 	public void setSecondsToTime(int secondsToTime) {
 		this.secondsToTime = secondsToTime;
 	}
+
+	public int getRownum() {
+		return rownum;
+	}
+
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
+	}
+
+	public String getMinDate() {
+		return minDate;
+	}
+
+	public void setMinDate(String minDate) {
+		this.minDate = minDate;
+	}
+
+	public String getMaxDate() {
+		return maxDate;
+	}
+
+	public void setMaxDate(String maxDate) {
+		this.maxDate = maxDate;
+	}
+
+	public String getTableName() {
+		return tableName;
+	}
+
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
+	}
+
 	@Override
 	public String toString() {
 		return "TableGamesVo [gameNo=" + gameNo + ", tableNo=" + tableNo + ", gameType=" + gameType + ", memberNum="
@@ -211,7 +304,9 @@ public class TableGamesVo {
 				+ ", income=" + income + ", payMoney=" + payMoney + ", pauseStart=" + pauseStart + ", pauseStop="
 				+ pauseStop + ", pauseTime=" + pauseTime + ", setNo=" + setNo + ", gameStatus=" + gameStatus
 				+ ", playUserList=" + playUserList + ", recordUserList=" + recordUserList + ", tableInfo=" + tableInfo
-				+ ", tableFee=" + tableFee + ", minFee=" + minFee + ", secondsToTime=" + secondsToTime + "]";
-	}
+				+ ", tableFee=" + tableFee + ", minFee=" + minFee + ", secondsToTime=" + secondsToTime + ", rownum="
+				+ rownum + ", minDate=" + minDate + ", maxDate=" + maxDate + ", tableName=" + tableName + "]";
+	} 
+	
 	
 }

@@ -8,8 +8,7 @@
 			select  USERNO,
 			        NICK,        
 			        AVERAGE,
-			        RECOMMAVERAGE,
-			        UPPERHIT
+			        PROFILEIMAGE
 			from users
 			where USERNO = #{userNo}	
 		]]>		
@@ -19,10 +18,8 @@
 	    <![CDATA[
 	    	select  ur.USERNO,
 			        ur.NICK,        
-			        ur.AVERAGE,
-			        ur.RECOMMAVERAGE,        
+			        ur.AVERAGE,			             
 			        ur.PROFILEIMAGE,
-			        ur.UPPERHIT,
 			        pl.PLAYNO,        
 			        pl.GAMENO,
 			        pl.PLAYTIME,
@@ -62,7 +59,9 @@
 			        ort.record,
 			        ort.PAYMONEY,
 			        ort.calGameTime,
-			        ort.ACTIVEAVERAGE
+			        ort.ACTIVEAVERAGE,
+                    ort.CURRENTAVERAGE,
+                    ort.Average                  
 			    from ( select rownum rn, 
 			              ot.gameNo,
 			              ot.biliardAddress,
@@ -75,7 +74,9 @@
 			              ot.record,
 			              ot.PAYMONEY,
 			              ot.calGameTime,
-			              ot.ACTIVEAVERAGE
+			              ot.ACTIVEAVERAGE,
+                          ot.CURRENTAVERAGE,
+                          ot.Average             
 			       from (  select   g.gameNo,
 			                        REGEXP_SUBSTR(b.BILIARDADDRESS1, '[^ ]+', 1, 1, 'i') || ' ' ||  REGEXP_SUBSTR(b.BILIARDADDRESS1, '[^ ]+', 1, 2, 'i') as BILIARDADDRESS,
 			                        b.biliardName,
@@ -89,11 +90,14 @@
 			                        p.record,			                        
 			                        g.PAYMONEY,
 			                        g.gametime as calGameTime,
-			                        p.ACTIVEAVERAGE
-			                from games g, plays p, cueTable c, biliards b 
+			                        p.ACTIVEAVERAGE,
+                                    p.CURRENTAVERAGE,
+                                    u.Average                                    
+			                from games g, plays p, cueTable c, biliards b, users u 
 			                where g.gameNo = p.gameNo
 			                and g.tableNo = c.tableNo
 			                and c.biliardNo = b.biliardNo
+                            and p.userno = u.userno
 			                and p.userno = #{userNo}
 			                and g.gamestatus = 1
 			                order by g.gameNo desc ) ot
@@ -106,7 +110,6 @@
 			select  p.PLAYNO,
 			        u.NICK,
 			        u.Average,
-			        u.RECOMMAVERAGE,
 			        NVL(trunc(p.PLAYTIME/3600)||':'||
 	                        lpad(trunc(mod(p.PLAYTIME,3600)/60),2,'0')||':'||
 	                        lpad(mod(mod(p.PLAYTIME,3600),60),2,'0'),0)  as PLAYTIME,

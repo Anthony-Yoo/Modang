@@ -27,6 +27,8 @@ public class AttendUsersService {
 			return "이미 신청된 글입니다.";
 		}
 	}
+	
+	/* 내가 신청한 리스트 */
 	public List<BoardVo> myApplyList(int userNo){
 		System.out.println("AttendUserService.myApplyList()");
 		List<BoardVo> vo = new ArrayList<BoardVo>();
@@ -35,10 +37,17 @@ public class AttendUsersService {
 		return vo;
 	}
 	
+	/* 내 글에 신청한 리스트 */
 	public List<AttendUsersVo> applyList(int boardNo){
 		System.out.println("AttendUserService.applyList()");
 		List<AttendUsersVo> vo = new ArrayList<AttendUsersVo>();
 		vo = attendUsersDao.applyList(boardNo);
 		return vo;
+	}
+
+	/* 신청한 유저 승인 및 거절 처리 */
+	public void approve(AttendUsersVo attendUsersVo) {
+		System.out.println("AttendUserService.approve()");
+		attendUsersDao.approve(attendUsersVo);
 	}
 }

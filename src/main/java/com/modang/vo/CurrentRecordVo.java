@@ -11,8 +11,16 @@ public class CurrentRecordVo {
 	private int totalCountLoseGame;		// 누적 패배게임수
 	private double totalWinRate;		// 누적 승률
 	private int totalGameTime;			// 누적 게임시간
+	private int totalCountNormGame;			// 누적 본인다마 전체게임수	
+	private int totalCountWinNormGame;			// 누적 본인다마 승리게임수	
+	private int totalCountLoseNormGame;		// 누적 본인다마 패배게임수
+	private double totalNormRate; 			// 본인 다마 안물린비율
+	private int totalNormRatePercent;		// 누적 본인다마 안물린승률 100분위
+	private int recommStatus;				// 권장다마 상태
 	public CurrentRecordVo(int userNo, double recentWinRate, int recentHit, int recentTimeAv, int totalCountGame,
-			int totalCountWinGame, int totalCountLoseGame, double totalWinRate, int totalGameTime) {
+			int totalCountWinGame, int totalCountLoseGame, double totalWinRate, int totalGameTime,
+			int totalCountNormGame, int totalCountWinNormGame, int totalCountLoseNormGame, double totalNormRate,
+			int totalNormRatePercent, int recommStatus) {
 		this.userNo = userNo;
 		this.recentWinRate = recentWinRate;
 		this.recentHit = recentHit;
@@ -22,6 +30,12 @@ public class CurrentRecordVo {
 		this.totalCountLoseGame = totalCountLoseGame;
 		this.totalWinRate = totalWinRate;
 		this.totalGameTime = totalGameTime;
+		this.totalCountNormGame = totalCountNormGame;
+		this.totalCountWinNormGame = totalCountWinNormGame;
+		this.totalCountLoseNormGame = totalCountLoseNormGame;
+		this.totalNormRate = totalNormRate;
+		this.totalNormRatePercent = totalNormRatePercent;
+		this.recommStatus = recommStatus;
 	}
 	public CurrentRecordVo() {
 	}
@@ -79,13 +93,52 @@ public class CurrentRecordVo {
 	public void setTotalGameTime(int totalGameTime) {
 		this.totalGameTime = totalGameTime;
 	}
+	public int getTotalCountNormGame() {
+		return totalCountNormGame;
+	}
+	public void setTotalCountNormGame(int totalCountNormGame) {
+		this.totalCountNormGame = totalCountNormGame;
+	}
+	public int getTotalCountWinNormGame() {
+		return totalCountWinNormGame;
+	}
+	public void setTotalCountWinNormGame(int totalCountWinNormGame) {
+		this.totalCountWinNormGame = totalCountWinNormGame;
+	}
+	public int getTotalCountLoseNormGame() {
+		return totalCountLoseNormGame;
+	}
+	public void setTotalCountLoseNormGame(int totalCountLoseNormGame) {
+		this.totalCountLoseNormGame = totalCountLoseNormGame;
+	}
+	public double getTotalNormRate() {
+		return totalNormRate;
+	}
+	public void setTotalNormRate(double totalNormRate) {
+		this.totalNormRate = totalNormRate;
+	}
+	public int getTotalNormRatePercent() {
+		return totalNormRatePercent;
+	}
+	public void setTotalNormRatePercent(int totalNormRatePercent) {
+		this.totalNormRatePercent = totalNormRatePercent;
+	}
+	public int getRecommStatus() {
+		return recommStatus;
+	}
+	public void setRecommStatus(int recommStatus) {
+		this.recommStatus = recommStatus;
+	}
 	@Override
 	public String toString() {
 		return "CurrentRecordVo [userNo=" + userNo + ", recentWinRate=" + recentWinRate + ", recentHit=" + recentHit
 				+ ", recentTimeAv=" + recentTimeAv + ", totalCountGame=" + totalCountGame + ", totalCountWinGame="
 				+ totalCountWinGame + ", totalCountLoseGame=" + totalCountLoseGame + ", totalWinRate=" + totalWinRate
-				+ ", totalGameTime=" + totalGameTime + "]";
+				+ ", totalGameTime=" + totalGameTime + ", totalCountNormGame=" + totalCountNormGame
+				+ ", totalCountWinNormGame=" + totalCountWinNormGame + ", totalCountLoseNormGame="
+				+ totalCountLoseNormGame + ", totalNormRate=" + totalNormRate + ", totalNormRatePercent="
+				+ totalNormRatePercent + ", recommStatus=" + recommStatus + "]";
 	}
 	
-
+	
 }

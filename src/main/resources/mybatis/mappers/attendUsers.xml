@@ -89,4 +89,20 @@
 			order by attenddate asc
 		]]>
 	</select>
+	
+	<update id="approve" parameterType="com.modang.vo.AttendUsersVo">
+		<![CDATA[
+			UPDATE attendusers
+		]]>
+		<if test='buttonClass == "agree"'>
+			SET status = 1
+		</if>
+		<if test='buttonClass == "refuse"'>
+			SET status = 2
+		</if>
+		<![CDATA[
+			WHERE attendNo = #{attendNo} and boardNo = #{boardNo}
+		
+		]]>
+	</update>
 </mapper>

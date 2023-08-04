@@ -78,7 +78,7 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 
-	//조회수 증가후 read 페이지로 이동
+	//조회수 증가후 read 페이지로 이동(새로고침으로 인한 조회수 증가 방지)
 	@RequestMapping(value = "/hitCount")
 	public String hitCount(@RequestParam("boardNo") int boardNo) {
 		boardService.hitCount(boardNo);

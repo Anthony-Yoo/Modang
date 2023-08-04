@@ -32,19 +32,27 @@ public class AttendUsersDao {
 		return result;
 	}
 	
+	/* 내가 신청한 리스트 */
 	public List<BoardVo> myApplyList(int userNo){
 		System.out.println("AttendUsersDao.myApplyList()");
 		List<BoardVo> vo = new ArrayList<BoardVo>();
 		vo = sqlSession.selectList("attendUsers.myApplyList", userNo);
 		return vo;
 	}
-	
+	/* 내 글에 신청한 리스트 */
 	public List<AttendUsersVo> applyList(int boardNo){
 		System.out.println("AttendUsersDao.applyList()");
 		List<AttendUsersVo> vo = new ArrayList<AttendUsersVo>();
 		vo = sqlSession.selectList("attendUsers.applyList", boardNo);
 		System.out.println(vo);
 		return vo;
+	}
+	
+	/* 신청한 유저 승인처리 */
+	public void approve(AttendUsersVo attendUsersVo) {
+		System.out.println("AttendUserDao.approve()");
+		int result = sqlSession.update("attendUsers.approve", attendUsersVo);
+		System.out.println(result);
 	}
 	
 }

@@ -112,8 +112,13 @@
 .newApList .applyCheck .agree{
     background: linear-gradient(to bottom right, rgb(9, 32, 80), rgb(81, 117, 164));
 }
-
+.newApList .applyCheck .agreed{
+    background: linear-gradient(to bottom right, rgb(9, 32, 80), rgb(81, 117, 164));
+}
 .newApList .applyCheck .refuse{
+    background: linear-gradient(to bottom right, rgb(247 17 17), rgb(185 114 121));
+}
+.newApList .applyCheck .refused{
     background: linear-gradient(to bottom right, rgb(247 17 17), rgb(185 114 121));
 }
 
@@ -323,22 +328,29 @@ $(document).on("click", ".applyCheck button", function () {
     if (buttonClass.includes("agree")) {
     	console.log("클릭한 버튼의 클래스:", buttonClass);
       	// agree 버튼을 클릭한 경우 처리할 로직
-     	 var userNo = $(this).data("userno");
-      	console.log("승인 버튼을 클릭한 경우, 해당 사용자 번호:", userNo);
+     	 var attendNo = $(this).data("attendno");
+     	 var boardNo = $(this).data("boardno");
+      	console.log("승인 버튼을 클릭한 경우, 해당 사용자 번호:", attendNo, boardNo );
       	// 여기에 승인 버튼을 클릭한 경우의 처리 로직을 추가하세요.
     } else if (buttonClass.includes("refuse")) {
      	 // refuse 버튼을 클릭한 경우 처리할 로직
-      	var userNo = $(this).data("userno");
-      	console.log("거절 버튼을 클릭한 경우, 해당 사용자 번호:", userNo);
+      	var attendNo = $(this).data("attendno");
+      	var boardNo = $(this).data("boardno");
+      	console.log("거절 버튼을 클릭한 경우, 해당 사용자 번호:", attendNo, boardNo);
     	  // 여기에 거절 버튼을 클릭한 경우의 처리 로직을 추가하세요.
     }
+    var AttendUsersVo={
+    		buttonClass: buttonClass,
+    		attendNo: attendNo,
+    		boardNo: boardNo
+    }
+    var str = JSON.stringify(AttendUsersVo);
 	
 	$.ajax({
 		url : "${pageContext.request.contextPath}/attendUsers/decide",
-		type : "get",
+		type : "post",
 		contentType : "application/json",
-		data : {buttonClass: buttonClass,
-				userNo: userNo},
+		data : str,
 		
 		// 데이터 받은 후 
 		dataType : "json",
@@ -362,14 +374,19 @@ function aLRender(AttendUsersVo, dir) {
 	var str = "";
 		/* str += ' <tbody>'; */
 		str += ' 	<tr class="newApList">';
-		str += ' 		<input type="hidden" value="'+AttendUsersVo.attendNo+'">';
 		str += ' 		<td>'+AttendUsersVo.rownum+'</td>';
 		str += ' 		<td>'+AttendUsersVo.nick+'</td>';
 		str += ' 		<td>'+AttendUsersVo.average+'</td>';
 		str += ' 		<td>'+AttendUsersVo.attendDate+'</td>';
 		str += ' 		<td class="applyCheck">';
-		str += ' 			<button type="button" class="agree" data-userNo='+AttendUsersVo.userNo+'>승인</button>';
-		str += ' 			<button type="button" class="refuse" data-userNo='+AttendUsersVo.userNo+'>거절</button>';
+		if(AttendUsersVo.status == 0){
+			str += ' 			<button type="button" class="agree" data-attendNo='+AttendUsersVo.attendNo+' data-boardNo='+AttendUsersVo.boardNo+'>승인</button>';
+			str += ' 			<button type="button" class="refuse" data-attendNo='+AttendUsersVo.attendNo+' data-boardNo='+AttendUsersVo.boardNo+'>거절</button>';
+		}else if(AttendUsersVo.status == 1){
+			str += ' 			<button type="" class="agreed" data-attendNo='+AttendUsersVo.attendNo+' data-boardNo='+AttendUsersVo.boardNo+'>승인됨</button>';
+		}else if(AttendUsersVo.status == 2){
+			str += ' 			<button type="" class="refused" data-attendNo='+AttendUsersVo.attendNo+' data-boardNo='+AttendUsersVo.boardNo+'>거절됨</button>';
+		}
 		str += ' 		</td>';
 		str += ' 	</tr>';
 		/* str += ' </tbody>'; */

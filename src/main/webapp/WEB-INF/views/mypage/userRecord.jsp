@@ -12,7 +12,16 @@
 	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
     <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css"/>
     <link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css"/>
-    <link href="${pageContext.request.contextPath}/assets/css/user.css" rel="stylesheet" type="text/css"/>    
+    <link href="${pageContext.request.contextPath}/assets/css/user.css" rel="stylesheet" type="text/css"/>
+    <style>
+    /* 경험치바 베이스*/
+		#bar{border:1px solid #ccc; background:#e9e9e9;}
+		#bar{height:20px; width:250px;}
+	 
+	/* 경험치 비율 출력 */
+		.perc{display:inline-block;border:1px solid #DB2525; background:#CD2323;}
+		
+    </style>    
 </head>
 <body>
     <div class="main-content">
@@ -75,8 +84,18 @@
             <div class="userPlay right">
                 <ul>
                     <li>
-                        <p>권장다마</p>
-                        <span>${myUserVo.recommAverage}</span>
+                    	<c:if test ="${CurrentRecordVo.recommStatus == 0}">
+	                        <p>나의상태</p>
+	                        <span class="recommTxt">"다마수를 내리세요"</span>
+                        </c:if>
+                        <c:if test ="${CurrentRecordVo.recommStatus == 1}">
+	                        <p>나의상태</p>
+	                        <span class="recommTxt">"적정상태입니다"</span>
+                        </c:if>
+                         <c:if test ="${CurrentRecordVo.recommStatus == 2}">
+	                        <p>나의상태</p>
+	                        <span class="recommTxt">"다마수를 올리세요"</span>
+                        </c:if>
                     </li>
                     <li>
                         <p>누적승률</p>
@@ -87,8 +106,10 @@
                         <span>${CurrentRecordVo.totalGameTime}</span>
                     </li>
                     <li class="per">
-                        <p>EXP</p>
-                        <span>100%</span>
+                     	<p>EXP</p>
+                    	<div id="bar">	                       
+	                        <span class="perc">${CurrentRecordVo.totalNormRatePercent}%</span>
+                        </div>
                     </li>
                     <li>
                         <p>총 경기</p>
@@ -184,6 +205,13 @@
     </div>
 </body>
 <script>
+$(document).ready(function(){
+	console.log(${CurrentRecordVo.totalNormRatePercent});
+	$(".perc").css( { "height" : "19px", "width" : "${CurrentRecordVo.totalNormRatePercent}%", "margin" : "-1px", "text-align" : "center",
+					  "font" : "14px bold", "color" : "white" } );		
+
+});
+
 //삭제 모달창 호출 버튼 --> 모달창  뜸
 $("#gameInfo").on("click", "tr", function(){
    console.log("모달창 호출");

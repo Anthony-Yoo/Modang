@@ -80,6 +80,56 @@ public class MypageService {
 			}			
 		}
 		
+		/* 권장다마 계산 */
+		//본인다마 경기 지표 계산
+		int totalCountNormGame = 0;			// 누적 본인다마 게임수	
+		int totalCountWinNormGame = 0;			// 누적 본인다마 승리게임수	
+		int totalCountLoseNormGame = 0;		// 누적 본인다마 패배게임수		
+		double totalNormRate = 0;			// 누적 본인다마 안물린승률
+						
+		
+		/* 누적 게임 반복 */
+		//본인다마로 경기
+		for(RecordUserVo vo : getGameList) {
+			
+			if(vo.getCurrentAverage()==vo.getAverage()) {			
+				totalCountNormGame++; // 누적 본인다마 게임수 완료
+				
+				if(vo.getRecord()==1) {
+					totalCountWinNormGame++;  // 누적 승리게임수 완료
+					
+				}else if(vo.getRecord()==vo.getMemberNum()) {
+					totalCountLoseNormGame++; // 누적 패배게임수 완료
+				}
+			}
+		}
+		System.out.println("누적 본인다마 게임수 :" + totalCountNormGame);
+		System.out.println("누적 승리게임수 :" + totalCountWinNormGame);
+		System.out.println("누적 패배게임수 :" + totalCountLoseNormGame);
+		
+		int totalCountCommonNormGame = totalCountNormGame - totalCountLoseNormGame; // 누적 본인다마 안물린 게임수
+		totalNormRate = Math.round(( ((double)totalCountCommonNormGame) / ((double)totalCountNormGame) ) * 100) / 100.0;
+		System.out.println("누적 본인다마 안물린승률 :" + totalNormRate); 
+		int totalNormRatePercent =  (int)(totalNormRate * 100);	// 누적 본인다마 안물린승률 100분위
+		int recommStatus = 0; //권장다마 상태
+		
+		
+		System.out.println("누적 본인다마 안물린승률 100분위 :" + totalNormRatePercent);		
+		if(totalCountNormGame >=10) {//본인다마로 10게임 이상일때
+			
+			if(totalNormRate>0.8) {//안물린승률이 0.8이상일때
+				recommStatus = 2;
+				
+			}else if(totalNormRate<0.2) {//안물린승률이 0.2이하일때
+				recommStatus = 0;
+
+			}else {
+				recommStatus = 1;
+
+			}			
+		}
+		
+		/* 누적게임 기록 */
 		curRecordVo.setTotalGameTime(totalGameTime);
 		curRecordVo.setTotalCountWinGame(totalCountWinGame);
 		curRecordVo.setTotalCountLoseGame(totalCountLoseGame);
@@ -93,6 +143,10 @@ public class MypageService {
 		curRecordVo.setTotalWinRate(totalWinRate);		
 		System.out.println(curRecordVo);
 		
+		/* 본인다마 누적게임 기록 */
+		//권장다마 데이터 전달
+		curRecordVo.setRecommStatus(recommStatus);
+		curRecordVo.setTotalNormRatePercent(totalNormRatePercent);	
 		
 		
 		Map<String,Object> resultList = new HashMap<String,Object>();
