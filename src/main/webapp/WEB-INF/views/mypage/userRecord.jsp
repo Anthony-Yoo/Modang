@@ -90,16 +90,16 @@
                 <ul>
                     <li>
                     	<c:if test ="${CurrentRecordVo.recommStatus == 0}">
-	                        <p>나의상태</p>
-	                        <span class="recommTxt">"다마수를 내리세요"</span>
+	                        <p>다마상태</p>
+	                        <span class="recommTxt">"물다마"</span>
                         </c:if>
                         <c:if test ="${CurrentRecordVo.recommStatus == 1}">
-	                        <p>나의상태</p>
-	                        <span class="recommTxt">"적정상태입니다"</span>
+	                        <p>다마상태</p>
+	                        <span class="recommTxt">"적정다마"</span>
                         </c:if>
                          <c:if test ="${CurrentRecordVo.recommStatus == 2}">
-	                        <p>나의상태</p>
-	                        <span class="recommTxt">"다마수를 올리세요"</span>
+	                        <p>다마상태</p>
+	                        <span class="recommTxt">"짠다마"</span>
                         </c:if>
                     </li>
                     <li>

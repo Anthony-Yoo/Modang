@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.modang.service.MypageService;
+import com.modang.service.TabletService;
+import com.modang.vo.CardUsersVo;
 import com.modang.vo.CurrentRecordVo;
 import com.modang.vo.JsonResult;
 import com.modang.vo.RecordUserVo;
@@ -23,6 +25,9 @@ public class MypageController {
 	
 	@Autowired
 	private MypageService mypageService;
+	
+	@Autowired
+	private TabletService tabletService;
 	
 	@RequestMapping(value = "/{userNo}/record",method = {RequestMethod.GET,RequestMethod.POST})
 	public String userRecord(@PathVariable("userNo") int userNo,Model model) {
@@ -63,6 +68,15 @@ public class MypageController {
 		jsonResult.success(myPlayList);
 		
 		return jsonResult;
+	}
+	@RequestMapping(value = "/{userNo}/friendlist",method = {RequestMethod.GET,RequestMethod.POST})
+	public String friendList(@PathVariable("userNo") int userNo,Model model) {
+		System.out.println("MypageController.friendList()");
+		
+		mypageService.friendList(userNo);
+	
+		
+		return "/mypage/FriendList";
 	}
 	
 

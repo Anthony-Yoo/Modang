@@ -64,7 +64,7 @@ canvas{z-index:10;pointer-events: none;position: fixed;top: 0;transform: scale(1
 							</c:choose> 					
 							</div>
 							<div class="profileImg float-l">						
-								<img class="float-l imgbox1" src="${pageContext.request.contextPath}/assets/images/modang_img.png">						
+								<img class="float-l imgbox1" src="${pageContext.request.contextPath }/upload/${playUser.proFileImage}" alt="유저 프로필 이미지">						
 							</div>
 						</div>	
 					</c:forEach>
@@ -72,7 +72,6 @@ canvas{z-index:10;pointer-events: none;position: fixed;top: 0;transform: scale(1
 				<!-- 순위박스 -->
 				<div class="rankgroup">
 					<div class="rankbox1 float-l">
-					
 						<p id="name1">${tableGameVo.playUserList[0].nick}</p><img src="${pageContext.request.contextPath}/assets/images/crown.png" id="crown"></div>
 					<div class="rankbox2 float-l">
 						<c:if test="${not empty tableGameVo.playUserList[1]}">
@@ -84,7 +83,7 @@ canvas{z-index:10;pointer-events: none;position: fixed;top: 0;transform: scale(1
 					</div>
 					<div class="rankbox3 float-l">
 						<c:if test="${not empty tableGameVo.playUserList[2]}">
-							<p id="name2">${tableGameVo.playUserList[2].nick}</p>
+							<p id="name2">${tableGameVo.playUserList[2].nick}</p>	
 						</c:if>
 						<c:if test="${empty tableGameVo.playUserList[2]}">
 							<p id="name2"></p>
