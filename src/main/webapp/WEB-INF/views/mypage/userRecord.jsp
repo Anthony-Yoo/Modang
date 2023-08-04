@@ -16,7 +16,7 @@
     <style>
     /* 경험치바 베이스*/
 		#bar{border:1px solid #ccc; background:#e9e9e9;}
-		#bar{height:20px; width:250px;}
+		#bar{height:20px; width:486px;}
 	 
 	/* 경험치 비율 출력 */
 		.perc{display:inline-block;border:1px solid #DB2525; background:#CD2323;}
@@ -28,7 +28,12 @@
         <div class="record-view">
             <div class="left">
                 <div class="userImg">
-                    <img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="유저 프로필 이미지">
+                	<c:if test="${empty myUserVo.profileImage}">
+                		<img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="유저 프로필 이미지">
+                	</c:if>
+                	<c:if test="${not empty myUserVo.profileImage}">
+                		<img src="${pageContext.request.contextPath }/upload/${myUserVo.profileImage}" alt="유저 프로필 이미지">
+                    </c:if>
                 </div>
                 <div class="town">
                     <span>닉네임 : <strong>${myUserVo.nick}</strong></span>
@@ -103,7 +108,7 @@
                     </li>
                     <li>
                         <p>누적시간</p>
-                        <span>${CurrentRecordVo.totalGameTime}</span>
+                        <span id="timeStamper"></span>
                     </li>
                     <li class="per">
                      	<p>EXP</p>
@@ -149,8 +154,27 @@
                         <td>${recordVo.recordNo}</td>
                         <td>${recordVo.biliardAddress}</td>
                         <td>${recordVo.biliardName}</td>
-                        <td>${recordVo.tableType}</td>
-                        <td>${recordVo.gameType}</td>
+                        <c:if test ="${recordVo.tableType == 0}">
+                        	<td>대대</td>
+                        </c:if>
+                        <c:if test ="${recordVo.tableType == 1}">
+                        	<td>중대</td>
+                        </c:if>
+                        <c:if test ="${recordVo.tableType == 2}">
+                        	<td>포켓</td>
+                        </c:if>
+                        <c:if test ="${recordVo.gameType == 0}">
+                        	<td>3구</td>
+                        </c:if>
+                        <c:if test ="${recordVo.gameType == 1}">
+                        	<td>4구</td>
+                        </c:if>
+                        <c:if test ="${recordVo.gameType == 2}">
+                        	<td>8포켓</td>
+                        </c:if>
+                        <c:if test ="${recordVo.gameType == 3}">
+                        	<td>10포켓</td>
+                        </c:if>
                         <td>${recordVo.memberNum}</td>
                         <td>${recordVo.gameDate}</td>
                         <td>${recordVo.gameTime}</td>
@@ -209,7 +233,7 @@ $(document).ready(function(){
 	console.log(${CurrentRecordVo.totalNormRatePercent});
 	$(".perc").css( { "height" : "19px", "width" : "${CurrentRecordVo.totalNormRatePercent}%", "margin" : "-1px", "text-align" : "center",
 					  "font" : "14px bold", "color" : "white" } );		
-
+	timeStamper();
 });
 
 //삭제 모달창 호출 버튼 --> 모달창  뜸
@@ -267,6 +291,28 @@ function renderEach(playlist) {
 	$("#playInfo").append(src);
 	});
 };	
+time = ${CurrentRecordVo.totalGameTime};
+timeStamper = function(){	
+	min = Math.floor(time/60);
+	hour = Math.floor(min/60);
+	sec = time%60;
+	min = min%60;
+	
+	var th = hour;
+	var tm = min;
+	var ts = sec;
+	
+	if(th < 10 ){
+		th = "0" + hour;
+	}			
+	if(tm < 10){
+		tm = "0" + min;
+	}			
+	if(ts < 10){
+		ts = "0" + sec;
+	}
+	$("#timeStamper").html(th + ":" + tm + ":" + ts);						
+}
 
 </script>
 </html>
