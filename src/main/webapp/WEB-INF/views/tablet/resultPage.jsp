@@ -17,12 +17,7 @@ body {
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
-#container {background:#094e94;border-radius:10px; z-index: 1;	border: 1px;width: 1024px;height: 768px;position: absolute;left: 50%;	top: 50%;transform: translate(-50%, -50%);}
-
-.rtop {
-	width: 1020px;
-	height: 150px;
-}
+#container {background:#094e94;border-radius:10px; z-index: 1;	border: 1px;width: 1200px;height: 768px;position: absolute;left: 50%;	top: 50%;transform: translate(-50%, -50%);}
 .rboard {
 	width: 200px;
 	height: 150px;
@@ -36,6 +31,7 @@ canvas{z-index:10;pointer-events: none;position: fixed;top: 0;transform: scale(1
 </style>
 </head>
 <body>
+	<c:import url="/WEB-INF/views/include/tabletHeader.jsp"></c:import>
 	<div id="container">
 		<!-- Top Info -->
 		<div class="rtop" id="top-container">			
@@ -68,7 +64,7 @@ canvas{z-index:10;pointer-events: none;position: fixed;top: 0;transform: scale(1
 							</c:choose> 					
 							</div>
 							<div class="profileImg float-l">						
-								<img class="float-l imgbox1" src="${pageContext.request.contextPath}/assets/images/modang_img.png">						
+								<img class="float-l imgbox1" src="${pageContext.request.contextPath }/upload/${playUser.proFileImage}" alt="유저 프로필 이미지">						
 							</div>
 						</div>	
 					</c:forEach>
@@ -76,28 +72,28 @@ canvas{z-index:10;pointer-events: none;position: fixed;top: 0;transform: scale(1
 				<!-- 순위박스 -->
 				<div class="rankgroup">
 					<div class="rankbox1 float-l">
-						<p id="name1">${tableGameVo.playUserList[1].nick}</p><img src="${pageContext.request.contextPath}/assets/images/crown.png" id="crown"></div>
+						<p id="name1">${tableGameVo.playUserList[0].nick}</p><img src="${pageContext.request.contextPath}/assets/images/crown.png" id="crown"></div>
 					<div class="rankbox2 float-l">
+						<c:if test="${not empty tableGameVo.playUserList[1]}">
+							<p id="name2">${tableGameVo.playUserList[1].nick}</p>
+						</c:if>
+						<c:if test="${empty tableGameVo.playUserList[1]}">
+							<p id="name2"></p>
+						</c:if>
+					</div>
+					<div class="rankbox3 float-l">
 						<c:if test="${not empty tableGameVo.playUserList[2]}">
-							<p id="name2">${tableGameVo.playUserList[2].nick}</p>
+							<p id="name2">${tableGameVo.playUserList[2].nick}</p>	
 						</c:if>
 						<c:if test="${empty tableGameVo.playUserList[2]}">
 							<p id="name2"></p>
 						</c:if>
 					</div>
-					<div class="rankbox3 float-l">
+					<div class="rankbox4 float-l">
 						<c:if test="${not empty tableGameVo.playUserList[3]}">
 							<p id="name2">${tableGameVo.playUserList[3].nick}</p>
 						</c:if>
 						<c:if test="${empty tableGameVo.playUserList[3]}">
-							<p id="name2"></p>
-						</c:if>
-					</div>
-					<div class="rankbox4 float-l">
-						<c:if test="${not empty tableGameVo.playUserList[4]}">
-							<p id="name2">${tableGameVo.playUserList[4].nick}</p>
-						</c:if>
-						<c:if test="${empty tableGameVo.playUserList[4]}">
 							<p id="name2"></p>
 						</c:if>
 					</div>
@@ -106,8 +102,8 @@ canvas{z-index:10;pointer-events: none;position: fixed;top: 0;transform: scale(1
 		</div><!--row end -->
 		<div class="buttongroup">
 			<div class="btnBox1 float-r">
-				<button id="gameEndbtn" class="fa2 fa-pause" aria-hidden="true" onclick="location.href='${pageContext.request.contextPath}/${tableGameVo.tableNo}/loginForm.jsp'">게임종료</button>
-				<button id="reStartbtn" class="fa2 fa-pause" aria-hidden="true" onclick="location.href='${pageContext.request.contextPath}/${tableGameVo.tableNo}/selectball.jsp'">이어하기</button>
+				<button id="gameEndbtn" class="fa2 fa-pause" aria-hidden="true" onclick="location.href='${pageContext.request.contextPath}/tablet/${tableGameVo.tableNo}/loginForm'">게임종료</button>
+				<button id="reStartbtn" class="fa2 fa-pause" aria-hidden="true" onclick="location.href='${pageContext.request.contextPath}/tablet/${tableGameVo.tableNo}/selectBall'">이어하기</button>
 			</div>
 		</div><!--buttongroup end-->
 	</div>
@@ -118,6 +114,41 @@ canvas{z-index:10;pointer-events: none;position: fixed;top: 0;transform: scale(1
 <canvas id="canvas"></canvas>
 </body>
 <script>
+/*전체화면설정 이벤트------------------------------------------------------------  */
+var docV = document.documentElement;
+//전체화면 설정
+function openFullScreenMode() {
+if (docV.requestFullscreen)
+   docV.requestFullscreen();
+else if (docV.webkitRequestFullscreen) // Chrome, Safari (webkit)
+   docV.webkitRequestFullscreen();
+else if (docV.mozRequestFullScreen) // Firefox
+   docV.mozRequestFullScreen();
+else if (docV.msRequestFullscreen) // IE or Edge
+   docV.msRequestFullscreen();
+}
+
+//전체화면 해제
+function closeFullScreenMode() {
+if (document.exitFullscreen)
+   document.exitFullscreen();
+else if (document.webkitExitFullscreen) // Chrome, Safari (webkit)
+   document.webkitExitFullscreen();
+else if (document.mozCancelFullScreen) // Firefox
+   document.mozCancelFullScreen();
+else if (document.msExitFullscreen) // IE or Edge
+   document.msExitFullscreen();
+}
+
+$("#open").on('click',function(){
+	openFullScreenMode()
+});
+
+$("#close").on('click',function(){
+	closeFullScreenMode()
+});
+/* -------------------------------------------------------------------- */
+
 /* 게임정보 저장 */
 var tableNo = ${tableGameVo.tableNo};
 var gameNo = ${tableGameVo.gameNo};
