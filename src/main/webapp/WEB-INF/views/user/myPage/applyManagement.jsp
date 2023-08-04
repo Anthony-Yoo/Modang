@@ -383,9 +383,9 @@ function aLRender(AttendUsersVo, dir) {
 			str += ' 			<button type="button" class="agree" data-attendNo='+AttendUsersVo.attendNo+' data-boardNo='+AttendUsersVo.boardNo+'>승인</button>';
 			str += ' 			<button type="button" class="refuse" data-attendNo='+AttendUsersVo.attendNo+' data-boardNo='+AttendUsersVo.boardNo+'>거절</button>';
 		}else if(AttendUsersVo.status == 1){
-			str += ' 			<button type="button" class="agreed" data-attendNo='+AttendUsersVo.attendNo+' data-boardNo='+AttendUsersVo.boardNo+'>승인됨</button>';
+			str += ' 			<button type="" class="agreed" data-attendNo='+AttendUsersVo.attendNo+' data-boardNo='+AttendUsersVo.boardNo+'>승인됨</button>';
 		}else if(AttendUsersVo.status == 2){
-			str += ' 			<button type="button" class="refused" data-attendNo='+AttendUsersVo.attendNo+' data-boardNo='+AttendUsersVo.boardNo+'>거절됨</button>';
+			str += ' 			<button type="" class="refused" data-attendNo='+AttendUsersVo.attendNo+' data-boardNo='+AttendUsersVo.boardNo+'>거절됨</button>';
 		}
 		str += ' 		</td>';
 		str += ' 	</tr>';

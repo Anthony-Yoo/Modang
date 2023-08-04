@@ -90,13 +90,16 @@ public class AttendUsersController {
 	public JsonResult decide(@RequestBody AttendUsersVo attendUsersVo) {
 		System.out.println("AttendUsersController.decide()");
 		System.out.println(attendUsersVo);
-		if("agree".equals(attendUsersVo.getButtonClass())) {
+		JsonResult jsonResult = new JsonResult();
+		if(attendUsersVo!=null) {
 			attendUserService.approve(attendUsersVo);
-		}else if("refuse".equals(attendUsersVo.getButtonClass())) {
+			List<AttendUsersVo> result = attendUserService.applyList(attendUsersVo.getBoardNo());
+			jsonResult.success(result);
+		}else if(attendUsersVo==null) {
 			System.out.println("실패");
+			jsonResult.fail("처리 실패");
 		}
 		
-		JsonResult jsonResult = new JsonResult();
 		return jsonResult;
 	}
 }
