@@ -58,11 +58,9 @@
 											
 											</div>
 									
-								
-											
 											<div id="shadowTitle2" onclick="document.location='${pageContext.request.contextPath}/manager/joinForm'" class="">
 										
-										<p>사업자 회원가입 
+										<p >사업자 회원가입 
 										<img src="/modang/assets/images/right-chevron.png" height="20px"  alt=""></p>
 									
 												<div id="subTitleSize2" class="">
