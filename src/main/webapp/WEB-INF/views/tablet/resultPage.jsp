@@ -18,8 +18,6 @@ body {
 }
 
 #container {background:#094e94;border-radius:10px; z-index: 1;	border: 1px;width: 1200px;height: 768px;position: absolute;left: 50%;	top: 50%;transform: translate(-50%, -50%);}
-
-
 .rboard {
 	width: 200px;
 	height: 150px;

@@ -19,21 +19,8 @@
 			input::-moz-focus-inner { border: 0; padding: 0; }
 			input, select, qktextarea { -moz-appearance: none; -webkit-appearance: none; -ms-appearance: none; appearance: none; }
 			small {font-size:.75em;}
-			#logtitle {
-				color : #404040;
-				text-align: center;
-				
-			}
-			#container {
-				border : 1px;
-				outline: dashed 1px black;
-				width : 1024px;
-				height : 768px;
-				position : absolute;
-				left : 50%;
-				top : 50%;
-				transform : translate(-50%,-50%);						  	
-			}
+			#logtitle {color : #404040;	text-align: center;height: 200px;}
+			#container {background:#094e94;border-radius:10px; z-index: 1;	border: 1px;width: 1200px;height: 768px;position: absolute;left: 50%;	top: 50%;transform: translate(-50%, -50%);}
 			#imagebox {
 				display : inline-block;
 				border : 0px;
@@ -75,7 +62,7 @@
 	</head>
 	<body>
 		<div id="container">
-			<h2 id="logtitle">Modang</h2>			
+			<h2 id="logtitle">휴대폰을 인증해주세요</h2>			
 			<div class="content">	
 				<div class="box float-l" id="qrbox">
 					<img src="${pageContext.request.contextPath}/assets/images/qrcode_modang2.png"/>
@@ -88,7 +75,7 @@
 							<button type="submit" id="keyin">키입력</button>
 						</form>
 						<c:if test="${param.result eq 'fail'}">
-							<span>아이디 또는 비번을 확인해 주세요.</span>
+							<span>인증키를 다시 입력해주세요</span>
 						</c:if>
 					</div>
 				</div>			 
