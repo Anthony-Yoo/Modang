@@ -1,7 +1,10 @@
 package com.modang.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -108,22 +111,23 @@ public class TabletService {
 		return tabletDao.selectId(id);
 	}
 	
-	public List<CardUsersVo> myMember(int userNo) {
+	public Map<String, Object> myMember(int userNo) {
 		System.out.println("TabletService.myMember()");
 		 
 		List<CardUsersVo> cardList = tabletDao.selectCardUsers(userNo);
 		System.out.println(cardList);
 		List<CardMemberVo> memberList = new ArrayList<CardMemberVo>();
 		List<FavoriteUsersVo> favoriteList = new ArrayList<FavoriteUsersVo>();
+		Map<String, Object> memberPackage = new HashMap<String,Object>();
+		favoriteList = tabletDao.selectFavorite(userNo);
 		for(int i=0;i<cardList.size();i++) {
 			int cardNo = cardList.get(i).getCardNo();
-			memberList = tabletDao.selectCardMember(cardNo);
-			favoriteList = tabletDao.selectFavorite(userNo);
+			memberList = tabletDao.selectCardMember(cardNo);			
 			cardList.get(i).setMemberList(memberList);
-			cardList.get(i).setFavoriteList(favoriteList);
 		}	
-		
-		return cardList;		
+		memberPackage.put("favoriteList", favoriteList);
+		memberPackage.put("cardList",cardList);
+		return memberPackage;		
 	}
 	
 	public int createGame(TableGamesVo tableGame) {

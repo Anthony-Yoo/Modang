@@ -29,9 +29,8 @@
 							<img src="${pageContext.request.contextPath}/assets/images/id.png" alt="아이디" class="icon">
 							<input type="text" id="id" name="id" placeholder="아이디">
 							<button class="chck" id="btnIdCheck">중복체크</button>
-						</span>
-						<p class="correct-msg">사용가능한 아이디입니당</p>
-						<p class="error-msg">사용가능한 아이디입니당</p>
+						</span>					
+						<p class="check-msg"></p>						
 					</div>
 					<div class="con">
 						<!-- 비밀번호 -->
@@ -156,7 +155,7 @@
 		if(result!=""){
 			alert(result);
 		}
-	})
+	};
 
 </script>    
 
@@ -257,19 +256,22 @@ function execDaumPostcode() {
 				console.log(jsonResult);
 				if (jsonResult.result == 'success') {//처리 성공
 					//사용가능한지 불가능한지 표현
-					if (jsonResult.data == true) {
+					if (jsonResult.data == null) {
 						//사용가능
-						$(".correct-msg").show();
-						$(".error-msg").hide();
+						console.log("사용가능합니다.");
+						$(".check-msg").text(id+" 사용가능합니다.");
+						
 					} else {
 						//사용불가능
-						$(".error-msg").show();
-						$(".correct-msg").hide();
+						console.log("사용불가능합니다.");						
+						$(".check-msg").text(id+" 사용불가능합니다.");
+						
 					}
 				} else {
+					
 					//메세지 출력
-					var msg = jsonResult.failMsg;
-					alert(msg);
+					/* var msg = jsonResult.failMsg;
+					alert(msg); */
 				}
 			},
 			error : function(XHR, status, error) {

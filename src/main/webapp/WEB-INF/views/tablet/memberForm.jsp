@@ -202,8 +202,7 @@
 					     	<th>Add</th>
 					    </tr>
 					  </thead>
-					  <c:forEach var="card" items="${cardList}"  begin="0" end="0" step="1" varStatus="status">
-					  	<c:forEach var="favorite" items="${card.favoriteList}">
+					  	<c:forEach var="favorite" items="${favoriteList}">
 							  <tbody>
 							  	<tr>
 							  		<td>${favorite.favoriteNo}</td>
@@ -214,8 +213,7 @@
 							  			</button>
 							  		</td>
 							  	</tr>					  		
-							  </tbody>	
-						</c:forEach>
+							  </tbody>
 					  </c:forEach>				  
 				</table>
 			</div>

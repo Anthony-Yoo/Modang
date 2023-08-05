@@ -171,8 +171,7 @@ public class MypageService {
 		System.out.println("MypageService.friendList()");
 				
 		
-		mypageDao.selectFriendList(userNo);
-		
+		mypageDao.selectFriendList(userNo);		
 	}
 
 }

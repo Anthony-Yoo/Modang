@@ -62,8 +62,9 @@ public class ManagerController {
 		if(idcheckVo !=null ) {
 			System.out.println("아이디가 있어욤~");
 			jsonResult.success(idcheckVo);//Json에 담아서 전달
-		}else {
+		}else {			
 			System.out.println("아이디가 없어용~");
+			jsonResult.success(idcheckVo);//없지만 Json에 담아서 전달
 		}		
 		
 		System.out.println(jsonResult);	
