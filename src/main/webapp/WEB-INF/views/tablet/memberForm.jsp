@@ -25,7 +25,7 @@
 			dd {background-color: #eeeeee;margin-bottom: 5px;display: none;	}
 			dd:hover{background-color: black;color:white;}	
 			input[type=range]::-webkit-slider-runnable-track { 
-			  width: 100%; height: 8.4px; 
+			  width: 200px; height: 8.4px; 
 			  cursor: pointer; 
 			  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; 
 			  background: #3071a9; 
@@ -82,12 +82,12 @@
 						<form id="playerForm">		
 						<input type="hidden" value="0" id="tb_cnt">			
 							<table id="playerTable" style="border: 1px">
-							  <tbody class="confirmBody">					  	
+							  <tbody class="confirmBody" id="tb-0">					  	
 							  	<tr class="addUserBox" id="t0">
 							  		<%-- <td>${sessionScope.authUser.userNo}</td> 고객번호 가리기--%>
 									<td class="nameTd">${sessionScope.authUser.nick}</td>
-									<td class="gageTd">																				
-										<span id="range-0">${sessionScope.authUser.average}</span>
+									<td class="averageTd">																				
+										<span id="range-0">[${sessionScope.authUser.average}타]</span>
 									</td>
 									<td class="btnTd">
 			 							<button type="button" class="delPlayer" data-userno="${sessionScope.authUser.userNo}" data-no="0" 
@@ -96,12 +96,12 @@
 			 							</button>		
 									</td>
 							  	</tr>
-							  	<tr>
-							  		<td><input class="confirmAverage" type="range" value="${sessionScope.authUser.average}" min="30" max="500" step="10" size="10" data-range="0"></td>
+							  	<tr class="gageBox">
+							  		<td class="rangeBox"><input class="confirmAverage" type="range" value="${sessionScope.authUser.average}" min="30" max="500" step="10" size="10" data-range="0"></td>
 							  	</tr>							  	
 							  </tbody>
 							  <tfoot>
-							  	<tr>
+							  	<tr class="float-r">
 							  		<td><button type="submit" id="confirm">확정</button></td>
 							  	</tr>
 							  </tfoot>
@@ -192,6 +192,7 @@ $("#close").on('click',function(){
    
    /* document.getElementById('value1').innerHTML=this.value
    $("#") */
+/*1. 카드리스트 구현 */
    var $target = $("dt"), isClass = null;
    
    $target.on("click", function() {
@@ -202,6 +203,7 @@ $("#close").on('click',function(){
    });
    
    
+/*2. 검색 구현 */   
    $('#idfind').on("click",function(){
 	    console.log("id검색 버튼 클릭"); 
    
@@ -263,27 +265,8 @@ $("#close").on('click',function(){
 		$("#findResult").append(src);
 		});
 	};	
-	
-	function renderTr(btn) {
-		var src = "";
-		src += '<tr class="addUserBox" id="t' + cnt + '">';
-		src += '	<td class="nameTd">' + btn.data('nick') +'</td>';
-		src += '	<td class="gageTd">';
-		src += '		<span id="range-'+ cnt +'"></span>';
-		src += ' 	</td>';
-		src += '	<td class="btnTd">';
-		src += ' 		<button type="button" class="delPlayer" data-userno="'+btn.data('userno')+'" data-no="'+ cnt +'" data-nick="'+ btn.data('nick') +'" data-average="'+ btn.data('average') +'" >삭제</button>';		
-		src += '	</td>';
-		src += '</tr>';	
-		src += '<tr>';
-		src += '	<td>';
-		src += ' 		<input class="confirmAverage" type="range" value="' + btn.data('average') + '" min="0" max="500" step="10" size="5" data-range="' + cnt + '">';
-		src += ' 	</td>';
-		src += '</tr>'
-		return src;
-	}
 
-	/* 추가버튼클릭할때 */
+/*3. 확정리스트쿠현(추가버튼클릭할때) */
 	$('#findResult,#cardlist,#favoriteTable').on("click",".addPlayer",function() {
 		console.log("id추가 버튼 클릭");	
 		
@@ -293,11 +276,11 @@ $("#close").on('click',function(){
 		var src = renderTr($(this));
 		/* 유저넘버체크 */
 		//확정리스트에 멤버가 0보다 크면
-		if($("#playerTable>tbody>tr").length >= 0 ){
+		if($("#playerTable>tbody").length >= 0 ){
 			console.log("선수1명 이상");	
 			
 			//그린다
-			if($("#playerTable>tbody>tr").length < 4){//멤버가 0보다크고 4보다 작으면 
+			if($("#playerTable>tbody").length < 4){//멤버가 0보다크고 4보다 작으면 
 				console.log("등록해도된다");
 				let btnTags = $(".delPlayer");
 				
@@ -318,7 +301,7 @@ $("#close").on('click',function(){
 				
 				/* 결과로 일한다 */
 				if(state == false){ /* 같은맴버 없다 */
-					$('#playerTable > tbody:last').append(src);
+					$('#playerTable > tbody:last').after(src);
 				    $("#tb_cnt").val(cnt);	
 				}else{
 					alert("같은 멤버가있습니다.");	
@@ -331,18 +314,39 @@ $("#close").on('click',function(){
 		}  
 	});
 	
-	
+	function renderTr(btn) {
+		var src = "";
+		src += '<tbody class="confirmBody" id="tb-' + cnt + '">'
+		src += '	<tr class="addUserBox">';
+		src += '		<td class="nameTd">' + btn.data('nick') +'</td>';
+		src += '		<td class="averageTd">';
+		src += '			<span id="range-'+ cnt +'"></span>';
+		src += ' 		</td>';
+		src += '		<td class="btnTd">';
+		src += ' 			<button type="button" class="delPlayer" data-userno="'+btn.data('userno')+'" data-no="'+ cnt +'" data-nick="'+ btn.data('nick') +'" data-average="'+ btn.data('average') +'" >삭제</button>';		
+		src += '		</td>';
+		src += '	</tr>';	
+		src += '	<tr>';
+		src += '		<td>';
+		src += ' 			<input class="confirmAverage" id ="rgno-'+ cnt +'" type="range" value="' + btn.data('average') + '" min="0" max="500" step="10" size="5" data-range="' + cnt + '">';
+		src += ' 		</td>';
+		src += '	</tr>'
+		src += '</tbody>'
+		return src;
+	}
+	//*삭제버튼
 	$('#playerTable').on("click",".delPlayer",function() {
 		console.log("id삭제 버튼 클릭");		
-   		$(this).parent().parent().remove();
+   		var no =$(this).data("no");
+   		$("#tb-"+ no).remove();
    		
-   	  	var tags = $("#playerTable>tbody>tr").length;
+   	  	var tags = $("#playerTable>tbody").length;
 		console.log("===========================");
 		console.log(tags);
 		console.log("===========================");	
 	    
  	});	
-
+	//*확정버튼
 	$('#playerForm').on("submit",function(e) {
 		e.preventDefault();
 		console.log("확정 버튼 클릭");			
@@ -359,8 +363,8 @@ $("#close").on('click',function(){
 		for(let i=0; i<btnTags.length; i++){
 			userNo = btnTags.eq(i).data("userno");
 			nick = btnTags.eq(i).data("nick");
-			average = btnTags.eq(i).parent().prev().children(".confirmAverage").val();
-			orderNo = btnTags.eq(i).parent().parent().index();
+			average = btnTags.eq(i).parent().parent().next().find(".confirmAverage").val();
+			orderNo = btnTags.eq(i).parent().parent().parent().index();
 			/* 순서, table번호 */			
 			var playUserVo = {				
 				userNo : userNo,

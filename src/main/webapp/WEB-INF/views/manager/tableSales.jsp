@@ -21,18 +21,15 @@
 </head>
 <body>
 	<div id="page-wrapper">
-
 		<!-- Header -->
 		<section id="header">
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
-
 						<!-- Logo -->
 						<h1>
 							<a href="index.html"><img src="${pageContext.request.contextPath}/assets/images/logo.png" /></a>
 						</h1>
-
 						<!-- User login -->
 						<c:choose>
 							<c:when test="${sessionScope.loginManager==null}">
@@ -76,9 +73,9 @@
 								<form name="" class="form-inline float-right mb-4" action="${pageContext.request.contextPath}/manager/tableSales" method="get" >
 									<label class="mr-2">테이블 번호</label>
 									<div class="col-4">
-									  <select class="form-control-5" name="tableName" id="tableNameSelect">
+									  <select class="form-control-5" name="tableNo" id="tableNameSelect">
 									    <c:forEach items="${cuetableList}" var="cueTableVo">
-									      <option value="${cueTableVo.tableName}">${cueTableVo.tableName}</option>
+									      <option value="${cueTableVo.tableNo}">${cueTableVo.tableName}</option>
 									    </c:forEach>
 									  </select>
 									</div>

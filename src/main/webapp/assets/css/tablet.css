@@ -41,9 +41,10 @@
 #playerForm{width:100%;height:100%;}
 #playerTable{width:100%;}
 .confirmBody{height:60px;}
-.addUserBox{display: inline-block; width: 100%;height: 50px;margin-top: 20px;}
-.nameTd{width:70px;}
-.gageTd{width:170px;}
+.addUserBox{display: inline-block; width: 100%;height: 40px;margin-top: 20px;}
+.gageBox{display: inline-block; width: 100%;height: 30px;}
+#confirm{margin-left: 10px; width: 96px; height: 50px;display:inline-block;font-weight:400;color:#fff;text-align:center;vertical-align:middle;user-select:none;background:#45a8d6;border:none;font-size:1.25rem;line-height:1.5rem;border-radius:.25rem;cursor:pointer;}
+.averageTd{width:170px;}
 .btnTd{width:70px;}
 /* 점수판 */						
 .top {height: 120px;}
@@ -124,3 +125,4 @@ img {display: inline-block;}
 #keyin{margin-top: -15px;margin-left: 20px;width: 160px; height: 60px;display:inline-block;font-weight:400;color:#fff;text-align:center;vertical-align:middle;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background:#45a8d6;border:none;padding:.5rem 1.25rem;font-size:1.25rem;line-height:1.5rem;border-radius:.25rem;cursor:pointer;}
 #keyNum{width:200px;height: 60px;font-size: 2.25rem;text-align: center;}
 .failmsg{display: inline-block;margin-top: 20px;width: 350px;text-align: center;color: white;}
+.rangeBox{width:300px;}
