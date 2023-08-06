@@ -28,15 +28,15 @@
     position: relative;
     display: table;
     border-collapse: separate;
-    margin: 0px 0px -10px 0px;
+    
 }
 
 
 /* the width for center position */
 #main-content .container #loginForm #main,
 #main-content .container #joinOk #main,
-#main-content .container #modifyForm #main,
-#main-content .container #userJoinForm #main {
+#main-content .container #modifyForm #main
+ {
 	width: 350px;
 	margin: 0 auto;
 	
@@ -54,12 +54,11 @@
 #main form .input-group #btnIdCheck {
 	width: 70px;
 	height: 40px;
-	padding : 8px 20px 9px 20px;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #fff;
-	margin: 0px 0px 30px 0px;
+	margin: 0 auto;
 	background : linear-gradient(to bottom right, rgb(9, 32, 80),
       rgb(81, 117, 164))
 }
@@ -68,77 +67,80 @@
 #main form .input-group #input-uid {
 	width: 230px;
 	height: 40px;
-	padding : 8px 20px 9px 20px;
 	background: #F5F5F5;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
-	margin: 0px 0px 30px 0px;
+	display: inline-block;
+    position: relative;
 }
 
 #main form .input-group #id {
 	width: 300px;
 	height: 40px;
-	padding : 8px 20px 9px 20px;
 	background: #F5F5F5;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
-	margin: 0px 0px 30px 0px;
+	position: relative;
 
 }
 
 #main form .input-group #passwd {
 	width: 300px;
 	height: 40px;
-	padding : 8px 20px 9px 20px;
 	background: #F5F5F5;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
-	margin: 0px 0px 30px 0px;
+	
 
 }
 
 #main form .input-group #cellphone {
 	width: 300px;
 	height: 40px;
-	padding : 8px 20px 9px 20px;
 	background: #F5F5F5;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
-	margin: 0px 0px 30px 0px;
+	
 
 }
 
 #main form .input-group #nick {
 	width: 230px;
 	height: 40px;
-	padding : 8px 20px 9px 20px;
 	background: #F5F5F5;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
-	margin: 0px 0px 30px 0px;
+	margin: 0 auto;
 
+}
+/* login input 간격 */
+#loginForm .form-group {
+    margin-bottom: 15px;
+}
+/* modifyForm input 간격 */
+#modifyForm .form-group {
+    margin-bottom: 15px;
 }
 
 /* nick modal */
 #main form .input-group #btnNickCheck {
 	width: 70px;
 	height: 40px;
-	padding : 8px 20px 9px 20px;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #fff;
-	margin: 0px 0px 30px 0px;
+	margin: 0 auto;
 	background : linear-gradient(to bottom right, rgb(9, 32, 80),
       rgb(81, 117, 164))
 }
@@ -159,13 +161,12 @@
 #main form .input-group #average {
 	width: 300px;
 	height: 40px;
-	padding : 8px 20px 9px 20px;
 	background: #F5F5F5;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
-	margin: 0px 0px 30px 0px;
+	margin: 0 auto;
 
 }
 
@@ -179,7 +180,7 @@
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
-	margin: 0px 0px 20px 0px;
+	
 
 }
 
@@ -190,6 +191,8 @@
 	color: #fff;
 	border-radius:10px;
 	height: 40px;
+	position: relative;
+	
 	margin: 0 auto;
 	background : linear-gradient(to bottom right, rgb(9, 32, 80),
       rgb(81, 117, 164))
@@ -210,13 +213,15 @@
 #main form .form-group .input-group img{
 	width: 40px; 
 	height: 40px;
-	margin: 0px 10px 20px 0px;
+	position: relative;
+    left: -5px;
+    margin: 0 auto;
 	
 }
 
 .row {
-    margin-right: -0px;
-    margin-left: -5px;
+    margin-right: 0px;
+    margin-left: 0px;
 }
 
 .input-group[class*=col-] {
@@ -226,10 +231,9 @@
 }
 
 /* userJoinForm */
-
 #shadowBox {
 	background-color: rgb(255, 255, 255);
-	cursor: pointer;
+	
 	text-shadow: none;
 	box-shadow: rgba(46, 65, 154, 0.28) 5px 10px 10px 0px;
 	border-width: 0px;
@@ -237,7 +241,7 @@
 	border-radius: 4px;
 	display:inline-block;
 	position: relative;
-    left: 370px;
+    left: 350px;
     top: 40px;
 	width: 13em;
 	height: 150px;
@@ -247,7 +251,7 @@
 
 #shadowBox2 {
 	background-color: rgb(255, 255, 255);
-	cursor: pointer;
+	
 	text-shadow: none;
 	box-shadow: rgba(46, 65, 154, 0.28) 5px 10px 10px 0px;
 	border-width: 0px;
@@ -255,7 +259,7 @@
 	border-radius: 4px;
 	display:inline-block;
 	position: relative;
-    left: 440px;
+    left: 420px;
     top: 40px;
 	width: 13em;
 	height: 150px;
@@ -269,12 +273,12 @@
 	font-weight: bold;
 	padding: 6px 0px 15px 25px;
 	position: relative;
-    left: 365px;
+    left: 345px;
     top: -110px;
+    width: 10em;
 }
 
 #subTitleSize {
-	
 	font-size: 13px;
 	position: relative;
 	left: -5px;
@@ -287,16 +291,16 @@
 	font-weight: bold;
 	width: 179px;
 	position: relative;
-   	left: 660px;
+   	left: 645px;
     top: -248px;
+    width: 10em;
 }
 
 #subTitleSize2{
-	
 	font-size: 13px;
 	margin: -10px -26px 0px 35px;
 	position: relative;
-   	left: -25px;
+   	left: -30px;
     top: 35px;
 }
 
@@ -314,7 +318,6 @@
 }
 
 #userPage .element .style .content  {
-    
     height: 260px;
     padding: 0px;
     width: 1050px;

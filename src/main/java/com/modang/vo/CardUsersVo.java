@@ -11,9 +11,9 @@ public class CardUsersVo {
 	private int gameType;
 	private int average;	
 	List<CardMemberVo> memberList;
-	List<FavoriteUsersVo> favoriteList;
 	public CardUsersVo(int cardNo, int setUserNo, String title, String cardUserDate, int gameType, int average,
-			List<CardMemberVo> memberList, List<FavoriteUsersVo> favoriteList) {
+			List<CardMemberVo> memberList) {
+		super();
 		this.cardNo = cardNo;
 		this.setUserNo = setUserNo;
 		this.title = title;
@@ -21,9 +21,9 @@ public class CardUsersVo {
 		this.gameType = gameType;
 		this.average = average;
 		this.memberList = memberList;
-		this.favoriteList = favoriteList;
 	}
 	public CardUsersVo() {
+		super();
 	}
 	public int getCardNo() {
 		return cardNo;
@@ -67,17 +67,11 @@ public class CardUsersVo {
 	public void setMemberList(List<CardMemberVo> memberList) {
 		this.memberList = memberList;
 	}
-	public List<FavoriteUsersVo> getFavoriteList() {
-		return favoriteList;
-	}
-	public void setFavoriteList(List<FavoriteUsersVo> favoriteList) {
-		this.favoriteList = favoriteList;
-	}
 	@Override
 	public String toString() {
 		return "CardUsersVo [cardNo=" + cardNo + ", setUserNo=" + setUserNo + ", title=" + title + ", cardUserDate="
-				+ cardUserDate + ", gameType=" + gameType + ", average=" + average + ", memberList=" + memberList
-				+ ", favoriteList=" + favoriteList + "]";
-	}	
+				+ cardUserDate + ", gameType=" + gameType + ", average=" + average + ", memberList=" + memberList + "]";
+	}
+	
 
 }

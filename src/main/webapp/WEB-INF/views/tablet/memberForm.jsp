@@ -202,8 +202,7 @@
 					     	<th>Add</th>
 					    </tr>
 					  </thead>
-					  <c:forEach var="card" items="${cardList}"  begin="0" end="0" step="1" varStatus="status">
-					  	<c:forEach var="favorite" items="${card.favoriteList}">
+					  	<c:forEach var="favorite" items="${favoriteList}">
 							  <tbody>
 							  	<tr>
 							  		<td>${favorite.favoriteNo}</td>
@@ -214,8 +213,7 @@
 							  			</button>
 							  		</td>
 							  	</tr>					  		
-							  </tbody>	
-						</c:forEach>
+							  </tbody>
 					  </c:forEach>				  
 				</table>
 			</div>
@@ -269,10 +267,16 @@
 				success : function(action){
 					console.log(action);
 					
-					if(action.result == 'success') {//처리성공	
-						console.log("성공");						
-						renderEach(action.data);					
+					if(action.result == 'success') {//처리성공
+						if(action.data.length === 0) {	
+							alert("해당 ID가없습니다.");						
 						
+						} else {
+							console.log(action.data);
+							console.log("성공");						
+							renderEach(action.data);				
+							
+						}						
 					}else {//오류처리
 						var msg = action.failMsg;
 							alert(msg);				

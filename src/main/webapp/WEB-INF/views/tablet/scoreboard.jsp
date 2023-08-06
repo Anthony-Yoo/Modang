@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0, minimum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 <title>스코어점수판</title>
 <link href="${pageContext.request.contextPath}/assets/css/tablet.css" rel="stylesheet" type="text/css">
@@ -17,7 +18,7 @@ body {
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
-#container {background:#094e94;border-radius:10px; z-index: 1;	border: 1px;width: 1024px;height: 768px;position: absolute;left: 50%;	top: 50%;transform: translate(-50%, -50%);}
+#container {background:#094e94;border-radius:10px; z-index: 1;	border: 1px;width: 1200px;height: 768px;position: absolute;left: 50%;	top: 50%;transform: translate(-50%, -50%);}
 .float-r {float: right;}
 .float-l {float: left;}
 .clear {clear: both;}
@@ -25,6 +26,7 @@ body {
 </style>
 </head>
 <body>
+	<c:import url="/WEB-INF/views/include/tabletHeader.jsp"></c:import>
 	<div id="container">
 		<!-- Top Info -->
 		<div class="top" id="top-container">
@@ -42,8 +44,10 @@ body {
 				<c:forEach var="playUser" items="${tableGameVo.playUserList}">
 					<div class="board float-l" id="boardno${playUser.orderNo}">
 						<div class="bdtop">
-							<div class="userinfo">
+							<div class="userinfo clearfix">
 								<img class="float-l imgbox" src="${pageContext.request.contextPath }/upload/${playUser.proFileImage}" alt="유저 프로필 이미지">
+							</div>
+							<div class="userinfo">								
 								<div class="usertext float-l">
 									 <br> ${playUser.nick} [다마수: ${playUser.currentAverage} ]
 								</div>
@@ -71,6 +75,41 @@ body {
 	</div>
 </body>
 <script>
+var docV = document.documentElement;
+//전체화면 설정
+function openFullScreenMode() {
+ if (docV.requestFullscreen)
+     docV.requestFullscreen();
+ else if (docV.webkitRequestFullscreen) // Chrome, Safari (webkit)
+     docV.webkitRequestFullscreen();
+ else if (docV.mozRequestFullScreen) // Firefox
+     docV.mozRequestFullScreen();
+ else if (docV.msRequestFullscreen) // IE or Edge
+     docV.msRequestFullscreen();
+}
+
+//전체화면 해제
+function closeFullScreenMode() {
+ if (document.exitFullscreen)
+     document.exitFullscreen();
+ else if (document.webkitExitFullscreen) // Chrome, Safari (webkit)
+     document.webkitExitFullscreen();
+ else if (document.mozCancelFullScreen) // Firefox
+     document.mozCancelFullScreen();
+ else if (document.msExitFullscreen) // IE or Edge
+     document.msExitFullscreen();
+}
+
+$("#open").on('click',function(){
+	openFullScreenMode()
+});
+
+$("#close").on('click',function(){
+	closeFullScreenMode()
+});
+
+/* -------------------------------------------------------------------- */
+
 /* 게임정보 저장 */
 var tableNo = ${tableGameVo.tableNo};
 var gameNo = ${tableGameVo.gameNo};
@@ -317,7 +356,6 @@ $(".panalty").on("click",function(){
 					}		
 					
 				});	
-				$("div[data-record=0]").off('click');
 			 }
 		});
 		
@@ -359,8 +397,7 @@ $('.btnBox').on("click","#restartbtn", function(){
 
 /* 동작4. 종료버튼 클릭했을때 */
 $(".btnBox").on("click","#stopbtn",function(){
-	console.log("종료버튼 클릭!");
-	$('.bdmid > div').off('click');		
+	console.log("종료버튼 클릭!");		
 	 if(confirm("강제종료시 일시정지시간은 초기화됩니다.") == true){
 		 	gameQuit();
 	        alert("강제종료되었습니다");	       
@@ -516,7 +553,7 @@ function gamePause(){
 				}
 				timeStamper();
 				console.log("일시정지시간 출력!");
-					
+
 			}else {//오류처리
 				var msg = action.failMsg;
 					alert(msg);				
@@ -738,7 +775,7 @@ function gameQuit() {
 						};	
 						timeStamper();
 						console.log("사용시간 출력!")				
-			
+						$('.bdmid > div').off('click');	
 			}else {//오류처리
 				var msg = action.failMsg;
 					alert(msg);				
@@ -816,6 +853,7 @@ function statusPause(){
 				}
 				timeStamper();
 				console.log("사용시간 출력!");
+
 					
 			}else {//오류처리
 				var msg = action.failMsg;
