@@ -65,17 +65,14 @@
 							<c:choose>
 								<c:when test="${sessionScope.authUser.userNo == rList.userNo}">
 								
-									<a id="btn_applyList" href="">신청 리스트</a>
+									<a id="btn_applyList" href="${pageContext.request.contextPath}/attendUsers/myPage/myBoardList">신청 리스트</a>
 									<a id="btn_boardList" href="${pageContext.request.contextPath}/board/list">목록</a>
 									<a id="btn_modify" href="">글 수정</a>
-									<a id="btn_delete" href="">삭제</a>
-									
+									<a id="btn_delete" href="${pageContext.request.contextPath}/board/delete?boardNo=${rList.boardNo}">삭제</a>
 								</c:when>
 								<c:when test="${sessionScope.authUser.userNo != rList.userNo}">
-								
 									<a id="btn_boardList" href="${pageContext.request.contextPath}/board/list">목록</a>
 									<a id="btn_apply" href="#">신청하기</a>
-									
 								</c:when>
 							</c:choose>
 						</div>
@@ -155,39 +152,39 @@ $(document).ready(function() {
 		console.log("클릭 성공")
 		var userNo = "${sessionScope.authUser.userNo}";
 		var boardNo= "${rList.boardNo}";
-		
+		var boardStatus = "${rList.status}";
+	  
+		  
 		var AttendUsersVo={
 			userNo: userNo,
 			boardNo: boardNo
 		}
 		if(userNo==""){
-				var url = "${pageContext.request.contextPath}/user/loginForm";
-				window.location.href = url;
+				window.location.href = "${pageContext.request.contextPath}/user/loginForm";
+		}else if(boardStatus == 1){
+				alert("신청이 마감된 글입니다.");
 		}else{
-				var url = "${pageContext.request.contextPath}/attendUsers/apply";
+			$.ajax({
+				url : "${pageContext.request.contextPath}/attendUsers/apply",
+				type : "post",
+				contentType : "application/json",
+				data : JSON.stringify(AttendUsersVo) ,
+				
+				// 데이터 받은 후 
+				dataType : "json",
+				success : function(jsonResult) {
+					console.log("테스트");
+					console.log(jsonResult); 
+					alert(jsonResult.result);				 
+				 },
+				error : function(XHR, status, error) {
+					// 실패
+	
+				}
+	
+			}); 
 		}
 		
-		console.log(AttendUsersVo);
-		
-		$.ajax({
-			url : url,
-			type : "post",
-			contentType : "application/json",
-			data : JSON.stringify(AttendUsersVo) ,
-			
-			// 데이터 받은 후 
-			dataType : "json",
-			success : function(jsonResult) {
-				console.log("테스트");
-				console.log(jsonResult); 
-				alert(jsonResult.result);				 
-			 },
-			error : function(XHR, status, error) {
-				// 실패
-
-			}
-
-		}); 
 		
 	});
     

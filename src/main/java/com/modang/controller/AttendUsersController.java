@@ -106,4 +106,21 @@ public class AttendUsersController {
 	}
 	
 	
+	/* 게시글 모집 확정 기능 */
+	@RequestMapping(value="/myPage/confirmation")
+	public String confirmation(@RequestParam("boardNo") int boardNo) {
+		System.out.println("들어옴?");
+		System.out.println(boardNo);
+		boardService.confirmation(boardNo);
+		return "redirect:/attendUsers/myPage/myBoardList";
+	}
+	
+	/* 게시글 삭제 */
+	@RequestMapping(value="/myPage/dismiss")
+	public String dismiss(@RequestParam("boardNo") int boardNo) {
+		System.out.println("들어옴?");
+		System.out.println(boardNo);
+		boardService.dismiss(boardNo);
+		return "redirect:/attendUsers/myPage/myBoardList";
+	}
 }

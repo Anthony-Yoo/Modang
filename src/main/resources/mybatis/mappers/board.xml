@@ -94,7 +94,7 @@
 		            and mb.content like '%'|| #{keyword} ||'%'
 		        </if>
 			<![CDATA[	
-            		 order by mb.matchdate asc
+            		 order by mb.boardNo desc
 			          ) ot
 			    ) ort
 		    left join (
@@ -182,13 +182,21 @@
 		]]>
 	</update>
 	
+	
 	<select id="checkBStatus" parameterType="int" resultType="com.modang.vo.BoardVo">
 	<![CDATA[
 		select status
 		from matchboard 
 		where boardNo = #{boardNo}
 	]]>
-	
 	</select>
 	
+	
+	<!-- 게시판 삭제 -->
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete from MatchBoard
+			where boardNo = #{boardNo}
+		]]>
+	</delete>
 </mapper>

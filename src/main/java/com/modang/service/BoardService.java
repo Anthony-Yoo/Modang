@@ -129,4 +129,19 @@ public class BoardService {
 		
 		return result;
 	}
+	
+	/* 게시글 모집 확정 기능 */
+	public void confirmation(int boardNo) {
+		System.out.println("BoardService.confirmation()");
+		/* 확정으로 게시판 상태 변경 */
+		boardDao.confirmed(boardNo);
+		/* 승인된 이외의 데이터 삭제 */
+		attendUsersDao.delete(boardNo);
+	}
+	
+	/* 게시글 삭제 */
+	public void dismiss(int boardNo) {
+		System.out.println("BoardService.dismiss()");
+		boardDao.delete(boardNo);
+	}
 }

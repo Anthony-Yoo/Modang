@@ -32,7 +32,7 @@ pageEncoding="UTF-8"%>
             <ul>
                 <li><a href="${pageContext.request.contextPath}/">모당이란?</a></li>
                 <li><a href="${pageContext.request.contextPath}/modangFind">당구장 찾기</a></li>
-                <li><a href="${pageContext.request.contextPath}/board/list">매칭 게시판</a></li>
+                <li><a href="${pageContext.request.contextPath}/board/list?crtPage=1">매칭 게시판</a></li>
             </ul>
         </div>
         <!-- 사이트 메뉴 카테고리(?) 끝 -->

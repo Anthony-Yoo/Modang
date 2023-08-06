@@ -92,8 +92,14 @@
 					</c:if>
 					<c:forEach begin="${pMap.startPageBtnNo}"
 						end="${pMap.endPageBtnNo}" step="1" var="page">
-						<li class="active"><a
-							href="${pageContext.request.contextPath}/board/list?crtPage=${page}&keyword=${pMap.keyword}">${page}</a></li>
+						<c:set var="currentPage" value="${pageContext.request.getParameter('crtPage')}" />
+						<li <c:if test="${currentPage == page}">
+								class="active"
+							</c:if>>
+								<a href="${pageContext.request.contextPath}/board/list?crtPage=${page}&keyword=${pMap.keyword}">
+									${page}
+								</a>
+						</li>
 					</c:forEach>
 					<c:if test="${pMap.next == true}">
 						<li><a
@@ -123,12 +129,13 @@
 	<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
 </body>
 <script>
+	// 신청 현황에서 상태값에 따라 글씨 색깔 변경
 	var elements = document.querySelectorAll('.result'); // 모든 결과 요소 선택
 
 	elements.forEach(function(element) {
 		var text = element.textContent; // 요소의 내부 텍스트 가져오기
 
-		// 정규식을 사용하여 텍스트에서 숫자 값을 추출합니다.
+		// 정규식을 사용하여 텍스트에서 숫자 값을 추출
 		var values = text.match(/\d+/g);
 		var agreeCount = parseInt(values[0]); // 첫 번째 숫자는 agreeCount 값
 		var membernum = parseInt(values[1]); // 두 번째 숫자는 membernum 값
