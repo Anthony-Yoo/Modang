@@ -21,15 +21,13 @@
 			body {
 				font-family: 'Noto Sans KR', sans-serif;
 			};
-/* 테이블선택화면 */
 
-
-/*셀렉트볼*/
+/* 테이블선택화면(index) */
 .imagebox >a{font-size: 200px; display: inline-block; width: 100%; height: 100%;text-align: center;padding-top: 15%;}
 .tableStatus1 {width: 250px;height: 180px;outline: 2px solid #ffffffb3;background-color: #f1920f;border-radius: 10px; margin-top: 3%;margin-left: 3.3%;}
 .tableStatus2 {width: 250px;height: 180px;outline: 2px solid #ffffffb3;background-color: #f1b412;border-radius: 10px; margin-top: 3%;margin-left: 3.3%;}
 .tableStatus3 {width: 250px;height: 180px;outline: 2px solid #ffffffb3;background-color: #2b9b32;border-radius: 10px; margin-top: 3%;margin-left: 3.3%;}			
-.title{width:100%;height: 5%;text-align: center; font-size: 30px;margin-top: 3%;color: white;}
+.title{width:100%;height: 5%;text-align: center; font-size: 40px;margin-top: 3%;color: white;}
 /* 점수판 */						
 .top {height: 120px;}
 .mid {height: 615px;margin-left: 1px;}

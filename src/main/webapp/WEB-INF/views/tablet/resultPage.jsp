@@ -148,6 +148,17 @@ $("#open").on('click',function(){
 $("#close").on('click',function(){
 	closeFullScreenMode()
 });
+
+/* 빵빠래 이벤트----------------------------------------------------------------- */
+//페이지 로딩이 완료된 후 자동으로 스타트 버튼을 클릭하는 함수
+function clickStartButton() {
+	 var startButton = document.getElementById('startButton');
+	 if (startButton) {
+	     startButton.click(); // 버튼 클릭
+	 }
+}
+
+window.onload = clickStartButton;
 /* -------------------------------------------------------------------- */
 
 /* 게임정보 저장 */
@@ -270,19 +281,8 @@ function renderEach(playerList) {
 		$("#playTime-"+value.record).html(timeVo.th + ":" + timeVo.tm);
 	});
 	 
-	 
-	 
 }
 
-// 페이지 로딩이 완료된 후 자동으로 스타트 버튼을 클릭하는 함수
-function clickStartButton() {
-    var startButton = document.getElementById('startButton');
-    if (startButton) {
-        startButton.click(); // 버튼 클릭
-    }
-}
-
-window.onload = clickStartButton;
 
 </script>
 </html>

@@ -107,6 +107,7 @@ $("#open").on('click',function(){
 $("#close").on('click',function(){
 	closeFullScreenMode()
 });
+
 /* -------------------------------------------------------------------- */
 
 /* 게임정보 저장 */

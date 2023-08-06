@@ -34,7 +34,7 @@
 				<div class="box1 float-l" id="logbox">
 					<div id="idbox">
 						<form action="${pageContext.request.contextPath}/tablet/${tableNo}/keyLogin" method="get">
-							<input type="text" name="keyNum" id="keyNum">
+							<input type="number" name="keyNum" id="keyNum">
 							<button type="submit" id="keyin">키입력</button>
 						</form>
 						<c:if test="${param.result eq 'fail'}">
@@ -46,6 +46,7 @@
 		</div>
 	</body>
 	<script type="text/javascript">
+	/* 전체화면 이벤트-------------------------------------------------------------- */
 	var docV = document.documentElement;
 	//전체화면 설정
 	function openFullScreenMode() {
@@ -78,6 +79,15 @@
 	$("#close").on('click',function(){
 		closeFullScreenMode()
 	});
+	//클릭 자동실행
+	function clickStart() {
+	    var startBtn = document.getElementById('open');
+	    if (startBtn) {
+	    	startBtn.click(); // 버튼 클릭
+	    }
+	}
+
+	window.onload = clickStartButton;
 	/* -------------------------------------------------------------------- */
 	
 	</script>
