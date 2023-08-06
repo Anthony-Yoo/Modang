@@ -176,7 +176,7 @@ justify-content: center;align-items: center; pointer-events: none;}
     box-sizing: border-box; border-radius: 10px;}
 .record-view .town{display: block; width: 250px;height: 127px;  margin: 15px auto 0; border: 1px solid  #2E419A;
     border-radius: 10px;}
-.record-view .town span{display: inline-block; margin:  25px 0 0 20px;}
+.record-view .town span{display: inline-block; margin:  15px 0 0 20px; font-size: 15px;}
 .record-view .town span strong{color: #2E419A; font-size: 20px;}
 .record-view .center{display: inline-block;width: 300px;height: 100%;position: absolute; top: 0; left: 300px;
     text-align: center;}
@@ -199,12 +199,11 @@ justify-content: center;align-items: center; pointer-events: none;}
 .record-view .right{display: inline-block;width: 550px;height: 100%;position: absolute; top: 0; left: 630px;}
 .record-view .userPlay ul{width: 550px;}
 .record-view .userPlay ul li{display: inline-block; width: 178px; height: 150px; background-color: #ecdfdf;
-    border-radius: 10px;}
-.record-view .userPlay ul li>p{font-size: 14px; padding: 10px 0 0 10px; }
+    border-radius: 10px;}    
+.record-view .userPlay ul li>p{font-size: 14px; padding: 8px 0 0 10px; }
 .record-view .userPlay ul li>span{display: inline-block; font-weight: 600; font-size: 30px;  width: 178px; height: 50px; text-align: center;
     padding: 30px 0 0;}
-.record-view .userPlay ul li>span.recommTxt{display: inline-block; line-height: 46px; font-weight: 600; font-size: 15px;  width: 178px; height: 50px; text-align: center;
-    padding: 30px 0 0;}
+
 .record-view .userPlay ul li.per{display: block; width: 500px; height: 50px; margin: 10px auto; padding: 10px 18px 10px 30px;}
 .record-view .userPlay ul li.per>p{padding: 5px 0 0 0;}
 .record-view .userPlay ul li.per>span{display: block; width: 500px; height: 16px; margin: 0 auto; background-color: red;

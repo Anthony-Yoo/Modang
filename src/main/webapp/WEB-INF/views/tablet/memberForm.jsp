@@ -18,7 +18,7 @@
 			.imagebox {	margin-left : 105px;margin-top : 150px;	display : inline-block;	outline : solid 2px black;width : 350px;height :350px;}			
 			.float-r {float: right; }
 			.float-l {float: left; }
-			.clear{clear: both; }	
+			.clear{clear: both; }			
 			dt, dd {padding: 10px;}
 			dt {border: 1px solid #eeeeee;margin-bottom: 5px;margin-top: 5px; background-color: #9dd6f4;}
 			dt span {display: inline-block;	width: 5px; height: 5px; background-color: black;vertical-align: middle;margin-right: 10px;}
@@ -87,7 +87,7 @@
 							  		<%-- <td>${sessionScope.authUser.userNo}</td> 고객번호 가리기--%>
 									<td class="nameTd">${sessionScope.authUser.nick}</td>
 									<td class="gageTd">																				
-										<span id="range-0"></span>
+										<span id="range-0">${sessionScope.authUser.average}</span>
 									</td>
 									<td class="btnTd">
 			 							<button type="button" class="delPlayer" data-userno="${sessionScope.authUser.userNo}" data-no="0" 
@@ -176,7 +176,7 @@ $("#close").on('click',function(){
 });
 
 /* -------------------------------------------------------------------- */
-   var $target = $("dt"), isClass = null;
+  
    var cnt = $("#tb_cnt").val();   
    
    
@@ -192,6 +192,7 @@ $("#close").on('click',function(){
    
    /* document.getElementById('value1').innerHTML=this.value
    $("#") */
+   var $target = $("dt"), isClass = null;
    
    $target.on("click", function() {
       var _$self = $(this), isActive = _$self.hasClass("active");
@@ -199,6 +200,7 @@ $("#close").on('click',function(){
       _$self.toggleClass("active");
       _$self.nextUntil("dt").slideToggle(!isActive);
    });
+   
    
    $('#idfind').on("click",function(){
 	    console.log("id검색 버튼 클릭"); 
@@ -261,22 +263,7 @@ $("#close").on('click',function(){
 		$("#findResult").append(src);
 		});
 	};	
-	<tr class="addUserBox" id="t0">
-		<%-- <td>${sessionScope.authUser.userNo}</td> 고객번호 가리기--%>
-	<td class="nameTd">${sessionScope.authUser.nick}</td>
-	<td class="gageTd">																				
-		<span id="range-0"></span>
-	</td>
-	<td class="btnTd">
-			<button type="button" class="delPlayer" data-userno="${sessionScope.authUser.userNo}" data-no="0" 
-					data-nick="${sessionScope.authUser.nick}" data-average="" 
-					disabled="disabled">삭제
-			</button>		
-	</td>
-	</tr>
-	<tr>
-		<td><input class="confirmAverage" type="range" value="${sessionScope.authUser.average}" min="30" max="500" step="10" size="10" data-range="0"></td>
-	</tr>
+	
 	function renderTr(btn) {
 		var src = "";
 		src += '<tr class="addUserBox" id="t' + cnt + '">';
