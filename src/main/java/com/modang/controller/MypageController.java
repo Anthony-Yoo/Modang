@@ -76,7 +76,7 @@ public class MypageController {
 		mypageService.friendList(userNo);
 	
 		
-		return "/mypage/FriendList";
+		return "/mypage/friendList";
 	}
 	
 

@@ -103,6 +103,10 @@
 	                        <p>다마상태</p>
 	                        <span class="recommTxt">짠다마</span>
                         </c:if>
+                        <c:if test ="${CurrentRecordVo.recommStatus == 3}">
+	                        <p>다마상태</p>
+	                        <span class="recommTxt">새내기</span>
+                        </c:if>
                     </li>
                     <li>
                         <p>누적승률</p>
