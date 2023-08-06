@@ -1,17 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${rList.title}</title>
+<title>글 쓰기</title>
 <link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
-<!-- 게시판 css -->
-<link href="${pageContext.request.contextPath}/assets/css/board.css" rel="stylesheet" type="text/css">
 <!-- 사이트 전체 css -->
 <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
+<!-- 게시판 css -->
+<link href="${pageContext.request.contextPath}/assets/css/board.css" rel="stylesheet" type="text/css">
 
 <!-- jquery -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
@@ -20,126 +21,172 @@
 
 <body>
 	<!-- 헤더 시작 -->
-	<div id="header">
-		<c:import url="/WEB-INF/views/include/modangSiteHeader.jsp"></c:import>
-	</div>
+	<c:import url="/WEB-INF/views/include/modangSiteHeader.jsp"></c:import>
 	<!-- 헤더 끝 -->
 
+	<!-- 메인 컨텐츠-->
 	<div id="content">
 		<div id="content-header">
-			<h2>
-				<a>매칭 게시판</a>
-			</h2>
+			<h2>매칭 게시판</h2>
 		</div>
-	</div>
-
-	<div id="board">
-		<div id="read">
-			<form action="#" method="get">
-				<!-- 제목 -->
-				<div class="title">
-					<span class="title-value">${rList.title}</span>
+		<!-- //content-heade -->
+		<div id="board">
+		
+			<div id="read">
+				<div class="btnWrap txt-right">
+					<c:choose>
+						<c:when test="${sessionScope.authUser.userNo == rList.userNo}"> <!-- 작성자 본인인 경우 -->
+							<a id="btn_delete" class="btn-danger"  href="#">삭제</a>
+							<a id="btn_modify" class="btn-normal"  href="#">수정</a>
+							<a id="btn_boardList" class="btn-normal"  href="${pageContext.request.contextPath}/board/list">목록</a>
+						</c:when>
+						<c:when test="${sessionScope.authUser.userNo != rList.userNo}"> <!-- 작성자 본인인 아닌경우 -->
+							<a id="btn_boardList" class="btn-normal"  href="${pageContext.request.contextPath}/board/list">목록</a>
+						</c:when>
+					</c:choose>
 				</div>
-
-				<!-- 글 및 작성자 정보 -->
-				<div class="title_area">
-					<a href="" class="title_thumb"> <img
-						src="${pageContext.request.contextPath}/upload/${rList.profileImage}"
-						alt="프로필 사진" width="36" height="36">
-					</a>
-					<div class="title_box">
-						<div class="title_nick_box">
-							<!-- 작성자 -->
-							<div class="title_nick_info">
-								<a id="" href="${pageContext.request.contextPath}/mypage/${rList.userNo}/record" role="button" aria-haspopup="true"
-									aria-expanded="false" class="title_nickname">${rList.nick}</a>
-							</div>
-						</div>
-						<!-- 작성일 + 조회수 -->
-						<div class="title_info_box">
-							<span class="title_info_date">${rList.boardDate} 조회
-								${rList.count}</span>
-						</div>
-						<div id="writer">
-							<!-- 작성자 본인인 경우 -->
-							<c:choose>
-								<c:when test="${sessionScope.authUser.userNo == rList.userNo}">
-								
-									<a id="btn_applyList" href="${pageContext.request.contextPath}/attendUsers/myPage/myBoardList">신청 리스트</a>
-									<a id="btn_boardList" href="${pageContext.request.contextPath}/board/list">목록</a>
-									<a id="btn_modify" href="">글 수정</a>
-									<a id="btn_delete" href="${pageContext.request.contextPath}/board/delete?boardNo=${rList.boardNo}">삭제</a>
-								</c:when>
-								<c:when test="${sessionScope.authUser.userNo != rList.userNo}">
-									<a id="btn_boardList" href="${pageContext.request.contextPath}/board/list">목록</a>
-									<a id="btn_apply" href="#">신청하기</a>
-								</c:when>
-							</c:choose>
-						</div>
+				<!-- //btnWrap -->
+			
+			
+				<!-- 글제목 영역 -->
+				<div class="boardInfoWrap clearfix">
+					<!-- 제목 -->
+					<div class="title">
+						<span class="title-value">[${rList.title}]</span>
 					</div>
-				</div>	
-				<div>
-					<div id="title_set_result">
-						플레이 예정 정보 : [
-						<c:choose>
-							<c:when test="${rList.matchGameType == '0'}">
-									3구
-								</c:when>
-							<c:when test="${rList.matchGameType == '1'}">
-									4구
-								</c:when>
-							<c:when test="${rList.matchGameType == '2'}">
-									포켓볼
-								</c:when>
-						</c:choose>
-						${rList.matchRegion} ${rList.matchDate}]
-					</div>
-					<span id="title_state" style="color: ${rList.agreeCount+1 >= rList.membernum ? 'red' : 'black'}">구인현황: ${rList.agreeCount+1}/${rList.membernum}</span>
-				</div>
-
-				<!-- 내용 -->
-				<div id="txt-content">
-					<pre class="form-value">${rList.content}
-						</pre>
-				</div>
-				<div id="comment_list">
-					<!-- 댓글 리스트 출력(cList) -->
-					<div id="cList">
+					<!-- //제목 -->
 					
+					<!-- 작성일 + 조회수 -->
+					<div class="title_info_box">
+					 	<span class="title_info_date">작성일: ${rList.boardDate}</span> 
+					 	<span class="title_info_date">조회수: ${rList.count}</span>
 					</div>
-					<!-- cList end -->
-					<!-- comment_add -->
-					<c:if test="${sessionScope.authUser != null}">
-						<div class="comment_add">
-							<div id="comment_inbox">
-								<strong class="blind">댓글을 입력하세요</strong> 
-								<input type="hidden" value="${sessionScope.authUser.userNo}" name="userNo">
-								<input type="hidden" value="${rList.boardNo}" name="boardNo">
-								<em	id="comment_inbox_name">${sessionScope.authUser.nick}</em>
-								<div class="comment_inbox_wrapper">
-									<div class="comment_textarea_wrapper">
-										<textarea placeholder="댓글을 남겨보세요" rows="1" id="comment_inbox_text"
-											style="overflow: hidden; overflow-wrap: break-word;" name="content"></textarea>
-									</div>
-									<div id="register_box">
-										<a href="#" role="button" class="btn_register" id="main_btn">등록</a>
+				</div>
+				<!-- //글제목 영역 -->
+				
+				<!-- 게시글 본문 영역 -->
+				<div class="boardInnerBox">
+				
+
+					<!-- 글 및 작성자 정보 -->
+					<div class="title_area" >
+						<a href="" class="title_thumb">
+							<img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="프로필 사진" width="36" height="36">
+							<%-- <img src="${pageContext.request.contextPath}/upload/${rList.profileImage}" alt="프로필 사진" width="36" height="36"> --%>
+						</a>
+							
+						<!-- 작성자 -->
+						<span class="title_nick_info">
+							<a id="" href="${pageContext.request.contextPath}/mypage/${rList.userNo}/record" role="button" aria-haspopup="true" aria-expanded="false" class="title_nickname">
+								${rList.nick}
+							</a>
+						</span>
+						
+					</div>
+					<!-- //글 및 작성자 정보 -->
+					
+					
+					<table class="gameInfoTable">
+						<colgroup>
+							<col style="width: 8%;" />
+							<col style="width: 9%;" />
+							<col style="width: 8%;" />
+							<col style="width: 9%;" />
+							<col style="width: 8%;" />
+							<col style="width: 12%;" />
+							<col style="width: 8%;" />
+							<col style="width: 8%;" />
+							<col style="width: 10%;" />
+							<col />
+							<col />
+						</colgroup>
+						<tr>
+							<th>게임종류</th>
+							<td class="txt-left">
+								<c:choose>
+									<c:when test="${rList.matchGameType == '0'}">
+											3구
+										</c:when>
+									<c:when test="${rList.matchGameType == '1'}">
+											4구
+										</c:when>
+									<c:when test="${rList.matchGameType == '2'}">
+											포켓볼
+										</c:when>
+								</c:choose>
+							</td>
+							<th>게임지역</th>
+							<td class="txt-left">${rList.matchRegion}</td>	
+							<th>게임날자</th>
+							<td class="txt-left">${rList.matchDate}</td>
+							<th>게임정원</th>
+							<td>
+								${rList.membernum} 명
+							</td>
+							<th>현재신청자</th>
+							<td class="txt-left">
+								<span>1 명</span>
+							</td>
+							<td class="txt-right">
+								<c:choose>
+									<c:when test="${sessionScope.authUser.userNo == rList.userNo}"> <!-- 작성자 본인인 경우 -->
+										<a id="btn_applyList" class="btn-main btn-m"  href="#">신청리스트</a>
+									</c:when>
+									<c:when test="${sessionScope.authUser.userNo != rList.userNo}"> <!-- 작성자 본인인 아닌경우 -->
+										<a id="btn_apply" class="btn-main btn-m"  href="#">신청하기</a>
+									</c:when>
+								</c:choose>
+							</td>	
+						<tr>
+					</table>
+					
+					
+					<!-- 내용 -->
+					<div id="txt-content">
+						<pre class="form-value">${rList.content}</pre>
+					</div>
+					
+					
+					<div id="comment_list">
+						<!-- 댓글 리스트 출력(cList) -->
+						<div id="cList"></div>
+						<!-- cList end -->
+						<!-- comment_add -->
+						<c:if test="${sessionScope.authUser != null}">
+							<div class="comment_add">
+								<div id="comment_inbox">
+									<strong class="blind">댓글을 입력하세요</strong> <input type="hidden" value="${sessionScope.authUser.userNo}" name="userNo"> <input type="hidden" value="${rList.boardNo}" name="boardNo"> <span id="comment_inbox_name">${sessionScope.authUser.nick}</span>
+									<div class="comment_inbox_wrapper">
+										<div class="comment_textarea_wrapper">
+											<textarea placeholder="댓글을 남겨보세요" rows="1" id="comment_inbox_text" style="overflow: hidden; overflow-wrap: break-word;" name="content"></textarea>
+										</div>
+										<div id="register_box" class="txt-right">
+											<a href="#" role="button" class="btn_register btn-flat btn-ss" id="main_btn">등록</a>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</c:if>
-					<!-- //comment_add -->
+						</c:if>
+						<!-- //comment_add -->
+					</div>
+					<!-- //댓글 리스트 -->
+					
 				</div>
-				<!-- //댓글 리스트 -->
-			</form>
-			<!-- //form -->
+				<!-- //게시글 본문 영역 -->
+				
+					
+			</div>
+			<!-- //read -->
+			
 		</div>
-		<!-- //read -->
+		<!-- //board -->
+	
 	</div>
-	<!-- //board -->
-	<div id="readFooter">
-		<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
-	</div>
+	<!-- //content -->	
+	
+	<!-- footer -->
+	<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
+	
 </body>
 <script>
 $(document).ready(function() {
@@ -152,39 +199,39 @@ $(document).ready(function() {
 		console.log("클릭 성공")
 		var userNo = "${sessionScope.authUser.userNo}";
 		var boardNo= "${rList.boardNo}";
-		var boardStatus = "${rList.status}";
-	  
-		  
+		
 		var AttendUsersVo={
 			userNo: userNo,
 			boardNo: boardNo
 		}
 		if(userNo==""){
-				window.location.href = "${pageContext.request.contextPath}/user/loginForm";
-		}else if(boardStatus == 1){
-				alert("신청이 마감된 글입니다.");
+				var url = "${pageContext.request.contextPath}/user/loginForm";
+				window.location.href = url;
 		}else{
-			$.ajax({
-				url : "${pageContext.request.contextPath}/attendUsers/apply",
-				type : "post",
-				contentType : "application/json",
-				data : JSON.stringify(AttendUsersVo) ,
-				
-				// 데이터 받은 후 
-				dataType : "json",
-				success : function(jsonResult) {
-					console.log("테스트");
-					console.log(jsonResult); 
-					alert(jsonResult.result);				 
-				 },
-				error : function(XHR, status, error) {
-					// 실패
-	
-				}
-	
-			}); 
+				var url = "${pageContext.request.contextPath}/attendUsers/apply";
 		}
 		
+		console.log(AttendUsersVo);
+		
+		$.ajax({
+			url : url,
+			type : "post",
+			contentType : "application/json",
+			data : JSON.stringify(AttendUsersVo) ,
+			
+			// 데이터 받은 후 
+			dataType : "json",
+			success : function(jsonResult) {
+				console.log("테스트");
+				console.log(jsonResult); 
+				alert(jsonResult.result);				 
+			 },
+			error : function(XHR, status, error) {
+				// 실패
+
+			}
+
+		}); 
 		
 	});
     
@@ -408,13 +455,13 @@ $(document).ready(function() {
 		str += ' 		<input type="hidden" value=' + BDCommentVo.depth + ' name="depth" >';
 		str += ' 		<input type="hidden" value=' + BDCommentVo.groupNo + ' name="groupNo">';
 		str += ' 		<input type="hidden" value=' + BDCommentVo.groupOrder + ' name="groupOrder">';
-		str += ' 		<em id="comment_inbox_name">${sessionScope.authUser.nick}</em>';
+		str += ' 		<span id="comment_inbox_name">${sessionScope.authUser.nick}</span>';
 		str += ' 		<div class="comment_inbox_wrapper">';
 		str += ' 			<div class="comment_textarea_wrapper">';
 		str += ' 				<textarea placeholder="'+BDCommentVo.nick+'님에게 글을 남겨보세요" rows="1" id="comment_inbox_text" style="overflow: hidden; overflow-wrap: break-word;"></textarea>';
 		str += ' 			</div>';
-		str += ' 			<div id="register_box">';
-		str += ' 	 			<a href="#" role="button" class="btn_register" id = "btn_register_'+index+'" onclick="extractHiddenValues('+(index+1)+')">등록</a>';
+		str += ' 			<div id="register_box" class="txt-right">';
+		str += ' 	 			<a href="#" role="button" class="btn_register btn-flat btn-ss" id = "btn_register_'+index+'" onclick="extractHiddenValues('+(index+1)+')">등록</a>';
 		str += ' 			</div>';
 		str += ' 		</div>';
 		str += ' 	</div>';
@@ -472,7 +519,8 @@ $(document).ready(function() {
 		str += ' <input type="hidden" name="groupNo" value="'+BDCommentVo.groupNo+'">';
 		str += ' 	<div class="comment_area" style="position: relative; left: ' + (BDCommentVo.depth * 50) + 'px" data-index='+i+' >';
 		str += ' 	<a href="" class="comment_thumb">';
-		str += ' 		<img src="${pageContext.request.contextPath}/upload/'+BDCommentVo.profileImage+'" alt="프로필 사진" width="36" height="36">';
+		//str += ' 		<img src="${pageContext.request.contextPath}/upload/'+BDCommentVo.profileImage+'" alt="프로필 사진" width="36" height="36">';
+		str += ' 		<img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="프로필 사진" width="36" height="36">';
 		str += ' 	</a>';
 		str += ' 	<div class="comment_box">';
 		str += ' 		<div class="comment_nick_box">';

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -103,5 +104,39 @@ public class ManagerController {
 		sessoin.invalidate();
 		return "redirect:/";
 	}
-
+	
+	/*당구장 정보 수정폼*/
+	@RequestMapping(value = "/settingsForm", method = { RequestMethod.GET, RequestMethod.POST })
+	public String settingsForm(HttpSession session, Model model) {
+		System.out.println("ManagerController.settingsForm");
+		ManagerVo loginManager=(ManagerVo)session.getAttribute("loginManager");//횡변환
+		if(loginManager==null) {
+			return "redirect:/manager/loginForm";
+		}
+		int no = loginManager.getbiliardNo();
+		ManagerVo managerVo = managerService.settingsForm(no);
+		System.out.println(managerVo);
+		model.addAttribute("managerVo", managerVo);//request "managerVo"
+		System.out.println("ManagerController.settingsForm");
+		return "/manager/settings";
+	}
+	/*당구장 정보 수정*/
+	@RequestMapping(value = "modify", method = {RequestMethod.GET, RequestMethod.POST })
+	public String modify(HttpSession session, @ModelAttribute ManagerVo managerVo
+			, @RequestParam("file") List<MultipartFile> file) {
+		System.out.println("ManagerController.modify()" + managerVo);
+		managerService.modify(managerVo,file);
+		return "redirect:/manager/settingsForm";
+	}
+	/*당구장 찾기-모당리스트*/
+	@ResponseBody
+	@RequestMapping(value = "/modangFind", method = {RequestMethod.GET, RequestMethod.POST })
+	public List<ManagerVo> modanglist(@PathVariable("biliardNo") int biliardNo) {
+		System.out.println("ManagerController.modanglist");
+		ManagerVo managerVo = new ManagerVo();
+		managerVo.setbiliardNo(biliardNo);
+		List<ManagerVo> modanglist = managerService.modanglist(managerVo);
+		return modanglist;
+	}
+	
 }

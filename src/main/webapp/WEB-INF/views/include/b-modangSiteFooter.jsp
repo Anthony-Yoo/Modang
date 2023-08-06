@@ -2,12 +2,11 @@
 pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<div class="footer-container">
     <div id="footer">
-        <div class="container clearfix">
+        <div class="container">
             <div class="f_left">
                 <div class="f_logo">
-                    <img id="logo-img" src="${pageContext.request.contextPath}/assets/images/a-modang.png">
+                    <img src="${pageContext.request.contextPath}/assets/images/modang_logo1.jpg" alt="하단로고">
                 </div><!-- //.f_logo -->
                 <ul class="">
                     <li>회사명 : 이도단짱</li>
@@ -42,5 +41,3 @@ pageEncoding="UTF-8"%>
             </div><!-- //.f_right -->
         </div><!-- //.container -->
     </div>
-</div>
-<!-- //footer-container -->
