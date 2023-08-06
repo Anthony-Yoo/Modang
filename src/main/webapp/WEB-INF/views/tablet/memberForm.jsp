@@ -267,10 +267,16 @@
 				success : function(action){
 					console.log(action);
 					
-					if(action.result == 'success') {//처리성공	
-						console.log("성공");						
-						renderEach(action.data);					
+					if(action.result == 'success') {//처리성공
+						if(action.data.length === 0) {	
+							alert("해당 ID가없습니다.");						
 						
+						} else {
+							console.log(action.data);
+							console.log("성공");						
+							renderEach(action.data);				
+							
+						}						
 					}else {//오류처리
 						var msg = action.failMsg;
 							alert(msg);				
