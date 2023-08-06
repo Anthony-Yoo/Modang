@@ -23,15 +23,45 @@
 			dt {border: 1px solid #eeeeee;margin-bottom: 5px;margin-top: 5px; background-color: #9dd6f4;}
 			dt span {display: inline-block;	width: 5px; height: 5px; background-color: black;vertical-align: middle;margin-right: 10px;}
 			dd {background-color: #eeeeee;margin-bottom: 5px;display: none;	}
-			dd:hover{background-color: black;color:white;}	
+			dd:hover{background-color: black;color:white;}
+			
+			/*
 			input[type=range]::-webkit-slider-runnable-track { 
-			  width: 200px; height: 8.4px; 
+			  width: 300px; 
+			  height: 8.4px; 
 			  cursor: pointer; 
 			  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; 
 			  background: #3071a9; 
 			  border-radius: 1.3px; 
 			  border: 0.2px solid #010101; 
-			} 
+			} */
+			input[type=range] { 
+			  width: 90%; 
+			  height: 8.4px; 
+			  cursor: pointer; 
+			  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; 
+			  background: #3071a9; 
+			  border-radius: 1.3px; 
+			  border: 0.2px solid #010101;
+			  margin-left: 10px; 
+			}	
+			
+			.addList {
+				position: relative;
+			}
+			
+			#findResult {
+				position: absolute;
+				top: 55px;
+				left:0px;
+				width: 98%;
+				background-color: #ffffff;
+				border: 1px solid gray;		
+			}
+			
+			#findResult tr>td {
+				padding: 10px;		
+			}
 		</style>
 	</head>
 	<body>
@@ -85,7 +115,7 @@
 							  <tbody class="confirmBody" id="tb-0">					  	
 							  	<tr class="addUserBox" id="t0">
 							  		<%-- <td>${sessionScope.authUser.userNo}</td> 고객번호 가리기--%>
-									<td class="nameTd">${sessionScope.authUser.nick}</td>
+									<td class="nameTd float-l">${sessionScope.authUser.nick}</td>
 									<td class="averageTd">																				
 										<span id="range-0">[${sessionScope.authUser.average}타]</span>
 									</td>
@@ -114,22 +144,13 @@
 			<div class="favoriteBox float-l">
 				<div class="right float-l" id="favoriteList">
 					<div id="tab"><p>친구목록</p></div>	
-					<table id="favoriteTable" style="border: 1px">
-						  <thead>
-						  	<tr>
-						    	<th>No</th>
-						     	<th>Nick</th>
-						     	<th>Average</th>
-						     	<th>Add</th>
-						    </tr>
-						  </thead>
+					<table id="favoriteTable">
 						  	<c:forEach var="favorite" items="${favoriteList}">
 								  <tbody>
-								  	<tr>
-								  		<td>${favorite.favoriteNo}</td>
-								  		<td>${favorite.nick}</td>
-								  		<td>${favorite.average}</td>
-								  		<td>
+								  	<tr class="favoriteUser">
+								  		<td class="nameTd1 float-l">${favorite.nick}</td>
+								  		<td class="averageTd1">[${favorite.average}타]</td>
+								  		<td class="btnTd1">
 								  			<button type="button" class="addPlayer" data-userno="${favorite.getUserNo}" data-no="${favorite.favoriteNo}" data-nick="${favorite.nick}" data-average="${favorite.average}">추가
 								  			</button>
 								  		</td>
@@ -142,9 +163,13 @@
 		</div>
 	</body>
 <script>
-var docV = document.documentElement;
+
+
+var docV = document.documentElement;	
+
 //전체화면 설정
 function openFullScreenMode() {
+
  if (docV.requestFullscreen)
      docV.requestFullscreen();
  else if (docV.webkitRequestFullscreen) // Chrome, Safari (webkit)
@@ -181,12 +206,12 @@ $("#close").on('click',function(){
    
    
    //다마수 레인지 움질일때
-   $(".confirmBody").on("change",".confirmAverage", function(){
+   $("#playerTable").on("change",".confirmAverage", function(){
 	   console.log($(this).val());
 	   
 	   var avg = $(this).val();
 	   var no= $(this).data("range"); 
-	   $("#range-"+no).text(avg);	   
+	   $("#range-"+no).text("["+avg+"타]");	   
    })
    
    
@@ -248,6 +273,9 @@ $("#close").on('click',function(){
 			});
 			console.log("test입니다." + id);			
 		};		
+		
+		/* 검색결과리스트 보이기 */
+		$("#findResult").css("display", "block");
    });   
    
    function renderEach(playerVo) {	  	
@@ -256,7 +284,7 @@ $("#close").on('click',function(){
 		src += '	<table class="nickList findTable">';
 		src += '		<tr>';
 		src += '			<td>' + value.nick + '</td>';
-		src += '			<td>&nbsp;&nbsp;&nbsp;' + value.average + '</td>';
+		src += '			<td>&nbsp;&nbsp;&nbsp;'+ value.average + '</td>';
 		src += '			<td>';
 		src += '				<button type="button" class="addPlayer" data-userno="'+ value.userNo +'" data-no="'+ value.userNo +'" data-nick="'+ value.nick +'" data-average="'+ value.average +'" >추가</button>';
 		src += '			</td>';
@@ -311,23 +339,27 @@ $("#close").on('click',function(){
 			}else {//멤버가 4보다 크거나 같으면
 				alert("최대인원이 넘었습니다.");
 			}	
-		}  
+		} 
+		
+		/* 검색결과리스트 안보이게 처리 */
+		$("#findResult").css("display", "none");
+		
 	});
 	
 	function renderTr(btn) {
 		var src = "";
 		src += '<tbody class="confirmBody" id="tb-' + cnt + '">'
 		src += '	<tr class="addUserBox">';
-		src += '		<td class="nameTd">' + btn.data('nick') +'</td>';
+		src += '		<td class="nameTd float-l">' + btn.data('nick') +'</td>';
 		src += '		<td class="averageTd">';
-		src += '			<span id="range-'+ cnt +'"></span>';
+		src += '			<span id="range-'+ cnt+'">' +'['+btn.data('average')+'타]' + '</span>';
 		src += ' 		</td>';
 		src += '		<td class="btnTd">';
 		src += ' 			<button type="button" class="delPlayer" data-userno="'+btn.data('userno')+'" data-no="'+ cnt +'" data-nick="'+ btn.data('nick') +'" data-average="'+ btn.data('average') +'" >삭제</button>';		
 		src += '		</td>';
 		src += '	</tr>';	
 		src += '	<tr>';
-		src += '		<td>';
+		src += '		<td class="rangeBox">';
 		src += ' 			<input class="confirmAverage" id ="rgno-'+ cnt +'" type="range" value="' + btn.data('average') + '" min="0" max="500" step="10" size="5" data-range="' + cnt + '">';
 		src += ' 		</td>';
 		src += '	</tr>'
@@ -415,6 +447,7 @@ $("#close").on('click',function(){
 
 	
 	}); 
+
 
 
 </script>
