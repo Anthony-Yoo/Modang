@@ -356,7 +356,6 @@ $(".panalty").on("click",function(){
 					}		
 					
 				});	
-				$("div[data-record=0]").off('click');
 			 }
 		});
 		
@@ -398,8 +397,7 @@ $('.btnBox').on("click","#restartbtn", function(){
 
 /* 동작4. 종료버튼 클릭했을때 */
 $(".btnBox").on("click","#stopbtn",function(){
-	console.log("종료버튼 클릭!");
-	$('.bdmid > div').off('click');		
+	console.log("종료버튼 클릭!");		
 	 if(confirm("강제종료시 일시정지시간은 초기화됩니다.") == true){
 		 	gameQuit();
 	        alert("강제종료되었습니다");	       
@@ -555,7 +553,7 @@ function gamePause(){
 				}
 				timeStamper();
 				console.log("일시정지시간 출력!");
-					
+
 			}else {//오류처리
 				var msg = action.failMsg;
 					alert(msg);				
@@ -777,7 +775,7 @@ function gameQuit() {
 						};	
 						timeStamper();
 						console.log("사용시간 출력!")				
-			
+						$('.bdmid > div').off('click');	
 			}else {//오류처리
 				var msg = action.failMsg;
 					alert(msg);				
@@ -855,6 +853,7 @@ function statusPause(){
 				}
 				timeStamper();
 				console.log("사용시간 출력!");
+
 					
 			}else {//오류처리
 				var msg = action.failMsg;

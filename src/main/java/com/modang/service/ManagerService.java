@@ -18,7 +18,7 @@ import com.modang.vo.TariffVo;
 
 @Service
 public class ManagerService {
-	String saveDir = "D:\\Dev\\upload";
+	String saveDir = "C:\\javaStudy\\upload";
 	@Autowired private ManagerDao managerDao;
 	//@Autowired private TariffVo tariffVo;
 	//@Autowired private BiliardDao biliardDao;
