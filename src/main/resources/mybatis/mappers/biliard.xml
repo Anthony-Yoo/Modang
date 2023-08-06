@@ -18,7 +18,7 @@
 				       g.income
 				from games g, cuetable c
 				where c.tableno=g.tableno
-				and c.tablename=#{tableName}
+				and c.tableno=#{tableNo}
 				and gamedate > #{minDate}
 				and gamedate < #{maxDate}
 				and payStatus='1'
