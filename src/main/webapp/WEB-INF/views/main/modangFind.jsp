@@ -55,6 +55,42 @@
                         <img src="${pageContext.request.contextPath}/assets/images/map1.png" alt="지도">
                     </div>
                 </div>
+                <script>
+                $("#gameInfo").on("click", "tr", function(){
+                	   console.log("모달창 호출");
+                	   $("#playInfo").empty();
+                	   var gameNo = $(this).data("gameno");
+                	   console.log(gameNo);
+                	   
+                	   //AJAx
+                	   $.ajax({			
+                				url : "${pageContext.request.contextPath}/manager/${managerVo.biliardNo}/modanglist",		
+                				type : "post",
+                				/* contentType : "application/json", */
+                				data : {biliardNo:biliardNo},
+                				
+                				dataType : "json",
+                				success : function(e){						
+                					console.log(e);	
+                					if(action.result == 'success') {//처리성공	
+                						console.log("ajax는 뭐하는것인가");
+                						console.log(e.data);
+                						renderEach(e.data)			
+                						
+                					}else {//오류처리
+                						var msg = e.failMsg;
+                							alert(msg);				
+                					}					
+                				},
+                				error : function(XHR, status, error) {
+                					console.error(status + " : " + error);
+                				}		
+                				
+                			});      
+                	   //모달창 호출
+                	   $('#myModal').modal('show');
+                	});
+                </script>
                 <div class="modang_list">
                     <ul>
                         <li class="modangList">
@@ -65,10 +101,10 @@
                             </div>
                         </li>
                         <li class="modangList">
-                        	<img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="모당">
+                        	<img src="${pageContext.request.contextPath }/upload/${requestScope.managerVo.imageFile1}" alt="모당">
                             <div class="txt">
-                                <p class="repname">내가짱당구장</p>
-                                <p class="addr">서울시 강동구 천호대로 1027 5층 하이미디어 학원 너무 춥다</p>
+                                <p class="repname">${managerVo.biliardName}</p>
+                                <p class="addr">${managerVo.biliardAddress1}${managerVo.biliardAddress2}</p>
                             </div>
                         </li>
                         <li class="modangList">

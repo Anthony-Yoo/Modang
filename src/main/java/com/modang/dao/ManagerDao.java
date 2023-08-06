@@ -1,5 +1,7 @@
 package com.modang.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -51,9 +53,16 @@ public class ManagerDao {
 	/*당구장 정보 수정*/
 	public int updateManager(ManagerVo managerVo) {
 		System.out.println("ManagerDao.updateManager()");
+		System.out.println(managerVo);
 		int count = sqlSession.update("manager.updateManagerByNo",managerVo);
+		System.out.println(count + "<--카운트 수");
 		return count;
 	}
-	
+	/*당구장 찾기-모당리스트*/
+	public List<ManagerVo> selectModanglistByNo(ManagerVo managerVo){
+		System.out.println("ManagerDao.selectModanglistByNo()");
+		List<ManagerVo> modanglist=sqlSession.selectList("manager.selectModanglistByNo",managerVo);
+		return modanglist;
+	}
 
 }

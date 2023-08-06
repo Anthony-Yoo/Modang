@@ -56,19 +56,20 @@
 		<!-- Content -->
 		<section id="content">
 			<div class="container">
+			<form action="${pageContext.request.contextPath}/manager/modify" id="" method="post" enctype="multipart/form-data">
+			<input type="hidden"  name="biliardNo" value="${requestScope.managerVo.biliardNo}">
+			<input type="hidden" name="id" value ="${requestScope.managerVo.id}"> <!-- modify할때  -->
 				<div class="row">
-
 					<!-- Form -->
 					<div class="col-6">
 						<section>
 							<header>
 								<h2>사업자 정보 <small class="font-weight-normal text-blue">변경할 정보를 입력하세요</small></h2>
 							</header>
-							<form>
 								<div class="form-group row mt">
 									<label class="col-form-label col-3">아이디</label>
 									<div class="col">
-										<input type="text" name="id" class="form-control" maxlength="20" disabled placeholder="${requestScope.managerVo.id}" />
+										<input type="text" name="id" class="form-control" maxlength="20" disabled placeholder="${requestScope.managerVo.id}"  value="${requestScope.managerVo.id}"/>
 									</div>
 								</div>
                                 <div class="form-group row mt">
@@ -92,7 +93,7 @@
 								<div class="form-group row mt">
 									<label class="col-form-label col-3">상호명</label>
 									<div class="col">
-										<input type="text" name="bilardname" class="form-control" maxlength="50" placeholder="" value="${requestScope.managerVo.biliardName}" />
+										<input type="text" name="biliardName" class="form-control" maxlength="50" placeholder="" value="${requestScope.managerVo.biliardName}" />
 									</div>
 								</div>
 								<div class="form-group row mt">
@@ -107,31 +108,32 @@
 									<label class="col-form-label col-3">전화번호</label>
 									<div class="col">
 										<input type="text" name="biliardPhone" class="form-control" maxlength="20" placeholder="" value="${requestScope.managerVo.biliardPhone}" />
-									</div>
+									</div>                                   
 								</div>
 						</section>
 					</div>
-
-					<!-- Form -->
 					<div class="col-6">
 						<section>
 							<header>
 								<h2>매장 정보 <small class="font-weight-normal text-blue">변경할 정보를 입력하세요</small></h2>
-							</header>
+							</header>s
                                 <div class="form-group row">
                                     <label for="" class="col-form-label col-3">매장사진</label>
                                     <div class="col">
                                     	<div class="image-box">
-                                    		<img src="${pageContext.request.contextPath }/upload/${requestScope.managerVo.imageFile1}" >
-                                    		<input type="file" name="file" class="form-control resultImg" maxlength="20" placeholder="" value="${requestScope.managerVo.imageFile1}" />
+                                    		<img src="${pageContext.request.contextPath }/upload/${requestScope.managerVo.imageFile1}" id="resultImg1"  class="resultImg" >
+                                    		<input type="hidden"  name="imageFile1" value="${requestScope.managerVo.imageFile1}">
+                                    		<input type="file" name="file" class="form-control resultFile" onchange="previewImage(event, 'resultImg1')"  maxlength="20" placeholder="" value="${requestScope.managerVo.imageFile1}" />
                                         </div>
                                         <div class="image-box">	
-                                        	<img src="${pageContext.request.contextPath }/upload/${requestScope.managerVo.imageFile2}" >
-                                        	<input type="file" name="file" class="form-control resultImg" maxlength="20" placeholder="" value="${requestScope.managerVo.imageFile2}" />
+                                        	<img src="${pageContext.request.contextPath }/upload/${requestScope.managerVo.imageFile2}" id="resultImg2"  class="resultImg" >
+                                    		<input type="hidden"  name="imageFile2" value="${requestScope.managerVo.imageFile2}">
+                                        	<input type="file" name="file" class="form-control resultFile" onchange="previewImage(event, 'resultImg2')"  maxlength="20" placeholder="" value="${requestScope.managerVo.imageFile2}" />
                                         </div>
                                         <div class="image-box">	
-                                        	<img src="${pageContext.request.contextPath }/upload/${requestScope.managerVo.imageFile3}" >
-                                        	<input type="file" name="file" class="form-control resultImg" maxlength="20" placeholder="" value="${requestScope.managerVo.imageFile3}" />
+                                        	<img src="${pageContext.request.contextPath }/upload/${requestScope.managerVo.imageFile3}" id="resultImg3"  class="resultImg" >
+                                    		<input type="hidden"  name="imageFile3" value="${requestScope.managerVo.imageFile3}">
+                                        	<input type="file" name="file" class="form-control resultFile" onchange="previewImage(event, 'resultImg3')"  maxlength="20" placeholder="" value="${requestScope.managerVo.imageFile3}" />
                                     	</div>
 									</div>
                                 </div>
@@ -170,17 +172,37 @@
 									<button type="submit" class="btn btn-lg btn-blue">수정</button>
 									<button type="button" class="btn btn-lg btn-dark">취소</button>
 								</div>
-							</form>
 						</section>
 					</div>
 
 				</div>
+			</form>
 			</div>
 		</section>
 
 		<!-- Copyright -->
 		<div id="copyright">&copy; modang. All rights reserved.</div>
 	</div>
+						<script>
+						function previewImage(event, imgId) {
+							const input = event.target;
+							const imgElement = document.getElementById(imgId);
+							
+							if (input.files && input.files[0]) {
+								const reader = new FileReader();
+
+								reader.onload = function (e) {
+								imgElement.style.display = "block"; // 이미지 보이도록 변경
+								imgElement.src = e.target.result;
+								
+							};
+							reader.readAsDataURL(input.files[0]);
+							}else {
+							      // 파일을 선택하지 않은 경우 빈 상태로 되돌림
+							      imgElement.style.display = "none"; // 이미지 숨김
+							    }
+						}
+					</script>
 	<script>
 	// 우편번호 서비스
 	function daumPostcode() {

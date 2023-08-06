@@ -302,7 +302,7 @@ label.parking{display: inline-block; margin-right: 10px; padding: 4px 10px; back
 	border: 1px solid #B8B8B8; border-radius: 8px; cursor: pointer;}
 .image-box{display: inline-block; width: 160px; height: 130px; border: 1px solid #e8e8e9;position:relative; }
 .image-box:nth-child(1){display: block;width: 200px; height: 160px; margin:0 0 10px 60px;}
-.image-box>img{display: block; width: 100%; height: 100%; object-fit: cover;z-index: -2;
+.image-box>img{display: block; width: 100%; height: 100%; object-fit: cover;
 	position: absolute; top: 0; left: 0;}
-.image-box>input.resultImg{border: 1px solid #2E419A;position: absolute; top: 0; left: 0;opacity: 0;
-	width: 100%;height: 100%;cursor: pointer; z-index: 10;}
+.image-box>input.resultFile{border: 1px solid #2E419A;position: absolute; top: 0; left: 0;opacity: 0;
+	width: 100%;height: 100%;cursor: pointer; }
