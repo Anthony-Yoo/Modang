@@ -119,7 +119,7 @@
 				 , b.profileImage
 			from bdcomment a, users b
 			where a.userNo = b.userNo and a.boardNo = #{boardNo}
-			order by groupNo desc
+			order by groupNo asc
 				   , groupOrder desc
 		]]>
 	</select>

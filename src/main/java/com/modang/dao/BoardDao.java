@@ -116,4 +116,10 @@ public class BoardDao {
 		BoardVo result = sqlSession.selectOne("board.checkBStatus",boardNo);
 		return result;
 	}
+	
+	/* 게시글 삭제 */
+	public void delete(int boardNo) {
+		System.out.println("BoardDao.delete()");
+		sqlSession.delete("board.delete", boardNo);
+	}
 }

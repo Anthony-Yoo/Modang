@@ -9,7 +9,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>글 쓰기</title>
-<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
+<link rel="icon" sizes="any"
+	href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
 <!-- 에디터 플러그인 -->
 <script type="text/javascript"
 	src='<c:out value="${contextPath}"/>/res/smarteditor/js/HuskyEZCreator.js'></script>
@@ -104,7 +105,7 @@ body {
 
 				<!-- content -->
 				<div class="form-group">
-					<div id ="text-area">
+					<div id="text-area">
 						<textarea id="txt-content" name="content" contenteditable="true">
   1. 모임 장소: 
 
@@ -128,5 +129,28 @@ body {
 	<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
 </body>
 <script type="text/javascript">
+	function validateForm() {
+		var matchDate = document.getElementById("matchDate").value;
+		var title = document.getElementById("txt-title").value;
+		var content = document.getElementById("txt-content").value;
+		
+		if (matchDate === "") {
+			alert("모임 날짜를 선택해주세요.");
+			return false;
+		}
+
+		if (title === "") {
+			alert("제목이 입력되지 않았습니다.");
+			return false;
+		}
+		
+		if (content === "") {
+			alert("내용을 입력해주세요.	");
+			return false;
+		}
+
+
+		return true;
+	}
 </script>
 </html>
