@@ -56,7 +56,7 @@
                     </div>
                 </div>
                 <div class="modang_list">
-                    <ul>
+                    <ul id="modanglist">
                         <li class="modangList">
                         	<img src="${pageContext.request.contextPath}/assets/images/room.jpg" alt="오리">
                             <div class="txt">
@@ -166,39 +166,36 @@
 	});
 </script>
 <script>
-   $("#gameInfo").on("click", "tr", function(){
-       console.log("모달창 호출");
-        $("#playInfo").empty();
-        var gameNo = $(this).data("gameno");
-        console.log(gameNo);
-                	   
-                	   //AJAx
-                	   $.ajax({			
-                				url : "${pageContext.request.contextPath}/manager/${managerVo.biliardNo}/modangFind",		
-                				type : "post",
-                				/* contentType : "application/json", */
-                				data : {biliardNo:biliardNo},
-                				
-                				dataType : "json",
-                				success : function(e){						
-                					console.log(e);	
-                					if(action.result == 'success') {//처리성공	
-                						console.log("ajax는 뭐하는것인가");
-                						console.log(e.data);
-                						renderEach(e.data)			
-                						
-                					}else {//오류처리
-                						var msg = e.failMsg;
-                							alert(msg);				
-                					}					
-                				},
-                				error : function(XHR, status, error) {
-                					console.error(status + " : " + error);
-                				}		
-                				
-                			});      
-                	   //모달창 호출
-                	   $('#myModal').modal('show');
-                	});
-                </script>
+    $(document).ready(function () {
+        // 페이지 로딩 시 데이터를 가져오도록 설정
+        fetchManagerList();
+
+        // 데이터를 가져와서 리스트로 표시하는 함수
+        function fetchManagerList() {
+            $.ajax({
+                url: "${pageContext.request.contextPath}/manager/modangFind",
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    displayManagerList(data);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        }
+
+        // 리스트를 생성하여 표시하는 함수
+        function displayManagerList(modanglist) {
+            var managerList = $('#modanglist');
+            managerList.empty(); // 기존 리스트 비우기
+
+            // 매니저 정보를 리스트 아이템으로 생성하여 추가
+            $.each(modanglist, function (index, manager) {
+                managerList.append('<li>' + manager.name + ' (Biliard No: ' + manager.biliardNo + ')</li>');
+            });
+        }
+    });
+</script>
+
 </html>

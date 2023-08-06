@@ -130,7 +130,7 @@ public class ManagerController {
 	}
 	/*당구장 찾기-모당리스트*/
 	@ResponseBody
-	@RequestMapping(value = "/{biliardNo}/modanglist", method = {RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/modangFind", method = {RequestMethod.GET, RequestMethod.POST })
 	public List<ManagerVo> modanglist(@PathVariable("biliardNo") int biliardNo) {
 		System.out.println("ManagerController.modanglist");
 		ManagerVo managerVo = new ManagerVo();
