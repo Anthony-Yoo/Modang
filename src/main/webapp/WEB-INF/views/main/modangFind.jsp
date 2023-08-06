@@ -57,48 +57,15 @@
                 </div>
                 <div class="modang_list">
                     <ul id="modanglist">
-                        <li class="modangList">
-                        	<img src="${pageContext.request.contextPath}/assets/images/room.jpg" alt="오리">
-                            <div class="txt">
-                                <p class="repname">☆☆당구장</p>
-                                <p class="addr">서울시 강동구 천호대로 1027 5층에서 썩어가는</p>
-                            </div>
-                        </li>
-                        <li class="modangList">
-                        	<img src="${pageContext.request.contextPath }/upload/${requestScope.managerVo.imageFile1}" alt="모당">
-                            <div class="txt">
-                                <p class="repname">${managerVo.biliardName}</p>
-                                <p class="addr">${managerVo.biliardAddress1}${managerVo.biliardAddress2}</p>
-                            </div>
-                        </li>
-                        <li class="modangList">
-		 					<img src="${pageContext.request.contextPath}/assets/images/smoking.jpg" alt="오리">                       
-                            <div class="txt">
-                                <p class="repname">개똥당구장</p>
-                                <p class="addr">서울 강동구 진황도로 5</p>
-                            </div>
-                        </li>
-                        <li class="modangList">
- 							<img src="${pageContext.request.contextPath}/assets/images/modang_logo.png" alt="오리">                       
-                            <div class="txt">
-                                <p class="repname">위아일랜드당구장</p>
-                                <p class="addr">서울 강동구 천호대로157길 18</p>
-                            </div>
-                        </li>
-                        <li class="modangList">
-                        	<img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="오리">
-                            <div class="txt">
-                                <p class="repname">키키당구장</p>
-                                <p class="addr">서울시 강동구 천호동 453-8</p>
-                            </div>
-                        </li>
-                        <li class="modangList">
-                        	<img src="${pageContext.request.contextPath}/assets/images/room.jpg" alt="오리">
-                            <div class="txt">
-                                <p class="repname">라인당구장</p>
-                                <p class="addr">서울 강동구 천호옛길 82</p>
-                            </div>
-                        </li>
+                    	<c:forEach var="biliVo" items="${modanglist}">
+	                        <li class="modangList">
+	                        	<img src="${pageContext.request.contextPath }/upload/${biliVo.imageFile1}" alt="당구장이미지">
+	                            <div class="txt">
+	                                <p class="repname">${biliVo.biliardName}</p>
+	                                <p class="addr">${biliVo.biliardAddress1} ${biliVo.biliardAddress2}</p>
+	                            </div>
+	                        </li>
+                        </c:forEach>                        
                     </ul>
                 </div>
             </div>
@@ -166,36 +133,6 @@
 	});
 </script>
 <script>
-    $(document).ready(function () {
-        // 페이지 로딩 시 데이터를 가져오도록 설정
-        fetchManagerList();
-
-        // 데이터를 가져와서 리스트로 표시하는 함수
-        function fetchManagerList() {
-            $.ajax({
-                url: "${pageContext.request.contextPath}/manager/modangFind",
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    displayManagerList(data);
-                },
-                error: function (error) {
-                    console.log(error);
-                }
-            });
-        }
-
-        // 리스트를 생성하여 표시하는 함수
-        function displayManagerList(modanglist) {
-            var managerList = $('#modanglist');
-            managerList.empty(); // 기존 리스트 비우기
-
-            // 매니저 정보를 리스트 아이템으로 생성하여 추가
-            $.each(modanglist, function (index, manager) {
-                managerList.append('<li>' + manager.name + ' (Biliard No: ' + manager.biliardNo + ')</li>');
-            });
-        }
-    });
+   
 </script>
-
 </html>

@@ -286,7 +286,7 @@ button, html input[type=button], input[type=reset], input[type=submit] {cursor: 
 .mainCon .friendSearch .searchList ul{width: 500px; height: 100%; margin-top: 3px; border: 2px solid #2E419A;
 	box-sizing: border-box; border-radius: 4px; overflow-y: scroll; background-color: #f6f6f6;}
 .mainCon .friendSearch .searchList ul li{margin: 4px 0;height: 24px; }
-.mainCon .friendSearch .searchList ul li span{display: inline-block; width: 400px; text-align: left;}
+.mainCon .friendSearch .searchList ul li span{display: inline-block; width: 400px; text-align: left; font-size: 14px; font-weight: 700;}
 .mainCon .friendSearch .searchList ul li button.add{background-color: #2E419A; font-size: 12px; color: #fff;
 	padding: 3px 6px; border-radius: 4px;cursor: pointer;}
 /*핀구 리스트*/

@@ -59,9 +59,9 @@ public class ManagerDao {
 		return count;
 	}
 	/*당구장 찾기-모당리스트*/
-	public List<ManagerVo> selectModanglistByNo(ManagerVo managerVo){
-		System.out.println("ManagerDao.selectModanglistByNo()");
-		List<ManagerVo> modanglist=sqlSession.selectList("manager.selectModanglistByNo",managerVo);
+	public List<ManagerVo> selectModanglist(){
+		System.out.println("ManagerDao.selectModanglist()");
+		List<ManagerVo> modanglist= sqlSession.selectList("manager.selectModanglist");
 		return modanglist;
 	}
 

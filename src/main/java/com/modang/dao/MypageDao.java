@@ -38,10 +38,15 @@ public class MypageDao {
 		return session.selectList("mypage.selectPlayListforGameNo", myPlayVo);
 	}
 	
+	public RecordUserVo selectRecordWinLose(int userNo) {
+		System.out.println("MypageDao.selectRecordWinLose()");
+		
+		return session.selectOne("mypage.selectRecordWinLose", userNo);
+	}
+	
 	public List<RecordUserVo> selectFriendList(int userNo) {
 		System.out.println("MypageDao.selectFriendList()");
 		
 		return session.selectList("mypage.selectFriendList", userNo);
 	}
-	
 }

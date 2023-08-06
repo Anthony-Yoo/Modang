@@ -195,11 +195,40 @@ public class MypageService {
 		return myPlayList;
 	}
 
-	public void friendList(int userNo) {
+	public List<RecordUserVo> friendList(int userNo) {
 		System.out.println("MypageService.friendList()");
-				
 		
-		//mypageDao.selectFriendList(userNo);		
+		//친구리스트 userNo 확보
+		List<RecordUserVo> friendList = mypageDao.selectFriendList(userNo);
+		System.out.println(friendList);
+		
+		for(RecordUserVo vo : friendList) {
+			int getUserNo = vo.getUserNo(); //플레이리스트 유져넘버
+			int recommStatus = 0; // 권장다마상태
+			
+			//최근 10경기 승 패 확인
+			RecordUserVo friendRecord = mypageDao.selectRecordWinLose(getUserNo);
+			vo.setWinCnt(friendRecord.getWinCnt());//최근 10경기 승리경기수 vo에 넣기
+			vo.setLoseCnt(friendRecord.getLoseCnt());//최근 10경기 패배 경기수 vo에 넣기	
+			if(vo.getTotalCountGame() >=10) {//본인다마로 10게임 이상일때
+				
+				if(vo.getTotalCommRate()>0.8) {//안물린승률이 0.8이상일때
+					recommStatus = 2;
+					vo.setRecommStatus(recommStatus);
+					
+				}else if(vo.getTotalCommRate()<0.2) { //안물린승률이 0.2이하일때
+					recommStatus = 0;
+					vo.setRecommStatus(recommStatus);
+				}else {
+					recommStatus = 1;
+					vo.setRecommStatus(recommStatus);
+				}			
+			}else {
+				recommStatus =3;
+				vo.setRecommStatus(recommStatus);
+			}		
+		}			
+		return friendList;
 	}
 
 }

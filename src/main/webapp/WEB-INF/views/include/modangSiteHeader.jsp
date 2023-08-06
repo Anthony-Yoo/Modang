@@ -38,7 +38,7 @@ pageEncoding="UTF-8"%>
 	        <div id="header-menu">
 	            <ul class="clearfix">
 	                <li><a href="${pageContext.request.contextPath}/">모당이란?</a></li>
-	                <li><a href="${pageContext.request.contextPath}/modangFind">당구장 찾기</a></li>
+	                <li><a href="${pageContext.request.contextPath}/manager/modangFind">당구장 찾기</a></li>
 	                <li><a href="${pageContext.request.contextPath}/board/list">매칭 게시판</a></li>
 	            </ul>
 	        </div>
