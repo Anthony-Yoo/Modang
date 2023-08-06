@@ -93,15 +93,15 @@
                     <li>
                     	<c:if test ="${CurrentRecordVo.recommStatus == 0}">
 	                        <p>다마상태</p>
-	                        <span class="recommTxt">"물다마"</span>
+	                        <span class="recommTxt">물다마</span>
                         </c:if>
                         <c:if test ="${CurrentRecordVo.recommStatus == 1}">
 	                        <p>다마상태</p>
-	                        <span class="recommTxt">"적정다마"</span>
+	                        <span class="recommTxt">적정다마</span>
                         </c:if>
                          <c:if test ="${CurrentRecordVo.recommStatus == 2}">
 	                        <p>다마상태</p>
-	                        <span class="recommTxt">"짠다마"</span>
+	                        <span class="recommTxt">짠다마</span>
                         </c:if>
                     </li>
                     <li>
