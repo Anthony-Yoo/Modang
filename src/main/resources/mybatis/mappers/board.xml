@@ -49,6 +49,7 @@
 			     , ort.boarddate
 			     , ort.count
 			     , ort.nick
+			     , atd.d as agreeCount
 			from (select rownum rn
 	                  , ot.boardno
 	                  , ot.title
@@ -93,9 +94,16 @@
 		            and mb.content like '%'|| #{keyword} ||'%'
 		        </if>
 			<![CDATA[	
-            		 order by mb.matchdate asc
+            		 order by mb.boardNo desc
 			          ) ot
 			    ) ort
+		    left join (
+			    SELECT boardNo, COUNT(*) as d
+			    FROM attendusers
+			    WHERE status = 1
+			    GROUP BY boardNo
+			) atd
+			on ort.boardno = atd.boardNo
 			where rn >= #{startRnum}
 			and rn <= #{endRnum}
 		]]>
@@ -143,21 +151,52 @@
 	<!-- 게시판 글 하나의 정보  -->
 	<select id="selectOne" parameterType="int" resultType="com.modang.vo.BoardVo">
 		<![CDATA[
-			select mb.boardNo,
-			       mb.title,
-			       mb.matchgametype,
-			       mb.matchregion,
-			       mb.memberNum,
-			       TO_CHAR(mb.matchdate, 'YYYY-MM-DD') AS matchdate,
-			       mb.content,
-			       TO_CHAR(mb.boardDate, 'YYYY-MM-DD') AS boarddate,
-			       mb.count,
-			       mb.status,
-			       u.nick,
-			       u.userNo,
-			       u.profileImage
-			from Matchboard mb, users u
-			where mb.boardNo = #{boardNo} and u.userNo = mb.userNo
+			select 
+			    mb.boardNo,
+			    mb.title,
+			    mb.matchgametype,
+			    mb.matchregion,
+			    mb.memberNum,
+			    TO_CHAR(mb.matchdate, 'YYYY-MM-DD') AS matchdate,
+			    mb.content,
+			    TO_CHAR(mb.boardDate, 'YYYY-MM-DD') AS boarddate,
+			    mb.count,
+			    mb.status,
+			    u.nick,
+			    u.userNo,
+			    u.profileImage,
+			    (SELECT COUNT(*) FROM attendusers WHERE boardNo = mb.boardNo AND status = 1) AS agreeCount
+			from Matchboard mb
+			JOIN users u ON u.userNo = mb.userNo
+			where mb.boardNo = #{boardNo}
+
 		]]>
 	</select>
+	
+	<!-- 게시판 모집완료 상태로 변경 -->
+	<update id="confirmed" parameterType="int">
+		<![CDATA[
+			UPDATE matchboard
+			SET status = 1
+			WHERE boardNo = #{boardNo}
+		]]>
+	</update>
+	
+	
+	<select id="checkBStatus" parameterType="int" resultType="com.modang.vo.BoardVo">
+	<![CDATA[
+		select status
+		from matchboard 
+		where boardNo = #{boardNo}
+	]]>
+	</select>
+	
+	
+	<!-- 게시판 삭제 -->
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete from MatchBoard
+			where boardNo = #{boardNo}
+		]]>
+	</delete>
 </mapper>

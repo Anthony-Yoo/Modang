@@ -16,6 +16,7 @@ public class BoardVo {
 	private byte aStatus;		/* 신청 상태 0: 신청중, 1: 승인, 2: 거절, 3: 확정 */
 	private String nick;
 	private String profileImage;		/*프로필이미지명*/
+	private byte agreeCount;	// 승인 인원 카운트
 	
 	public BoardVo() {
 		super();
@@ -23,10 +24,10 @@ public class BoardVo {
 	}
 
 	
-
+	
 	public BoardVo(int boardNo, int userNo, String title, byte matchGameType, String matchRegion, int membernum,
 			String matchDate, String content, String boardDate, int count, byte status, byte aStatus, String nick,
-			String profileImage) {
+			String profileImage, byte agreeCount) {
 		super();
 		this.boardNo = boardNo;
 		this.userNo = userNo;
@@ -42,8 +43,8 @@ public class BoardVo {
 		this.aStatus = aStatus;
 		this.nick = nick;
 		this.profileImage = profileImage;
+		this.agreeCount = agreeCount;
 	}
-
 
 
 	public int getBoardNo() {
@@ -160,12 +161,20 @@ public class BoardVo {
 		this.profileImage = profileImage;
 	}
 
+	public byte getAgreeCount() {
+		return agreeCount;
+	}
+
+	public void setAgreeCount(byte agreeCount) {
+		this.agreeCount = agreeCount;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardVo [boardNo=" + boardNo + ", userNo=" + userNo + ", title=" + title + ", matchGameType="
 				+ matchGameType + ", matchRegion=" + matchRegion + ", membernum=" + membernum + ", matchDate="
 				+ matchDate + ", content=" + content + ", boardDate=" + boardDate + ", count=" + count + ", status="
-				+ status + ", aStatus=" + aStatus + ", nick=" + nick + ", profileImage=" + profileImage + "]";
+				+ status + ", aStatus=" + aStatus + ", nick=" + nick + ", profileImage=" + profileImage
+				+ ", agreeCount=" + agreeCount + "]";
 	}
-	
 }

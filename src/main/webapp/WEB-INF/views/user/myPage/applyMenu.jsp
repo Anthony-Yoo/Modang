@@ -110,7 +110,7 @@ window.addEventListener('load', adjustHeight);
 								<!-- 글쓴이 닉네임 -->
 								<td>${boardVo.matchDate}</td>
 								<!-- 개임 날짜 -->
-								<td>${boardVo.status}</td>
+								<td>${boardVo.aStatus}</td>
 							</tr>
 						</tbody>
 					</c:forEach>

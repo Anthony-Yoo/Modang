@@ -1,6 +1,8 @@
 package com.modang.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -117,10 +119,14 @@ public class TabletController {
 		TabletUserVo authUser = (TabletUserVo)session.getAttribute("authUser");
 		int userNo = authUser.getUserNo();	
 		
-		List<CardUsersVo> cardList = tabletService.myMember(userNo);
-		System.out.println(cardList);
-		model.addAttribute("cardList", cardList);
+		Map<String, Object> memberPackage = new HashMap<String,Object>(); 
+		memberPackage = tabletService.myMember(userNo);
+		System.out.println(memberPackage);
+			
+		model.addAttribute("cardList", memberPackage.get("cardList"));
+		model.addAttribute("favoriteList", memberPackage.get("favoriteList"));
 		model.addAttribute("tableNo",tableNo);
+		
 		
 		return "/tablet/memberForm";
 	}

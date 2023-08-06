@@ -154,5 +154,13 @@
 		]]>
 	
 	</select>
+	
+	<select id="selectFriendList">
+		<![CDATA[
+			select 
+		
+		
+		]]>	
+	</select>
 
 </mapper>

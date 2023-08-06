@@ -81,10 +81,10 @@
 	<!-- 회원가입 id 중복체크 -->
 	<select id="selectManagerById" parameterType="String" resultType="com.modang.vo.ManagerVo">
 		<![CDATA[
-			select biliardNo,
+			select  biliardNo,
 					id
-					from biliards
-					where id=#{id}
+			from biliards
+			where id = #{id}
 		]]>
 	</select>
 	

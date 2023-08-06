@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.modang.dao.AttendUsersDao;
 import com.modang.dao.BoardDao;
 import com.modang.vo.BoardVo;
 
@@ -16,6 +17,9 @@ public class BoardService {
 
 	@Autowired
 	private BoardDao boardDao;
+	
+	@Autowired
+	private AttendUsersDao attendUsersDao;
 
 	/* 게시판 글 작성 등록 */
 	public void write(BoardVo boardVo) {
@@ -43,7 +47,7 @@ public class BoardService {
 		// 끝글번호
 		int endRum = (startRnum + listCnt) - 1;
 		List<BoardVo> bList = boardDao.selectList(startRnum, endRum, keyword, category);
-
+		
 		/////////////////////////////////////////////////////////
 		// 페이징 계산
 		/////////////////////////////////////////////////////////
@@ -116,5 +120,28 @@ public class BoardService {
 		vo = boardDao.myBoardList(userNo);
 
 		return vo;
+	}
+	
+	/* 모집 완료된 게시글인지 체크 */
+	public BoardVo checkBStatus(int boardNo) {
+		System.out.println("BoardService.checkStatus()");
+		BoardVo result = boardDao.checkBStatus(boardNo);
+		
+		return result;
+	}
+	
+	/* 게시글 모집 확정 기능 */
+	public void confirmation(int boardNo) {
+		System.out.println("BoardService.confirmation()");
+		/* 확정으로 게시판 상태 변경 */
+		boardDao.confirmed(boardNo);
+		/* 승인된 이외의 데이터 삭제 */
+		attendUsersDao.delete(boardNo);
+	}
+	
+	/* 게시글 삭제 */
+	public void dismiss(int boardNo) {
+		System.out.println("BoardService.dismiss()");
+		boardDao.delete(boardNo);
 	}
 }

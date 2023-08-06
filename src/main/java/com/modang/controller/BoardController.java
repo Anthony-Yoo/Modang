@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.modang.service.BDCommentService;
 import com.modang.service.BoardService;
 import com.modang.vo.BDCommentVo;
 import com.modang.vo.BoardVo;
+import com.modang.vo.JsonResult;
 import com.modang.vo.UserVo;
 
 @Controller
@@ -64,7 +66,7 @@ public class BoardController {
 		UserVo vo = (UserVo) session.getAttribute("authUser");
 		System.err.println(vo);
 		boardVo.setUserNo(vo.getUserNo());
-		System.err.println(boardVo);
+		System.err.println(boardVo.getMatchDate());
 		/* matchDate의 T를 공백을 변환 */
 		DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
 		DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -98,7 +100,28 @@ public class BoardController {
 		model.addAttribute("cList", list);
 		return "/board/read";
 	}
-
+	
+	/* 모집 완료된 게시글인지 체크 */
+	@ResponseBody
+	@RequestMapping(value="/checkBStatus")
+	public JsonResult checkBStatus(@RequestParam("boardNo") int boardNo) {
+		System.out.println("AttendUsersController.decideButtonEvent()");
+		BoardVo result = boardService.checkBStatus(boardNo);
+		
+		JsonResult jsonResult = new JsonResult();
+		jsonResult.success(result);
+		return jsonResult;
+	}
+	
+	/* 게시글 삭제 */
+	@RequestMapping(value="/delete")
+	public String dismiss(@RequestParam("boardNo") int boardNo) {
+		System.out.println("들어옴?");
+		System.out.println(boardNo);
+		boardService.dismiss(boardNo);
+		return "redirect:/board/list";
+	}
+	
 	@RequestMapping(value = "/test")
 	public String test() {
 

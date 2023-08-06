@@ -1,10 +1,10 @@
 @charset "UTF-8";
 /* 여백 초기화 */
-/* body, div, ul, li, dl, dt, ol, h1, h2, h3, h4, h5, h6, input, fieldset, span, img,
-	legend, p, select, table, th, td, tr, textarea, button, form {
+ body, div, h1, h2, h3, h4, h5, h6, input, span, img, 
+ p, select, table, button, form {
 	margin: 0;
 	padding: 0;
-} */
+}
 
 /* 전체 폭 */
  .container{
@@ -28,14 +28,15 @@
     position: relative;
     display: table;
     border-collapse: separate;
-    margin: 0px 0px -10px 0px;
+    
 }
 
 
 /* the width for center position */
 #main-content .container #loginForm #main,
 #main-content .container #joinOk #main,
-#main-content .container #modifyForm #main {
+#main-content .container #modifyForm #main
+ {
 	width: 350px;
 	margin: 0 auto;
 	
@@ -53,12 +54,11 @@
 #main form .input-group #btnIdCheck {
 	width: 70px;
 	height: 40px;
-	padding : 8px 20px 9px 20px;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #fff;
-	margin: 0px 0px 30px 0px;
+	margin: 0 auto;
 	background : linear-gradient(to bottom right, rgb(9, 32, 80),
       rgb(81, 117, 164))
 }
@@ -67,77 +67,80 @@
 #main form .input-group #input-uid {
 	width: 230px;
 	height: 40px;
-	padding : 8px 20px 9px 20px;
 	background: #F5F5F5;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
-	margin: 0px 0px 30px 0px;
+	display: inline-block;
+    position: relative;
 }
 
 #main form .input-group #id {
 	width: 300px;
 	height: 40px;
-	padding : 8px 20px 9px 20px;
 	background: #F5F5F5;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
-	margin: 0px 0px 30px 0px;
+	position: relative;
 
 }
 
 #main form .input-group #passwd {
 	width: 300px;
 	height: 40px;
-	padding : 8px 20px 9px 20px;
 	background: #F5F5F5;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
-	margin: 0px 0px 30px 0px;
+	
 
 }
 
 #main form .input-group #cellphone {
 	width: 300px;
 	height: 40px;
-	padding : 8px 20px 9px 20px;
 	background: #F5F5F5;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
-	margin: 0px 0px 30px 0px;
+	
 
 }
 
 #main form .input-group #nick {
 	width: 230px;
 	height: 40px;
-	padding : 8px 20px 9px 20px;
 	background: #F5F5F5;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
-	margin: 0px 0px 30px 0px;
+	margin: 0 auto;
 
+}
+/* login input 간격 */
+#loginForm .form-group {
+    margin-bottom: 15px;
+}
+/* modifyForm input 간격 */
+#modifyForm .form-group {
+    margin-bottom: 15px;
 }
 
 /* nick modal */
 #main form .input-group #btnNickCheck {
 	width: 70px;
 	height: 40px;
-	padding : 8px 20px 9px 20px;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #fff;
-	margin: 0px 0px 30px 0px;
+	margin: 0 auto;
 	background : linear-gradient(to bottom right, rgb(9, 32, 80),
       rgb(81, 117, 164))
 }
@@ -158,13 +161,12 @@
 #main form .input-group #average {
 	width: 300px;
 	height: 40px;
-	padding : 8px 20px 9px 20px;
 	background: #F5F5F5;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
-	margin: 0px 0px 30px 0px;
+	margin: 0 auto;
 
 }
 
@@ -178,18 +180,20 @@
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
-	margin: 0px 0px 20px 0px;
+	
 
 }
 
 
 /* submit button */
 #main form .button-area #btn-submit{
-	width: 480px;
+	width: 100%;
 	color: #fff;
 	border-radius:10px;
 	height: 40px;
-	margin:10px 10px 10px -55px;
+	position: relative;
+	
+	margin: 0 auto;
 	background : linear-gradient(to bottom right, rgb(9, 32, 80),
       rgb(81, 117, 164))
       
@@ -205,17 +209,19 @@
     border-color: darkslateblue;
 }
 
-/* icon */
+/* modify icon */
 #main form .form-group .input-group img{
 	width: 40px; 
 	height: 40px;
-	margin: 0px 10px 20px 0px;
+	position: relative;
+    left: -5px;
+    margin: 0 auto;
 	
 }
 
 .row {
-    margin-right: -0px;
-    margin-left: -5px;
+    margin-right: 0px;
+    margin-left: 0px;
 }
 
 .input-group[class*=col-] {
@@ -225,63 +231,77 @@
 }
 
 /* userJoinForm */
-.element .style {
-    width: 200px;
-    height: 211px;
-    margin: 180px 1px 0px 365px;
+#shadowBox {
+	background-color: rgb(255, 255, 255);
+	
+	text-shadow: none;
+	box-shadow: rgba(46, 65, 154, 0.28) 5px 10px 10px 0px;
+	border-width: 0px;
+	border-style: none;
+	border-radius: 4px;
+	display:inline-block;
+	position: relative;
+    left: 350px;
+    top: 40px;
+	width: 13em;
+	height: 150px;
+	margin: 0px auto;
+	
 }
 
-.element .data-text-content {
-    border: 1px solid #000000;
-    
-   
+#shadowBox2 {
+	background-color: rgb(255, 255, 255);
+	
+	text-shadow: none;
+	box-shadow: rgba(46, 65, 154, 0.28) 5px 10px 10px 0px;
+	border-width: 0px;
+	border-style: none;
+	border-radius: 4px;
+	display:inline-block;
+	position: relative;
+    left: 420px;
+    top: 40px;
+	width: 13em;
+	height: 150px;
+	margin: 0px auto;
+	
 }
 
-.element .data-text-content {
-    background-color: rgb(255, 255, 255);
-    text-shadow: none;
-    box-shadow: rgba(46, 65, 154, 0.28) 5px 10px 10px 0px;
-    border-width: 0px;
-    border-style: none;
-    border-radius: 4px;
-    
-}
-
-.data-text-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    white-space: pre-wrap;
-    word-break: break-all;
-    
-}
-
-div.content {
-  margin-left: 200px;
-  padding: 1px 16px;
-  height: 450px;
-}
-
-
-
-/* 마이페이지 버튼 */
-#userPage button {
+#shadowTitle {
 	cursor: pointer;
-	width: 480px;
-	color: #fff;
-	border-radius:10px;
-	line-height: 40px;
-	font-size: 15px;
-    border: 0;
-    padding: 0;
-    margin: 100px 0px 0px 200px;
-    background : linear-gradient(to bottom right, rgb(9, 32, 80),
-      rgb(81, 117, 164))
+	font-size: 20px;
+	font-weight: bold;
+	padding: 6px 0px 15px 25px;
+	position: relative;
+    left: 345px;
+    top: -110px;
+    width: 10em;
+}
+
+#subTitleSize {
+	font-size: 13px;
+	position: relative;
+	left: -5px;
+    top: 15px;
+}
+
+#shadowTitle2 {
+	cursor: pointer;
+	font-size: 20px;
+	font-weight: bold;
+	width: 179px;
+	position: relative;
+   	left: 645px;
+    top: -248px;
+    width: 10em;
+}
+
+#subTitleSize2{
+	font-size: 13px;
+	margin: -10px -26px 0px 35px;
+	position: relative;
+   	left: -30px;
+    top: 35px;
 }
 
 /* 마이페이지 대표이미지 */
@@ -291,20 +311,20 @@ div.content {
 	
 }
 
-#userPage div.content {
+#userPage .content {
   margin-left: 200px;
   padding: 1px 16px;
   height: 450px;
 }
 
 #userPage .element .style .content  {
-    
     height: 260px;
     padding: 0px;
     width: 1050px;
     margin-left: auto;
 }
 
+/* 마이페이지 이미지 */
 #userPage .element.style .image-show {
     width: 960px;
     height: 260px;
@@ -313,15 +333,15 @@ div.content {
     position: absolute;
 }
 
+/* 마이페이지 이미지 */
 #userPage .image-show img {
     vertical-align: top;
     padding: 0;
     width: 260px;
+    height: 260px;
     object-fit: cover;
     margin: -1px 0 0 -150px;
     position: absolute; 
-    height: 260px;
-	
 }
 
 /* 마이페이지 아이콘 기본 위치 */
@@ -332,32 +352,30 @@ div.content {
     position: relative;
     
 }
-
+/* 마이페이지 아이콘 */
 #userPage .image-icon hr{
 	margin:-5px -15px 10px 455px;
 	border:1px solid #0000a0;
 }
 
+/* 마이페이지 사용자 정보 */
 #userPage .text {
 	margin: 20px 10px 10px 220px;
     font-size: 30px;
     position: relative;
 	
-	
 }
-@media screen and (max-width: 700px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-  .sidebar a {float: left;}
-  div.content {margin-left: 0;}
-}
-
-@media screen and (max-width: 400px) {
-  .sidebar a {
-    text-align: center;
-    float: none;
-  }
+/* 마이페이지 버튼 */
+#userPage .button-area .btn {
+	cursor: pointer;
+	width: 40%;
+	color: #fff;
+	border-radius:10px;
+	line-height: 40px;
+	font-size: 15px;
+    border: 0;
+    padding: 0;
+    margin: 100px 0px 0px 200px;
+    background : linear-gradient(to bottom right, rgb(9, 32, 80),
+      rgb(81, 117, 164))
 }

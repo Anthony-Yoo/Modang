@@ -31,6 +31,7 @@ public class AttendUsersController {
 	@Autowired
 	private BoardService boardService;
 
+	/* 신청하기를 통해 신청완료 기능 */
 	@ResponseBody
 	@RequestMapping(value = "/apply", method = { RequestMethod.POST, RequestMethod.GET })
 	public JsonResult apply(@RequestBody AttendUsersVo vo) {
@@ -80,6 +81,7 @@ public class AttendUsersController {
 		List<AttendUsersVo> result = attendUserService.applyList(boardNo);
 		JsonResult jsonResult = new JsonResult();
 		jsonResult.success(result);
+		jsonResult.setResult(null);
 		
 		return jsonResult;
 	}
@@ -101,5 +103,24 @@ public class AttendUsersController {
 		}
 		
 		return jsonResult;
+	}
+	
+	
+	/* 게시글 모집 확정 기능 */
+	@RequestMapping(value="/myPage/confirmation")
+	public String confirmation(@RequestParam("boardNo") int boardNo) {
+		System.out.println("들어옴?");
+		System.out.println(boardNo);
+		boardService.confirmation(boardNo);
+		return "redirect:/attendUsers/myPage/myBoardList";
+	}
+	
+	/* 게시글 삭제 */
+	@RequestMapping(value="/myPage/dismiss")
+	public String dismiss(@RequestParam("boardNo") int boardNo) {
+		System.out.println("들어옴?");
+		System.out.println(boardNo);
+		boardService.dismiss(boardNo);
+		return "redirect:/attendUsers/myPage/myBoardList";
 	}
 }

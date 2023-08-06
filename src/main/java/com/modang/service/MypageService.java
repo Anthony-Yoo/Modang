@@ -167,4 +167,11 @@ public class MypageService {
 		return myPlayList;
 	}
 
+	public void friendList(int userNo) {
+		System.out.println("MypageService.friendList()");
+				
+		
+		//mypageDao.selectFriendList(userNo);		
+	}
+
 }

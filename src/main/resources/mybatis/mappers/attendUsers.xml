@@ -31,19 +31,28 @@
     <!-- // 마이페이지 내가 쓴 글 리스트 목록 -->
 	<select id="myBoardList" parameterType="int" resultType="com.modang.vo.BoardVo">
 	<![CDATA[
-		SELECT mb.boardno
-		     , mb.userNo
-			 , mb.title
-		     , mb.matchgametype
-		     , mb.matchregion
-		     , mb.membernum
-		     , TO_CHAR(mb.matchdate, 'YYYY-MM-DD') AS matchdate
-		     , TO_CHAR(mb.boarddate, 'YYYY-MM-DD') AS boarddate
-		     , mb.count
-		     , mb.status
-		     , u.nick
-		FROM matchboard mb, users u
-		where mb.userNo = #{userNo} and u.userNo = mb.userNo
+		SELECT 
+		    mb.boardno,
+		    mb.userNo,
+		    mb.title,
+		    mb.matchgametype,
+		    mb.matchregion,
+		    mb.membernum,
+		    TO_CHAR(mb.matchdate, 'YYYY-MM-DD') AS matchdate,
+		    TO_CHAR(mb.boarddate, 'YYYY-MM-DD') AS boarddate,
+		    mb.count,
+		    mb.status,
+		    u.nick,
+		    COALESCE(ac.agreeCount, 0) AS agreeCount
+		FROM matchboard mb
+		JOIN users u ON u.userNo = mb.userNo
+		LEFT JOIN (
+		    SELECT boardNo, COUNT(*) AS agreeCount
+		    FROM attendusers
+		    WHERE status = 1
+		    GROUP BY boardNo
+		) ac ON ac.boardNo = mb.boardno
+		WHERE mb.userNo = #{userNo}
 	]]>
 	
 	</select>
@@ -105,4 +114,35 @@
 		
 		]]>
 	</update>
+	
+	<!-- 승인 인원 체크 -->
+	<select id="agreeCount" parameterType="int" resultType="int">
+	<![CDATA[
+		SELECT COUNT(*) as agreeCount
+		FROM attendusers
+		WHERE boardNo = #{boardNo} AND status = 1;
+	]]>
+	</select>
+
+	<!-- 승인된 인원 체크 -->
+	<select id="memberCheck" parameterType="int" resultType="com.modang.vo.BoardVo">
+		<![CDATA[
+			SELECT mb.boardNo, mb.membernum, au.agreeCount
+			FROM matchboard mb
+			LEFT JOIN (
+			    SELECT boardNo, COUNT(*) as agreeCount
+			    FROM attendusers
+			    WHERE status = 1
+			    GROUP BY boardNo
+			) au ON mb.boardNo = au.boardNo
+			WHERE mb.boardNo = #{boardNo}
+		]]>
+	</select>
+	
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete from attendUsers
+			where boardNo = #{boardNo} and status <> 1
+		]]>
+	</delete>
 </mapper>

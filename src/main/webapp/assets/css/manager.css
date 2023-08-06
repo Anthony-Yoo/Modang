@@ -3,6 +3,7 @@
 /*공통*/
 .error-msg{color: #F94069; font-size: 13px; display: none; text-align: center;padding-top:5px;}
 .correct-msg{color: #F94069; font-size: 13px; display: none; text-align: center; padding-top:5px;}
+.check-msg{color: #F94069; font-size: 13px; text-align: center; padding-top:5px;}
 h2,h3{color: #2E419A; text-align: center; margin: 20px 0 20px 0;}
 #main-content{width: 1200px; margin: 0 auto; height: auto;}
 #main-content .container{margin-top:50px; margin-bottom: 100px; height: 100%;}
@@ -147,7 +148,7 @@ justify-content: center;align-items: center; pointer-events: none;}
 	border-radius: 10px; box-sizing: border-box;}
 .modal-header{ width: 900px; margin: 0 auto; font-size: 26px; height: 100px;
 	border-bottom: 1px solid #2E419A;box-sizing: border-box; padding-top: 30px;}
-.modal-header h4{ width: 700px; margin: 0 auto; font-size: 26px; height: 50px;
+.modal-header h4{ width: 800px; margin: 0 auto; font-size: 26px; height: 50px;
 	box-sizing: border-box; text-align: center; line-height: 50px;}
 
 .mView{width: 900px; height: 450px; margin: 0 auto; }
@@ -278,16 +279,17 @@ button, html input[type=button], input[type=reset], input[type=submit] {cursor: 
 .record-list2 table td{height: 30px;}
 
 /*친구목록*/
-.mainCon{width: 1050px; height: auto; margin: 50px auto 0;}
-h2{color: #2E419A; margin: 30px auto; width: 110px;}
+.mainCon{width: 1050px; height: 800px; margin-left: 150px;}
+.mainCon>h2{color: #2E419A; margin: 30px auto; width: 140px;}
 .del{background-color: #2E419A; color: #fff; padding: 2px 8px; border-radius: 4px;
 	cursor: pointer;}
 /*친구 찾기*/
-.mainCon .friendSearch{width: 1000px; height: 180px; margin: 0 auto; text-align: center;}
+.mainCon .friendSearch{width: 1000px; height: 180px; margin: 0 auto ; text-align: center; }
 .mainCon .friendSearch label{font-size: 14px;}
 .mainCon .friendSearch input#seardid{width: 500px; height: 36px; border: 2px solid #2E419A; border-radius: 4px;
 	padding-left: 10px; background-color: #f6f6f6;}
-.mainCon .friendSearch .search{background-color: #2E419A; color: #fff; padding: 3px 8px; border-radius: 4px; cursor: pointer;}
+.mainCon .friendSearch .search{background-color: #2E419A; color: #fff; width:50px;
+	padding: 2px 8px; border-radius: 4px; cursor: pointer;}
 .mainCon .friendSearch .searchList{width: 500px; height: 100px; margin: 0 0 0 278px;}
 .mainCon .friendSearch .searchList ul{width: 500px; height: 100%; margin-top: 3px; border: 2px solid #2E419A;
 	box-sizing: border-box; border-radius: 4px; overflow-y: scroll; background-color: #f6f6f6;}
@@ -296,7 +298,7 @@ h2{color: #2E419A; margin: 30px auto; width: 110px;}
 .mainCon .friendSearch .searchList ul li button.add{background-color: #2E419A; font-size: 12px; color: #fff;
 	padding: 3px 6px; border-radius: 4px;cursor: pointer;}
 /*핀구 리스트*/
-.mainCon .friendList{width: 1000px; height: 400px; margin: 0 auto ; }
+.mainCon .friendList{width: 1000px; height: 400px; margin: 0 auto ;overflow-y:scroll;overflow-x:hidden;  }
 .mainCon .friendList table{width: 1000px; text-align: center; margin: 0 auto; border: 1px solid #2E419A;}
 .mainCon .friendList table thead{height: 40px; border-top: 1px solid #2E419A;border-bottom: 1px solid #2E419A;
 	background-color: #ecdfdf; line-height: 40px;}
