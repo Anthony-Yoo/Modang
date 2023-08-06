@@ -86,10 +86,8 @@
 							  	<tr class="addUserBox" id="t0">
 							  		<%-- <td>${sessionScope.authUser.userNo}</td> 고객번호 가리기--%>
 									<td class="nameTd">${sessionScope.authUser.nick}</td>
-									<td class="gageTd">
-										<%-- <input class="confirmAverage" type="number" value="${sessionScope.authUser.average}" min="30" step="10" size="10" > --%>
-										<input class="confirmAverage" type="range" value="${sessionScope.authUser.average}" min="30" max="500" step="10" size="10" data-range="0">
-										<span id="range-0">${sessionScope.authUser.average}</span>
+									<td class="gageTd">																				
+										<span id="range-0"></span>
 									</td>
 									<td class="btnTd">
 			 							<button type="button" class="delPlayer" data-userno="${sessionScope.authUser.userNo}" data-no="0" 
@@ -98,6 +96,9 @@
 			 							</button>		
 									</td>
 							  	</tr>
+							  	<tr>
+							  		<td><input class="confirmAverage" type="range" value="${sessionScope.authUser.average}" min="30" max="500" step="10" size="10" data-range="0"></td>
+							  	</tr>							  	
 							  </tbody>
 							  <tfoot>
 							  	<tr>
@@ -260,20 +261,38 @@ $("#close").on('click',function(){
 		$("#findResult").append(src);
 		});
 	};	
-	
+	<tr class="addUserBox" id="t0">
+		<%-- <td>${sessionScope.authUser.userNo}</td> 고객번호 가리기--%>
+	<td class="nameTd">${sessionScope.authUser.nick}</td>
+	<td class="gageTd">																				
+		<span id="range-0"></span>
+	</td>
+	<td class="btnTd">
+			<button type="button" class="delPlayer" data-userno="${sessionScope.authUser.userNo}" data-no="0" 
+					data-nick="${sessionScope.authUser.nick}" data-average="" 
+					disabled="disabled">삭제
+			</button>		
+	</td>
+	</tr>
+	<tr>
+		<td><input class="confirmAverage" type="range" value="${sessionScope.authUser.average}" min="30" max="500" step="10" size="10" data-range="0"></td>
+	</tr>
 	function renderTr(btn) {
 		var src = "";
 		src += '<tr class="addUserBox" id="t' + cnt + '">';
-/* 		src += '	<td>' + btn.data('userno') + '</td>'; */
-		src += '	<td>' + btn.data('nick') +'</td>';
-		src += '	<td><input class="confirmAverage" type="range" value="' + btn.data('average') + '" min="0" max="500" step="10" size="5" data-range="' + cnt + '">';
-		src += '	<span id="range-'+ cnt +'">'+btn.data('average')+'</span>';
+		src += '	<td class="nameTd">' + btn.data('nick') +'</td>';
+		src += '	<td class="gageTd">';
+		src += '		<span id="range-'+ cnt +'"></span>';
 		src += ' 	</td>';
-		src += '	<td>';
+		src += '	<td class="btnTd">';
 		src += ' 		<button type="button" class="delPlayer" data-userno="'+btn.data('userno')+'" data-no="'+ cnt +'" data-nick="'+ btn.data('nick') +'" data-average="'+ btn.data('average') +'" >삭제</button>';		
 		src += '	</td>';
-		src += '</tr>';		
-		
+		src += '</tr>';	
+		src += '<tr>';
+		src += '	<td>';
+		src += ' 		<input class="confirmAverage" type="range" value="' + btn.data('average') + '" min="0" max="500" step="10" size="5" data-range="' + cnt + '">';
+		src += ' 	</td>';
+		src += '</tr>'
 		return src;
 	}
 
