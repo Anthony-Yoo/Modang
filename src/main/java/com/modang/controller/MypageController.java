@@ -73,10 +73,13 @@ public class MypageController {
 	public String friendList(@PathVariable("userNo") int userNo,Model model) {
 		System.out.println("MypageController.friendList()");
 		
-		mypageService.friendList(userNo);
+		List<RecordUserVo> friendList = mypageService.friendList(userNo);
+		System.out.println(friendList);
+		
+		model.addAttribute("friendList", friendList);
 	
 		
-		return "/mypage/FriendList";
+		return "/mypage/friendList";
 	}
 	
 

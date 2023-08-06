@@ -8,7 +8,10 @@ public class RecordUserVo {
 	private int gameNo;				
 	private String nick;			//최근 3경기 함께한 유져 닉,나의 닉네임
 	private String recentLogonTime; // 나의 최근 로그인 정보
+	private int recentDays;
 	private int average;			//나의 기본다마
+	private int winCnt;				//최근 10경기 승리경기수	
+	private int loseCnt;			//최근 10경기 패배경기수
 	private int recommAverage;
 	private int currentAverage;
 	private int activeAverage;	
@@ -39,19 +42,23 @@ public class RecordUserVo {
 	private int recommStatus;				// 권장다마 상태
 	private String totalPlayTime;			// 전체 누적(본인다마 관계없음 / 나가리게임포함) 플레이시간
 	public RecordUserVo(int recordNo, int playNo, int userNo, int gameNo, String nick, String recentLogonTime,
-			int average, int recommAverage, int currentAverage, int activeAverage, int hitMarker, String profileImage,
-			String biliardAddress, String biliardName, int tableType, int gameType, int memberNum, String gameDate,
-			String gameTime, String playTime, int record, int paymoney, int calGameTime, String totalGameTime,
-			double totalWinRate, double totalCommRate, int totalCountGame, int totalCountWinGame,
-			int totalCountLoseGame, int totalCountNormGame, int totalCountWinNormGame, int totalCountLoseNormGame,
-			double totalNormRate, int totalNormRatePercent, int recommStatus, String totalPlayTime) {
+			int recentDays, int average, int winCnt, int loseCnt, int recommAverage, int currentAverage,
+			int activeAverage, int hitMarker, String profileImage, String biliardAddress, String biliardName,
+			int tableType, int gameType, int memberNum, String gameDate, String gameTime, String playTime, int record,
+			int paymoney, int calGameTime, String totalGameTime, double totalWinRate, double totalCommRate,
+			int totalCountGame, int totalCountWinGame, int totalCountLoseGame, int totalCountNormGame,
+			int totalCountWinNormGame, int totalCountLoseNormGame, double totalNormRate, int totalNormRatePercent,
+			int recommStatus, String totalPlayTime) {
 		this.recordNo = recordNo;
 		this.playNo = playNo;
 		this.userNo = userNo;
 		this.gameNo = gameNo;
 		this.nick = nick;
 		this.recentLogonTime = recentLogonTime;
+		this.recentDays = recentDays;
 		this.average = average;
+		this.winCnt = winCnt;
+		this.loseCnt = loseCnt;
 		this.recommAverage = recommAverage;
 		this.currentAverage = currentAverage;
 		this.activeAverage = activeAverage;
@@ -120,11 +127,29 @@ public class RecordUserVo {
 	public void setRecentLogonTime(String recentLogonTime) {
 		this.recentLogonTime = recentLogonTime;
 	}
+	public int getRecentDays() {
+		return recentDays;
+	}
+	public void setRecentDays(int recentDays) {
+		this.recentDays = recentDays;
+	}
 	public int getAverage() {
 		return average;
 	}
 	public void setAverage(int average) {
 		this.average = average;
+	}
+	public int getWinCnt() {
+		return winCnt;
+	}
+	public void setWinCnt(int winCnt) {
+		this.winCnt = winCnt;
+	}
+	public int getLoseCnt() {
+		return loseCnt;
+	}
+	public void setLoseCnt(int loseCnt) {
+		this.loseCnt = loseCnt;
 	}
 	public int getRecommAverage() {
 		return recommAverage;
@@ -303,16 +328,17 @@ public class RecordUserVo {
 	@Override
 	public String toString() {
 		return "RecordUserVo [recordNo=" + recordNo + ", playNo=" + playNo + ", userNo=" + userNo + ", gameNo=" + gameNo
-				+ ", nick=" + nick + ", recentLogonTime=" + recentLogonTime + ", average=" + average
-				+ ", recommAverage=" + recommAverage + ", currentAverage=" + currentAverage + ", activeAverage="
-				+ activeAverage + ", hitMarker=" + hitMarker + ", profileImage=" + profileImage + ", biliardAddress="
-				+ biliardAddress + ", biliardName=" + biliardName + ", tableType=" + tableType + ", gameType="
-				+ gameType + ", memberNum=" + memberNum + ", gameDate=" + gameDate + ", gameTime=" + gameTime
-				+ ", playTime=" + playTime + ", record=" + record + ", paymoney=" + paymoney + ", calGameTime="
-				+ calGameTime + ", totalGameTime=" + totalGameTime + ", totalWinRate=" + totalWinRate
-				+ ", totalCommRate=" + totalCommRate + ", totalCountGame=" + totalCountGame + ", totalCountWinGame="
-				+ totalCountWinGame + ", totalCountLoseGame=" + totalCountLoseGame + ", totalCountNormGame="
-				+ totalCountNormGame + ", totalCountWinNormGame=" + totalCountWinNormGame + ", totalCountLoseNormGame="
+				+ ", nick=" + nick + ", recentLogonTime=" + recentLogonTime + ", recentDays=" + recentDays
+				+ ", average=" + average + ", winCnt=" + winCnt + ", loseCnt=" + loseCnt + ", recommAverage="
+				+ recommAverage + ", currentAverage=" + currentAverage + ", activeAverage=" + activeAverage
+				+ ", hitMarker=" + hitMarker + ", profileImage=" + profileImage + ", biliardAddress=" + biliardAddress
+				+ ", biliardName=" + biliardName + ", tableType=" + tableType + ", gameType=" + gameType
+				+ ", memberNum=" + memberNum + ", gameDate=" + gameDate + ", gameTime=" + gameTime + ", playTime="
+				+ playTime + ", record=" + record + ", paymoney=" + paymoney + ", calGameTime=" + calGameTime
+				+ ", totalGameTime=" + totalGameTime + ", totalWinRate=" + totalWinRate + ", totalCommRate="
+				+ totalCommRate + ", totalCountGame=" + totalCountGame + ", totalCountWinGame=" + totalCountWinGame
+				+ ", totalCountLoseGame=" + totalCountLoseGame + ", totalCountNormGame=" + totalCountNormGame
+				+ ", totalCountWinNormGame=" + totalCountWinNormGame + ", totalCountLoseNormGame="
 				+ totalCountLoseNormGame + ", totalNormRate=" + totalNormRate + ", totalNormRatePercent="
 				+ totalNormRatePercent + ", recommStatus=" + recommStatus + ", totalPlayTime=" + totalPlayTime + "]";
 	}

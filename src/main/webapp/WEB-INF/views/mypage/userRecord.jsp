@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>modang 유저 전적보기</title>
 	<!-- jquery -->   
 	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
@@ -102,6 +102,10 @@
                          <c:if test ="${CurrentRecordVo.recommStatus == 2}">
 	                        <p>다마상태</p>
 	                        <span class="recommTxt">짠다마</span>
+                        </c:if>
+                        <c:if test ="${CurrentRecordVo.recommStatus == 3}">
+	                        <p>다마상태</p>
+	                        <span class="recommTxt">새내기</span>
                         </c:if>
                     </li>
                     <li>

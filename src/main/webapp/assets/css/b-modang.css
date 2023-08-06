@@ -22,72 +22,70 @@ button{border: 0; padding: 0;}
 img {vertical-align: top;}/*reset*/
 /* 헤더 시작 */
 /* 레이아웃 */
-
-/*
 #header {
     width: 1200px;
     height: 130px;
     background-color: #FFFFFF;
+    border-bottom: 2px solid #2E419A;
     margin: 0 auto;
 }
-*/
+
 /* header */
-/*
 #header h1>a {
     float: left;
     margin: 10px 0px 0px 0px;
     font-size: 35px;
 }
-*/
-/*#header ul {
+
+#header ul {
     float: right;
     margin-right: 20px;
-}*/
+}
 
-/*#header ul>li {
+#header ul>li {
     float: left;
     margin: 30px 0px 0px 20px;
     font-size: 15px;
 }
-*/
+
 /*헤더 밑에 메뉴(모당이당?, 당구장 찾기, 게시판)*/
-/*#header>#header-menu {
+#header>#header-menu {
     float: left;
     width: 900px;
     height: 65px;
-}*/
+}
 
 /*헤더 밑에 메뉴별 테두리*/
 #header>#header-menu li {
     /* background-color: rgb(255, 255, 255);
     border: 2px solid rgb(12, 12, 12);
     border-radius: 10px; */
-   /* width: 100px;
-    height: 20px;*/
+    width: 100px;
+    height: 20px;
 }
 
 /*헤더 밑에 메뉴별 a링크 글씨색깔*/
-/*#header>#header-menu li a {
+#header>#header-menu li a {
     font-weight: bold;
     font-size: large;
     color: rgb(68, 68, 188);
-}*/
+}
 /*헤더 밑에 메뉴별 a링크 호버 글씨색깔*/
-/*#header>#header-menu li:hover a {
+#header>#header-menu li:hover a {
     font-weight: bold;
     font-size: large;
     color: rgb(65, 113, 31);
-}*/
+}
 
 /* 헤더 밑에 메뉴 끝 */
 
 /*헤더 위에 메뉴(로그인,회원가입)*/
-/*#header>#header-user {
+#header>#header-user {
     float: left;
     width: 900px;
     height: 65px;
 
-}*/
+}
 
 /*헤더 위에 메뉴별 테두리*/
 /* #header>#header-user li{
@@ -98,36 +96,35 @@ img {vertical-align: top;}/*reset*/
 } */
 
 /*헤더 위에 메뉴별 a링크 글씨색깔*/
-/*#header>#header-user li a {
+#header>#header-user li a {
     font-weight: bold;
     color: rgb(68, 68, 188);
-}*/
+}
 /*헤더 위에 메뉴별 a링크 호버 글씨색깔 */
-/*#header>#header-user li:hover a {
+#header>#header-user li:hover a {
     font-weight: bold;
     color: rgb(65, 113, 31);
-}*/
+}
 
 /* 로고 사이즈 밑 높이 */
-/*
 #logo-img {
     width: 300px;
     /* 원하는 가로 크기로 변경하세요 */
-   /* height: auto;*/
+    height: auto;
     /* 세로 크기를 가로 크기에 맞추기 위해 'auto'로 설정합니다 */
-/*}*/
+}
 /* 헤더 끝 */
 
 
 
 /*------------------푸터----------------------*/
-/*#footer{width: 1200px; padding: 20px 0;height: 260px; color: #000; margin: 0 auto; border-top: 2px solid #2E419A;}*/
+#footer{width: 1200px; padding: 20px 0;height: 260px; color: #000; margin: 0 auto; border-top: 2px solid #2E419A;}
 #footer .f_left{width: 60%;font-size: 14px;float: left;}
 #footer .f_left .f_logo{margin-bottom: 10px;}
 #footer .f_left ul{padding: 0 0 20px;}
-#footer .f_left ul li{float: left;padding: 0 /*8px*/;border-right: 1px solid #c7c7c7;margin-bottom: 10px;}
+#footer .f_left ul li{float: left;padding: 0 8px;border-right: 1px solid #c7c7c7;margin-bottom: 10px;}
 #footer .f_left ul li.no_bar{border-right: 0;}
-#footer .f_left p{clear: both;margin-left: 0px;}
+#footer .f_left p{clear: both;margin-left: 8px;}
 #footer .f_right{width: 20%;float: right;font-size: 12px;}
 #footer .f_right ul.f_menu{width: 270px; height: 30px;}
 #footer .f_right ul.f_menu li{float: left;margin-left: 10px;}
@@ -170,91 +167,6 @@ img {vertical-align: top;}/*reset*/
  .sidebar a:hover:not(.active) {
   background-color: #555;
   color: white;
-}
-
-
-/*추가한 부분---------------------------------------------------------------------------*/
-/****************************************************************************************
-  해더
-*****************************************************************************************/
-.header-container { 
-	width: 100%; border-bottom: 2px solid #2E419A;
-}
-
-.header-container #header {
-    width: 1200px; padding: 20px 0px 10px 0px; margin: 0 auto;
-}
-
-/*헤더 위에 메뉴(로그인,회원가입)*/
-.header-container #header>#header-user {
-	width: 100%
-}
-
-.header-container #header #header-user>ul {
-	 float: right;
-}
-
-.header-container #header #header-user>ul>li {
-	 float: left;
-	 margin: 0px 0px 0px 10px;
-}
-
-.header-container #header #header-user>ul>li.hello {
-	 padding: 9px 20px 0px 0px;
-	 font-size: 16px;
-}
-
-
-/*헤더 로고 */
-.header-container #header h1>a {
-    float: left;
-}
-
-.header-container #header h1>a>img { /*로고*/
-    width: 220px;
-    height: auto;
-}
-
-
-/*헤더 메뉴*/
-.header-container #header #header-menu {
-    float: right;
-}
-
-.header-container #header #header-logo_menu #header-menu ul>li {
-    float: left;
-    margin: 30px 0px 0px 0px;
-    font-size: 22px;
-    font-weight: bold;
-}
-
-.header-container #header #header-logo_menu #header-menu ul>li:not(:last-child):after {
-    font-size: 22px;
-    content: "|";
-    margin: 0px 20px 0px 20px; 
-}
-
-.header-container #header #header-logo_menu #header-menu ul>li:hover>a {
-	 font-weight: bold;
-	 color: #0070C0;
-}
-
-.footer-container {
-	width: 100%;
-	background-color: #E8EAED;
-}
-
-.footer-container #footer .container {
-	width: 1200px; 
-	padding: 20px 0; 
-	margin: 0 auto;
-	color: #000;  
-}
-
-
-.footer-container #footer .container #logo-img{
-	width: 150px; 
-	padding: 30px 0px 0px 0px;
 }
 
 
