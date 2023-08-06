@@ -181,12 +181,12 @@ $("#close").on('click',function(){
    
    
    //다마수 레인지 움질일때
-   $(".confirmBody").on("change",".confirmAverage", function(){
-	   console.log($(this).val());
+   $("#playerTable").on("change",".confirmAverage", function(){
+	   console.log($(this).val());   
 	   
 	   var avg = $(this).val();
-	   var no= $(this).data("range"); 
-	   $("#range-"+no).text(avg);	   
+	   var rangeNo = $(this).data("range"); 
+	   $("#range-"+rangeNo).text(avg);	   
    })
    
    
@@ -320,7 +320,7 @@ $("#close").on('click',function(){
 		src += '	<tr class="addUserBox">';
 		src += '		<td class="nameTd">' + btn.data('nick') +'</td>';
 		src += '		<td class="averageTd">';
-		src += '			<span id="range-'+ cnt +'"></span>';
+		src += '			<span id="range-'+ cnt +'">'+ btn.data('average') +'</span>';
 		src += ' 		</td>';
 		src += '		<td class="btnTd">';
 		src += ' 			<button type="button" class="delPlayer" data-userno="'+btn.data('userno')+'" data-no="'+ cnt +'" data-nick="'+ btn.data('nick') +'" data-average="'+ btn.data('average') +'" >삭제</button>';		

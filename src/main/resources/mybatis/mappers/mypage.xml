@@ -168,12 +168,107 @@
 	
 	</select>
 	
-	<select id="selectFriendList">
+	<select id="selectRecordWinLose" parameterType="int" resultType="com.modang.vo.RecordUserVo">
 		<![CDATA[
-			select 
-		
+			select nvl(a.winCnt,0) winCnt, nvl(b.loseCnt,0) loseCnt
+					from 
+					        (
+					        select count(ort.record) winCnt, ort.userno
+					        from (select rownum rn,
+					                     ot.playno,
+					                     ot.userno,
+					                     ot.gameno,
+					                     ot.record
+					              from (select  p.playno,
+					                            p.userno,
+					                            p.gameno,
+					                            p.record
+					                    from plays p,
+					                    	 games g
+					                    where  g.gameno = p.gameno
+                                        and p.userno = #{userNo}
+					                    and g.GAMESTATUS = 1
+                                        and p.record = 1
+					                    order by p.playno desc) ot
+					              )ort
+					        where rn >= 1
+					        and rn <= 10
+					        group by ort.userno
+					        )a
+					        full join
+					        (
+					        select count(ort.record) loseCnt, ort.userno
+					        from (select rownum rn,
+					                     ot.playno,
+					                     ot.userno,
+					                     ot.gameno,
+					                     ot.record
+					              from (select  p.playno,
+					                            p.userno,
+					                            p.gameno,
+					                            p.record,
+					                            g.memberNum
+					                    from plays p, games g
+					                    where p.gameNo = g.gameNo
+					                    and g.GAMESTATUS = 1
+					                    and p.userno = #{userNo}
+					                    and p.record = g.memberNum
+					                    order by p.playno desc) ot
+					              )ort
+					        where rn >= 1
+					        and rn <= 10
+					        group by ort.userno
+					        )b
+					
+					on a.userNo = b.userNo	
 		
 		]]>	
 	</select>
+	
+	<!-- 친구 전적정보리스트 -->
+	<select id="selectFriendList" parameterType="int" resultType="com.modang.vo.RecordUserVo">
+		<![CDATA[
+			select  DISTINCT
+			        u.nick,
+			        u.Average,        
+			        TRUNC(To_date(Sysdate,'YY/MM/DD')) - TRUNC(u.RECENTLOGONTIME) as recentDays,
+			        u.userno,
+			        NVL(round((tgc.totalCount-tlc.loseCount)/tgc.totalCount,2),0) as totalCommRate,
+			        tgc.totalCount as totalCountGame,
+			        NVL(tlc.loseCount,0) as totalCountLoseGame
+			from users u,
+			     plays p,
+			     FAVORITEUSERS f,     
+			     (select p.userNo, count(PlayNo) totalCount
+						      from plays p,
+						           games g,
+			                       users u
+						      where p.gameno = g.gameno
+			                  and p.CURRENTAVERAGE = u.AVERAGE
+						      and g.gamestatus = 1
+						      group by p.userNo) tgc,
+			                  
+			      (select p.userNo, count(PlayNo) loseCount
+						      from plays p,
+						           games g,
+			                       users u
+						      where p.gameno = g.gameno
+			                  and p.CURRENTAVERAGE = u.AVERAGE
+						      and g.gamestatus = 1
+						      and p.record = g.MEMBERNUM
+						      group by p.userNo) tlc       
+			     
+			where f.GETUSERNO = u.userno
+			and u.userno = p.userno
+			and tgc.userNo = p.userNo
+			and tlc.userNo(+) = p.userNo   
+			and f.setuserno = #{userNo}
+			Order By Nick ASC
+		
+		
+		]]>
+		
+	
+	</select>	
 
 </mapper>
