@@ -74,7 +74,7 @@
                                 <div class="form-group row mt">
 									<label class="col-form-label col-3">비밀번호</label>
 									<div class="col">
-										<input type="text" name="passwd" class="form-control" maxlength="20" placeholder=""  value="${requestScope.managerVo.passwd}"/>
+										<input type="password" name="passwd" class="form-control" maxlength="20" placeholder=""  value="${requestScope.managerVo.passwd}"/>
 									</div>
 								</div>
                                 <div class="form-group row mt">

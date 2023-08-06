@@ -122,7 +122,6 @@ public class ManagerController {
 		ManagerVo loginManager=(ManagerVo)session.getAttribute("loginManager");
 		int no = loginManager.getbiliardNo();
 		managerService.modify(managerVo,file);
-		//model.addAttribute("managerVo", managerVo);
 		return "redirect:/manager/settingsForm";
 	}
 	

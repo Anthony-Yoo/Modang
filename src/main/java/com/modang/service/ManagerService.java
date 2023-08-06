@@ -11,10 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.modang.dao.BiliardDao;
 import com.modang.dao.ManagerDao;
 import com.modang.vo.ManagerVo;
-import com.modang.vo.TariffVo;
 
 @Service
 public class ManagerService {
@@ -70,7 +68,7 @@ public class ManagerService {
 				e.printStackTrace();
 			}
 			count++;
-			switch (count) {
+			switch (count) {//와 미쳣다 찢어놓으셧다
 				case 1 : 
 					managerVo.setImageFile1(saveName);	
 					break;
