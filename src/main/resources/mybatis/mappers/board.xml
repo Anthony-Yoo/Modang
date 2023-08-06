@@ -199,4 +199,22 @@
 			where boardNo = #{boardNo}
 		]]>
 	</delete>
+	
+	<update id="modify" parameterType="com.modang.vo.BoardVo">
+	<![CDATA[
+		UPDATE MatchBoard
+		SET
+		    userNo = #{userNo},
+		    title = #{title},
+		    matchGameType = #{matchGameType},
+		    matchRegion = #{matchRegion},
+		    membernum = #{membernum},
+		    matchDate = TO_DATE(#{matchDate}, 'YYYY-MM-DD HH24:MI:SS'),
+		    content = #{content},
+		    boardDate = #{boardDate}
+		WHERE
+		    boardNo = #{boardNo};
+	]]>
+	
+	</update>
 </mapper>
