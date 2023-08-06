@@ -166,10 +166,11 @@ public class ManagerService {
 		System.out.println(managerVo);
 		managerDao.updateManager(managerVo);
 	}
+	
 	/*당구장 찾기-모당리스트*/
-	public List<ManagerVo> modanglist(ManagerVo managerVo){
-		System.out.println("managerService.modanglist");
-		List<ManagerVo> modanglist=managerDao.selectModanglistByNo(managerVo);
+	public List<ManagerVo> modanglist(){
+		System.out.println("managerService.modanglist()");
+		List<ManagerVo> modanglist = managerDao.selectModanglist();
 		return modanglist;
 	}
 	

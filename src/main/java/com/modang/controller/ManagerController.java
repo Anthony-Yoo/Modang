@@ -128,15 +128,15 @@ public class ManagerController {
 		managerService.modify(managerVo,file);
 		return "redirect:/manager/settingsForm";
 	}
-	/*당구장 찾기-모당리스트*/
-	@ResponseBody
+	/*당구장 찾기-모당리스트*/	
 	@RequestMapping(value = "/modangFind", method = {RequestMethod.GET, RequestMethod.POST })
-	public List<ManagerVo> modanglist(@PathVariable("biliardNo") int biliardNo) {
-		System.out.println("ManagerController.modanglist");
-		ManagerVo managerVo = new ManagerVo();
-		managerVo.setbiliardNo(biliardNo);
-		List<ManagerVo> modanglist = managerService.modanglist(managerVo);
-		return modanglist;
+	public String modanglist(Model model) {
+		System.out.println("ManagerController.modanglist()");		
+		
+		List<ManagerVo> modanglist = managerService.modanglist();
+		model.addAttribute("modanglist", modanglist);
+		
+		return "/main/modangFind";
 	}
 	
 }

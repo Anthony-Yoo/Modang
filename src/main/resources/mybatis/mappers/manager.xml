@@ -147,13 +147,13 @@
 	</update>
 	
 	<!-- *당구장 찾기-모당리스트  -->
-	<select id="selectModanglistByNo" parameterType="com.modang.vo.ManagerVo" resultType="com.modang.vo.RecordUserVo">
+	<select id="selectModanglist" resultType="com.modang.vo.ManagerVo">
 		<![CDATA[
-			select biliardName,
+			select  biliardName,
 					biliardAddress1,
 					biliardAddress2,
 					imageFile1
-			where biliardNo =#{biliardNo}
+			from BILIARDS
 		]]>
 	</select>
 </mapper>
