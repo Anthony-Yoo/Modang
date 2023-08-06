@@ -94,5 +94,29 @@ public class ManagerController {
 		sessoin.invalidate();
 		return "redirect:/";
 	}
-
+	
+	/*당구장 정보 수정폼*/
+	@RequestMapping(value = "/settingsForm", method = { RequestMethod.GET, RequestMethod.POST })
+	public String settingsForm(HttpSession session, Model model) {
+		System.out.println("ManagerController.settingsForm");
+		ManagerVo loginManager=(ManagerVo)session.getAttribute("loginManager");//횡변환
+		int no = loginManager.getbiliardNo();
+		ManagerVo managerVo = managerService.settingsForm(no);
+		model.addAttribute("managerVo", managerVo);//request "managerVo"
+		return "/manager/settings";
+	}
+	/*당구장 정보 수정*/
+	@RequestMapping(value = "modify", method = { RequestMethod.GET, RequestMethod.POST })
+	public String modify(HttpSession session, @ModelAttribute ManagerVo managerVo
+			, @RequestParam("file") List<MultipartFile> file) {
+		System.out.println("ManagerController.modify()" + managerVo);
+		ManagerVo loginManager=(ManagerVo)session.getAttribute("loginManager");
+		int no = loginManager.getbiliardNo();
+		managerService.modify(managerVo,file);
+		//model.addAttribute("managerVo", managerVo);
+		return "redirect:/manager/settingsForm";
+	}
+	
+	
+	
 }

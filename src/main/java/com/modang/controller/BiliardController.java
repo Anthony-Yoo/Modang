@@ -206,16 +206,6 @@ public class BiliardController {
 		return "/manager/pricePolicy";
 	}
 
-	/* 관리자 설정 페이지-------------------------------------------------------------------------------- */
-	/* 관리자 설정폼 */
-	@RequestMapping(value = "/settingsForm", method = { RequestMethod.GET, RequestMethod.POST })
-	public String settingsForm(HttpSession session) {
-		System.out.println("BiliardController.settingsForm()");
-		
-		ManagerVo loginManager = (ManagerVo) session.getAttribute("loginManager");
-		biliardService.getbiliardInfo(loginManager);
 
-		return "/manager/settings";
-	}
 
 }

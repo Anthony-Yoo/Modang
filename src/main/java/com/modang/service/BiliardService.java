@@ -136,11 +136,6 @@ public class BiliardService {
 		return count;
 	}
 	
-	/* 관리자 설정 페이지-------------------------------------------------------------------------------- */
-	/* 관리자 설정 - 당구장 정보 불러오기 */
-	public void getbiliardInfo(ManagerVo loginManager) {
-		System.out.println("BiliardService.getbiliardInfo()");
-		
-	}
+
 
 }

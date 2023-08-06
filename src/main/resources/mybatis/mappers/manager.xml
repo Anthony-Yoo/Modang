@@ -100,5 +100,56 @@
 					where id=#{id} and passwd=#{passwd}
 		]]>
 	</select>
+	<!-- 당구장 정보 수정 폼 -->
+	<select id="selectManagerByNo" parameterType="int" resultType="com.modang.vo.ManagerVo">
+		<![CDATA[
+			select biliardNo,
+       				id,
+        			passwd,
+        			companyNo,
+        			repName,
+        			biliardName,
+        			postcode,
+        			biliardAddress1,
+        			biliardAddress2,
+        			biliardPhone,
+        			imageFile1,
+        			imageFile2,
+        			imageFile3,
+        			time1,
+        			time2,
+        			parking,
+        			bdComment
+			from biliards
+			where biliardNo =#{biliardNo}
+		]]>
+	</select>
+	<!-- 회원정보 수정  -->
+	<update id="updateManagerByNo" parameterType="com.modang.vo.ManagerVo">
+		<![CDATA[
+			update biliards set biliardNo,
+       							id,
+        						passwd,
+        						companyNo,
+        						repName,
+        						biliardName,
+        						postcode,
+        						biliardAddress1,
+        						biliardAddress2,
+        						biliardPhone,
+        						imageFile1,
+        						imageFile2,
+        						imageFile3,
+        						time1,
+        						time2,
+        						parking,
+        						bdComment
+						from biliards
+						where biliardNo =#{biliardNo}
+			
+		]]>
+	</update>
+	
+	
 	
 </mapper>

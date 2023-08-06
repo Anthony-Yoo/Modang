@@ -98,7 +98,52 @@ public class ManagerService {
 		System.out.println(loginManager);
 		return loginManager;
 	}
+	/* 당구장 정보 수정폼*/
+	public ManagerVo settingsForm(int biliardNo) {
+		System.out.println("managerService.settingsForm");
+		ManagerVo managerVo = managerDao.selectManager(biliardNo);
+		return managerVo;
+	}
+	/*당구장 정보 수정*/
+	public ManagerVo modify(ManagerVo managerVo, List<MultipartFile> file) {
+		System.out.println("managerService.modify");
+		for(int i=0; i<file.size(); i++) {
+			System.out.println(file.get(i).getOriginalFilename());
+
+			//원 파일 이름
+			String orgName = file.get(i).getOriginalFilename();		
+			//확장자
+			String exName = file.get(i).getOriginalFilename().substring(file.get(i).getOriginalFilename().lastIndexOf("."));		
+			//저장 파일 이름
+			String saveName = System.currentTimeMillis()+UUID.randomUUID().toString()+exName;
+			System.out.println("saveName :"+saveName);
+			//파일패스 (어느경로에 어떤이름으로)
+			String filePath = saveDir + "\\"+saveName;
+			System.out.println("filePath :"+filePath);	
+			//파일 사이즈
+			long fileSize = file.get(i).getSize();
+			System.out.println("filesize :"+fileSize);
+			//파일 업로드(사용자 파일 복사 -하드디스크 저장)
+			try {
+				byte[] fileData = file.get(i).getBytes();//죽
+				OutputStream out = new FileOutputStream(filePath);//빨대
+				BufferedOutputStream bout = new BufferedOutputStream(out);//빨대큰거
+				bout.write(fileData);//몸속으로넘어감
+				bout.close();
+			}catch (IOException e) {
+				e.printStackTrace();
+			}
+			managerVo.setImageFile1(saveName);
+			managerVo.setImageFile2(saveName);
+			managerVo.setImageFile3(saveName);
+		}
+		//db에 저장
+		//ManagerVo managerVo= new ManagerVo();
+		System.out.println(managerVo);
+		int count = managerDao.updateManager(managerVo);
+		return managerVo;
+	}
 	
-
-
+	
+	
 }

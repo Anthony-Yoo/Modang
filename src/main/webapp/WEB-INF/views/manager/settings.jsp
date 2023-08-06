@@ -13,7 +13,6 @@
 </head>
 <body>
 	<div id="page-wrapper">
-
 		<!-- Header -->
 		<section id="header">
 			<div class="container">
@@ -65,59 +64,51 @@
 							<header>
 								<h2>사업자 정보 <small class="font-weight-normal text-blue">변경할 정보를 입력하세요</small></h2>
 							</header>
-							
 							<form>
-								<div class="form-group row">
+								<div class="form-group row mt">
 									<label class="col-form-label col-3">아이디</label>
 									<div class="col">
-										<input type="text" name="id" class="form-control" maxlength="20" disabled/>
+										<input type="text" name="id" class="form-control" maxlength="20" disabled placeholder="${requestScope.managerVo.id}" />
 									</div>
 								</div>
-								<div class="form-group row">
-									<label class="col-form-label col-3">대표자명</label>
-									<div class="col">
-										<input type="text" name="repname" class="form-control" maxlength="10" placeholder="" />
-									</div>
-								</div>
-								<div class="form-group row">
+                                <div class="form-group row mt">
 									<label class="col-form-label col-3">비밀번호</label>
 									<div class="col">
-										<input type="text" name="passwd" class="form-control" maxlength="20" placeholder="" />
+										<input type="text" name="passwd" class="form-control" maxlength="20" placeholder=""  value="${requestScope.managerVo.passwd}"/>
 									</div>
 								</div>
-								<div class="form-group row">
-									<label class="col-form-label col-3">상호명</label>
-									<div class="col">
-										<input type="text" name="bilardname" class="form-control" maxlength="50" placeholder="" />
-									</div>
-								</div>
-								<div class="form-group row">
+                                <div class="form-group row mt">
 									<label class="col-form-label col-3">사업자등록번호</label>
 									<div class="col">
-										<input type="text" name="companyno" class="form-control" maxlength="20" placeholder="" />
+										<input type="text" name="companyNo" class="form-control" maxlength="20" placeholder="" value="${requestScope.managerVo.companyNo}"/>
 									</div>
 								</div>
-								<div class="form-group row">
-									<label class="col-form-label col-3">전화번호</label>
+								<div class="form-group row mt">
+									<label class="col-form-label col-3">대표자명</label>
 									<div class="col">
-										<input type="text" name="biliardphone" class="form-control" maxlength="20" placeholder="" />
+										<input type="text" name="repName" class="form-control" maxlength="10" placeholder="" value="${requestScope.managerVo.repName}" />
 									</div>
 								</div>
-								<div class="form-group row">
+								<div class="form-group row mt">
+									<label class="col-form-label col-3">상호명</label>
+									<div class="col">
+										<input type="text" name="bilardname" class="form-control" maxlength="50" placeholder="" value="${requestScope.managerVo.biliardName}" />
+									</div>
+								</div>
+								<div class="form-group row mt">
 									<label class="col-form-label col-3">주소</label>
 									<div class="col">
-										<input type="text" id="zonecode" name="zonecode" class="form-control w-33" placeholder="우편번호" onclick="daumPostcode();" readonly />
-										<input type="text" id="address" name="address" class="form-control mt-1" placeholder="주소" onclick="daumPostcode();" readonly />
-										<input type="text" id="address_detail" name="address_detail" class="form-control mt-1" maxlength="50" placeholder="상세주소" />
+										<input type="text" id="zonecode" name="postcode" class="form-control w-33" placeholder="우편번호" value="${requestScope.managerVo.postcode}"  onclick="daumPostcode();" readonly />
+										<input type="text" id="address" name="biliardAddress1" class="form-control mt-1" placeholder="주소"  value="${requestScope.managerVo.biliardAddress1}" onclick="daumPostcode();" readonly />
+										<input type="text" id="address_detail" name="biliardAddress2" class="form-control mt-1" maxlength="50" placeholder="상세주소"  value="${requestScope.managerVo.biliardAddress2}" />
 									</div>
 								</div>
-								
-								<div class="mt-4 text-right" style="position: absolute; bottom: 32px; right: 32px;">
-									<button type="submit" class="btn btn-lg btn-blue">수정</button>
-									<button type="button" class="btn btn-lg btn-dark">취소</button>
+                                <div class="form-group row mt">
+									<label class="col-form-label col-3">전화번호</label>
+									<div class="col">
+										<input type="text" name="biliardPhone" class="form-control" maxlength="20" placeholder="" value="${requestScope.managerVo.biliardPhone}" />
+									</div>
 								</div>
-							</form>
-							
 						</section>
 					</div>
 
@@ -127,8 +118,58 @@
 							<header>
 								<h2>매장 정보 <small class="font-weight-normal text-blue">변경할 정보를 입력하세요</small></h2>
 							</header>
-							
-							<form>
+                                <div class="form-group row">
+                                    <label for="" class="col-form-label col-3">매장사진</label>
+                                    <div class="col">
+                                    	<div class="image-box">
+                                    		<img src="${pageContext.request.contextPath }/upload/${requestScope.managerVo.imageFile1}" >
+                                    		<input type="file" name="file" class="form-control resultImg" maxlength="20" placeholder="" value="${requestScope.managerVo.imageFile1}" />
+                                        </div>
+                                        <div class="image-box">	
+                                        	<img src="${pageContext.request.contextPath }/upload/${requestScope.managerVo.imageFile2}" >
+                                        	<input type="file" name="file" class="form-control resultImg" maxlength="20" placeholder="" value="${requestScope.managerVo.imageFile2}" />
+                                        </div>
+                                        <div class="image-box">	
+                                        	<img src="${pageContext.request.contextPath }/upload/${requestScope.managerVo.imageFile3}" >
+                                        	<input type="file" name="file" class="form-control resultImg" maxlength="20" placeholder="" value="${requestScope.managerVo.imageFile3}" />
+                                    	</div>
+									</div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-form-label col-3">영업시간</label>
+                                    <div class="col">
+										<input type="time" name="time1" class="form-control time" maxlength="20" placeholder="" value="${requestScope.managerVo.time1}" />
+                                        &nbsp;&nbsp;~&nbsp;&nbsp;
+                                        <input type="time" name="time2" class="form-control time" maxlength="20" placeholder="" value="${requestScope.managerVo.time2}" />
+									</div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-form-label col-3">주차 여부</label>
+                                    <div class="col">
+                                    	<c:if test="${ requestScope.managerVo.parking == 'Y'}">
+											<input type="radio" name="parking" id="parking1" class="form-control" checked="checked" maxlength="50" placeholder="" value="${requestScope.managerVo.parking}" />
+	                                        <label for="parking1" class="parking">주차 가능하당</label>
+	                                        <input type="radio" name="parking" id="parking2" class="form-control" maxlength="50" placeholder="" value="${requestScope.managerVo.parking}" />
+	                                        <label for="parking2" class="parking">주차 불가능하당</label>
+	                                    </c:if>
+	                                    <c:if test="${ requestScope.managerVo.parking == 'N'}">
+	                                    	<input type="radio" name="parking" id="parking1" class="form-control" maxlength="50" placeholder="" value="${requestScope.managerVo.parking}" />
+	                                        <label for="parking1" class="parking">주차 가능하당</label>
+	                                        <input type="radio" name="parking" id="parking2" class="form-control" checked="checked" maxlength="50" placeholder="" value="${requestScope.managerVo.parking}" />
+	                                        <label for="parking2" class="parking">주차 불가능하당</label>
+                                        </c:if>
+									</div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-form-label col-3">추가 내용</label>
+                                    <div class="col">
+										<input type="text" id="bdComment" name="bdComment" class="form-control" maxlength="50" placeholder="" value="${requestScope.managerVo.bdComment}" />
+									</div>
+                                </div>
+                                <div class="mt-4 text-right" style="position: absolute; bottom: 32px; right: 32px;">
+									<button type="submit" class="btn btn-lg btn-blue">수정</button>
+									<button type="button" class="btn btn-lg btn-dark">취소</button>
+								</div>
 							</form>
 						</section>
 					</div>

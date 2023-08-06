@@ -44,5 +44,19 @@ public class ManagerDao {
 		System.out.println(loginManager);
 		return loginManager;
 	}
+	/*당구장 정보 수정 폼*/
+	public ManagerVo selectManager(int biliardNo) {
+		System.out.println("ManagerDao.selectManager()");
+		System.out.println(biliardNo);
+		ManagerVo managerVo = sqlSession.selectOne("manager.selectManagerByNo",biliardNo);
+		return managerVo;
+	}
+	/*당구장 정보 수정*/
+	public int updateManager(ManagerVo managerVo) {
+		System.out.println("ManagerDao.updateManager()");
+		int count = sqlSession.update("manager.updateManagerByNo",managerVo);
+		return count;
+	}
+	
 
 }
