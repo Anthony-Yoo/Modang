@@ -41,15 +41,21 @@ public class MypageService {
 		int calGameTime = 0;
 		int recentHit = 0;
 		int count = 0; // 최근 10게임 승리 카운트
+		int size = getGameList.size();
 		
-		/* 최근 10게임 반복 */
-		for(int i=0 ; i<10 ; i++ ) {
+		/* 최근 10게임 반복 */	
+		if ( size > 10) {
+			size = 10;					
+		};
+		for(int i=0 ; i< size ; i++ ) {
+		
 			calGameTime += getGameList.get(i).getCalGameTime();		
 			recentHit += getGameList.get(i).getActiveAverage();
 			if (getGameList.get(i).getRecord() == 1) {
 				count++;
 			};
 		};
+
 		
 		recentHit = recentHit/10; // 최근10게임 평균타수
 		curRecordVo.setRecentHit(recentHit);
@@ -127,6 +133,8 @@ public class MypageService {
 				recommStatus = 1;
 
 			}			
+		}else {
+			recommStatus =3;
 		}
 		
 		/* 누적게임 기록 */
@@ -162,7 +170,27 @@ public class MypageService {
 		System.out.println("MypageService.userPlayList()");
 		
 		List<RecordUserVo> myPlayList =	mypageDao.selectPlayListforGameNo(myPlayVo);
-		
+		int recommStatus = 0; // 권장다마상태
+		for (RecordUserVo vo :  myPlayList) {
+			if(vo.getTotalCountGame() >=10) {//본인다마로 10게임 이상일때
+				
+				if(vo.getTotalCommRate()>0.8) {//안물린승률이 0.8이상일때
+					recommStatus = 2;
+					vo.setRecommStatus(recommStatus);
+					
+				}else if(vo.getTotalCommRate()<0.2) {//안물린승률이 0.2이하일때
+					recommStatus = 0;
+					vo.setRecommStatus(recommStatus);
+				}else {
+					recommStatus = 1;
+					vo.setRecommStatus(recommStatus);
+				}			
+			}else {
+				recommStatus =3;
+				vo.setRecommStatus(recommStatus);
+			}		
+			
+		}
 		
 		return myPlayList;
 	}

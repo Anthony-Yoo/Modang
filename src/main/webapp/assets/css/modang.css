@@ -20,118 +20,10 @@ fieldset{border: 0;}
 a{text-decoration: none; color: #000;}
 button{border: 0; padding: 0;}
 img {vertical-align: top;}/*reset*/
-/* 헤더 시작 */
-/* 레이아웃 */
-#header {
-    width: 1200px;
-    height: 130px;
-    background-color: #FFFFFF;
-    border-bottom: 2px solid #2E419A;
-    margin: 0 auto;
-}
-
-/* header */
-#header h1>a {
-    float: left;
-    margin: 10px 0px 0px 0px;
-    font-size: 35px;
-}
-
-#header ul {
-    float: right;
-    margin-right: 20px;
-}
-
-#header ul>li {
-    float: left;
-    margin: 30px 0px 0px 20px;
-    font-size: 15px;
-}
-
-/*헤더 밑에 메뉴(모당이당?, 당구장 찾기, 게시판)*/
-#header>#header-menu {
-    float: left;
-    width: 900px;
-    height: 65px;
-}
-
-/*헤더 밑에 메뉴별 테두리*/
-#header>#header-menu li {
-    /* background-color: rgb(255, 255, 255);
-    border: 2px solid rgb(12, 12, 12);
-    border-radius: 10px; */
-    width: 100px;
-    height: 20px;
-}
-
-/*헤더 밑에 메뉴별 a링크 글씨색깔*/
-#header>#header-menu li a {
-    font-weight: bold;
-    font-size: large;
-    color: rgb(68, 68, 188);
-}
-/*헤더 밑에 메뉴별 a링크 호버 글씨색깔*/
-#header>#header-menu li:hover a {
-    font-weight: bold;
-    font-size: large;
-    color: rgb(65, 113, 31);
-}
-
-/* 헤더 밑에 메뉴 끝 */
-
-/*헤더 위에 메뉴(로그인,회원가입)*/
-#header>#header-user {
-    float: left;
-    width: 900px;
-    height: 65px;
-
-}
-
-/*헤더 위에 메뉴별 테두리*/
-/* #header>#header-user li{
-    border: 2px solid black;
-    border-radius: 10px;
-    width:100px;
-    height:20px;
-} */
-
-/*헤더 위에 메뉴별 a링크 글씨색깔*/
-#header>#header-user li a {
-    font-weight: bold;
-    color: rgb(68, 68, 188);
-}
-/*헤더 위에 메뉴별 a링크 호버 글씨색깔 */
-#header>#header-user li:hover a {
-    font-weight: bold;
-    color: rgb(65, 113, 31);
-}
-
-/* 로고 사이즈 밑 높이 */
-#logo-img {
-    width: 300px;
-    /* 원하는 가로 크기로 변경하세요 */
-    height: auto;
-    /* 세로 크기를 가로 크기에 맞추기 위해 'auto'로 설정합니다 */
-}
-/* 헤더 끝 */
 
 
-
-/*------------------푸터----------------------*/
-#footer{width: 1200px; padding: 20px 0;height: 260px; color: #000; margin: 0 auto; border-top: 2px solid #2E419A;}
-#footer .f_left{width: 60%;font-size: 14px;float: left;}
-#footer .f_left .f_logo{margin-bottom: 10px;}
-#footer .f_left ul{padding: 0 0 20px;}
-#footer .f_left ul li{float: left;padding: 0 8px;border-right: 1px solid #c7c7c7;margin-bottom: 10px;}
-#footer .f_left ul li.no_bar{border-right: 0;}
-#footer .f_left p{clear: both;margin-left: 8px;}
-#footer .f_right{width: 20%;float: right;font-size: 12px;}
-#footer .f_right ul.f_menu{width: 270px; height: 30px;}
-#footer .f_right ul.f_menu li{float: left;margin-left: 10px;}
-#footer .f_right ul.sns{float: right;margin-top: 120px;}
-#footer .f_right ul.sns li{float: left;margin-left: 15px; width: 30px; height: 30px;}
-#footer .f_right ul.sns li:nth-child(3){margin-right: 10px;}
-#footer .f_right ul.sns li img{width: 100%; height: 100%;}
+/*#board { font-family: "맑은 고딕"; font-size: 16px ; line-height: 1.2 ; }*/
+body { font-family: "맑은 고딕"; font-size: 16px ; /*line-height: 1.2 ;*/ }
 
 
 
@@ -169,4 +61,403 @@ img {vertical-align: top;}/*reset*/
   color: white;
 }
 
+
+/*추가한 부분---------------------------------------------------------------------------*/
+/****************************************************************************************
+  해더
+*****************************************************************************************/
+.header-container { 
+	width: 100%; border-bottom: 2px solid #2E419A;
+}
+
+.header-container #header {
+    width: 1200px; padding: 20px 0px 10px 0px; margin: 0 auto;
+}
+
+/*헤더 위에 메뉴(로그인,회원가입)*/
+.header-container #header>#header-user {
+	width: 100%
+}
+
+.header-container #header #header-user>ul {
+	 float: right;
+}
+
+.header-container #header #header-user>ul>li {
+	 float: left;
+	 margin: 0px 0px 0px 10px;
+}
+
+.header-container #header #header-user>ul>li.hello {
+	 padding: 9px 20px 0px 0px;
+	 font-size: 16px;
+}
+
+
+/*헤더 로고 */
+.header-container #header h1>a {
+    float: left;
+}
+
+.header-container #header h1>a>img { /*로고*/
+    width: 220px;
+    height: auto;
+}
+
+
+/*헤더 메뉴*/
+.header-container #header #header-menu {
+    float: right;
+}
+
+.header-container #header #header-logo_menu #header-menu ul>li {
+    float: left;
+    margin: 30px 0px 0px 0px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.header-container #header #header-logo_menu #header-menu ul>li:not(:last-child):after {
+    font-size: 22px;
+    content: "|";
+    margin: 0px 20px 0px 20px; 
+}
+
+.header-container #header #header-logo_menu #header-menu ul>li:hover>a {
+	 font-weight: bold;
+	 color: #0070C0;
+}
+
+/****************************************************************************************
+  컨텐츠 영역은 각자의 css파일로
+*****************************************************************************************/
+
+
+
+
+
+/****************************************************************************************
+  푸터 영역
+*****************************************************************************************/
+.footer-container {
+	width: 100%;
+	background-color: #E8EAED;
+}
+
+.footer-container #footer .container {
+	width: 1200px; 
+	padding: 20px 0; 
+	margin: 0 auto;
+	color: #000;  
+}
+
+
+.footer-container #footer .container #logo-img{
+	width: 150px; 
+	padding: 30px 0px 0px 0px;
+}
+
+
+/*------------------푸터----------------------*/
+/*#footer{width: 1200px; padding: 20px 0;height: 260px; color: #000; margin: 0 auto; border-top: 2px solid #2E419A;}*/
+#footer .f_left{width: 60%;font-size: 14px;float: left;}
+#footer .f_left .f_logo{margin-bottom: 10px;}
+#footer .f_left ul{padding: 0 0 20px;}
+#footer .f_left ul li{float: left;padding: 0 /*8px*/;border-right: 1px solid #c7c7c7;margin-bottom: 10px;}
+#footer .f_left ul li.no_bar{border-right: 0;}
+#footer .f_left p{clear: both;margin-left: 0px;}
+#footer .f_right{width: 20%;float: right;font-size: 12px;}
+#footer .f_right ul.f_menu{width: 270px; height: 30px;}
+#footer .f_right ul.f_menu li{float: left;margin-left: 10px;}
+#footer .f_right ul.sns{float: right;margin-top: 120px;}
+#footer .f_right ul.sns li{float: left;margin-left: 15px; width: 30px; height: 30px;}
+#footer .f_right ul.sns li:nth-child(3){margin-right: 10px;}
+#footer .f_right ul.sns li img{width: 100%; height: 100%;}
+
+
+
+
+/****************************************************************************************
+  공통사용
+*****************************************************************************************/
+
+/*********************************************************************
+ 헬퍼
+**********************************************************************/
+
+/**********정렬**********/
+.txt-right { text-align: right !important; }
+.txt-center { text-align: center !important; }
+.txt-left { text-align: left !important; }
+
+/**********가로폭**********/
+.width-full { width: 100% }
+
+
+/**********클리어픽스**********/
+/* clearfix */
+.clearfix{zoom:1;}
+.clearfix:after {display: block; content: ""; line-height: 0; clear: both;}
+
+
+
+
+/*********************************************************************
+ 버튼
+**********************************************************************/
+
+/*기본회색버튼: 검색버튼 목록버튼 폼과 같이 사용되는사이즈*/
+.btn-flat {
+	display: inline-block;
+	overflow: hidden;
+	
+	box-sizing: border-box; 
+	background-color: #ffffff;
+	border: 1px solid #767676;
+	
+	width: 100px;
+	height: 45px;
+	line-height: 45px;
+	border-radius: 5px;
+	font-size: 14px;
+	
+	color: #767676;
+	text-align: center;
+	cursor: pointer;
+	
+}
+
+/*.btn-flat:hover {
+    font-weight: bold;
+    font-size: large;
+    background-color: #E8EAED;
+    font-size: 12px;
+    color: #767676;
+}*/
+
+
+/*파란색 입체컬러 버튼*/
+.btn-main {
+	display: inline-block;
+	overflow: hidden;
+	
+	box-sizing: border-box; 
+	background: linear-gradient(to bottom right, #092050,#5175A4);
+	border: 1px solid #092050;
+	
+	width: 100px;
+	height: 45px;
+	line-height: 45px;
+	border-radius: 5px;
+	font-size: 14px;
+	
+	color: #ffffff;
+	text-align: center;
+	cursor: pointer;
+}
+
+
+
+/*회색 입체컬러 버튼*/
+.btn-normal {
+	display: inline-block;
+	overflow: hidden;
+	
+	box-sizing: border-box; 
+	background: linear-gradient(to bottom right,#BFBFBF, 5%, #F0F0F0);
+	border: 1px solid #767676;
+	
+	width: 100px;
+	height: 45px;
+	line-height: 45px;
+	border-radius: 5px;
+	font-size: 14px;
+	
+	color: #092050;
+	text-align: center;
+	cursor: pointer;
+}
+
+
+.btn-danger {
+	display: inline-block;
+	overflow: hidden;
+	
+	box-sizing: border-box; 
+	background: linear-gradient(to bottom right,#BFBFBF, 5%, #F0F0F0);
+	border: 1px solid #767676;
+	
+	width: 100px;
+	height: 45px;
+	line-height: 45px;
+	border-radius: 5px;
+	font-size: 14px;
+	
+	color: #C00000;
+	text-align: center;
+	cursor: pointer;
+}
+
+
+/*사이트*/
+/*작은 버튼*/
+.btn-ss { 
+	width: 65px;
+	height: 30px;
+	line-height: 30px;
+	
+	font-size: 10px; 
+	border-radius: 5px; 
+}
+
+.btn-s { 
+	width: 85px;
+	height: 40px;
+	line-height: 40px;
+	
+	font-size: 14px; 
+	border-radius: 5px; 
+}
+
+/*암것도 없는게 폼+검색 정도 크기 기본으로 검색 버튼 여러개 같이 사용될때*/
+
+
+.btn-l {  /*메인으로 사용될때*/
+	width: 150px; 
+	height: 50px; 
+	line-height: 50px;	
+	font-size: 17px; 
+	border-radius: 5px; 
+}
+
+
+
+
+/*********************************************************************
+ 폼
+**********************************************************************/
+
+/*(공통) 폼태그*/
+/*텍스트박스*/
+input[type='text'] { 
+	width: 100%; height: 40px; 
+	padding: 0px 5px 0px 5px; 
+	box-sizing: border-box; 
+	font-size: 16px; 
+	border: 1px solid #767676; 
+}
+input[type='text']:focus { outline: none; border: 1px solid #0075FF; }
+
+
+/*달력*/
+input[type='datetime-local'] { 
+	width: 100%; /* 너비 설정 */
+    height: 40px;  /* 높이 설정 */
+   	padding: 0px 5px 0px 5px; 
+	box-sizing: border-box; 
+    font-size: 16px; 
+    font-family: "맑은 고딕";
+    vertical-align: middle; 
+    border: 1px solid #767676; 
+}
+
+input[type='datetime-local']:focus { outline: none; border: 1px solid #0075FF; }
+
+
+/*라디오버튼*/
+input[type='radio'] { 
+	appearance: radio; 
+	width: 25px; /* 너비 설정 */
+    height: 25px; /* 높이 설정 */
+    margin: 0px;
+    vertical-align: middle; 
+}
+
+input[type='radio']+label {
+	margin: 0px 15px 0px -3px;
+    vertical-align: middle; 
+}
+
+/*셀렉트박스*/
+select {
+	appearance: listbox; 
+	width: 100%;
+	height: 40px; 
+	padding: 0px 5px 0px 5px; 
+	box-sizing: border-box; 
+	font-size: 16px; 
+	border: 1px solid #767676; 
+	cursor: pointer;
+}
+
+select:focus { outline: none; border: 1px solid #0075FF; }
+
+/*텍스트에어리어*/
+textarea { 
+	width: 100%; height: 100%; 
+	padding: 10px 10px 10px 10px; 
+	box-sizing: border-box; 
+	font-size: 16px; 
+	font-family: "맑은 고딕";
+	border: 1px solid #767676; 
+}
+textarea:focus { outline: none; border: 1px solid #0075FF; }
+
+
+
+/*********************************************************************
+ 테이블
+**********************************************************************/
+table { width: 100%; } 
+
+tr>th,  tr>td  { 
+	height: 45px; 
+	padding: 3px 10px 3px 10px;
+	border-top: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+	text-align: center; 
+	vertical-align: middle; 
+}
+
+tr>th {	background-color: #E8EAED; }
+
+/*페이징 버튼*/
+#paging ul {
+	padding: 10px 0px 10px 0px;
+
+}
+#paging ul {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+} 
+
+#paging ul>li {
+	margin: 0px 0px 0px -1px;
+	border: 1px solid #767676;
+}
+
+#paging ul>li:first-child {
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+
+#paging ul>li:last-child {
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+
+#paging ul>li>a {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	padding: 5px;
+	text-align: center;
+} 
+
+#paging ul>li>a.active {
+	border: 1px solid #092050;
+	background: linear-gradient(to bottom right, #092050,#5175A4);
+	color: #ffffff;
+}
 

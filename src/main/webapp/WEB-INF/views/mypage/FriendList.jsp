@@ -45,7 +45,7 @@
 		                        <th>삭제</th>
 		                    </tr>
 		                </thead>
-		                <c:forEach var="" items="">			             
+		                <%-- <c:forEach var="" items=""> --%>            
 				                <tbody>
 				                    <tr>
 				                        <td>강동구일짱</td>
@@ -56,7 +56,7 @@
 				                        <td><button type="button" class="del">삭제</button></td>
 				                    </tr>		                    
 				                </tbody>
-		                </c:forEach>
+		             <%--    </c:forEach> --%>
 		            </table>
 		            
 		        </div>

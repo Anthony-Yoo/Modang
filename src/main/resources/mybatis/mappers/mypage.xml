@@ -8,7 +8,9 @@
 			select  USERNO,
 			        NICK,        
 			        AVERAGE,
-			        PROFILEIMAGE
+			        PROFILEIMAGE,			        
+			        extract(year from RECENTLOGONTIME) ||'/'|| extract(month from RECENTLOGONTIME) ||'/'|| extract(day from RECENTLOGONTIME) 
+					as RECENTLOGONTIME
 			from users
 			where USERNO = #{userNo}	
 		]]>		
@@ -16,32 +18,25 @@
 	<!-- 최근 3게임 플레이리스트 -->
 	<select id="selectPlayListRank3" parameterType="int" resultType="com.modang.vo.RecordUserVo">  
 	    <![CDATA[
-	    	select  ur.USERNO,
-			        ur.NICK,        
-			        ur.AVERAGE,			             
-			        ur.PROFILEIMAGE,
-			        pl.PLAYNO,        
-			        pl.GAMENO,
-			        pl.PLAYTIME,
-			        pl.RECORD,
-			        pl.CURRENTAVERAGE,
-			        pl.ACTIVEAVERAGE
-			from plays pl,
-			     users ur
-			where pl.gameno in ( select ort.gameNo
-			                     from (  select  rownum rn,
-			                                     ot.gameNo
-			                             from (  select g.GAMENO
-			                                     from games g, users u, plays p
-			                                     where p.USERNO = u.USERNO
-			                                     AND p.gameno = g.gameno
-			                                     AND u.userno = #{userNo}
-			                                     ORDER BY g.GAMENO DESC) ot
-			                          )ort
-		                    	 where rn >=1
-			                     and rn<=3
-			                   )
-			AND ur.userno = pl.userno     
+	    	select  DISTINCT
+			        ur.USERNO,
+			        ur.NICK		       
+						from plays pl,
+						     users ur
+						where pl.gameno in ( select ort.gameNo
+						                     from (  select  rownum rn,
+						                                     ot.gameNo
+						                             from (  select g.GAMENO
+						                                     from games g, users u, plays p
+						                                     where p.USERNO = u.USERNO
+						                                     AND p.gameno = g.gameno
+						                                     AND u.userno = #{userNo}
+						                                     ORDER BY g.GAMENO DESC) ot
+						                          )ort
+					                    	 where rn >=1
+						                     and rn<=3
+						                   )
+						AND ur.userno = pl.userno      
 	    ]]>
 	</select>
 	<!-- 최근 플레이 정보 확인 -->
@@ -110,16 +105,19 @@
 			select  p.PLAYNO,
 			        u.NICK,
 			        u.Average,
+                    p.record,
 			        NVL(trunc(p.PLAYTIME/3600)||':'||
 	                        lpad(trunc(mod(p.PLAYTIME,3600)/60),2,'0')||':'||
 	                        lpad(mod(mod(p.PLAYTIME,3600),60),2,'0'),0)  as PLAYTIME,
 			        u.userNo,
 			        NVL(trunc(tpt.totalPlayTime/3600)||':'||
 	                        lpad(trunc(mod(tpt.totalPlayTime,3600)/60),2,'0')||':'||
-	                        lpad(mod(mod(tpt.totalPlayTime,3600),60),2,'0'),0) as totalGameTime,
-			        round(twc.winCount/tgc.totalCount,2) as totalWinRate,
+	                        lpad(mod(mod(tpt.totalPlayTime,3600),60),2,'0'),0) as totalPlayTime,
+			        NVL(round(twc.winCount/tgc.totalCount,2),0) as totalWinRate,
+                    NVL(round((tgc.totalCount-tlc.loseCount)/tgc.totalCount,2),0) as totalCommRate,
 			        tgc.totalCount as totalCountGame,
-			        twc.winCount as totalCountWinGame
+			        NVL(twc.winCount,0) as totalCountWinGame,
+                    NVL(tlc.loseCount,0) as totalCountLoseGame
 			from plays p,
 			     users u,
 			     games g,
@@ -130,26 +128,41 @@
 			     
 			     (select p.userNo, count(PlayNo) totalCount
 			      from plays p,
-			           games g    
+			           games g,
+                       users u
 			      where p.gameno = g.gameno
+                  and p.CURRENTAVERAGE = u.AVERAGE
 			      and g.gamestatus = 1
 			      group by p.userNo) tgc,
 			     
 			     (select p.userNo, count(PlayNo) winCount
 			      from plays p,
-			           games g    
+			           games g,
+                       users u
 			      where p.gameno = g.gameno
+                  and p.CURRENTAVERAGE = u.AVERAGE
 			      and g.gamestatus = 1
 			      and p.record=1
-			      group by p.userNo) twc 
+			      group by p.userNo) twc, 
+                  
+                (select p.userNo, count(PlayNo) loseCount
+			      from plays p,
+			           games g,
+                       users u
+			      where p.gameno = g.gameno
+                  and p.CURRENTAVERAGE = u.AVERAGE
+			      and g.gamestatus = 1
+			      and p.record = g.MEMBERNUM
+			      group by p.userNo) tlc 
 			      
-			where p.USERNO = u.USERNO
-			AND p.gameno = g.gameno
-			and tpt.userNo = p.userNo
-			and tgc.userNo = p.userNo
-			and twc.userNo = p.userNo			
-			
-			AND g.gameNo = #{gameNo}
+				where p.USERNO = u.USERNO
+				AND p.gameno = g.gameno
+				and tpt.userNo = p.userNo
+				and tgc.userNo = p.userNo
+				and twc.userNo(+) = p.userNo
+	            and tlc.userNo(+) = p.userNo           
+	            
+				AND g.gameNo = #{gameNo}
 		
 		]]>
 	
