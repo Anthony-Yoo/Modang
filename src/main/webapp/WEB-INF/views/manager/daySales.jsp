@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/managerdefault.css" />
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 	<div id="page-wrapper">
@@ -60,71 +61,68 @@
 		<section id="content">
 			<div class="container">
 				<div class="row">
-					<div class="col-12">
+					<div class="col-8">
 
 						<!-- List -->
 						<section>
 							<header>
-								<h2 class="float-left">테이블 매출</h2>
+								<h2 class="float-left">일별 매출</h2>
 								
-								<%-- <form name="" class="form-inline float-right mb-4" action="${pageContext.request.contextPath}/manager/daySales" method="get" >
-									<label class="mr-2">테이블 번호</label>
-									<div class="col-4">
-										<input type="text" name="tableno" class="form-control form-control-sm" maxlength="10" />
-									</div>
+								 <form name="" class="form-inline float-right mb-4" action="${pageContext.request.contextPath}/manager/daySales" method="get" >
 									<label class="mr-2">날짜</label>
-										<input type="date" name="mindate" class="form-control form-control-sm" maxlength="20" />
+										<input type="date" name="minDate" class="form-control form-control-sm" maxlength="20" />
 									<label class="mr-1">~</label>
-										<input type="date" name="maxdate" class="form-control form-control-sm" maxlength="20" />
+										<input type="date" name="maxDate" class="form-control form-control-sm" maxlength="20" />
 									<button type="submit" class="btn btn-sm btn-dark">검색</button>
-								</form> --%>
+								</form> 
 							</header>
 							
 							<table class="table table-striped">
 								<thead class="thead-dark">
 									<tr>
-										<th>테이블 번호</th>
-										<th>종류</th>
-										<th>시작시간</th>
-										<th>종료시간</th>
-										<th>사용시간</th>
-										<th>요금제</th>
-										<th>결제금액</th>
-										<th>입금금액</th>
-										<th>결제방법</th>
-										<th>상태</th>
+										<th>날짜</th>
+										<th>게임횟수</th>
+										<th>카드매출</th>
+										<th>카드입금</th>
+										<th>현금매출</th>
+										<th>현금입금</th>
+										<th>총매출</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td>1</td>
-										<td>4구</td>
-										<td>00:00</td>
-										<td>00:00</td>
-										<td>00:00</td>
-										<td>후불제</td>
-										<td>10,000</td>
-										<td>10,000</td>
-										<td>카드</td>
-										<td><span class="badge badge-success">완료</span></td>
+										<td>08/05</td>
+										<td>20회</td>
+										<td>156,000</td>
+										<td>150,000</td>
+										<td>99,000</td>
+										<td>95,000</td>
+										<td>245,000</td>
 									</tr>
 									<tr>
-										<td>2</td>
-										<td>4구</td>
-										<td>00:00</td>
-										<td>00:00</td>
-										<td>00:00</td>
-										<td>후불제</td>
-										<td>10,000</td>
-										<td>10,000</td>
-										<td>카드</td>
-										<td><span class="badge badge-danger">미수</span></td>
+										<td>08/06</td>
+										<td>25회</td>
+										<td>176,000</td>
+										<td>170,000</td>
+										<td>129,000</td>
+										<td>120,000</td>
+										<td>290,000</td>
 									</tr>
+																																														
 								</tbody>
 							</table>
-							
 						</section>
-
+					</div>
+					<div class="col-4">
+						<section>
+							<header>
+								<h2>최근 일주일 매출 그래프</h2>
+							</header>
+							
+							<div>
+								<canvas id="chart-bars" width="320" height="520"></canvas>
+							</div>
+						</section>
 					</div>
 				</div>
 			</div>
@@ -134,4 +132,32 @@
 		<div id="copyright">&copy; modang. All rights reserved.</div>
 	</div>
 </body>
+<script type="text/javascript">
+$(function() {
+	
+	var barsChart = new Chart(document.getElementById('chart-bars').getContext('2d'), {
+		type: 'bar',
+		data: {
+			labels: ['07월 01일', '07월 02일', '07월 03일', '07월 04일', '07월 05일', '07월 06일', '07월 07일'],// <- 세로축 데이터
+			datasets: [{
+				label: '카드매출',
+				data: [200000,250000,230000,220000,250000,270000,260000], // <-- 가로축 데이터
+				borderColor: '#FFCE56',
+				backgroundColor: '#FFCE56',
+				fontSize: 14
+		}, {
+				label: '현금매출',
+				data: [150000,170000,130000,140000,160000,120000,150000], // <-- 가로축 데이터
+				borderColor: '#4BC0C0',
+				backgroundColor: '#4BC0C0',
+				fontSize: 14
+			}]
+		},
+		options: {
+			indexAxis: 'y',
+			responsive: false,
+		},
+	});
+});
+</script>
 </html>

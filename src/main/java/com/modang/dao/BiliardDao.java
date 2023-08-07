@@ -109,6 +109,11 @@ public class BiliardDao {
 		return salesList;
 	}
 	
+	/* 일별매출 페이지--------------------------------------------------------------------------------- */
+	public void selectDaySales(TableGamesVo tableGamesVo) {
+		System.out.println("BiliardDao.selectDaySales()");
+		System.out.println(tableGamesVo);
+	}
 	
 	
 	/* 요금테이블 페이지--------------------------------------------------------------------------------- */

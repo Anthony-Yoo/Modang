@@ -27,11 +27,7 @@ public class BiliardController {
 	@Autowired
 	private BiliardService biliardService;
 
-	/*
-	 * 테이블현황
-	 * 페이지--------------------------------------------------------------------------
-	 * ------
-	 */
+	/* 테이블현황 페이지-------------------------------------------------------------------*/
 	/* 테이블 현황 - 하나의 게임정보의 결제금액 가져오기 */
 	@ResponseBody
 	@RequestMapping(value = "/gamesPaymoney", method = { RequestMethod.GET, RequestMethod.POST })
@@ -111,7 +107,6 @@ public class BiliardController {
 			int biliardNo = loginManager.getbiliardNo();
 
 			List<CueTableVo> cueTableList = biliardService.tableList(biliardNo);
-			// List<TableGamesVo> gamesList =biliardService.getGames(biliardNo);
 			if (cueTableList != null) {
 				model.addAttribute("cueTableList", cueTableList);
 			}
@@ -123,11 +118,7 @@ public class BiliardController {
 		}
 	}
 
-	/*
-	 * 테이블 매출
-	 * 페이지--------------------------------------------------------------------------
-	 * ------
-	 */
+	/* 테이블 매출페이지----------------------------------------------------------------- */
 	/* 테이블 매출검색 */
 	@RequestMapping(value = "/tableSales", method = { RequestMethod.GET, RequestMethod.POST })
 	public String tableSales(@ModelAttribute TableGamesVo tableGamesVo, HttpSession session, Model model) {
@@ -143,36 +134,37 @@ public class BiliardController {
 		System.out.println(cuetableList);
 		model.addAttribute("cuetableList", cuetableList);
 		
-		/*
-		System.out.println("BiliardController.tableSales()");
-		System.out.println("테이블번호: " + tableNo); 
-		System.out.println("최소날짜: " + minDate); 
-		System.out.println("최대날짜: " + maxDate);
-		*/
-		
 		List<TableGamesVo> salesList = biliardService.searchTable(tableGamesVo);
 		model.addAttribute("salesList",salesList);
 		
 		return "/manager/tableSales";
 	}
 
-	/*
-	 * 일별 매출
-	 * 페이지--------------------------------------------------------------------------
-	 * -------
-	 */
+	/* 일별 매출 페이지----------------------------------------------------------------------------- */
 	@RequestMapping(value = "/daySalesForm", method = { RequestMethod.GET, RequestMethod.POST })
-	public String daySales() {
-		System.out.println("BiliardController.daySales()");
+	public String daySalesForm() {
+		System.out.println("BiliardController.daySalesForm()");
 
 		return "/manager/daySales";
 	}
+	
+	@RequestMapping(value = "/daySales", method = { RequestMethod.GET, RequestMethod.POST })
+	public String daySales(@ModelAttribute TableGamesVo tableGamesVo,HttpSession session ) {
+		System.out.println("BiliardController.daySales()");
+		System.out.println("--------일별매출검색-------");
+		
+		ManagerVo loginManager = (ManagerVo) session.getAttribute("loginManager");
+		int biliardNo = loginManager.getbiliardNo();
+		System.out.println("당구장넘버: "+biliardNo);
+		
+		tableGamesVo.setBiliardNo(biliardNo);
+		biliardService.daySales(tableGamesVo);
+		
+		return "/manager/daySales";
+		
+	}
 
-	/*
-	 * 요금테이블
-	 * 페이지--------------------------------------------------------------------------
-	 * -------
-	 */
+	/* 요금테이블 페이지-------------------------------------------------------------------------- */
 	/* 요금테이블 수정 */
 	@RequestMapping(value = "/pricePolicy", method = { RequestMethod.GET, RequestMethod.POST })
 	public String pricePolicy(@ModelAttribute TariffVo tariffVo) {

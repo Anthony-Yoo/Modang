@@ -118,6 +118,14 @@ public class BiliardService {
 		List<TableGamesVo> salesList = biliardDao.selectOneTableSales(tableGamesVo);
 		return salesList;
 	}
+	/* 일별 매출 페이지-------------------------------------------------------------------------------- */
+	
+	public void daySales(TableGamesVo tableGamesVo) {
+		System.out.println("BiliardService.daySales()");
+		biliardDao.selectDaySales(tableGamesVo);
+		
+	}
+	
 	
 	/* 요금테이블 페이지--------------------------------------------------------------------------------- */
 	/* 요금테이블 - 요금정보 가져오기 */
