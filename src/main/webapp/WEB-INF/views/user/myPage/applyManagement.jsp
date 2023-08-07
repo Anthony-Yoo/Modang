@@ -292,6 +292,22 @@
 	<!-- 삭제폼 모달창 -->
 </body>
 <script type="text/javascript">
+$("#confirmation").on("click", function(){
+	event.preventDefault();
+	console.log("클릭 됨?")
+	var boardNo = $(this).data("boardNo");
+	console.log(boardNo);
+	window.location.href = "confirmation?boardNo="+boardNo;
+})
+
+$("#dismiss").on("click", function(){
+	event.preventDefault();
+	console.log("클릭 됨?");
+	var boardNo = $(this).data("boardNo");
+	console.log(boardNo);
+	window.location.href = "dismiss?boardNo="+boardNo;
+})
+
 //관리 모달창 호출 버튼 --> 모달창 뜸
 $("#list").on("click", ".btnModal", function() {
 	console.log("모달창 호출버튼 클릭");
@@ -326,7 +342,7 @@ $("#list").on("click", ".btnModal", function() {
 		}
 	});
 	
-	/* 버튼이벤트 구현을 위한 코드 */
+	/* 확정하기, 해산하기 버튼이벤트 구현 여부를 위한 코드 */
 	$.ajax({
 		url : "${pageContext.request.contextPath}/board/checkBStatus",
 		type : "get",
@@ -339,8 +355,11 @@ $("#list").on("click", ".btnModal", function() {
 			console.log("테스트");
 			console.log(jsonResult.data.status); 
 			if (jsonResult.data.status === 1) {
+			    
                 $("#decide").hide();
             } else {
+				$("#confirmation").data("boardNo", boardNo);
+			    $("#dismiss").data("boardNo", boardNo);
                 $("#decide").show();
            	}
 		 },
@@ -374,11 +393,13 @@ $(document).on("click", ".applyCheck button", function () {
       	console.log("거절 버튼을 클릭한 경우, 해당 사용자 번호:", attendNo, boardNo);
     	  // 여기에 거절 버튼을 클릭한 경우의 처리 로직을 추가하세요.
     }
+    
     var AttendUsersVo={
     		buttonClass: buttonClass,
     		attendNo: attendNo,
     		boardNo: boardNo
     }
+    
     var str = JSON.stringify(AttendUsersVo);
 	
 	$.ajax({

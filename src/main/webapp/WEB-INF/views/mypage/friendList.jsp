@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
-<title>modang 마이페이지 친구목록</title>
+	<title>modang 마이페이지 친구목록</title>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>	
 	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
     <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
     <link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
@@ -28,8 +28,8 @@
 		            <input type="search" id="seardid" placeholder="회원 아이디 입력">
 		            <button type="button" class="search" id="searchbtn">검색</button>
 		            
-		            <div class="searchList">
-		                <!--검색한 아이디가 있는 경우 나오는 리스트-->	             
+		            <div class="searchList">	
+		                <!--검색한 아이디가 있는 경우 나오는 리스트-->
 		            </div>
 		        </div>
 		        <h2>친구 목록</h2>
@@ -44,21 +44,31 @@
 		                        <th>최근 로그인</th>
 		                        <th>삭제</th>
 		                    </tr>
-		                </thead>
-		                <c:forEach var="" items="">			             
-				                <tbody>
-				                    <tr>
-				                        <td>강동구일짱</td>
-				                        <td>100</td>
-				                        <td>120</td>
-				                        <td><strong>3</strong>승<strong>2</strong>패</td>
-				                        <td><strong>48</strong>일전</td>
-				                        <td><button type="button" class="del">삭제</button></td>
-				                    </tr>		                    
-				                </tbody>
-		                </c:forEach>
-		            </table>
-		            
+		                </thead>		                        
+				        <tbody>
+			                <c:forEach var="friendInfo" items="${friendList}">  
+			                    <tr>
+			                        <td>${friendInfo.nick}</td>
+			                        <td>${friendInfo.average}</td>
+		                        	<c:if test ="${friendInfo.recommStatus == 0}">					                      
+				                        <td>물다마</td>
+			                        </c:if>
+			                        <c:if test ="${friendInfo.recommStatus == 1}">					                       
+				                        <td>적정다마</td>
+			                        </c:if>
+			                         <c:if test ="${friendInfo.recommStatus == 2}">					                     
+				                        <td>짠다마</td>
+			                        </c:if>
+			                        <c:if test ="${friendInfo.recommStatus == 3}">					                       
+				                        <td>새내기</td>
+			                        </c:if>
+		                        	<td><strong>${friendInfo.winCnt}</strong>승<strong>${friendInfo.loseCnt}</strong>패</td>
+			                        <td><strong>${friendInfo.recentDays}</strong>일전</td>
+			                        <td><button type="button" class="del">삭제</button></td>
+		                    	</tr>
+			                  </c:forEach>	                    
+				          </tbody>
+		            </table>		            
 		        </div>
 		    </div>
     	</div>
@@ -107,17 +117,22 @@ $('#searchbtn').on("click",function(){
 		console.log("test입니다." + id);			
 	};		
 });   
-function renderEach(playerVo) {	  	
-	$.each(playerVo,function(key,value){
+function renderEach(playlist) {	  	
 	var src = "";
-	src += '	<ul>';
-	src += '		<li>';
-	src += '			<span>' + value.nick + '</span>';
-	src += '			<button type="button" class="addPlayer add" data-userno="'+ value.userNo +'" data-no="'+ value.userNo +'" data-nick="'+ value.nick +'" data-average="'+ value.average +'" >추가</button>';
-	src += '		</li>';
-	src += '	</ul>';
-	$(".searchList").append(src);
+	src += '<ul>';
+	
+	$.each(playlist,function(key,value){
+		
+		src += '<li>';
+		src += '	<span>' + value.nick + '</span>';
+		src += '	<button type="button" class="addPlayer add" data-userno="'+ value.userNo +'" data-no="'+ value.userNo +'" data-nick="'+ value.nick +'" data-average="'+ value.average +'" >추가</button>';
+		src += '</li>';
 	});
+
+	src += '</ul>';
+	$(".searchList").append(src);
 };	
+
+
 </script>
 </html>

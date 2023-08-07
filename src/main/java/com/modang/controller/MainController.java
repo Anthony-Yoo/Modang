@@ -41,10 +41,4 @@ public class MainController {
 		return "redirect:/";		
 	}
 	
-	/*모당 당구장 찾기*/
-	@RequestMapping("/modangFind")
-	public String modangFind() {
-		System.out.println("MainController.modangFind()");
-		return "main/modangFind";
-	}
 }

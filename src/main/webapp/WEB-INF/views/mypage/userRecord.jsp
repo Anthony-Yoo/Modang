@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>modang 유저 전적보기</title>
 	<!-- jquery -->   
 	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
@@ -39,6 +39,8 @@
                     <span>닉네임 : <strong>${myUserVo.nick}</strong></span>
                     <br>
                     <span>현재다마 : <strong>${myUserVo.average}</strong></span>
+                    <br>
+                    <span>최근접속일 : <strong>${myUserVo.recentLogonTime}</strong></span>
                 </div>
             </div>
             <div class="userRecent center">
@@ -91,15 +93,19 @@
                     <li>
                     	<c:if test ="${CurrentRecordVo.recommStatus == 0}">
 	                        <p>다마상태</p>
-	                        <span class="recommTxt">"물다마"</span>
+	                        <span class="recommTxt">물다마</span>
                         </c:if>
                         <c:if test ="${CurrentRecordVo.recommStatus == 1}">
 	                        <p>다마상태</p>
-	                        <span class="recommTxt">"적정다마"</span>
+	                        <span class="recommTxt">적정다마</span>
                         </c:if>
                          <c:if test ="${CurrentRecordVo.recommStatus == 2}">
 	                        <p>다마상태</p>
-	                        <span class="recommTxt">"짠다마"</span>
+	                        <span class="recommTxt">짠다마</span>
+                        </c:if>
+                        <c:if test ="${CurrentRecordVo.recommStatus == 3}">
+	                        <p>다마상태</p>
+	                        <span class="recommTxt">새내기</span>
                         </c:if>
                     </li>
                     <li>
@@ -139,13 +145,13 @@
                         <th>No.</th>
                         <th>지역</th>
                         <th>당구장</th>
-                        <th>Table</th>
-                        <th>Type</th>
+                        <th>당구대</th>
+                        <th>게임종류</th>
                         <th>인원</th>
-                        <th>Date</th>
-                        <th>GameTime</th>
-                        <th>Record</th>
-                        <th>GameFee</th>
+                        <th>게임일자</th>
+                        <th>게임시간</th>
+                        <th>등수</th>
+                        <th>게임요금</th>
                     </tr>
                 </thead>
                 <tbody id="gameInfo">
@@ -282,11 +288,21 @@ function renderEach(playlist) {
 	src += '	<td>' + cnt + '</td>';
 	src += '	<td>' + data.nick +'</td>';
 	src += '	<td>' + data.average +'</td>';
-	src += '	<td>' + data.recommAverage +'</td>';
+	
+	if(data.recommStatus == 0) {
+		src += '	<td>물다마</td>';	
+	}else if(data.recommStatus == 1) {
+		src += '	<td>적정다마</td>';	
+	}else if(data.recommStatus == 2) {
+		src += '	<td>짠다마</td>';	
+	}else if(data.recommStatus == 3) {
+		src += '	<td>새내기</td>';	
+	}
+
 	src += ' 	<td>' + data.playTime +'</td>';
 	src += '	<td>' + data.record +'</td>';
 	src += '	<td>' + data.totalWinRate +'</td>';
-	src += '	<td>' + data.totalGameTime +'</td>';
+	src += '	<td>' + data.totalPlayTime +'</td>';
 	src += '</tr>';		
 	$("#playInfo").append(src);
 	});

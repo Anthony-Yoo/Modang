@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0, minimum-scale=1.0">
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 <script src="https://tistory4.daumcdn.net/tistory/3134841/skin/images/confetti_v2.js"></script>
 <title>모두의 당구장-결과보기</title>
@@ -147,6 +148,17 @@ $("#open").on('click',function(){
 $("#close").on('click',function(){
 	closeFullScreenMode()
 });
+
+/* 빵빠래 이벤트----------------------------------------------------------------- */
+//페이지 로딩이 완료된 후 자동으로 스타트 버튼을 클릭하는 함수
+function clickStartButton() {
+	 var startButton = document.getElementById('startButton');
+	 if (startButton) {
+	     startButton.click(); // 버튼 클릭
+	 }
+}
+
+window.onload = clickStartButton;
 /* -------------------------------------------------------------------- */
 
 /* 게임정보 저장 */
@@ -269,19 +281,8 @@ function renderEach(playerList) {
 		$("#playTime-"+value.record).html(timeVo.th + ":" + timeVo.tm);
 	});
 	 
-	 
-	 
 }
 
-// 페이지 로딩이 완료된 후 자동으로 스타트 버튼을 클릭하는 함수
-function clickStartButton() {
-    var startButton = document.getElementById('startButton');
-    if (startButton) {
-        startButton.click(); // 버튼 클릭
-    }
-}
-
-window.onload = clickStartButton;
 
 </script>
 </html>

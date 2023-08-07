@@ -22,9 +22,41 @@
 				font-family: 'Noto Sans KR', sans-serif;
 			};
 
-/*셀렉트볼*/
+/* 테이블선택화면(index) */
 .imagebox >a{font-size: 200px; display: inline-block; width: 100%; height: 100%;text-align: center;padding-top: 15%;}
-			
+.tableStatus1 {width: 250px;height: 180px;outline: 2px solid #ffffffb3;background-color: #f1920f;border-radius: 10px; margin-top: 3%;margin-left: 3.3%;}
+.tableStatus2 {width: 250px;height: 180px;outline: 2px solid #ffffffb3;background-color: #f1b412;border-radius: 10px; margin-top: 3%;margin-left: 3.3%;}
+.tableStatus3 {width: 250px;height: 180px;outline: 2px solid #ffffffb3;background-color: #2b9b32;border-radius: 10px; margin-top: 3%;margin-left: 3.3%;}			
+.title{width:100%;height: 5%;text-align: center; font-size: 40px;margin-top: 3%;color: white;}
+
+/* 친구추가(memberForm) */
+#gameType{display:inline-block;width:100%;height: 2.1%;color: white; margin-top: 10px;margin-left: 50px;
+    font-size: 20px;}
+.cardlistBox{width:29%;height: 595px; background-color: white; margin-top: 3%; margin-left: 3.5%; border-radius: 10px;}
+.findBox{width:29%;height: 595px; background-color: white; margin-top: 3%; margin-left: 3%; border-radius: 10px;}
+.favoriteBox{width:29%;height: 595px; background-color: white; margin-top: 3%; margin-left: 3%; border-radius: 10px;}
+#cardlist {width : 300px;margin-left: 7%;}
+#findid {width : 300px;margin-left: 7%;}
+#favoriteList{width: 298px;margin-left: 7%;height: 500px}
+.addList{width:100%;margin-top: 5px;height: 400px;}
+#idtext{width:180px;height: 50px;}
+#idfind{margin-left: 10px; width: 96px; height: 50px;display:inline-block;font-weight:400;color:#fff;text-align:center;vertical-align:middle;user-select:none;background:#45a8d6;border:none;font-size:1.25rem;line-height:1.5rem;border-radius:.25rem;cursor:pointer;}
+#playerForm{width:100%;height:100%;}
+#playerTable{width:100%;}
+.confirmBody{display: inline-block;margin-top: 5px;height: 90px; background-color: #eeeeee;border: 2px solid; border-color: white; border-radius: 10px;width: 297px;}
+.addUserBox{display: inline-block; width: 100%;height: 30px;margin-top: 10px;}
+.gageBox{display: inline-block; width: 100%;height: 30px;}
+#confirm{margin-top: 5px;width: 96px; height: 50px;display:inline-block;font-weight:400;color:#fff;text-align:center;vertical-align:middle;user-select:none;background:#45a8d6;border:none;font-size:1.25rem;line-height:1.5rem;border-radius:.25rem;cursor:pointer;}
+.averageTd{width:170px;}
+.btnTd{width:70px;}
+.nameTd{margin-left:10px;width:100px;margin-top: 3px;}
+.averageTd1{width:170px;}
+.btnTd1{width:70px;}
+.nameTd1{margin-left:10px;width:100px;margin-top: 3px;}
+.btnBox{margin-top:10px;}
+#favoriteTable{width: 297px;height: auto;}
+.favoriteUser{display: inline-block;width:298px;height: 35px;border: 1px solid #eeeeee;margin-top: 5px;background-color: #9dd6f4;padding-top: 10px;}
+
 /* 점수판 */						
 .top {height: 120px;}
 .mid {height: 615px;margin-left: 1px;}
@@ -101,3 +133,7 @@ img {display: inline-block;}
 #open{float: left;color: transparent;border-color: transparent;background: transparent;}
 #close{float: right;color: transparent;border-color: transparent;background: transparent;}
 .imagebox>a{font-size:200px;display: inline-block;width: 100%;text-align: center; margin-top: 15%;}
+#keyin{margin-top: -15px;margin-left: 20px;width: 160px; height: 60px;display:inline-block;font-weight:400;color:#fff;text-align:center;vertical-align:middle;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background:#45a8d6;border:none;padding:.5rem 1.25rem;font-size:1.25rem;line-height:1.5rem;border-radius:.25rem;cursor:pointer;}
+#keyNum{width:200px;height: 60px;font-size: 2.25rem;text-align: center;}
+.failmsg{display: inline-block;margin-top: 20px;width: 350px;text-align: center;color: white;}
+.rangeBox{width:300px;}

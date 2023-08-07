@@ -56,49 +56,16 @@
                     </div>
                 </div>
                 <div class="modang_list">
-                    <ul>
-                        <li class="modangList">
-                        	<img src="${pageContext.request.contextPath}/assets/images/room.jpg" alt="오리">
-                            <div class="txt">
-                                <p class="repname">☆☆당구장</p>
-                                <p class="addr">서울시 강동구 천호대로 1027 5층에서 썩어가는</p>
-                            </div>
-                        </li>
-                        <li class="modangList">
-                        	<img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="모당">
-                            <div class="txt">
-                                <p class="repname">내가짱당구장</p>
-                                <p class="addr">서울시 강동구 천호대로 1027 5층 하이미디어 학원 너무 춥다</p>
-                            </div>
-                        </li>
-                        <li class="modangList">
-		 					<img src="${pageContext.request.contextPath}/assets/images/smoking.jpg" alt="오리">                       
-                            <div class="txt">
-                                <p class="repname">개똥당구장</p>
-                                <p class="addr">서울 강동구 진황도로 5</p>
-                            </div>
-                        </li>
-                        <li class="modangList">
- 							<img src="${pageContext.request.contextPath}/assets/images/modang_logo.png" alt="오리">                       
-                            <div class="txt">
-                                <p class="repname">위아일랜드당구장</p>
-                                <p class="addr">서울 강동구 천호대로157길 18</p>
-                            </div>
-                        </li>
-                        <li class="modangList">
-                        	<img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="오리">
-                            <div class="txt">
-                                <p class="repname">키키당구장</p>
-                                <p class="addr">서울시 강동구 천호동 453-8</p>
-                            </div>
-                        </li>
-                        <li class="modangList">
-                        	<img src="${pageContext.request.contextPath}/assets/images/room.jpg" alt="오리">
-                            <div class="txt">
-                                <p class="repname">라인당구장</p>
-                                <p class="addr">서울 강동구 천호옛길 82</p>
-                            </div>
-                        </li>
+                    <ul id="modanglist">
+                    	<c:forEach var="biliVo" items="${modanglist}">
+	                        <li class="modangList">
+	                        	<img src="${pageContext.request.contextPath }/upload/${biliVo.imageFile1}" alt="당구장이미지">
+	                            <div class="txt">
+	                                <p class="repname">${biliVo.biliardName}</p>
+	                                <p class="addr">${biliVo.biliardAddress1} ${biliVo.biliardAddress2}</p>
+	                            </div>
+	                        </li>
+                        </c:forEach>                        
                     </ul>
                 </div>
             </div>
@@ -164,5 +131,8 @@
 	        $('#detailModal').modal('show');
 	    });
 	});
+</script>
+<script>
+   
 </script>
 </html>

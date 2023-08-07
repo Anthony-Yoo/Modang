@@ -81,10 +81,10 @@
 	<!-- 회원가입 id 중복체크 -->
 	<select id="selectManagerById" parameterType="String" resultType="com.modang.vo.ManagerVo">
 		<![CDATA[
-			select biliardNo,
+			select  biliardNo,
 					id
-					from biliards
-					where id=#{id}
+			from biliards
+			where id = #{id}
 		]]>
 	</select>
 	
@@ -100,5 +100,60 @@
 					where id=#{id} and passwd=#{passwd}
 		]]>
 	</select>
+	<!-- 당구장 정보 수정 폼 -->
+	<select id="selectManagerByNo" parameterType="int" resultType="com.modang.vo.ManagerVo">
+		<![CDATA[
+			select biliardNo,
+       				id,
+        			passwd,
+        			companyNo,
+        			repName,
+        			biliardName,
+        			postcode,
+        			biliardAddress1,
+        			biliardAddress2,
+        			biliardPhone,
+        			imageFile1,
+        			imageFile2,
+        			imageFile3,
+        			time1,
+        			time2,
+        			parking,
+        			bdComment
+			from biliards
+			where biliardNo =#{biliardNo}
+		]]>
+	</select>
+	<!-- 회원정보 수정  -->
+	<update id="updateManagerByNo" parameterType="com.modang.vo.ManagerVo">
+		<![CDATA[
+			update biliards set	passwd = #{passwd},
+        						companyNo = #{companyNo},
+        						repName = #{repName},
+        						biliardName = #{biliardName},
+        						postcode = #{postcode},
+        						biliardAddress1 = #{biliardAddress1},
+        						biliardAddress2 = #{biliardAddress2},
+        						biliardPhone = #{biliardPhone},
+					           	imageFile1 = #{imageFile1},
+					           	imageFile2= #{imageFile2},
+					           	imageFile3 = #{imageFile3},
+        						time1 = #{time1},
+        						time2 = #{time2},
+        						parking = #{parking},
+        						bdComment = #{bdComment}
+						where biliardNo =#{biliardNo} and id = #{id}
+		]]>
+	</update>
 	
+	<!-- *당구장 찾기-모당리스트  -->
+	<select id="selectModanglist" resultType="com.modang.vo.ManagerVo">
+		<![CDATA[
+			select  biliardName,
+					biliardAddress1,
+					biliardAddress2,
+					imageFile1
+			from BILIARDS
+		]]>
+	</select>
 </mapper>

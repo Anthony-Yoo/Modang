@@ -146,7 +146,7 @@ public class BiliardController {
 
 	/* 테이블 매출검색 */
 	@RequestMapping(value ="/tableSales", method = { RequestMethod.GET, RequestMethod.POST })
-	public String tableSales(HttpSession session, @RequestParam String tableName, @RequestParam String minDate, 
+	public String tableSales(HttpSession session, @RequestParam int tableNo, @RequestParam String minDate, 
 			@RequestParam String maxDate, Model model) {
 		ManagerVo loginManager = (ManagerVo) session.getAttribute("loginManager");
 		int biliardNo = loginManager.getbiliardNo();
@@ -157,12 +157,12 @@ public class BiliardController {
 		model.addAttribute("cuetableList", cuetableList);
 
 		System.out.println("BiliardController.tableSales()");
-			System.out.println("테이블네임: "+tableName);
+			System.out.println("테이블번호: "+tableNo);
 			System.out.println("최소날짜: "+minDate);
 			System.out.println("최대날짜: "+maxDate);
 		
 		    TableGamesVo gamesVo = new TableGamesVo();
-			gamesVo.setTableName(tableName);
+			gamesVo.setTableNo(tableNo);
 			gamesVo.setMinDate(minDate);
 			gamesVo.setMaxDate(maxDate);
 		
@@ -206,16 +206,6 @@ public class BiliardController {
 		return "/manager/pricePolicy";
 	}
 
-	/* 관리자 설정 페이지-------------------------------------------------------------------------------- */
-	/* 관리자 설정폼 */
-	@RequestMapping(value = "/settingsForm", method = { RequestMethod.GET, RequestMethod.POST })
-	public String settingsForm(HttpSession session) {
-		System.out.println("BiliardController.settingsForm()");
-		
-		ManagerVo loginManager = (ManagerVo) session.getAttribute("loginManager");
-		biliardService.getbiliardInfo(loginManager);
 
-		return "/manager/settings";
-	}
 
 }
