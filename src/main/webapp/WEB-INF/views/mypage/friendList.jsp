@@ -136,6 +136,7 @@ function renderEach(playlist) {
 
 $(".searchList").on('click',".addPlayer",function(){
 	console.log("추가버튼 클릭!");
+	$(".searchList").empty();
 	var userNo = $(this).data('userno');
 	console.log("aJax 가기전 유져번호 : "+userNo);
 	let $addbtn = $(this);

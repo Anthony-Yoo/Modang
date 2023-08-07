@@ -5,39 +5,24 @@
 <head>
 <meta charset="UTF-8">
 <title>modang 카드추가</title>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>	
 	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
     <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
     <link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+	<c:import url="/WEB-INF/views/include/modangSiteHeader.jsp"></c:import>  
 	    <div class="main-Con">
         <div class="cardAdd left">
+        <c:import url="/WEB-INF/views/include/modangSideNav.jsp"></c:import>
             <h2>카드 추가</h2>
             <div class="searhId">
-                <input type="search" class="insertId" placeholder="아이디 입력">
-                <button type="button" class="del">검색</button>
-                <!--아이디검색- 하단 토글 리스트 팝업이든뭐든 공간 추가-->                <ul>
-                    <li>
-                        <span>oaaaaaa</span>
-                        <button type="button" class="del">추가</button>
-                    </li>
-                    <li>
-                        <span>ohYeah1111</span>
-                        <button type="button" class="del">추가</button>
-                    </li>
-                    <li>
-                        <span>orange</span>
-                        <button type="button" class="del">추가</button>
-                    </li>
-                    <li>
-                        <span>obbaYaSalido</span>
-                        <button type="button" class="del">추가</button>
-                    </li>
-                    <li>
-                        <span>ooooooooh</span>
-                        <button type="button" class="del">추가</button>
-                    </li>
-                </ul>
+                <input type="search" class="insertId" id="insertId" placeholder="아이디 입력">
+                <button type="button" class="del" id="searchbtn">검색</button>
+                <!--아이디검색- 하단 토글 리스트 팝업이든뭐든 공간 추가-->    
+                <div class="searchList">   
+                	<!--검색한 아이디가 있는 경우 나오는 리스트-->                 
+	        	</div>
             </div>
             <div class="callFriend">
                 <button type="button" class="call">친구목록 부르기</button>
@@ -76,29 +61,36 @@
             </div>
             <div class="List">
                 <form action="" method="">
-                    <p>멤버 카드</p>
-                    <label for="cardName">그룹명</label>
-                    <input type="text" id="cardName" class="cardName" placeholder="그룹명 입력">
-                    <ul><!--당구멤버 리스트는 최대 4명 // 
-                        4명이상 추가 시 "멤버는 4명까지 선택 가능합니당!" 팝업?-->
-                        <li>
-                            <span>당구의신</span>
-                            <button type="button" class="del">삭제</button>
-                        </li>
-                        <li>
-                            <span>천호동불주먹</span>
-                            <button type="button" class="del">삭제</button>
-                        </li>
-                        <li>
-                            <span>라면이먹고싶</span>
-                            <button type="button" class="del">삭제</button>
-                        </li>
-                        <li>
-                            <span>당구의신</span>
-                            <button type="button" class="del">삭제</button>
-                        </li>
-                    </ul>
-                    <button type="submit" class="call">멤버 확정하기</button>
+                	<fieldset>
+  						<legend>멤버 카드</legend>
+	                    <p>그룹명</p>
+	                    <input type="text" id="cardName" class="cardName" placeholder="그룹명 입력">
+	                    <p>게임선택</p>
+                    	<input type="radio" id="3ball" class="cardName" value="0">
+	                    <label for="3ball">3구</label>
+	                    <input type="radio" id="4ball" class="cardName" value="1">
+	                    <label for="4ball">4구</label>
+	                    <ul><!--당구멤버 리스트는 최대 4명 // 
+	                        4명이상 추가 시 "멤버는 4명까지 선택 가능합니당!" 팝업?-->
+	                        <li>
+	                            <span>당구의신</span>
+	                            <button type="button" class="del">삭제</button>
+	                        </li>
+	                        <li>
+	                            <span>천호동불주먹</span>
+	                            <button type="button" class="del">삭제</button>
+	                        </li>
+	                        <li>
+	                            <span>라면이먹고싶</span>
+	                            <button type="button" class="del">삭제</button>
+	                        </li>
+	                        <li>
+	                            <span>당구의신</span>
+	                            <button type="button" class="del">삭제</button>
+	                        </li>
+	                    </ul>
+	                    <button type="submit" class="call">멤버 확정하기</button>
+	            	</fieldset>
                 </form>
             </div>
         </div>
@@ -197,4 +189,63 @@
         </div>
     </div>
 </body>
+<script>
+$('#searchbtn').on("click",function(){
+    console.log("id검색 버튼 클릭"); 
+    $(".searchList").empty();
+   	var id = $("#insertId").val();		
+	console.log(id);
+	
+	$("#insertId").val("");
+	
+	if(id === "" || id=== null ){
+		console.log("id값이 없음");	
+		alert("값을 입력하세요");
+	}else{	
+	
+		$.ajax({			
+			url : "${pageContext.request.contextPath}/tablet/idfind",		
+			type : "post",
+			/* contentType : "application/json"*/
+			data : {id : id},
+
+			dataType : "json",
+			success : function(action){
+				console.log(action);
+				
+				if(action.result == 'success') {//처리성공	
+					console.log("성공");						
+					renderEach(action.data);					
+					
+				}else {//오류처리
+					var msg = action.failMsg;
+						alert(msg);				
+				}
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}				
+		});
+		console.log("test입니다." + id);			
+	};		
+});   
+function renderEach(playlist) {	  	
+	var src = "";
+	src += '<ul>';
+	
+	$.each(playlist,function(key,value){
+		
+		src += '<li>';
+		src += '	<span>' + value.nick + '</span>';
+		src += '	<button type="button" class="addPlayer add" data-userno="'+ value.userNo +'" data-no="'+ value.userNo +'" data-nick="'+ value.nick +'" data-average="'+ value.average +'" >추가</button>';
+		src += '</li>';
+	});
+
+	src += '</ul>';
+	$(".searchList").append(src);
+};	
+
+
+</script>
+
 </html>

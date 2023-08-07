@@ -120,4 +120,15 @@ public class MypageController {
 		
 		return jsonResult;		
 	}
+	
+	@RequestMapping(value = "/FCardList",method = {RequestMethod.GET,RequestMethod.POST})
+	public String FCardList(Model model,HttpSession session) {
+		System.out.println("MypageController.FCardList()");
+		
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		int userNo = authUser.getUserNo();	
+		
+		
+		return "/mypage/FCardList";
+	}
 }
