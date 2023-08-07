@@ -56,7 +56,7 @@
 	height: 40px;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
-	border-radius: 8px;
+	border-radius: 5px;
 	color: #fff;
 	margin: 0 auto;
 	background : linear-gradient(to bottom right, rgb(9, 32, 80),
@@ -67,22 +67,23 @@
 #main form .input-group #input-uid {
 	width: 230px;
 	height: 40px;
-	background: #F5F5F5;
+	/* background: #F5F5F5; */
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
 	display: inline-block;
+	padding:6px 12px;
     position: relative;
 }
 
 #main form .input-group #id {
 	width: 300px;
 	height: 40px;
-	background: #F5F5F5;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
 	border-radius: 8px;
+	padding:6px 12px;
 	color: #111;
 	position: relative;
 
@@ -91,7 +92,7 @@
 #main form .input-group #passwd {
 	width: 300px;
 	height: 40px;
-	background: #F5F5F5;
+	/* background: #F5F5F5; */
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
 	border-radius: 8px;
@@ -103,8 +104,9 @@
 #main form .input-group #cellphone {
 	width: 300px;
 	height: 40px;
-	background: #F5F5F5;
+	/* background: #F5F5F5; */
 	border: 1px solid #B8B8B8;
+	padding: 6px 12px;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
@@ -115,9 +117,10 @@
 #main form .input-group #nick {
 	width: 230px;
 	height: 40px;
-	background: #F5F5F5;
+	/* background: #F5F5F5; */
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
+	padding:6px 12px;
 	border-radius: 8px;
 	color: #111;
 	margin: 0 auto;
@@ -138,7 +141,7 @@
 	height: 40px;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
-	border-radius: 8px;
+	border-radius: 5px;
 	color: #fff;
 	margin: 0 auto;
 	background : linear-gradient(to bottom right, rgb(9, 32, 80),
@@ -161,8 +164,9 @@
 #main form .input-group #average {
 	width: 300px;
 	height: 40px;
-	background: #F5F5F5;
+	/* background: #F5F5F5; */
 	border: 1px solid #B8B8B8;
+	padding: 6px 12px;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
@@ -175,7 +179,7 @@
 	height: 40px;
 	object-fit: cover;
 	padding : 9px 20px 9px 15px;
-	background: #F5F5F5;
+	/* background: #F5F5F5; */
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
 	border-radius: 8px;
@@ -189,10 +193,9 @@
 #main form .button-area #btn-submit{
 	width: 100%;
 	color: #fff;
-	border-radius:10px;
+	border-radius:5px;
 	height: 40px;
 	position: relative;
-	
 	margin: 0 auto;
 	background : linear-gradient(to bottom right, rgb(9, 32, 80),
       rgb(81, 117, 164))
@@ -202,7 +205,7 @@
 #joinForm #main form .button-area #btn-submit {
     width: 97%;
     color: #fff;
-    border-radius: 10px;
+    border-radius: 5px;
     height: 40px;
     position: relative;
     right:-5px;
@@ -346,11 +349,11 @@
 #userSubImage {
   	width: 790px;
     display: inline-block;
-    right: 351px;
+    right: 360px;
     padding: 0;
     position: absolute;
     opacity: 0.2;
-    top: 132px;
+    top: 124px;
     height: 260px;
 }
 #inputId{
@@ -381,7 +384,7 @@
     width: 260px;
     height: 260px;
     object-fit: cover;
-    margin: -1px 0 0 -150px;
+    margin: -1px 0 0 -66px;
     position: absolute; 
 }
 
@@ -410,9 +413,9 @@
 /* 마이페이지 버튼 */
 #userPage .button-area .btn {
 	cursor: pointer;
-	width: 40%;
+	width: 30%;
 	color: #fff;
-	border-radius:10px;
+	border-radius:5px;
 	line-height: 40px;
 	font-size: 15px;
     border: 0;
