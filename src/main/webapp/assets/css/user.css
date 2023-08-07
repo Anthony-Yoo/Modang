@@ -326,13 +326,9 @@
 	
 }
 
-#userPage .content {
-  margin-left: 200px;
-  padding: 1px 16px;
-  height: 450px;
-}
+#userPage .userContent {width:1050px ;height: 450px; float: left;}
 
-#userPage .element .style .content  {
+#userPage .element .style .userContent  {
     height: 260px;
     padding: 0px;
     width: 1050px;

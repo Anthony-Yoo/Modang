@@ -26,13 +26,11 @@
 	<c:import url="/WEB-INF/views/include/modangSiteHeader.jsp"></c:import>
 	<!-- 헤더 끝 -->
 	
-			<div id="userPage">
-				<div id="user">
-                 	<!-- sideNav 시작 -->
-					<c:import url="/WEB-INF/views/include/modangSideNav.jsp"></c:import>
-					<!-- sideNav 끝 -->
-
-					<div class="content" >
+		<div id="userPage">
+			<!-- sideNav 시작 -->
+			<c:import url="/WEB-INF/views/include/modangSideNav.jsp"></c:import>
+			<!-- sideNav 끝 -->
+					<div class="userContent" >
 							
 									<div class="image-show" >
        									<img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileImage}" id="userFroFileImage">
@@ -70,9 +68,7 @@
            			</div>
     			</div>
     			<!-- //user -->
-    		</div>
-    	<!-- //container -->
-    
+    	<!-- //content -->
 	<!-- 푸터 시작 -->
     <c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
     <!-- 푸터 끝 -->
