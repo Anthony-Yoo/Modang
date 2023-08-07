@@ -103,7 +103,7 @@
 									<input type="radio" name="membernum" value="4">
 									<label>4명</label>
 								</td>	
-								<th>모집날자</th>
+								<th>모임 날짜</th>
 								<td> <input type="datetime-local" id="matchDate" name="matchDate" /></td>	
 							</tr>
 							<tr>
@@ -138,6 +138,15 @@
 	<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
 </body>
 <script type="text/javascript">
-	
+function validateForm() {
+  var matchDateInput = document.getElementById("matchDate");
+  
+  if (matchDateInput.value === "") {
+    alert("모임 날짜를 선택해주세요.");
+    return false; // Prevent form submission
+  }
+  
+  return true; // Allow form submission
+}
 </script>
 </html>

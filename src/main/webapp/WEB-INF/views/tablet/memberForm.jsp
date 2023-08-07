@@ -56,10 +56,11 @@
 				left:0px;
 				width: 98%;
 				background-color: #ffffff;
-				border: 1px solid gray;		
+				border: 1px solid #aca9a9;		
 			}
 			
 			#findResult tr>td {
+			 	width:150px;
 				padding: 10px;		
 			}
 		</style>
@@ -214,7 +215,7 @@ $("#close").on('click',function(){
 	   var no= $(this).data("range"); 
 	   $("#range-"+no).text("["+avg+"타]");	   
 	   var rangeNo = $(this).data("range"); 
-	   $("#range-"+rangeNo).text(avg);	  
+	   $("#range-"+rangeNo).text("["+avg+"타]");	  
 	   
    });
    
@@ -287,7 +288,7 @@ $("#close").on('click',function(){
 		src += '	<table class="nickList findTable">';
 		src += '		<tr>';
 		src += '			<td>' + value.nick + '</td>';
-		src += '			<td>&nbsp;&nbsp;&nbsp;'+ value.average + '</td>';
+		src += '			<td>&nbsp;&nbsp;&nbsp;['+ value.average + '타]'+'</td>';
 		src += '			<td>';
 		src += '				<button type="button" class="addPlayer" data-userno="'+ value.userNo +'" data-no="'+ value.userNo +'" data-nick="'+ value.nick +'" data-average="'+ value.average +'" >추가</button>';
 		src += '			</td>';

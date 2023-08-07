@@ -114,7 +114,7 @@ img {display: inline-block;}
 #rboardno-2{margin-top: 70px;margin-left:50px;}	
 #rboardno-3{margin-top: 100px;margin-left:50px;}	
 #rboardno-4{margin-top: 130px;margin-left:50px;}	
-#name1{text-align:center;width: 220px;position: fixed;font-size:60px;margin-top:10px;color: white;}
+#name1{text-align:center;width: 220px;position: fixed;font-size:50px;margin-top:10px;color: white;}
 #name2{text-align:center;width: 220px;position: fixed;font-size:40px;margin-top:30px;color: #f1920f;}
 #winText{font-size:30px;width:150px;text-align:center;color:#b93f0f;}
 #recordText{font-size:30px;width:150px;text-align:center;margin-bottom: 20px;}
