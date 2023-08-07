@@ -104,7 +104,7 @@ window.addEventListener('load', adjustHeight);
 								<td class="text-left"><a
 									href="${pageContext.request.contextPath}/board/hitCount?boardNo=${boardVo.boardNo}">${boardVo.title}</a></td>
 								<!-- 제목 -->
-								<td>1/${boardVo.membernum}</td>
+								<td>${boardVo.agreeCount+1}/${boardVo.membernum}</td>
 								<!-- 멤버 구인현황 현재 인원/ 총 모집인원 -->
 								<td>${boardVo.nick}</td>
 								<!-- 글쓴이 닉네임 -->

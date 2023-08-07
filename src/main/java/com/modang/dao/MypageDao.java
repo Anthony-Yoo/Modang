@@ -1,11 +1,13 @@
 package com.modang.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.modang.vo.FavoriteUsersVo;
 import com.modang.vo.RecordUserVo;
 
 @Repository
@@ -48,5 +50,22 @@ public class MypageDao {
 		System.out.println("MypageDao.selectFriendList()");
 		
 		return session.selectList("mypage.selectFriendList", userNo);
+	}
+	public int insertFriend(FavoriteUsersVo favoriteVo) {
+		System.out.println("MypageDao.insertFriend()");
+		
+		return session.insert("mypage.insertFriend", favoriteVo);
+	}
+	
+	public RecordUserVo selectFriendInfo(int favoriteNo) {
+		System.out.println("MypageDao.selectFriendInfo()");
+		
+		return session.selectOne("mypage.selectFriendInfo", favoriteNo);
+	}
+	
+	public int deleteFriend(int favoriteNo) {
+		System.out.println("MypageDao.deleteFriend()");
+		
+		return session.delete("mypage.deleteFriend", favoriteNo);
 	}
 }

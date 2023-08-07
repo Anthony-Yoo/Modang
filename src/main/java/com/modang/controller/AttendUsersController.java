@@ -66,6 +66,7 @@ public class AttendUsersController {
 		if(vo != null) {
 			List<BoardVo> result = attendUserService.myApplyList(vo.getUserNo());
 			model.addAttribute("mAList", result);
+			System.out.println(result);
 			return "user/myPage/applyMenu";
 		}else {
 			return "user/loginForm";

@@ -17,12 +17,23 @@
     <!-- 헤더 끝 -->
 
 	<div id="userPage">
-		<div id="user">
-               	<!-- sideNav 시작 -->
-			<c:import url="/WEB-INF/views/include/modangSideNav.jsp"></c:import>
-			<!-- sideNav 끝 -->
-		        <div class="mainCon">        
-		        <h2>친구 검색</h2>
+	    <!-- sideNav 시작 -->
+        <ul class="sidebar">
+			<li><a href="${pageContext.request.contextPath}/user/userPage">회원정보</a> </li>
+			<li><a class="active" href="${pageContext.request.contextPath }/mypage/friendlist">친구목록</a></li>
+			<li><a href="userPage">그룹친구</a> </li>
+			<li><a href="${pageContext.request.contextPath }/attendUsers/myPage/myBoardList">게시판매칭</a></li>
+			<li><a href="${pageContext.request.contextPath }/mypage/${requestScope.userVo.userNo}/record" target="_blank">전적보기</a></li>
+		</ul>
+		<!-- sideNav 끝 -->
+		<div class="userContent">
+			<div id="content-header">
+				<h2>
+					<a>친구 목록</a>
+				</h2>
+			</div>
+		    <div class="show">        
+		        <h2>친구 검색</h2><!-- 사이즈 줄이기 -->
 		        <div class="friendSearch">
 		            <label for="seardid">회원 아이디 검색</label>
 		            <input type="search" id="seardid" placeholder="회원 아이디 입력">
@@ -32,7 +43,6 @@
 		                <!--검색한 아이디가 있는 경우 나오는 리스트-->
 		            </div>
 		        </div>
-		        <h2>친구 목록</h2>
 		        <div class="friendList">
 		            <table>
 		                <thead>
@@ -45,9 +55,9 @@
 		                        <th>삭제</th>
 		                    </tr>
 		                </thead>		                        
-				        <tbody>
-			                <c:forEach var="friendInfo" items="${friendList}">  
-			                    <tr>
+				        <tbody id="renderbd">
+			                <c:forEach var="friendInfo" items="${friendList}">			                	  
+			                    <tr>			                    	
 			                        <td>${friendInfo.nick}</td>
 			                        <td>${friendInfo.average}</td>
 		                        	<c:if test ="${friendInfo.recommStatus == 0}">					                      
@@ -56,15 +66,16 @@
 			                        <c:if test ="${friendInfo.recommStatus == 1}">					                       
 				                        <td>적정다마</td>
 			                        </c:if>
-			                         <c:if test ="${friendInfo.recommStatus == 2}">					                     
+			                        <c:if test ="${friendInfo.recommStatus == 2}">					                     
 				                        <td>짠다마</td>
 			                        </c:if>
-			                        <c:if test ="${friendInfo.recommStatus == 3}">					                       
+			                        <c:if test ="${friendInfo.recommStatus == 3}">						                       
 				                        <td>새내기</td>
 			                        </c:if>
 		                        	<td><strong>${friendInfo.winCnt}</strong>승<strong>${friendInfo.loseCnt}</strong>패</td>
 			                        <td><strong>${friendInfo.recentDays}</strong>일전</td>
-			                        <td><button type="button" class="del">삭제</button></td>
+			                        <td><button type="button" class="delPlayer del" data-userno="${friendInfo.userNo}" 
+			                        data-favoriteNo="${friendInfo.favoriteNo}">삭제</button></td>
 		                    	</tr>
 			                  </c:forEach>	                    
 				          </tbody>
@@ -132,6 +143,122 @@ function renderEach(playlist) {
 	src += '</ul>';
 	$(".searchList").append(src);
 };	
+
+$(".searchList").on('click',".addPlayer",function(){
+	console.log("추가버튼 클릭!");
+	var userNo = $(this).data('userno');
+	console.log("aJax 가기전 유져번호 : "+userNo);
+	let $addbtn = $(this);
+	let $delbtn = $("#renderbd>tr>td>button");
+	
+	//기존테이블에 넣을려는 데이터가 겹치는지 체크
+	let flag = false;		
+	$delbtn.each(function(i){					
+		for(let i=0;i<$delbtn.length;i++) {
+			console.log($delbtn.eq(i).data("userno"));	
+			if($delbtn.eq(i).data("userno") != $addbtn.data("userno")) {
+				flag = false;								
+			}else {
+				flag = true;
+				break;
+			}						
+		}
+	});
+	
+	console.log(flag);
+	console.log("추가버튼 no:"+$addbtn.data("userno"));				
+	console.log("삭제버튼 값 갯수:"+$delbtn.length);
+	
+	if(flag == false) { 
+		if(${userNo} != userNo) {		
+			$.ajax({			
+				url : "${pageContext.request.contextPath}/mypage/${userNo}/friendinsert",		
+				type : "post",
+				/* contentType : "application/json"*/
+				data : {userNo : userNo},
+	
+				dataType : "json",
+				success : function(action){
+					console.log(action);
+					
+					if(action.result == 'success') {//처리성공
+						console.log(action.data);
+						console.log("성공");			
+						
+						$("#renderbd").append(renderTr(action.data));							
+												
+					}else {//오류처리
+						var msg = action.failMsg;
+							alert(msg);				
+					}
+				},
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}				
+			});
+		}else {
+			alert("자신을 친구로 등록할수없습니다.");				
+		}
+	}else {
+		alert("같은 멤버가있습니다.");	
+	}
+});
+
+function renderTr(friendInfo) {	  
+	var src = "";
+	src += '<tr>';	
+	src += '	<td>' + friendInfo.nick + '</td>';
+	src += '	<td>' + friendInfo.average + '</td>';
+	if(friendInfo.recommStatus == 0) {
+		src += '	<td>물다마</td>';	
+	}else if(friendInfo.recommStatus == 1) {
+		src += '	<td>적정다마</td>';
+	}else if(friendInfo.recommStatus == 2) {		
+		src += '	<td>짠다마</td>';
+	}else if(friendInfo.recommStatus == 3) {	
+		src += '	<td>새내기</td>';
+	}	
+	src += '	<td><strong>' + friendInfo.winCnt + '</strong>승<strong>' + friendInfo.loseCnt + '</strong>패</td>';
+	src += '	<td><strong>' + friendInfo.recentDays + '</strong>일전</td>';
+	src += '	<td><button type="button" class="delPlayer del" data-userno="' + friendInfo.userNo + '"	data-favoriteNo="' + friendInfo.favoriteNo + '">삭제</button></td>';
+	src += '</tr>';
+	return src;
+}
+
+$("#renderbd").on('click',".delPlayer",function(){
+	console.log("삭제버튼 클릭!");
+	var favoriteNo = $(this).attr('data-favoriteNo');
+	console.log("즐찾번호 : "+favoriteNo);
+	console.log(this);
+	var $this = $(this);
+	
+	$.ajax({			
+		url : "${pageContext.request.contextPath}/mypage/friendDelete",		
+		type : "post",
+		/* contentType : "application/json"*/
+		data : {favoriteNo : favoriteNo},
+
+		dataType : "json",
+		success : function(action){
+			console.log(action);
+			
+			if(action.result == 'success') {//처리성공
+				console.log(action.data);
+				console.log("성공");			
+				console.log(this);
+				$this.parent().parent().remove();							
+										
+			}else {//오류처리
+				var msg = action.failMsg;
+					alert(msg);				
+			}
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}				
+	});
+		
+});
 
 
 </script>
