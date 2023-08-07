@@ -4,7 +4,9 @@
 .error-msg{color: #F94069; font-size: 13px; display: none; text-align: center;padding-top:5px;}
 .correct-msg{color: #F94069; font-size: 13px; display: none; text-align: center; padding-top:5px;}
 .check-msg{color: #F94069; font-size: 13px; text-align: center; padding-top:5px;}
-h2,h3{color: #2E419A; text-align: center; margin: 20px 0 20px 0;}
+h2,h3{color: #2E419A; text-align: center; margin: 20px 0;}
+h2{font-size: 35px;}
+h3{font-size: 25px;}
 #main-content{width: 1200px; margin: 0 auto; height: auto;}
 #main-content .container{margin-top:50px; margin-bottom: 100px; height: 100%;}
 .chck{display: inline-block; width: 100px; height: 40px; background : linear-gradient(to bottom right, rgb(9, 32, 80),
