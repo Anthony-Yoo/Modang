@@ -120,10 +120,11 @@
 					</div>
 					<div class="con">
 						<!-- 주차 가능여부 -->
-						<span class="inp-txt"> 
+						<span class="inp-txt parking1"> 
 							<img src="${pageContext.request.contextPath}/assets/images/parking.png" alt="주차 여부" class="icon">
 							<span class="parking">
 								<input type="radio" id="parking1" name="parking" value="Y"><label for="parking1">주차가능하당</label>
+								&nbsp;&nbsp;
 								<input type="radio" id="parking2" name="parking" value="N"><label for="parking2">주차 불가능하당</label>
 							</span>
 						</span>
@@ -137,7 +138,7 @@
 					</div>
 				</div>
 				<!-- join-wrap -->
-				<button id="btnJoin" class="button" type="submit">회원가입할거당</button>
+				<button id="btnJoin" class="button join" type="submit">회원가입할거당</button>
 			</form>
 		</div>
 		<!-- container -->

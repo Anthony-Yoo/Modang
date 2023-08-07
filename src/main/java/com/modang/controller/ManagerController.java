@@ -117,7 +117,7 @@ public class ManagerController {
 		ManagerVo managerVo = managerService.settingsForm(no);
 		System.out.println(managerVo);
 		model.addAttribute("managerVo", managerVo);//request "managerVo"
-		System.out.println("ManagerController.settingsForm");
+		System.out.println("ManagerController.ㄴsettingsForm");
 		return "/manager/settings";
 	}
 	/*당구장 정보 수정*/

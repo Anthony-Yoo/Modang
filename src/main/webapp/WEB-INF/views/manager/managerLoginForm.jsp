@@ -45,7 +45,7 @@
                                     </div>
                                 </span>
                             </div>
-                         <button class="button" type="submit" >로그인할거당</button>
+                         <button class="button login" type="submit" >로그인할거당</button>
                      </div>
                 </form>
             </div>

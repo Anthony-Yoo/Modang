@@ -56,7 +56,7 @@
 	height: 40px;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
-	border-radius: 8px;
+	border-radius: 5px;
 	color: #fff;
 	margin: 0 auto;
 	background : linear-gradient(to bottom right, rgb(9, 32, 80),
@@ -67,22 +67,24 @@
 #main form .input-group #input-uid {
 	width: 230px;
 	height: 40px;
-	background: #F5F5F5;
-	border: 1px solid #B8B8B8;
+	/* background: #F5F5F5; */
+	border: 1px solid #746c6c;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
 	display: inline-block;
+	padding:6px 12px;
     position: relative;
 }
 
 #main form .input-group #id {
 	width: 300px;
 	height: 40px;
-	background: #F5F5F5;
-	border: 1px solid #B8B8B8;
+	/* border: 1px solid #B8B8B8; */
+	border: 1px solid #746c6c;
 	box-sizing: border-box;
 	border-radius: 8px;
+	padding:6px 12px;
 	color: #111;
 	position: relative;
 
@@ -91,8 +93,8 @@
 #main form .input-group #passwd {
 	width: 300px;
 	height: 40px;
-	background: #F5F5F5;
-	border: 1px solid #B8B8B8;
+	/* background: #F5F5F5; */
+	border: 1px solid #746c6c;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
@@ -103,8 +105,9 @@
 #main form .input-group #cellphone {
 	width: 300px;
 	height: 40px;
-	background: #F5F5F5;
-	border: 1px solid #B8B8B8;
+	/* background: #F5F5F5; */
+	border: 1px solid #746c6c;
+	padding: 6px 12px;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
@@ -115,9 +118,10 @@
 #main form .input-group #nick {
 	width: 230px;
 	height: 40px;
-	background: #F5F5F5;
-	border: 1px solid #B8B8B8;
+	/* background: #F5F5F5; */
+	border: 1px solid #746c6c;
 	box-sizing: border-box;
+	padding:6px 12px;
 	border-radius: 8px;
 	color: #111;
 	margin: 0 auto;
@@ -138,7 +142,7 @@
 	height: 40px;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
-	border-radius: 8px;
+	border-radius: 5px;
 	color: #fff;
 	margin: 0 auto;
 	background : linear-gradient(to bottom right, rgb(9, 32, 80),
@@ -161,8 +165,9 @@
 #main form .input-group #average {
 	width: 300px;
 	height: 40px;
-	background: #F5F5F5;
-	border: 1px solid #B8B8B8;
+	/* background: #F5F5F5; */
+	border: 1px solid #746c6c;
+	padding: 6px 12px;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
@@ -175,8 +180,8 @@
 	height: 40px;
 	object-fit: cover;
 	padding : 9px 20px 9px 15px;
-	background: #F5F5F5;
-	border: 1px solid #B8B8B8;
+	/* background: #F5F5F5; */
+	border: 1px solid #746c6c;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
@@ -189,10 +194,9 @@
 #main form .button-area #btn-submit{
 	width: 100%;
 	color: #fff;
-	border-radius:10px;
+	border-radius:5px;
 	height: 40px;
 	position: relative;
-	
 	margin: 0 auto;
 	background : linear-gradient(to bottom right, rgb(9, 32, 80),
       rgb(81, 117, 164))
@@ -200,9 +204,9 @@
 }
 
 #joinForm #main form .button-area #btn-submit {
-    width: 97%;
+    width: 350px;
     color: #fff;
-    border-radius: 10px;
+    border-radius: 5px;
     height: 40px;
     position: relative;
     right:-5px;
@@ -315,112 +319,24 @@
     top: 35px;
 }
 
-/* 마이페이지 대표이미지 */
-#userPage {
-	width:1200px; 
-	margin:auto;
-	
-}
-
-#userPage .content {
-  margin-left: 200px;
-  padding: 1px 16px;
-  height: 450px;
-}
-
-#userPage .element .style .content  {
-    height: 260px;
-    padding: 0px;
-    width: 1050px;
-    margin-left: auto;
-}
-
+/* --------------------------------마이페이지------------------ -------------------*/
+#userPage {width:1200px; margin: 0 auto; height: 800px;}
+#userPage .userContent {width:1050px ;height: 700px;float: right; border: 2px solid #2E419A; border-radius:10px;
+	box-sizing: border-box; margin-top: 50px;}
+#content-header {padding: 60px 0px 50px 0px; border-bottom: 2px solid #000;}
+#content-header h2 { font-size: 35px; text-align: center;}
 /* 마이페이지 이미지 */
-#userPage .element.style .image-show {
-    width: 960px;
-    height: 260px;
-    margin: auto;
-    padding: 0;
-    position: absolute;
-}
-#userSubImage {
-  	width: 790px;
-    display: inline-block;
-    right: 351px;
-    padding: 0;
-    position: absolute;
-    opacity: 0.2;
-    top: 132px;
-    height: 260px;
-}
-#inputId{
-	position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    width: 100%;
-    justify-content: space-between;
-}
-#inputPw{
-	position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    width: 100%;
-    justify-content: space-between;
-}
-  
-    
-
-
-/* 마이페이지 이미지 */
-#userFroFileImage {
-    vertical-align: top;
-    display: inline-block;
-    padding: 0;
-    width: 260px;
-    height: 260px;
-    object-fit: cover;
-    margin: -1px 0 0 -150px;
-    position: absolute; 
-}
-
-/* 마이페이지 아이콘 기본 위치 */
-#userPage .image-icon img {
-    vertical-align: middle;
-    width: 5%;
-    margin: auto;
-    position: relative;
-    
-}
-/* 마이페이지 아이콘 */
-#userPage .image-icon hr{
-	margin:-5px -15px 10px 455px;
-	border:1px solid #0000a0;
-}
-
-/* 마이페이지 사용자 정보 */
-#userPage .text {
-	font-size: 30px;
-    position: relative;
-    left: 195px;
-    padding: 15px 0px 0px 20px;
-	
-}
+#userPage .userContent .show {display: inline-block;width: 1050px;height: 300px; margin: 20px auto;}
+.show .img{display: block;width:250px; height: 250px; float: left; margin: 0 20px;
+	border: 2px solid #efefef; box-sizing: border-box;}
+.show .img #userFroFileImage{display: block; width: 100%; height: 100%;}
+.show .text{display: inline-block; width: 730px; height:250px;position: relative;}
+.show .text::before{content: "";background-size: 730px 250px;background: url("../images/gplayer0.jpg") center center no-repeat;z-index: -1;opacity: 0.5;
+	position: absolute;top: 0px;left: 0px; right: 0px;bottom: 0px;}
+.show .text .txt{display: inline-block; width: 720px; height: 60px; margin-top: 4px; padding-left: 20px;}
+.show .text .txt img{display: block; width: 50px; height: 50px; float: left;}
+.show .text .txt>span{font-size: 30px;line-height: 50px; margin-left: 30px;}
 /* 마이페이지 버튼 */
-#userPage .button-area .btn {
-	cursor: pointer;
-	width: 40%;
-	color: #fff;
-	border-radius:10px;
-	line-height: 40px;
-	font-size: 15px;
-    border: 0;
-    padding: 0;
-    position: relative;
-    bottom: -90px;
-    right: -210px;
-
-    background : linear-gradient(to bottom right, rgb(9, 32, 80),
-      rgb(81, 117, 164))
-}
+#userPage button {display:block; cursor: pointer;width: 350px;color: #fff;border-radius:5px;
+	line-height: 40px;font-size: 15px;background : linear-gradient(to bottom right, rgb(9, 32, 80),
+      rgb(81, 117, 164)); margin: 120px auto 0;}
