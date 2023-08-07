@@ -34,7 +34,6 @@
 		<div id="board">
 			<div id="writeForm">
 				<form action="${pageContext.request.contextPath}/board/write" method="get">
-					
 					<table class="el-matchTable">
 						<colgroup>
 							<col style="width: 10%;" />
@@ -103,12 +102,6 @@
 									
 									<input type="radio" name="membernum" value="4">
 									<label>4명</label>
-									
-									<input type="radio"  name="membernum" value="5">
-									<label>5명</label>
-									
-									<input type="radio" name="membernum" value="6">
-									<label>6명</label>
 								</td>	
 								<th>모집날자</th>
 								<td> <input type="datetime-local" id="matchDate" name="matchDate" /></td>	
@@ -132,9 +125,6 @@
 							</tr>
 						</tbody>
 					</table>
-				
-				
-	
 				</form>
 				<!-- /form -->
 			</div>

@@ -68,6 +68,7 @@ public class AttendUsersDao {
 		return result;
 	}
 	
+	/* 게시글 삭제 */
 	public void delete(int boardNo) {
 		System.out.println("AttendUsersDao.delete()");
 		sqlSession.delete("attendUsers.delete",boardNo);

@@ -69,9 +69,10 @@
 		    mb.matchdate,
 		    mb.boarddate,
 		    mb.count,
-		    au.status as aStatus,
+		    au.status AS aStatus,
 		    mb.status,
-		    u.nick
+		    u.nick,
+		    COUNT(CASE WHEN au.status = 1 THEN 1 ELSE NULL END) AS agreeCount
 		FROM 
 		    matchboard mb
 		INNER JOIN 
@@ -80,6 +81,19 @@
 		    attendusers au ON mb.boardNo = au.boardNo
 		WHERE 
 		    au.userNo = #{userNo}
+		GROUP BY
+		    mb.boardno,
+		    au.userNo,
+		    mb.title,
+		    mb.matchgametype,
+		    mb.matchregion,
+		    mb.membernum,
+		    mb.matchdate,
+		    mb.boarddate,
+		    mb.count,
+		    au.status,
+		    mb.status,
+		    u.nick
 	]]>
 	</select>
 
