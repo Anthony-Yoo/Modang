@@ -7,70 +7,102 @@
 <title>modang 당구장 찾기</title>
 	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
     <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
-    <link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
+    <%-- <link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
+     --%>
+    <!-- 당구장 찾기 페이지에서만 사용되는 css -->
+     <link href="${pageContext.request.contextPath}/assets/css/find.css" rel="stylesheet" type="text/css">
+    
     <!-- jquery -->   
 	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 	<!-- 부트스트랩 -->
 	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
+
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c37d351b11287c4a3b2a8008d77ddff8"></script>
 </head>
 <body>
     <!-- 헤더 시작 -->
     <c:import url="/WEB-INF/views/include/modangSiteHeader.jsp"></c:import>
     <!-- 헤더 끝 -->
-    <div class="main-con">
-        <div class="BCon">
-            <h2>모당 찾기</h2>
-            <div class="con">
-                <div class="search">
-                    <div class="search-map">
-                        <p>주변당구장</p>
-                        <select name="" id="do" class="search-add">
-                            <option value="시/도">시/도</option>
-                            <option value="서울시">서울시</option>
-                            <option value="경기도">경기도</option>
-                        </select>
-                        <select name="" id="gu" class="search-add">
-                            <option value="구">구</option>
-                            <option value="강동구">강동구</option>
-                            <option value="강남구">강남구</option>
-                            <option value="송파구">송파구</option>
-                            <option value="어쩌구">어쩌구</option>
-                                <option value="저쩌구">저쩌구</option>
-                        </select>
-                        <select name="" id="dong" class="search-add">
-                            <option value="동">동</option>
-                            <option value="천호동">천호동</option>
-                            <option value="풍납동">풍납동</option>
-                            <option value="성내동">성내동</option>
-                        </select>
-                        <button type="button">검색</button>
-                    </div>
-                    <div class="search-list">
-                        <input type="text" id="" name="" placeholder="당구장 이름으로 검색">
-                        <button type="button">검색</button>
-                    </div>
-                </div>
-                <div class="map">
-                    <div class="mapImg">
-                        <img src="${pageContext.request.contextPath}/assets/images/map1.png" alt="지도">
-                    </div>
-                </div>
-                <div class="modang_list">
-                    <ul id="modanglist">
-                    	<c:forEach var="biliVo" items="${modanglist}">
-	                        <li class="modangList">
-	                        	<img src="${pageContext.request.contextPath }/upload/${biliVo.imageFile1}" alt="당구장이미지">
-	                            <div class="txt">
-	                                <p class="repname">${biliVo.biliardName}</p>
-	                                <p class="addr">${biliVo.biliardAddress1} ${biliVo.biliardAddress2}</p>
+    
+    <!-- 메인 컨텐츠-->
+	<div id="content">
+		<div id="content-header">
+			<h2>당구장 찾기</h2>
+		</div>
+		<!-- //content-heade -->
+        <div id="find">
+            <div class="b-search-map">
+            	<div class="b-listWrap">
+            		<form action="#" method="" class="b-searchForm">
+            			<input class="keyword" type="text" name="keyword" value="">
+            			<button type="submit" class="btn-main btn-s">검색</button>
+            		</form>
+            		<div class="b-searchList">
+	            		<ul>
+	            			<li class="modangList">
+	                        	<img src="${pageContext.request.contextPath}/assets/images/room.jpg" alt="당구장이미지">
+	                            <div class="info">
+	                                <p class="repname">핑클당구장</p>
+	                                <p class="addr">서울시 강동구 천호동 15-05 지하 1층</p>
+	                                <p class="sub">주차가능</p>
 	                            </div>
 	                        </li>
-                        </c:forEach>                        
-                    </ul>
+	                        
+	                        <li class="modangList">
+	                        	<img src="${pageContext.request.contextPath}/assets/images/room.jpg" alt="당구장이미지">
+	                            <div class="info">
+	                                <p class="repname">핑클당구장</p>
+	                                <p class="addr">서울시 강동구 천호동 15-05 지하 1층</p>
+	                                <p class="sub">주차가능</p>
+	                            </div>
+	                        </li>
+	                        
+	                        <li class="modangList">
+	                        	<img src="${pageContext.request.contextPath}/assets/images/room.jpg" alt="당구장이미지">
+	                            <div class="info">
+	                                <p class="repname">핑클당구장</p>
+	                                <p class="addr">서울시 강동구 천호동 15-05 지하 1층</p>
+	                                <p class="sub">주차가능</p>
+	                            </div>
+	                        </li>
+	                        
+	                        <li class="modangList">
+	                        	<img src="${pageContext.request.contextPath}/assets/images/room.jpg" alt="당구장이미지">
+	                            <div class="info">
+	                                <p class="repname">핑클당구장</p>
+	                                <p class="addr">서울시 강동구 천호동 15-05 지하 1층</p>
+	                                <p class="sub">주차가능</p>
+	                            </div>
+	                        </li>
+	                        
+	                        <li class="modangList">
+	                        	<img src="${pageContext.request.contextPath}/assets/images/room.jpg" alt="당구장이미지">
+	                            <div class="info">
+	                                <p class="repname">핑클당구장</p>
+	                                <p class="addr">서울시 강동구 천호동 15-05 지하 1층</p>
+	                                <p class="sub">주차가능</p>
+	                            </div>
+	                        </li>
+	                        
+	            		
+	            		</ul>
+            		</div>
+            	</div>
+            	<div class="mapWrap">
+                   <!-- 지도를 표시할 div 입니다 -->
+					<div id="map" style="width:100%; height:700px;"></div>
+					
                 </div>
             </div>
+            <!-- //b-search -->
         </div>
-    </div>    
+		<!-- //biliard -->
+    </div>
+	<!-- //content -->
+	
+	
+
+	
     <!-- 푸터 시작 -->
     <c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
     <!-- 푸터 끝 -->
@@ -121,18 +153,32 @@
         </div>
     </div>
 </body>
+
+
 <script>
-	$(document).ready(function() {
-	    // 당구장 상세보기 모달창 호출 버튼 -> 모달창 뜸
-	    $(".modangList").on("click", function() {
-	        console.log("모달창 호출버튼 클릭");
-	
-	        // 모달창 호출
-	        $('#detailModal').modal('show');
-	    });
-	});
+$(document).ready(function() {
+    // 당구장 상세보기 모달창 호출 버튼 -> 모달창 뜸
+    $(".modangList").on("click", function() {
+        console.log("모달창 호출버튼 클릭");
+
+        // 모달창 호출
+        $('#detailModal').modal('show');
+    });
+});
+
+
+
 </script>
+
+<!-- 카카오지도 영역 -->
 <script>
-   
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	    mapOption = { 
+	        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+	        level: 3 // 지도의 확대 레벨
+	    };
+	
+	// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+	var map = new kakao.maps.Map(mapContainer, mapOption); 
 </script>
 </html>
