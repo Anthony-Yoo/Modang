@@ -7,8 +7,8 @@
 }
 
 /* 전체 폭 */
- .container{
-	width: 1200px;
+#main-content{
+	width: 1200px; margin: 0 auto;
  }
 /* container 중앙 맞춤 */
 #main-content .container{
@@ -31,7 +31,6 @@
     
 }
 
-
 /* the width for center position */
 #main-content .container #loginForm #main,
 #main-content .container #joinOk #main,
@@ -41,7 +40,7 @@
 	margin: 0 auto;
 	
 }
-
+#main-content .container #user #loginForm #main{ width: 350px;margin: 100px auto 0;height: 300px;}
 /* title 위치및 굵기 */
 #main h3 {
 	margin: 50px 0px 35px 0px;
@@ -319,24 +318,24 @@
     top: 35px;
 }
 
-/* --------------------------------마이페이지------------------ -------------------*/
+/* --------------------------------마이페이지------------------ -------------------도단수정-----*/
 #userPage {width:1200px; margin: 0 auto; height: 800px;}
 #userPage .userContent {width:1050px ;height: 700px;float: right; border: 2px solid #2E419A; border-radius:10px;
-	box-sizing: border-box; margin-top: 50px;}
+	box-sizing: border-box; margin-top: 50px; position: relative;}
 #content-header {padding: 60px 0px 50px 0px; border-bottom: 2px solid #000;}
 #content-header h2 { font-size: 35px; text-align: center;}
 /* 마이페이지 이미지 */
 #userPage .userContent .show {display: inline-block;width: 1050px;height: 300px; margin: 20px auto;}
-.show .img{display: block;width:250px; height: 250px; float: left; margin: 0 20px;
+.show>.img{display: block;width:250px; height: 250px; float: left; margin: 0 20px;
 	border: 2px solid #efefef; box-sizing: border-box;}
-.show .img #userFroFileImage{display: block; width: 100%; height: 100%;}
-.show .text{display: inline-block; width: 730px; height:250px;position: relative;}
-.show .text::before{content: "";background-size: 730px 250px;background: url("../images/gplayer0.jpg") center center no-repeat;z-index: -1;opacity: 0.5;
+.show>.img #userFroFileImage{display: block; width: 100%; height: 100%;}
+.show>.text{display: inline-block; width: 730px; height:250px;position: relative;}
+.show>.text::before{content: "";background-size: 730px 250px;background: url("../images/gplayer0.jpg") center center no-repeat;z-index: -1;opacity: 0.5;
 	position: absolute;top: 0px;left: 0px; right: 0px;bottom: 0px;}
-.show .text .txt{display: inline-block; width: 720px; height: 60px; margin-top: 4px; padding-left: 20px;}
-.show .text .txt img{display: block; width: 50px; height: 50px; float: left;}
-.show .text .txt>span{font-size: 30px;line-height: 50px; margin-left: 30px;}
+.show>.text>.txt{display: inline-block; width: 720px; height: 60px; margin-top: 4px; padding-left: 20px;}
+.show>.text>.txt>img{display: block; width: 50px; height: 50px; float: left;}
+.show>.text>.txt>span{font-size: 30px;line-height: 50px; margin-left: 30px;}
 /* 마이페이지 버튼 */
-#userPage button {display:block; cursor: pointer;width: 350px;color: #fff;border-radius:5px;
+#userPage .button-area .modify{display:block; cursor: pointer;width: 350px;color: #fff;border-radius:5px;
 	line-height: 40px;font-size: 15px;background : linear-gradient(to bottom right, rgb(9, 32, 80),
       rgb(81, 117, 164)); margin: 120px auto 0;}

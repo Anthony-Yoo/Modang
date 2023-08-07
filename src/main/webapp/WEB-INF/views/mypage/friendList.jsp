@@ -17,12 +17,23 @@
     <!-- 헤더 끝 -->
 
 	<div id="userPage">
-		<div id="user">
-               	<!-- sideNav 시작 -->
-			<c:import url="/WEB-INF/views/include/modangSideNav.jsp"></c:import>
-			<!-- sideNav 끝 -->
-		        <div class="mainCon">        
-		        <h2>친구 검색</h2>
+	    <!-- sideNav 시작 -->
+        <ul class="sidebar">
+			<li><a href="${pageContext.request.contextPath}/user/userPage">회원정보</a> </li>
+			<li><a class="active" href="${pageContext.request.contextPath }/mypage/friendlist">친구목록</a></li>
+			<li><a href="userPage">그룹친구</a> </li>
+			<li><a href="${pageContext.request.contextPath }/attendUsers/myPage/myBoardList">게시판매칭</a></li>
+			<li><a href="${pageContext.request.contextPath }/mypage/${requestScope.userVo.userNo}/record" target="_blank">전적보기</a></li>
+		</ul>
+		<!-- sideNav 끝 -->
+		<div class="userContent">
+			<div id="content-header">
+				<h2>
+					<a>친구 목록</a>
+				</h2>
+			</div>
+		    <div class="show">        
+		        <h2>친구 검색</h2><!-- 사이즈 줄이기 -->
 		        <div class="friendSearch">
 		            <label for="seardid">회원 아이디 검색</label>
 		            <input type="search" id="seardid" placeholder="회원 아이디 입력">
@@ -32,7 +43,6 @@
 		                <!--검색한 아이디가 있는 경우 나오는 리스트-->
 		            </div>
 		        </div>
-		        <h2>친구 목록</h2>
 		        <div class="friendList">
 		            <table>
 		                <thead>
