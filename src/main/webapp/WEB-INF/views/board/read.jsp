@@ -31,7 +31,6 @@
 		</div>
 		<!-- //content-heade -->
 		<div id="board">
-		
 			<div id="read">
 				<div class="btnWrap txt-right">
 					<c:choose>
@@ -71,8 +70,8 @@
 					<!-- 글 및 작성자 정보 -->
 					<div class="title_area" >
 						<a href="" class="title_thumb">
-							<img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="프로필 사진" width="36" height="36">
-							<%-- <img src="${pageContext.request.contextPath}/upload/${rList.profileImage}" alt="프로필 사진" width="36" height="36"> --%>
+							<%-- <img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="프로필 사진" width="36" height="36"> --%>
+							<img src="${pageContext.request.contextPath}/upload/${rList.profileImage}" alt="프로필 사진" width="36" height="36">
 						</a>
 							
 						<!-- 작성자 -->
@@ -84,7 +83,6 @@
 						
 					</div>
 					<!-- //글 및 작성자 정보 -->
-					
 					
 					<table class="gameInfoTable">
 						<colgroup>
@@ -121,16 +119,16 @@
 							<td class="txt-left">${rList.matchDate}</td>
 							<th>게임정원</th>
 							<td>
-								${rList.membernum} 명
+								${rList.membernum}명
 							</td>
 							<th>현재신청자</th>
 							<td class="txt-left">
-								<span>1 명</span>
+								<span> ${rList.agreeCount} 명</span>
 							</td>
 							<td class="txt-right">
 								<c:choose>
 									<c:when test="${sessionScope.authUser.userNo == rList.userNo}"> <!-- 작성자 본인인 경우 -->
-										<a id="btn_applyList" class="btn-main btn-m"  href="#">신청리스트</a>
+										<a id="btn_applyList" class="btn-main btn-m"  href="${pageContext.request.contextPath}/attendUsers/myPage/myBoardList">신청리스트</a>
 									</c:when>
 									<c:when test="${sessionScope.authUser.userNo != rList.userNo}"> <!-- 작성자 본인인 아닌경우 -->
 										<a id="btn_apply" class="btn-main btn-m"  href="#">신청하기</a>
@@ -140,12 +138,10 @@
 						<tr>
 					</table>
 					
-					
 					<!-- 내용 -->
 					<div id="txt-content">
 						<pre class="form-value">${rList.content}</pre>
 					</div>
-					
 					
 					<div id="comment_list">
 						<!-- 댓글 리스트 출력(cList) -->
@@ -170,17 +166,12 @@
 						<!-- //comment_add -->
 					</div>
 					<!-- //댓글 리스트 -->
-					
 				</div>
 				<!-- //게시글 본문 영역 -->
-				
-					
 			</div>
 			<!-- //read -->
-			
 		</div>
 		<!-- //board -->
-	
 	</div>
 	<!-- //content -->	
 	
@@ -414,7 +405,7 @@ $(document).ready(function() {
 				// textarea의 높이 자동 조절을 적용할 클래스를 정의합니다.
 
 				// 답글쓰기 버튼 클릭 시 대댓글 입력 창 생성
-				$("#cList").on("click", ".comment_info_button", function () {
+				$(document).on("click", "#cList .comment_info_button", function () {
 					event.preventDefault();
 					// 기존에 생성된 모든 댓글 입력창 삭제
 			        $(".line.lNew").remove();
@@ -423,6 +414,8 @@ $(document).ready(function() {
 				    var index = $(this).data("index");
 				    var commentAddDiv = $(this).closest(".comment_area");
 				    commentRender(result.data[index], "down", commentAddDiv, index);
+				    console.log("이거당");
+				    console.log(result.data[index]);
 				    // 생성된 textarea에 자동 높이 조절 기능 적용
 				    commentAddDiv.find("textarea").on('input', function () {
 				        var scrollTop = this.scrollTop;
@@ -519,8 +512,8 @@ $(document).ready(function() {
 		str += ' <input type="hidden" name="groupNo" value="'+BDCommentVo.groupNo+'">';
 		str += ' 	<div class="comment_area" style="position: relative; left: ' + (BDCommentVo.depth * 50) + 'px" data-index='+i+' >';
 		str += ' 	<a href="" class="comment_thumb">';
-		//str += ' 		<img src="${pageContext.request.contextPath}/upload/'+BDCommentVo.profileImage+'" alt="프로필 사진" width="36" height="36">';
-		str += ' 		<img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="프로필 사진" width="36" height="36">';
+		str += ' 		<img src="${pageContext.request.contextPath}/upload/'+BDCommentVo.profileImage+'" alt="프로필 사진" width="36" height="36">';
+		//str += ' 		<img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="프로필 사진" width="36" height="36">';
 		str += ' 	</a>';
 		str += ' 	<div class="comment_box">';
 		str += ' 		<div class="comment_nick_box">';
