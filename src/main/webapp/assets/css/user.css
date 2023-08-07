@@ -320,7 +320,7 @@
 
 /* --------------------------------마이페이지------------------ -------------------도단수정-----*/
 #userPage {width:1200px; margin: 0 auto; height: 800px;}
-#userPage .userContent {width:1050px ;height: 700px;float: right; border: 2px solid #2E419A; border-radius:10px;
+#userPage .userContent {width:1060px ;height: 700px;float: right; border: 2px solid #000; border-radius:10px;
 	box-sizing: border-box; margin-top: 50px; position: relative;}
 #content-header {padding: 60px 0px 50px 0px; border-bottom: 2px solid #000;}
 #content-header h2 { font-size: 35px; text-align: center;}
@@ -339,3 +339,19 @@
 #userPage .button-area .modify{display:block; cursor: pointer;width: 350px;color: #fff;border-radius:5px;
 	line-height: 40px;font-size: 15px;background : linear-gradient(to bottom right, rgb(9, 32, 80),
       rgb(81, 117, 164)); margin: 120px auto 0;}
+/*----------------------회원가입 분류----------------------*/
+#main-content>.line{border: 0;}
+.con{width: 600px; height: 400px; margin: 50px auto 0;}
+.userJoin{width: 260px; height: 200px; float: left; box-shadow: 1px 1px 2px #2E419A; border-radius:4px;
+	box-sizing:border-box; border:1px solid #000; margin-right: 80px;}
+.userJoin:hover{box-shadow: 3px 3px 10px #2E419A; background: #fafafa;}
+.managerJoin{width: 260px; height: 200px; box-shadow: 1px 1px 2px #2E419A;box-sizing:border-box;border-radius:4px;
+	border:1px solid #000; float: left;}
+.managerJoin:hover{box-shadow: 3px 3px 10px #2E419A;background: #fafafa;}
+.con a{display: inline-block; width: 100%; height: 100%;}
+span.title{display: inline-block; width: 200px; font-size: 22px; font-weight:700; padding: 30px 0 20px 20px;}
+span.title img{display: inline-block;height:20px;width: 20px; margin-top: 2px;}
+span.user{display: inline-block; width: 230px; height: 180px;padding: 0px 0 0px 16px; line-height: 24px;}
+span.manager{display: inline-block;width: 230px;height: 180px;padding: 0px 0 0px 16px;line-height: 32px;}
+
+      

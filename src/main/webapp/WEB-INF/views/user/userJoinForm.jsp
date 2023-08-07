@@ -14,8 +14,8 @@
 <!-- css -->
 
 <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/assets/css/user.css" rel="stylesheet" type="text/css">
-
+<link href="${pageContext.request.contextPath}/assets/css/user.css" rel="stylesheet" type="text/css"> 
+<link href="${pageContext.request.contextPath}/assets/css/mypage.css" rel="stylesheet" type="text/css">
 <!-- js -->
 
 </head>
@@ -25,58 +25,40 @@
 	<!-- 헤더 끝 -->
 	
 	<div id="main-content">
-	
-		<div class="container text-center">
-
-    		<div id="user">
-		
-				<div id="userJoinFrom">
-		
-					<div id="main">
-					
-						<h3>모당 회원 가입!</h3>
-						
-							<div class="form-group">
-                    			
-									<div class="block" id="shadowG">
-										<p id="shadowBox" >
-										<p id="shadowBox2" >
-									
-											<div id="shadowTitle" onclick="document.location='${pageContext.request.contextPath}/user/joinForm'" class="">
-											
-												<p>개인 회원 가입
-												<img src="${pageContext.request.contextPath}/assets/images/right-chevron.png" height="20px"  alt=""></p>
-											
-											
-											
-												<div id="subTitleSize" class="">
-													<div>당구를 좋아하시는 분들이라면,</div><br>
-													<div>누구나 개인회원으로 가입하여</div><br>
-													<div>모당을 통해 편리하고 알차게</div><br>
-													<div>당구를 즐길 수 있습니다?</div><br>
-												</div>
-											
-											</div>
-									
-											<div id="shadowTitle2" onclick="document.location='${pageContext.request.contextPath}/manager/joinForm'" class="">
-										
-										<p >사업자 회원가입 
-										<img src="/modang/assets/images/right-chevron.png" height="20px"  alt=""></p>
-									
-												<div id="subTitleSize2" class="">
-													<div>사업자등록을 보유중이라면,</div><br>
-													<div>사업자회원으로 가입하여</div><br>
-													<div>모당을 이용하실수 있습니다</div><br>
-										    	</div>
-											</div>
-									</div>
-    						</div>
-           			</div>
-    			</div>
-    		<!-- //user -->
-    		</div>
-    	<!-- //container -->
-    	</div>
+		<div id="content-header" class="line">
+			<h2>
+				<a>모당 회원 가입</a>
+			</h2>
+		</div>
+		<div class="con">
+			<div class="userJoin">
+				<a href="${pageContext.request.contextPath}/user/joinForm">
+					<span class="title">
+						개인 회원 가입
+						<img src="${pageContext.request.contextPath}/assets/images/right-chevron.png"   alt="">
+					</span>
+					<span class="user">
+						당구를 좋아하시는 분들이라면,<br>
+						누구나 개인회원으로 가입하여<br>
+						모당을 통해 편리하고 알차게<br>
+						당구를 즐길 수 있습니다?
+					</span>
+				</a>
+			</div>
+			<div class="managerJoin">
+				<a href="${pageContext.request.contextPath}/manager/joinForm">
+					<span class="title">
+						관리자 회원 가입
+						<img src="${pageContext.request.contextPath}/assets/images/right-chevron.png"  alt="">
+					</span>
+					<span class="manager">
+						사업자등록을 보유중이라면,<br>
+						사업자회원으로 가입하여<br>
+						모당을 이용하실수 있습니다<br>
+					</span>
+				</a>
+			</div>
+		</div>
     <!-- //main-content -->
   	</div>
 	<!-- 푸터 시작 -->

@@ -20,8 +20,7 @@
 	rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/modang.css"
 	rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/assets/css/user.css"
-	rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/mypage.css" rel="stylesheet" type="text/css">
 
 <!-- jquery -->
 <script type="text/javascript"
@@ -30,113 +29,6 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 
-
-<style type="text/css">
-
-
-.modal-content #applyList table {
-    width: 580px;
-    margin: auto;
-    text-align: center;
-    font: 15px "맑은 고딕", 돋움, 굴림;
-    border: 1px soild blue;
-}
-.modal-content #applyList table>thead>tr {
-    font-size: 15px;
-    border-top: 1px solid #2E419A;
-    border-bottom: 1px solid #2E419A;
-    background-color: #ecdfdf;
-    padding: 0px;
-    
-}
-.modal-content #applyList table>thead>tr>th{
-	text-align: center;
-}
-
-.modal-content #applyList table>thead>tr>th:nth-child(1) {
-    width: 10%;
-}
-.modal-content #applyList table>thead>tr>th:nth-child(2) {
-    width: 22.5%;
-}
-.modal-content #applyList table>thead>tr>th:nth-child(3) {
-    width: 22.5%;
-}
-.modal-content #applyList table>thead>tr>th:nth-child(4) {
-    width: 22.5%;
-}
-.modal-content #applyList table>thead>tr>th:nth-child(5) {
-    width: 22.5%;
-}
-
-.modal-content #applyList table>tbody>tr {
-    font-size: 15px;
-    border-bottom: 1px solid black;
-}
-
-.modal-content #applyList table>tbody>tr>td {
-    padding: 10px 10px 10px 10px;
-    white-space: nowrap;
-}
-.modal-content #applyList table>tbody>tr>td {
-    padding: 10px 10px 10px 10px;
-    white-space: nowrap;
-}
-
-.modal-content #applyList #decide {
-	margin: 0 auto;
-	text-align: center;
-}
-
-.modal-content #applyList #decide #confirmation {
-   	background: linear-gradient(to bottom right, rgb(9, 32, 80), rgb(81, 117, 164));
-}
-.modal-content #applyList #decide #dismiss {
-    background: linear-gradient(to bottom right, rgb(247 17 17), rgb(185 114 121));
-}
-.modal-content #applyList #decide button {
-	width: 73px;
-    margin: 12px auto;
-    height: 32px;
-    color: white;
-   	border-radius: 2px;
-}
-
-.newApList .applyCheck button{
-    width: 57px;
-    margin: 0 auto;
-    height: 24px;
-    color: white;
-   	border-radius: 2px;
-}
-
-.newApList .confirmed button{
-    width: 57px;
-    margin: 0 auto;
-    height: 24px;
-    color: white;
-   	border-radius: 2px;
-}
-
-.newApList .applyCheck .agree{
-    background: linear-gradient(to bottom right, rgb(9, 32, 80), rgb(81, 117, 164));
-}
-.newApList .applyCheck .agreed{
-    background: linear-gradient(to bottom right, rgb(9, 32, 80), rgb(81, 117, 164));
-}
-.newApList .applyCheck .refuse{
-    background: linear-gradient(to bottom right, rgb(247 17 17), rgb(185 114 121));
-}
-.newApList .applyCheck .refused{
-    background: linear-gradient(to bottom right, rgb(247 17 17), rgb(185 114 121));
-}
-
-#applyMenu {
-	width:1200px;
-	margin: 0px auto;
-}
-
-</style>
 </head>
 <script type="text/javascript">
 	//JavaScript
@@ -150,7 +42,7 @@
 		}
 
 		// 자식 요소의 높이의 합이 기본값인 300px보다 크면 해당 값으로 높이 조절
-		applyMenu.style.height = Math.max(totalHeight, 300) + 'px';
+		// applyMenu.style.height = Math.max(totalHeight, 300) + 'px';
 	}
 
 	// 페이지 로드 후 자동으로 높이 조절 함수 호출
@@ -164,14 +56,14 @@
 	<!-- 헤더 끝 -->
 	<div id="applyMenu">
 		<ul class="sidebar">
-			<li><a class="active" href="${pageContext.request.contextPath}/user/userPage">회원정보</a> </li>
+			<li><a href="${pageContext.request.contextPath}/user/userPage">회원정보</a> </li>
 			<li><a href="${pageContext.request.contextPath }/mypage/${requestScope.userVo.userNo}/friendlist">친구목록</a></li>
 			<li><a href="userPage">그룹친구</a> </li>
-			<li><a href="${pageContext.request.contextPath }/attendUsers/myPage/myBoardList">게시판매칭</a></li>
+			<li><a class="active"  href="${pageContext.request.contextPath }/attendUsers/myPage/myBoardList">게시판매칭</a></li>
 			<li><a href="${pageContext.request.contextPath }/mypage/${requestScope.userVo.userNo}/record" target="_blank">전적보기</a></li>
 		</ul>
 
-		<div id="apply" style="margin-right: 0px; width: 1030px;">
+		<div id="apply">
 			<div class="apply_btn">
 				<a id="myList" class="active" href="${pageContext.request.contextPath}/attendUsers/myPage/myBoardList">내
 					게시글 목록
