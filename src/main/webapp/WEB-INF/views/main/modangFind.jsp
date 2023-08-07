@@ -7,8 +7,8 @@
 <title>modang 당구장 찾기</title>
 	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
     <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
-    <%-- <link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
-     --%>
+    <link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
+     
     <!-- 당구장 찾기 페이지에서만 사용되는 css -->
      <link href="${pageContext.request.contextPath}/assets/css/find.css" rel="stylesheet" type="text/css">
     
@@ -39,52 +39,15 @@
             		</form>
             		<div class="b-searchList">
 	            		<ul>
-	            			<li class="modangList">
-	                        	<img src="${pageContext.request.contextPath}/assets/images/room.jpg" alt="당구장이미지">
-	                            <div class="info">
-	                                <p class="repname">핑클당구장</p>
-	                                <p class="addr">서울시 강동구 천호동 15-05 지하 1층</p>
-	                                <p class="sub">주차가능</p>
-	                            </div>
-	                        </li>
-	                        
+                    	<c:forEach var="biliVo" items="${modanglist}">
 	                        <li class="modangList">
-	                        	<img src="${pageContext.request.contextPath}/assets/images/room.jpg" alt="당구장이미지">
-	                            <div class="info">
-	                                <p class="repname">핑클당구장</p>
-	                                <p class="addr">서울시 강동구 천호동 15-05 지하 1층</p>
-	                                <p class="sub">주차가능</p>
+	                        	<img src="${pageContext.request.contextPath }/upload/${biliVo.imageFile1}" alt="당구장이미지">
+	                            <div class="txt">
+	                                <p class="repname">${biliVo.biliardName}</p>
+	                                <p class="addr">${biliVo.biliardAddress1} ${biliVo.biliardAddress2}</p>
 	                            </div>
 	                        </li>
-	                        
-	                        <li class="modangList">
-	                        	<img src="${pageContext.request.contextPath}/assets/images/room.jpg" alt="당구장이미지">
-	                            <div class="info">
-	                                <p class="repname">핑클당구장</p>
-	                                <p class="addr">서울시 강동구 천호동 15-05 지하 1층</p>
-	                                <p class="sub">주차가능</p>
-	                            </div>
-	                        </li>
-	                        
-	                        <li class="modangList">
-	                        	<img src="${pageContext.request.contextPath}/assets/images/room.jpg" alt="당구장이미지">
-	                            <div class="info">
-	                                <p class="repname">핑클당구장</p>
-	                                <p class="addr">서울시 강동구 천호동 15-05 지하 1층</p>
-	                                <p class="sub">주차가능</p>
-	                            </div>
-	                        </li>
-	                        
-	                        <li class="modangList">
-	                        	<img src="${pageContext.request.contextPath}/assets/images/room.jpg" alt="당구장이미지">
-	                            <div class="info">
-	                                <p class="repname">핑클당구장</p>
-	                                <p class="addr">서울시 강동구 천호동 15-05 지하 1층</p>
-	                                <p class="sub">주차가능</p>
-	                            </div>
-	                        </li>
-	                        
-	            		
+                        </c:forEach>                        	            		
 	            		</ul>
             		</div>
             	</div>
