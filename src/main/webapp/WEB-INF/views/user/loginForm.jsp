@@ -43,7 +43,7 @@
 						<form id="loginSubmitForm" action="${pageContext.request.contextPath }/user/login" method="post" enctype="multipart/form-data">
             				
 	            			<div class="form-group">
-								<div class="input-group">
+								<div id="inputId" class="input-group">
 							
 									<span class="input-group-addon">
 										<img src="${pageContext.request.contextPath}/assets/images/user.png" alt="">
@@ -56,7 +56,7 @@
 						    </div>
 			                
 							<div class="form-group">
-								<div class="input-group">
+								<div id="inputPw" class="input-group">
 									<span class="input-group-addon">
 										<img src="${pageContext.request.contextPath}/assets/images/passwd.png" alt="">
 									</span>

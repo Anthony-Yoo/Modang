@@ -35,8 +35,8 @@
 					<div class="content" >
 							
 									<div class="image-show" >
-       									<img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileImage}">
-       									<img src="${pageContext.request.contextPath}/assets/images/gplayer0.jpg" style="width:790px;margin: -1px 0 0 110px;padding:0;position: absolute;opacity: 0.2;" alt=""> 
+       									<img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileImage}" id="userFroFileImage">
+       									<img src="${pageContext.request.contextPath}/assets/images/gplayer0.jpg" id="userSubImage" style="" alt=""> 
        								</div>
        								
        							<div class="image-icon">
