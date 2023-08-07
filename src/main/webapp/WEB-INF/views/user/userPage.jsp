@@ -59,7 +59,7 @@
 								</div>							
        						</div>
        					<div class="button-area">
-       							<button type="submit" onclick="document.location='${pageContext.request.contextPath}/user/modifyForm'">수정하기로 고고!</button>
+       							<button type="submit" class="modify" onclick="document.location='${pageContext.request.contextPath}/user/modifyForm'">수정하기로 고고!</button>
 						</div>
 							
            		</div>
