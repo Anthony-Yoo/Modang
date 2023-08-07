@@ -200,7 +200,6 @@ public class MypageService {
 		
 		//친구리스트 userNo 확보
 		List<RecordUserVo> friendList = mypageDao.selectFriendList(userNo);
-		System.out.println(friendList);
 		
 		for(RecordUserVo vo : friendList) {
 			int getUserNo = vo.getUserNo(); //플레이리스트 유져넘버
