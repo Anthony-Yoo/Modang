@@ -76,7 +76,7 @@
     position: relative;
 }
 
-#main form .input-group #id {
+#loginForm .input-group #id {
 	width: 300px;
 	height: 40px;
 	/* border: 1px solid #B8B8B8; */
@@ -86,10 +86,25 @@
 	padding:6px 12px;
 	color: #111;
 	position: relative;
+	left:10px;
 
 }
 
-#main form .input-group #passwd {
+#modifyForm .input-group #id {
+	width: 300px;
+	height: 40px;
+	/* border: 1px solid #B8B8B8; */
+	border: 1px solid #746c6c;
+	box-sizing: border-box;
+	border-radius: 8px;
+	padding:6px 12px;
+	color: #111;
+	position: relative;
+	left:0px;
+
+}
+
+#loginForm .input-group #passwd {
 	width: 300px;
 	height: 40px;
 	/* background: #F5F5F5; */
@@ -97,8 +112,34 @@
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
-	
+	position: relative;
+    left: 10px;
 
+}
+
+#modifyForm .input-group #passwd {
+	width: 300px;
+	height: 40px;
+	/* background: #F5F5F5; */
+	border: 1px solid #746c6c;
+	box-sizing: border-box;
+	border-radius: 8px;
+	color: #111;
+	position: relative;
+    left: 0px;
+
+}
+
+#joinForm .input-group #passwd {
+    width: 300px;
+    height: 40px;
+    /* background: #F5F5F5; */
+    border: 1px solid #746c6c;
+    box-sizing: border-box;
+    border-radius: 8px;
+    color: #111;
+    position: relative;
+    left: 0px;
 }
 
 #main form .input-group #cellphone {
