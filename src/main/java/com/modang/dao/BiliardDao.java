@@ -92,22 +92,24 @@ public class BiliardDao {
 		
 	}
 	/* 테이블 매출 페이지-------------------------------------------------------------------------------- */
-	/* 테이블 매출 전체매출리스트(default화면) */
-	public void selectTotalSales(int biliardNo) {
+	/* 테이블네임 가져오기 */
+	public List<CueTableVo> selectTotalSales(int biliardNo) {
 		System.out.println("BiliardDao.selectTotalSales()");
-		List<TableGamesVo> totalList = sqlSession.selectList("biliard.selectTotalSales",biliardNo);
-		System.out.println("전체리스트:"+totalList);
+		List<CueTableVo> cuetableList = sqlSession.selectList("biliard.selectTotalSales",biliardNo);
+		System.out.println(cuetableList);
 		
+		return cuetableList;
 	}
 	
-	/* 테이블 매출 검색 */
-	public List<TableGamesVo> selectOneTableSales(TableGamesVo gamesVo ) {
+	/** 테이블별 전체리스트및 검색 */
+	public List<TableGamesVo> selectOneTableSales(TableGamesVo tableGamesVo) {
 		System.out.println("BiliardDao.selectOneTableSales()");
-		System.out.println(gamesVo);
-		List<TableGamesVo> salesList = sqlSession.selectList("biliard.selectOneTableSales", gamesVo);
-		
+		System.out.println("테이블전체검색:"+tableGamesVo);
+		List<TableGamesVo> salesList = sqlSession.selectList("biliard.selectOneTableSales", tableGamesVo);
 		return salesList;
 	}
+	
+	
 	
 	/* 요금테이블 페이지--------------------------------------------------------------------------------- */
 	/* 요금테이블 - 요금정보가져오기 */

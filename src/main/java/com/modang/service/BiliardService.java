@@ -103,20 +103,19 @@ public class BiliardService {
 	}
 	
 	/* 테이블 매출 페이지-------------------------------------------------------------------------------- */
-	/* 테이블 매출폼 */
+	/* 테이블네임 가져오기 */
 	public List<CueTableVo> tablesalesList(int biliardNo) {
 		System.out.println("BiliardService.tablesalesList()");
 		List<CueTableVo> cuetableList = biliardDao.selectList(biliardNo);
-		biliardDao.selectTotalSales(biliardNo);
 		
 		return cuetableList;
 	}
 	
 	/* 테이블 매출 검색 */
-	public List<TableGamesVo> searchTable(TableGamesVo gamesVo ) {
+	public List<TableGamesVo> searchTable(TableGamesVo tableGamesVo) {
 		System.out.println("BiliardService.searchTable()");
 		
-		List<TableGamesVo> salesList = biliardDao.selectOneTableSales(gamesVo);
+		List<TableGamesVo> salesList = biliardDao.selectOneTableSales(tableGamesVo);
 		return salesList;
 	}
 	
