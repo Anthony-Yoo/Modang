@@ -56,7 +56,7 @@
 	height: 40px;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
-	border-radius: 8px;
+	border-radius: 5px;
 	color: #fff;
 	margin: 0 auto;
 	background : linear-gradient(to bottom right, rgb(9, 32, 80),
@@ -67,22 +67,24 @@
 #main form .input-group #input-uid {
 	width: 230px;
 	height: 40px;
-	background: #F5F5F5;
-	border: 1px solid #B8B8B8;
+	/* background: #F5F5F5; */
+	border: 1px solid #746c6c;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
 	display: inline-block;
+	padding:6px 12px;
     position: relative;
 }
 
 #main form .input-group #id {
 	width: 300px;
 	height: 40px;
-	background: #F5F5F5;
-	border: 1px solid #B8B8B8;
+	/* border: 1px solid #B8B8B8; */
+	border: 1px solid #746c6c;
 	box-sizing: border-box;
 	border-radius: 8px;
+	padding:6px 12px;
 	color: #111;
 	position: relative;
 
@@ -91,8 +93,8 @@
 #main form .input-group #passwd {
 	width: 300px;
 	height: 40px;
-	background: #F5F5F5;
-	border: 1px solid #B8B8B8;
+	/* background: #F5F5F5; */
+	border: 1px solid #746c6c;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
@@ -103,8 +105,9 @@
 #main form .input-group #cellphone {
 	width: 300px;
 	height: 40px;
-	background: #F5F5F5;
-	border: 1px solid #B8B8B8;
+	/* background: #F5F5F5; */
+	border: 1px solid #746c6c;
+	padding: 6px 12px;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
@@ -115,9 +118,10 @@
 #main form .input-group #nick {
 	width: 230px;
 	height: 40px;
-	background: #F5F5F5;
-	border: 1px solid #B8B8B8;
+	/* background: #F5F5F5; */
+	border: 1px solid #746c6c;
 	box-sizing: border-box;
+	padding:6px 12px;
 	border-radius: 8px;
 	color: #111;
 	margin: 0 auto;
@@ -138,7 +142,7 @@
 	height: 40px;
 	border: 1px solid #B8B8B8;
 	box-sizing: border-box;
-	border-radius: 8px;
+	border-radius: 5px;
 	color: #fff;
 	margin: 0 auto;
 	background : linear-gradient(to bottom right, rgb(9, 32, 80),
@@ -161,8 +165,9 @@
 #main form .input-group #average {
 	width: 300px;
 	height: 40px;
-	background: #F5F5F5;
-	border: 1px solid #B8B8B8;
+	/* background: #F5F5F5; */
+	border: 1px solid #746c6c;
+	padding: 6px 12px;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
@@ -175,8 +180,8 @@
 	height: 40px;
 	object-fit: cover;
 	padding : 9px 20px 9px 15px;
-	background: #F5F5F5;
-	border: 1px solid #B8B8B8;
+	/* background: #F5F5F5; */
+	border: 1px solid #746c6c;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
@@ -189,14 +194,24 @@
 #main form .button-area #btn-submit{
 	width: 100%;
 	color: #fff;
-	border-radius:10px;
+	border-radius:5px;
 	height: 40px;
 	position: relative;
-	
 	margin: 0 auto;
 	background : linear-gradient(to bottom right, rgb(9, 32, 80),
       rgb(81, 117, 164))
       
+}
+
+#joinForm #main form .button-area #btn-submit {
+    width: 350px;
+    color: #fff;
+    border-radius: 5px;
+    height: 40px;
+    position: relative;
+    right:-5px;
+    margin: 0 auto;
+    background: linear-gradient(to bottom right, rgb(9, 32, 80), rgb(81, 117, 164));
 }
 
 /* modify image size */
@@ -214,7 +229,7 @@
 	width: 40px; 
 	height: 40px;
 	position: relative;
-    left: -5px;
+    left: 0px;
     margin: 0 auto;
 	
 }
@@ -332,15 +347,45 @@
     padding: 0;
     position: absolute;
 }
+#userSubImage {
+  	width: 790px;
+    display: inline-block;
+    right: 360px;
+    padding: 0;
+    position: absolute;
+    opacity: 0.2;
+    top: 124px;
+    height: 260px;
+}
+#inputId{
+	position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+    justify-content: space-between;
+}
+#inputPw{
+	position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+    justify-content: space-between;
+}
+  
+    
+
 
 /* 마이페이지 이미지 */
-#userPage .image-show img {
+#userFroFileImage {
     vertical-align: top;
+    display: inline-block;
     padding: 0;
     width: 260px;
     height: 260px;
     object-fit: cover;
-    margin: -1px 0 0 -150px;
+    margin: -1px 0 0 -66px;
     position: absolute; 
 }
 
@@ -360,9 +405,10 @@
 
 /* 마이페이지 사용자 정보 */
 #userPage .text {
-	margin: 20px 10px 10px 220px;
-    font-size: 30px;
+	font-size: 30px;
     position: relative;
+    left: 195px;
+    padding: 15px 0px 0px 20px;
 	
 }
 /* 마이페이지 버튼 */
@@ -370,12 +416,15 @@
 	cursor: pointer;
 	width: 40%;
 	color: #fff;
-	border-radius:10px;
+	border-radius:5px;
 	line-height: 40px;
 	font-size: 15px;
     border: 0;
     padding: 0;
-    margin: 100px 0px 0px 200px;
+    position: relative;
+    bottom: -90px;
+    right: -210px;
+
     background : linear-gradient(to bottom right, rgb(9, 32, 80),
       rgb(81, 117, 164))
 }

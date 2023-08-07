@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.modang.service.BDCommentService;
 import com.modang.service.BoardService;
+import com.modang.service.ManagerService;
 import com.modang.vo.BDCommentVo;
 import com.modang.vo.BoardVo;
+import com.modang.vo.ManagerVo;
 import com.modang.vo.UserVo;
 
 @Controller
@@ -28,6 +30,8 @@ public class TestController {
 	@Autowired
 	private BDCommentService bDCommentService;
 
+	@Autowired
+	private ManagerService managerService;
 
 	/* 매칭게시판 리스트 폼 */
 	@RequestMapping(value = "/writeForm2", method = { RequestMethod.GET })
@@ -72,5 +76,15 @@ public class TestController {
 		return "/board/a-read";
 	}
 	
+	/*당구장 찾기-모당리스트*/	
+	@RequestMapping(value = "/modangFind2", method = {RequestMethod.GET, RequestMethod.POST })
+	public String modanglist(Model model) {
+		System.out.println("ManagerController.modanglist()");		
+		
+		List<ManagerVo> modanglist = managerService.modanglist();
+		model.addAttribute("modanglist", modanglist);
+		
+		return "/main/modangFind2";
+	}
 	
 }
