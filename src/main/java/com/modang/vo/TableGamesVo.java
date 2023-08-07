@@ -31,6 +31,9 @@ public class TableGamesVo {
 	private String minDate; //검색최소날짜
 	private String maxDate; //검색최대날짜
 	private String tableName;//테이블네임
+	private int biliardNo; //당구장번호
+	private String comPayMoney; //결제금액 천단위표기형
+	private String comIncome;   //입금금액 천단위 표기형
 	
 	public TableGamesVo() {
 		
@@ -40,7 +43,8 @@ public class TableGamesVo {
 			String startTime, String endTime, int payStatus, int payType, String payDate, int income, int payMoney,
 			String pauseStart, String pauseStop, int pauseTime, int setNo, int gameStatus,
 			List<PlayUserVo> playUserList, List<RecordUserVo> recordUserList, CueTableVo tableInfo, int tableFee,
-			int minFee, int secondsToTime, int rownum, String minDate, String maxDate, String tableName) {
+			int minFee, int secondsToTime, int rownum, String minDate, String maxDate, String tableName,
+			int biliardNo, String comPayMoney, String comIncome) {
 		super();
 		this.gameNo = gameNo;
 		this.tableNo = tableNo;
@@ -70,7 +74,11 @@ public class TableGamesVo {
 		this.minDate = minDate;
 		this.maxDate = maxDate;
 		this.tableName = tableName;
+		this.biliardNo = biliardNo;
+		this.comPayMoney = comPayMoney;
+		this.comIncome = comIncome;
 	}
+
 
 	public int getGameNo() {
 		return gameNo;
@@ -295,6 +303,30 @@ public class TableGamesVo {
 	public void setTableName(String tableName) {
 		this.tableName = tableName;
 	}
+	
+	public int getBiliardNo() {
+		return biliardNo;
+	}
+
+	public void setBiliardNo(int biliardNo) {
+		this.biliardNo = biliardNo;
+	}
+
+	public String getComPayMoney() {
+		return comPayMoney;
+	}
+
+	public void setComPayMoney(String comPayMoney) {
+		this.comPayMoney = comPayMoney;
+	}
+
+	public String getComIncome() {
+		return comIncome;
+	}
+
+	public void setComIncome(String comIncome) {
+		this.comIncome = comIncome;
+	}
 
 	@Override
 	public String toString() {
@@ -305,8 +337,8 @@ public class TableGamesVo {
 				+ pauseStop + ", pauseTime=" + pauseTime + ", setNo=" + setNo + ", gameStatus=" + gameStatus
 				+ ", playUserList=" + playUserList + ", recordUserList=" + recordUserList + ", tableInfo=" + tableInfo
 				+ ", tableFee=" + tableFee + ", minFee=" + minFee + ", secondsToTime=" + secondsToTime + ", rownum="
-				+ rownum + ", minDate=" + minDate + ", maxDate=" + maxDate + ", tableName=" + tableName + "]";
-	} 
-	
-	
+				+ rownum + ", minDate=" + minDate + ", maxDate=" + maxDate + ", tableName=" + tableName + ", biliardNo="
+				+ biliardNo + ", comPayMoney=" + comPayMoney + ", comIncome=" + comIncome + "]";
+	}
+
 }

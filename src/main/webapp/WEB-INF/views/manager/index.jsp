@@ -62,7 +62,7 @@
 						<nav id="nav">
 							<a href="${pageContext.request.contextPath}/manager/index"
 								class="active">테이블 현황</a> <a
-								href="${pageContext.request.contextPath}/manager/tableSalesForm">테이블
+								href="${pageContext.request.contextPath}/manager/tableSales">테이블
 								매출</a> <a
 								href="${pageContext.request.contextPath}/manager/daySalesForm">일별
 								매출</a> <a
