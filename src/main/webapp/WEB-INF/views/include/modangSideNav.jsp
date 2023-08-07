@@ -12,7 +12,7 @@
 		<div class="sidebar">
 
 			<a class="active" href="${pageContext.request.contextPath}/user/userPage">회원정보</a> 
-			<a href="${pageContext.request.contextPath }/mypage/${requestScope.userVo.userNo}/friendlist">친구목록</a>
+			<a href="${pageContext.request.contextPath }/mypage/friendlist">친구목록</a>
 			<a href="userPage">그룹친구</a> 
 			<a href="${pageContext.request.contextPath }/attendUsers/myPage/myBoardList">게시판매칭</a>
 			<a href="${pageContext.request.contextPath }/mypage/${requestScope.userVo.userNo}/record" target="_blank">전적보기</a>

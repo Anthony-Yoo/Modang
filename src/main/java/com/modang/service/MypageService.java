@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.modang.dao.MypageDao;
 import com.modang.vo.CurrentRecordVo;
+import com.modang.vo.FavoriteUsersVo;
 import com.modang.vo.RecordUserVo;
 
 @Service
@@ -229,5 +230,49 @@ public class MypageService {
 		}			
 		return friendList;
 	}
-
+	
+	public RecordUserVo friendInsert(FavoriteUsersVo favoriteVo) {
+		System.out.println("MypageService.friendInsert()");
+		
+		int recommStatus = 0; // 권장다마상태
+		mypageDao.insertFriend(favoriteVo);		
+		
+		int favoriteNo = favoriteVo.getFavoriteNo();
+		System.out.println("즐겨찾기 정보 :" + favoriteVo);
+			
+		RecordUserVo friendInfo = mypageDao.selectFriendInfo(favoriteNo); // 즐겨찾기 친구 찾기	
+		System.out.println(friendInfo);
+		int userNo = friendInfo.getUserNo();
+		RecordUserVo friendRecord = mypageDao.selectRecordWinLose(userNo);
+		friendInfo.setWinCnt(friendRecord.getWinCnt()); 
+		friendInfo.setLoseCnt(friendRecord.getLoseCnt());
+		 
+		
+		if(friendInfo.getTotalCountGame() >=10) {//본인다마로 10게임 이상일때
+			
+			if(friendInfo.getTotalCommRate()>0.8) {//안물린승률이 0.8이상일때
+				recommStatus = 2;
+				friendInfo.setRecommStatus(recommStatus);
+				
+			}else if(friendInfo.getTotalCommRate()<0.2) { //안물린승률이 0.2이하일때
+				recommStatus = 0;
+				friendInfo.setRecommStatus(recommStatus);
+			}else {
+				recommStatus = 1;
+				friendInfo.setRecommStatus(recommStatus);
+			}			
+		}else {
+			recommStatus =3;
+			friendInfo.setRecommStatus(recommStatus);
+		}
+		
+		return friendInfo;
+	}
+	
+	public int friendDelete(int favoriteNo) {
+		System.out.println("MypageService.friendDelete()");		
+		
+		return mypageDao.deleteFriend(favoriteNo);
+	}
+	
 }
