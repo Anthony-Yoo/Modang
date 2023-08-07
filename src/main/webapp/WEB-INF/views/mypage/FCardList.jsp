@@ -59,6 +59,7 @@
         <div class="cardList right">
             <h2>카드 리스트</h2>
             <ul>
+            <c:forEach var="card"
                 <li>
                     <h4>우리가대마왕</h4>
                     <ul class="nick">
@@ -69,29 +70,7 @@
                     </ul>
                     <span>23.06.17</span>
                     <button type="button">×</button><!--삭제버튼-->
-                </li>
-                <li>
-                    <h4>우리가다발라줌</h4>
-                    <ul class="nick">
-                        <li>1등임</li>
-                        <li>너찌질</li>
-                        <li>눈깔아</li>
-                        <li>큐대로맞고싶</li>
-                    </ul>
-                    <span>23.06.17</span>
-                    <button type="button">×</button>
                 </li>                
-                <li>
-                    <h4>다덤벼</h4>
-                    <ul class="nick">
-                        <li>가나다</li>
-                        <li>다나가</li>
-                        <li>abc</li>
-                        <li>xyz</li>
-                    </ul>
-                    <span>23.06.17</span>
-                    <button type="button">×</button>
-                </li>
             </ul>
         </div>
     </div>

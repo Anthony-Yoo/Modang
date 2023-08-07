@@ -129,6 +129,8 @@ public class MypageController {
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		int userNo = authUser.getUserNo();	
 		
+		mypageService.cardList(userNo);
+		
 		model.addAttribute("userNo", userNo);
 		
 		return "/mypage/FCardList";

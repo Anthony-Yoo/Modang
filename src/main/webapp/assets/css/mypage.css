@@ -1,0 +1,229 @@
+@charset "UTF-8";
+/*-------------초기화-------------------------*/
+body { line-height: 1; }
+ol,ul,li{list-style-type: none;}
+blockquote, q { quotes: none;}
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+table { border-collapse: collapse; border-spacing: 0; }
+body { -webkit-text-size-adjust: none;}
+mark { background-color: transparent; color: inherit; }
+input::-moz-focus-inner { border: 0; padding: 0; }
+input, select, qktextarea { -moz-appearance: none; -webkit-appearance: none; -ms-appearance: none; appearance: none; }
+small {font-size:.75em;}
+fieldset{border: 0;}
+a{text-decoration: none; color: #000;}
+button{border: 0; padding: 0;}
+img {vertical-align: top;}/*reset*/
+/*-----------------------------------------공통-----------------------------------*/
+.error-msg{color: #F94069; font-size: 13px; display: none; text-align: center;padding-top:5px;}
+.correct-msg{color: #F94069; font-size: 13px; display: none; text-align: center; padding-top:5px;}
+.check-msg{color: #F94069; font-size: 13px; text-align: center; padding-top:5px;}
+h2{font-size: 35px;}
+h3{font-size: 25px;}
+#main-content{width: 1200px; margin: 0 auto; height: auto;}
+#main-content .container{margin-top:50px; margin-bottom: 100px; height: 100%;}
+.chck{display: inline-block; width: 100px; height: 40px; background : linear-gradient(to bottom right, rgb(9, 32, 80),
+      rgb(81, 117, 164)); color: #fff; line-height: 40px; border-radius: 10px; font-size: 14px;}
+.chck:hover{display: inline-block; width: 100px; height: 40px;
+	background : linear-gradient(to bottom right, rgb(9, 32, 80),rgb(81, 117, 164)); 
+    color: #fff; line-height: 40px; border-radius: 10px; font-size: 14px; cursor: pointer;}
+.button{display: block; width: 480px; height: 40px; text-align: center;
+        background : linear-gradient(to bottom right, rgb(9, 32, 80),
+      rgb(81, 117, 164)); color: #fff; border-radius:10px; line-height: 40px;
+        margin: 16px auto 30px; cursor: pointer;}
+
+input[type="text"],input[type="password"]{ width: 300px; height: 40px;padding : 8px 20px 9px 20px; background: #fafafa;
+    border: 1px solid #B8B8B8; box-sizing: border-box; border-radius: 8px;  color: #111;}
+input::placeholder{color: #B8B8B8;}
+
+/* --------------------------------마이페이지 //네비있는 컨텐츠-----------------도단수정-----*/
+#userPage {width:1200px; margin: 0 auto; height: 800px;}
+#userPage .userContent {width:1060px ;height: 700px;float: right; border: 2px solid #000; border-radius:10px;
+	box-sizing: border-box; margin-top: 50px; position: relative;}
+#content-header {padding: 60px 0px 50px 0px;border-bottom: 2px solid #000000; }
+#content-header h2 { font-size: 35px; text-align: center;}
+/* 마이페이지 이미지 */
+#userPage .userContent .show {display: inline-block;width: 1050px;height: 300px; margin: 20px auto;}
+.show>.img{display: block;width:250px; height: 250px; float: left; margin: 0 20px;
+	border: 2px solid #efefef; box-sizing: border-box;}
+.show>.img #userFroFileImage{display: block; width: 100%; height: 100%;}
+.show>.text{display: inline-block; width: 730px; height:250px;position: relative;}
+.show>.text::before{content: "";background-size: 730px 250px;background: url("../images/gplayer0.jpg") center center no-repeat;z-index: -1;opacity: 0.5;
+	position: absolute;top: 0px;left: 0px; right: 0px;bottom: 0px;}
+.show>.text>.txt{display: inline-block; width: 720px; height: 60px; margin-top: 4px; padding-left: 20px;}
+.show>.text>.txt>img{display: block; width: 50px; height: 50px; float: left;}
+.show>.text>.txt>span{font-size: 30px;line-height: 50px; margin-left: 30px;}
+/* 마이페이지 버튼 */
+#userPage .button-area .modify{display:block; cursor: pointer;width: 350px;color: #fff;border-radius:5px;
+	line-height: 40px;font-size: 15px;background : linear-gradient(to bottom right, rgb(9, 32, 80),
+      rgb(81, 117, 164)); margin: 120px auto 0;}
+
+/*-------------------------------------친구목록----------------------------------------------*/
+.del{background-color: #2E419A; color: #fff; padding: 2px 8px; border-radius: 4px;
+	cursor: pointer;}
+/*친구 찾기*/
+.content{height: 900px;}
+#userPage div.find{height: 750px;}
+.find #content-header h2{margin: 0;}
+#userPage .userContent div.friend{height: 500px; width: 100%;}
+.friendSearch{width: 1000px; height: 180px; margin: 0 auto ; text-align: center; }
+.friendSearch label{font-size: 18px;}
+.friendSearch input#seardid{width: 450px; height: 36px; border: 2px solid #2E419A; border-radius: 4px;
+	padding-left: 20px; background-color: #f6f6f6;}
+.friendSearch .search{background-color: #2E419A; color: #fff; width:50px;
+	padding: 2px 8px; border-radius: 4px; cursor: pointer;}
+.friendSearch .searchList{width: 450px; height: 100px; margin: 0 0 0 319px;}
+.friendSearch .searchList ul{width: 450px; height: 100%; margin-top: 3px; border: 2px solid #2E419A;
+	box-sizing: border-box; border-radius: 4px; overflow-y: scroll; background-color: #f6f6f6;}
+.friendSearch .searchList ul li{margin: 4px 0;height: 24px; }
+.friendSearch .searchList ul li span{display: inline-block; width: 330px; text-align: left; font-size: 14px; font-weight: 700;}
+.friendSearch .searchList ul li button.add{background-color: #2E419A; font-size: 12px; color: #fff;
+	padding: 3px 6px; border-radius: 4px;cursor: pointer;}
+/*핀구 리스트*/
+.friendList{width: 1020px; height: 300px; margin: 0 auto ;overflow-y:scroll;overflow-x:hidden; 
+	border: 1px solid #2E419A;}
+.friendList table{width: 1000px; text-align: center; margin: 0 auto; border: 1px solid #2E419A;}
+.friendList table thead{height: 40px; border-top: 1px solid #2E419A;border-bottom: 1px solid #2E419A;
+	background-color: #ecdfdf; line-height: 40px;}
+.friendList table thead th{color: #2E419A; font-weight: 600;width: 100px;}
+.friendList tbody{height: 100%;}
+.friendList tbody tr{height: 30px;}
+.friendList tbody tr td{padding: 3px 0;}
+.friendList tbody tr td strong{padding: 2px; font-size: 16px;}
+.friendList .pasing{ height: 30px; margin: 20px auto 50px; width: 246px;}
+.friendList .pasing span{display: inline-block; width: 30px; height: 24px; text-align: center;
+	color: #2E419A; line-height: 10px; cursor: pointer;}
+/*-------------------------------------applyManagerment----------------------------------------------*/
+#applyMenu{width:1200px; margin: 0 auto; height: 1000px;}
+#applyMenu .sidebar li a{text-decoration: none; color: #000;}
+#applyMenu .sidebar li a.active{color: #fff;}
+#apply{width:1060px ;height: 900px;float: right; border: 2px solid #000; border-radius:10px;
+	box-sizing: border-box; margin-top: 50px; position: relative;}
+.apply_btn{padding: 60px 0px 50px 0px;border-bottom: 2px solid #000000; font-size: 35px; text-align: center;}
+#apply a{text-decoration: none;}
+#apply a#myList{}
+#apply a.active{color:#2E419A; font-weight: 800;}
+#list{display: inline-block;width: 1050px;height: 500px; margin: 20px auto;}
+#list>table{ overflow-y: scroll;}
+button{cursor: pointer;}
+.modal-content #applyList table {
+    width: 580px;
+    margin: auto;
+    text-align: center;
+    font: 15px "맑은 고딕", 돋움, 굴림;
+    border: 1px soild blue;
+}
+.modal-content #applyList table>thead>tr {
+    font-size: 15px;
+    border-top: 1px solid #2E419A;
+    border-bottom: 1px solid #2E419A;
+    background-color: #ecdfdf;
+    padding: 0px;
+    
+}
+.modal-content #applyList table>thead>tr>th{
+	text-align: center;
+}
+
+.modal-content #applyList table>thead>tr>th:nth-child(1) {
+    width: 10%;
+}
+.modal-content #applyList table>thead>tr>th:nth-child(2) {
+    width: 22.5%;
+}
+.modal-content #applyList table>thead>tr>th:nth-child(3) {
+    width: 22.5%;
+}
+.modal-content #applyList table>thead>tr>th:nth-child(4) {
+    width: 22.5%;
+}
+.modal-content #applyList table>thead>tr>th:nth-child(5) {
+    width: 22.5%;
+}
+
+.modal-content #applyList table>tbody>tr {
+    font-size: 15px;
+    border-bottom: 1px solid black;
+}
+
+.modal-content #applyList table>tbody>tr>td {
+    padding: 10px 10px 10px 10px;
+    white-space: nowrap;
+}
+.modal-content #applyList table>tbody>tr>td {
+    padding: 10px 10px 10px 10px;
+    white-space: nowrap;
+}
+
+.modal-content #applyList #decide {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.modal-content #applyList #decide #confirmation {
+   	background: linear-gradient(to bottom right, rgb(9, 32, 80), rgb(81, 117, 164));
+}
+.modal-content #applyList #decide #dismiss {
+    background: linear-gradient(to bottom right, rgb(247 17 17), rgb(185 114 121));
+}
+.modal-content #applyList #decide button {
+	width: 73px;
+    margin: 12px auto;
+    height: 32px;
+    color: white;
+   	border-radius: 2px;
+}
+
+.newApList .applyCheck button{
+    width: 57px;
+    margin: 0 auto;
+    height: 24px;
+    color: white;
+   	border-radius: 2px;
+}
+
+.newApList .confirmed button{
+    width: 57px;
+    margin: 0 auto;
+    height: 24px;
+    color: white;
+   	border-radius: 2px;
+}
+
+.newApList .applyCheck .agree{
+    background: linear-gradient(to bottom right, rgb(9, 32, 80), rgb(81, 117, 164));
+}
+.newApList .applyCheck .agreed{
+    background: linear-gradient(to bottom right, rgb(9, 32, 80), rgb(81, 117, 164));
+}
+.newApList .applyCheck .refuse{
+    background: linear-gradient(to bottom right, rgb(247 17 17), rgb(185 114 121));
+}
+.newApList .applyCheck .refused{
+    background: linear-gradient(to bottom right, rgb(247 17 17), rgb(185 114 121));
+}
+
+#applyMenu {
+	width:1200px;
+	margin: 0px auto;
+}
+#applyList .btnModal{
+    width: 65px;
+    margin: 0 auto;
+    height: 30px;
+    background: linear-gradient(to bottom right, rgb(25 58 127), rgb(81, 117, 164));
+   color: white;
+   border-radius: 2px;
+}
+
+#confirmed .btnModal{
+    width: 65px;
+    margin: 0 auto;
+    height: 30px;
+    background: linear-gradient(to bottom right, #499d4b, rgb(3 10 86));
+   color: white;
+   border-radius: 2px;
+   font-size: 14px;
+}
+
+ /*---------------------------------applyMenu----------------------*/

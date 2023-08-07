@@ -46,7 +46,7 @@
 						<!-- Nav -->
 						<nav id="nav">
 							<a href="${pageContext.request.contextPath}/manager/index">테이블 현황</a>
-							<a href="${pageContext.request.contextPath}/manager/tableSalesForm" >테이블 매출</a>
+							<a href="${pageContext.request.contextPath}/manager/tableSales" >테이블 매출</a>
 							<a href="${pageContext.request.contextPath}/manager/daySalesForm" class="active">일별 매출</a>
 							<a href="${pageContext.request.contextPath}/manager/pricePolicyForm">요금 테이블</a>
 							<a href="${pageContext.request.contextPath}/manager/settingsForm">관리자 설정</a>
