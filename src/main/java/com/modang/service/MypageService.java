@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.modang.dao.MypageDao;
+import com.modang.vo.CardMemberVo;
+import com.modang.vo.CardUsersVo;
 import com.modang.vo.CurrentRecordVo;
 import com.modang.vo.FavoriteUsersVo;
 import com.modang.vo.RecordUserVo;
@@ -275,4 +277,32 @@ public class MypageService {
 		return mypageDao.deleteFriend(favoriteNo);
 	}
 	
+	public CardUsersVo cardInsert(CardUsersVo cardVo) {
+		System.out.println("MypageService.cardInsert()");
+		
+		mypageDao.insertCarduser(cardVo);
+		System.out.println(cardVo);
+		CardMemberVo memberVo = new CardMemberVo(); 
+		List<CardMemberVo> memberList = new ArrayList<>();
+		
+		for(int i=0 ; i < cardVo.getMemberNoList().size() ; i++) {
+			memberVo.setCardNo(cardVo.getCardNo());
+			memberVo.setGetUserNo(cardVo.getMemberNoList().get(i));
+			mypageDao.insertCardMember(memberVo);
+			memberList.set(i, memberVo);			
+		}
+		System.out.println(memberList);
+		cardVo.setMemberList(memberList);
+		
+		
+		return cardVo;
+	}
+	
+	public List<CardUsersVo> cardList(int userNo) {
+		System.out.println("MypageService.cardList()");
+		
+		List<CardUsersVo> cardList = mypageDao.selectCardList(userNo);
+		
+		return cardList;
+	}
 }

@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.modang.vo.CardMemberVo;
+import com.modang.vo.CardUsersVo;
 import com.modang.vo.FavoriteUsersVo;
 import com.modang.vo.RecordUserVo;
 
@@ -67,5 +69,23 @@ public class MypageDao {
 		System.out.println("MypageDao.deleteFriend()");
 		
 		return session.delete("mypage.deleteFriend", favoriteNo);
+	}
+	
+	public int insertCarduser(CardUsersVo cardVo) {
+		System.out.println("MypageDao.insertCarduser()");
+		
+		return session.insert("mypage.insertCarduser", cardVo);
+	}
+	
+	public int insertCardMember(CardMemberVo memberVo) {
+		System.out.println("MypageDao.insertCardMember()");
+		
+		return session.insert("mypage.insertCardMember", memberVo);
+	}
+	
+	public List<CardUsersVo> selectCardList(int userNo) {
+		System.out.println("MypageDao.selectCardList()");
+		
+		return session.selectList("mypage.selectCardList", userNo);				
 	}
 }

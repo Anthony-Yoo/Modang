@@ -14,7 +14,6 @@
 	<c:import url="/WEB-INF/views/include/modangSiteHeader.jsp"></c:import>  
 	    <div class="main-Con">
         <div class="cardAdd left">
-        <c:import url="/WEB-INF/views/include/modangSideNav.jsp"></c:import>
             <h2>카드 추가</h2>
             <div class="searhId">
                 <input type="search" class="insertId" id="insertId" placeholder="아이디 입력">
@@ -31,66 +30,28 @@
                     <li>
                         <img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="">
                         <span>강동구일짱</span>
-                        <button type="button" class="del">추가</button>                        </li>
-                    <li>
-                        <img src="${pageContext.request.contextPath}/assets/images/modang_logo.png" alt="">
-                        <span>김개똥</span>
-                        <button type="button" class="del">추가</button>
-                    </li>
-                    <li>
-                        <img src="${pageContext.request.contextPath}/assets/images/insta.png" alt="">
-                        <span>피주먹</span>
                         <button type="button" class="del">추가</button>                        
-                   </li>
-                    <li>
-                        <img src="${pageContext.request.contextPath}/assets/images/room.jpg" alt="">
-                        <span>qwerqwer</span>
-                        <button type="button" class="del">추가</button>
-                    </li>
-                    <li>
-                        <img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="">
-                        <span>44444444</span>
-                        <button type="button" class="del">추가</button>
-                    </li>
-                    <li>
-                        <img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="">
-                        <span>123456789</span>
-                        <button type="button" class="del">추가</button>
-                    </li>
+                    </li>                    
                 </ul>
             </div>
             <div class="List">
-                <form action="" method="">
-                	<fieldset>
-  						<legend>멤버 카드</legend>
-	                    <p>그룹명</p>
-	                    <input type="text" id="cardName" class="cardName" placeholder="그룹명 입력">
-	                    <p>게임선택</p>
-                    	<input type="radio" id="3ball" class="cardName" value="0">
-	                    <label for="3ball">3구</label>
-	                    <input type="radio" id="4ball" class="cardName" value="1">
-	                    <label for="4ball">4구</label>
-	                    <ul><!--당구멤버 리스트는 최대 4명 // 
-	                        4명이상 추가 시 "멤버는 4명까지 선택 가능합니당!" 팝업?-->
-	                        <li>
-	                            <span>당구의신</span>
-	                            <button type="button" class="del">삭제</button>
-	                        </li>
-	                        <li>
-	                            <span>천호동불주먹</span>
-	                            <button type="button" class="del">삭제</button>
-	                        </li>
-	                        <li>
-	                            <span>라면이먹고싶</span>
-	                            <button type="button" class="del">삭제</button>
-	                        </li>
-	                        <li>
-	                            <span>당구의신</span>
-	                            <button type="button" class="del">삭제</button>
-	                        </li>
-	                    </ul>
-	                    <button type="submit" class="call">멤버 확정하기</button>
-	            	</fieldset>
+                <form id="cardConfirm" action="${pageContext.request.contextPath}/mypage/FCardInsert" method="get">
+                	<p>멤버카드</p>
+	                <label>그룹명</label>
+	                <input type="hidden" name="setUserNo" value="${userNo}">
+	                <input type="text" id="cardName" class="cardName" name="title" placeholder="그룹명 입력">
+	                <label>게임선택</label>
+	                <div class="gt">
+		                <input type="radio" id="3ball" class="cardName" name="gameType" value="0">
+		                <label for="3ball">3구</label>
+		                <input type="radio" id="4ball" class="cardName" name="gameType" value="1">
+		                <label for="4ball">4구</label>
+	                </div>
+	                   <!--당구멤버 리스트는 최대 4명 // 
+	                 // 4명이상 추가 시 "멤버는 4명까지 선택 가능합니당!" 팝업?-->	 
+	                <div id="confirmList">		                
+	                </div>
+	                <button type="submit" class="call" id="confirmbtn">멤버 확정하기</button>
                 </form>
             </div>
         </div>
@@ -119,61 +80,7 @@
                     </ul>
                     <span>23.06.17</span>
                     <button type="button">×</button>
-                </li>
-                <li>
-                    <h4>지구온나나</h4>
-                    <ul class="nick">
-                        <li>나나짱</li>
-                        <li>보라돌이</li>
-                        <li>뚜비</li>
-                        <li>뽀옹방귀</li>
-                    </ul>
-                    <span>23.06.17</span>
-                    <button type="button">×</button>
-                </li>
-                <li>
-                    <h4>엘지는살아있다</h4>
-                    <ul class="nick">
-                        <li>난삼성</li>
-                        <li>아이폰이최고</li>
-                        <li>갤럭시</li>
-                    </ul>
-                    <span>23.06.17</span>
-                    <button type="button">×</button>
-                </li>
-                <li>
-                    <h4>다덤벼</h4>
-                    <ul class="nick">
-                        <li>가나다</li>
-                        <li>다나가</li>
-                        <li>abc</li>
-                        <li>xyz</li>
-                    </ul>
-                    <span>23.06.17</span>
-                    <button type="button">×</button>
-                </li>
-                <li>
-                    <h4>다덤벼</h4>
-                    <ul class="nick">
-                        <li>가나다</li>
-                        <li>다나가</li>
-                        <li>abc</li>
-                        <li>xyz</li>
-                    </ul>
-                    <span>23.06.17</span>
-                    <button type="button">×</button>
-                </li>
-                <li>
-                    <h4>다덤벼</h4>
-                    <ul class="nick">
-                        <li>가나다</li>
-                        <li>다나가</li>
-                        <li>abc</li>
-                        <li>xyz</li>
-                    </ul>
-                    <span>23.06.17</span>
-                    <button type="button">×</button>
-                </li>
+                </li>                
                 <li>
                     <h4>다덤벼</h4>
                     <ul class="nick">
@@ -190,6 +97,9 @@
     </div>
 </body>
 <script>
+
+
+/* 1. 아이디 검색  */
 $('#searchbtn').on("click",function(){
     console.log("id검색 버튼 클릭"); 
     $(".searchList").empty();
@@ -229,22 +139,126 @@ $('#searchbtn').on("click",function(){
 		console.log("test입니다." + id);			
 	};		
 });   
-function renderEach(playlist) {	  	
-	var src = "";
-	src += '<ul>';
-	
-	$.each(playlist,function(key,value){
+	// + 검색리스트 랜더 +
+	function renderEach(playlist) {	  	
+		var src = "";
+		src += '<ul>';
 		
-		src += '<li>';
-		src += '	<span>' + value.nick + '</span>';
-		src += '	<button type="button" class="addPlayer add" data-userno="'+ value.userNo +'" data-no="'+ value.userNo +'" data-nick="'+ value.nick +'" data-average="'+ value.average +'" >추가</button>';
-		src += '</li>';
-	});
+		$.each(playlist,function(key,value){
+			
+			src += '<li>';
+			src += '	<span>' + value.nick + '</span>';
+			src += '	<button type="button" class="addPlayer add" data-userno="'+ value.userNo +'" data-no="'+ value.userNo +'" data-nick="'+ value.nick +'" data-average="'+ value.average +'" >추가</button>';
+			src += '</li>';
+		});
+	
+		src += '</ul>';
+		$(".searchList").append(src);
+	};	
+	
+/* 1-1. 검색리스트 추가 */
+$(".searchList").on('click',".addPlayer",function(){
+	console.log("추가버튼 클릭!");	
+	var userNo = $(this).attr('data-userno');
+	var nick = $(this).attr('data-nick');
+	let cardVo = {
+			userNo : userNo,
+			nick : nick,			
+	}	
+	
+	console.log("컨펌리스트 등록전 유져번호 : "+userNo);
+	console.log("컨펌리스트 등록전 닉네임 : "+nick);
+	let $addbtn = $(this);
+	let $delbtn = $("#confirmList>ul>li>button");
+	console.log("삭제버튼 : "+$delbtn);
+	
+	//기존테이블에 넣을려는 데이터가 겹치는지 체크
+	let flag = false; // 데이터 동일여부
+	
+	if($delbtn.length > 0 ) {	
+	
+		$delbtn.each(function(i){					
+			for(let i=0;i<$delbtn.length;i++) {
+				console.log($delbtn.eq(i).data("userno"));								
+				
+				if($delbtn.eq(i).data("userno") != $addbtn.data("userno")) {
+					flag = false;// 검색리스트 추가대상이 확정리스트멤버에 없으면 	
 
-	src += '</ul>';
-	$(".searchList").append(src);
-};	
+				}else {
+					flag = true; // 검색리스트 추가대상이 확정리스트멤버에 있으면
+					break;
+				}
+			}
+		});
+	
+	}else {
+		flag = false // 첫등록
+	}
+	
+	console.log(cardVo);
+	console.log(${userNo});
+	console.log(flag);
+	console.log("추가버튼 no:"+$addbtn.data("userno"));				
+	console.log("삭제버튼 값 갯수:"+$delbtn.length);
+	
+	if(flag == false) { 
+		if(${userNo} != userNo) { 
+			if($delbtn.length != 3) {		
+				$("#confirmList").append(renderLi(cardVo));
+			}else {
+				alert("멤버가 꽉찼습니다.(3명제한)")
+			}
+			
+		}else{ // 자기자신 등록확인
+			alert("자신을 친구로 등록할수없습니다.");			
+		}
+	}else if(flag != false) {
+		alert("같은 멤버가있습니다.");	
+	}
+});		
 
+	// + 확정리스트 랜더 +
+	function renderLi(cardVo) {	  	
+		var src = "";	
+		
+		src += '<ul>';		
+		src += '	<li>';
+		src += '		<input type="hidden" name="memberNoList" value="' + cardVo.userNo + '">';
+		src += '		<span>' + cardVo.nick + '</span>';
+		src += '		<button type="button" class="delPlayer del" data-userno="' + cardVo.userNo + '"data-no="'+ cardVo.userNo +'" data-nick="'+ cardVo.nick +'">삭제</button>';
+		src += '	</li>';
+		src += '</ul>';
+		
+		return src;
+	};	
+
+/* 1-3. 확정후 등록 */
+/* $("#cardConfirm").on('submit',function(){
+	console.log("폼 확정");		
+	let memberList = [];
+	let $input = $("#confirmList>ul>li>input");	
+	
+	$input.each(function(i){					
+		for(let i=0 ; i < $input.length ; i++) {
+			var memberNo = $input.eq(i).val();
+			memberList.push(memberNo);
+		}
+	}
+	
+	//var setUserNo = $('[name="setUserNo"]').val();
+	//var title = $('[name="title"]').val();
+	//var gameType = $('[name="gameType"]').val();	
+	let cardUserVo = {	
+			memberList : memberList,
+					
+	} 
+	});*/
+	
+	
+	
+	
+	
+	
 
 </script>
 
