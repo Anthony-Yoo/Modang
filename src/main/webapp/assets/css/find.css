@@ -1,0 +1,270 @@
+@charset "UTF-8";
+
+/*(전체공통 modang으로 옮기고 싶으녀석들)*/
+#board { font-family: "맑은 고딕"; font-size: 16px ; line-height: 1.2 ; }
+
+
+
+/*********************************************************************
+ 모당찾기(공통)
+**********************************************************************/
+/*모당찾기 해더 소제목*/
+#content { width: 1200px; margin: 0px auto; }
+#content #content-header { padding: 60px 0px 50px 0px; border-bottom: 2px solid #000000; }
+#content #content-header h2 { font-size: 35px; text-align: center; }
+
+
+/*모당찾기 바디 컨텐츠 외곽*/
+#find  { padding: 0px 0px 50px 0px; border: 0px solid #000000; }
+	
+
+
+/*********************************************************************
+ 모당찾기 지도
+**********************************************************************/	
+/*지도+리스트 외곽*/
+#find .b-search-map {
+	position: relative;
+	border: 1px solid #000000;
+}
+
+/*리스트 외곽*/
+#find .b-search-map .b-listWrap {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	padding: 15px 10px 15px 10px;
+	width:300px;
+	height: 670px;
+	background-color: #ffffff;
+	z-index: 999;
+}
+
+/*검색영역*/
+#find .b-search-map .b-listWrap .b-searchForm {
+	font-size: 0px;
+}
+
+/*검색영역 키워드 입력창*/
+#find .b-search-map .b-listWrap .b-searchForm .keyword{
+	width: 215px;
+}
+
+/*검색결과 리스트 영역*/
+#find .b-search-map .b-listWrap .b-searchList {
+	padding: 15px 0px 15px 0px;
+}
+
+#find .b-search-map .b-listWrap .b-searchList ul {
+    height: 612px;
+    /*overflow-y: auto;*/
+}
+
+
+/*리스트아이템*/
+#find .b-search-map .b-listWrap .b-searchList ul>li {
+	width: 100%;
+    height: 98px;
+    padding: 0px;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: #F8F8F8;
+    margin-top: 4px;
+    box-shadow: 1px 1px 1px 1px #D9D9D9;
+}
+
+/*리스트아이템 이미지 당구장 대표사진*/
+#find .b-search-map .b-listWrap .b-searchList img {
+    float: left;
+    width: 98px;
+    height: 98px;
+    margin: 1px 5px 0px 0px;
+    border: 1px solid #dfdfdf;
+    box-sizing: border-box;
+}
+
+/*리스트아이템 정보 당구장 정보*/
+#find .b-search-map .b-listWrap .b-searchList .info {
+    float: left;
+    width: 196px;
+}
+
+/*리스트아이템 정보 당구장 이름*/
+#find .b-search-map .b-listWrap .b-searchList .repname {
+	padding: 7px 0px 13px 0px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+/*리스트아이템 정보 당구장 주소*/
+#find .b-search-map .b-listWrap .b-searchList .addr {
+	padding-bottom: 9px;
+	font-size: 14px;
+}
+
+/*리스트아이템 정보 당구장 주소*/
+#find .b-search-map .b-listWrap .b-searchList .sub {
+	font-size: 14px;
+}
+
+
+
+#board #list .searchForm {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+}
+
+#board #list .searchForm select { width: 120px; }
+#board #list .searchForm input { width: 250px; margin: 0px 5px 0px -1px; }
+#board #list .searchForm button { width: 100px; }
+
+
+/*********************************************************************
+ 매칭게시판 글쓰기
+**********************************************************************/	
+#board #writeForm table tr>th,
+#board #writeForm table tr>td { text-align: left; }
+
+#board #writeForm table tr>td { padding-right: 0px; }
+
+
+#board #writeForm .textareaWrap {  /*본문글쓰기 textarea영역*/
+	height: 500px;
+	padding: 15px 0px 0px 0px;
+}
+
+#board #writeForm .btnWrap {
+	padding: 15px 0px 15px 0px;
+	border-top: none;
+}
+
+
+/*********************************************************************
+ 매칭게시판 글읽기
+**********************************************************************/	
+#board #read .btnWrap {
+	padding: 15px 0px 15px 0px;
+}
+
+
+#board #read .boardInfoWrap {
+	padding: 10px 0px 10px 0px;
+	border-top: 1px solid #BFBFBF;
+}
+
+
+#board #read .boardInfoWrap .title {
+	float: left;
+	font-size: 26px;
+	font-weight: 400;
+}
+
+#board #read .boardInfoWrap .title_info_box {
+	float: right;
+	padding: 15px 0px 0px 0px;
+	font-size: 16px;
+	font-weight: 400;
+	
+}
+
+
+#board #read .boardInfoWrap .title_info_box .title_info_date {
+	font-size: 16px;
+	padding: 0px 0px 0px 20px;
+	
+}
+
+/*본문박스*/
+#board #read .boardInnerBox {
+	width: 1200px;
+	box-sizing: border-box;;
+	padding: 10px;
+	border: 1px solid #BFBFBF;
+	border-radius: 4px;
+	
+}
+
+
+#board #read .boardInnerBox .title_area { /*글작성자 정보*/
+	padding: 20px 0px 5px 0px;
+}
+
+/*프로필사진*/
+#board #read .boardInnerBox .title_area img {
+	width: 36px;
+	height: 36px;;
+}
+
+
+
+/*본문내용*/
+#board #read .boardInnerBox #txt-content {
+	padding: 50px 10px 50px 10px;
+}
+
+
+/*댓글영역--------------------------------------------------------------------*/
+
+/*댓글영역박스*/
+#board #read .boardInnerBox #comment_list {
+	padding: 10px 0px 10px 0px;
+}
+
+#comment_list .comment_area {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-start;
+	gap: 10px;
+	padding: 15px 0px 15px 0px;
+	font-size: 14px;
+}
+
+
+#comment_list .line {  /*선그리기*/
+	border-top: 1px solid #BFBFBF;
+}
+
+#comment_list .comment_area .comment_box .comment_nick_box{
+	font-weight: bold;
+	padding-bottom: 5px;;
+}
+
+#comment_list .comment_area .comment_box .comment_text_box{
+	padding-bottom: 10px;;
+}
+
+#comment_list .comment_area .comment_box .comment_info_box{
+	padding-bottom: 5px;;
+	color: #808080
+}
+
+/*답글쓰기버튼*/
+#comment_list .comment_area .comment_box .comment_info_box .comment_info_button{
+	font-size: 13px;
+	padding-left: 20px;;
+	color: #808080;
+	font-weight: bold;
+}
+
+
+#comment_list .comment_add {
+	border: 1px solid #0075FF;
+	border-radius: 4px;
+	padding: 10px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+
+#comment_list .comment_add textarea{
+	border: none;
+	padding: 10px 0px 10px 0px;
+	font-size: 13px;
+	resize: none;
+}
+
+
+.blind {
+	display: none;
+}
