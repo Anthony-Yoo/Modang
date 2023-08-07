@@ -199,6 +199,17 @@
       
 }
 
+#joinForm #main form .button-area #btn-submit {
+    width: 97%;
+    color: #fff;
+    border-radius: 10px;
+    height: 40px;
+    position: relative;
+    right:-5px;
+    margin: 0 auto;
+    background: linear-gradient(to bottom right, rgb(9, 32, 80), rgb(81, 117, 164));
+}
+
 /* modify image size */
 #main form .form-group #image-show img{
 	width: 340px;
@@ -214,7 +225,7 @@
 	width: 40px; 
 	height: 40px;
 	position: relative;
-    left: -5px;
+    left: 0px;
     margin: 0 auto;
 	
 }
@@ -332,10 +343,40 @@
     padding: 0;
     position: absolute;
 }
+#userSubImage {
+  	width: 790px;
+    display: inline-block;
+    right: 351px;
+    padding: 0;
+    position: absolute;
+    opacity: 0.2;
+    top: 132px;
+    height: 260px;
+}
+#inputId{
+	position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+    justify-content: space-between;
+}
+#inputPw{
+	position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+    justify-content: space-between;
+}
+  
+    
+
 
 /* 마이페이지 이미지 */
-#userPage .image-show img {
+#userFroFileImage {
     vertical-align: top;
+    display: inline-block;
     padding: 0;
     width: 260px;
     height: 260px;
@@ -360,9 +401,10 @@
 
 /* 마이페이지 사용자 정보 */
 #userPage .text {
-	margin: 20px 10px 10px 220px;
-    font-size: 30px;
+	font-size: 30px;
     position: relative;
+    left: 195px;
+    padding: 15px 0px 0px 20px;
 	
 }
 /* 마이페이지 버튼 */
@@ -375,7 +417,10 @@
 	font-size: 15px;
     border: 0;
     padding: 0;
-    margin: 100px 0px 0px 200px;
+    position: relative;
+    bottom: -90px;
+    right: -210px;
+
     background : linear-gradient(to bottom right, rgb(9, 32, 80),
       rgb(81, 117, 164))
 }
