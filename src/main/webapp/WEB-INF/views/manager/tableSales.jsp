@@ -49,7 +49,7 @@
 						<!-- Nav -->
 						<nav id="nav">
 							<a href="${pageContext.request.contextPath}/manager/index">테이블 현황</a>
-							<a href="${pageContext.request.contextPath}/manager/tableSalesForm" class="active">테이블 매출</a>
+							<a href="${pageContext.request.contextPath}/manager/tableSales" class="active">테이블 매출</a>
 							<a href="${pageContext.request.contextPath}/manager/daySalesForm">일별 매출</a>
 							<a href="${pageContext.request.contextPath}/manager/pricePolicyForm">요금 테이블</a>
 							<a href="${pageContext.request.contextPath}/manager/settingsForm">관리자 설정</a>
@@ -72,10 +72,11 @@
 								
 								<form name="" class="form-inline float-right mb-4" action="${pageContext.request.contextPath}/manager/tableSales" method="get" >
 									<label class="mr-2">테이블 번호</label>
+									<input type="hidden" name="biliardNo" value="${sessionScope.loginManager.biliardNo}">
 									<div class="col-4">
 									  <select class="form-control-5" name="tableNo" id="tableNameSelect">
 									    <c:forEach items="${cuetableList}" var="cueTableVo">
-									      <option value="${cueTableVo.tableNo}">${cueTableVo.tableName}</option>
+									      	<option value="${cueTableVo.tableNo}">${cueTableVo.tableName}</option>
 									    </c:forEach>
 									  </select>
 									</div>

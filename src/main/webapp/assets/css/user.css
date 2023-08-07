@@ -336,6 +336,6 @@
 .show>.text>.txt>img{display: block; width: 50px; height: 50px; float: left;}
 .show>.text>.txt>span{font-size: 30px;line-height: 50px; margin-left: 30px;}
 /* 마이페이지 버튼 */
-#userPage button {display:block; cursor: pointer;width: 350px;color: #fff;border-radius:5px;
+#userPage .button-area .modify{display:block; cursor: pointer;width: 350px;color: #fff;border-radius:5px;
 	line-height: 40px;font-size: 15px;background : linear-gradient(to bottom right, rgb(9, 32, 80),
       rgb(81, 117, 164)); margin: 120px auto 0;}
