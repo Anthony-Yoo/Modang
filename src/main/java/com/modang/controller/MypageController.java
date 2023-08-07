@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +18,11 @@ import com.modang.service.MypageService;
 import com.modang.service.TabletService;
 import com.modang.vo.CardUsersVo;
 import com.modang.vo.CurrentRecordVo;
+import com.modang.vo.FavoriteUsersVo;
 import com.modang.vo.JsonResult;
 import com.modang.vo.RecordUserVo;
+import com.modang.vo.TabletUserVo;
+import com.modang.vo.UserVo;
 
 @RequestMapping("/mypage")
 @Controller
@@ -69,18 +74,50 @@ public class MypageController {
 		
 		return jsonResult;
 	}
-	@RequestMapping(value = "/{userNo}/friendlist",method = {RequestMethod.GET,RequestMethod.POST})
-	public String friendList(@PathVariable("userNo") int userNo,Model model) {
+	@RequestMapping(value = "/friendlist",method = {RequestMethod.GET,RequestMethod.POST})
+	public String friendList(Model model,HttpSession session) {
 		System.out.println("MypageController.friendList()");
 		
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		int userNo = authUser.getUserNo();
 		List<RecordUserVo> friendList = mypageService.friendList(userNo);
 		System.out.println(friendList);
 		
 		model.addAttribute("friendList", friendList);
-	
+		model.addAttribute("userNo", userNo);
 		
 		return "/mypage/friendList";
+	}	
+	
+	
+	@ResponseBody
+	@RequestMapping(value = "/{userNo}/friendinsert",method = {RequestMethod.GET,RequestMethod.POST})
+	public JsonResult friendInsert(@PathVariable("userNo") int setUserNo,@RequestParam("userNo") int getUserNo) {
+		System.out.println("MypageController.friendInput()");
+		
+		FavoriteUsersVo favoriteVo = new FavoriteUsersVo();
+		favoriteVo.setSetUserNo(setUserNo);
+		favoriteVo.setGetUserNo(getUserNo);		
+		
+		RecordUserVo friendInputVo = mypageService.friendInsert(favoriteVo);
+		System.out.println(friendInputVo);
+		
+		JsonResult jsonResult = new JsonResult();
+		jsonResult.success(friendInputVo);
+		
+		return jsonResult;
 	}
 	
-
+	@ResponseBody
+	@RequestMapping(value = "/friendDelete",method = {RequestMethod.GET,RequestMethod.POST})
+	public JsonResult friendDelete(@RequestParam("favoriteNo") int favoriteNo) {
+		System.out.println("MypageController.friendDelete()");
+		
+		int result = mypageService.friendDelete(favoriteNo);
+		JsonResult jsonResult = new JsonResult();
+		
+		jsonResult.success(result);
+		
+		return jsonResult;		
+	}
 }

@@ -170,7 +170,7 @@
 	
 	<select id="selectRecordWinLose" parameterType="int" resultType="com.modang.vo.RecordUserVo">
 		<![CDATA[
-			select nvl(a.winCnt,0) winCnt, nvl(b.loseCnt,0) loseCnt
+			select nvl(MAX(a.winCnt),0) winCnt, nvl(MAX(b.loseCnt),0) loseCnt
 					from 
 					        (
 					        select count(ort.record) winCnt, ort.userno
@@ -229,7 +229,8 @@
 	<select id="selectFriendList" parameterType="int" resultType="com.modang.vo.RecordUserVo">
 		<![CDATA[
 			select  DISTINCT
-			        u.nick,
+                    f.favoriteNo,
+                    u.nick,
 			        u.Average,        
 			        TRUNC(To_date(Sysdate,'YY/MM/DD')) - TRUNC(u.RECENTLOGONTIME) as recentDays,
 			        u.userno,
@@ -238,7 +239,7 @@
 			        NVL(tlc.loseCount,0) as totalCountLoseGame
 			from users u,
 			     plays p,
-			     FAVORITEUSERS f,     
+                 favoriteusers f,
 			     (select p.userNo, count(PlayNo) totalCount
 						      from plays p,
 						           games g,
@@ -258,17 +259,92 @@
 						      and p.record = g.MEMBERNUM
 						      group by p.userNo) tlc       
 			     
-			where f.GETUSERNO = u.userno
-			and u.userno = p.userno
+			where f.getuserno = p.userno
+            and u.userno = p.userno
 			and tgc.userNo = p.userNo
 			and tlc.userNo(+) = p.userNo   
 			and f.setuserno = #{userNo}
-			Order By Nick ASC
+            ORDER by f.favoriteNo ASC
 		
 		
-		]]>
-		
+		]]>		
 	
 	</select>	
+	<insert id="insertFriend" parameterType="com.modang.vo.FavoriteUsersVo">
+		<selectKey keyProperty="favoriteNo" resultType="int" order="BEFORE">
+			select SEQ_FAVORITEUSERS_NO.nextval from dual		
+		</selectKey>
+		<![CDATA[
+			insert  into FAVORITEUSERS
+			(
+					FAVORITENO,
+					SETUSERNO,
+					GETUSERNO,
+					FAVORITEUSERDATE
+			)
+			
+			values (
+			
+			#{favoriteNo},
+			#{setUserNo},
+			#{getUserNo},
+			sysdate
+			
+			)
+		
+		]]>
+	
+	</insert>
+	
+	
+	<select id="selectFriendInfo" parameterType="int" resultType="com.modang.vo.RecordUserVo">
+		<![CDATA[
+			select  DISTINCT
+                    f.favoriteNo,
+                    u.nick,
+			        u.Average,        
+			        TRUNC(To_date(Sysdate,'YY/MM/DD')) - TRUNC(u.RECENTLOGONTIME) as recentDays,
+			        u.userno,
+			        NVL(round((tgc.totalCount-tlc.loseCount)/tgc.totalCount,2),0) as totalCommRate,
+			        tgc.totalCount as totalCountGame,
+			        NVL(tlc.loseCount,0) as totalCountLoseGame
+			from users u,
+			     plays p,
+                 favoriteusers f,
+			     (select p.userNo, count(PlayNo) totalCount
+						      from plays p,
+						           games g,
+			                       users u
+						      where p.gameno = g.gameno
+			                  and p.CURRENTAVERAGE = u.AVERAGE
+						      and g.gamestatus = 1
+						      group by p.userNo) tgc,
+			                  
+			      (select p.userNo, count(PlayNo) loseCount
+						      from plays p,
+						           games g,
+			                       users u
+						      where p.gameno = g.gameno
+			                  and p.CURRENTAVERAGE = u.AVERAGE
+						      and g.gamestatus = 1
+						      and p.record = g.MEMBERNUM
+						      group by p.userNo) tlc       
+			     
+			where f.getuserno = p.userno
+            and u.userno = p.userno
+			and tgc.userNo = p.userNo
+			and tlc.userNo(+) = p.userNo   
+			and f.favoriteNo = #{favoriteNo}
+            ORDER by f.favoriteNo ASC
+		
+		]]>
+	</select>
+	
+	<delete id="deleteFriend" parameterType="int">
+		<![CDATA[
+			delete from FAVORITEUSERS
+			where favoriteNo = #{favoriteNo}		
+		]]>	
+	</delete>
 
 </mapper>
