@@ -346,5 +346,68 @@
 			where favoriteNo = #{favoriteNo}		
 		]]>	
 	</delete>
+	
+	<insert id="insertCarduser" parameterType="com.modang.vo.CardUsersVo">
+		<selectKey keyProperty="cardNo" resultType="int" order="BEFORE">
+			select SEQ_CARDUSERS_NO.nextval from dual		
+		</selectKey>
+		<![CDATA[
+			insert into 
+			(
+				CARDNO,
+				SETUSERNO,
+				TITLE,
+				CARDUSERDATE,
+				GAMETYPE
+			)
+			values (
+				#{cardNo},
+				#{setUserNo},
+				#{title},
+				sysdate,
+				#{gameType}
+			)
+			
+		]]>	
+	
+	</insert>
 
+	<insert id="insertCardMember" parameterType="com.modang.vo.CardMemberVo">
+		<selectKey keyProperty="memberNo" resultType="int" order="BEFORE">
+			select SEQ_CARDMEMBER_NO.nextval from dual		
+		</selectKey>
+		<![CDATA[
+			insert into 
+			(
+				MEMBERNO,
+				GETUSERNO,
+				CARDNO
+			)
+			values (
+				#{memberNo},
+				#{getUserNo},
+				#{cardNo}
+			)
+			
+		]]>		
+	</insert>
+	
+	<select id="selectCardList">
+		<![CDATA[
+			select  cu.CARDNO,
+        cu.SETUSERNO,
+        cu.TITLE,
+        cu.CARDUSERDATE,
+        cu.GAMETYPE,
+        cm.MEMBERNO,
+        cm.GETUSERNO
+from cardusers cu,
+     cardmember cm
+where cu.CARDNO = cm.CARDNO
+AND cu.SETUSERNO = 1;
+
+		
+		]]>
+	
+	</select>
 </mapper>
