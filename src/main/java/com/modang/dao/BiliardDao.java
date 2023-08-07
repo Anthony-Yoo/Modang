@@ -92,6 +92,14 @@ public class BiliardDao {
 		
 	}
 	/* 테이블 매출 페이지-------------------------------------------------------------------------------- */
+	/* 테이블 매출 전체매출리스트(default화면) */
+	public void selectTotalSales(int biliardNo) {
+		System.out.println("BiliardDao.selectTotalSales()");
+		List<TableGamesVo> totalList = sqlSession.selectList("biliard.selectTotalSales",biliardNo);
+		System.out.println("전체리스트:"+totalList);
+		
+	}
+	
 	/* 테이블 매출 검색 */
 	public List<TableGamesVo> selectOneTableSales(TableGamesVo gamesVo ) {
 		System.out.println("BiliardDao.selectOneTableSales()");

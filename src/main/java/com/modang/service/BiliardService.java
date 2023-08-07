@@ -107,6 +107,7 @@ public class BiliardService {
 	public List<CueTableVo> tablesalesList(int biliardNo) {
 		System.out.println("BiliardService.tablesalesList()");
 		List<CueTableVo> cuetableList = biliardDao.selectList(biliardNo);
+		biliardDao.selectTotalSales(biliardNo);
 		
 		return cuetableList;
 	}

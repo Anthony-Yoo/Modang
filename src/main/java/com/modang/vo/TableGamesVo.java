@@ -31,6 +31,9 @@ public class TableGamesVo {
 	private String minDate; //검색최소날짜
 	private String maxDate; //검색최대날짜
 	private String tableName;//테이블네임
+	private int comPayMoney; //결제금액 천단위표기형
+	private int comIncome;   //입금금액 천단위 표기형
+	private List<CueTableVo> cuetableList; //테이블 리스트
 	
 	public TableGamesVo() {
 		
@@ -40,7 +43,8 @@ public class TableGamesVo {
 			String startTime, String endTime, int payStatus, int payType, String payDate, int income, int payMoney,
 			String pauseStart, String pauseStop, int pauseTime, int setNo, int gameStatus,
 			List<PlayUserVo> playUserList, List<RecordUserVo> recordUserList, CueTableVo tableInfo, int tableFee,
-			int minFee, int secondsToTime, int rownum, String minDate, String maxDate, String tableName) {
+			int minFee, int secondsToTime, int rownum, String minDate, String maxDate, String tableName,
+			int comPayMoney, int comIncome, List<CueTableVo> cuetableList) {
 		super();
 		this.gameNo = gameNo;
 		this.tableNo = tableNo;
@@ -70,6 +74,9 @@ public class TableGamesVo {
 		this.minDate = minDate;
 		this.maxDate = maxDate;
 		this.tableName = tableName;
+		this.comPayMoney = comPayMoney;
+		this.comIncome = comIncome;
+		this.cuetableList = cuetableList;
 	}
 
 	public int getGameNo() {
@@ -296,6 +303,30 @@ public class TableGamesVo {
 		this.tableName = tableName;
 	}
 
+	public int getComPayMoney() {
+		return comPayMoney;
+	}
+
+	public void setComPayMoney(int comPayMoney) {
+		this.comPayMoney = comPayMoney;
+	}
+
+	public int getComIncome() {
+		return comIncome;
+	}
+
+	public void setComIncome(int comIncome) {
+		this.comIncome = comIncome;
+	}
+
+	public List<CueTableVo> getCuetableList() {
+		return cuetableList;
+	}
+
+	public void setCuetableList(List<CueTableVo> cuetableList) {
+		this.cuetableList = cuetableList;
+	}
+
 	@Override
 	public String toString() {
 		return "TableGamesVo [gameNo=" + gameNo + ", tableNo=" + tableNo + ", gameType=" + gameType + ", memberNum="
@@ -305,8 +336,11 @@ public class TableGamesVo {
 				+ pauseStop + ", pauseTime=" + pauseTime + ", setNo=" + setNo + ", gameStatus=" + gameStatus
 				+ ", playUserList=" + playUserList + ", recordUserList=" + recordUserList + ", tableInfo=" + tableInfo
 				+ ", tableFee=" + tableFee + ", minFee=" + minFee + ", secondsToTime=" + secondsToTime + ", rownum="
-				+ rownum + ", minDate=" + minDate + ", maxDate=" + maxDate + ", tableName=" + tableName + "]";
-	} 
+				+ rownum + ", minDate=" + minDate + ", maxDate=" + maxDate + ", tableName=" + tableName
+				+ ", comPayMoney=" + comPayMoney + ", comIncome=" + comIncome + ", cuetableList=" + cuetableList + "]";
+	}
+
+	
 	
 	
 }
