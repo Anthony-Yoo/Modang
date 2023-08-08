@@ -55,7 +55,7 @@ window.addEventListener('load', adjustHeight);
 			<li><a href="${pageContext.request.contextPath }/mypage/${requestScope.userVo.userNo}/friendlist">친구목록</a></li>
 			<li><a href="${pageContext.request.contextPath }/mypage/FCardList">그룹친구</a> </li>
 			<li><a class="active"  href="${pageContext.request.contextPath }/attendUsers/myPage/myBoardList">게시판매칭</a></li>
-			<li><a href="${pageContext.request.contextPath }/mypage/${requestScope.userVo.userNo}/record" target="_blank">전적보기</a></li>
+			<li><a href="${pageContext.request.contextPath }/mypage/${sessionScope.authUser.userNo}/record" target="_blank">전적보기</a></li>
 		</ul>
 
 		<div id="apply" >
