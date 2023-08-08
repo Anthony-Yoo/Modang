@@ -56,20 +56,25 @@
             </div>
         </div>
         <div class="border"></div>
-        <div class="cardList right">
+        <div class="cardList right">        	
             <h2>카드 리스트</h2>
             <ul>
-               <li>
-                    <h4>우리가대마왕</h4>
-                    <ul class="nick">
-                        <li>내가짱</li>
-                        <li>qwer1234</li>
-                        <li>김개똥</li>
-                        <li>당신바규준</li>
-                    </ul>
-                    <span>23.06.17</span>
-                    <button type="button">×</button><!--삭제버튼-->
-                </li>                
+            	<c:forEach var="cardInfo" items="${cardList}">
+	               	<li>               		
+	                    <h4>${cardInfo.title}</h4>
+	                    <ul class="nick">
+	                        <li>내가짱</li>
+	                        <li>qwer1234</li>
+	                        <li>김개똥</li>
+	                        <li>당신바규준</li>
+	                    </ul>
+	                    <span>${cardInfo.cardUserDate} || 
+		                    <c:if test="${cardInfo.gameType == 0}">3구</c:if>
+		                    <c:if test="${cardInfo.gameType == 1}">4구</c:if>
+	                    </span>
+	                    <button type="button">×</button><!--삭제버튼-->
+	                </li>   
+                </c:forEach>             
             </ul>
         </div>
     </div>

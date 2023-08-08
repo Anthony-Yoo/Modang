@@ -352,7 +352,7 @@
 			select SEQ_CARDUSERS_NO.nextval from dual		
 		</selectKey>
 		<![CDATA[
-			insert into 
+			insert into CARDUSERS
 			(
 				CARDNO,
 				SETUSERNO,
@@ -377,7 +377,7 @@
 			select SEQ_CARDMEMBER_NO.nextval from dual		
 		</selectKey>
 		<![CDATA[
-			insert into 
+			insert into CARDMEMBER
 			(
 				MEMBERNO,
 				GETUSERNO,
@@ -392,22 +392,30 @@
 		]]>		
 	</insert>
 	
-	<select id="selectCardList">
+	<select id="selectCardList" parameterType="int" resultType="com.modang.vo.CardUsersVo">
 		<![CDATA[
-			select  cu.CARDNO,
-			        cu.SETUSERNO,
-			        cu.TITLE,
-			        cu.CARDUSERDATE,
-			        cu.GAMETYPE,
-			        cm.MEMBERNO,
-			        cm.GETUSERNO
-			from cardusers cu,
-			     cardmember cm
-			where cu.CARDNO = cm.CARDNO
-			AND cu.SETUSERNO = 1;
-
-		
+			select  CARDNO,
+			        SETUSERNO,
+			        TITLE,
+			        extract(year from CARDUSERDATE) ||'/'|| extract(month from CARDUSERDATE) ||'/'|| extract(day from CARDUSERDATE) as CARDUSERDATE,
+			        GAMETYPE
+			from CARDUSERS			
+			where SETUSERNO = #{userNo}		
 		]]>
 	
+	</select>
+	
+	<select id="selectMemberList" parameterType="int" resultType="com.modang.vo.CardMemberVo">
+		<![CDATA[
+			select  cm.MEMBERNO,
+					cm.GETUSERNO,
+					u.Nick as guestNick,
+					cm.CARDNO					
+			from CARDMEMBER cm,
+				 users u
+			where cm.GETUSERNO = u.userNo
+			And cm.CARDNO = #{cardNo}	
+		
+		]]>
 	</select>
 </mapper>
