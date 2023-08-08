@@ -20,9 +20,9 @@
 			.float-l {float: left; }
 			.clear{clear: both; }			
 			dt, dd {padding: 10px;}
-			dt {border: 1px solid #eeeeee;margin-bottom: 5px;margin-top: 5px; background-color: #9dd6f4;}
+			dt {width:260px;border: 1px solid #eeeeee;margin-bottom: 5px;margin-top: 5px; background-color: #9dd6f4;}
 			dt span {display: inline-block;	width: 5px; height: 5px; background-color: black;vertical-align: middle;margin-right: 10px;}
-			dd {background-color: #eeeeee;margin-bottom: 5px;display: none;	}
+			dd {width:260px;background-color: #eeeeee;margin-bottom: 5px;display: none;	}
 			dd:hover{background-color: black;color:white;}
 			
 			/*
@@ -83,20 +83,22 @@
 			<div class="cardlistBox float-l">
 				<div class="left float-l" id="cardlist">
 					<div id="tab"><p>카드리스트</p></div>
-					<c:forEach var="card" items="${cardList}">			
-					<div>				
-						<dl>
-		                	<dt>
-		                    	<span></span>${card.title} // 선호종목 : ${card.gameType}구
-		                 	</dt>
-		                 	<c:forEach var="member" items="${card.memberList}">
-			                 	<dd>${member.guestNick} &nbsp;&nbsp;&nbsp;
-			                 		<button type="button" class="addPlayer" data-userno="${member.getUserNo}" data-no="1" data-nick="${member.guestNick}" data-average="${member.average}">추가</button>
-			                 	</dd>
-		                 	</c:forEach>
-		               </dl>					
+					<div class="tabBox">
+						<c:forEach var="card" items="${cardList}">			
+						<div>				
+							<dl>
+			                	<dt>
+			                    	<span></span>${card.title} // 선호종목 : ${card.gameType}구
+			                 	</dt>
+			                 	<c:forEach var="member" items="${card.memberList}">
+				                 	<dd>${member.guestNick} &nbsp;&nbsp;&nbsp;
+				                 		<button type="button" class="addPlayer" data-userno="${member.getUserNo}" data-no="1" data-nick="${member.guestNick}" data-average="${member.average}">추가</button>
+				                 	</dd>
+			                 	</c:forEach>
+			               </dl>					
+						</div>
+						</c:forEach>
 					</div>
-					</c:forEach>
 				</div>
 			</div>
 			<!-- 검색존 -->
@@ -157,7 +159,7 @@
 								  		</td>
 								  	</tr>					  		
 								  </tbody>
-						  </c:forEach>				  
+						  	</c:forEach>	
 					</table>
 				</div>
 			</div>
