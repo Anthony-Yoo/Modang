@@ -68,12 +68,12 @@
 
 #find .b-search-map .b-listWrap .b-searchList ul {
     height: 612px;
-    /*overflow-y: auto;*/
+    overflow-y: auto;
 }
 
 /*리스트아이템*/
 #find .b-search-map .b-listWrap .b-searchList ul>li {
-	width: 100%;
+	width: 98%;
     height: 98px;
     padding: 0px;
     box-sizing: border-box;
@@ -86,9 +86,9 @@
 /*리스트아이템 이미지 당구장 대표사진*/
 #find .b-search-map .b-listWrap .b-searchList img {
     float: left;
-    width: 98px;
-    height: 98px;
-    margin: 1px 5px 0px 0px;
+    width: 90px;
+    height: 90px;
+    margin: 4px 5px 0px 0px;
     border: 1px solid #dfdfdf;
     box-sizing: border-box;
 }
@@ -96,7 +96,7 @@
 /*리스트아이템 정보 당구장 정보*/
 #find .b-search-map .b-listWrap .b-searchList .info {
     float: left;
-    width: 196px;
+    width: 180px;
 }
 
 /*리스트아이템 정보 당구장 이름*/
