@@ -433,4 +433,11 @@
 			and f.SETUSERNO = #{userNo}		
 		]]>
 	</select>
+	
+	<delete id="deleteCard" parameterType="int">
+		<![CDATA[
+			delete from CARDUSERS
+			where CARDNO = #{cardNo}		
+		]]>	
+	</delete>
 </mapper>

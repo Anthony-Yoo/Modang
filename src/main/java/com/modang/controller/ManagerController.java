@@ -121,12 +121,12 @@ public class ManagerController {
 		return "/manager/settings";
 	}
 	/*당구장 정보 수정*/
-	@RequestMapping(value = "modify", method = {RequestMethod.GET, RequestMethod.POST })
-	public String modify(HttpSession session, @ModelAttribute ManagerVo managerVo
-			, @RequestParam("file") List<MultipartFile> file) {
+	@RequestMapping(value = "/modify", method = {RequestMethod.GET, RequestMethod.POST })
+	public String modify(HttpSession session, @ModelAttribute ManagerVo managerVo, @RequestParam(value="file") List<MultipartFile> file) {
+		System.out.println("===========당구장정보수정=========");
 		System.out.println("ManagerController.modify()" + managerVo);
 		managerService.modify(managerVo,file);
-		return "redirect:/manager/settingsForm";
+		return "redirect:/manager/settingsForm?yn=y";
 	}
 	
 	/*당구장 찾기-리스트-지도 폼*/	
@@ -145,7 +145,7 @@ public class ManagerController {
 		return "/main/modangFind2";
 	}
 	
-	@RequestMapping(value = "/modangfind", method = {RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/modangFind", method = {RequestMethod.GET, RequestMethod.POST })
 	public String modangfind() {
 		System.out.println("ManagerController.modangfind()");	
 		

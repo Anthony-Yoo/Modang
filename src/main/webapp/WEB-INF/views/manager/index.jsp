@@ -102,11 +102,12 @@
 									<div class="tableArea" data-biliardno="${cueTableVo.biliardNo}"
 										data-tableno="${cueTableVo.tableNo}"
 										data-tablename="${cueTableVo.tableName}"
-										data-tabletype="${cueTableVo.tableType}">
+										data-tabletype="${cueTableVo.tableType}"
+										data-tablestatus="${cueTableVo.tableStatus}">
 										<large class="font-weight-normal text-blue float-left">
 										<strong>No. ${cueTableVo.tableName}</strong></large>
 										<c:choose>
-											<c:when test="${cueTableVo.tableStatus==0}">
+											<c:when test="${cueTableVo.tableStatus == 0}">
 												<!--테이블 상태별 배경색 변경(대기)  -->
 												<div class="status-available"
 													style="background-color: #d2e4fb;">
@@ -173,7 +174,6 @@
 												</div>
 											</c:otherwise>
 										</c:choose>
-
 									</div>
 								</c:forEach>
 								<!-- 테이블 추가버튼 -->
@@ -460,6 +460,101 @@
 </body>
 
 <script type="text/javascript">
+/* 로딩 시작할때(다시켜질때) */
+$(document).ready(function(){
+	let $table = $(".tableArea");
+	$.each.each(function(i){					
+		for(let i=0;i<$delbtn.length;i++) {
+			if($table.data("tablestatus") == 1) {
+		
+	}
+	
+		
+	
+	
+});
+
+
+/* 
+<div class="tableArea" data-biliardno="${cueTableVo.biliardNo}"
+	data-tableno="${cueTableVo.tableNo}"
+	data-tablename="${cueTableVo.tableName}"
+	data-tabletype="${cueTableVo.tableType}">
+	<large class="font-weight-normal text-blue float-left">
+	<strong>No. ${cueTableVo.tableName}</strong></large>
+	<c:choose>
+		<c:when test="${cueTableVo.tableStatus == 0}">
+			<!--테이블 상태별 배경색 변경(대기)  -->
+			<div class="status-available"
+				style="background-color: #d2e4fb;">
+				<div class="small float-right">
+					<c:if test="${cueTableVo.tableType==0}">
+						<strong>대대</strong>
+					</c:if>
+					<c:if test="${cueTableVo.tableType==1}">
+						<strong>중대</strong>
+					</c:if>
+					<c:if test="${cueTableVo.tableType==2}">
+						<strong>포켓</strong>
+					</c:if>
+				</div>
+				<div class="tableTime1 pt-8 pl-3">
+					<strong>대 기</strong>
+				</div>
+				<br> <br>
+				<div class="tablePay"></div>
+			</div>
+		</c:when>
+		<c:when test="${cueTableVo.tableStatus==1}">
+			<!--테이블 상태별 배경색 변경(사용)  -->
+			<div class="status-occupied"
+				style="background-color: #fdeba2;">
+				<div class="small float-right">
+					<c:if test="${cueTableVo.tableType==0}">
+						<strong>대대</strong>
+					</c:if>
+					<c:if test="${cueTableVo.tableType==1}">
+						<strong>중대</strong>
+					</c:if>
+					<c:if test="${cueTableVo.tableType==2}">
+						<strong>포켓</strong>
+					</c:if>
+				</div>
+				<div class="tableTime pt-8 pl-2">00:43</div>
+				<br> <br>
+				<div class="tablePay">
+					<strong>9,000원</strong>
+				</div>
+			</div>
+		</c:when>
+		<c:otherwise>
+			<!--테이블 상태별 배경색 변경(정지)  -->
+			<div class="status-default"
+				style="background-color: #ffeded;">
+				<div class="small float-right">
+					<c:if test="${cueTableVo.tableType==0}">
+						<strong>대대</strong>
+					</c:if>
+					<c:if test="${cueTableVo.tableType==1}">
+						<strong>중대</strong>
+					</c:if>
+					<c:if test="${cueTableVo.tableType==2}">
+						<strong>포켓</strong>
+					</c:if>
+				</div>
+				<div class="tableTime pt-8 pl-2">00:43</div>
+				<br> <br>
+				<div class="tablePay">
+					<strong>9,000원</strong>
+				</div>
+			</div>
+		</c:otherwise>
+	</c:choose>
+
+</div>
+
+ */
+
 
 let crtbiliardNo=0;//현재 선택된 당구장넘버
 let crtTableNo=0; //현재 선택된 테이블넘버

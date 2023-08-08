@@ -210,10 +210,10 @@ $(".panalty").on("click",function(){
 		$this.parent(".marks").css({"background-color" : "#379c23",
 									"color" : "white",
 									"font" : "30px bold",
-									"text-align" : "center"});
-		$($this.parent(".marks")).on("click",function(){
+									"text-align" : "center"});//this ==> 마이너스버튼 ||$this ==> 점수TEXT
+		$($this.parent(".marks")).on("click",function(){ //this ==> 점수판 
 			console.log("게임종료!!");			
-			$(this).children("#marks").text(++record);	
+			$(this).children("#marks").text(++record);	 
 			$(this).attr("data-record",record);
 			var playNo = $(this).data("playno");
 			console.log("등수번호 :"+$(this).data("record"));
@@ -265,7 +265,7 @@ $(".panalty").on("click",function(){
 							if(ts < 10){
 								ts = "0" + sec;
 							}
-							$(thisForm).append(th + ":" + tm + ":" + ts);						
+							$(thisForm).append(th + ":" + tm + ":" + ts);		// 점수판에 시간표시				
 					}
 						timeStamper();
 						
@@ -279,8 +279,9 @@ $(".panalty").on("click",function(){
 				}		
 				
 			});	
-			$(thisForm).off('click');
+			$(thisForm).off('click'); // 점수판 클릭금지
 			if(memberNum - 1 == $(thisForm).data('record')) {//멤버숫자 - 1 = 현재 등수 와 같으면 -> 꼴지와 꼴지-1등같이 처리	
+				
 				console.log("멤버숫자 :" + memberNum);
 				record++;
 				$(this).off('click');
@@ -294,7 +295,7 @@ $(".panalty").on("click",function(){
 								"font" : "30px bold",
 								"text-align" : "center"
 								});
-				lastMemeber.siblings().off('click');
+				lastMemeber.off('click');
 				var lastActiveAverage = lastMemeber.parent().siblings(".bdtop").find("#act-average").text();				
 				console.log("꼴지 총친타수 : "+lastActiveAverage);
 				

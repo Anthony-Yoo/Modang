@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +13,7 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/managerdefault.css" />
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+	
 	<!-- jquery -->
 	<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
 
@@ -88,25 +90,28 @@
 								</form>
 							</header>
 							
+							<br>
+							<p>전체매출: <fmt:formatNumber type="number" maxFractionDigits="3"   value="${totalVo.t_income}" /> 전체입금: <fmt:formatNumber type="number" maxFractionDigits="3"   value="${totalVo.t_payMoney}" /><p>
+							<p>카드매출: <fmt:formatNumber type="number" maxFractionDigits="3"   value="${totalVo.c_income}" /> 카드입금: <fmt:formatNumber type="number" maxFractionDigits="3"   value="${totalVo.c_payMoney}" /><p>
+							<p>현금매출: <fmt:formatNumber type="number" maxFractionDigits="3"   value="${totalVo.m_income}" /> 현금입금: <fmt:formatNumber type="number" maxFractionDigits="3"   value="${totalVo.m_payMoney}" /><p>
+							
 							<table class="table table-striped">
 								<thead class="thead-dark">
 									<tr>
-										<th>No</th>
 										<th>테이블번호</th>
-										<th>게임종류</th>
-										<th>게임날짜</th>
-										<th>시작시간</th>
-										<th>종료시간</th>
-										<th>사용시간</th>
-										<th>결제방법</th>
-										<th>결제금액</th>
-										<th>입금금액</th>
+										<th>게임 종류</th>
+										<th>게임 날짜</th>
+										<th>시작 시간</th>
+										<th>종료 시간</th>
+										<th>사용 시간</th>
+										<th>결제 방법</th>
+										<th>결제 금액</th>
+										<th>입금 금액</th>
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach items="${salesList}" var="gamesVo">
 										<tr>
-											<td>${gamesVo.rownum}</td>
 											<td>${gamesVo.tableName}</td>
 											<td>
 											<c:if test ="${gamesVo.gameType==0}">3구</c:if>
@@ -117,13 +122,13 @@
 											<td>${gamesVo.gameDate}</td>
 											<td>${gamesVo.startTime}</td>
 											<td>${gamesVo.endTime}</td>
-											<td>${gamesVo.gameTime}</td>
+											<td>${gamesVo.gameTime1}</td>
 											<td>
-											<c:if test ="${gamesVo.payType==0}">카드</c:if>
-											<c:if test ="${gamesVo.payType==1}">현금</c:if>
+												<c:if test ="${gamesVo.payType==0}">카드</c:if>
+												<c:if test ="${gamesVo.payType==1}">현금</c:if>
 											</td>
-											<td>${gamesVo.payMoney}</td>
-											<td>${gamesVo.income}</td>
+											<td><fmt:formatNumber type="number" maxFractionDigits="3"   value="${gamesVo.payMoney}" /></td>
+											<td><fmt:formatNumber type="number" maxFractionDigits="3"   value="${gamesVo.income}" /></td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -158,7 +163,6 @@ window.onload = function() {
         }
     }
 };//페이지 로드 end
-
 
 </script>
 </html>

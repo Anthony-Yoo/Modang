@@ -22,7 +22,7 @@
 	<!-- 부트스트랩 -->
 	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e22dfae5a7af2f9805a3f47c324a0694"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c37d351b11287c4a3b2a8008d77ddff8"></script>
 </head>
 <body>
     <!-- 헤더 시작 -->
@@ -182,7 +182,7 @@ $(".modangList").on("click", "li", function() {
 					$(".m-parking").html( "주차불가능");
 				}
 				
-				$(".m-address").html( modangVo.biliardAddress1 +" "+ modangVo.biliardAddress1);
+				$(".m-address").html( modangVo.biliardAddress1 +" "+ modangVo.biliardAddress2);
 				$(".m-comment").html( modangVo.bdComment );
 				
 				
@@ -318,10 +318,10 @@ function renderModang(modangList){
 	
 	for(var i=0; i<modangList.length; i++){
 		var modangVo = modangList[i];
-		
+		console.log(modangVo.imageFile1);
 		var str = '';
 		str += '<li class="modangItem" data-biliardno="'+modangVo.biliardNo+'"  >';
-		str += '    <img src="${pageContext.request.contextPath}/upload/${modangVo.imageFile1}" alt="당구장이미지">';
+		str += '    <img src="${pageContext.request.contextPath}/upload/'+modangVo.imageFile1+'" alt="당구장이미지">';
 		str += '    <div class="info">';
 		str += '        <p class="repname">'+modangVo.biliardName+'</p>';
 		str += '        <p class="addr">'+modangVo.biliardAddress1+' '+modangVo.biliardAddress2+'</p>';
