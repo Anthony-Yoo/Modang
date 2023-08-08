@@ -122,7 +122,8 @@
 		<!-- 날짜별 매출 가져오기 -->
 		<select id="selectTotalSalesByDay" parameterType="com.modang.vo.TableGamesVo" resultType="com.modang.vo.TotalVo">
 			<![CDATA[
-				select  tt.gameDate,
+				select  to_char(tt.gameDate, 'MM"월"DD"일"') dates,
+						to_char(tt.gameDate, 'YYYY-MM-DD') gameDate,
 				        NVL(tt.payMoney, 0) t_payMoney,
 				        NVL(tt.income, 0) t_income,
 				        NVL(ct.card_payMoney, 0) c_payMoney,
@@ -192,6 +193,8 @@
 				
 		</select>
 		
+
+
 
 
 		<!-- 테이블 결제하기 -->
