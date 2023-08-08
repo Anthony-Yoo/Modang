@@ -59,8 +59,7 @@
         <div class="cardList right">
             <h2>카드 리스트</h2>
             <ul>
-            <c:forEach var="card"
-                <li>
+               <li>
                     <h4>우리가대마왕</h4>
                     <ul class="nick">
                         <li>내가짱</li>
