@@ -57,9 +57,11 @@
 		<!-- Content -->
 		<section id="content">
 			<div class="container">
+			<%-- <input type="hidden" name="id" value ="${requestScope.managerVo.id}"> --%>
 			<form action="${pageContext.request.contextPath}/manager/modify" id="modangEditForm" method="post" enctype="multipart/form-data">
 			<input type="hidden"  name="biliardNo" value="${requestScope.managerVo.biliardNo}">
 			<input type="hidden" name="id" value ="${requestScope.managerVo.id}"> <!-- modify할때  -->
+			 <!-- modify할때  -->
 				<div class="row">
 					<!-- Form -->
 					<div class="col-6">
@@ -121,8 +123,8 @@
                                 <div class="form-group row">
                                     <label for="" class="col-form-label col-3">매장사진</label>
                                     <div class="col">
-                                    	<div class="image-box">
-                                    		<img src="${pageContext.request.contextPath }/upload/${requestScope.managerVo.imageFile1}" id="resultImg1"  class="resultImg" >
+                                    	<div class="image-box">                                    	
+                                    		<img src="${pageContext.request.contextPath }/upload/${requestScope.managerVo.imageFile1}" id="resultImg1" name="file" class="resultImg" >
                                     		<input type="hidden"  name="imageFile1" value="${requestScope.managerVo.imageFile1}">
                                     		<input type="file" name="file" class="form-control resultFile" onchange="previewImage(event, 'resultImg1')"  maxlength="20" placeholder="" value="${requestScope.managerVo.imageFile1}" />
                                         </div>
@@ -135,7 +137,7 @@
                                         	<img src="${pageContext.request.contextPath }/upload/${requestScope.managerVo.imageFile3}" id="resultImg3"  class="resultImg" >
                                     		<input type="hidden"  name="imageFile3" value="${requestScope.managerVo.imageFile3}">
                                         	<input type="file" name="file" class="form-control resultFile" onchange="previewImage(event, 'resultImg3')"  maxlength="20" placeholder="" value="${requestScope.managerVo.imageFile3}" />
-                                    	</div>
+                                    	</div>                                       
 									</div>
                                 </div>
                                 <div class="form-group row">

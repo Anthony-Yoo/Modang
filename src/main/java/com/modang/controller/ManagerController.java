@@ -121,9 +121,9 @@ public class ManagerController {
 		return "/manager/settings";
 	}
 	/*당구장 정보 수정*/
-	@RequestMapping(value = "modify", method = {RequestMethod.GET, RequestMethod.POST })
-	public String modify(HttpSession session, @ModelAttribute ManagerVo managerVo
-			, @RequestParam("file") List<MultipartFile> file) {
+	@RequestMapping(value = "/modify", method = {RequestMethod.GET, RequestMethod.POST })
+	public String modify(HttpSession session, @ModelAttribute ManagerVo managerVo, @RequestParam(value="file") List<MultipartFile> file) {
+		System.out.println("===========당구장정보수정=========");
 		System.out.println("ManagerController.modify()" + managerVo);
 		managerService.modify(managerVo,file);
 		return "redirect:/manager/settingsForm?yn=y";

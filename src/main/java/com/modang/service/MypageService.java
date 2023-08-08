@@ -328,4 +328,10 @@ public class MypageService {
 		
 		return friendList;
 	}
+	
+	public int cardDelete(int cardNo) {
+		System.out.println("MypageService.cardDelete()");		
+		
+		return mypageDao.deleteCard(cardNo);
+	}
 }
