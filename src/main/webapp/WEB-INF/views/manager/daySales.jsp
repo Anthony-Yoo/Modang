@@ -90,24 +90,18 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>08/05</td>
-										<td>20회</td>
-										<td>156,000</td>
-										<td>150,000</td>
-										<td>99,000</td>
-										<td>95,000</td>
-										<td>245,000</td>
-									</tr>
-									<tr>
-										<td>08/06</td>
-										<td>25회</td>
-										<td>176,000</td>
-										<td>170,000</td>
-										<td>129,000</td>
-										<td>120,000</td>
-										<td>290,000</td>
-									</tr>
+									<c:forEach items="totalList" var="totalVo">
+										<tr>
+											<td></td>
+											<td>-</td>
+											<td>156,000</td>
+											<td>150,000</td>
+											<td>99,000</td>
+											<td>95,000</td>
+											<td>245,000</td>
+										</tr>
+										
+									</c:forEach>
 																																														
 								</tbody>
 							</table>

@@ -19,6 +19,7 @@ import com.modang.vo.JsonResult;
 import com.modang.vo.ManagerVo;
 import com.modang.vo.TableGamesVo;
 import com.modang.vo.TariffVo;
+import com.modang.vo.TotalVo;
 
 @Controller
 @RequestMapping(value = "/manager")
@@ -95,6 +96,8 @@ public class BiliardController {
 
 		return jsonResult;
 	}
+	
+	
 
 	/* 테이블 현황 - 테이블 전체리스트 */
 	@RequestMapping(value = "/index", method = { RequestMethod.GET, RequestMethod.POST })
@@ -145,15 +148,18 @@ public class BiliardController {
 	}
 
 	/* 일별 매출 페이지----------------------------------------------------------------------------- */
+	/*
 	@RequestMapping(value = "/daySalesForm", method = { RequestMethod.GET, RequestMethod.POST })
 	public String daySalesForm() {
 		System.out.println("BiliardController.daySalesForm()");
 
 		return "/manager/daySales";
 	}
+	*/
 	
-	@RequestMapping(value = "/daySales", method = { RequestMethod.GET, RequestMethod.POST })
-	public String daySales(@ModelAttribute TableGamesVo tableGamesVo,HttpSession session ) {
+	
+	@RequestMapping(value = "/daySalesForm", method = { RequestMethod.GET, RequestMethod.POST })
+	public String daySales(@ModelAttribute TableGamesVo tableGamesVo, HttpSession session, Model model ) {
 		System.out.println("BiliardController.daySales()");
 		System.out.println("--------일별매출검색-------");
 		
@@ -162,11 +168,18 @@ public class BiliardController {
 		System.out.println("당구장넘버: "+biliardNo);
 		
 		tableGamesVo.setBiliardNo(biliardNo);
-		biliardService.daySales(tableGamesVo);
+		
+		
+		List<TotalVo> totalList = biliardService.daySales(tableGamesVo);
+		System.out.println(totalList);
+		
+		model.addAttribute("totalList", totalList);
 		
 		return "/manager/daySales";
 		
 	}
+	
+	
 
 	/* 요금테이블 페이지-------------------------------------------------------------------------- */
 	/* 요금테이블 수정 */
