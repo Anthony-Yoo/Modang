@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +13,7 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/managerdefault.css" />
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+	
 	<!-- jquery -->
 	<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
 
@@ -89,9 +91,9 @@
 							</header>
 							
 							<br>
-							<p>전체매출: ${totalVo.t_income} 전체입금: ${totalVo.t_payMoney}<p>
-							<p>카드매출: ${totalVo.c_income} 카드입금: ${totalVo.c_payMoney}<p>
-							<p>현금매출: ${totalVo.m_income} 현금입금: ${totalVo.m_payMoney}<p>
+							<p>전체매출: <fmt:formatNumber type="number" maxFractionDigits="3"   value="${totalVo.t_income}" /> 전체입금: <fmt:formatNumber type="number" maxFractionDigits="3"   value="${totalVo.t_payMoney}" /><p>
+							<p>카드매출: <fmt:formatNumber type="number" maxFractionDigits="3"   value="${totalVo.c_income}" /> 카드입금: <fmt:formatNumber type="number" maxFractionDigits="3"   value="${totalVo.c_payMoney}" /><p>
+							<p>현금매출: <fmt:formatNumber type="number" maxFractionDigits="3"   value="${totalVo.m_income}" /> 현금입금: <fmt:formatNumber type="number" maxFractionDigits="3"   value="${totalVo.m_payMoney}" /><p>
 							
 							<table class="table table-striped">
 								<thead class="thead-dark">
@@ -125,8 +127,8 @@
 												<c:if test ="${gamesVo.payType==0}">카드</c:if>
 												<c:if test ="${gamesVo.payType==1}">현금</c:if>
 											</td>
-											<td>${gamesVo.payMoney}</td>
-											<td>${gamesVo.income}</td>
+											<td><fmt:formatNumber type="number" maxFractionDigits="3"   value="${gamesVo.payMoney}" /></td>
+											<td><fmt:formatNumber type="number" maxFractionDigits="3"   value="${gamesVo.income}" /></td>
 										</tr>
 									</c:forEach>
 								</tbody>
