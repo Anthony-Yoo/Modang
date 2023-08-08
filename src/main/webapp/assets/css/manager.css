@@ -100,11 +100,11 @@ justify-content: center;align-items: center; pointer-events: none;}
 .login-wrap .con .inp-txt{ display:block; padding: 10px 0 ; text-align: center;}
 .login-wrap .con img{display: inline-block; width: 40px; height: 40px; margin-right: 10px;}
 .login-wrap .con .inp-txt input::placeholder{color: #B8B8B8;}
-.login-wrap .con .inp-txt input#cb1{display: inline-block; width: 20px; height: 20px;
+.login-wrap .con .inp-txt input#cb1{display: inline-block; width: 16px; height: 16px;
 	border: 2px solid #bcbcbc;cursor: pointer; margin-top: 5px;}
-.login-wrap .con .inp-txt input#cb1:checked{width: 100%; height:100%; background-color: #2E419A;}
-.login-wrap .con .inp-txt label{display: inline-block; width: 130px; height: 20px; }
-.login-wrap .con .inp-txt input#cb1:checked + label{color:#2E419A;}
+.login-wrap .con .inp-txt input#cb1:checked{border: 2px solid #2E419A; border-radius: 50%;}
+.login-wrap .con .inp-txt label{display: inline-block; width: 130px; height: 20px; font-size: 16px;}
+.login-wrap .con .inp-txt input#cb1:checked + label{line-height: 20px;}
 .login-wrap .con .inp-txt .addition{display: block; font-size: 14px; margin-top: 20px;}
 .login-wrap .con .inp-txt .addition a{color: #000; border-left: 2px solid #2E419A; padding: 0 10px;}
 .login-wrap .con .inp-txt .addition a:nth-child(1){border: 0;}

@@ -120,15 +120,10 @@
 											<td>${gamesVo.gameDate}</td>
 											<td>${gamesVo.startTime}</td>
 											<td>${gamesVo.endTime}</td>
-											<td>  
-												  <c:set var="minutes" value="${Math.floor(gamesVo.gameTime / 60)}" />
-    											  <c:set var="seconds" value="${gamesVo.gameTime % 60}" />
-
-   												  ${((minutes < 10) ? '0' : '')}${minutes}:${(seconds < 10 ? '0' : '')}${seconds}
-											</td>
+											<td>${gamesVo.gameTime1}</td>
 											<td>
-											<c:if test ="${gamesVo.payType==0}">카드</c:if>
-											<c:if test ="${gamesVo.payType==1}">현금</c:if>
+												<c:if test ="${gamesVo.payType==0}">카드</c:if>
+												<c:if test ="${gamesVo.payType==1}">현금</c:if>
 											</td>
 											<td>${gamesVo.payMoney}</td>
 											<td>${gamesVo.income}</td>
