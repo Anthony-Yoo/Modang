@@ -64,8 +64,8 @@
 				    #{postcode},
 				    #{biliardAddress1},
 				    #{biliardAddress2},
-				    null,
-				    null,
+				    #{latitude},
+				    #{longtitude},
 				    #{biliardPhone},
 				    #{imageFile1},
 				    #{imageFile2},
@@ -178,6 +178,9 @@
 			or biliardAddress1 like '%' ||  #{keyword} || '%'
 			or biliardAddress2 like '%' ||  #{keyword} || '%'
 		</if>
+		<![CDATA[
+			order by biliardNo desc
+		]]>
 	</select>
 	
 	

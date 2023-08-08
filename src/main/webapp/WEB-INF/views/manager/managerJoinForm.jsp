@@ -9,8 +9,9 @@
 <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e86c03dc169e845e1ac8650bdaa97ae6a"></script>
+<!-- <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e86c03dc169e845e1ac8650bdaa97ae6a"></script> -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
+
 </head>
 <body>
 	<!-- 헤더 시작 -->
@@ -20,7 +21,7 @@
 		<div class="container">
 			<h2>환영합니당</h2>
 			<h3>관리자 정보</h3>
-			<form action="${pageContext.request.contextPath}/manager/join" id="" method="post"
+			<form action="${pageContext.request.contextPath}/manager/join" id="modangJoinForm" method="post"
 				enctype="multipart/form-data">
 				<div class="join-wrap">
 					<div class="con">
@@ -139,6 +140,8 @@
 				</div>
 				<!-- join-wrap -->
 				<button id="btnJoin" class="button join" type="submit">회원가입할거당</button>
+				<input type="text" id="tex-latitude" name="latitude" value="">
+				<input type="text" id="tex-longtitude" name="longtitude" value="">
 			</form>
 		</div>
 		<!-- container -->
@@ -156,7 +159,11 @@
 		if(result!=""){
 			alert(result);
 		}
+		
+		
 	};
+
+
 
 </script>    
 
@@ -281,5 +288,58 @@ function execDaumPostcode() {
 			}
 		});
 	});
+	
+	
+	//저장버튼 눌렀을때
+	$("#modangJoinForm").on("submit", function(e){
+		console.log("모당가입");
+		
+		var address = $("#biliardAddress1").val() + " " + $("#biliardAddress2").val();
+		console.log(address);
+		
+		var lat_lon= getXY(address)
+		
+		$("#tex-latitude").val(lat_lon.lat);
+		$("#tex-longtitude").val(lat_lon.lon);
+		
+		return true; 
+		
+	});
+	
+	
+	
+	/* 주소작성시 위경도 추출 */
+	function getXY(address){
+		var lat_lon = {};
+		
+		$.ajax({
+			url : "https://dapi.kakao.com/v2/local/search/address.json",//주소 요청해야할 곳
+			type : "get",
+			beforeSend : function(xhr){
+				xhr.setRequestHeader("Authorization", "KakaoAK 616454d03f7c2b24d0bfde1357d390d4"); 
+			},
+			data : {
+				query : "전북 삼성동 100"
+			},
+			async:false,
+			dataType : "json", //돌아올때 방식
+			success : function(jsonResult) {
+				console.log(jsonResult);
+				console.log(jsonResult.documents[0].x, jsonResult.documents[0].y);/* x경도 y위도 */
+				lat_lon.lat = jsonResult.documents[0].y;
+				lat_lon.lon = jsonResult.documents[0].x;
+				/* 
+				latitude 위도
+				longtitude 경도 */
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+				//alert("서버요청실패");
+			}
+		});
+		
+		return lat_lon;
+	}
+
 </script>
 </html>
