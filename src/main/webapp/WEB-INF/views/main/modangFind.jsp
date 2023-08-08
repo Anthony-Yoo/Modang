@@ -182,7 +182,7 @@ $(".modangList").on("click", "li", function() {
 					$(".m-parking").html( "주차불가능");
 				}
 				
-				$(".m-address").html( modangVo.biliardAddress1 +" "+ modangVo.biliardAddress1);
+				$(".m-address").html( modangVo.biliardAddress1 +" "+ modangVo.biliardAddress2);
 				$(".m-comment").html( modangVo.bdComment );
 				
 				

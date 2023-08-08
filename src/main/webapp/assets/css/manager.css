@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 /*공통*/
+img{object-fit: contain;}
 .error-msg{color: #F94069; font-size: 13px; display: none; text-align: center;padding-top:5px;}
 .correct-msg{color: #F94069; font-size: 13px; display: none; text-align: center; padding-top:5px;}
 .check-msg{color: #F94069; font-size: 13px; text-align: center; padding-top:5px;}
