@@ -269,7 +269,7 @@
 		<!-- 게임정보리스트가져오기 -->
 		<select id="selectGamesList" parameterType="int" resultType="com.modang.vo.TableGamesVo">
 			<![CDATA[
-				select g.gameNo,
+				select   g.gameNo,
 				         g.tableNo,
 				         g.gameType,
 				         g.memberNum,
@@ -285,11 +285,13 @@
 				         g.pauseStart,
 				         g.pauseStop,
 				         g.pauseTime,
-				         g.setNo
+				         g.setNo,
+				         ROUND((g.PAUSESTART-g.STARTTIME) * 24 * 60 * 60, 2)- g.PAUSETIME as secondsToTime
 				from games g, cuetable c
-				where g.tableNo=c.tableNo
-				and c.biliardNo=#{biliardNo}
-				and g.payStatus=0
+				where g.tableNo = c.tableNo
+				and c.biliardNo = 1
+				and c.tableStatus = 2
+				
 			]]>	
 		</select>
 

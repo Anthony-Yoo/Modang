@@ -79,28 +79,34 @@
 					</c:when>
 				</c:choose>
 			</div>
-			<!-- 카드리스트 -->
-			<div class="cardlistBox float-l">
-				<div class="left float-l" id="cardlist">
-					<div id="tab"><p>카드리스트</p></div>
-					<div class="tabBox">
-						<c:forEach var="card" items="${cardList}">			
-						<div>				
-							<dl>
-			                	<dt>
-			                    	<span></span>${card.title} // 선호종목 : ${card.gameType}구
-			                 	</dt>
-			                 	<c:forEach var="member" items="${card.memberList}">
-				                 	<dd>${member.guestNick} &nbsp;&nbsp;&nbsp;
-				                 		<button type="button" class="addPlayer" data-userno="${member.getUserNo}" data-no="1" data-nick="${member.guestNick}" data-average="${member.average}">추가</button>
-				                 	</dd>
-			                 	</c:forEach>
-			               </dl>					
-						</div>
-						</c:forEach>
-					</div>
-				</div>
-			</div>
+         <!-- 카드리스트 -->
+         <div class="cardlistBox float-l">
+            <div class="left float-l" id="cardlist">
+               <div id="tab"><p>카드리스트</p></div>
+               <c:forEach var="card" items="${cardList}">         
+	               <div>            
+	                  <dl>
+	                         <dt>
+	                             <span></span>${card.title} // 선호종목 : 
+	                             <c:choose>
+	                           <c:when test="${card.gameType eq 0}">   
+	                                 3구
+	                                </c:when>
+	                                <c:when test="${card.gameType eq 1}">   
+	                                 4구
+	                                </c:when>
+	                             </c:choose>
+	                          </dt>
+	                          <c:forEach var="member" items="${card.memberList}">
+	                             <dd>${member.guestNick} &nbsp;&nbsp;&nbsp;
+	                                <button type="button" class="addPlayer" data-userno="${member.getUserNo}" data-no="1" data-nick="${member.guestNick}" data-average="${member.average}">추가</button>
+	                             </dd>
+	                          </c:forEach>
+	                     </dl>               
+	               </div>
+               </c:forEach>
+            </div>
+         </div>
 			<!-- 검색존 -->
 			<div class="findBox float-l">
 				<div class="cent float-l" id="findid">
