@@ -277,7 +277,7 @@ public class MypageService {
 		return mypageDao.deleteFriend(favoriteNo);
 	}
 	
-	public CardUsersVo cardInsert(CardUsersVo cardVo) {
+	public List<CardUsersVo> cardInsert(CardUsersVo cardVo) {
 		System.out.println("MypageService.cardInsert()");
 		
 		mypageDao.insertCarduser(cardVo);
@@ -289,19 +289,34 @@ public class MypageService {
 			memberVo.setCardNo(cardVo.getCardNo());
 			memberVo.setGetUserNo(cardVo.getMemberNoList().get(i));
 			mypageDao.insertCardMember(memberVo);
-			memberList.set(i, memberVo);			
+			memberList.add(i, memberVo);			
 		}
 		System.out.println(memberList);
 		cardVo.setMemberList(memberList);
 		
+		int userNo = cardVo.getSetUserNo();
 		
-		return cardVo;
+		List<CardUsersVo> cardList = mypageDao.selectCardList(userNo);
+		for(int i=0; i < cardList.size() ; i++ ) {
+			int cardNo = cardList.get(i).getCardNo();
+			memberList = mypageDao.selectMemberList(cardNo);
+			cardList.get(i).setMemberList(memberList);
+			
+		}		
+		
+		return cardList;
 	}
 	
 	public List<CardUsersVo> cardList(int userNo) {
 		System.out.println("MypageService.cardList()");
 		
 		List<CardUsersVo> cardList = mypageDao.selectCardList(userNo);
+		List<CardMemberVo> memberList = new ArrayList<>();
+		for(int i=0; i < cardList.size() ; i++ ) {
+			int cardNo = cardList.get(i).getCardNo();
+			memberList = mypageDao.selectMemberList(cardNo);
+			cardList.get(i).setMemberList(memberList);			
+		}
 		
 		return cardList;
 	}

@@ -88,4 +88,11 @@ public class MypageDao {
 		
 		return session.selectList("mypage.selectCardList", userNo);				
 	}
+	
+	public List<CardMemberVo> selectMemberList(int cardNo) {
+		System.out.println("MypageDao.selectMemberList()");
+		
+		return session.selectList("mypage.selectMemberList", cardNo);
+	}
+	
 }

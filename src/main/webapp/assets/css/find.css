@@ -30,15 +30,26 @@
 
 /*리스트 외곽*/
 #find .b-search-map .b-listWrap {
-	position: absolute;
-	top: 0px;
-	left: 0px;
+	float: left;
 	padding: 15px 10px 15px 10px;
 	width:300px;
 	height: 670px;
 	background-color: #ffffff;
 	z-index: 999;
 }
+
+
+#find .b-search-map .mapWrap {
+	float: right;
+}
+
+#find .b-search-map .mapWrap .infowin{
+	padding: 5px;
+	font-weight: bold;
+	text-align: center;
+}
+
+
 
 /*검색영역*/
 #find .b-search-map .b-listWrap .b-searchForm {
@@ -59,7 +70,6 @@
     height: 612px;
     /*overflow-y: auto;*/
 }
-
 
 /*리스트아이템*/
 #find .b-search-map .b-listWrap .b-searchList ul>li {
@@ -96,16 +106,145 @@
 	font-weight: bold;
 }
 
-/*리스트아이템 정보 당구장 주소*/
+/*리스트아이템 정보 당구장 주소1*/
 #find .b-search-map .b-listWrap .b-searchList .addr {
 	padding-bottom: 9px;
 	font-size: 14px;
 }
 
-/*리스트아이템 정보 당구장 주소*/
+/*리스트아이템 정보 당구장 주소2*/
 #find .b-search-map .b-listWrap .b-searchList .sub {
 	font-size: 14px;
 }
+
+
+
+
+
+
+/*********************************************************************
+ 모달창 관련
+**********************************************************************/	
+
+#modalOpenButton, #modalCloseButton {
+  cursor: pointer;
+}
+
+#modalContainer {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99999;
+}
+
+#modalContent {
+  position: absolute;
+  top: 50px;
+  border-radius: 5px;;
+  background-color: #ffffff;
+  width: 900px;
+  min-height: 400px;
+  
+}
+
+#modalContainer.hidden {
+  display: none;
+}
+
+
+/*당구장리스트-상세보기-모달---------------*/
+.modal-header { 
+	padding: 20px 20px 20px 20px;
+	box-sizing: border-box;
+	border-bottom: 1px solid #2E419A;
+	font-size: 26px; 
+	
+}
+
+.modal-header p{ 
+	font-weight: bold;
+}
+
+.modal-body { 
+	padding: 20px 20px 20px 20px;
+}
+
+.modal-body .mImg {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	padding: 0px 50px;
+}
+
+.modal-body .mImg>img {
+	width: 240px; 
+	height: 180px; 
+	border: 1px solid #efefef; 
+	box-sizing: border-box;
+}
+
+.modal-body .mDetail ul{ 
+	padding: 30px 0px
+}
+.modal-body .mDetail ul li{ 
+	width: 500px;  
+	height: 60px; 
+	box-sizing: border-box; 
+	margin: 0 auto ;
+}
+
+.modal-body .mDetail ul li img{ 
+	width: 40px; 
+	height: 40px; 
+	padding: 10px;
+	vertical-align: middle;
+}
+
+.modal-body .mDetail ul li span{
+	display: inline-block; 
+	width: 414px; 
+	height: 20px; 
+	padding: 5px 10px;
+	font-size: 18px; 
+	text-align: left;  
+	line-height: 20px;
+	vertical-align: middle;
+}
+
+.modal-footer{ 
+	padding: 20px 20px 20px 20px;
+	border-top: 1px solid #2E419A;
+	text-align: right;
+}
+
+/*
+.modal-footer>button{width: 90px; height: 30px; background-color: #2E419A;
+	border-radius: 4px; color: #fff; cursor: pointer; margin-right:40px;}
+
+
+.mView {width: 900px; height: 450px; margin: 0 auto; }
+.mView .mImg{width: 800px; height: 180px;margin: 20px auto 0;}
+.mView .mImg>img{display: inline-block; width: 240px; height: 180px; border: 1px solid #efefef; box-sizing: border-box;
+	margin-left: 20px;}
+.mView .mDetail{width: 800px;height: 250px; margin: 0 auto;}
+.mView .mDetail ul{width: 700px;height: 250px;  margin: 20px auto 0;}
+.mView .mDetail ul li{ width: 500px;  height: 60px;box-sizing: border-box; margin: 0 auto 3px;}
+.mView .mDetail ul li img{display: block; width: 40px; height: 40px; float: left; padding: 10px;}
+.mView .mDetail ul li span{display: block; width: 420px; height: 50px; float: left; padding: 5px 10px;
+	font-size: 18px; text-align: left;line-height: 50px;}
+.mView .mDetail ul li.txt span{font-size: 16px; line-height: 20px;}
+.modal-footer{ margin-top: 20px; height: 40px; text-align: right;}
+.modal-footer>button{width: 90px; height: 30px; background-color: #2E419A;
+	border-radius: 4px; color: #fff; cursor: pointer; margin-right:40px;}
+/* 모달 창 가운데 정렬 */
+.modal-dialog {display: flex;justify-content: center;align-items: center;}
+*/
 
 
 
@@ -120,151 +259,3 @@
 #board #list .searchForm button { width: 100px; }
 
 
-/*********************************************************************
- 매칭게시판 글쓰기
-**********************************************************************/	
-#board #writeForm table tr>th,
-#board #writeForm table tr>td { text-align: left; }
-
-#board #writeForm table tr>td { padding-right: 0px; }
-
-
-#board #writeForm .textareaWrap {  /*본문글쓰기 textarea영역*/
-	height: 500px;
-	padding: 15px 0px 0px 0px;
-}
-
-#board #writeForm .btnWrap {
-	padding: 15px 0px 15px 0px;
-	border-top: none;
-}
-
-
-/*********************************************************************
- 매칭게시판 글읽기
-**********************************************************************/	
-#board #read .btnWrap {
-	padding: 15px 0px 15px 0px;
-}
-
-
-#board #read .boardInfoWrap {
-	padding: 10px 0px 10px 0px;
-	border-top: 1px solid #BFBFBF;
-}
-
-
-#board #read .boardInfoWrap .title {
-	float: left;
-	font-size: 26px;
-	font-weight: 400;
-}
-
-#board #read .boardInfoWrap .title_info_box {
-	float: right;
-	padding: 15px 0px 0px 0px;
-	font-size: 16px;
-	font-weight: 400;
-	
-}
-
-
-#board #read .boardInfoWrap .title_info_box .title_info_date {
-	font-size: 16px;
-	padding: 0px 0px 0px 20px;
-	
-}
-
-/*본문박스*/
-#board #read .boardInnerBox {
-	width: 1200px;
-	box-sizing: border-box;;
-	padding: 10px;
-	border: 1px solid #BFBFBF;
-	border-radius: 4px;
-	
-}
-
-
-#board #read .boardInnerBox .title_area { /*글작성자 정보*/
-	padding: 20px 0px 5px 0px;
-}
-
-/*프로필사진*/
-#board #read .boardInnerBox .title_area img {
-	width: 36px;
-	height: 36px;;
-}
-
-
-
-/*본문내용*/
-#board #read .boardInnerBox #txt-content {
-	padding: 50px 10px 50px 10px;
-}
-
-
-/*댓글영역--------------------------------------------------------------------*/
-
-/*댓글영역박스*/
-#board #read .boardInnerBox #comment_list {
-	padding: 10px 0px 10px 0px;
-}
-
-#comment_list .comment_area {
-	display: flex;
-	flex-flow: row nowrap;
-	justify-content: flex-start;
-	gap: 10px;
-	padding: 15px 0px 15px 0px;
-	font-size: 14px;
-}
-
-
-#comment_list .line {  /*선그리기*/
-	border-top: 1px solid #BFBFBF;
-}
-
-#comment_list .comment_area .comment_box .comment_nick_box{
-	font-weight: bold;
-	padding-bottom: 5px;;
-}
-
-#comment_list .comment_area .comment_box .comment_text_box{
-	padding-bottom: 10px;;
-}
-
-#comment_list .comment_area .comment_box .comment_info_box{
-	padding-bottom: 5px;;
-	color: #808080
-}
-
-/*답글쓰기버튼*/
-#comment_list .comment_area .comment_box .comment_info_box .comment_info_button{
-	font-size: 13px;
-	padding-left: 20px;;
-	color: #808080;
-	font-weight: bold;
-}
-
-
-#comment_list .comment_add {
-	border: 1px solid #0075FF;
-	border-radius: 4px;
-	padding: 10px;
-	font-size: 14px;
-	font-weight: bold;
-}
-
-
-#comment_list .comment_add textarea{
-	border: none;
-	padding: 10px 0px 10px 0px;
-	font-size: 13px;
-	resize: none;
-}
-
-
-.blind {
-	display: none;
-}

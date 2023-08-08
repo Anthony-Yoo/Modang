@@ -26,7 +26,7 @@ public class TestController {
 
 	@Autowired
 	private BoardService boardService;
-	
+
 	@Autowired
 	private BDCommentService bDCommentService;
 
@@ -38,30 +38,25 @@ public class TestController {
 	public String writeForm(HttpSession session) {
 		System.out.println("BoardController.writeForm");
 		UserVo vo = (UserVo) session.getAttribute("authUser");
-		if(vo!=null) {
+		if (vo != null) {
 			return "/board/a-writeForm";
-		}else {
-			return "redirect:/user/loginForm"; 
+		} else {
+			return "redirect:/user/loginForm";
 		}
 	}
-	
-	
+
 	/* 게시판 리스트 페이지 이동 */
 	@RequestMapping(value = "/list2")
 	public String list(@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword,
-					   @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage,
-					   @RequestParam(value = "category", required = false, defaultValue = "") String category,
-					   Model model) {
+			@RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage,
+			@RequestParam(value = "category", required = false, defaultValue = "") String category, Model model) {
 		System.out.println("BoardController.list");
 		Map<String, Object> pMap = boardService.getList(crtPage, keyword, category);
 //		System.out.println(pMap);
-		model.addAttribute("pMap", pMap );
-		
+		model.addAttribute("pMap", pMap);
+
 		return "/board/a-list";
 	}
-
-	
-	
 
 	/* 글 읽기 */
 	@RequestMapping(value = "/read2")
@@ -75,16 +70,5 @@ public class TestController {
 		model.addAttribute("cList", list);
 		return "/board/a-read";
 	}
-	
-	/*당구장 찾기-모당리스트*/	
-	@RequestMapping(value = "/modangFind2", method = {RequestMethod.GET, RequestMethod.POST })
-	public String modanglist(Model model) {
-		System.out.println("ManagerController.modanglist()");		
-		
-		List<ManagerVo> modanglist = managerService.modanglist();
-		model.addAttribute("modanglist", modanglist);
-		
-		return "/main/modangFind2";
-	}
-	
+
 }

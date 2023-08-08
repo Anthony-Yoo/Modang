@@ -168,9 +168,9 @@ public class ManagerService {
 	}
 	
 	/*당구장 찾기-모당리스트*/
-	public List<ManagerVo> modanglist(){
+	public List<ManagerVo> modanglist(String keyword){
 		System.out.println("managerService.modanglist()");
-		List<ManagerVo> modanglist = managerDao.selectModanglist();
+		List<ManagerVo> modanglist = managerDao.selectModanglist(keyword);
 		return modanglist;
 	}
 	

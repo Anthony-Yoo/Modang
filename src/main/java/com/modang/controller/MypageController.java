@@ -129,9 +129,10 @@ public class MypageController {
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		int userNo = authUser.getUserNo();	
 		
-		mypageService.cardList(userNo);
+		List<CardUsersVo> cardList =mypageService.cardList(userNo);
 		
 		model.addAttribute("userNo", userNo);
+		model.addAttribute("cardList", cardList);
 		
 		return "/mypage/FCardList";
 	}
@@ -141,8 +142,8 @@ public class MypageController {
 		System.out.println("MypageController.FCardInsert()");
 		System.out.println(cardVo);
 		
-		CardUsersVo resultCardVo = mypageService.cardInsert(cardVo);
-		model.addAttribute("cardInfo", resultCardVo);
+		List<CardUsersVo> cardList = mypageService.cardInsert(cardVo);
+		model.addAttribute("cardList", cardList);		
 		
 		return "redirect:/mypage/FCardList";
 	}

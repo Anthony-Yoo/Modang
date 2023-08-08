@@ -116,7 +116,7 @@
 						<section>
 							<header>
 								<h2>매장 정보 <small class="font-weight-normal text-blue">변경할 정보를 입력하세요</small></h2>
-							</header>s
+							</header>
                                 <div class="form-group row">
                                     <label for="" class="col-form-label col-3">매장사진</label>
                                     <div class="col">

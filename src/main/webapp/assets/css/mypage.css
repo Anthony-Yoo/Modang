@@ -64,7 +64,7 @@ input::placeholder{color: #B8B8B8;}
 /*친구 찾기*/
 .content{height: 900px;}
 #userPage div.find{height: 750px;}
-.find #content-header h2{margin: 0;}
+.find #content-header h2{margin: 0; }
 #userPage .userContent div.friend{height: 500px; width: 100%;}
 .friendSearch{width: 1000px; height: 180px; margin: 0 auto ; text-align: center; }
 .friendSearch label{font-size: 18px;}
@@ -80,7 +80,7 @@ input::placeholder{color: #B8B8B8;}
 .friendSearch .searchList ul li button.add{background-color: #2E419A; font-size: 12px; color: #fff;
 	padding: 3px 6px; border-radius: 4px;cursor: pointer;}
 /*핀구 리스트*/
-.friendList{width: 1020px; height: 300px; margin: 0 auto ;overflow-y:scroll;overflow-x:hidden; 
+.friendList{width: 1020px; height: 370px; margin: 0 auto ;overflow-y:scroll;overflow-x:hidden; 
 	border: 1px solid #2E419A;}
 .friendList table{width: 1000px; text-align: center; margin: 0 auto; border: 1px solid #2E419A;}
 .friendList table thead{height: 40px; border-top: 1px solid #2E419A;border-bottom: 1px solid #2E419A;
@@ -93,7 +93,7 @@ input::placeholder{color: #B8B8B8;}
 .friendList .pasing{ height: 30px; margin: 20px auto 50px; width: 246px;}
 .friendList .pasing span{display: inline-block; width: 30px; height: 24px; text-align: center;
 	color: #2E419A; line-height: 10px; cursor: pointer;}
-/*-------------------------------------applyManagerment----------------------------------------------*/
+/*-------------------------------------applyManagerment--applyMenu--------------------------------------------*/
 #applyMenu{width:1200px; margin: 0 auto; height: 1000px;}
 #applyMenu .sidebar li a{text-decoration: none; color: #000;}
 #applyMenu .sidebar li a.active{color: #fff;}
@@ -225,5 +225,3 @@ button{cursor: pointer;}
    border-radius: 2px;
    font-size: 14px;
 }
-
- /*---------------------------------applyMenu----------------------*/

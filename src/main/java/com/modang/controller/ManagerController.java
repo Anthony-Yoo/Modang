@@ -128,15 +128,61 @@ public class ManagerController {
 		managerService.modify(managerVo,file);
 		return "redirect:/manager/settingsForm";
 	}
-	/*당구장 찾기-모당리스트*/	
-	@RequestMapping(value = "/modangFind", method = {RequestMethod.GET, RequestMethod.POST })
-	public String modanglist(Model model) {
-		System.out.println("ManagerController.modanglist()");		
+	
+	/*당구장 찾기-리스트-지도 폼*/	
+	@RequestMapping(value = "/modangfind2", method = {RequestMethod.GET, RequestMethod.POST })
+	public String modangfind2(@RequestParam(value="keyword", required = false, defaultValue="") String keyword,
+							 Model model) {
+		System.out.println("ManagerController.modangfind()");		
+		System.out.println(keyword);		
 		
-		List<ManagerVo> modanglist = managerService.modanglist();
+		
+		List<ManagerVo> modanglist = managerService.modanglist(keyword);
+		System.out.println(modanglist);
+
 		model.addAttribute("modanglist", modanglist);
+		
+		return "/main/modangFind2";
+	}
+	
+	@RequestMapping(value = "/modangfind", method = {RequestMethod.GET, RequestMethod.POST })
+	public String modangfind() {
+		System.out.println("ManagerController.modangfind()");	
 		
 		return "/main/modangFind";
 	}
 	
+	
+	
+	/*당구장 찾기-모당리스트*/	
+	@ResponseBody
+	@RequestMapping(value = "/modang", method = {RequestMethod.GET, RequestMethod.POST })
+	public JsonResult modanglist(@RequestParam(value="keyword", required = false, defaultValue = "" ) String keyword  ) {
+		System.out.println("ManagerController.modanglist()");		
+		
+		List<ManagerVo> modanglist = managerService.modanglist(keyword);
+		System.out.println(modanglist);
+
+		JsonResult jsonResult = new JsonResult();
+		jsonResult.success(modanglist);
+		
+		
+		return jsonResult;
+	}
+	
+	/*당구장 1개정보*/	
+	@ResponseBody
+	@RequestMapping(value = "/modang/{biliardNo}", method = {RequestMethod.GET, RequestMethod.POST })
+	public JsonResult modanglist(@PathVariable(value="biliardNo") int biliardNo  ) {
+		System.out.println("ManagerController.modang/"+biliardNo);		
+		
+		
+		ManagerVo modangVo = managerService.settingsForm(biliardNo);
+		System.out.println(modangVo);
+
+		JsonResult jsonResult = new JsonResult();
+		jsonResult.success(modangVo);
+		
+		return jsonResult;
+	}
 }

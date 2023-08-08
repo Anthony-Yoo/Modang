@@ -50,16 +50,15 @@ window.addEventListener('load', adjustHeight);
 	<c:import url="/WEB-INF/views/include/modangSiteHeader.jsp"></c:import>
 	<!-- 헤더 끝 -->
 	<div id="applyMenu">
-		<div id="sideNav">
-			<div class="sidebar" style="margin:0px 0px 0px 0px;">
-				<a href="${pageContext.request.contextPath }/user/userPage">회원정보</a>
-				<a href="userPage">친구목록</a> <a href="userPage">그룹친구</a> 
-				<a class="active" href="${pageContext.request.contextPath }/attendUsers/myPage/applyMenu">게시판매칭</a>
-				<a href="userPage">전적보기</a>
-			</div>
-		</div>
+		<ul class="sidebar">
+			<li><a href="${pageContext.request.contextPath}/user/userPage">회원정보</a> </li>
+			<li><a href="${pageContext.request.contextPath }/mypage/${requestScope.userVo.userNo}/friendlist">친구목록</a></li>
+			<li><a href="userPage">그룹친구</a> </li>
+			<li><a class="active"  href="${pageContext.request.contextPath }/attendUsers/myPage/myBoardList">게시판매칭</a></li>
+			<li><a href="${pageContext.request.contextPath }/mypage/${requestScope.userVo.userNo}/record" target="_blank">전적보기</a></li>
+		</ul>
 
-		<div id="apply" style="margin-right: 0px; width: 1030px;">
+		<div id="apply" >
 			<div class="apply_btn">
 				<a id="myList" href="${pageContext.request.contextPath}/attendUsers/myPage/myBoardList">내 게시글 목록</a>
 				&nbsp;&nbsp;&nbsp;&nbsp;
