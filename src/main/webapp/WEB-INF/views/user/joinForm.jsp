@@ -51,35 +51,24 @@
 							<!-- 아이디 -->
 							<div class="form-group">
 							
-								<div
-									class="input-group">
-									<div class="row">
-										<div class="input-group col-sm-2">
-											<img src="${pageContext.request.contextPath}/assets/images/account.png" alt="id">
-										</div>
-									
-										<div class="input-group col-sm-1">
+										<div class="input-group">
+											<img src="${pageContext.request.contextPath}/assets/images/account.png" id="idcon" alt="id">
+										
 											<input id="input-uid" type="text" value="" maxlength="10" class="form-control " name="id"  placeholder="ID">
-										</div>
-										<div class="input-group col-sm-1">
+										
 											<button id="btnIdCheck" type="button" data-toggle="modal" data-target="#myModal">확인</button>
 										</div>
-									</div>
-								</div>
 								
 							</div>
 							
 							<!-- 비밀번호 -->
 							<div class="form-group">
 								<div class="input-group ">
-									<div class="row">
-										<div class="input-group col-sm-2">	
-											<img src="${pageContext.request.contextPath}/assets/images/unlock.png" alt="password">
-										</div>
-										<div class="input-group col-sm-1">
-											<input id="passwd" type="password" value="" maxlength="16" class="form-control" name="passwd" placeholder="PASSWORD">
-										</div>
-									</div>
+									
+									<img src="${pageContext.request.contextPath}/assets/images/unlock.png" id="pwcon" alt="password">
+								
+									<input id="passwd" type="password" value="" maxlength="16" class="form-control" name="passwd" placeholder="PASSWORD">
+										
 								</div>
 							</div>
 							
@@ -87,50 +76,35 @@
 							
 							<div class="form-group">
 								<div class="input-group ">
-									<div class="row">
-										<div class="input-group col-sm-2">
-											<img src="${pageContext.request.contextPath}/assets/images/business-card.png" alt="nick name">
-										</div>
-										<div class="input-group col-sm-1">
-											<input id="nick" type="text" value="" maxlength="7" class="form-control" name="nick" placeholder="NICK NAME">
-										</div>
-										<div class="input-group col-sm-1">	
-											<button id="btnNickCheck" type="button" data-toggle="modal" data-target="#myModal2">확인</button>						
-										</div>
-									</div>
+									
+									<img src="${pageContext.request.contextPath}/assets/images/business-card.png" id="nickcon" alt="nick name">
+								
+									<input id="nick" type="text" value="" maxlength="7" class="form-control" name="nick" placeholder="NICK NAME">
+								
+									<button id="btnNickCheck" type="button" data-toggle="modal" data-target="#myModal2">확인</button>						
+										
 								</div>
 							</div>
 							
 							<!-- 폰번호 -->
 							<div class="form-group">
 								<div class="input-group">
-									<div class="row">
-										<div class="input-group col-sm-2">
-											<img src="${pageContext.request.contextPath}/assets/images/smartphone.png" alt="cellphone number">
-										</div>
 									
-										<div class="input-group col-sm-1">
-											<input id="cellphone" type="text" value="" maxlength="11" class="form-control" name="cellphone" placeholder="HP">
-										</div>
+									<img src="${pageContext.request.contextPath}/assets/images/smartphone.png" id="cellcon" alt="cellphone number">
+								
+									<input id="cellphone" type="text" value="" maxlength="11" class="form-control" name="cellphone" placeholder="HP">
 										
-									</div>	
 								</div>
 							</div>
 							
 							<!-- 평균 -->
 							<div class="form-group ">
 								<div class="input-group">
-									<div class="row">
-										<div class="input-group col-sm-2">
-											<img src="${pageContext.request.contextPath}/assets/images/line-graph.png" alt="average">
-										</div>
 									
-										<div class="input-group col-sm-1">
-											<input id="average"
-											type="text" value="" maxlength="3" class="form-control"
-											name="average" placeholder="VALUE [타수]">
-										</div>
-									</div>	
+									<img src="${pageContext.request.contextPath}/assets/images/line-graph.png" id="avercon" alt="average">
+								
+									<input id="average" type="text" value="" maxlength="3" class="form-control" name="average" placeholder="VALUE [타수]">
+										
 								</div>
 							</div>
 								<!--
@@ -148,15 +122,11 @@
 								<div class="fileContainer">
 			                		<div class="fileInput">
 			                			<div class="input-group ">
-			                				<div class="row">
-			                					<div class="input-group col-sm-2">
-													<img src="${pageContext.request.contextPath}/assets/images/image-.png" alt="average">
-												</div>
-												
-				                  				<div class="input-group col-sm-1">
-				                  					<input id="profileImage" type="file" name="file" class="form-control" placeholder="upload image" value="">
-				                  				</div>
-				                			</div>
+			                				
+											<img src="${pageContext.request.contextPath}/assets/images/image-.png" id="imgcon" alt="average">
+										
+		                  					<input id="profileImage" type="file" name="file" class="form-control" placeholder="upload image" value="">
+				                  				
 				                		</div>
 			            			</div>
 		        				</div>
@@ -181,15 +151,15 @@
 		  					
 		</div>
 		<!-- //container -->
-    <!-- 푸터 시작 -->
-	<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
-	<!-- 푸터 끝 -->
-		
+    
     </div>
     <!-- //main-content -->
+	<!-- 푸터 시작 -->
+	<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
+	<!-- 푸터 끝 -->
 	
-	  <!-- Modal -->
-   <div class="modal fade" id="myModal" role="dialog">
+	<!-- Modal -->
+   	<div class="modal fade" id="myModal" role="dialog">
     	<div class="modal-dialog modal-sm">
       		<div class="modal-content">
         		<div class="modal-header">

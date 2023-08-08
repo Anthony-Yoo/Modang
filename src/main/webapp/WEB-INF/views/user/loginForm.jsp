@@ -45,10 +45,10 @@
 	            			<div class="form-group">
 								<div id="inputId" class="input-group">
 							
-									<span class="input-group-addon">
-										<img src="${pageContext.request.contextPath}/assets/images/user.png" alt="">
+									<span class="img">
+										<img src="${pageContext.request.contextPath}/assets/images/user.png" id="idcon" alt="">
 									</span>
-									<span class="input-group-addon">
+									<span class="input">
 										<input id="id" type="text" maxlength="10" class="form-control" name="id" placeholder="ID">
 									</span>
 									
@@ -57,11 +57,11 @@
 			                
 							<div class="form-group">
 								<div id="inputPw" class="input-group">
-									<span class="input-group-addon">
-										<img src="${pageContext.request.contextPath}/assets/images/passwd.png" alt="">
+									<span class="img">
+										<img src="${pageContext.request.contextPath}/assets/images/passwd.png" id=pwcon alt="">
 									</span>
 									
-									<span class="input-group-addon">
+									<span class="input">
 										<input id="passwd" type="password" maxlength="16" class="form-control" name="passwd" placeholder="PASSWORD">
 									</span>
 								</div>

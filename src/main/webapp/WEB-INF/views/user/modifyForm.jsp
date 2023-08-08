@@ -42,54 +42,44 @@
                    			<form id="modifysubmitForm" action="${pageContext.request.contextPath }/user/modify" method="post" enctype="multipart/form-data">
                     
 	                   			<!-- 아이디 -->
-	                   			<div class="form-group">
-	                     			<div class="input-group">
-	                     				<span class="input-group-addon" class="text-large bold"><img src="${pageContext.request.contextPath}/assets/images/user.png" alt=""></span>
+	                   			<div class="form-group">	                     			
+	                     				<img src="${pageContext.request.contextPath}/assets/images/user.png" id="idcon" alt="">
 	                       				<input id="id" type="text" maxlength="16" class="form-control" name="id" value="${requestScope.userVo.id}" placeholder="" readonly="readonly">
 	                       				
-	                     			</div>
 	                   			</div>
                    			
 	                   			<!-- 비밀번호 -->
-								<div class="form-group">
-	                     			<div class="input-group">
-	                       				<span class="input-group-addon" class="text-large bold"><img src="${pageContext.request.contextPath}/assets/images/unlock.png" alt=""></span>
+								<div class="form-group">                  			
+	                       				<img src="${pageContext.request.contextPath}/assets/images/unlock.png" id="pwcon" alt="">
 	                       				<input id="passwd" type="password" maxlength="16" class="form-control" name="passwd" value="${requestScope.userVo.passwd}" placeholder="PW">
 	                       			
-	                     			</div>
 	                   			</div>
 
 	                   			<!-- 휴대폰 -->
-	                   			<div class="form-group">
-	                     			<div class="input-group">
-	                       				<span class="input-group-addon" class="text-large bold"><img src="${pageContext.request.contextPath}/assets/images/smartphone.png" alt=""></span>
-	                       				<input id="cellphone" type="text" maxlength="11" class="form-control" name="cellphone" value="${requestScope.userVo.cellphone}" placeholder="">
-	                       				
-	                     			</div>
+	                   			<div class="form-group">	                     			
+                       				<img src="${pageContext.request.contextPath}/assets/images/smartphone.png" id="cellcon" alt="">
+                       				<input id="cellphone" type="text" maxlength="11" class="form-control" name="cellphone" value="${requestScope.userVo.cellphone}" placeholder="">
+	                       			
 	                   			</div>
                    
 	                   			<!-- 별명 -->
-	                   			<div class="form-group">
-	                     			<div class="input-group">
-	                       				<span class="input-group-addon" class="text-large bold"><img src="${pageContext.request.contextPath}/assets/images/business-card.png" alt=""></span>
+	                   			<div class="form-group">	                     			
+	                       				<img src="${pageContext.request.contextPath}/assets/images/business-card.png" id="nickcon" alt="">
 	                       				<input id="nick" type="text" maxlength="10" class="form-control" name="nick" value="${requestScope.userVo.nick}" placeholder="">
-	                       				
-	                     			</div>
+	                       			
 	                   			</div>
 	                   
 	                   			<!-- 평균 -->
-	                   			<div class="form-group">
-	                     			<div class="input-group">
-	                       				<span class="input-group-addon" class="text-large bold"><img src="${pageContext.request.contextPath}/assets/images/line-graph.png" alt=""></span>
-	                       				<input id="average" type="text" maxlength="3" class="form-control" name="average" value="${requestScope.userVo.average}" placeholder="">
-	                       				
-	                     			</div>
+	                   			<div class="form-group">	                     			
+                       				<img src="${pageContext.request.contextPath}/assets/images/line-graph.png" id="avercon" alt="">
+                       				<input id="average" type="text" maxlength="3" class="form-control" name="average" value="${requestScope.userVo.average}" placeholder="">
+	                       			
 	                   			</div>
                    			
                    			 	<!-- 이미지 -->
                    				<div class="form-group">
-                   					<div class="image-show" id="image-show" >
-		        						<img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileImage}" >
+                   					<div class="image-show">
+		        						<img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileImage}" id="profileImg">
 		        					</div>
 									<div class="fileContainer">
 										

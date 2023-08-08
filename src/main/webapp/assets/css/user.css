@@ -24,12 +24,7 @@
 	margin: 0 auto;
 	
 }
-#joinForm .input-group {
-    position: relative;
-    display: table;
-    border-collapse: separate;
-    
-}
+
 
 /* the width for center position */
 #main-content .container #loginForm #main,
@@ -50,33 +45,38 @@
 }
 
 /* idcheck modal */
-#main form .input-group #btnIdCheck {
+/* #main form .input-group #btnIdCheck {
 	width: 70px;
-	height: 40px;
-	border: 1px solid #B8B8B8;
-	box-sizing: border-box;
-	border-radius: 5px;
-	color: #fff;
-	margin: 0 auto;
-	background : linear-gradient(to bottom right, rgb(9, 32, 80),
-      rgb(81, 117, 164))
-}
+    height: 40px;
+    border: 1px solid #B8B8B8;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: #fff;
+    margin: 0 auto;
+    display: inline-block;
+    position: relative;
+    background: linear-gradient(to bottom right, rgb(9, 32, 80), rgb(81, 117, 164));
+} */
+
 
 /* input id 체크용 */
-#main form .input-group #input-uid {
+/* #main form .input-group #input-uid {
 	width: 230px;
-	height: 40px;
-	/* background: #F5F5F5; */
-	border: 1px solid #746c6c;
-	box-sizing: border-box;
-	border-radius: 8px;
-	color: #111;
-	display: inline-block;
-	padding:6px 12px;
+    height: 40px;
+    background: #F5F5F5;
+    border: 1px solid #746c6c;
+    box-sizing: border-box;
+    border-radius: 8px;
+    color: #111;
+    display: inline-block;
+    padding: 6px 12px;
     position: relative;
-}
+    left: 50px;
+} */
 
-#loginForm .input-group #id {
+
+/* loginForm */
+#loginForm #id {
 	width: 300px;
 	height: 40px;
 	/* border: 1px solid #B8B8B8; */
@@ -90,21 +90,7 @@
 
 }
 
-#modifyForm .input-group #id {
-	width: 300px;
-	height: 40px;
-	/* border: 1px solid #B8B8B8; */
-	border: 1px solid #746c6c;
-	box-sizing: border-box;
-	border-radius: 8px;
-	padding:6px 12px;
-	color: #111;
-	position: relative;
-	left:0px;
-
-}
-
-#loginForm .input-group #passwd {
+#loginForm #passwd {
 	width: 300px;
 	height: 40px;
 	/* background: #F5F5F5; */
@@ -117,8 +103,56 @@
 
 }
 
-#modifyForm .input-group #passwd {
-	width: 300px;
+/* submit button */
+#loginForm #btn-submit{
+	width: 100%;
+	color: #fff;
+	border-radius:5px;
+	height: 40px;
+	position: relative;
+	margin: 0 auto;
+	background : linear-gradient(to bottom right, rgb(9, 32, 80),
+      rgb(81, 117, 164))
+      
+}
+
+#loginForm #idcon {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    margin: 0 auto;
+}
+
+#loginForm #pwcon {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    margin: 0 auto;
+}
+
+/* modifyForm */
+#modifyForm #id {
+	width: 310px;
+	height: 40px;
+	/* border: 1px solid #B8B8B8; */
+	border: 1px solid #746c6c;
+	box-sizing: border-box;
+	border-radius: 8px;
+	padding:6px 12px;
+	color: #111;
+	position: relative;
+	left: 40px;
+    top: -40px;
+}
+
+#modifyForm #passwd {
+	width: 310px;
 	height: 40px;
 	/* background: #F5F5F5; */
 	border: 1px solid #746c6c;
@@ -126,39 +160,57 @@
 	border-radius: 8px;
 	color: #111;
 	position: relative;
-    left: 0px;
+    left: 40px;
+    top: -40px;
 
 }
 
-#joinForm .input-group #passwd {
-    width: 300px;
-    height: 40px;
-    /* background: #F5F5F5; */
-    border: 1px solid #746c6c;
-    box-sizing: border-box;
-    border-radius: 8px;
-    color: #111;
-    position: relative;
-    left: 0px;
-}
-
-#main form .input-group #cellphone {
-	width: 300px;
+#modifyForm #nick {
+	width: 310px;
 	height: 40px;
 	/* background: #F5F5F5; */
 	border: 1px solid #746c6c;
-	padding: 6px 12px;
 	box-sizing: border-box;
 	border-radius: 8px;
 	color: #111;
-	
+	position: relative;
+    left: 40px;
+    top: -40px;
 
 }
 
-#main form .input-group #nick {
-	width: 230px;
+#modifyForm #cellphone {
+	width: 310px;
 	height: 40px;
 	/* background: #F5F5F5; */
+	border: 1px solid #746c6c;
+	box-sizing: border-box;
+	border-radius: 8px;
+	color: #111;
+	position: relative;
+    left: 40px;
+    top: -40px;
+
+}
+
+#modifyForm #average {
+	width: 310px;
+	height: 40px;
+	/* background: #F5F5F5; */
+	border: 1px solid #746c6c;
+	box-sizing: border-box;
+	border-radius: 8px;
+	color: #111;
+	position: relative;
+    left: 40px;
+    top: -40px;
+
+}
+
+/* #main form .input-group #nick {
+	width: 310px;
+	height: 40px;
+	background: #F5F5F5;
 	border: 1px solid #746c6c;
 	box-sizing: border-box;
 	padding:6px 12px;
@@ -166,28 +218,29 @@
 	color: #111;
 	margin: 0 auto;
 
-}
+} */
+
+
 /* login input 간격 */
 #loginForm .form-group {
     margin-bottom: 15px;
 }
 /* modifyForm input 간격 */
 #modifyForm .form-group {
-    margin-bottom: 15px;
+    margin-bottom: -30px;
 }
 
-/* nick modal */
-#main form .input-group #btnNickCheck {
-	width: 70px;
-	height: 40px;
-	border: 1px solid #B8B8B8;
-	box-sizing: border-box;
-	border-radius: 5px;
-	color: #fff;
-	margin: 0 auto;
-	background : linear-gradient(to bottom right, rgb(9, 32, 80),
-      rgb(81, 117, 164))
-}
+/* #Form #btnNickCheck {
+    width: 70px;
+    height: 40px;
+    border: 1px solid #B8B8B8;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: #fff;
+    margin: 0 auto;
+    display: inline-block;
+    background: linear-gradient(to bottom right, rgb(9, 32, 80), rgb(81, 117, 164));
+} */
 
 /* Cellphone modal */
 #main form .input-group #btnCellphoneCheck {
@@ -202,60 +255,73 @@
 	margin: 0px 0px 30px 0px;
 }
 
-#main form .input-group #average {
-	width: 300px;
-	height: 40px;
-	/* background: #F5F5F5; */
-	border: 1px solid #746c6c;
-	padding: 6px 12px;
-	box-sizing: border-box;
-	border-radius: 8px;
-	color: #111;
-	margin: 0 auto;
-
+#modifyForm #idcon {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    position: relative;
+    left: -155px;
+    top: 0px;
+    margin: 0 auto;
 }
 
-#main form .input-group #profileImage {
-	width: 300px;
-	height: 40px;
-	object-fit: cover;
-	padding : 9px 20px 9px 15px;
-	/* background: #F5F5F5; */
-	border: 1px solid #746c6c;
-	box-sizing: border-box;
-	border-radius: 8px;
-	color: #111;
+#modifyForm #pwcon {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    position: relative;
+    left: -155px;
+    top: 0px;
+    margin: 0 auto;
+}
+
+#modifyForm #cellcon {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    position: relative;
+    left: -155px;
+    top: 0px;
+    margin: 0 auto;
+}
+
+#modifyForm #nickcon {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    position: relative;
+    left: -155px;
+    top: 0px;
+    margin: 0 auto;
+}
+
+#modifyForm #avercon {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    position: relative;
+    left: -155px;
+    top: 0px;
+    margin: 0 auto;
+}
+
+/* #modifyForm #profileImage {
+    width: 300px;
+    height: 40px;
+    object-fit: cover;
+    padding: 9px 20px 9px 15px;
+    background: #F5F5F5;
+    border: 1px solid #746c6c;
+    box-sizing: border-box;
+    border-radius: 8px;
+    display: inline-block;
+    position: relative;
+    left: 50px;
+    color: #111;
 	
 
-}
-
-
-/* submit button */
-#main form .button-area #btn-submit{
-	width: 100%;
-	color: #fff;
-	border-radius:5px;
-	height: 40px;
-	position: relative;
-	margin: 0 auto;
-	background : linear-gradient(to bottom right, rgb(9, 32, 80),
-      rgb(81, 117, 164))
-      
-}
-
-#joinForm #main form .button-area #btn-submit {
-    width: 350px;
-    color: #fff;
-    border-radius: 5px;
-    height: 40px;
-    position: relative;
-    right:-5px;
-    margin: 0 auto;
-    background: linear-gradient(to bottom right, rgb(9, 32, 80), rgb(81, 117, 164));
-}
-
-/* modify image size */
-#main form .form-group #image-show img{
+} */
+#modifyForm #profileImg{
 	width: 340px;
 	height: 340px;
 	object-fit: cover;
@@ -264,20 +330,213 @@
     border-color: darkslateblue;
 }
 
-/* modify icon */
-#main form .form-group .input-group img{
-	width: 40px; 
+#modifyForm #btn-submit{
+	width: 100%;
+	color: #fff;
+	border-radius:5px;
 	height: 40px;
 	position: relative;
-    left: 0px;
+	top: 40px;
+	margin: 0 auto;
+	background : linear-gradient(to bottom right, rgb(9, 32, 80),
+      rgb(81, 117, 164))
+      
+}
+
+
+/* joinForm */
+#joinForm #idcon {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    position: relative;
+    left: -235px;
+    top: 0px;
     margin: 0 auto;
+}
+
+#joinForm #input-uid {
+	width: 230px;
+    height: 40px;
+    /* background: #F5F5F5; */
+    border: 1px solid #746c6c;
+    box-sizing: border-box;
+    border-radius: 8px;
+    color: #111;
+    display: inline-block;
+    padding: 6px 12px;
+    position: relative;
+    left: 50px;
+}
+
+#joinForm #btnIdCheck {
+    width: 70px;
+    height: 40px;
+    border: 1px solid #B8B8B8;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: #fff;
+    margin: 0 auto;
+    display: inline-block;
+    position: relative;
+    left: -1px;
+    top: 0px;
+    background: linear-gradient(to bottom right, rgb(9, 32, 80), rgb(81, 117, 164));
+}
+
+#joinForm #passwd {
+    width: 300px;
+    height: 40px;
+    /* background: #F5F5F5; */
+    border: 1px solid #746c6c;
+    box-sizing: border-box;
+    border-radius: 8px;
+    color: #111;
+    position: relative;
+    display: inline-block;
+    left: 50px;
+}
+
+#joinForm #btnNickCheck {
+    width: 70px;
+    height: 40px;
+    border: 1px solid #B8B8B8;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: #fff;
+    margin: 0 auto;
+    display: inline-block;
+    position: relative;
+    left: 0px;
+    background: linear-gradient(to bottom right, rgb(9, 32, 80), rgb(81, 117, 164));
+}
+
+#joinForm #pwcon {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    position: relative;
+    left: -305px;
+    top: 0px;
+    margin: 0 auto;
+}
+
+#joinForm #avercon {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    position: relative;
+    left: -305px;
+    top: 0px;
+    margin: 0 auto;
+}
+
+#joinForm #cellcon {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    position: relative;
+    left: -305px;
+    top: 0px;
+    margin: 0 auto;
+}
+
+#joinForm #cellphone {
+    width: 300px;
+    height: 40px;
+    /* background: #F5F5F5; */
+    border: 1px solid #746c6c;
+    padding: 6px 12px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    display: inline-block;
+    left: 50px;
+    position: relative;
+    color: #111;
+	
+
+}
+
+#joinForm #nickcon {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    position: relative;
+    left: -235px;
+    top: 0px;
+    margin: 0 auto;
+}
+
+#joinForm #nick {
+	width: 230px;
+    height: 40px;
+    /* background: #F5F5F5; */
+    border: 1px solid #746c6c;
+    box-sizing: border-box;
+    padding: 6px 12px;
+    display: inline-block;
+    border-radius: 8px;
+    position: relative;
+    color: #111;
+    left: 50px;
+    margin: 0 auto;
+
+}
+
+#joinForm #average {
+	width: 300px;
+    height: 40px;
+    /* background: #F5F5F5; */
+    border: 1px solid #746c6c;
+    padding: 6px 12px;
+    box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+    border-radius: 8px;
+    left: 50px;
+    color: #111;
+    margin: 0 auto;
+
+}
+
+#joinForm #imgcon {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    position: relative;
+    left: -305px;
+    top: 0px;
+    margin: 0 auto;
+}
+
+
+#joinForm #profileImage {
+    width: 300px;
+    height: 40px;
+    object-fit: cover;
+    padding: 9px 20px 9px 15px;
+    /* background: #F5F5F5; */
+    border: 1px solid #746c6c;
+    box-sizing: border-box;
+    border-radius: 8px;
+    display: inline-block;
+    position: relative;
+    left: 50px;
+    color: #111;
 	
 }
 
-.row {
-    margin-right: 0px;
-    margin-left: 0px;
+#joinForm #btn-submit {
+    width: 95%;
+    color: #fff;
+    border-radius: 5px;
+    height: 40px;
+    position: relative;
+    right: 0px;
+    margin: 0 auto;
+    background: linear-gradient(to bottom right, rgb(9, 32, 80), rgb(81, 117, 164));
 }
+
 
 .input-group[class*=col-] {
     float: none;
@@ -369,7 +628,7 @@
 #userPage .userContent .show {display: inline-block;width: 1050px;height: 300px; margin: 20px auto;}
 .show>.img{display: block;width:250px; height: 250px; float: left; margin: 0 20px;
 	border: 2px solid #efefef; box-sizing: border-box;}
-.show>.img #userFroFileImage{display: block; width: 100%; height: 100%;}
+.show>.img #userFroFileImage{display: block; width: 100%; height: 100%;object-fit: cover;}
 .show>.text{display: inline-block; width: 730px; height:250px;position: relative;}
 .show>.text::before{content: "";background-size: 730px 250px;background: url("../images/gplayer0.jpg") center center no-repeat;z-index: -1;opacity: 0.5;
 	position: absolute;top: 0px;left: 0px; right: 0px;bottom: 0px;}
