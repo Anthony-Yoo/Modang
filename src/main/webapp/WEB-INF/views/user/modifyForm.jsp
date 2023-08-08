@@ -44,7 +44,7 @@
 	                   			<!-- 아이디 -->
 	                   			<div class="form-group">
 	                     			<div class="input-group">
-	                     				<span class="input-group-addon" class="text-large bold"><img src="${pageContext.request.contextPath}/assets/images/user.png" alt=""></span>
+	                     				<span class="input-group-addon" class="text-large bold"><img src="${pageContext.request.contextPath}/assets/images/user.png" id="idcon" alt=""></span>
 	                       				<input id="id" type="text" maxlength="16" class="form-control" name="id" value="${requestScope.userVo.id}" placeholder="" readonly="readonly">
 	                       				
 	                     			</div>
@@ -88,7 +88,7 @@
                    			
                    			 	<!-- 이미지 -->
                    				<div class="form-group">
-                   					<div class="image-show" id="image-show" >
+                   					<div class="image-show" id="imgcon" >
 		        						<img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileImage}" >
 		        					</div>
 									<div class="fileContainer">
