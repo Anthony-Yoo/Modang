@@ -190,7 +190,7 @@
 			<![CDATA[
 				        group by g.gameDate
 				        ) mt
-				where tt.gameDate = ct.gameDate
+				where tt.gameDate(+) = ct.gameDate
 				and   ct.gameDate = mt.gameDate(+)
 				order by tt.gameDate desc
 			]]>
