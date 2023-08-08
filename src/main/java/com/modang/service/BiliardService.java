@@ -128,11 +128,16 @@ public class BiliardService {
 	}
 	/* 일별 매출 페이지-------------------------------------------------------------------------------- */
 	
-	public void daySales(TableGamesVo tableGamesVo) {
+	public List<TotalVo> daySales(TableGamesVo tableGamesVo) {
 		System.out.println("BiliardService.daySales()");
-		biliardDao.selectDaySales(tableGamesVo);
 		
+		List<TotalVo> totalList = biliardDao.selectDaySales(tableGamesVo);
+		/* biliardDao.selectTotalSalesByDay(tableGamesVo); */
+		return totalList;
 	}
+	
+	
+	
 	
 	
 	/* 요금테이블 페이지--------------------------------------------------------------------------------- */
