@@ -348,7 +348,7 @@ public class TabletService {
 	
 	public PlayUserVo updatePlayInfo(PlayUserVo playUserVo) {
 		System.out.println("TabletService.updatePlayInfo()");		
-		
+		System.out.println("여기 업데이트 인포"+playUserVo);
 		
 		tabletDao.updatePlayInfo(playUserVo);
 		tabletDao.updatePlayTime(playUserVo);	

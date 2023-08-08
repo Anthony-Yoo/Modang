@@ -8,6 +8,7 @@ public class TableGamesVo {
 	private int gameType; // 게임타입(0:3구/1:4구/2:8볼/3:10볼)
 	private int memberNum; // 게임인원
 	private String gameDate; // 게임날짜
+	private String gameTime1;
 	private int gameTime; // 게임시간
 	private String startTime; // 시작시각
 	private String endTime; // 종료시각
@@ -39,18 +40,19 @@ public class TableGamesVo {
 		
 	}
 
-	public TableGamesVo(int gameNo, int tableNo, int gameType, int memberNum, String gameDate, int gameTime,
-			String startTime, String endTime, int payStatus, int payType, String payDate, int income, int payMoney,
-			String pauseStart, String pauseStop, int pauseTime, int setNo, int gameStatus,
+	public TableGamesVo(int gameNo, int tableNo, int gameType, int memberNum, String gameDate, String gameTime1,
+			int gameTime, String startTime, String endTime, int payStatus, int payType, String payDate, int income,
+			int payMoney, String pauseStart, String pauseStop, int pauseTime, int setNo, int gameStatus,
 			List<PlayUserVo> playUserList, List<RecordUserVo> recordUserList, CueTableVo tableInfo, int tableFee,
-			int minFee, int secondsToTime, int rownum, String minDate, String maxDate, String tableName,
-			int biliardNo, String comPayMoney, String comIncome) {
+			int minFee, int secondsToTime, int rownum, String minDate, String maxDate, String tableName, int biliardNo,
+			String comPayMoney, String comIncome) {
 		super();
 		this.gameNo = gameNo;
 		this.tableNo = tableNo;
 		this.gameType = gameType;
 		this.memberNum = memberNum;
 		this.gameDate = gameDate;
+		this.gameTime1 = gameTime1;
 		this.gameTime = gameTime;
 		this.startTime = startTime;
 		this.endTime = endTime;
@@ -78,7 +80,17 @@ public class TableGamesVo {
 		this.comPayMoney = comPayMoney;
 		this.comIncome = comIncome;
 	}
+	
+	
 
+	public String getGameTime1() {
+		return gameTime1;
+	}
+
+
+	public void setGameTime1(String gameTime1) {
+		this.gameTime1 = gameTime1;
+	}
 
 	public int getGameNo() {
 		return gameNo;
@@ -331,14 +343,17 @@ public class TableGamesVo {
 	@Override
 	public String toString() {
 		return "TableGamesVo [gameNo=" + gameNo + ", tableNo=" + tableNo + ", gameType=" + gameType + ", memberNum="
-				+ memberNum + ", gameDate=" + gameDate + ", gameTime=" + gameTime + ", startTime=" + startTime
-				+ ", endTime=" + endTime + ", payStatus=" + payStatus + ", payType=" + payType + ", payDate=" + payDate
-				+ ", income=" + income + ", payMoney=" + payMoney + ", pauseStart=" + pauseStart + ", pauseStop="
-				+ pauseStop + ", pauseTime=" + pauseTime + ", setNo=" + setNo + ", gameStatus=" + gameStatus
-				+ ", playUserList=" + playUserList + ", recordUserList=" + recordUserList + ", tableInfo=" + tableInfo
-				+ ", tableFee=" + tableFee + ", minFee=" + minFee + ", secondsToTime=" + secondsToTime + ", rownum="
-				+ rownum + ", minDate=" + minDate + ", maxDate=" + maxDate + ", tableName=" + tableName + ", biliardNo="
-				+ biliardNo + ", comPayMoney=" + comPayMoney + ", comIncome=" + comIncome + "]";
+				+ memberNum + ", gameDate=" + gameDate + ", gameTime1=" + gameTime1 + ", gameTime=" + gameTime
+				+ ", startTime=" + startTime + ", endTime=" + endTime + ", payStatus=" + payStatus + ", payType="
+				+ payType + ", payDate=" + payDate + ", income=" + income + ", payMoney=" + payMoney + ", pauseStart="
+				+ pauseStart + ", pauseStop=" + pauseStop + ", pauseTime=" + pauseTime + ", setNo=" + setNo
+				+ ", gameStatus=" + gameStatus + ", playUserList=" + playUserList + ", recordUserList=" + recordUserList
+				+ ", tableInfo=" + tableInfo + ", tableFee=" + tableFee + ", minFee=" + minFee + ", secondsToTime="
+				+ secondsToTime + ", rownum=" + rownum + ", minDate=" + minDate + ", maxDate=" + maxDate
+				+ ", tableName=" + tableName + ", biliardNo=" + biliardNo + ", comPayMoney=" + comPayMoney
+				+ ", comIncome=" + comIncome + "]";
 	}
+
+	
 
 }

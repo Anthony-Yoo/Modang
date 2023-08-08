@@ -68,7 +68,7 @@
 							<header>
 								<h2 class="float-left">일별 매출</h2>
 								
-								 <form name="" class="form-inline float-right mb-4" action="${pageContext.request.contextPath}/manager/daySales" method="get" >
+								 <form name="" class="form-inline float-right mb-4" action="${pageContext.request.contextPath}/manager/daySalesForm" method="get" >
 									<label class="mr-2">날짜</label>
 										<input type="date" name="minDate" class="form-control form-control-sm" maxlength="20" />
 									<label class="mr-1">~</label>
@@ -81,26 +81,25 @@
 								<thead class="thead-dark">
 									<tr>
 										<th>날짜</th>
-										<th>게임횟수</th>
 										<th>카드매출</th>
 										<th>카드입금</th>
 										<th>현금매출</th>
 										<th>현금입금</th>
-										<th>총매출</th>
+										<th>토탈매출</th>
+										<th>토탈입금</th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="totalList" var="totalVo">
+									<c:forEach items="${totalList}" var="totalVo">
 										<tr>
-											<td></td>
-											<td>-</td>
-											<td>156,000</td>
-											<td>150,000</td>
-											<td>99,000</td>
-											<td>95,000</td>
-											<td>245,000</td>
+											<td>${totalVo.gameDate}</td>
+											<td>${totalVo.c_payMoney}</td>
+											<td>${totalVo.c_income}</td>
+											<td>${totalVo.m_payMoney}</td>
+											<td>${totalVo.m_income}</td>
+											<td>${totalVo.t_payMoney}</td>
+											<td>${totalVo.t_income}</td>
 										</tr>
-										
 									</c:forEach>
 																																														
 								</tbody>
@@ -127,25 +126,43 @@
 	</div>
 </body>
 <script type="text/javascript">
+
+var dayList=[];
+var cardList=[];
+var moneyList=[];
+var totalList=[];	
+
 $(function() {
+	
+	makeGrapeInfo();
 	
 	var barsChart = new Chart(document.getElementById('chart-bars').getContext('2d'), {
 		type: 'bar',
 		data: {
-			labels: ['07월 01일', '07월 02일', '07월 03일', '07월 04일', '07월 05일', '07월 06일', '07월 07일'],// <- 세로축 데이터
-			datasets: [{
-				label: '카드매출',
-				data: [200000,250000,230000,220000,250000,270000,260000], // <-- 가로축 데이터
-				borderColor: '#FFCE56',
-				backgroundColor: '#FFCE56',
-				fontSize: 14
-		}, {
-				label: '현금매출',
-				data: [150000,170000,130000,140000,160000,120000,150000], // <-- 가로축 데이터
-				borderColor: '#4BC0C0',
-				backgroundColor: '#4BC0C0',
-				fontSize: 14
-			}]
+			labels: dayList,// <- 세로축 데이터
+			datasets: [
+				{
+					label: '카드매출',
+					data: cardList, // <-- 가로축 데이터
+					borderColor: '#FFCE56',
+					backgroundColor: '#FFCE56',
+					fontSize: 14
+		        }, 
+		        {
+					label: '현금매출',
+					data: moneyList, // <-- 가로축 데이터
+					borderColor: '#4BC0C0',
+					backgroundColor: '#4BC0C0',
+					fontSize: 14
+			    },
+			    {
+					label: '토탈매출',
+					data: totalList, // <-- 가로축 데이터
+					borderColor: '#00A2E8',
+					backgroundColor: '#00A2E8',
+					fontSize: 14
+			    }
+		    ]
 		},
 		options: {
 			indexAxis: 'y',
@@ -153,5 +170,22 @@ $(function() {
 		},
 	});
 });
+
+
+
+function makeGrapeInfo() {
+	
+	<c:forEach items="${totalList}" var="totalVo" begin="0" end="6" step="1">
+		dayList.push("${totalVo.dates}");
+		cardList.push(${totalVo.c_income}); 
+		moneyList.push(${totalVo.m_income});
+		totalList.push(${totalVo.t_income});;	
+	</c:forEach>
+	console.log(dayList);	
+	console.log(cardList);	
+	console.log(moneyList);	
+	console.log(totalList);	
+}
+
 </script>
 </html>
