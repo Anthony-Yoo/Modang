@@ -96,22 +96,20 @@
 							<table class="table table-striped">
 								<thead class="thead-dark">
 									<tr>
-										<th>No</th>
 										<th>테이블번호</th>
-										<th>게임종류</th>
-										<th>게임날짜</th>
-										<th>시작시간</th>
-										<th>종료시간</th>
-										<th>사용시간</th>
-										<th>결제방법</th>
-										<th>결제금액</th>
-										<th>입금금액</th>
+										<th>게임 종류</th>
+										<th>게임 날짜</th>
+										<th>시작 시간</th>
+										<th>종료 시간</th>
+										<th>사용 시간</th>
+										<th>결제 방법</th>
+										<th>결제 금액</th>
+										<th>입금 금액</th>
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach items="${salesList}" var="gamesVo">
 										<tr>
-											<td>${gamesVo.rownum}</td>
 											<td>${gamesVo.tableName}</td>
 											<td>
 											<c:if test ="${gamesVo.gameType==0}">3구</c:if>
@@ -122,7 +120,12 @@
 											<td>${gamesVo.gameDate}</td>
 											<td>${gamesVo.startTime}</td>
 											<td>${gamesVo.endTime}</td>
-											<td>${gamesVo.gameTime}</td>
+											<td>  
+												  <c:set var="minutes" value="${(gamesVo.gameTime-60) / 60}" />
+ 												  <c:set var="seconds" value="${gamesVo.gameTime % 60}" />
+
+  												  ${minutes}:${seconds < 10 ? '0' : ''}${seconds}
+											</td>
 											<td>
 											<c:if test ="${gamesVo.payType==0}">카드</c:if>
 											<c:if test ="${gamesVo.payType==1}">현금</c:if>
@@ -163,8 +166,6 @@ window.onload = function() {
         }
     }
 };//페이지 로드 end
-
-
 
 </script>
 </html>
