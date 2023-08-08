@@ -6,12 +6,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-
-import com.modang.vo.ManagerVo;
 import com.modang.vo.CueTableVo;
 import com.modang.vo.TableGamesVo;
-
 import com.modang.vo.TariffVo;
+import com.modang.vo.TotalVo;
 
 @Repository
 public class BiliardDao {
@@ -108,6 +106,15 @@ public class BiliardDao {
 		List<TableGamesVo> salesList = sqlSession.selectList("biliard.selectOneTableSales", tableGamesVo);
 		return salesList;
 	}
+	
+	/** 테이블별 전체합계 */
+	public TotalVo selectTotalTableSales(TableGamesVo tableGamesVo) {
+		System.out.println("BiliardDao.selectTotalTableSales()");
+		TotalVo totalVo = sqlSession.selectOne("biliard.selectTotalTableSales", tableGamesVo);
+		return totalVo;
+	}
+	
+	
 	
 	/* 일별매출 페이지--------------------------------------------------------------------------------- */
 	public void selectDaySales(TableGamesVo tableGamesVo) {

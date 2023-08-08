@@ -134,8 +134,12 @@ public class BiliardController {
 		System.out.println(cuetableList);
 		model.addAttribute("cuetableList", cuetableList);
 		
-		List<TableGamesVo> salesList = biliardService.searchTable(tableGamesVo);
-		model.addAttribute("salesList",salesList);
+		Map<String, Object> tableSaleMap = biliardService.searchTable(tableGamesVo);
+		model.addAttribute("salesList",tableSaleMap.get("salesList"));
+		model.addAttribute("totalVo",tableSaleMap.get("totalVo"));
+		
+		System.out.println(tableSaleMap.get("totalList"));
+		
 		
 		return "/manager/tableSales";
 	}

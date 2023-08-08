@@ -64,8 +64,8 @@
 				    #{postcode},
 				    #{biliardAddress1},
 				    #{biliardAddress2},
-				    null,
-				    null,
+				    #{latitude},
+				    #{longtitude},
 				    #{biliardPhone},
 				    #{imageFile1},
 				    #{imageFile2},
@@ -108,6 +108,7 @@
         			companyNo,
         			repName,
         			biliardName,
+        			passwd,
         			postcode,
         			biliardAddress1,
         			biliardAddress2,
@@ -144,7 +145,9 @@
         						time1 = #{time1},
         						time2 = #{time2},
         						parking = #{parking},
-        						bdComment = #{bdComment}
+        						bdComment = #{bdComment},
+        						latitude = #{latitude},
+        						longtitude = #{longtitude}
 						where biliardNo =#{biliardNo} and id = #{id}
 		]]>
 	</update>
@@ -178,6 +181,9 @@
 			or biliardAddress1 like '%' ||  #{keyword} || '%'
 			or biliardAddress2 like '%' ||  #{keyword} || '%'
 		</if>
+		<![CDATA[
+			order by biliardNo desc
+		]]>
 	</select>
 	
 	
