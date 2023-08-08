@@ -395,16 +395,16 @@
 	<select id="selectCardList">
 		<![CDATA[
 			select  cu.CARDNO,
-        cu.SETUSERNO,
-        cu.TITLE,
-        cu.CARDUSERDATE,
-        cu.GAMETYPE,
-        cm.MEMBERNO,
-        cm.GETUSERNO
-from cardusers cu,
-     cardmember cm
-where cu.CARDNO = cm.CARDNO
-AND cu.SETUSERNO = 1;
+			        cu.SETUSERNO,
+			        cu.TITLE,
+			        cu.CARDUSERDATE,
+			        cu.GAMETYPE,
+			        cm.MEMBERNO,
+			        cm.GETUSERNO
+			from cardusers cu,
+			     cardmember cm
+			where cu.CARDNO = cm.CARDNO
+			AND cu.SETUSERNO = 1;
 
 		
 		]]>

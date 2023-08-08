@@ -294,6 +294,11 @@ public class MypageService {
 		System.out.println(memberList);
 		cardVo.setMemberList(memberList);
 		
+		int cardNo = cardVo.getCardNo();
+		
+		List<CardUsersVo> cardList = mypageDao.selectCardList(cardNo);
+		
+		
 		
 		return cardVo;
 	}

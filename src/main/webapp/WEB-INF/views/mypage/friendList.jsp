@@ -14,75 +14,7 @@
 <body>
 	<!-- 헤더 시작 -->
     <c:import url="/WEB-INF/views/include/modangSiteHeader.jsp"></c:import>    
-    <!-- 헤더 끝 -->
-	<div id="userPage">
-	    <!-- sideNav 시작 -->
-        <ul class="sidebar">
-			<li><a href="${pageContext.request.contextPath}/user/userPage">회원정보</a> </li>
-			<li><a class="active" href="${pageContext.request.contextPath }/mypage/friendlist">친구목록</a></li>
-			<li><a href="${pageContext.request.contextPath }/mypage/FCardList">그룹친구</a> </li>
-			<li><a href="${pageContext.request.contextPath }/attendUsers/myPage/myBoardList">게시판매칭</a></li>
-			<li><a href="${pageContext.request.contextPath }/mypage/${sessionScope.authUser.userNo}/record" target="_blank">전적보기</a></li>
-		</ul>
-		<!-- sideNav 끝 -->
-		<div class="userContent">
-			<div id="content-header">
-				<h2>
-					<a>친구 목록</a>
-				</h2>
-			</div>
-		    <div class="show">        
-		        <h2>친구 검색</h2><!-- 사이즈 줄이기 -->
-		        <div class="friendSearch">
-		            <label for="seardid">회원 아이디 검색</label>
-		            <input type="search" id="seardid" placeholder="회원 아이디 입력">
-		            <button type="button" class="search" id="searchbtn">검색</button>
-		            
-		            <div class="searchList">	
-		                <!--검색한 아이디가 있는 경우 나오는 리스트-->
-		            </div>
-		        </div>
-		        <div class="friendList">
-		            <table>
-		                <thead>
-		                    <tr>
-		                        <th>친구 닉네임</th>
-		                        <th>Avg.</th>
-		                        <th>다마상태</th>
-		                        <th>승수 (최근 3개월)</th>
-		                        <th>최근 로그인</th>
-		                        <th>삭제</th>
-		                    </tr>
-		                </thead>		                        
-				        <tbody id="renderbd">
-			                <c:forEach var="friendInfo" items="${friendList}">			                	  
-			                    <tr>			                    	
-			                        <td>${friendInfo.nick}</td>
-			                        <td>${friendInfo.average}</td>
-		                        	<c:if test ="${friendInfo.recommStatus == 0}">					                      
-				                        <td>물다마</td>
-			                        </c:if>
-			                        <c:if test ="${friendInfo.recommStatus == 1}">					                       
-				                        <td>적정다마</td>
-			                        </c:if>
-			                        <c:if test ="${friendInfo.recommStatus == 2}">					                     
-				                        <td>짠다마</td>
-			                        </c:if>
-			                        <c:if test ="${friendInfo.recommStatus == 3}">						                       
-				                        <td>새내기</td>
-			                        </c:if>
-		                        	<td><strong>${friendInfo.winCnt}</strong>승<strong>${friendInfo.loseCnt}</strong>패</td>
-			                        <td><strong>${friendInfo.recentDays}</strong>일전</td>
-			                        <td><button type="button" class="delPlayer del" data-userno="${friendInfo.userNo}" 
-			                        data-favoriteNo="${friendInfo.favoriteNo}">삭제</button></td>
-		                    	</tr>
-			                  </c:forEach>	                    
-				          </tbody>
-		            </table>		            
-		        </div>
-		    </div>
-    	</div>
-    </div>
+    <!-- 헤더 끝 -->	
 	<div class="content">
 		<div id="userPage">
 		    <!-- sideNav 시작 -->
@@ -152,7 +84,6 @@
 	    	</div>
 	    </div>
 	 </div>
->>>>>>> branch 'master' of https://github.com/Anthony-Yoo/Modang.git
     <!-- 푸터 시작 -->
     <c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
     <!-- 푸터 끝 -->
