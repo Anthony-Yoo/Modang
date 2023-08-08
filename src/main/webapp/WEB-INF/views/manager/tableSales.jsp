@@ -88,6 +88,11 @@
 								</form>
 							</header>
 							
+							<br>
+							<p>전체매출: ${totalVo.t_income} 전체입금: ${totalVo.t_payMoney}<p>
+							<p>카드매출: ${totalVo.c_income} 카드입금: ${totalVo.c_payMoney}<p>
+							<p>현금매출: ${totalVo.m_income} 현금입금: ${totalVo.m_payMoney}<p>
+							
 							<table class="table table-striped">
 								<thead class="thead-dark">
 									<tr>
