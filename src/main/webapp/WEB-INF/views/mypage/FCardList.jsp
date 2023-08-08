@@ -13,89 +13,82 @@
 </head>
 <body>
 	<c:import url="/WEB-INF/views/include/modangSiteHeader.jsp"></c:import>  
-	 <div id="userPage">
-	 	<ul class="sidebar">
-			<li><a href="${pageContext.request.contextPath}/user/userPage">회원정보</a> </li>
-			<li><a href="${pageContext.request.contextPath }/mypage/friendlist">친구목록</a></li>
-			<li><a class="active"  href="userPage">그룹친구</a> </li>
-			<li><a href="${pageContext.request.contextPath }/attendUsers/myPage/myBoardList">게시판매칭</a></li>
-			<li><a href="${pageContext.request.contextPath }/mypage/${requestScope.userVo.userNo}/record" target="_blank">전적보기</a></li>
-		</ul>
-		<div class="userContent Cfind">
-			<div id="content-header">
-				<h2>
-					<a>카드 추가</a>
-					<a>카드 리스트</a>
-				</h2>
-			</div>
-			<div class="show Cfriend">  
-		        <div class="cardAdd left">
-		            <div class="searhId">
-		                <input type="search" class="insertId" id="insertId" placeholder="아이디 입력">
-		                <button type="button" class="del" id="searchbtn">검색</button>
-		                <!--아이디검색- 하단 토글 리스트 팝업이든뭐든 공간 추가-->    
-		                <div class="searchList">   
-		                	<!--검색한 아이디가 있는 경우 나오는 리스트-->                 
-			        	</div>
-		            </div>
-		            <div class="callFriend">
-		                <button type="button" class="call">친구목록 부르기</button>
-		                <!--친구목록 부르기- 하단 토글 리스트 팝업으로 추가-->
-		                <ul>
-		                    <li>
-		                        <img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="">
-		                        <span>강동구일짱</span>
-		                        <button type="button" class="del">추가</button>                        
-		                    </li>                    
-		                </ul>
-		            </div>
-		            <div class="List">
-		                <form id="cardConfirm" action="${pageContext.request.contextPath}/mypage/FCardInsert" method="get">
-		                	<p>멤버카드</p>
-			                <label>그룹명</label>
-			                <input type="hidden" name="setUserNo" value="${userNo}">
-			                <input type="text" id="cardName" class="cardName" name="title" placeholder="그룹명 입력">
-			                <label class="selG">게임선택</label>
-			                <div class="gt">
-				                <label for="3ball">3구<input type="radio" id="3ball" class="3ball" name="gameType" value="0"></label>
-				                <label for="4ball">4구<input type="radio" id="4ball" class="4ball" name="gameType" value="1"></label>
-			                </div>
-			                   <!--당구멤버 리스트는 최대 4명 // 
-			                 // 4명이상 추가 시 "멤버는 4명까지 선택 가능합니당!" 팝업?-->	 
-			                <div id="confirmList">		                
-			                </div>
-			                <button type="submit" class="call" id="confirmbtn">멤버 확정하기</button>
-		                </form>
-		            </div>
-		        </div>
-		        <div class="border"></div>
-		        <div class="cardList right">        	
-		            <ul>
-		            	<c:forEach var="cardInfo" items="${cardList}">
-			               	<li>               		
-			                    <h4>${cardInfo.title}</h4>
-			                    <ul class="nick">
-			                        <li>내가짱</li>
-			                        <li>qwer1234</li>
-			                        <li>김개똥</li>
-			                        <li>당신바규준</li>
-			                    </ul>
-			                    <span>${cardInfo.cardUserDate} || 
-				                    <c:if test="${cardInfo.gameType == 0}">3구</c:if>
-				                    <c:if test="${cardInfo.gameType == 1}">4구</c:if>
-			                    </span>
-			                    <button type="button">×</button><!--삭제버튼-->
-			                </li>   
-		                </c:forEach>             
-		            </ul>
-		        </div>
-		   </div><!-- show friend -->
-		 </div><!-- userContent find" -->
-    </div><!-- userPage -->
+	<div class="cont">
+	 	<div id="userPage" >
+	 		<ul class="sidebar">
+				<li><a href="${pageContext.request.contextPath}/user/userPage">회원정보</a> </li>
+				<li><a href="${pageContext.request.contextPath }/mypage/friendlist">친구목록</a></li>
+				<li><a class="active" href="${pageContext.request.contextPath }/mypage/FCardList">그룹친구</a> </li>
+				<li><a href="${pageContext.request.contextPath }/attendUsers/myPage/myBoardList">게시판매칭</a></li>
+				<li><a href="${pageContext.request.contextPath }/mypage/${sessionScope.authUser.userNo}/record" target="_blank">전적보기</a></li>
+			</ul>
+			<div class="userContent Cfind">
+				<div id="content-header">
+					<h2>
+						<a>카드 추가</a>
+						<a>카드 리스트</a>
+					</h2>
+				</div>
+				<div class="show Cfriend">  
+			        <div class="cardAdd left">
+			            <div class="searhId">
+			                <input type="search" class="insertId" id="insertId" placeholder="아이디 검색으로 추가하기">
+			                <button type="button" class="del" id="searchbtn">검색</button>
+			                <!--아이디검색- 하단 토글 리스트 팝업이든뭐든 공간 추가-->    
+			                <div class="searchList">   
+			                	<!--검색한 아이디가 있는 경우 나오는 리스트-->                 
+				        	</div>
+			            </div>
+			            <div class="callFriend">
+			                <button type="button" class="call" id="friendbtn">친구목록 부르기</button>
+			                <!--친구목록 부르기- 하단 토글 리스트 팝업으로 추가-->               
+			            </div>
+			            <div class="List">
+			                <form id="cardConfirm" action="${pageContext.request.contextPath}/mypage/FCardInsert" method="get">
+			                	<p>멤버카드</p>
+				                <label>그룹명</label>
+				                <input type="hidden" name="setUserNo" value="${userNo}">
+				                <input type="text" id="cardName" class="cardName" name="title" placeholder="그룹명 입력">
+				                <label class="selG">게임선택</label>
+				                <div class="gt">
+							        <label for="3ball">3구<input type="radio" id="3ball" class="3ball" name="gameType" value="0"></label>
+							        <label for="4ball">4구<input type="radio" id="4ball" class="4ball" name="gameType" value="1"></label>
+						        </div>
+				                   <!--당구멤버 리스트는 최대 4명 // 
+				                 // 4명이상 추가 시 "멤버는 4명까지 선택 가능합니당!" 팝업?-->	 
+				                <div id="confirmList">		                
+				                </div>
+				                <button type="submit" class="call" id="confirmbtn">멤버 확정하기</button>
+			                </form>
+			            </div>
+			        </div>
+			        <div id="border"></div>
+			        <div class="cardList right">        	
+	            		<ul>
+	            			<c:forEach var="cardInfo" items="${cardList}">
+		               			<li>               		
+		                  		  	<h4>${cardInfo.title}</h4>
+		                    		<ul class="nick">
+			                    	<c:forEach var="member" items="${cardInfo.memberList}">
+				               			<li>${member.guestNick}</li>
+				                    </c:forEach>
+			                    	</ul>
+		                    	<span>${cardInfo.cardUserDate} &nbsp;&nbsp;  &nbsp; 
+			                    	<c:if test="${cardInfo.gameType == 0}">3구</c:if>
+			                    	<c:if test="${cardInfo.gameType == 1}">4구</c:if>
+		                    	</span>
+		                   		<button type="button">×</button><!--삭제버튼-->
+		                		</li>   
+	                		</c:forEach>             
+	            		</ul>
+	        		</div>
+	    		</div><!-- show Cfriend -->
+    		</div><!-- userContent Cfind" -->
+    	</div><!-- userPage -->
+	</div><!-- cont -->
+	<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
 </body>
 <script>
-
-
 /* 1. 아이디 검색  */
 $('#searchbtn').on("click",function(){
     console.log("id검색 버튼 클릭"); 
@@ -154,7 +147,7 @@ $('#searchbtn').on("click",function(){
 	};	
 	
 /* 1-1. 검색리스트 추가 */
-$(".searchList").on('click',".addPlayer",function(){
+$(".searchList, .callFriend").on('click',".addPlayer",function(){
 	console.log("추가버튼 클릭!");	
 	var userNo = $(this).attr('data-userno');
 	var nick = $(this).attr('data-nick');
@@ -251,11 +244,56 @@ $(".searchList").on('click',".addPlayer",function(){
 	} 
 	});*/
 	
+$("#friendbtn").on('click',function(){
+	console.log("친구목록 버튼 클릭");
+	$("#friendList").remove();
 	
+	var userNo = ${userNo};
 	
+	console.log(userNo);
+	$.ajax({			
+		url : "${pageContext.request.contextPath}/mypage/friendload",		
+		type : "post",
+		/* contentType : "application/json"*/
+		data : {userNo : userNo},
+
+		dataType : "json",
+		success : function(action){
+			console.log(action);
+			
+			if(action.result == 'success') {//처리성공	
+				console.log("성공");						
+				renderUl(action.data);	
+				
+			}else {//오류처리
+				var msg = action.failMsg;
+					alert(msg);				
+			}
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}				
+	});
 	
+});
 	
-	
+	function renderUl(friendlist) {	
+		var src = "";		
+		src += '<ul id="friendList">';
+		
+		$.each(friendlist,function(key,value){
+			
+		src += '	<li>';
+		src += '		<img src="${pageContext.request.contextPath }/upload/' + value.profileImage + '" alt="프로필이미지">';
+		src += '		<span>'+ value.nick +'</span>';
+		src += '		<button type="button" class="addPlayer add" data-userno="'+ value.getUserNo +'" data-no="'+ value.favoriteNo +'" data-nick="'+ value.nick +'" >추가</button>';
+		src += '	</li>';
+		
+		});
+		
+		src += '</ul>';		
+		$("#friendbtn").after(src);
+	}	
 
 </script>
 

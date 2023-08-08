@@ -151,15 +151,15 @@
 		  					
 		</div>
 		<!-- //container -->
-    <!-- 푸터 시작 -->
-	<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
-	<!-- 푸터 끝 -->
-		
+    
     </div>
     <!-- //main-content -->
+	<!-- 푸터 시작 -->
+	<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
+	<!-- 푸터 끝 -->
 	
-	  <!-- Modal -->
-   <div class="modal fade" id="myModal" role="dialog">
+	<!-- Modal -->
+   	<div class="modal fade" id="myModal" role="dialog">
     	<div class="modal-dialog modal-sm">
       		<div class="modal-content">
         		<div class="modal-header">

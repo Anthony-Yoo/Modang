@@ -77,8 +77,8 @@ input::placeholder{color: #B8B8B8;}
 	box-sizing: border-box; border-radius: 4px; overflow-y: scroll; background-color: #f6f6f6;}
 .friendSearch .searchList ul li{margin: 4px 0;height: 24px; }
 .friendSearch .searchList ul li span{display: inline-block; width: 330px; text-align: left; font-size: 14px; font-weight: 700;}
-.friendSearch .searchList ul li button.add{background-color: #2E419A; font-size: 12px; color: #fff;
-	padding: 3px 6px; border-radius: 4px;cursor: pointer;}
+.friendSearch .searchList ul li button.add{display:block; width:40px; height:20px; float: right;font-size: 12px;
+	background:#ecdfdf;box-sizing: border-box; border-radius: 4px;  margin-right: 15px;}
 /*핀구 리스트*/
 .friendList{width: 1020px; height: 370px; margin: 0 auto ;overflow-y:scroll;overflow-x:hidden; 
 	border: 1px solid #2E419A;}
@@ -95,12 +95,13 @@ input::placeholder{color: #B8B8B8;}
 	color: #2E419A; line-height: 10px; cursor: pointer;}
 
 /*--------------------------------------------그룹친구----------------------------------*/
-#userPage div.Cfind{height: auto;}
-.find #content-header h2{margin: 0; }
-#userPage .userContent div.Cfriend{height: 800px; width: 100%;}
-.border{display: inline-block; width: 2px; height: 700px; background: #2E419A;
-	margin-left: 25px;}
-.cardAdd>h2,.cardList>h2{color: #2E419A; margin: 20px auto; width: 150px;}
+.cont{height: 1060px;}
+.cont #userPage{height: 1050px;}
+#userPage div.Cfind{height: 970px;}
+.Cfind #content-header h2{margin: 0; }
+#userPage .userContent div.Cfriend{height: 750px; width: 100%;}
+.Cfind #content-header>h2>a{margin-left: 340px;}
+.Cfind #content-header>h2>a:nth-child(1){margin: 0;}
 .left{float: left;width: 500px;height: 100%;}
 .call{display:block; width: 360px;height: 30px; margin: 0 auto; background-color: #2E419A;
 	color: #fff; border-radius: 4px; cursor: pointer;}
@@ -108,53 +109,57 @@ input::placeholder{color: #B8B8B8;}
 .cardAdd .searhId{width: 360px; margin: 0 auto; height: auto;}
 .cardAdd .searhId input.insertId{display: inline-block; width: 300px; height: 30px;
 	padding-left: 10px; border-radius: 4px; background-color: #f6f6f6;}
-.cardAdd .searhId>button.del{font-size: 14px; line-height:22px;  padding: 3px 10px;}
-.cardAdd .searhId ul{background-color: #f6f6f6; width: 360px; height: 120px; overflow-y: scroll; margin-top: 2px;
+.cardAdd .searhId>button.del{font-size: 14px; line-height:22px;  padding: 3px 12px;}
+.cardAdd .searhId ul{background-color: #f6f6f6; width: 300px; height: 120px; overflow-y: scroll; margin-top: 2px;
 	border: 1px solid #2E419A; border-radius: 4px; box-sizing: border-box;}
-.cardAdd .searhId ul li{width: 310px; height: 24px; margin-bottom: 2px; padding:2px 15px;}
-.cardAdd .searhId ul li span{display: inline-block; width: 240px;}
-.cardAdd .searhId ul li button{float: right;font-size: 12px;}
+.cardAdd .searhId ul li{width: 250px; height: 24px; margin-bottom: 2px; padding:2px 15px;}
+.cardAdd .searhId ul li span{display: inline-block; width: 200px;}
+.cardAdd .searhId ul li button.add{display:block; width:40px; height:20px; float: right;font-size: 12px;
+	background:#ecdfdf;box-sizing: border-box; border-radius: 4px;}
 /*친구목록 부르기*/
 .cardAdd .callFriend{width: 360px; margin: 10px auto 0;}
 .cardAdd .callFriend ul{background-color: #f6f6f6; width: 360px; height: 120px; overflow-y: scroll; margin-top: 2px;
-	border: 1px solid #2E419A; border-radius: 4px; box-sizing: border-box;}
+	border: 1px solid #2E419A; border-radius: 4px; box-sizing: border-box;overflow-x: hidden;}
 .cardAdd .callFriend ul li{width: 310px; height: 22px; margin-bottom: 2px; padding:2px 15px;}
 .cardAdd .callFriend ul li img{display: inline-block; width: 20px; height: 20px; border-radius: 10px;}
 .cardAdd .callFriend ul li span{display: inline-block; width: 200px;}
-.cardAdd .callFriend ul li button{float: right;font-size: 12px;}
+.cardAdd .callFriend ul li button.add{display:block; width:40px; height:20px; float: right;font-size: 12px;
+	background:#ecdfdf;box-sizing: border-box; border-radius: 4px;}
 /*카드 멤버 리스트*/
-.List{width: 440px; height: 330px;margin: 50px auto; padding: 20px 0; background-color: #ecdfdf; border: 2px solid #2E419A;
-	border-radius: 10px; box-sizing: border-box;}
+.List{width: 440px; height: 360px;margin: 50px auto; padding: 20px 0; background-color: #ecdfdf; box-shadow:2px 2px 2px #ecdfdf;
+	border-radius: 10px; box-sizing: border-box; position: relative;}
 .List p{color: #2E419A; font-weight: 800; border: 2px solid #2E419A; padding: 6px 5px; width: 200px; text-align: center;
 	margin: 0 auto 20px; border-radius: 4px; box-sizing: border-box;}
-.List label{margin-left: 40px; font-size: 14px;}
+.List label{margin-left: 40px; font-size: 15px;font-weight: 600;}
 .List input.cardName{display:inline-block; width: 300px; height: 30px; background-color: #f6f6f6;
 	padding: 2px 0 2px 15px; border-radius: 4px; border: 1px solid #2E419A; margin: 0 auto;}
-.List label.selG{ margin-top: 5px; height: 30px;}
-.List .gt{display: inline-block;width: 300px; height: 30px; }
-.List .gt>input{}
-.List .gt>label{width: 200px; height: 30px;}
-
+.List label.selG{ display: inline-block; margin-top: 16px;height: 30px;width: 60px;}
+.List .gt{display: inline-block;width: 280px; height: 30px; }
+.List .gt>label{display: inline-block; width: 60px; line-height: 30px; font-weight: 300;}
+.List .gt>label>input{margin-left: 10px;}
 .List ul{ margin: 20px auto; width: 400px;}
 .List ul li{margin:0 auto 4px; border-bottom: 1px solid #2E419A; padding: 2px 0 3px; width: 360px;}
 .List ul li span{width: 260px; display: inline-block; font-weight: 600; padding:2px 20px;}
 .List ul li button.del{font-size: 12px; }
-.List .call{margin-top: 30px;}
-.main-Con .border{width: 2px; height: 800px; background-color: #2E419A;margin-left:10px;}
+.List .call{position: absolute; bottom: 15px; left: 9%;}
+#border{width: 2px;height: 750px;display: inline-block;background: #2E419A;margin-left: 20px;}
+
 /*카드리스트*/
 .right{float: right; width: 530px; height: 100%;}
-.cardList>ul{ width: 520px; height: 700px; margin: 0 0 0 10px; overflow-y: scroll;}
+.cardList>ul{ width: 520px; height: 750px; margin: 0 0 0 10px; overflow-y: auto;}
 .cardList>ul>li{display: inline-block; width: 240px; height: 180px; border: 2px solid #2E419A; border-radius: 10px;
 	margin-top: 20px;}
+.cardList>ul>li:hover{box-shadow: 2px 2px 2px grey;}
 .cardList>ul>li:nth-child(1),.cardList>ul>li:nth-child(2){margin-top: 0;}
-.cardList>ul li h4{color: #2E419A; text-align: center; line-height: 36px; height: 36px;}
+.cardList>ul li h4{color: #2E419A;text-align: center;line-height: 43px;height: 40px;font-weight: 600;
+    font-size: 20px;}
 .cardList>ul>li ul.nick{ width: 220px; margin: 0 auto; border-top: 1px solid #2E419A; height: 110px;}
-.cardList>ul>li ul.nick li{ width: 220px; margin-top: 5px; text-align: center; font-size: 16px;
+.cardList>ul>li ul.nick li{ width: 220px; margin-top: 10px; text-align: center; font-size: 16px;
 	font-weight: 600; height: 20px;}
 .cardList>ul>li span{display: inline-block; width: 180px; height: 26px; margin-left: 10px;
 	padding-left: 10px; font-size: 14px;}
-.cardList>ul>li button{display: inline-block; width: 26px; height: 26px; cursor: pointer;
-	color: #2E419A; border-radius: 4px; background-color: #fff; border: 1px solid #2E419A;}
+.cardList>ul>li button{display: inline-block; width: 24px; height: 24px; cursor: pointer;
+	color: #2E419A; border-radius: 4px; background-color: #fff; border: 1px solid #2E419A; line-height: 0;}
 
 /*-------------------------------------applyManagerment--applyMenu--------------------------------------------*/
 #applyMenu{width:1200px; margin: 0 auto; height: 1000px;}
@@ -165,7 +170,8 @@ input::placeholder{color: #B8B8B8;}
 .apply_btn{padding: 60px 0px 50px 0px;border-bottom: 2px solid #000000; font-size: 35px; text-align: center;}
 #apply a{text-decoration: none;}
 #apply a#myList{}
-#apply a.active{color:#2E419A; font-weight: 800;}
+#apply>.apply_btn>a{ color:#999;}
+#apply a.active{color:#000; font-weight: 800;}
 #list{display: inline-block;width: 1050px;height: 500px; margin: 20px auto;}
 #list>table{ overflow-y: scroll;}
 button{cursor: pointer;}

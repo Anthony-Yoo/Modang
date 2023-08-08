@@ -130,6 +130,9 @@ public class MypageController {
 		int userNo = authUser.getUserNo();	
 		
 		List<CardUsersVo> cardList =mypageService.cardList(userNo);
+		System.out.println("=================================");
+		System.out.println(cardList);
+		System.out.println("=================================");
 		
 		model.addAttribute("userNo", userNo);
 		model.addAttribute("cardList", cardList);
@@ -143,8 +146,24 @@ public class MypageController {
 		System.out.println(cardVo);
 		
 		List<CardUsersVo> cardList = mypageService.cardInsert(cardVo);
+		System.out.println(cardList);
 		model.addAttribute("cardList", cardList);		
 		
 		return "redirect:/mypage/FCardList";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/friendload",method = {RequestMethod.GET,RequestMethod.POST})
+	public JsonResult friendLoad(@RequestParam("userNo") int userNo) {
+		System.out.println("MypageController.friendLoad()");
+		
+		List<FavoriteUsersVo> friendList = mypageService.friendLoad(userNo);
+		System.out.println(friendList);
+		
+		JsonResult jsonResult = new JsonResult();
+		
+		jsonResult.success(friendList);
+		
+		return jsonResult;		
 	}
 }

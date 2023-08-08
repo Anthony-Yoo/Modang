@@ -231,7 +231,8 @@
 			select  DISTINCT
                     f.favoriteNo,
                     u.nick,
-			        u.Average,        
+			        u.Average,  
+			        u.PROFILEIMAGE,      
 			        TRUNC(To_date(Sysdate,'YY/MM/DD')) - TRUNC(u.RECENTLOGONTIME) as recentDays,
 			        u.userno,
 			        NVL(round((tgc.totalCount-tlc.loseCount)/tgc.totalCount,2),0) as totalCommRate,
@@ -416,6 +417,20 @@
 			where cm.GETUSERNO = u.userNo
 			And cm.CARDNO = #{cardNo}	
 		
+		]]>
+	</select>
+	
+	<select id="selectFriendLoad" parameterType="int" resultType="com.modang.vo.FavoriteUsersVo">
+		<![CDATA[
+			select  f.FAVORITENO,					
+					f.GETUSERNO,
+					u.NICK,
+					u.PROFILEIMAGE,
+					f.FAVORITEUSERDATE					
+			from users u,
+				 FAVORITEUSERS f
+			where f.GETUSERNO = u.userno
+			and f.SETUSERNO = #{userNo}		
 		]]>
 	</select>
 </mapper>

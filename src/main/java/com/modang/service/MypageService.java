@@ -320,4 +320,12 @@ public class MypageService {
 		
 		return cardList;
 	}
+	
+	public List<FavoriteUsersVo> friendLoad(int userNo) {
+		System.out.println("MypageService.friendLoad");
+		
+		List<FavoriteUsersVo> friendList = mypageDao.selectFriendLoad(userNo);
+		
+		return friendList;
+	}
 }
