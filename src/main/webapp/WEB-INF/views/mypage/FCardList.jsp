@@ -44,7 +44,7 @@
 			                <!--친구목록 부르기- 하단 토글 리스트 팝업으로 추가-->               
 			            </div>
 			            <div class="List">
-			                <form id="cardConfirm" action="${pageContext.request.contextPath}/mypage/FCardInsert" method="get">
+			                <form id="cardConfirm" action="${pageContext.request.contextPath}/mypage/FCardInsert" method="post">
 			                	<p>멤버카드</p>
 				                <label>그룹명</label>
 				                <input type="hidden" name="setUserNo" value="${userNo}">
@@ -73,11 +73,11 @@
 				               			<li>${member.guestNick}</li>
 				                    </c:forEach>
 			                    	</ul>
-		                    	<span>${cardInfo.cardUserDate} &nbsp;&nbsp;  &nbsp; 
+		                    		<span>${cardInfo.cardUserDate} &nbsp;&nbsp;  &nbsp; 
 			                    	<c:if test="${cardInfo.gameType == 0}">3구</c:if>
 			                    	<c:if test="${cardInfo.gameType == 1}">4구</c:if>
-		                    	</span>
-		                   		<button type="button">×</button><!--삭제버튼-->
+		                    		</span>
+		                   			<button type="button" class="deletebtn" data-no="${cardInfo.cardNo}">×</button><!--삭제버튼-->
 		                		</li>   
 	                		</c:forEach>             
 	            		</ul>
@@ -129,23 +129,26 @@ $('#searchbtn').on("click",function(){
 		console.log("test입니다." + id);			
 	};		
 });   
-	// + 검색리스트 랜더 +
-	function renderEach(playlist) {	  	
-		var src = "";
-		src += '<ul>';
+
+
+// + 검색리스트 랜더 +
+function renderEach(playlist) {	  	
+	var src = "";
+	src += '<ul>';
+	
+	$.each(playlist,function(key,value){
 		
-		$.each(playlist,function(key,value){
-			
-			src += '<li>';
-			src += '	<span>' + value.nick + '</span>';
-			src += '	<button type="button" class="addPlayer add" data-userno="'+ value.userNo +'" data-no="'+ value.userNo +'" data-nick="'+ value.nick +'" data-average="'+ value.average +'" >추가</button>';
-			src += '</li>';
-		});
-	
-		src += '</ul>';
-		$(".searchList").append(src);
-	};	
-	
+		src += '<li>';
+		src += '	<span>' + value.nick + '</span>';
+		src += '	<button type="button" class="addPlayer add" data-userno="'+ value.userNo +'" data-no="'+ value.userNo +'" data-nick="'+ value.nick +'" data-average="'+ value.average +'" >추가</button>';
+		src += '</li>';
+	});
+
+	src += '</ul>';
+	$(".searchList").append(src);
+};	
+
+
 /* 1-1. 검색리스트 추가 */
 $(".searchList, .callFriend").on('click',".addPlayer",function(){
 	console.log("추가버튼 클릭!");	
@@ -207,42 +210,51 @@ $(".searchList, .callFriend").on('click',".addPlayer",function(){
 	}
 });		
 
-	// + 확정리스트 랜더 +
-	function renderLi(cardVo) {	  	
-		var src = "";	
-		
-		src += '<ul>';		
-		src += '	<li>';
-		src += '		<input type="hidden" name="memberNoList" value="' + cardVo.userNo + '">';
-		src += '		<span>' + cardVo.nick + '</span>';
-		src += '		<button type="button" class="delPlayer del" data-userno="' + cardVo.userNo + '"data-no="'+ cardVo.userNo +'" data-nick="'+ cardVo.nick +'">삭제</button>';
-		src += '	</li>';
-		src += '</ul>';
-		
-		return src;
-	};	
+
+// + 확정리스트 랜더 +
+function renderLi(cardVo) {	  	
+	var src = "";	
+	
+	src += '<ul>';		
+	src += '	<li>';
+	src += '		<input type="hidden" name="memberNoList" value="' + cardVo.userNo + '">';
+	src += '		<span>' + cardVo.nick + '</span>';
+	src += '		<button type="button" class="delPlayer del" data-userno="' + cardVo.userNo + '" data-no="'+ cardVo.userNo +'" data-nick="'+ cardVo.nick +'">삭제</button>';
+	src += '	</li>';
+	src += '</ul>';
+	
+	return src;
+};	
+
 
 /* 1-3. 확정후 등록 */
-/* $("#cardConfirm").on('submit',function(){
+$("#cardConfirm").on('submit',function(){
 	console.log("폼 확정");		
-	let memberList = [];
-	let $input = $("#confirmList>ul>li>input");	
+	console.log($("#cardName").val());
+	console.log($("[name='gameType']"));
+	console.log($("[name='memberNoList']"));
 	
-	$input.each(function(i){					
-		for(let i=0 ; i < $input.length ; i++) {
-			var memberNo = $input.eq(i).val();
-			memberList.push(memberNo);
-		}
-	}
 	
-	//var setUserNo = $('[name="setUserNo"]').val();
-	//var title = $('[name="title"]').val();
-	//var gameType = $('[name="gameType"]').val();	
-	let cardUserVo = {	
-			memberList : memberList,
-					
-	} 
-	});*/
+	if($("#cardName").val() == "" || null) {
+		alert("데이터가 누락되었습니다.")
+		return false;	
+		
+	}else if($("[name='gameType']:checked").length == 0 ) {
+		alert("데이터가 누락되었습니다.")
+		return false;		
+	
+	}else if($("[name='memberNoList']") == "" || null) {
+		alert("데이터가 누락되었습니다.")
+		return false;
+		
+	}else{		
+		console.log("전송");
+		return true;	
+	}	
+
+});
+
+	
 	
 $("#friendbtn").on('click',function(){
 	console.log("친구목록 버튼 클릭");
@@ -295,6 +307,37 @@ $("#friendbtn").on('click',function(){
 		$("#friendbtn").after(src);
 	}	
 
+$(".cardList").on('click',".deletebtn",function(){
+	console.log("지우기버튼 클릭!");
+	var cardNo = $(this).attr("data-no");
+	console.log(cardNo);
+	
+	$.ajax({			
+		url : "${pageContext.request.contextPath}/mypage/cardDelete",		
+		type : "post",
+		/* contentType : "application/json"*/
+		data : {cardNo : cardNo},
+
+		dataType : "json",
+		success : function(action){
+			console.log(action);
+			
+			if(action.result == 'success') {//처리성공	
+				console.log("성공");					
+				
+				
+			}else {//오류처리
+				var msg = action.failMsg;
+					alert(msg);				
+			}
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}				
+	});
+	$(this).parent("li").remove();
+});
+	
 </script>
 
 </html>
