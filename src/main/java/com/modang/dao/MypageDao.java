@@ -100,4 +100,10 @@ public class MypageDao {
 		
 		return session.selectList("mypage.selectFriendLoad", userNo);
 	}
+	
+	public int deleteCard(int cardNo) {
+		System.out.println("MypageDao.deleteCard()");
+		
+		return session.delete("mypage.deleteCard",cardNo);
+	}
 }

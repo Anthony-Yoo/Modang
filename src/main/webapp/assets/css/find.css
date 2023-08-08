@@ -68,13 +68,13 @@
 
 #find .b-search-map .b-listWrap .b-searchList ul {
     height: 612px;
-    /*overflow-y: auto;*/
+    overflow-y: auto;
 }
 
 /*리스트아이템*/
 #find .b-search-map .b-listWrap .b-searchList ul>li {
-	width: 100%;
-    height: 98px;
+	width: 98%;
+    height: 100px;
     padding: 0px;
     box-sizing: border-box;
     cursor: pointer;
@@ -86,9 +86,9 @@
 /*리스트아이템 이미지 당구장 대표사진*/
 #find .b-search-map .b-listWrap .b-searchList img {
     float: left;
-    width: 98px;
-    height: 98px;
-    margin: 1px 5px 0px 0px;
+    width: 90px;
+    height: 90px;
+    margin: 4px 5px 0px 0px;
     border: 1px solid #dfdfdf;
     box-sizing: border-box;
 }
@@ -96,25 +96,36 @@
 /*리스트아이템 정보 당구장 정보*/
 #find .b-search-map .b-listWrap .b-searchList .info {
     float: left;
-    width: 196px;
+    width: 180px;
+     height: 100px;
 }
 
 /*리스트아이템 정보 당구장 이름*/
 #find .b-search-map .b-listWrap .b-searchList .repname {
-	padding: 7px 0px 13px 0px;
+	padding-left :10px;
 	font-size: 18px;
 	font-weight: bold;
+	width: 170px;
+	height: 28px;line-height: 28px;
 }
 
 /*리스트아이템 정보 당구장 주소1*/
 #find .b-search-map .b-listWrap .b-searchList .addr {
-	padding-bottom: 9px;
+	padding : 0 4px 0 6px;
 	font-size: 14px;
+	width: 170px;
+	height: 50px;
+	overflow-y:auto;
+	overflow-x:hidden;  
 }
 
-/*리스트아이템 정보 당구장 주소2*/
+/*리스트아이템 정보 당구장 번호2*/
 #find .b-search-map .b-listWrap .b-searchList .sub {
-	font-size: 14px;
+	padding-left :6px;
+	font-size: 12px;
+	width: 170px;
+	height: 18px;
+	line-height: 12px;
 }
 
 

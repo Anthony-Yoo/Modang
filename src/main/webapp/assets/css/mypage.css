@@ -13,7 +13,7 @@ small {font-size:.75em;}
 fieldset{border: 0;}
 a{text-decoration: none; color: #000;}
 button{border: 0; padding: 0;}
-img {vertical-align: top;}/*reset*/
+img {vertical-align: top;object-fit: contain}/*reset*/
 /*-----------------------------------------공통-----------------------------------*/
 .error-msg{color: #F94069; font-size: 13px; display: none; text-align: center;padding-top:5px;}
 .correct-msg{color: #F94069; font-size: 13px; display: none; text-align: center; padding-top:5px;}

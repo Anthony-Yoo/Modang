@@ -166,4 +166,17 @@ public class MypageController {
 		
 		return jsonResult;		
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/cardDelete",method = {RequestMethod.GET,RequestMethod.POST})
+	public JsonResult cardDelete(@RequestParam("cardNo") int cardNo) {
+		System.out.println("MypageController.cardDelete()");
+		
+		int result = mypageService.cardDelete(cardNo);
+		JsonResult jsonResult = new JsonResult();
+		
+		jsonResult.success(result);
+		
+		return jsonResult;		
+	}
 }
