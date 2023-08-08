@@ -11,7 +11,11 @@
 				        c.tableName, 
 				        g.gameType,
 				       	TO_CHAR(g.gamedate, 'MM/DD') AS gamedate,  
-				        g.gameTime,
+				        (SELECT
+                            TO_CHAR(NVL(TRUNC(g.gameTime / 3600), 0), 'FM00') || ':' ||
+                            TO_CHAR(NVL(TRUNC(MOD(g.gameTime, 3600) / 60), 0), 'FM00') || ':' ||
+                            TO_CHAR(NVL(MOD(g.gameTime, 60), 0), 'FM00') AS formatted_time
+                        FROM dual)as gameTime1 ,
 				        TO_CHAR(g.starttime, 'HH24:MI') AS starttime,
 				        TO_CHAR(g.endtime, 'HH24:MI') AS endtime,
 				        g.payStatus,
