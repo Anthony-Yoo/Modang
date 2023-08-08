@@ -106,6 +106,7 @@ public class BiliardDao {
 		System.out.println("BiliardDao.selectOneTableSales()");
 		System.out.println("테이블전체검색:"+tableGamesVo);
 		List<TableGamesVo> salesList = sqlSession.selectList("biliard.selectOneTableSales", tableGamesVo);
+		System.out.println("정보:"+salesList);
 		return salesList;
 	}
 	
