@@ -93,7 +93,7 @@ input::placeholder{color: #B8B8B8;}
 .friendList .pasing{ height: 30px; margin: 20px auto 50px; width: 246px;}
 .friendList .pasing span{display: inline-block; width: 30px; height: 24px; text-align: center;
 	color: #2E419A; line-height: 10px; cursor: pointer;}
-/*-------------------------------------applyManagerment----------------------------------------------*/
+/*-------------------------------------applyManagerment--applyMenu--------------------------------------------*/
 #applyMenu{width:1200px; margin: 0 auto; height: 1000px;}
 #applyMenu .sidebar li a{text-decoration: none; color: #000;}
 #applyMenu .sidebar li a.active{color: #fff;}
@@ -225,5 +225,3 @@ button{cursor: pointer;}
    border-radius: 2px;
    font-size: 14px;
 }
-
- /*---------------------------------applyMenu----------------------*/

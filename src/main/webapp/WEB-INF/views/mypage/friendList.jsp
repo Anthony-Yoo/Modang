@@ -15,8 +15,6 @@
 	<!-- 헤더 시작 -->
     <c:import url="/WEB-INF/views/include/modangSiteHeader.jsp"></c:import>    
     <!-- 헤더 끝 -->
-<<<<<<< HEAD
-
 	<div id="userPage">
 	    <!-- sideNav 시작 -->
         <ul class="sidebar">
@@ -85,7 +83,6 @@
 		    </div>
     	</div>
     </div>
-=======
 	<div class="content">
 		<div id="userPage">
 		    <!-- sideNav 시작 -->

@@ -65,9 +65,10 @@
 
 		<div id="apply">
 			<div class="apply_btn">
-				<a id="myList" class="active" href="${pageContext.request.contextPath}/attendUsers/myPage/myBoardList">내
-					게시글 목록
-				</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a id="myList" class="active" href="${pageContext.request.contextPath}/attendUsers/myPage/myBoardList">
+					내 게시글 목록
+				</a>
+				&nbsp;&nbsp;&nbsp;&nbsp;
 				<a id="myList" href="${pageContext.request.contextPath}/attendUsers/myPage/myApplyList">
 					내 신청글 목록
 				</a>
