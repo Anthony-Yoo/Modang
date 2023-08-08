@@ -8,14 +8,16 @@ public class FavoriteUsersVo {
 	private String favoriteUserDate;
 	private String nick;
 	private int average;
+	private String profileImage;
 	public FavoriteUsersVo(int favoriteNo, int setUserNo, int getUserNo, String favoriteUserDate, String nick,
-			int average) {
+			int average, String profileImage) {
 		this.favoriteNo = favoriteNo;
 		this.setUserNo = setUserNo;
 		this.getUserNo = getUserNo;
 		this.favoriteUserDate = favoriteUserDate;
 		this.nick = nick;
 		this.average = average;
+		this.profileImage = profileImage;
 	}
 	public FavoriteUsersVo() {
 	}
@@ -55,10 +57,18 @@ public class FavoriteUsersVo {
 	public void setAverage(int average) {
 		this.average = average;
 	}
+	public String getProfileImage() {
+		return profileImage;
+	}
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
+	}
 	@Override
 	public String toString() {
 		return "FavoriteUsersVo [favoriteNo=" + favoriteNo + ", setUserNo=" + setUserNo + ", getUserNo=" + getUserNo
-				+ ", favoriteUserDate=" + favoriteUserDate + ", nick=" + nick + ", average=" + average + "]";
+				+ ", favoriteUserDate=" + favoriteUserDate + ", nick=" + nick + ", average=" + average
+				+ ", profileImage=" + profileImage + "]";
 	}
+	
 
 }

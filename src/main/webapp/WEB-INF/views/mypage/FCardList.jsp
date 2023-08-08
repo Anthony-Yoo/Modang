@@ -24,15 +24,9 @@
 	        	</div>
             </div>
             <div class="callFriend">
-                <button type="button" class="call">친구목록 부르기</button>
-                <!--친구목록 부르기- 하단 토글 리스트 팝업으로 추가-->
-                <ul>
-                    <li>
-                        <img src="${pageContext.request.contextPath}/assets/images/ori.png" alt="">
-                        <span>강동구일짱</span>
-                        <button type="button" class="del">추가</button>                        
-                    </li>                    
-                </ul>
+                <button type="button" class="call" id="friendbtn">친구목록 부르기</button>
+                <!--친구목록 부르기- 하단 토글 리스트 팝업으로 추가--> 
+                               
             </div>
             <div class="List">
                 <form id="cardConfirm" action="${pageContext.request.contextPath}/mypage/FCardInsert" method="get">
@@ -62,12 +56,11 @@
             	<c:forEach var="cardInfo" items="${cardList}">
 	               	<li>               		
 	                    <h4>${cardInfo.title}</h4>
-	                    <ul class="nick">
-	                        <li>내가짱</li>
-	                        <li>qwer1234</li>
-	                        <li>김개똥</li>
-	                        <li>당신바규준</li>
-	                    </ul>
+	                    	<ul class="nick">
+		                    	<c:forEach var="member" items="${cardInfo.memberList}">
+			               			<li>${member.guestNick}</li>
+			                    </c:forEach>
+		                    </ul>
 	                    <span>${cardInfo.cardUserDate} || 
 		                    <c:if test="${cardInfo.gameType == 0}">3구</c:if>
 		                    <c:if test="${cardInfo.gameType == 1}">4구</c:if>
@@ -80,8 +73,6 @@
     </div>
 </body>
 <script>
-
-
 /* 1. 아이디 검색  */
 $('#searchbtn').on("click",function(){
     console.log("id검색 버튼 클릭"); 
@@ -140,7 +131,7 @@ $('#searchbtn').on("click",function(){
 	};	
 	
 /* 1-1. 검색리스트 추가 */
-$(".searchList").on('click',".addPlayer",function(){
+$(".searchList, .callFriend").on('click',".addPlayer",function(){
 	console.log("추가버튼 클릭!");	
 	var userNo = $(this).attr('data-userno');
 	var nick = $(this).attr('data-nick');
@@ -237,11 +228,56 @@ $(".searchList").on('click',".addPlayer",function(){
 	} 
 	});*/
 	
+$("#friendbtn").on('click',function(){
+	console.log("친구목록 버튼 클릭");
+	$("#friendList").remove();
 	
+	var userNo = ${userNo};
 	
+	console.log(userNo);
+	$.ajax({			
+		url : "${pageContext.request.contextPath}/mypage/friendload",		
+		type : "post",
+		/* contentType : "application/json"*/
+		data : {userNo : userNo},
+
+		dataType : "json",
+		success : function(action){
+			console.log(action);
+			
+			if(action.result == 'success') {//처리성공	
+				console.log("성공");						
+				renderUl(action.data);	
+				
+			}else {//오류처리
+				var msg = action.failMsg;
+					alert(msg);				
+			}
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}				
+	});
 	
+});
 	
-	
+	function renderUl(friendlist) {	
+		var src = "";		
+		src += '<ul id="friendList">';
+		
+		$.each(friendlist,function(key,value){
+			
+		src += '	<li>';
+		src += '		<img src="${pageContext.request.contextPath }/upload/' + value.profileImage + '" alt="프로필이미지">';
+		src += '		<span>'+ value.nick +'</span>';
+		src += '		<button type="button" class="addPlayer add" data-userno="'+ value.getUserNo +'" data-no="'+ value.favoriteNo +'" data-nick="'+ value.nick +'" >추가</button>';
+		src += '	</li>';
+		
+		});
+		
+		src += '</ul>';		
+		$("#friendbtn").after(src);
+	}	
 
 </script>
 

@@ -94,5 +94,10 @@ public class MypageDao {
 		
 		return session.selectList("mypage.selectMemberList", cardNo);
 	}
-	
+
+	public List<FavoriteUsersVo> selectFriendLoad(int userNo) {
+		System.out.println("MypageDao.selectFriendLoad()");
+		
+		return session.selectList("mypage.selectFriendLoad", userNo);
+	}
 }
