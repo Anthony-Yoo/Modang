@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%-- <%
+    String uploadedImagePath = "${pageContext.request.contextPath }/upload/${requestScope.userVo.profileImage}"; // 이미지 업로드된 경로
+    String defaultImagePath = "${pageContext.request.contextPath}/assets/images/modang_img.png"; // 기본 이미지 경로
+
+    // 이미지가 업로드되었을 경우 해당 이미지 사용, 그렇지 않을 경우 기본 이미지 사용
+    String imagePath = uploadedImagePath.isEmpty() ? defaultImagePath : uploadedImagePath;
+%> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,7 +86,9 @@
                    			 	<!-- 이미지 -->
                    				<div class="form-group">
                    					<div class="image-show">
-		        						<img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileImage}" id="profileImg">
+		        						<img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileImage}" id="profileImg" >
+		        						<%-- <img src="<%= imagePath %>" alt="Image"> --%>
+		        						<%-- <div class="empty-icon"><img src="${pageContext.request.contextPath}/assets/images/modang_img.png" /></div> --%>
 		        					</div>
 									<div class="fileContainer">
 										
@@ -113,8 +122,6 @@
     <c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
     <!-- 푸터 끝 -->  
 
-     
 </body>
-
 
 </html>
