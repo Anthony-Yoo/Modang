@@ -10,8 +10,8 @@ public class ManagerVo {
    private int postcode;            //우편번호
    private String biliardAddress1;  //주소1
    private String biliardAddress2;  //주소2(상세주소)
-   private int latitude;         //위도
-   private int longtitude;       //경도
+   private double latitude;         //위도
+   private double longtitude;       //경도
    private String biliardPhone;     //당구장 전화번호
    private String imageFile1;		//당구장 이미지 (필수)
    private String imageFile2;		//당구장 이미지2
@@ -27,8 +27,8 @@ public class ManagerVo {
 	}
 
 
-    public ManagerVo(int biliardNo, String id, String passwd, String companyNo, String repName, String biliardName,
-			int postcode, String biliardAddress1, String biliardAddress2, int latitude, int longtitude,
+	public ManagerVo(int biliardNo, String id, String passwd, String companyNo, String repName, String biliardName,
+			int postcode, String biliardAddress1, String biliardAddress2, double latitude, double longtitude,
 			String biliardPhone, String imageFile1, String imageFile2, String imageFile3, String time1, String time2,
 			String parking, String bdComment) {
 		super();
@@ -52,6 +52,8 @@ public class ManagerVo {
 		this.parking = parking;
 		this.bdComment = bdComment;
 	}
+
+
 
 
 	// biliardNo 필드의 getter 메서드 정의
@@ -112,22 +114,24 @@ public class ManagerVo {
 		this.biliardAddress2 = biliardAddress2;
 	}
 
-	public int getLatitude() {
+
+
+	public double getLatitude() {
 		return latitude;
 	}
 
 
-	public void setLatitude(int latitude) {
+	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
 
 
-	public int getLongtitude() {
+	public double getLongtitude() {
 		return longtitude;
 	}
 
 
-	public void setLongtitude(int longtitude) {
+	public void setLongtitude(double longtitude) {
 		this.longtitude = longtitude;
 	}
 
@@ -191,6 +195,9 @@ public class ManagerVo {
 				+ imageFile1 + ", imageFile2=" + imageFile2 + ", imageFile3=" + imageFile3 + ", time1=" + time1
 				+ ", time2=" + time2 + ", parking=" + parking + ", bdComment=" + bdComment + "]";
 	}
+
+
+
 
    
    
