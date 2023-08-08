@@ -119,9 +119,82 @@
 				
 		</select>
 		
+		<!-- 날짜별 매출 가져오기 -->
+		<select id="selectTotalSalesByDay" parameterType="com.modang.vo.TableGamesVo" resultType="com.modang.vo.TotalVo">
+			<![CDATA[
+				select  tt.gameDate,
+				        NVL(tt.payMoney, 0) t_payMoney,
+				        NVL(tt.income, 0) t_income,
+				        NVL(ct.card_payMoney, 0) c_payMoney,
+				        NVL(ct.card_income, 0) c_income,
+				        NVL(mt.cash_payMoney, 0) m_payMoney,
+				        NVL(mt.cash_income, 0) m_income
+				from ( select  g.gameDate,
+				               sum(g.payMoney) payMoney,
+				               sum(g.income) income
+				        from biliards b, cuetable c, games g
+				        where b.biliardNo = c.biliardNo
+				        and c.tableNo = g.tableNo
+				        and g.payStatus = 1 
+				        and c.biliardNo = 1 
+			]]>
+					<if test="minDate !=null and  minDate !='' " >
+    					and <![CDATA[ g.gamedate >= #{minDate} ]]>
+    				</if>
+    				<if test="maxDate !=null and  maxDate !='' " >
+    					and <![CDATA[ g.gamedate <= to_date(#{maxDate}) ]]>
+    				</if>
+			<![CDATA[
+				        group by g.gameDate
+				        ) tt, 
+				      ( select  g.gameDate,
+				                sum(g.payMoney) card_payMoney,
+				                sum(g.income) card_income
+				        from biliards b, cuetable c, games g
+				        where b.biliardNo = c.biliardNo
+				        and c.tableNo = g.tableNo
+				        and g.payStatus = 1 
+				        and g.payType = 0 
+				        and c.biliardNo = 1 
+	    	]]>
+				    <if test="minDate !=null and  minDate !='' " >
+    					and <![CDATA[ g.gamedate >= #{minDate} ]]>
+    				</if>
+    				<if test="maxDate !=null and  maxDate !='' " >
+    					and <![CDATA[ g.gamedate <= to_date(#{maxDate}) ]]>
+    				</if>
+			<![CDATA[
+				        group by g.gameDate
+				        ) ct, 
+				      ( select  g.gameDate,
+				                sum(g.payMoney) cash_payMoney,
+				                sum(g.income) cash_income
+				        from biliards b, cuetable c, games g
+				        where b.biliardNo = c.biliardNo
+				        and c.tableNo = g.tableNo 
+				        and g.payStatus = 1 
+				        and g.payType = 1 
+				        and c.biliardNo = 1
+	    	]]>		        
+				   	<if test="minDate !=null and  minDate !='' " >
+    					and <![CDATA[ g.gamedate >= #{minDate} ]]>
+    				</if>
+    				<if test="maxDate !=null and  maxDate !='' " >
+    					and <![CDATA[ g.gamedate <= to_date(#{maxDate}) ]]>
+    				</if>
+			<![CDATA[
+				        group by g.gameDate
+				        ) mt
+				where tt.gameDate = ct.gameDate
+				and   ct.gameDate = mt.gameDate(+)
+				order by tt.gameDate desc
+			]]>
+				
+		</select>
+		
 		
 
-	<!-- 테이블 결제하기 -->
+		<!-- 테이블 결제하기 -->
 		<update id="updateIncome" parameterType="com.modang.vo.TableGamesVo">
 			<![CDATA[
 				update games set income=#{income},
@@ -131,7 +204,8 @@
 			]]>
 		</update>
 
-    <!-- 테이블별 미정산 리스트 가져오기 -->
+
+    	<!-- 테이블별 미정산 리스트 가져오기 -->
     	<select id="selectIncaluList" parameterType="com.modang.vo.CueTableVo" resultType="com.modang.vo.TableGamesVo">
 			<![CDATA[
 					select row_number()over(order by gameno)num, 

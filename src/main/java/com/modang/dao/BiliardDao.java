@@ -117,9 +117,11 @@ public class BiliardDao {
 	
 	
 	/* 일별매출 페이지--------------------------------------------------------------------------------- */
-	public void selectDaySales(TableGamesVo tableGamesVo) {
+	public List<TotalVo> selectDaySales(TableGamesVo tableGamesVo) {
 		System.out.println("BiliardDao.selectDaySales()");
 		System.out.println(tableGamesVo);
+		List<TotalVo> totalList = sqlSession.selectList("biliard.selectTotalSalesByDay", tableGamesVo);
+		return totalList;
 	}
 	
 	
