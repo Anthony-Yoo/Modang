@@ -121,10 +121,11 @@
 											<td>${gamesVo.startTime}</td>
 											<td>${gamesVo.endTime}</td>
 											<td>  
-												  <c:set var="minutes" value="${(gamesVo.gameTime-60) / 60}" />
+<%-- 												  <c:set var="minutes" value="${(gamesVo.gameTime-60) / 60}" />
  												  <c:set var="seconds" value="${gamesVo.gameTime % 60}" />
 
-  												  ${minutes}:${seconds < 10 ? '0' : ''}${seconds}
+  												  ${minutes}:${seconds < 10 ? '0' : ''}${seconds} --%>
+  												  ${gamesVo.gameTime1}	
 											</td>
 											<td>
 											<c:if test ="${gamesVo.payType==0}">카드</c:if>
