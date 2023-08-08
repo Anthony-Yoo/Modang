@@ -15,6 +15,7 @@ import com.modang.vo.TableGamesVo;
 import com.modang.vo.CueTableVo;
 
 import com.modang.vo.TariffVo;
+import com.modang.vo.TotalVo;
 
 @Service
 public class BiliardService {
@@ -112,11 +113,18 @@ public class BiliardService {
 	}
 	
 	/* 테이블 매출 검색 */
-	public List<TableGamesVo> searchTable(TableGamesVo tableGamesVo) {
+	public Map<String, Object> searchTable(TableGamesVo tableGamesVo) {
 		System.out.println("BiliardService.searchTable()");
 		
 		List<TableGamesVo> salesList = biliardDao.selectOneTableSales(tableGamesVo);
-		return salesList;
+		
+		TotalVo totalVo = biliardDao.selectTotalTableSales(tableGamesVo);
+		
+		Map<String, Object> tableSaleMap = new HashMap<String, Object>();
+		tableSaleMap.put("salesList", salesList);
+		tableSaleMap.put("totalVo", totalVo);
+		
+		return tableSaleMap;
 	}
 	/* 일별 매출 페이지-------------------------------------------------------------------------------- */
 	

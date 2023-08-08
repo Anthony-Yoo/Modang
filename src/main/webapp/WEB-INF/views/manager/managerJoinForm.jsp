@@ -163,7 +163,7 @@
 		
 	};
 
-
+	
 
 </script>    
 
@@ -302,10 +302,9 @@ function execDaumPostcode() {
 		$("#tex-latitude").val(lat_lon.lat);
 		$("#tex-longtitude").val(lat_lon.lon);
 		
-		return true; 
+		return flase; 
 		
 	});
-	
 	
 	
 	/* 주소작성시 위경도 추출 */

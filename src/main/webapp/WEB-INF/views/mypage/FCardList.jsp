@@ -9,68 +9,84 @@
 	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
     <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
     <link href="${pageContext.request.contextPath}/assets/css/manager.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/assets/css/mypage.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<c:import url="/WEB-INF/views/include/modangSiteHeader.jsp"></c:import>  
-	    <div class="main-Con">
-        <div class="cardAdd left">
-            <h2>카드 추가</h2>
-            <div class="searhId">
-                <input type="search" class="insertId" id="insertId" placeholder="아이디 입력">
-                <button type="button" class="del" id="searchbtn">검색</button>
-                <!--아이디검색- 하단 토글 리스트 팝업이든뭐든 공간 추가-->    
-                <div class="searchList">   
-                	<!--검색한 아이디가 있는 경우 나오는 리스트-->                 
-	        	</div>
-            </div>
-            <div class="callFriend">
-                <button type="button" class="call" id="friendbtn">친구목록 부르기</button>
-                <!--친구목록 부르기- 하단 토글 리스트 팝업으로 추가--> 
-                               
-            </div>
-            <div class="List">
-                <form id="cardConfirm" action="${pageContext.request.contextPath}/mypage/FCardInsert" method="get">
-                	<p>멤버카드</p>
-	                <label>그룹명</label>
-	                <input type="hidden" name="setUserNo" value="${userNo}">
-	                <input type="text" id="cardName" class="cardName" name="title" placeholder="그룹명 입력">
-	                <label>게임선택</label>
-	                <div class="gt">
-		                <input type="radio" id="3ball" class="cardName" name="gameType" value="0">
-		                <label for="3ball">3구</label>
-		                <input type="radio" id="4ball" class="cardName" name="gameType" value="1">
-		                <label for="4ball">4구</label>
-	                </div>
-	                   <!--당구멤버 리스트는 최대 4명 // 
-	                 // 4명이상 추가 시 "멤버는 4명까지 선택 가능합니당!" 팝업?-->	 
-	                <div id="confirmList">		                
-	                </div>
-	                <button type="submit" class="call" id="confirmbtn">멤버 확정하기</button>
-                </form>
-            </div>
-        </div>
-        <div class="border"></div>
-        <div class="cardList right">        	
-            <h2>카드 리스트</h2>
-            <ul>
-            	<c:forEach var="cardInfo" items="${cardList}">
-	               	<li>               		
-	                    <h4>${cardInfo.title}</h4>
-	                    	<ul class="nick">
-		                    	<c:forEach var="member" items="${cardInfo.memberList}">
-			               			<li>${member.guestNick}</li>
-			                    </c:forEach>
-		                    </ul>
-	                    <span>${cardInfo.cardUserDate} || 
-		                    <c:if test="${cardInfo.gameType == 0}">3구</c:if>
-		                    <c:if test="${cardInfo.gameType == 1}">4구</c:if>
-	                    </span>
-	                    <button type="button">×</button><!--삭제버튼-->
-	                </li>   
-                </c:forEach>             
-            </ul>
-        </div>
-    </div>
+	<div class="cont">
+	 	<div id="userPage" >
+	 		<ul class="sidebar">
+				<li><a href="${pageContext.request.contextPath}/user/userPage">회원정보</a> </li>
+				<li><a href="${pageContext.request.contextPath }/mypage/friendlist">친구목록</a></li>
+				<li><a class="active" href="${pageContext.request.contextPath }/mypage/FCardList">그룹친구</a> </li>
+				<li><a href="${pageContext.request.contextPath }/attendUsers/myPage/myBoardList">게시판매칭</a></li>
+				<li><a href="${pageContext.request.contextPath }/mypage/${sessionScope.authUser.userNo}/record" target="_blank">전적보기</a></li>
+			</ul>
+			<div class="userContent Cfind">
+				<div id="content-header">
+					<h2>
+						<a>카드 추가</a>
+						<a>카드 리스트</a>
+					</h2>
+				</div>
+				<div class="show Cfriend">  
+			        <div class="cardAdd left">
+			            <div class="searhId">
+			                <input type="search" class="insertId" id="insertId" placeholder="아이디 검색으로 추가하기">
+			                <button type="button" class="del" id="searchbtn">검색</button>
+			                <!--아이디검색- 하단 토글 리스트 팝업이든뭐든 공간 추가-->    
+			                <div class="searchList">   
+			                	<!--검색한 아이디가 있는 경우 나오는 리스트-->                 
+				        	</div>
+			            </div>
+			            <div class="callFriend">
+			                <button type="button" class="call" id="friendbtn">친구목록 부르기</button>
+			                <!--친구목록 부르기- 하단 토글 리스트 팝업으로 추가-->               
+			            </div>
+			            <div class="List">
+			                <form id="cardConfirm" action="${pageContext.request.contextPath}/mypage/FCardInsert" method="get">
+			                	<p>멤버카드</p>
+				                <label>그룹명</label>
+				                <input type="hidden" name="setUserNo" value="${userNo}">
+				                <input type="text" id="cardName" class="cardName" name="title" placeholder="그룹명 입력">
+				                <label class="selG">게임선택</label>
+				                <div class="gt">
+							        <label for="3ball">3구<input type="radio" id="3ball" class="3ball" name="gameType" value="0"></label>
+							        <label for="4ball">4구<input type="radio" id="4ball" class="4ball" name="gameType" value="1"></label>
+						        </div>
+				                   <!--당구멤버 리스트는 최대 4명 // 
+				                 // 4명이상 추가 시 "멤버는 4명까지 선택 가능합니당!" 팝업?-->	 
+				                <div id="confirmList">		                
+				                </div>
+				                <button type="submit" class="call" id="confirmbtn">멤버 확정하기</button>
+			                </form>
+			            </div>
+			        </div>
+			        <div id="border"></div>
+			        <div class="cardList right">        	
+	            		<ul>
+	            			<c:forEach var="cardInfo" items="${cardList}">
+		               			<li>               		
+		                  		  	<h4>${cardInfo.title}</h4>
+		                    		<ul class="nick">
+			                    	<c:forEach var="member" items="${cardInfo.memberList}">
+				               			<li>${member.guestNick}</li>
+				                    </c:forEach>
+			                    	</ul>
+		                    	<span>${cardInfo.cardUserDate} &nbsp;&nbsp;  &nbsp; 
+			                    	<c:if test="${cardInfo.gameType == 0}">3구</c:if>
+			                    	<c:if test="${cardInfo.gameType == 1}">4구</c:if>
+		                    	</span>
+		                   		<button type="button">×</button><!--삭제버튼-->
+		                		</li>   
+	                		</c:forEach>             
+	            		</ul>
+	        		</div>
+	    		</div><!-- show Cfriend -->
+    		</div><!-- userContent Cfind" -->
+    	</div><!-- userPage -->
+	</div><!-- cont -->
+	<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
 </body>
 <script>
 /* 1. 아이디 검색  */
