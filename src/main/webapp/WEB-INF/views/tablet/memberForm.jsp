@@ -87,7 +87,15 @@
 					<div>				
 						<dl>
 		                	<dt>
-		                    	<span></span>${card.title} // 선호종목 : ${card.gameType}구
+		                    	<span></span>${card.title} // 선호종목 : 
+		                    	<c:choose>
+									<c:when test="${card.gameType eq 0}">	
+			                    	 3구
+			                    	</c:when>
+			                    	<c:when test="${card.gameType eq 1}">	
+			                    	 4구
+			                    	</c:when>
+			                    </c:choose>
 		                 	</dt>
 		                 	<c:forEach var="member" items="${card.memberList}">
 			                 	<dd>${member.guestNick} &nbsp;&nbsp;&nbsp;
