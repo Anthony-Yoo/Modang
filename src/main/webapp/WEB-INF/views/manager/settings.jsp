@@ -10,6 +10,7 @@
 	<link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/managerdefault.css" />
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 </head>
 <body>
 	<div id="page-wrapper">
@@ -56,7 +57,7 @@
 		<!-- Content -->
 		<section id="content">
 			<div class="container">
-			<form action="${pageContext.request.contextPath}/manager/modify" id="" method="post" enctype="multipart/form-data">
+			<form action="${pageContext.request.contextPath}/manager/modify" id="modangEditForm" method="post" enctype="multipart/form-data">
 			<input type="hidden"  name="biliardNo" value="${requestScope.managerVo.biliardNo}">
 			<input type="hidden" name="id" value ="${requestScope.managerVo.id}"> <!-- modify할때  -->
 				<div class="row">
@@ -172,9 +173,12 @@
 									<button type="submit" class="btn btn-lg btn-blue">수정</button>
 									<button type="button" class="btn btn-lg btn-dark">취소</button>
 								</div>
+								
+								<input type="text" id="tex-latitude" name="latitude" value="${ requestScope.managerVo.latitude}">
+								<input type="text" id="tex-longtitude" name="longtitude" value="${ requestScope.managerVo.longtitude}">
 						</section>
 					</div>
-
+				
 				</div>
 			</form>
 			</div>
@@ -183,26 +187,35 @@
 		<!-- Copyright -->
 		<div id="copyright">&copy; modang. All rights reserved.</div>
 	</div>
-						<script>
-						function previewImage(event, imgId) {
-							const input = event.target;
-							const imgElement = document.getElementById(imgId);
-							
-							if (input.files && input.files[0]) {
-								const reader = new FileReader();
-
-								reader.onload = function (e) {
-								imgElement.style.display = "block"; // 이미지 보이도록 변경
-								imgElement.src = e.target.result;
-								
-							};
-							reader.readAsDataURL(input.files[0]);
-							}else {
-							      // 파일을 선택하지 않은 경우 빈 상태로 되돌림
-							      imgElement.style.display = "none"; // 이미지 숨김
-							    }
-						}
-					</script>
+	<script>
+	
+		//로딩되었을때
+		$(document).ready(function(){
+		  var yn="${param.yn}";
+		  if(yn=='y'){
+			  alert("수정되었습니다.");
+		  }
+		});
+	
+		function previewImage(event, imgId) {
+			const input = event.target;
+			const imgElement = document.getElementById(imgId);
+			
+			if (input.files && input.files[0]) {
+				const reader = new FileReader();
+	
+				reader.onload = function (e) {
+				imgElement.style.display = "block"; // 이미지 보이도록 변경
+				imgElement.src = e.target.result;
+				
+			};
+			reader.readAsDataURL(input.files[0]);
+			}else {
+			      // 파일을 선택하지 않은 경우 빈 상태로 되돌림
+			      imgElement.style.display = "none"; // 이미지 숨김
+			    }
+		}
+	</script>
 	<script>
 	// 우편번호 서비스
 	function daumPostcode() {
@@ -234,6 +247,59 @@
 				document.getElementById("address_detail").focus();
 			}
 		}).open();
+	}
+	
+	
+	
+	//수정버튼 눌렀을때
+	$("#modangEditForm").on("submit", function(e){
+		console.log("모당수정");
+		
+		var address = $("#address").val() + " " + $("#address_detail").val();
+		console.log(address);
+		
+		var lat_lon= getXY(address)
+		
+		$("#tex-latitude").val(lat_lon.lat);
+		$("#tex-longtitude").val(lat_lon.lon);
+		
+		return true; 
+		
+	});
+	
+	
+	
+	/* 주소작성시 위경도 추출 */
+	function getXY(address){
+		var lat_lon = {};
+		
+		$.ajax({
+			url : "https://dapi.kakao.com/v2/local/search/address.json",//주소 요청해야할 곳
+			type : "get",
+			beforeSend : function(xhr){
+				xhr.setRequestHeader("Authorization", "KakaoAK 616454d03f7c2b24d0bfde1357d390d4"); 
+			},
+			data : {
+				query : address
+			},
+			async:false,
+			dataType : "json", //돌아올때 방식
+			success : function(jsonResult) {
+				console.log(jsonResult);
+				console.log(jsonResult.documents[0].x, jsonResult.documents[0].y);/* x경도 y위도 */
+				lat_lon.lat = jsonResult.documents[0].y;
+				lat_lon.lon = jsonResult.documents[0].x;
+				/* 
+				latitude 위도
+				longtitude 경도 */
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+				//alert("서버요청실패");
+			}
+		});
+		
+		return lat_lon;
 	}
 	</script>
 </body>

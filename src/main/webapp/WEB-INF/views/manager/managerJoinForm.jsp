@@ -319,7 +319,7 @@ function execDaumPostcode() {
 				xhr.setRequestHeader("Authorization", "KakaoAK 616454d03f7c2b24d0bfde1357d390d4"); 
 			},
 			data : {
-				query : "전북 삼성동 100"
+				query : address
 			},
 			async:false,
 			dataType : "json", //돌아올때 방식
