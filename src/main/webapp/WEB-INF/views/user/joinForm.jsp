@@ -119,19 +119,18 @@
 							
 							<!-- 이미지 업로드 -->
 							<div class="form-group">
+									<%-- <div class="image-show" id="image-show"><img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileImage}" id="profileImg" ></div> --%>
 								<div class="fileContainer">
 			                		<div class="fileInput">
-			                			<div class="input-group ">
-			                				
-											<img src="${pageContext.request.contextPath}/assets/images/image-.png" id="imgcon" alt="average">
-										
-		                  					<input id="profileImage" type="file" name="file" class="form-control" placeholder="upload image" value="">
-				                  				
-				                		</div>
+			                			
+										<img src="${pageContext.request.contextPath}/assets/images/image-.png" id="imgcon" alt="average">
+									
+	                  					<input id="profileImage" type="file" name="file" class="form-control" placeholder="upload image" value="">
+				                  			
 			            			</div>
 		        				</div>
 		        
-		        				<div class="image-show" id="image-show"></div>
+		        				
 		    				</div>
 		    				 <div class="button-area" >
 								<button type="submit" id="btn-submit" class="btn btn-primary">회원가입 할거당 ^^</button>
@@ -357,6 +356,9 @@
 		
 		
 	});
+	
+
+	
 </script>			
 
 </body>	
