@@ -122,10 +122,10 @@ public class TabletDao {
 		return session.selectList("tablet.selectPlayUser",myGameInfo);
 	}
 	
-	public TariffVo selectTariff(CueTableVo tableInfo) {
+	public TariffVo selectTariff(int biliardNo) {
 		System.out.println("TabletDao.selectTariff()");
 		
-		return session.selectOne("tablet.selectTariff", tableInfo);
+		return session.selectOne("tablet.selectTariff", biliardNo);
 	}
 	
 	public int updateStartTime(TableGamesVo tableGameVo) {

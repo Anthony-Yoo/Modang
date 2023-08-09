@@ -111,7 +111,7 @@
 												<!--테이블 상태별 배경색 변경(대기)  -->
 												<div class="status-available"
 													style="background-color: #d2e4fb;">
-													<div class="small float-right">
+													<div class="tableType small float-right" data-tabletype="${cueTableVo.tableType}">
 														<c:if test="${cueTableVo.tableType==0}">
 															<strong>대대</strong>
 														</c:if>
@@ -122,7 +122,7 @@
 															<strong>포켓</strong>
 														</c:if>
 													</div>
-													<div class="tableTime1 pt-8 pl-3">
+													<div class="tableTime pt-8 pl-3">
 														<strong>대 기</strong>
 													</div>
 													<br> <br>
@@ -144,10 +144,10 @@
 															<strong>포켓</strong>
 														</c:if>
 													</div>
-													<div class="tableTime pt-8 pl-2">00:43</div>
+													<div class="tableTime pt-8 pl-2"></div>
 													<br> <br>
 													<div class="tablePay">
-														<strong>9,000원</strong>
+														<strong></strong>
 													</div>
 												</div>
 											</c:when>
@@ -166,10 +166,10 @@
 															<strong>포켓</strong>
 														</c:if>
 													</div>
-													<div class="tableTime pt-8 pl-2">00:43</div>
-													<br> <br>
+													<div class="tableTime pt-8 pl-2"></div>
+														<br> <br>
 													<div class="tablePay">
-														<strong>9,000원</strong>
+														<strong></strong>
 													</div>
 												</div>
 											</c:otherwise>
@@ -461,100 +461,239 @@
 
 <script type="text/javascript">
 /* 로딩 시작할때(다시켜질때) */
+let $table = $(".tableArea");
+let $timebox = $table.find(".tableTime");
+let $paybox = $table.find(".tablePay");	
+let minFee = 0;
+let tableFee = 0;
+let useFee = 0;
+
 $(document).ready(function(){
-	let $table = $(".tableArea");
-	$.each.each(function(i){					
-		for(let i=0;i<$delbtn.length;i++) {
-			if($table.data("tablestatus") == 1) {
 		
+	$table.each(function(i){// 테이블 반복수행 펑션	
+		var tableStatus = $table.eq(i).data("tablestatus");
+		var tableNo = $table.eq(i).data("tableno");
+		var $this = $table.eq(i);
+
+		switch(tableStatus) {
+		case 0 : //case 0. 테이블상태가 0(대기) 일때
+			console.log("테이블 : 대기 상태입니다.");			
+			break;
+		case 1 : //case 1. 테이블상태가 1(사용중) 일때
+			console.log("테이블 : 사용중 상태입니다.");
+			statusReStart(tableNo,$this);			
+			break;
+		case 2 : //case 2. 테이블상태가 2(일시정지) 일때
+			console.log("테이블 : 정지 상태입니다.");	
+			statusPause(tableNo,$this);
+			payViewer($this);
+			break;
+		
+		default : //	
+
+			break;	
+		
+		}
+	});
+		
+});	
+/*	
+<div class="tableType small float-right" data-tabletype="${cueTableVo.tableType}">
+<c:if test="${cueTableVo.tableType==0}">
+	<strong>대대</strong>
+</c:if>
+<c:if test="${cueTableVo.tableType==1}">
+	<strong>중대</strong>
+</c:if>
+<c:if test="${cueTableVo.tableType==2}">
+	<strong>포켓</strong>
+</c:if>
+</div>*/
+//data-tableno="${cueTableVo.tableNo}"
+//data-tabletype="${cueTableVo.tableType}"
+function payViewer($this){		
+	console.log("이것 감지 :" + $this.data("tabletype"));
+	if ($this.data("tabletype") == 0) {
+		
+		minFee = ${tariffVo.bminfee};
+		tableFee = ${tariffVo.btablefee};
+		
+	}else if ($this.data("tabletype") == 1) {
+		
+		minFee = ${tariffVo.mminfee};
+		tableFee = ${tariffVo.mtablefee};
+		
+	}else if ($this.data("tabletype") == 2) {
+		
+		minFee = ${tariffVo.pminfee};
+		tableFee = ${tariffVo.ptablefee};
 	}
+	console.log("테이블 게임형태 : "+$this.find(".tableType"));
 	
+	var $time = $this.find(".tableTime").text();
+	var splitTime = $time.split(":");
+  	var sumMin =  splitTime[0]*60 + splitTime[1]*1;	  	
+  	var ceilMin =  Math.ceil(sumMin/10)*10;
+  	console.log("시간 : "+$time);
+  	console.log("기본요금 : "+minFee);
+  	console.log("10분요금 : "+tableFee);
+  	//-실제경기시간
+  	//-올림한경기시간* 
+  	//---------------------------------------------------------------------	
+  	//30분 이하일때
+  	//    기본요금적용
+  	//30분 초과일때
+  	//    기본요금+ ((올림한경기시간-30)/10)*10분당 요금	  	
+  	
+  	
+  	if (ceilMin <= 30 ) {//올림한경기시간이 30분 이하일때
+  		useFee = minFee;	  	
+  	}else{//올림한경기시간이 30분 초과일때	  		
+  		useFee = minFee + ((ceilMin-30)/10) * tableFee; 	
+  	}    
+  	$this.find(".tablePay").html("<strong>" + useFee + "</strong>");
+  	$this.find(".tableTime").on('DOMSubtreeModified', function(){
+  		payViewer($this);
+  	});
+} 
+ 
+/* 기능7. 포즈상태 */
+function statusPause(tableNo){	
+	//1.테이블 게임번호 전송-->게임정보 받음	
+	console.log("포즈상태 :"+ tableNo);
+	
+	$.ajax({			
+		url : "${pageContext.request.contextPath}/tablet/pausestatus",		
+		type : "post",
+		/* contentType : "application/json", */
+		data : {tableNo,tableNo},
 		
+		dataType : "json",
+		success : function(action){						
+			console.log(action);	
+			if(action.result == 'success') {//처리성공	
+				console.log("성공");
+				console.log(action.data);
+				
+				/* 리다이렉트 */					
+		
+				
+				//2.버튼출력변경()
+				
+				//3.타이머 기본값 결정
+				console.log(action.data.secondsToTime);
+				time = action.data.secondsToTime;	
+				minTime = Math.floor(time/60);
+				clearInterval(timer);				
+				console.log("타이머 일시정지!");
+				//4.사용시간 (출력)  //요금계산은 자동	
+
+				timeStamper = function(){	
+					min = minTime;
+					hour = Math.floor(min/60);				
+					min = min%60; 						
+					
+					var th = hour;
+					var tm = min;						
+					
+					if(th < 10 ){
+						th = "0" + hour;
+					}			
+					if(tm < 10){
+						tm = "0" + min;
+					}					
+					$this.find(".tableTime").html(th + ":" + tm);						
+					console.log("타임스탬퍼 출력!");	
+				}
+				timeStamper();
+				payViewer($this);
+
+					
+			}else {//오류처리
+				var msg = action.failMsg;
+					alert(msg);				
+			}					
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}		
+		
+	});	
+}
+ 
+/* 기능8. 재시작상태 */
+function statusReStart(tableNo,$this){
+	//1.테이블 게임번호 전송-->게임정보 받음
+	console.log("사용중상태 :"+ tableNo);
 	
-	
-});
-
-
-/* 
-<div class="tableArea" data-biliardno="${cueTableVo.biliardNo}"
-	data-tableno="${cueTableVo.tableNo}"
-	data-tablename="${cueTableVo.tableName}"
-	data-tabletype="${cueTableVo.tableType}">
-	<large class="font-weight-normal text-blue float-left">
-	<strong>No. ${cueTableVo.tableName}</strong></large>
-	<c:choose>
-		<c:when test="${cueTableVo.tableStatus == 0}">
-			<!--테이블 상태별 배경색 변경(대기)  -->
-			<div class="status-available"
-				style="background-color: #d2e4fb;">
-				<div class="small float-right">
-					<c:if test="${cueTableVo.tableType==0}">
-						<strong>대대</strong>
-					</c:if>
-					<c:if test="${cueTableVo.tableType==1}">
-						<strong>중대</strong>
-					</c:if>
-					<c:if test="${cueTableVo.tableType==2}">
-						<strong>포켓</strong>
-					</c:if>
-				</div>
-				<div class="tableTime1 pt-8 pl-3">
-					<strong>대 기</strong>
-				</div>
-				<br> <br>
-				<div class="tablePay"></div>
-			</div>
-		</c:when>
-		<c:when test="${cueTableVo.tableStatus==1}">
-			<!--테이블 상태별 배경색 변경(사용)  -->
-			<div class="status-occupied"
-				style="background-color: #fdeba2;">
-				<div class="small float-right">
-					<c:if test="${cueTableVo.tableType==0}">
-						<strong>대대</strong>
-					</c:if>
-					<c:if test="${cueTableVo.tableType==1}">
-						<strong>중대</strong>
-					</c:if>
-					<c:if test="${cueTableVo.tableType==2}">
-						<strong>포켓</strong>
-					</c:if>
-				</div>
-				<div class="tableTime pt-8 pl-2">00:43</div>
-				<br> <br>
-				<div class="tablePay">
-					<strong>9,000원</strong>
-				</div>
-			</div>
-		</c:when>
-		<c:otherwise>
-			<!--테이블 상태별 배경색 변경(정지)  -->
-			<div class="status-default"
-				style="background-color: #ffeded;">
-				<div class="small float-right">
-					<c:if test="${cueTableVo.tableType==0}">
-						<strong>대대</strong>
-					</c:if>
-					<c:if test="${cueTableVo.tableType==1}">
-						<strong>중대</strong>
-					</c:if>
-					<c:if test="${cueTableVo.tableType==2}">
-						<strong>포켓</strong>
-					</c:if>
-				</div>
-				<div class="tableTime pt-8 pl-2">00:43</div>
-				<br> <br>
-				<div class="tablePay">
-					<strong>9,000원</strong>
-				</div>
-			</div>
-		</c:otherwise>
-	</c:choose>
-
-</div>
-
- */
-
+	$.ajax({			
+		url : "${pageContext.request.contextPath}/tablet/playstatus",		
+		type : "post",
+		/* contentType : "application/json", */
+		data : {tableNo,tableNo},
+		
+		dataType : "json",
+		success : function(action){						
+			console.log(action);	
+			if(action.result == 'success') {//처리성공	
+				console.log("성공");
+				console.log(action.data);				
+				 
+				//3.타이머 기본값 결정
+					console.log(action.data.secondsToTime);
+					time = action.data.secondsToTime;
+					minTime = Math.floor(time/60);
+					//4.타이머 시작(출력)  //요금계산은 자동
+					timeStamper = function(){	
+						min = minTime;
+						hour = Math.floor(min/60);				
+						min = min%60; 						
+						
+						var th = hour;
+						var tm = min;						
+						
+						if(th < 10 ){
+							th = "0" + hour;
+						}			
+						if(tm < 10){
+							tm = "0" + min;
+						}						
+						$this.find(".tableTime").html(th + ":" + tm);						
+						console.log("타임스탬프 작동!");	
+					}		
+					timeStamper();
+					
+					timer = setInterval(function(){		
+						minTime++;
+						min = minTime;
+						hour = Math.floor(min/60);				
+						min = min%60;  				
+						
+						var th = hour;
+						var tm = min;						
+						
+						if(th < 10 ){
+							th = "0" + hour;
+						}			
+						if(tm < 10){
+							tm = "0" + min;
+						}						
+						$this.find(".tableTime").html(th + ":" + tm);					
+						console.log("타이머 작동!");
+						
+					}, 60000);	
+					payViewer($this);
+			
+			}else {//오류처리
+				var msg = action.failMsg;
+					alert(msg);				
+			}					
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}		
+	});		
+}
 
 let crtbiliardNo=0;//현재 선택된 당구장넘버
 let crtTableNo=0; //현재 선택된 테이블넘버

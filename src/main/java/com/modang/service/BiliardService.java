@@ -94,13 +94,19 @@ public class BiliardService {
 	}
 	
 	/*테이블 현황 - 테이블 전체리스트 가져오기*/
-	public List<CueTableVo> tableList(int biliardNo) {
+	public Map<String, Object> tableList(int biliardNo) {
 		System.out.println("BiliardService.tableList()");
 		
 		List<CueTableVo> cueTableList = biliardDao.selectList(biliardNo);
-		System.out.println(cueTableList);
+		TariffVo tariffVo = biliardDao.selectPrice(biliardNo);
 		
-		return cueTableList;
+		Map<String, Object> starterPack = new HashMap<>();
+		starterPack.put("cueTableList", cueTableList);
+		starterPack.put("tariffVo", tariffVo);
+		
+		System.out.println(starterPack);
+		
+		return starterPack;
 	}
 	
 	/* 테이블 매출 페이지-------------------------------------------------------------------------------- */
