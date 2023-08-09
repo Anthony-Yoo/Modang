@@ -166,13 +166,11 @@
 															<strong>포켓</strong>
 														</c:if>
 													</div>
-													<div class="tableTime pt-8 pl-2">
-														<strong>일시정지</strong>
-													</div>
-														<br> <br>
+													<div class="tableTime pt-8 pl-2"></div>
+													<br> <br>
 													<div class="tablePay">
 														<strong></strong>
-													</div>
+													</div>												
 												</div>
 											</c:otherwise>
 										</c:choose>
@@ -570,7 +568,7 @@ function statusPause(tableNo,$this){
 				//2.버튼출력변경()
 				
 				//3.타이머 기본값 결정				
-				clearInterval(timer);				
+			
 				console.log("타이머 일시정지!");
 				//4.사용시간 (출력)  //요금계산은 자동	
 				console.log(action.data.secondsToTime);
