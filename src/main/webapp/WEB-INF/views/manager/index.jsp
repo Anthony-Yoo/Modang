@@ -499,20 +499,7 @@ $(document).ready(function(){
 	});
 		
 });	
-/*	
-<div class="tableType small float-right" data-tabletype="${cueTableVo.tableType}">
-<c:if test="${cueTableVo.tableType==0}">
-	<strong>대대</strong>
-</c:if>
-<c:if test="${cueTableVo.tableType==1}">
-	<strong>중대</strong>
-</c:if>
-<c:if test="${cueTableVo.tableType==2}">
-	<strong>포켓</strong>
-</c:if>
-</div>*/
-//data-tableno="${cueTableVo.tableNo}"
-//data-tabletype="${cueTableVo.tableType}"
+
 function payViewer($this){		
 	console.log("이것 감지 :" + $this.data("tabletype"));
 	if ($this.data("tabletype") == 0) {
@@ -560,7 +547,7 @@ function payViewer($this){
 } 
  
 /* 기능7. 포즈상태 */
-function statusPause(tableNo){	
+function statusPause(tableNo,$this){	
 	//1.테이블 게임번호 전송-->게임정보 받음	
 	console.log("포즈상태 :"+ tableNo);
 	
@@ -582,14 +569,14 @@ function statusPause(tableNo){
 				
 				//2.버튼출력변경()
 				
-				//3.타이머 기본값 결정
-				console.log(action.data.secondsToTime);
-				time = action.data.secondsToTime;	
-				minTime = Math.floor(time/60);
+				//3.타이머 기본값 결정				
 				clearInterval(timer);				
 				console.log("타이머 일시정지!");
 				//4.사용시간 (출력)  //요금계산은 자동	
-
+				console.log(action.data.secondsToTime);
+				time = action.data.secondsToTime;
+				minTime = Math.floor(time/60);
+				//4.타이머 시작(출력)  //요금계산은 자동
 				timeStamper = function(){	
 					min = minTime;
 					hour = Math.floor(min/60);				
@@ -603,10 +590,10 @@ function statusPause(tableNo){
 					}			
 					if(tm < 10){
 						tm = "0" + min;
-					}					
+					}						
 					$this.find(".tableTime").html(th + ":" + tm);						
-					console.log("타임스탬퍼 출력!");	
-				}
+					console.log("타임스탬프 작동!");	
+				}		
 				timeStamper();
 				payViewer($this);
 
