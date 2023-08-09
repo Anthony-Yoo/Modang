@@ -122,10 +122,12 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	
-	@RequestMapping(value = "/test")
-	public String test() {
-
-		return "/board/test2";
+	@RequestMapping(value = "/modifyForm")
+	public String modifyForm(@ModelAttribute BoardVo boardVo) {
+		System.out.println("BoardController.modifyForm()");
+		System.out.println();
+		
+		return "/board/modifyForm";
 	}
 
 	

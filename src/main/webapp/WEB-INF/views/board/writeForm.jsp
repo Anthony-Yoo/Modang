@@ -33,7 +33,7 @@
 		<!-- 글쓰기 바디-->
 		<div id="board">
 			<div id="writeForm">
-				<form action="${pageContext.request.contextPath}/board/write" method="Post">
+				<form action="${pageContext.request.contextPath}/board/write" method="Post" onsubmit="return validateForm()">
 					<table class="el-matchTable">
 						<colgroup>
 							<col style="width: 10%;" />
@@ -104,7 +104,7 @@
 									<label>4명</label>
 								</td>	
 								<th>모임 날짜</th>
-								<td> <input type="datetime-local" id="matchDate" name="matchDate" /></td>	
+								<td> <input type="datetime-local" id="matchDate" name="matchDate" required /></td>	
 							</tr>
 							<tr>
 								<td colspan="4" class="textareaWrap">
@@ -139,14 +139,27 @@
 </body>
 <script type="text/javascript">
 function validateForm() {
-  var matchDateInput = document.getElementById("matchDate");
-  
-  if (matchDateInput.value === "") {
-    alert("모임 날짜를 선택해주세요.");
-    return false; // Prevent form submission
-  }
-  
-  return true; // Allow form submission
+    var title = $("input[name='title']").val();
+    var gameType = $("input[name='matchGameType']:checked").val();
+    var memberNum = $("input[name='membernum']:checked").val();
+    
+    if (title === "") {
+        alert("제목을 입력해주세요.");
+        return false;
+    }
+    
+    if (gameType === undefined) {
+        alert("게임 종류를 선택해주세요.");
+        return false;
+    }
+    
+    if (memberNum === undefined) {
+        alert("게임 인원수를 선택해주세요.");
+        return false;
+    }
+    
+    // 모든 필수 입력 사항이 입력되었을 때 true 반환하여 폼 제출
+    return true;
 }
 </script>
 </html>
