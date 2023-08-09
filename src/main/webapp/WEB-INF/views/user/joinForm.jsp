@@ -79,7 +79,7 @@
 									
 									<img src="${pageContext.request.contextPath}/assets/images/business-card.png" id="nickcon" alt="nick name">
 								
-									<input id="nick" type="text" value="" maxlength="7" class="form-control" name="nick" placeholder="NICK NAME">
+									<input id="nick" type="text" value="" maxlength="10" class="form-control" name="nick" placeholder="NICK NAME">
 								
 									<button id="btnNickCheck" type="button" data-toggle="modal" data-target="#myModal2">확인</button>						
 										
@@ -92,7 +92,7 @@
 									
 									<img src="${pageContext.request.contextPath}/assets/images/smartphone.png" id="cellcon" alt="cellphone number">
 								
-									<input id="cellphone" type="text" value="" maxlength="11" class="form-control" name="cellphone" placeholder="HP">
+									<input id="cellphone" type="text" value="" maxlength="13" class="form-control" name="cellphone" placeholder="HP">
 										
 								</div>
 							</div>
@@ -118,8 +118,25 @@
 								-->
 							
 							<!-- 이미지 업로드 -->
-							<div class="form-group">
-									<%-- <div class="image-show" id="image-show"><img src="${pageContext.request.contextPath }/upload/${requestScope.userVo.profileImage}" id="profileImg" ></div> --%>
+							
+								<div class="form-group ">
+									<div class="input-group">
+						            <ul class="imgBox">
+						            	
+							            <li>
+							            	<!-- 미리보기 이미지 -->
+							                <img id="resultImg1" class="resultImg" src="${pageContext.request.contextPath }/upload/${profileImage}" />
+							                <!-- 이미지 파일 입력 요소 -->
+							                <input type="file" name="file" class="image" accept="image/*" multiple onchange="previewImage(event, 'resultImg1')" />
+							                <!-- 빈 상태일 때 나타낼 내용 -->
+							                <div class="empty-icon"><img src="${pageContext.request.contextPath}/assets/images/modang_img.png" /></div>
+							            </li>
+				            		</ul>
+				            		</div>
+					            </div>
+				            
+							<%-- <div class="form-group">
+									 
 								<div class="fileContainer">
 			                		<div class="fileInput">
 			                			
@@ -132,9 +149,10 @@
 		        
 		        				
 		    				</div>
+		    				--%>
 		    				 <div class="button-area" >
 								<button type="submit" id="btn-submit" class="btn btn-primary">회원가입 할거당 ^^</button>
-							</div>
+							</div> 
 		    				
 							
 			    		</form>
@@ -360,6 +378,30 @@
 
 	
 </script>			
+<script>
+  /*이미지 미리보기*/
+	function previewImage(event, imgId) {
+		const input = event.target;
+		const imgElement = document.getElementById(imgId);
+		const emptyIcon = input.nextElementSibling; // 다음 요소 (빈 상태 표시 아이콘)
 
+		if (input.files && input.files[0]) {
+			const reader = new FileReader();
+
+			reader.onload = function (e) {
+			imgElement.style.display = "block"; // 이미지 보이도록 변경
+			imgElement.src = e.target.result;
+			emptyIcon.style.display = "none"; // 빈 상태 아이콘 숨김
+			
+		};
+
+		reader.readAsDataURL(input.files[0]);
+		}else {
+		      // 파일을 선택하지 않은 경우 빈 상태로 되돌림
+		      imgElement.style.display = "none"; // 이미지 숨김
+		      emptyIcon.style.display = "block"; // 빈 상태 아이콘 보이도록 변경
+		    }
+	}
+</script> 
 </body>	
 </html>

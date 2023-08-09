@@ -163,8 +163,9 @@ public class TabletService {
 		//당구장번호찾기 & 테이블 종류찾기
 		CueTableVo tableInfo = tabletDao.selectCueTable(tableNo);
 		System.out.println(tableInfo);
+		int biliardNo =tableInfo.getBiliardNo();
 		//요금표 찾기
-		TariffVo tariffInfo = tabletDao.selectTariff(tableInfo);
+		TariffVo tariffInfo = tabletDao.selectTariff(biliardNo);
 		System.out.println(tariffInfo);
 		//테이블에 맞는 요금찾기
 		int tableFee = 0;
@@ -300,8 +301,9 @@ public class TabletService {
 		//당구장번호찾기 & 테이블 종류찾기
 			CueTableVo tableInfo = tabletDao.selectCueTable(tableNo);
 			System.out.println(tableInfo);
+			int biliardNo = tableInfo.getBiliardNo();
 		//요금표 찾기
-			TariffVo tariffInfo = tabletDao.selectTariff(tableInfo);
+			TariffVo tariffInfo = tabletDao.selectTariff(biliardNo);
 			System.out.println(tariffInfo);
 		//테이블에 맞는 요금찾기
 			int tableFee = 0;
@@ -381,8 +383,9 @@ public class TabletService {
 		//당구장번호찾기 & 테이블 종류찾기
 			CueTableVo tableInfo = tabletDao.selectCueTable(tableNo);
 			System.out.println(tableInfo);
+			int biliardNo = tableInfo.getBiliardNo();
 		//요금표 찾기
-			TariffVo tariffInfo = tabletDao.selectTariff(tableInfo);
+			TariffVo tariffInfo = tabletDao.selectTariff(biliardNo);
 			System.out.println(tariffInfo);
 		//테이블에 맞는 요금찾기
 			int tableFee = 0;

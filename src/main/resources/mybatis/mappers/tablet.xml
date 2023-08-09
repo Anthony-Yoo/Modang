@@ -323,7 +323,7 @@
 	</select>	
 	
 	<!-- 요금표 찾기 -->
-	<select id="selectTariff" parameterType="com.modang.vo.CueTableVo" resultType="com.modang.vo.TariffVo">
+	<select id="selectTariff" parameterType="int" resultType="com.modang.vo.TariffVo">
 		<![CDATA[
 			select  TARIFFNO,
 					BILIARDNO,

@@ -359,7 +359,7 @@
     height: 40px;
     display: inline-block;
     position: relative;
-    left: -235px;
+    left: -230px;
     top: 0px;
     margin: 0 auto;
 }
@@ -388,7 +388,7 @@
     margin: 0 auto;
     display: inline-block;
     position: relative;
-    left: -1px;
+    left: 0px;
     top: 0px;
     background: linear-gradient(to bottom right, rgb(9, 32, 80), rgb(81, 117, 164));
 }
@@ -425,7 +425,7 @@
     height: 40px;
     display: inline-block;
     position: relative;
-    left: -305px;
+    left: -303px;
     top: 0px;
     margin: 0 auto;
 }
@@ -435,7 +435,7 @@
     height: 40px;
     display: inline-block;
     position: relative;
-    left: -305px;
+    left: -303px;
     top: 0px;
     margin: 0 auto;
 }
@@ -445,7 +445,7 @@
     height: 40px;
     display: inline-block;
     position: relative;
-    left: -305px;
+    left: -303px;
     top: 0px;
     margin: 0 auto;
 }
@@ -471,7 +471,7 @@
     height: 40px;
     display: inline-block;
     position: relative;
-    left: -235px;
+    left: -230px;
     top: 0px;
     margin: 0 auto;
 }
@@ -517,17 +517,42 @@
     top: 0px;
     margin: 0 auto;
 }
+#joinForm .input-group{
+	display: inline-block;
+    position: relative;
+    width: 355px;
+    margin: 0 auto;
+}
 
-#joinForm .image-show #profileImg{
-	width: 340px;
-	height: 340px;
-	object-fit: cover;
-	margin: 0px 0px 3px 0px;
+#joinForm .imgBox{
 	border: outset 2px;
     border-color: darkslateblue;
 }
+#joinForm .empty-icon img{
+	display: inline-block;
+    width: -webkit-fill-available;
+}
+    
+
+#joinForm .imgBox .image{
+	border: 1px solid #2E419A;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 10;
+}
+#joinForm .imgBox #resultImg1{
+	display: contents;
+	width: 100%;
+    height: 291.66px;
+    object-fit: cover;
+}
 /* input */
-#joinForm #profileImage {
+/* #joinForm #input-img {
     width: 300px;
     height: 40px;
     object-fit: cover;
@@ -542,9 +567,9 @@
     color: #111;
 	
 }
-
+ */
 #joinForm #btn-submit {
-    width: 95%;
+    width: 100%;
     color: #fff;
     border-radius: 5px;
     height: 40px;
@@ -555,11 +580,6 @@
 }
 
 
-.input-group[class*=col-] {
-    float: none;
-    padding-right: 0;
-    padding-left: 0;
-}
 
 /* userJoinForm */
 #shadowBox {
