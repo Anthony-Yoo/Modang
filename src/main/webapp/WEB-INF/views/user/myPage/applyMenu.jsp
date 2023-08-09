@@ -25,23 +25,6 @@
 </head>
 <script type="text/javascript">
 //JavaScript
-function adjustHeight() {
-    const applyMenu = document.getElementById('applyMenu');
-    const children = applyMenu.children;
-
-    let totalHeight = 0;
-    for (let i = 0; i < children.length; i++) {
-        totalHeight += children[i].offsetHeight;
-    }
-
-    // 자식 요소의 높이의 합이 기본값인 300px보다 크면 해당 값으로 높이 조절
-    applyMenu.style.height = Math.max(totalHeight, 300) + 'px';
-}
-
-// 페이지 로드 후 자동으로 높이 조절 함수 호출
-window.addEventListener('load', adjustHeight);
-
-// 만약 동적으로 자식 요소들이 추가되거나 변경될 때 높이를 조절하려면 해당 이벤트에도 adjustHeight 함수를 호출해야 합니다.
 
 
 </script>
@@ -79,8 +62,8 @@ window.addEventListener('load', adjustHeight);
 						</tr>
 					</thead>
 
-					<c:forEach items="${mAList}" var="boardVo">
 						<tbody class="statusResult">
+					<c:forEach items="${mAList}" var="boardVo">
 							<tr>
 								<td>${boardVo.boardNo}</td>
 								<!-- 게시판 번호 -->
@@ -128,8 +111,8 @@ window.addEventListener('load', adjustHeight);
 									</c:when>
 								</c:choose>
 							</tr>
-						</tbody>
 					</c:forEach>
+						</tbody>
 				</table>
 			</div>
 		</div>

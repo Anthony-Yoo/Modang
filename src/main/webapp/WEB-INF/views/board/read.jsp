@@ -36,11 +36,11 @@
 					<c:choose>
 						<c:when test="${sessionScope.authUser.userNo == rList.userNo}"> <!-- 작성자 본인인 경우 -->
 							<a id="btn_delete" class="btn-danger"  href="${pageContext.request.contextPath}/board/delete?boardNo=${rList.boardNo}">삭제</a>
-							<a id="btn_modify" class="btn-normal"  href="#">수정</a>
+							<a id="btn_modify" class="btn-normal"  href="${pageContext.request.contextPath}/board/modifyForm?boardVo=${rList}">수정</a>
 							<a id="btn_boardList" class="btn-normal"  href="${pageContext.request.contextPath}/board/list">목록</a>
 						</c:when>
 						<c:when test="${sessionScope.authUser.userNo != rList.userNo}"> <!-- 작성자 본인인 아닌경우 -->
-							<a id="btn_boardList" class="btn-normal"  href="${pageContext.request.contextPath}/board/list">목록</a>
+							<a id="btn_boardList" class="btn-normal" href="${pageContext.request.contextPath}/board/list">목록</a>
 						</c:when>
 					</c:choose>
 				</div>
