@@ -82,7 +82,7 @@ input::placeholder{color: #B8B8B8;}
 /*핀구 리스트*/
 .friendList{width: 1020px; height: 370px; margin: 0 auto ;overflow-y:scroll;overflow-x:hidden; 
 	border: 1px solid #2E419A;}
-.friendList table{width: 1000px; text-align: center; margin: 0 auto; border: 1px solid #2E419A;}
+.friendList table{width: 100%; text-align: center; margin: 0 auto; border: 1px solid #2E419A;}
 .friendList table thead{height: 40px; border-top: 1px solid #2E419A;border-bottom: 1px solid #2E419A;
 	background-color: #ecdfdf; line-height: 40px;}
 .friendList table thead th{color: #2E419A; font-weight: 600;width: 100px;}
