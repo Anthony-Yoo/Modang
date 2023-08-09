@@ -80,7 +80,7 @@ window.addEventListener('load', adjustHeight);
 					</thead>
 
 					<c:forEach items="${mAList}" var="boardVo">
-						<tbody>
+						<tbody class="statusResult">
 							<tr>
 								<td>${boardVo.boardNo}</td>
 								<!-- 게시판 번호 -->
@@ -107,7 +107,26 @@ window.addEventListener('load', adjustHeight);
 								<!-- 글쓴이 닉네임 -->
 								<td>${boardVo.matchDate}</td>
 								<!-- 개임 날짜 -->
-								<td>${boardVo.aStatus}</td>
+								<c:choose >
+									<c:when test="${boardVo.aStatus == 0}">
+										<td id="applyList">
+											<button type="button" class="btnModal"
+												data-boardno="${boardVo.boardNo}">신청중</button>
+										</td>
+									</c:when>
+									<c:when test="${boardVo.aStatus == 1}">
+										<td id="applyList">
+											<button type="button" class="btnModal"
+												data-boardno="${boardVo.boardNo}">승인됨</button>
+										</td>
+									</c:when>
+									<c:when test="${boardVo.aStatus == 2}">
+										<td id="applyList">
+											<button type="button" class="btnModal"
+												data-boardno="${boardVo.boardNo}">거절됨</button>
+										</td>
+									</c:when>
+								</c:choose>
 							</tr>
 						</tbody>
 					</c:forEach>
@@ -122,4 +141,11 @@ window.addEventListener('load', adjustHeight);
 	<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
 	<!-- 푸터 끝 -->
 </body>
+
+<script type="text/javascript">
+
+$(".statusResult").on("click", "button" ,function(event){
+	event.preventDefault();
+});
+</script>
 </html>

@@ -7,11 +7,11 @@
 	<insert id="insert" parameterType="com.modang.vo.AttendUsersVo">
 		<![CDATA[
 			insert into attendUsers
-				   		values(seq_attendUsers_no.nextval,
-				 	   		  #{boardNo},
-				 	   		  #{userNo},
-				 	   		  sysdate,
-				 	   		  0)
+	  		values(seq_attendUsers_no.nextval,
+		   		  #{boardNo},
+		   		  #{userNo},
+		   		  sysdate,
+		   		  0)
 		]]>
 	</insert>
 	
