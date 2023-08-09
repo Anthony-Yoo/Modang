@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,7 +76,7 @@
 									<button type="submit" class="btn btn-sm btn-dark">검색</button>
 								</form> 
 							</header>
-							
+							<div class ="daySalesBox">
 							<table class="table table-striped">
 								<thead class="thead-dark">
 									<tr>
@@ -93,17 +93,18 @@
 									<c:forEach items="${totalList}" var="totalVo">
 										<tr>
 											<td>${totalVo.gameDate}</td>
-											<td>${totalVo.c_payMoney}</td>
-											<td>${totalVo.c_income}</td>
-											<td>${totalVo.m_payMoney}</td>
-											<td>${totalVo.m_income}</td>
-											<td>${totalVo.t_payMoney}</td>
-											<td>${totalVo.t_income}</td>
+											<td><fmt:formatNumber type="number" maxFractionDigits="3"   value="${totalVo.c_payMoney}" /></td>
+											<td><fmt:formatNumber type="number" maxFractionDigits="3"   value="${totalVo.c_income}" /></td>
+											<td><fmt:formatNumber type="number" maxFractionDigits="3"   value="${totalVo.m_payMoney}" /></td>
+											<td><fmt:formatNumber type="number" maxFractionDigits="3"   value="${totalVo.m_income}" /></td>
+											<td><fmt:formatNumber type="number" maxFractionDigits="3"   value="${totalVo.t_payMoney}" /></td>
+											<td><fmt:formatNumber type="number" maxFractionDigits="3"   value="${totalVo.t_income}" /></td>
 										</tr>
 									</c:forEach>
 																																														
 								</tbody>
 							</table>
+							</div>
 						</section>
 					</div>
 					<div class="col-4">

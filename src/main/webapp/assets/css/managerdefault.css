@@ -73,8 +73,8 @@ a {background-color: transparent;}
 
 
 /* Content */
-#content { background: #313687 url("../images/bg02.jpg"); padding: 40px 0 40px 0; font-size: 12px; width: 1280px; min-height:720px; margin: 0 auto; border-radius: 1.5rem;}
-#content section { height:100%; position:relative; background: #fff; padding: 32px 32px 36px 32px; box-shadow: 2px 2px 2px 1px rgba(128, 128, 128, 0.1); margin: 0 0 20px 0; min-height:640px; border-radius: .75rem;}
+#content { background: #313687 url("../images/bg02.jpg"); padding: 40px 0 40px 0; font-size: 12px; width: 1280px; height:740px; margin: 0 auto; border-radius: 1.5rem;}
+#content section { height:660px;; position:relative; background: #fff; padding: 32px 32px 36px 32px; box-shadow: 2px 2px 2px 1px rgba(128, 128, 128, 0.1); margin: 0 0 20px 0; min-height:640px; border-radius: .75rem;}
 #content h2 { font-size: 1.25rem; font-weight:bold; color: #373f42; margin: 0 0 0.25em 0; }
 #content h3 { color: #96a9b5; font-size: 1.25em; }
 #content header { margin: 0 0 2em 0; }
@@ -235,7 +235,8 @@ textarea.form-control {height:auto; resize: none !important;}
 .tableTime {width:100%; color:#d9534f; font-size:3rem;}
 .tableTime1 {width:100%; color:#2E419A; font-size:2rem;}
 .tablePay {float:right;font-size:1rem;}
-
+.tableSalesBox{width:100%;height: 400px;overflow-y: auto;}
+.daySalesBox{width:100%;height: 550px;overflow-y: auto;}
 /* Copyright */
 #copyright {text-align: center; padding: 20px 0 40px 0; color: #b5bec3; font-size:.75rem; }
 
@@ -306,3 +307,4 @@ label.parking{display: inline-block; margin-right: 10px; padding: 4px 10px; back
 	position: absolute; top: 0; left: 0;}
 .image-box>input.resultFile{border: 1px solid #2E419A;position: absolute; top: 0; left: 0;opacity: 0;
 	width: 100%;height: 100%;cursor: pointer; }
+	

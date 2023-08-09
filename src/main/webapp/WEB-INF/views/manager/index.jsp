@@ -167,7 +167,9 @@
 															<strong>포켓</strong>
 														</c:if>
 													</div>
-													<div class="tableTime pt-8 pl-2"></div>
+													<div class="tableTime pt-8 pl-2">
+														<strong>일시정지</strong>
+													</div>
 														<br> <br>
 													<div class="tablePay">
 														<strong></strong>
