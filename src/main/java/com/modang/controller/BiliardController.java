@@ -179,6 +179,27 @@ public class BiliardController {
 		
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "/daySalesChart", method = { RequestMethod.GET, RequestMethod.POST })
+	public JsonResult daySales(@ModelAttribute TableGamesVo tableGamesVo, HttpSession session ) {
+		System.out.println("BiliardController.daySalesChart()");
+		System.out.println("--------일별매출검색 그래프-------");
+		
+		ManagerVo loginManager = (ManagerVo) session.getAttribute("loginManager");
+		int biliardNo = loginManager.getbiliardNo();
+		System.out.println("당구장넘버: "+biliardNo);
+		
+		tableGamesVo.setBiliardNo(biliardNo);
+		
+		List<TotalVo> totalListChart = biliardService.daySalesChart(tableGamesVo);
+		
+		
+		JsonResult jsonResult = new JsonResult();
+		jsonResult.success(totalListChart);
+		
+		return jsonResult;
+	}
+	
 	
 
 	/* 요금테이블 페이지-------------------------------------------------------------------------- */
