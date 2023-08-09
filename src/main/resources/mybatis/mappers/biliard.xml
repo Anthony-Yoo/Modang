@@ -126,7 +126,7 @@
 		<!-- 날짜별 매출 가져오기 -->
 		<select id="selectTotalSalesByDay" parameterType="com.modang.vo.TableGamesVo" resultType="com.modang.vo.TotalVo">
 			<![CDATA[
-				select  to_char(c.gameDate, 'YYYY-MM-DD') gameDate,
+				select  c.gameDate,
 				        nvl(c_income,0) c_income,
 				        nvl(c_payMoney,0)c_payMoney,
 				        nvl(m_income,0) m_income,
@@ -135,7 +135,7 @@
 				        nvl(c_payMoney,0)+nvl(m_payMoney,0) t_payMoney
 				from
 				(
-					select  g.gameDate,
+					select  to_char(g.gameDate, 'YYYY-MM-DD') gameDate,
 					        sum(income) c_income,
 					        sum(payMoney) c_payMoney
 					from biliards b, cuetable c, games g
@@ -152,10 +152,10 @@
    					and <![CDATA[ g.gamedate <= to_date(#{maxDate}) ]]>
     			</if>
 			<![CDATA[		
-					group by g.gameDate
+					group by to_char(g.gameDate, 'YYYY-MM-DD')
 				)c full join
 				(
-					select  g.gameDate,
+					select  to_char(g.gameDate, 'YYYY-MM-DD') gameDate,
 					        sum(income) m_income,
 					        sum(payMoney) m_payMoney
 					from biliards b, cuetable c, games g
@@ -172,7 +172,7 @@
    					and <![CDATA[ g.gamedate <= to_date(#{maxDate}) ]]>
     				</if>
 			<![CDATA[				
-					group by g.gameDate
+					group by to_char(g.gameDate, 'YYYY-MM-DD')
 				)m
 				on c.gameDate = m.gameDate
 				order by gameDate desc
@@ -185,8 +185,8 @@
 		<select id="selectTotalSalesChart" parameterType="com.modang.vo.TableGamesVo" resultType="com.modang.vo.TotalVo">
 			<![CDATA[
 				select ort.rn,
-                       to_char(ort.gameDate, 'YYYY-MM-DD') gameDate,
-					   to_char(ort.gameDate, 'MM"월"DD"일"') dates, 
+				       ort.gameDate,
+				       to_char(to_date(ort.gameDate), 'MM"월"DD"일"') dates, 
 				       ort.c_income, 
 				       ort.c_payMoney, 
 				       ort.m_income, 
@@ -211,31 +211,31 @@
 				                        nvl(c_income,0)+nvl(m_income,0) t_income,
 				                        nvl(c_payMoney,0)+nvl(m_payMoney,0) t_payMoney
 				                from
-                                    (
-                                    select  g.gameDate,
-                                            sum(income) c_income,
-                                            sum(payMoney) c_payMoney
-                                    from biliards b, cuetable c, games g
-                                    where b.biliardNo = c.biliardNo
-                                    and c.tableNo = g.tableNo 
-                                    and g.payStatus = 1 
-                                    and g.payType = 0
-                                    and c.biliardNo = #{biliardNo}
-                                    group by g.gameDate
-                                    )c full join
-                                    (
-                                    select  g.gameDate,
-                                            sum(income) m_income,
-                                            sum(payMoney) m_payMoney
-                                    from biliards b, cuetable c, games g
-                                    where b.biliardNo = c.biliardNo
-                                    and c.tableNo = g.tableNo 
-                                    and g.payStatus = 1 
-                                    and g.payType = 1
-                                    and c.biliardNo = #{biliardNo}
-                                    group by g.gameDate
-                                    )m
-                                on c.gameDate = m.gameDate
+				                    (
+				                    select  to_char(g.gameDate, 'YYYY-MM-DD') gameDate,
+				                            sum(income) c_income,
+				                            sum(payMoney) c_payMoney
+				                    from biliards b, cuetable c, games g
+				                    where b.biliardNo = c.biliardNo
+				                    and c.tableNo = g.tableNo 
+				                    and g.payStatus = 1 
+				                    and g.payType = 0
+				                    and c.biliardNo = #{biliardNo}
+				                    group by to_char(g.gameDate, 'YYYY-MM-DD')
+				                    )c full join
+				                    (
+				                    select  to_char(g.gameDate, 'YYYY-MM-DD') gameDate,
+				                            sum(income) m_income,
+				                            sum(payMoney) m_payMoney
+				                    from biliards b, cuetable c, games g
+				                    where b.biliardNo = c.biliardNo
+				                    and c.tableNo = g.tableNo 
+				                    and g.payStatus = 1 
+				                    and g.payType = 1
+				                    and c.biliardNo = #{biliardNo}
+				                    group by to_char(g.gameDate, 'YYYY-MM-DD')
+				                    )m
+				                on c.gameDate = m.gameDate
 				                order by gameDate desc
 				            )ot
 				        )ort
