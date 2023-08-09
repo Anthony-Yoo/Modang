@@ -321,7 +321,41 @@
 	
 
 } */
-#modifyForm #profileImg{
+#modifyForm .input-group{
+	display: inline-block;
+    position: relative;
+    width: 355px;
+    margin: 0 auto;
+}
+
+#modifyForm .imgBox{
+	border: outset 2px;
+    border-color: darkslateblue;
+}
+#modifyForm .empty-icon img{
+	display: inline-block;
+    width: -webkit-fill-available;
+}
+    
+
+#modifyForm .imgBox .image{
+	border: 1px solid #2E419A;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 10;
+}
+#modifyForm .imgBox #resultImg1{
+	display: contents;
+	width: 100%;
+    height: 291.66px;
+    object-fit: cover;
+}
+/* #modifyForm #profileImg{
 	width: 340px;
 	height: 340px;
 	object-fit: cover;
@@ -336,7 +370,7 @@
     display: inline-block;
     position: relative;
     top: -16px;
-}
+} */
 
 
 #modifyForm #btn-submit{
