@@ -166,7 +166,9 @@
 															<strong>포켓</strong>
 														</c:if>
 													</div>
-													<div class="tableTime pt-8 pl-2"></div>
+													<div class="tableTime pt-8 pl-2">
+														<strong>일시정지</strong>
+													</div>
 														<br> <br>
 													<div class="tablePay">
 														<strong></strong>
@@ -486,7 +488,7 @@ $(document).ready(function(){
 		case 2 : //case 2. 테이블상태가 2(일시정지) 일때
 			console.log("테이블 : 정지 상태입니다.");	
 			statusPause(tableNo,$this);
-			payViewer($this);
+
 			break;
 		
 		default : //	

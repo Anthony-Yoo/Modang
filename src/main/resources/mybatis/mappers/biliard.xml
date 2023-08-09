@@ -269,7 +269,9 @@
 					        paymoney 
 					        from 
 					        games 
-					        where tableno=#{tableNo} and  paystatus='0'					
+					        where tableno=#{tableNo}
+					        and and endtime is not null 
+					        and  paystatus='0'					
 			]]>
 		</select>
 		
