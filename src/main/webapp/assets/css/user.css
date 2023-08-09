@@ -523,6 +523,11 @@
     width: 355px;
     margin: 0 auto;
 }
+
+#joinForm .imgBox{
+	border: outset 2px;
+    border-color: darkslateblue;
+}
 #joinForm .empty-icon img{
 	display: inline-block;
     width: -webkit-fill-available;

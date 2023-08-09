@@ -79,7 +79,7 @@
 									
 									<img src="${pageContext.request.contextPath}/assets/images/business-card.png" id="nickcon" alt="nick name">
 								
-									<input id="nick" type="text" value="" maxlength="7" class="form-control" name="nick" placeholder="NICK NAME">
+									<input id="nick" type="text" value="" maxlength="10" class="form-control" name="nick" placeholder="NICK NAME">
 								
 									<button id="btnNickCheck" type="button" data-toggle="modal" data-target="#myModal2">확인</button>						
 										
@@ -92,7 +92,7 @@
 									
 									<img src="${pageContext.request.contextPath}/assets/images/smartphone.png" id="cellcon" alt="cellphone number">
 								
-									<input id="cellphone" type="text" value="" maxlength="11" class="form-control" name="cellphone" placeholder="HP">
+									<input id="cellphone" type="text" value="" maxlength="13" class="form-control" name="cellphone" placeholder="HP">
 										
 								</div>
 							</div>
