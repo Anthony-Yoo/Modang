@@ -20,9 +20,9 @@
 			.float-l {float: left; }
 			.clear{clear: both; }			
 			dt, dd {padding: 10px;}
-			dt {border: 1px solid #eeeeee;margin-bottom: 5px;margin-top: 5px; background-color: #9dd6f4;}
-			dt span {display: inline-block;	width: 5px; height: 5px; background-color: black;vertical-align: middle;margin-right: 10px;}
-			dd {background-color: #eeeeee;margin-bottom: 5px;display: none;	}
+			dt {width:260px;height:30px; line-height:30px;  border: 1px solid #eeeeee;margin-bottom: 5px;margin-top: 5px; background-color: #9dd6f4;}
+			dt span {display: inline-block;	width: 5px; height: 5px; background-color: black;vertical-align: middle;}
+			dd {width:260px;background-color: #eeeeee;margin-bottom: 5px;display: none;	}
 			dd:hover{background-color: black;color:white;}
 			
 			/*
@@ -57,10 +57,17 @@
 				width: 98%;
 				background-color: #ffffff;
 				border: 1px solid #aca9a9;		
+				height: 440px;
+				overflow-y:auto;
+				display: none;
 			}
 			
+			#findResult tr>td:nth-child(1) {
+			 	width:200px;
+				padding: 10px;		
+			}
 			#findResult tr>td {
-			 	width:150px;
+			 	width:100px;
 				padding: 10px;		
 			}
 		</style>
@@ -79,34 +86,39 @@
 					</c:when>
 				</c:choose>
 			</div>
-			<!-- 카드리스트 -->
-			<div class="cardlistBox float-l">
-				<div class="left float-l" id="cardlist">
-					<div id="tab"><p>카드리스트</p></div>
-					<c:forEach var="card" items="${cardList}">			
-					<div>				
-						<dl>
-		                	<dt>
-		                    	<span></span>${card.title} // 선호종목 : 
-		                    	<c:choose>
-									<c:when test="${card.gameType eq 0}">	
-			                    	 3구
-			                    	</c:when>
-			                    	<c:when test="${card.gameType eq 1}">	
-			                    	 4구
-			                    	</c:when>
-			                    </c:choose>
-		                 	</dt>
-		                 	<c:forEach var="member" items="${card.memberList}">
-			                 	<dd>${member.guestNick} &nbsp;&nbsp;&nbsp;
-			                 		<button type="button" class="addPlayer" data-userno="${member.getUserNo}" data-no="1" data-nick="${member.guestNick}" data-average="${member.average}">추가</button>
-			                 	</dd>
-		                 	</c:forEach>
-		               </dl>					
-					</div>
-					</c:forEach>
-				</div>
-			</div>
+         <!-- 카드리스트 -->
+         <div class="cardlistBox float-l">
+            <div class="left float-l" id="cardlist">
+               <div id="tab"><p>카드리스트</p></div>
+               <div class="cCon">
+	               <c:forEach var="card" items="${cardList}">         
+		               <div>            
+		                  <dl>
+		                         <dt>
+		                             <span></span>
+										<span class="groupN">${card.title}</span>
+		                             	<span class="FG">
+			                             <c:choose>
+			                           		<c:when test="${card.gameType eq 0}">   
+			                                 3구
+			                                </c:when>
+			                                <c:when test="${card.gameType eq 1}">   
+			                                 4구
+			                                </c:when>
+			                             </c:choose>
+			                           </span>
+		                          </dt>
+		                          <c:forEach var="member" items="${card.memberList}">
+		                             <dd>${member.guestNick} 
+		                                <button type="button" class="addPlayer" data-userno="${member.getUserNo}" data-no="1" data-nick="${member.guestNick}" data-average="${member.average}">추가</button>
+		                             </dd>
+		                          </c:forEach>
+		                     </dl>               
+		               </div>
+	               </c:forEach>
+	            </div>
+            </div>
+         </div>
 			<!-- 검색존 -->
 			<div class="findBox float-l">
 				<div class="cent float-l" id="findid">
@@ -153,20 +165,22 @@
 			<div class="favoriteBox float-l">
 				<div class="right float-l" id="favoriteList">
 					<div id="tab"><p>친구목록</p></div>	
-					<table id="favoriteTable">
-						  	<c:forEach var="favorite" items="${favoriteList}">
-								  <tbody>
-								  	<tr class="favoriteUser">
-								  		<td class="nameTd1 float-l">${favorite.nick}</td>
-								  		<td class="averageTd1">[${favorite.average}타]</td>
-								  		<td class="btnTd1">
-								  			<button type="button" class="addPlayer" data-userno="${favorite.getUserNo}" data-no="${favorite.favoriteNo}" data-nick="${favorite.nick}" data-average="${favorite.average}">추가
-								  			</button>
-								  		</td>
-								  	</tr>					  		
-								  </tbody>
-						  </c:forEach>				  
-					</table>
+					<div class="cCon">
+						<table id="favoriteTable">
+							  	<c:forEach var="favorite" items="${favoriteList}">
+									  <tbody>
+									  	<tr class="favoriteUser">
+									  		<td class="nameTd1 float-l">${favorite.nick}</td>
+									  		<td class="averageTd1">[${favorite.average}타]</td>
+									  		<td class="btnTd1">
+									  			<button type="button" class="addPlayer" data-userno="${favorite.getUserNo}" data-no="${favorite.favoriteNo}" data-nick="${favorite.nick}" data-average="${favorite.average}">추가
+									  			</button>
+									  		</td>
+									  	</tr>					  		
+									  </tbody>
+							  	</c:forEach>	
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -296,7 +310,7 @@ $("#close").on('click',function(){
 		src += '	<table class="nickList findTable">';
 		src += '		<tr>';
 		src += '			<td>' + value.nick + '</td>';
-		src += '			<td>&nbsp;&nbsp;&nbsp;['+ value.average + '타]'+'</td>';
+		src += '			<td>['+ value.average + '타]'+'</td>';
 		src += '			<td>';
 		src += '				<button type="button" class="addPlayer" data-userno="'+ value.userNo +'" data-no="'+ value.userNo +'" data-nick="'+ value.nick +'" data-average="'+ value.average +'" >추가</button>';
 		src += '			</td>';

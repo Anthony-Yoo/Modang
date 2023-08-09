@@ -143,6 +143,13 @@ public class BiliardService {
 	}
 	
 	
+	public List<TotalVo> daySalesChart(TableGamesVo tableGamesVo) {
+		System.out.println("BiliardService.daySalesChart()");
+		
+		List<TotalVo> totalListChart = biliardDao.selectDaySalesChart(tableGamesVo);
+	
+		return totalListChart;
+	}
 	
 	
 	

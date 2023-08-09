@@ -126,79 +126,124 @@
 		<!-- 날짜별 매출 가져오기 -->
 		<select id="selectTotalSalesByDay" parameterType="com.modang.vo.TableGamesVo" resultType="com.modang.vo.TotalVo">
 			<![CDATA[
-				select  to_char(tt.gameDate, 'MM"월"DD"일"') dates,
-						to_char(tt.gameDate, 'YYYY-MM-DD') gameDate,
-				        NVL(tt.payMoney, 0) t_payMoney,
-				        NVL(tt.income, 0) t_income,
-				        NVL(ct.card_payMoney, 0) c_payMoney,
-				        NVL(ct.card_income, 0) c_income,
-				        NVL(mt.cash_payMoney, 0) m_payMoney,
-				        NVL(mt.cash_income, 0) m_income
-				from ( select  g.gameDate,
-				               sum(g.payMoney) payMoney,
-				               sum(g.income) income
-				        from biliards b, cuetable c, games g
-				        where b.biliardNo = c.biliardNo
-				        and c.tableNo = g.tableNo
-				        and g.payStatus = 1 
-				        and c.biliardNo = 1 
-			]]>
-					<if test="minDate !=null and  minDate !='' " >
-    					and <![CDATA[ g.gamedate >= #{minDate} ]]>
+				select  to_char(c.gameDate, 'YYYY-MM-DD') gameDate,
+				        nvl(c_income,0) c_income,
+				        nvl(c_payMoney,0)c_payMoney,
+				        nvl(m_income,0) m_income,
+				        nvl(m_payMoney,0) m_payMoney,
+				        nvl(c_income,0)+nvl(m_income,0) t_income,
+				        nvl(c_payMoney,0)+nvl(m_payMoney,0) t_payMoney
+				from
+				(
+					select  g.gameDate,
+					        sum(income) c_income,
+					        sum(payMoney) c_payMoney
+					from biliards b, cuetable c, games g
+					where b.biliardNo = c.biliardNo
+					and c.tableNo = g.tableNo 
+					and g.payStatus = 1 
+					and g.payType = 0 
+					and c.biliardNo = #{biliardNo}
+			]]>		
+				<if test="minDate !=null and  minDate !='' " >
+   					and <![CDATA[ g.gamedate >= #{minDate} ]]>
+   				</if>
+   				<if test="maxDate !=null and  maxDate !='' " >
+   					and <![CDATA[ g.gamedate <= to_date(#{maxDate}) ]]>
+    			</if>
+			<![CDATA[		
+					group by g.gameDate
+				)c full join
+				(
+					select  g.gameDate,
+					        sum(income) m_income,
+					        sum(payMoney) m_payMoney
+					from biliards b, cuetable c, games g
+					where b.biliardNo = c.biliardNo
+					and c.tableNo = g.tableNo 
+					and g.payStatus = 1 
+					and g.payType = 1 
+					and c.biliardNo = #{biliardNo}
+			]]>		
+				<if test="minDate !=null and  minDate !='' " >
+   					and <![CDATA[ g.gamedate >= #{minDate} ]]>
+   				</if>
+   				<if test="maxDate !=null and  maxDate !='' " >
+   					and <![CDATA[ g.gamedate <= to_date(#{maxDate}) ]]>
     				</if>
-    				<if test="maxDate !=null and  maxDate !='' " >
-    					and <![CDATA[ g.gamedate <= to_date(#{maxDate}) ]]>
-    				</if>
-			<![CDATA[
-				        group by g.gameDate
-				        ) tt, 
-				      ( select  g.gameDate,
-				                sum(g.payMoney) card_payMoney,
-				                sum(g.income) card_income
-				        from biliards b, cuetable c, games g
-				        where b.biliardNo = c.biliardNo
-				        and c.tableNo = g.tableNo
-				        and g.payStatus = 1 
-				        and g.payType = 0 
-				        and c.biliardNo = 1 
-	    	]]>
-				    <if test="minDate !=null and  minDate !='' " >
-    					and <![CDATA[ g.gamedate >= #{minDate} ]]>
-    				</if>
-    				<if test="maxDate !=null and  maxDate !='' " >
-    					and <![CDATA[ g.gamedate <= to_date(#{maxDate}) ]]>
-    				</if>
-			<![CDATA[
-				        group by g.gameDate
-				        ) ct, 
-				      ( select  g.gameDate,
-				                sum(g.payMoney) cash_payMoney,
-				                sum(g.income) cash_income
-				        from biliards b, cuetable c, games g
-				        where b.biliardNo = c.biliardNo
-				        and c.tableNo = g.tableNo 
-				        and g.payStatus = 1 
-				        and g.payType = 1 
-				        and c.biliardNo = 1
-	    	]]>		        
-				   	<if test="minDate !=null and  minDate !='' " >
-    					and <![CDATA[ g.gamedate >= #{minDate} ]]>
-    				</if>
-    				<if test="maxDate !=null and  maxDate !='' " >
-    					and <![CDATA[ g.gamedate <= to_date(#{maxDate}) ]]>
-    				</if>
-			<![CDATA[
-				        group by g.gameDate
-				        ) mt
-				where tt.gameDate = ct.gameDate
-				and   ct.gameDate = mt.gameDate(+)
-				order by tt.gameDate desc
+			<![CDATA[				
+					group by g.gameDate
+				)m
+				on c.gameDate = m.gameDate
+				order by gameDate desc
 			]]>
 				
 		</select>
 		
 
-
+		<!-- 날짜별 매출 그래프용 -->
+		<select id="selectTotalSalesChart" parameterType="com.modang.vo.TableGamesVo" resultType="com.modang.vo.TotalVo">
+			<![CDATA[
+				select ort.rn,
+                       to_char(ort.gameDate, 'YYYY-MM-DD') gameDate,
+					   to_char(ort.gameDate, 'MM"월"DD"일"') dates, 
+				       ort.c_income, 
+				       ort.c_payMoney, 
+				       ort.m_income, 
+				       ort.m_payMoney, 
+				       ort.t_income,
+				       ort.t_payMoney
+				from (
+				        select rownum rn,
+				               ot.gameDate, 
+				               ot.c_income, 
+				               ot.c_payMoney, 
+				               ot.m_income, 
+				               ot.m_payMoney, 
+				               ot.t_income,
+				               ot.t_payMoney
+				        from (
+				                select  c.gameDate,
+				                        nvl(c_income,0) c_income,
+				                        nvl(c_payMoney,0)c_payMoney,
+				                        nvl(m_income,0) m_income,
+				                        nvl(m_payMoney,0) m_payMoney,
+				                        nvl(c_income,0)+nvl(m_income,0) t_income,
+				                        nvl(c_payMoney,0)+nvl(m_payMoney,0) t_payMoney
+				                from
+                                    (
+                                    select  g.gameDate,
+                                            sum(income) c_income,
+                                            sum(payMoney) c_payMoney
+                                    from biliards b, cuetable c, games g
+                                    where b.biliardNo = c.biliardNo
+                                    and c.tableNo = g.tableNo 
+                                    and g.payStatus = 1 
+                                    and g.payType = 0
+                                    and c.biliardNo = #{biliardNo}
+                                    group by g.gameDate
+                                    )c full join
+                                    (
+                                    select  g.gameDate,
+                                            sum(income) m_income,
+                                            sum(payMoney) m_payMoney
+                                    from biliards b, cuetable c, games g
+                                    where b.biliardNo = c.biliardNo
+                                    and c.tableNo = g.tableNo 
+                                    and g.payStatus = 1 
+                                    and g.payType = 1
+                                    and c.biliardNo = #{biliardNo}
+                                    group by g.gameDate
+                                    )m
+                                on c.gameDate = m.gameDate
+				                order by gameDate desc
+				            )ot
+				        )ort
+				where rn >= 1
+				and rn <=7
+			]]>
+				
+		</select>
 
 
 		<!-- 테이블 결제하기 -->
@@ -269,7 +314,7 @@
 		<!-- 게임정보리스트가져오기 -->
 		<select id="selectGamesList" parameterType="int" resultType="com.modang.vo.TableGamesVo">
 			<![CDATA[
-				select   g.gameNo,
+				select g.gameNo,
 				         g.tableNo,
 				         g.gameType,
 				         g.memberNum,
@@ -285,13 +330,11 @@
 				         g.pauseStart,
 				         g.pauseStop,
 				         g.pauseTime,
-				         g.setNo,
-				         ROUND((g.PAUSESTART-g.STARTTIME) * 24 * 60 * 60, 2)- g.PAUSETIME as secondsToTime
+				         g.setNo
 				from games g, cuetable c
-				where g.tableNo = c.tableNo
-				and c.biliardNo = 1
-				and c.tableStatus = 2
-				
+				where g.tableNo=c.tableNo
+				and c.biliardNo=#{biliardNo}
+				and g.payStatus=0
 			]]>	
 		</select>
 

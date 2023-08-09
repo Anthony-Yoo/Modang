@@ -175,16 +175,37 @@ $(function() {
 
 function makeGrapeInfo() {
 	
-	<c:forEach items="${totalList}" var="totalVo" begin="0" end="6" step="1">
-		dayList.push("${totalVo.dates}");
-		cardList.push(${totalVo.c_income}); 
-		moneyList.push(${totalVo.m_income});
-		totalList.push(${totalVo.t_income});;	
-	</c:forEach>
-	console.log(dayList);	
-	console.log(cardList);	
-	console.log(moneyList);	
-	console.log(totalList);	
+	$.ajax({			
+		url : "${pageContext.request.contextPath}/manager/daySalesChart",		
+		type : "post",
+		/* contentType : "application/json", */
+		/* data : {keyword: keyword}, */
+		
+		async: false,
+		dataType : "json",
+		success : function(jsonResult){						
+			console.log(jsonResult.data);
+			var list = jsonResult.data
+			
+			
+			for(var i=0; i<list.length; i++){
+				dayList.push(list[i].dates);
+				cardList.push(list[i].c_income); 
+				moneyList.push(list[i].m_income);
+				totalList.push(list[i].t_income);;	
+			}
+			console.log(dayList);	
+			console.log(cardList);	
+			console.log(moneyList);	
+			console.log(totalList);	
+				
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}		
+		
+	});	
+	
 }
 
 </script>

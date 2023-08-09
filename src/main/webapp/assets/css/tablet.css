@@ -33,6 +33,11 @@
 #gameType{display:inline-block;width:100%;height: 2.1%;color: white; margin-top: 10px;margin-left: 50px;
     font-size: 20px;}
 .cardlistBox{width:29%;height: 595px; background-color: white; margin-top: 3%; margin-left: 3.5%; border-radius: 10px;}
+.cCon{height: 500px; overflow-y: auto; overflow-x: hidden;}
+.cCon .groupN{display:inline-block; width:210px; background: 0; height: 30px;    line-height: 26px;}
+.cCon .FG{display:inline-block; width:30px; background: 0;height: 30px;}
+.cCon>div>dl>dd{width: 280px;}
+.cCon>div>dl>dd>.addPlayer{text-align: right;}
 .findBox{width:29%;height: 595px; background-color: white; margin-top: 3%; margin-left: 3%; border-radius: 10px;}
 .favoriteBox{width:29%;height: 595px; background-color: white; margin-top: 3%; margin-left: 3%; border-radius: 10px;}
 #cardlist {width : 300px;margin-left: 7%;}
@@ -47,15 +52,16 @@
 .addUserBox{display: inline-block; width: 100%;height: 30px;margin-top: 10px;}
 .gageBox{display: inline-block; width: 100%;height: 30px;}
 #confirm{margin-top: 5px;width: 96px; height: 50px;display:inline-block;font-weight:400;color:#fff;text-align:center;vertical-align:middle;user-select:none;background:#45a8d6;border:none;font-size:1.25rem;line-height:1.5rem;border-radius:.25rem;cursor:pointer;}
-.averageTd{width:170px;}
+.averageTd{width:100px;}
 .btnTd{width:70px;}
 .nameTd{margin-left:10px;width:100px;margin-top: 3px;}
-.averageTd1{width:170px;}
+.averageTd1{width:150px;}
 .btnTd1{width:70px;}
-.nameTd1{margin-left:10px;width:100px;margin-top: 3px;}
+.nameTd1{margin-left:10px;width:130px;margin-top: 3px;}
 .btnBox{margin-top:10px;}
-#favoriteTable{width: 297px;height: auto;}
-.favoriteUser{display: inline-block;width:298px;height: 35px;border: 1px solid #eeeeee;margin-top: 5px;background-color: #9dd6f4;padding-top: 10px;}
+#favoriteTable{width: 300px;height: 500px; overflow-y:auto;}
+.favoriteUser{display: inline-block;width:280px;height: 35px;border: 1px solid #eeeeee;margin-top: 5px;background-color: #9dd6f4;padding-top: 10px;}
+.tabBox{width:100%;height: 500px;overflow-y: auto;}
 
 /* 점수판 */						
 .top {height: 120px;}
