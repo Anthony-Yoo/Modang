@@ -20,8 +20,8 @@
 </head>
 <body>
    	<div id="main-content">
-        <div class="container">
-            <h2>로그인</h2>
+        <div class="container tablet">
+            <h2>태블릿로그인</h2>
             <div class="">
                 <form action="${pageContext.request.contextPath}/tablet/managerlogin" id="" name="" method="post">
                         <div class="login-wrap">
@@ -44,6 +44,7 @@
                      </div>
                 </form>
             </div>
+            <p class="foot">© modang. All rights reserved. 모당 큐 v0.9 </p>
         </div>
     </div>   
 </body>

@@ -109,7 +109,9 @@ justify-content: center;align-items: center; pointer-events: none;}
 .login-wrap .con .inp-txt .addition a{color: #000; border-left: 2px solid #2E419A; padding: 0 10px;}
 .login-wrap .con .inp-txt .addition a:nth-child(1){border: 0;}
 .login{width: 350px;}
-
+/*------------------------------------태블릿로그인---------------*/
+#main-content>.tablet{margin-top: 200px;}
+.tablet>p.foot{margin: 0 auto; color: #b5bec3; font-size: 12px; margin-top: 30px;}
 /*-------------------------------모당메인-당구장찾기---------------------------------------*/
 .main-con{width: 1200px; margin: 0px auto; height: 740px;box-sizing: border-box;}
 .main-con .BCon{width: 1100px;height: 684px; border: 2px solid #2E419A; margin: 50px auto; box-sizing: border-box;
