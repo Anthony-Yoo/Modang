@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -123,7 +124,7 @@
 															<strong>포켓</strong>
 														</c:if>
 													</div>
-													<div class="tableTime pt-8 pl-3">
+													<div class="tableTime pt-8">
 														<strong>대 기</strong>
 													</div>
 													<br> <br>
@@ -145,7 +146,7 @@
 															<strong>포켓</strong>
 														</c:if>
 													</div>
-													<div class="tableTime pt-8 pl-2"></div>
+													<div class="tableTime pt-8"></div>
 													<br> <br>
 													<div class="tablePay">
 														<strong></strong>
@@ -167,7 +168,7 @@
 															<strong>포켓</strong>
 														</c:if>
 													</div>
-													<div class="tableTime pt-8 pl-2"></div>
+													<div class="tableTime pt-8"></div>
 													<br> <br>
 													<div class="tablePay">
 														<strong></strong>
@@ -1009,6 +1010,7 @@ $(".tableArea").on("click",function(){
 
 function render (tableGamesVo, dir) {
 
+    if(tableGamesVo.endTime!=null){
 	var tr = ""; 
   	tr += '<tr class="custom-height" data-no="'+tableGamesVo.gameNo +'" data-price="'+tableGamesVo.payMoney+'">' ; 
     tr +=    '<td>' +tableGamesVo.gameNo+  '</td>' ;
@@ -1022,7 +1024,7 @@ function render (tableGamesVo, dir) {
     tr += '<td>' + formattedStartTime + '</td>';  
     
     // endTime 처리
-    var endDate = new Date(tableGamesVo.endTime);
+    	var endDate = new Date(tableGamesVo.endTime);
     var endHours = endDate.getHours();
     var endMinutes = endDate.getMinutes();
     var formattedEndTime =
@@ -1032,6 +1034,7 @@ function render (tableGamesVo, dir) {
     tr +=    '<td>' + tableGamesVo.payMoney + '</td>' ;
     tr +=    '<td>'+"미정산"+ '</td>' ;
     tr += '</tr>';
+    }
     
 	if(dir =='up'){
 	    $(".listTalbe").prepend(tr);
