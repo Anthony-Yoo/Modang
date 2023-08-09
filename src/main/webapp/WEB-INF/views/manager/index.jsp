@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
+<META HTTP-EQUIV="refresh" CONTENT="60">
 <link rel="icon" sizes="any"
 	href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
 <link rel="stylesheet"

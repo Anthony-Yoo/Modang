@@ -371,7 +371,11 @@
     position: relative;
     top: -16px;
 } */
-
+#modifyForm .button-area{
+	position: relative;
+	width:355px;
+	margin:0 auto;
+}
 
 #modifyForm #btn-submit{
 	width: 100%;
