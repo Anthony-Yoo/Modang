@@ -296,6 +296,8 @@ $(".panalty").on("click",function(){
 								"text-align" : "center"
 								});
 				lastMemeber.off('click');
+				lastMemeber.siblings(".panalty").off('click');
+				lastMemeber.siblings(".score").off('click');	
 				var lastActiveAverage = lastMemeber.parent().siblings(".bdtop").find("#act-average").text();				
 				console.log("꼴지 총친타수 : "+lastActiveAverage);
 				

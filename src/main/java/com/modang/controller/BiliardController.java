@@ -109,9 +109,16 @@ public class BiliardController {
 		if (loginManager != null) { // 로그인 되어있을 경우 접속
 			int biliardNo = loginManager.getbiliardNo();
 
-			List<CueTableVo> cueTableList = biliardService.tableList(biliardNo);
+			Map<String, Object> starterPack = biliardService.tableList(biliardNo);
+			@SuppressWarnings("unchecked")
+			List<CueTableVo> cueTableList = (List<CueTableVo>)starterPack.get("cueTableList");
+			TariffVo tariffVo = (TariffVo)starterPack.get("tariffVo");		
+			
+			
 			if (cueTableList != null) {
 				model.addAttribute("cueTableList", cueTableList);
+				model.addAttribute("tariffVo", tariffVo);
+				
 			}
 
 			return "/manager/index";
@@ -177,6 +184,27 @@ public class BiliardController {
 		
 		return "/manager/daySales";
 		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/daySalesChart", method = { RequestMethod.GET, RequestMethod.POST })
+	public JsonResult daySales(@ModelAttribute TableGamesVo tableGamesVo, HttpSession session ) {
+		System.out.println("BiliardController.daySalesChart()");
+		System.out.println("--------일별매출검색 그래프-------");
+		
+		ManagerVo loginManager = (ManagerVo) session.getAttribute("loginManager");
+		int biliardNo = loginManager.getbiliardNo();
+		System.out.println("당구장넘버: "+biliardNo);
+		
+		tableGamesVo.setBiliardNo(biliardNo);
+		
+		List<TotalVo> totalListChart = biliardService.daySalesChart(tableGamesVo);
+		
+		
+		JsonResult jsonResult = new JsonResult();
+		jsonResult.success(totalListChart);
+		
+		return jsonResult;
 	}
 	
 	

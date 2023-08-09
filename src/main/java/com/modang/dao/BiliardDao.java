@@ -126,6 +126,15 @@ public class BiliardDao {
 	}
 	
 	
+	/* 일별매출 그래프--------------------------------------------------------------------------------- */
+	public List<TotalVo> selectDaySalesChart(TableGamesVo tableGamesVo) {
+		System.out.println("BiliardDao.selectDaySalesChart()");
+		System.out.println(tableGamesVo);
+		List<TotalVo> totalListChart = sqlSession.selectList("biliard.selectTotalSalesChart", tableGamesVo);
+		return totalListChart;
+	}
+	
+	
 	/* 요금테이블 페이지--------------------------------------------------------------------------------- */
 	/* 요금테이블 - 요금정보가져오기 */
 	public TariffVo selectPrice(int biliardNo) {

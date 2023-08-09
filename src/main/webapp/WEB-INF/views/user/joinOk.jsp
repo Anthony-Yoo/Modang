@@ -43,8 +43,8 @@
        					
     			</div>
     			<div class="button-area">	
-						<button type="button" class="btn btn-primary" style="width:240px;height: 40px;border-radius:10px;color:white;background:linear-gradient(to bottom right, rgb(9, 32, 80),rgb(81, 117, 164));" onclick="document.location='${pageContext.request.contextPath}/user/loginForm'">로그인화면으로</button>
-						<button type="button" class="btn btn-primary" style="width:240px;height: 40px;border-radius:10px;color:white;background:linear-gradient(to bottom right, rgb(9, 32, 80),rgb(81, 117, 164));" onclick="document.location='${pageContext.request.contextPath}/'">시작화면으로</button>
+						<button type="button" class="btn btn-primary" id="loginF" style="width:240px;height: 40px;border-radius:10px;color:white;background:linear-gradient(to bottom right, rgb(9, 32, 80),rgb(81, 117, 164));" onclick="document.location='${pageContext.request.contextPath}/user/loginForm'">로그인화면으로</button>
+						<button type="button" class="btn btn-primary" id="mainF" style="width:240px;height: 40px;border-radius:10px;color:white;background:linear-gradient(to bottom right, rgb(9, 32, 80),rgb(81, 117, 164));" onclick="document.location='${pageContext.request.contextPath}/'">시작화면으로</button>
    				</div>
     	</div>
     </div>

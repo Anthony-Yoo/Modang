@@ -72,7 +72,7 @@
 <div id="modalContainer" class="hidden">
 	<div id="modalContent">
     	<div class="modal-header">
-	    	<p>☆☆당구장</pd>
+	    	<p class="m-title"></pd>
 		</div>
 		
 		<div class="modal-body">
@@ -151,8 +151,13 @@ $(document).ready(function() {
 
 //당구장 상세보기 모달창 버튼 클릭했을때 -> 모달창 뜸
 $(".modangList").on("click", "li", function() {
-	console.log("모달창 호출버튼 클릭");
 	var biliardno = $(this).data("biliardno");
+	modalInfo(biliardno);
+});
+
+function modalInfo(biliardno){
+	console.log("모달창 호출버튼 클릭");
+	
 	
 	$.ajax({			
 		url : "${pageContext.request.contextPath}/manager/modang/"+biliardno,		
@@ -165,6 +170,9 @@ $(".modangList").on("click", "li", function() {
 				
 				var modangVo = jsonResult.data; //모당 정보
 				console.log(modangVo);	
+				
+				
+				$(".m-title").html(modangVo.biliardName );
 				
 				var imgUrl = "${pageContext.request.contextPath}/upload/"
 				
@@ -197,10 +205,9 @@ $(".modangList").on("click", "li", function() {
 		
 	});	
   
-  
-  
 	$("#modalContainer").removeClass("hidden");
-});
+}
+
 
 
 /* 모달창 닫기 버튼 클릭했을때 */
@@ -274,6 +281,7 @@ function renderMarker(modangList){
 	
 	/* 마커를 지도위에 표시합니다. */
 	for (var i = 0; i < modangList.length; i ++) {
+	    var no = modangList[i].biliardNo
 	    
 	    // 마커를 생성합니다
 	    var marker = new kakao.maps.Marker({
@@ -281,6 +289,8 @@ function renderMarker(modangList){
 	        title: modangList[i].biliardName, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
 	        biliardNo: modangList[i].biliardNo //추가정보
 	    });
+	    
+	    marker.biliardNo = modangList[i].biliardNo;
 	    /* 마커를 지도에 표시 */
 	    marker.setMap(map);
 	    
@@ -297,17 +307,30 @@ function renderMarker(modangList){
 	    infowindow.open(map, marker);  
 	    */
 	    
+	    
+	   
+	    // 마커에 클릭이벤트를 등록합니다
+	    kakao.maps.event.addListener(marker, 'click', function() {
+		    modalInfo(this.biliardNo)
+	    });
+	    
 	    //생성된 마커를 관리배열에 추가합니다
-	    markerList.push(marker);
+	    markerList.push({id:no, marker: marker});
+	    
+	    
 	}
-
-
+	
+	console.log(markerList);
     // 이동할 위도 경도 위치를 생성합니다 
     var moveLatLon = new kakao.maps.LatLng(modangList[0].latitude, modangList[0].longtitude);
     
     // 지도 중심을 이동 시킵니다
     map.setCenter(moveLatLon);
+    
 }
+
+
+
 
 
 
