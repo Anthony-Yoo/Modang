@@ -33,7 +33,7 @@
 		<!-- 글쓰기 바디-->
 		<div id="board">
 			<div id="writeForm">
-				<form action="${pageContext.request.contextPath}/board/write" method="get">
+				<form action="${pageContext.request.contextPath}/board/write" method="Post">
 					<table class="el-matchTable">
 						<colgroup>
 							<col style="width: 10%;" />
