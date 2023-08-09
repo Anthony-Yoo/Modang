@@ -72,7 +72,7 @@
 <div id="modalContainer" class="hidden">
 	<div id="modalContent">
     	<div class="modal-header">
-	    	<p>☆☆당구장</pd>
+	    	<p class="m-title"></pd>
 		</div>
 		
 		<div class="modal-body">
@@ -171,6 +171,9 @@ function modalInfo(biliardno){
 				var modangVo = jsonResult.data; //모당 정보
 				console.log(modangVo);	
 				
+				
+				$(".m-title").html(modangVo.biliardName );
+				
 				var imgUrl = "${pageContext.request.contextPath}/upload/"
 				
 				$(".m-img-01").prop( 'src', imgUrl+modangVo.imageFile1 );
@@ -187,7 +190,7 @@ function modalInfo(biliardno){
 					$(".m-parking").html( "주차불가능");
 				}
 				
-				$(".m-address").html( modangVo.biliardAddress1 +" "+ modangVo.biliardAddress1);
+				$(".m-address").html( modangVo.biliardAddress1 +" "+ modangVo.biliardAddress2);
 				$(".m-comment").html( modangVo.bdComment );
 				
 				
