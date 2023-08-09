@@ -46,7 +46,8 @@ html, body {
   해더
 *****************************************************************************************/
 .header-container { 
-	 border-bottom: 2px solid #2E419A;
+	width: 100%; 
+	border-bottom: 2px solid #2E419A;
 }
 
 .header-container #header {
