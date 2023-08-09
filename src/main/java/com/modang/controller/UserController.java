@@ -185,7 +185,7 @@ public class UserController {
 		 * //세션의 이미지 표기 및 변경 authUser.setProfileimage(userVo.getProfileimage());
 		 */
 		 
-		return "redirect:/user/modifyForm";
+		return "redirect:/user/userPage";
 	}
 	
 	//나의 페이지
