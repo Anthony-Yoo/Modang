@@ -129,7 +129,7 @@ var markerList = [] ; /* 지도에 표시된 마커정보 배열 */
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 10 // 지도의 확대 레벨
+        level: 3 // 지도의 확대 레벨
     };
 
 // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
@@ -192,6 +192,10 @@ function modalInfo(biliardno){
 				
 				$(".m-address").html( modangVo.biliardAddress1 +" "+ modangVo.biliardAddress2);
 				$(".m-comment").html( modangVo.bdComment );
+				
+				
+				
+				
 				
 				
 			}else {//오류처리
@@ -276,7 +280,7 @@ function renderMarker(modangList){
 	
 	/* 이전의 표시된 마커를 지웁니다. */
 	for (var i = 0; i < markerList.length; i ++) {
-		markerList[i].setMap(null);
+		markerList[i]=null;
 	}
 	
 	/* 마커를 지도위에 표시합니다. */
@@ -312,6 +316,8 @@ function renderMarker(modangList){
 	    // 마커에 클릭이벤트를 등록합니다
 	    kakao.maps.event.addListener(marker, 'click', function() {
 		    modalInfo(this.biliardNo)
+			
+		    
 	    });
 	    
 	    //생성된 마커를 관리배열에 추가합니다

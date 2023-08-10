@@ -295,26 +295,28 @@
 								<div class="row">
 									<div class="col-12">
 										<strong><미정산 리스트></strong>
-											<table class="inCaluList">
-												<thead class="thead-dark">
-													<tr>
-														<th>no</th>
-														<th>시작시간</th>
-														<th>종료시간</th>
-														<th>결제금액</th>
-														<th>결제상태</th>
-													</tr>
-												</thead>
-												<tbody class="listTalbe">
-													<!-- 											        <tr class="custom-height">
-												          <td>1</td>
-												          <td>11:45</td>
-												          <td>12:51</td>
-												          <td>8,000</td>
-												          <td>미정산</td>
-											        </tr> -->
-												</tbody>
-											</table>
+											<div class="inCaluTable">
+												<table class="inCaluList">
+													<thead class="thead-dark">
+														<tr>
+															<th>no</th>
+															<th>시작시간</th>
+															<th>종료시간</th>
+															<th>결제금액</th>
+															<th>결제상태</th>
+														</tr>
+													</thead>
+													<tbody class="listTalbe">
+														<!-- 											        <tr class="custom-height">
+													          <td>1</td>
+													          <td>11:45</td>
+													          <td>12:51</td>
+													          <td>8,000</td>
+													          <td>미정산</td>
+												        </tr> -->
+													</tbody>
+												</table>
+											</div>		
 									</div>
 								</div>
 							</form>
@@ -325,7 +327,7 @@
 		</section>
 
 		<!-- Copyright -->
-		<div id="copyright">&copy; modang. All rights reserved.</div>
+		<div id="copyright">&copy; modang. All rights reserved. 모당매니져 v0.9 </div>
 
 	</div>
 
@@ -1012,6 +1014,7 @@ function render (tableGamesVo, dir) {
 
     if(tableGamesVo.endTime!=null){
 	var tr = ""; 
+	
   	tr += '<tr class="custom-height" data-no="'+tableGamesVo.gameNo +'" data-price="'+tableGamesVo.payMoney+'">' ; 
     tr +=    '<td>' +tableGamesVo.gameNo+  '</td>' ;
     

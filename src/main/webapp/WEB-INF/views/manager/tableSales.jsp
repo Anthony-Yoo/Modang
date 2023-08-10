@@ -141,7 +141,7 @@
 		</section>
 
 		<!-- Copyright -->
-		<div id="copyright">&copy; modang. All rights reserved.</div>
+		<div id="copyright">&copy; modang. All rights reserved. 모당매니져 v0.9 </div>
 	</div>
 </body>
 <script type="text/javascript">

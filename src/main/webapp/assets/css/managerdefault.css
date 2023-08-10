@@ -307,4 +307,6 @@ label.parking{display: inline-block; margin-right: 10px; padding: 4px 10px; back
 	position: absolute; top: 0; left: 0;}
 .image-box>input.resultFile{border: 1px solid #2E419A;position: absolute; top: 0; left: 0;opacity: 0;
 	width: 100%;height: 100%;cursor: pointer; }
-	
+
+
+.inCaluTable{width:300px;height: 140px;overflow-y: auto;}
