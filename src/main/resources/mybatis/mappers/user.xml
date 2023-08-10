@@ -45,7 +45,8 @@ values( SEQ_USERS_NO.nextval,
 <!-- 회원수정폼 -->
 <select id="selectUserByNo" parameterType="String" resultType="com.modang.vo.UserVo">
 	<![CDATA[
-		select id,  
+		select userNo,
+				id,  
 			   nick,
 			   passwd,
 			   cellphone, 

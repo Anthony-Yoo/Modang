@@ -123,12 +123,34 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/modifyForm")
-	public String modifyForm(@ModelAttribute BoardVo boardVo) {
+	public String modifyForm(@RequestParam("boardNo") int boardNo, Model model) {
 		System.out.println("BoardController.modifyForm()");
-		System.out.println();
+		System.out.println(boardNo);
+		BoardVo result = boardService.read(boardNo);
+		model.addAttribute("rList", result);
 		
 		return "/board/modifyForm";
 	}
-
+	
+	@RequestMapping(value = "/modify")
+	public String modify(@ModelAttribute BoardVo boardVo, HttpSession session) {
+		System.out.println("BoardController.modifyForm()");
+		System.out.println("BoardController.write()");
+		UserVo vo = (UserVo) session.getAttribute("authUser");
+		boardVo.setUserNo(vo.getUserNo());
+		System.err.println(vo);
+		System.err.println(boardVo.getMatchDate());
+		/* matchDate의 T를 공백을 변환 */
+		DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+		DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		LocalDateTime matchDate = LocalDateTime.parse(boardVo.getMatchDate(), inputFormatter);
+		String formattedDate = outputFormatter.format(matchDate);
+		boardVo.setMatchDate(formattedDate);
+		/* matchDate의 T를 공백을 변환 end */
+		System.out.println(boardVo);
+		boardService.modify(boardVo);
+		
+		return "redirect:/board/read?boardNo=241";
+	}
 	
 }

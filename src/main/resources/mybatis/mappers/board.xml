@@ -210,10 +210,9 @@
 		    matchRegion = #{matchRegion},
 		    membernum = #{membernum},
 		    matchDate = TO_DATE(#{matchDate}, 'YYYY-MM-DD HH24:MI:SS'),
-		    content = #{content},
-		    boardDate = #{boardDate}
+		    content = #{content}
 		WHERE
-		    boardNo = #{boardNo};
+		    boardNo = #{boardNo}
 	]]>
 	
 	</update>

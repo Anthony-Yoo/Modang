@@ -14,8 +14,9 @@ pageEncoding="UTF-8"%>
                     <li>대표자 : 유상우</li>
                     <li class="no_bar">
                         사업자등록번호 : 123-4-567-890 
-                        <a href="#">사업자번호조회 &gt;</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </li>
+
                     <li>주소 : 서울특별시 강동구 천호대로 1027 5층</li>
                     <li>개인정보관리책임자 : 박유준</li>
                     <li class="no_bar">고객센터 : 18-8282-9999 </li>
