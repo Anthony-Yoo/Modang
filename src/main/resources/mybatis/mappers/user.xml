@@ -6,14 +6,13 @@
 <!-- 회원가입 -->
 <insert id="insert" parameterType="com.modang.vo.UserVo">  
     <![CDATA[
-       insert into users(userNo, id, passwd, nick, cellphone, average, recentLogonTime, profileImage) 
+       insert into users(userNo, id, passwd, nick, cellphone, average,  profileImage) 
 values( SEQ_USERS_NO.nextval,
         #{id},
         #{passwd},
         #{nick},
         #{cellphone},
         #{average},
-        sysdate,
         #{profileImage}
         )
        
@@ -34,10 +33,20 @@ values( SEQ_USERS_NO.nextval,
 
 </select>
 
+<update id="updateRecentDate" parameterType="com.modang.vo.UserVo">
+	<![CDATA[
+		update recentLogonTime
+		from users
+		where id = #{id}	
+	]]>
+
+</update>
+
 <!-- 회원수정폼 -->
 <select id="selectUserByNo" parameterType="String" resultType="com.modang.vo.UserVo">
 	<![CDATA[
-		select id,  
+		select userNo,
+				id,  
 			   nick,
 			   passwd,
 			   cellphone, 

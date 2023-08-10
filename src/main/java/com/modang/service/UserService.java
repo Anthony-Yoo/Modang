@@ -90,6 +90,7 @@ public class UserService {
 		System.out.println(userVo);
 		
 		UserVo authUser=userDao.selectUser(userVo);
+		userDao.updateRecentDate(authUser);
 		
 		return authUser;
 	}

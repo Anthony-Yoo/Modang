@@ -29,7 +29,7 @@
 			<h2 id="logtitle">휴대폰을 인증해주세요</h2>			
 			<div class="content">	
 				<div class="box float-l" id="qrbox">
-					<img src="${pageContext.request.contextPath}/assets/images/qrcode_modang2.png"/>
+					<img src="${pageContext.request.contextPath}/assets/images/modang_qr.png"/>
 				</div>
 				<div class="box1 float-l" id="logbox">
 					<div id="idbox">
