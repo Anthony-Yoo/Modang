@@ -65,7 +65,7 @@
 	                   			<!-- 휴대폰 -->
 	                   			<div class="form-group">	                     			
                        				<img src="${pageContext.request.contextPath}/assets/images/smartphone.png" id="cellcon" alt="">
-                       				<input id="cellphone" type="text" maxlength="11" class="form-control" name="cellphone" value="${requestScope.userVo.cellphone}" placeholder="">
+                       				<input id="cellphone" type="text" maxlength="13" class="form-control" name="cellphone" value="${requestScope.userVo.cellphone}" placeholder="">
 	                       			
 	                   			</div>
                    
