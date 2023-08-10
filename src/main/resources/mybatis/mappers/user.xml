@@ -35,8 +35,9 @@ values( SEQ_USERS_NO.nextval,
 
 <update id="updateRecentDate" parameterType="com.modang.vo.UserVo">
 	<![CDATA[
-		update recentLogonTime
-		from users
+		update users
+		set 
+		recentLogonTime = sysdate
 		where id = #{id}	
 	]]>
 
