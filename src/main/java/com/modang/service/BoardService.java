@@ -111,6 +111,7 @@ public class BoardService {
 	/* 글 읽기 서비스 */
 	public BoardVo read(int boardNo) {
 		System.out.println("BoardService.read()");
+		System.out.println(boardNo);
 		return boardDao.selectOne(boardNo);
 	}
 

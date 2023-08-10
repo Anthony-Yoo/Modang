@@ -92,6 +92,7 @@ public class BoardController {
 	@RequestMapping(value = "/read")
 	public String read(@RequestParam("boardNo") int boardNo, Model model) {
 		System.out.println("BoardController.read()");
+		System.out.println(boardNo);
 		BoardVo vo = boardService.read(boardNo);
 		System.out.println(vo);
 		model.addAttribute("rList", vo);
@@ -150,7 +151,7 @@ public class BoardController {
 		System.out.println(boardVo);
 		boardService.modify(boardVo);
 		
-		return "redirect:/board/read?boardNo=241";
+		return "redirect:/board/read?boardNo="+boardVo.getBoardNo();
 	}
 	
 }

@@ -91,6 +91,7 @@ public class BoardDao {
 	/* 글 read시 필요한 한개의 데이터 */
 	public BoardVo selectOne(int boardNo) {
 		System.out.println("BoardDao.selectOne()");
+		System.out.println(boardNo);
 		BoardVo result = sqlSession.selectOne("board.selectOne", boardNo);
 
 		return result;
