@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>글 쓰기</title>
+<title>글 수정</title>
 <link rel="icon" sizes="any" href="${pageContext.request.contextPath}/assets/images/favicon.ico" />
 <!-- 사이트 전체 css -->
 <link href="${pageContext.request.contextPath}/assets/css/modang.css" rel="stylesheet" type="text/css">
@@ -48,7 +48,6 @@
 								<td colspan="3"><input type="text" name="title" value="${rList.title}"></td>	
 							</tr>
 							<tr>
-							
 								<th>게임종류</th>
 								<td>
 									<input type="radio"  name="matchGameType" value="0" <c:if test="${rList.matchGameType == 0}">
@@ -111,7 +110,7 @@
 									<label>4명</label>
 								</td>	
 								<th>모임 날짜</th>
-								<td> <input type="datetime-local" id="matchDate" name="matchDate" required /></td>	
+								<td> <input type="datetime-local" id="matchDate" name="matchDate" value="${rList.matchDate}" required/></td>	
 							</tr>
 							<tr>
 								<td colspan="4" class="textareaWrap">
@@ -137,6 +136,11 @@
 	<c:import url="/WEB-INF/views/include/modangSiteFooter.jsp"></c:import>
 </body>
 <script type="text/javascript">
+$(document).ready(function() {
+}
+	const dateControl = document.querySelector('input[type="datetime-local"]');
+	var time = "${rList.matchDate}+T00:00"
+	dateControl.value = time;
 function validateForm() {
     var title = $("input[name='title']").val();
     var gameType = $("input[name='matchGameType']:checked").val();
