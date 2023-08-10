@@ -122,4 +122,9 @@ public class BoardDao {
 		System.out.println("BoardDao.delete()");
 		sqlSession.delete("board.delete", boardNo);
 	}
+	
+	public void modify(BoardVo vo) {
+		System.out.println("BoardNo.modify()");
+		sqlSession.update("board.modify", vo);
+	}
 }

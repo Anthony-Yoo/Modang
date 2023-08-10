@@ -144,4 +144,9 @@ public class BoardService {
 		System.out.println("BoardService.dismiss()");
 		boardDao.delete(boardNo);
 	}
+	
+	public void modify(BoardVo vo) {
+		System.out.println("BoardService.modify()");
+		boardDao.modify(vo);
+	}
 }
