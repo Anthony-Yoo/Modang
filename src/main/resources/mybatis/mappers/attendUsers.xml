@@ -53,7 +53,7 @@
 		    GROUP BY boardNo
 		) ac ON ac.boardNo = mb.boardno
 		WHERE mb.userNo = #{userNo}
-		order by matchdate asc
+		order by matchdate desc
 	]]>
 	
 	</select>
