@@ -81,5 +81,10 @@ public class UserDao {
 		System.out.println(userNo);
 		return userNo;
 	}
-
+	
+	public int updateRecentDate(UserVo authUser) {
+		System.out.println("userDao.updateRecentDate()");
+		
+		return session.update("user.updateRecentDate", authUser);
+	}
 }
