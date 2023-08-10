@@ -91,13 +91,12 @@ public class BoardDao {
 	/* 글 read시 필요한 한개의 데이터 */
 	public BoardVo selectOne(int boardNo) {
 		System.out.println("BoardDao.selectOne()");
-		System.out.println(boardNo);
 		BoardVo result = sqlSession.selectOne("board.selectOne", boardNo);
 
 		return result;
 	}
 
-	// 마이페이지 내가 쓴 글 리스트 목록
+		
 	public List<BoardVo> myBoardList(int userNo) {
 		System.out.println("BoardDao.myBoardList()");
 		List<BoardVo> vo = new ArrayList<BoardVo>();
